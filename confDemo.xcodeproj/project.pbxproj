@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E90A0A621BCF7143005D611C /* Readme.md in Sources */ = {isa = PBXBuildFile; fileRef = E90A0A611BCF7143005D611C /* Readme.md */; settings = {ASSET_TAGS = (); }; };
 		E93163611BC5E0B4007408C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163601BC5E0B4007408C7 /* AppDelegate.swift */; };
 		E93163681BC5E0B4007408C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E93163661BC5E0B4007408C7 /* Main.storyboard */; };
 		E931636A1BC5E0B4007408C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E93163691BC5E0B4007408C7 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E90A0A611BCF7143005D611C /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		E931635D1BC5E0B4007408C7 /* confDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = confDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E93163601BC5E0B4007408C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E93163671BC5E0B4007408C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				E93163761BC5E0B4007408C7 /* confDemoTests */,
 				E93163811BC5E0B4007408C7 /* confDemoUITests */,
 				E931635E1BC5E0B4007408C7 /* Products */,
+				E90A0A611BCF7143005D611C /* Readme.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -269,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E90A0A621BCF7143005D611C /* Readme.md in Sources */,
 				E93163981BC62AB6007408C7 /* ExploreViewController.swift in Sources */,
 				E93163611BC5E0B4007408C7 /* AppDelegate.swift in Sources */,
 				E93163931BC5E573007408C7 /* LoginViewController.swift in Sources */,
@@ -499,6 +503,7 @@
 				E93163891BC5E0B4007408C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E931638A1BC5E0B4007408C7 /* Build configuration list for PBXNativeTarget "confDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +512,7 @@
 				E931638C1BC5E0B4007408C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E931638D1BC5E0B4007408C7 /* Build configuration list for PBXNativeTarget "confDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +521,7 @@
 				E931638F1BC5E0B4007408C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
