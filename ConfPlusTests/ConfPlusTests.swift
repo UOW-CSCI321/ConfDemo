@@ -7,9 +7,9 @@
 //
 
 import XCTest
-@testable import confDemo
+@testable import ConfPlus
 
-class confDemoTests: XCTestCase {
+class ConfPlusTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

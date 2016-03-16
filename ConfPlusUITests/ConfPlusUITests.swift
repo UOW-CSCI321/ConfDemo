@@ -8,7 +8,7 @@
 
 import XCTest
 
-class confDemoUITests: XCTestCase {
+class ConfPlusUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()

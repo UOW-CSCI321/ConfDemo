@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E931635C1BC5E0B4007408C7"
-               BuildableName = "confDemo.app"
-               BlueprintName = "confDemo"
-               ReferencedContainer = "container:confDemo.xcodeproj">
+               BuildableName = "ConfPlus.app"
+               BlueprintName = "ConfPlus"
+               ReferencedContainer = "container:ConfPlus.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E93163721BC5E0B4007408C7"
-               BuildableName = "confDemoTests.xctest"
-               BlueprintName = "confDemoTests"
-               ReferencedContainer = "container:confDemo.xcodeproj">
+               BuildableName = "ConfPlusTests.xctest"
+               BlueprintName = "ConfPlusTests"
+               ReferencedContainer = "container:ConfPlus.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,27 +43,27 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E931637D1BC5E0B4007408C7"
-               BuildableName = "confDemoUITests.xctest"
-               BlueprintName = "confDemoUITests"
-               ReferencedContainer = "container:confDemo.xcodeproj">
+               BuildableName = "ConfPlusUITests.xctest"
+               BlueprintName = "ConfPlusUITests"
+               ReferencedContainer = "container:ConfPlus.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E93163721BC5E0B4007408C7"
-               BuildableName = "confDemoTests.xctest"
-               BlueprintName = "confDemoTests"
-               ReferencedContainer = "container:confDemo.xcodeproj">
+               BuildableName = "ConfPlusTests.xctest"
+               BlueprintName = "ConfPlusTests"
+               ReferencedContainer = "container:ConfPlus.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -71,9 +71,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E931637D1BC5E0B4007408C7"
-               BuildableName = "confDemoUITests.xctest"
-               BlueprintName = "confDemoUITests"
-               ReferencedContainer = "container:confDemo.xcodeproj">
+               BuildableName = "ConfPlusUITests.xctest"
+               BlueprintName = "ConfPlusUITests"
+               ReferencedContainer = "container:ConfPlus.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -81,48 +81,51 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E931635C1BC5E0B4007408C7"
-            BuildableName = "confDemo.app"
-            BlueprintName = "confDemo"
-            ReferencedContainer = "container:confDemo.xcodeproj">
+            BuildableName = "ConfPlus.app"
+            BlueprintName = "ConfPlus"
+            ReferencedContainer = "container:ConfPlus.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E931635C1BC5E0B4007408C7"
-            BuildableName = "confDemo.app"
-            BlueprintName = "confDemo"
-            ReferencedContainer = "container:confDemo.xcodeproj">
+            BuildableName = "ConfPlus.app"
+            BlueprintName = "ConfPlus"
+            ReferencedContainer = "container:ConfPlus.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E931635C1BC5E0B4007408C7"
-            BuildableName = "confDemo.app"
-            BlueprintName = "confDemo"
-            ReferencedContainer = "container:confDemo.xcodeproj">
+            BuildableName = "ConfPlus.app"
+            BlueprintName = "ConfPlus"
+            ReferencedContainer = "container:ConfPlus.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
