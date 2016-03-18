@@ -7,12 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C94AFA4B1C9807B300EC88B6 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA4A1C9807B300EC88B6 /* EventDetailsViewController.swift */; };
 		C94AFA4D1C98085B00EC88B6 /* TicketDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA4C1C98085B00EC88B6 /* TicketDetailsViewController.swift */; };
 		C94AFA4F1C9808AB00EC88B6 /* PersonalDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA4E1C9808AB00EC88B6 /* PersonalDetailsViewController.swift */; };
 		C94AFA511C980A0B00EC88B6 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA501C980A0B00EC88B6 /* PaymentViewController.swift */; };
 		C94AFA531C980A5400EC88B6 /* ReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA521C980A5400EC88B6 /* ReceiptViewController.swift */; };
-		C94AFA561C980C8D00EC88B6 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA551C980C8D00EC88B6 /* EventsTableViewController.swift */; };
 		C94AFA581C980D7C00EC88B6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA571C980D7C00EC88B6 /* HomeViewController.swift */; };
 		C94AFA5A1C980DE400EC88B6 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA591C980DE400EC88B6 /* TimeTableViewController.swift */; };
 		C94AFA5C1C980E3B00EC88B6 /* TalksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA5B1C980E3B00EC88B6 /* TalksViewController.swift */; };
@@ -26,6 +24,10 @@
 		C94AFA741C98217C00EC88B6 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA731C98217C00EC88B6 /* AccountTableViewController.swift */; };
 		C94AFA761C98221400EC88B6 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */; };
 		C9E8AD5B1C96DC7C00FD9570 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E8AD5A1C96DC7C00FD9570 /* HomeTabBarController.swift */; };
+		E90201C11C9CB7EB00C7839A /* ExploreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */; };
+		E90201C31C9CC2E200C7839A /* EventDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */; };
+		E90201C71C9CC74400C7839A /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C61C9CC74400C7839A /* EventTableViewCell.swift */; };
+		E90201C91C9CC84A00C7839A /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C81C9CC84A00C7839A /* EventsViewController.swift */; };
 		E90A0A621BCF7143005D611C /* Readme.md in Sources */ = {isa = PBXBuildFile; fileRef = E90A0A611BCF7143005D611C /* Readme.md */; };
 		E93163611BC5E0B4007408C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163601BC5E0B4007408C7 /* AppDelegate.swift */; };
 		E93163681BC5E0B4007408C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E93163661BC5E0B4007408C7 /* Main.storyboard */; };
@@ -56,12 +58,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C94AFA4A1C9807B300EC88B6 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailsViewController.swift; path = Explore/EventDetailsViewController.swift; sourceTree = "<group>"; };
 		C94AFA4C1C98085B00EC88B6 /* TicketDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketDetailsViewController.swift; path = Explore/TicketDetailsViewController.swift; sourceTree = "<group>"; };
 		C94AFA4E1C9808AB00EC88B6 /* PersonalDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonalDetailsViewController.swift; path = Explore/PersonalDetailsViewController.swift; sourceTree = "<group>"; };
 		C94AFA501C980A0B00EC88B6 /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentViewController.swift; path = Explore/PaymentViewController.swift; sourceTree = "<group>"; };
 		C94AFA521C980A5400EC88B6 /* ReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReceiptViewController.swift; path = Explore/ReceiptViewController.swift; sourceTree = "<group>"; };
-		C94AFA551C980C8D00EC88B6 /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsTableViewController.swift; path = Events/EventsTableViewController.swift; sourceTree = "<group>"; };
 		C94AFA571C980D7C00EC88B6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Events/HomeViewController.swift; sourceTree = "<group>"; };
 		C94AFA591C980DE400EC88B6 /* TimeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeTableViewController.swift; path = Events/TimeTableViewController.swift; sourceTree = "<group>"; };
 		C94AFA5B1C980E3B00EC88B6 /* TalksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TalksViewController.swift; path = Events/TalksViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +75,10 @@
 		C94AFA731C98217C00EC88B6 /* AccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountTableViewController.swift; path = Profile/AccountTableViewController.swift; sourceTree = "<group>"; };
 		C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryTableViewController.swift; path = Profile/HistoryTableViewController.swift; sourceTree = "<group>"; };
 		C9E8AD5A1C96DC7C00FD9570 /* HomeTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
+		E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreTableViewCell.swift; path = Explore/ExploreTableViewCell.swift; sourceTree = "<group>"; };
+		E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailTableViewController.swift; path = Explore/EventDetailTableViewController.swift; sourceTree = "<group>"; };
+		E90201C61C9CC74400C7839A /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTableViewCell.swift; path = Events/EventTableViewCell.swift; sourceTree = "<group>"; };
+		E90201C81C9CC84A00C7839A /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsViewController.swift; path = Events/EventsViewController.swift; sourceTree = "<group>"; };
 		E90A0A611BCF7143005D611C /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		E931635D1BC5E0B4007408C7 /* ConfPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConfPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E93163601BC5E0B4007408C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,7 +125,8 @@
 		C94AFA541C980C2100EC88B6 /* Events */ = {
 			isa = PBXGroup;
 			children = (
-				C94AFA551C980C8D00EC88B6 /* EventsTableViewController.swift */,
+				E90201C81C9CC84A00C7839A /* EventsViewController.swift */,
+				E90201C61C9CC74400C7839A /* EventTableViewCell.swift */,
 				C94AFA571C980D7C00EC88B6 /* HomeViewController.swift */,
 				C94AFA611C981C0600EC88B6 /* Timetable */,
 				C94AFA5D1C980ECE00EC88B6 /* MessagesTableViewController.swift */,
@@ -230,7 +235,8 @@
 			isa = PBXGroup;
 			children = (
 				E93163971BC62AB6007408C7 /* ExploreViewController.swift */,
-				C94AFA4A1C9807B300EC88B6 /* EventDetailsViewController.swift */,
+				E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */,
+				E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */,
 				C94AFA4C1C98085B00EC88B6 /* TicketDetailsViewController.swift */,
 				C94AFA4E1C9808AB00EC88B6 /* PersonalDetailsViewController.swift */,
 				C94AFA501C980A0B00EC88B6 /* PaymentViewController.swift */,
@@ -370,10 +376,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C94AFA5A1C980DE400EC88B6 /* TimeTableViewController.swift in Sources */,
+				E90201C91C9CC84A00C7839A /* EventsViewController.swift in Sources */,
 				C94AFA5E1C980ECE00EC88B6 /* MessagesTableViewController.swift in Sources */,
 				E90A0A621BCF7143005D611C /* Readme.md in Sources */,
-				C94AFA4B1C9807B300EC88B6 /* EventDetailsViewController.swift in Sources */,
-				C94AFA561C980C8D00EC88B6 /* EventsTableViewController.swift in Sources */,
+				E90201C71C9CC74400C7839A /* EventTableViewCell.swift in Sources */,
 				C94AFA711C981FED00EC88B6 /* AdminTableViewController.swift in Sources */,
 				E93163981BC62AB6007408C7 /* ExploreViewController.swift in Sources */,
 				C94AFA6E1C981F1A00EC88B6 /* AttendingViewController.swift in Sources */,
@@ -385,6 +391,7 @@
 				E93163611BC5E0B4007408C7 /* AppDelegate.swift in Sources */,
 				E93163931BC5E573007408C7 /* LoginViewController.swift in Sources */,
 				C94AFA511C980A0B00EC88B6 /* PaymentViewController.swift in Sources */,
+				E90201C11C9CB7EB00C7839A /* ExploreTableViewCell.swift in Sources */,
 				C94AFA6A1C981D9000EC88B6 /* TicketProfileTableViewController.swift in Sources */,
 				C94AFA531C980A5400EC88B6 /* ReceiptViewController.swift in Sources */,
 				C94AFA741C98217C00EC88B6 /* AccountTableViewController.swift in Sources */,
@@ -393,6 +400,7 @@
 				C94AFA4D1C98085B00EC88B6 /* TicketDetailsViewController.swift in Sources */,
 				C94AFA6C1C981E7700EC88B6 /* SecurityViewController.swift in Sources */,
 				C94AFA601C9811BD00EC88B6 /* MapViewController.swift in Sources */,
+				E90201C31C9CC2E200C7839A /* EventDetailTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
