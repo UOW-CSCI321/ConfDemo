@@ -1,13 +1,12 @@
 //
-//  confDemoTests.swift
-//  confDemoTests
+//  ConfPlusTests.swift
+//  ConfPlusTests
 //
-//  Created by CY Lim on 2015/10/08.
-//  Copyright © 2015年 CY Lim. All rights reserved.
+//  Created by Matthew Boroczky on 21/03/2016.
+//  Copyright © 2016 Conf+. All rights reserved.
 //
 
 import XCTest
-@testable import ConfPlus
 
 class ConfPlusTests: XCTestCase {
     

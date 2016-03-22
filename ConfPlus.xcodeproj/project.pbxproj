@@ -24,6 +24,7 @@
 		C94AFA741C98217C00EC88B6 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA731C98217C00EC88B6 /* AccountTableViewController.swift */; };
 		C94AFA761C98221400EC88B6 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */; };
 		C9E8AD5B1C96DC7C00FD9570 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E8AD5A1C96DC7C00FD9570 /* HomeTabBarController.swift */; };
+		C9F4E0B11C9F7638009CA1A9 /* ConfPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F4E0B01C9F7638009CA1A9 /* ConfPlusTests.swift */; };
 		E90201C11C9CB7EB00C7839A /* ExploreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */; };
 		E90201C31C9CC2E200C7839A /* EventDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */; };
 		E90201C71C9CC74400C7839A /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C61C9CC74400C7839A /* EventTableViewCell.swift */; };
@@ -33,7 +34,6 @@
 		E93163681BC5E0B4007408C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E93163661BC5E0B4007408C7 /* Main.storyboard */; };
 		E931636A1BC5E0B4007408C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E93163691BC5E0B4007408C7 /* Assets.xcassets */; };
 		E931636D1BC5E0B4007408C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E931636B1BC5E0B4007408C7 /* LaunchScreen.storyboard */; };
-		E93163781BC5E0B4007408C7 /* ConfPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163771BC5E0B4007408C7 /* ConfPlusTests.swift */; };
 		E93163831BC5E0B4007408C7 /* ConfPlusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163821BC5E0B4007408C7 /* ConfPlusUITests.swift */; };
 		E93163911BC5E294007408C7 /* viewEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163901BC5E294007408C7 /* viewEffect.swift */; };
 		E93163931BC5E573007408C7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163921BC5E573007408C7 /* LoginViewController.swift */; };
@@ -41,12 +41,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E93163741BC5E0B4007408C7 /* PBXContainerItemProxy */ = {
+		C9F4E0B31C9F7638009CA1A9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E93163551BC5E0B4007408C7 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E931635C1BC5E0B4007408C7;
-			remoteInfo = confDemo;
+			remoteInfo = ConfPlus;
 		};
 		E931637F1BC5E0B4007408C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -75,6 +75,9 @@
 		C94AFA731C98217C00EC88B6 /* AccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountTableViewController.swift; path = Profile/AccountTableViewController.swift; sourceTree = "<group>"; };
 		C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryTableViewController.swift; path = Profile/HistoryTableViewController.swift; sourceTree = "<group>"; };
 		C9E8AD5A1C96DC7C00FD9570 /* HomeTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
+		C9F4E0AE1C9F7638009CA1A9 /* ConfPlusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConfPlusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9F4E0B01C9F7638009CA1A9 /* ConfPlusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfPlusTests.swift; sourceTree = "<group>"; };
+		C9F4E0B21C9F7638009CA1A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreTableViewCell.swift; path = Explore/ExploreTableViewCell.swift; sourceTree = "<group>"; };
 		E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailTableViewController.swift; path = Explore/EventDetailTableViewController.swift; sourceTree = "<group>"; };
 		E90201C61C9CC74400C7839A /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTableViewCell.swift; path = Events/EventTableViewCell.swift; sourceTree = "<group>"; };
@@ -86,7 +89,6 @@
 		E93163691BC5E0B4007408C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E931636C1BC5E0B4007408C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E931636E1BC5E0B4007408C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E93163731BC5E0B4007408C7 /* ConfPlusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConfPlusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E93163771BC5E0B4007408C7 /* ConfPlusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfPlusTests.swift; sourceTree = "<group>"; };
 		E93163791BC5E0B4007408C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E931637E1BC5E0B4007408C7 /* ConfPlusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConfPlusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,14 +100,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E931635A1BC5E0B4007408C7 /* Frameworks */ = {
+		C9F4E0AB1C9F7638009CA1A9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E93163701BC5E0B4007408C7 /* Frameworks */ = {
+		E931635A1BC5E0B4007408C7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -175,12 +177,22 @@
 			name = Profile;
 			sourceTree = "<group>";
 		};
+		C9F4E0AF1C9F7638009CA1A9 /* ConfPlusTests */ = {
+			isa = PBXGroup;
+			children = (
+				C9F4E0B01C9F7638009CA1A9 /* ConfPlusTests.swift */,
+				C9F4E0B21C9F7638009CA1A9 /* Info.plist */,
+			);
+			path = ConfPlusTests;
+			sourceTree = "<group>";
+		};
 		E93163541BC5E0B4007408C7 = {
 			isa = PBXGroup;
 			children = (
 				E931635F1BC5E0B4007408C7 /* ConfPlus */,
 				E93163761BC5E0B4007408C7 /* ConfPlusTests */,
 				E93163811BC5E0B4007408C7 /* ConfPlusUITests */,
+				C9F4E0AF1C9F7638009CA1A9 /* ConfPlusTests */,
 				E931635E1BC5E0B4007408C7 /* Products */,
 				E90A0A611BCF7143005D611C /* Readme.md */,
 			);
@@ -190,8 +202,8 @@
 			isa = PBXGroup;
 			children = (
 				E931635D1BC5E0B4007408C7 /* ConfPlus.app */,
-				E93163731BC5E0B4007408C7 /* ConfPlusTests.xctest */,
 				E931637E1BC5E0B4007408C7 /* ConfPlusUITests.xctest */,
+				C9F4E0AE1C9F7638009CA1A9 /* ConfPlusTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -248,6 +260,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C9F4E0AD1C9F7638009CA1A9 /* ConfPlusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9F4E0B51C9F7638009CA1A9 /* Build configuration list for PBXNativeTarget "ConfPlusTests" */;
+			buildPhases = (
+				C9F4E0AA1C9F7638009CA1A9 /* Sources */,
+				C9F4E0AB1C9F7638009CA1A9 /* Frameworks */,
+				C9F4E0AC1C9F7638009CA1A9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C9F4E0B41C9F7638009CA1A9 /* PBXTargetDependency */,
+			);
+			name = ConfPlusTests;
+			productName = ConfPlusTests;
+			productReference = C9F4E0AE1C9F7638009CA1A9 /* ConfPlusTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E931635C1BC5E0B4007408C7 /* ConfPlus */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E93163871BC5E0B4007408C7 /* Build configuration list for PBXNativeTarget "ConfPlus" */;
@@ -264,24 +294,6 @@
 			productName = confDemo;
 			productReference = E931635D1BC5E0B4007408C7 /* ConfPlus.app */;
 			productType = "com.apple.product-type.application";
-		};
-		E93163721BC5E0B4007408C7 /* ConfPlusTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E931638A1BC5E0B4007408C7 /* Build configuration list for PBXNativeTarget "ConfPlusTests" */;
-			buildPhases = (
-				E931636F1BC5E0B4007408C7 /* Sources */,
-				E93163701BC5E0B4007408C7 /* Frameworks */,
-				E93163711BC5E0B4007408C7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E93163751BC5E0B4007408C7 /* PBXTargetDependency */,
-			);
-			name = ConfPlusTests;
-			productName = confDemoTests;
-			productReference = E93163731BC5E0B4007408C7 /* ConfPlusTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		E931637D1BC5E0B4007408C7 /* ConfPlusUITests */ = {
 			isa = PBXNativeTarget;
@@ -307,15 +319,16 @@
 		E93163551BC5E0B4007408C7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Conf+";
 				TargetAttributes = {
+					C9F4E0AD1C9F7638009CA1A9 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = E931635C1BC5E0B4007408C7;
+					};
 					E931635C1BC5E0B4007408C7 = {
 						CreatedOnToolsVersion = 7.0.1;
-					};
-					E93163721BC5E0B4007408C7 = {
-						CreatedOnToolsVersion = 7.0.1;
-						TestTargetID = E931635C1BC5E0B4007408C7;
 					};
 					E931637D1BC5E0B4007408C7 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -337,13 +350,20 @@
 			projectRoot = "";
 			targets = (
 				E931635C1BC5E0B4007408C7 /* ConfPlus */,
-				E93163721BC5E0B4007408C7 /* ConfPlusTests */,
 				E931637D1BC5E0B4007408C7 /* ConfPlusUITests */,
+				C9F4E0AD1C9F7638009CA1A9 /* ConfPlusTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C9F4E0AC1C9F7638009CA1A9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E931635B1BC5E0B4007408C7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -351,13 +371,6 @@
 				E931636D1BC5E0B4007408C7 /* LaunchScreen.storyboard in Resources */,
 				E931636A1BC5E0B4007408C7 /* Assets.xcassets in Resources */,
 				E93163681BC5E0B4007408C7 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E93163711BC5E0B4007408C7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +384,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C9F4E0AA1C9F7638009CA1A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9F4E0B11C9F7638009CA1A9 /* ConfPlusTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E93163591BC5E0B4007408C7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -404,14 +425,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E931636F1BC5E0B4007408C7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E93163781BC5E0B4007408C7 /* ConfPlusTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E931637A1BC5E0B4007408C7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -423,10 +436,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E93163751BC5E0B4007408C7 /* PBXTargetDependency */ = {
+		C9F4E0B41C9F7638009CA1A9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E931635C1BC5E0B4007408C7 /* ConfPlus */;
-			targetProxy = E93163741BC5E0B4007408C7 /* PBXContainerItemProxy */;
+			targetProxy = C9F4E0B31C9F7638009CA1A9 /* PBXContainerItemProxy */;
 		};
 		E93163801BC5E0B4007408C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -455,6 +468,32 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C9F4E0B61C9F7638009CA1A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ConfPlusTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = uow.edu.au.ConfPlusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConfPlus.app/ConfPlus";
+			};
+			name = Debug;
+		};
+		C9F4E0B71C9F7638009CA1A9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ConfPlusTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = uow.edu.au.ConfPlusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ConfPlus.app/ConfPlus";
+			};
+			name = Release;
+		};
 		E93163851BC5E0B4007408C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -560,30 +599,6 @@
 			};
 			name = Release;
 		};
-		E931638B1BC5E0B4007408C7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = ConfPlusTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = my.cy.ConfPlusTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/confDemo.app/confDemo";
-			};
-			name = Debug;
-		};
-		E931638C1BC5E0B4007408C7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = ConfPlusTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = my.cy.ConfPlusTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/confDemo.app/confDemo";
-			};
-			name = Release;
-		};
 		E931638E1BC5E0B4007408C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -611,6 +626,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C9F4E0B51C9F7638009CA1A9 /* Build configuration list for PBXNativeTarget "ConfPlusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9F4E0B61C9F7638009CA1A9 /* Debug */,
+				C9F4E0B71C9F7638009CA1A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		E93163581BC5E0B4007408C7 /* Build configuration list for PBXProject "ConfPlus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -625,15 +648,6 @@
 			buildConfigurations = (
 				E93163881BC5E0B4007408C7 /* Debug */,
 				E93163891BC5E0B4007408C7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E931638A1BC5E0B4007408C7 /* Build configuration list for PBXNativeTarget "ConfPlusTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E931638B1BC5E0B4007408C7 /* Debug */,
-				E931638C1BC5E0B4007408C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
