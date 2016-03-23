@@ -25,6 +25,7 @@
 		C94AFA761C98221400EC88B6 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */; };
 		C9E8AD5B1C96DC7C00FD9570 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E8AD5A1C96DC7C00FD9570 /* HomeTabBarController.swift */; };
 		C9F4E0B11C9F7638009CA1A9 /* ConfPlusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F4E0B01C9F7638009CA1A9 /* ConfPlusTests.swift */; };
+		C9F4E0BA1CA0CEC8009CA1A9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9F4E0B81CA0CEC8009CA1A9 /* Model.xcdatamodeld */; };
 		E90201C11C9CB7EB00C7839A /* ExploreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */; };
 		E90201C31C9CC2E200C7839A /* EventDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */; };
 		E90201C71C9CC74400C7839A /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C61C9CC74400C7839A /* EventTableViewCell.swift */; };
@@ -78,6 +79,7 @@
 		C9F4E0AE1C9F7638009CA1A9 /* ConfPlusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConfPlusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9F4E0B01C9F7638009CA1A9 /* ConfPlusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfPlusTests.swift; sourceTree = "<group>"; };
 		C9F4E0B21C9F7638009CA1A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9F4E0B91CA0CEC8009CA1A9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreTableViewCell.swift; path = Explore/ExploreTableViewCell.swift; sourceTree = "<group>"; };
 		E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailTableViewController.swift; path = Explore/EventDetailTableViewController.swift; sourceTree = "<group>"; };
 		E90201C61C9CC74400C7839A /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTableViewCell.swift; path = Events/EventTableViewCell.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				E93163901BC5E294007408C7 /* viewEffect.swift */,
 				C94AFA731C98217C00EC88B6 /* AccountTableViewController.swift */,
 				C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */,
+				C9F4E0B81CA0CEC8009CA1A9 /* Model.xcdatamodeld */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				C94AFA5E1C980ECE00EC88B6 /* MessagesTableViewController.swift in Sources */,
 				E90A0A621BCF7143005D611C /* Readme.md in Sources */,
 				E90201C71C9CC74400C7839A /* EventTableViewCell.swift in Sources */,
+				C9F4E0BA1CA0CEC8009CA1A9 /* Model.xcdatamodeld in Sources */,
 				C94AFA711C981FED00EC88B6 /* AdminTableViewController.swift in Sources */,
 				E93163981BC62AB6007408C7 /* ExploreViewController.swift in Sources */,
 				C94AFA6E1C981F1A00EC88B6 /* AttendingViewController.swift in Sources */,
@@ -662,6 +666,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C9F4E0B81CA0CEC8009CA1A9 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C9F4E0B91CA0CEC8009CA1A9 /* Model.xcdatamodel */,
+			);
+			currentVersion = C9F4E0B91CA0CEC8009CA1A9 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E93163551BC5E0B4007408C7 /* Project object */;
 }
