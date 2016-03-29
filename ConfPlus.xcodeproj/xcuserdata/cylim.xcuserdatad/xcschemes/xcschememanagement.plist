@@ -7,6 +7,11 @@
 		<key>ConfPlus.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>ConfPlusTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
 		<key>confDemo.xcscheme</key>
