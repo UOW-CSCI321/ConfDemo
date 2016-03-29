@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DDo-7g-W5p">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DDo-7g-W5p">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -905,7 +905,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
-                            <tableViewSection headerTitle="Me" id="U89-4P-al1">
+                            <tableViewSection headerTitle="Profile" id="U89-4P-al1">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="xlk-Xo-t89">
                                         <rect key="frame" x="0.0" y="113.5" width="414" height="120"/>
@@ -944,8 +944,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1u-d4-1f9">
-                                                    <rect key="frame" x="169" y="7" width="76" height="30"/>
+                                                    <rect key="frame" x="8" y="7" width="398" height="30"/>
                                                     <state key="normal" title="Languages"/>
+                                                    <connections>
+                                                        <action selector="doChangeLanguage:" destination="VdU-2r-Bnz" eventType="touchUpInside" id="Ng8-pV-rJh"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -958,7 +961,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="He6-M9-f76">
-                                                    <rect key="frame" x="151" y="7" width="113" height="30"/>
+                                                    <rect key="frame" x="8" y="7" width="398" height="30"/>
                                                     <state key="normal" title="Payment History"/>
                                                     <connections>
                                                         <segue destination="sfj-Ji-26K" kind="show" id="lE8-eZ-B8W"/>
@@ -975,7 +978,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIy-wp-EJ2">
-                                                    <rect key="frame" x="181" y="7" width="52" height="30"/>
+                                                    <rect key="frame" x="8" y="7" width="398" height="30"/>
                                                     <state key="normal" title="Log out"/>
                                                 </button>
                                             </subviews>
@@ -993,6 +996,11 @@
                     <navigationItem key="navigationItem" title="Title" id="xbe-nJ-7f3">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="0Qk-Id-7Sq"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="languageButton" destination="v1u-d4-1f9" id="s8n-6D-t8B"/>
+                        <outlet property="logOutButton" destination="pIy-wp-EJ2" id="LHj-Ia-KmC"/>
+                        <outlet property="paymentHistoryButton" destination="He6-M9-f76" id="Q9j-jf-MGs"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZsA-g1-b87" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1401,7 +1409,7 @@
         <!--Home-->
         <scene sceneID="54u-mM-r0S">
             <objects>
-                <tabBarController storyboardIdentifier="HomeTabBarController" title="Home" id="T5p-Vp-c9R" customClass="HomeTabBarController" customModule="ConfPlus" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="HomeTabBarController" title="Home" id="T5p-Vp-c9R" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="NCi-GT-OaB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>

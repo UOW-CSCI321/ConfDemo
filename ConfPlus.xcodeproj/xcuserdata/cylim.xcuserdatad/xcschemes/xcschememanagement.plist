@@ -7,6 +7,11 @@
 		<key>ConfPlus.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>ConfPlusTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
 		<key>confDemo.xcscheme</key>
@@ -17,6 +22,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>C9F4E0AD1C9F7638009CA1A9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E931635C1BC5E0B4007408C7</key>
 		<dict>
 			<key>primary</key>
