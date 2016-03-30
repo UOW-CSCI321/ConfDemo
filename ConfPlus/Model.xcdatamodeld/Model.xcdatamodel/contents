@@ -11,6 +11,7 @@
         <attribute name="event_id" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="from_date" attributeType="Date" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="poster" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="poster_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="to_date" attributeType="Date" syncable="YES"/>
         <attribute name="type" attributeType="String" syncable="YES"/>
@@ -105,7 +106,7 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="user_tags" inverseEntity="User" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="1836" positionY="351" width="128" height="223"/>
+        <element name="Event" positionX="1836" positionY="351" width="128" height="238"/>
         <element name="Event_Attended" positionX="1620" positionY="423" width="128" height="103"/>
         <element name="Session" positionX="1852" positionY="716" width="128" height="148"/>
         <element name="Session_Attending" positionX="1611" positionY="873" width="128" height="103"/>
