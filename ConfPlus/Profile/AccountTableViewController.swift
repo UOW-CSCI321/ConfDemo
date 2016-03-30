@@ -72,4 +72,9 @@ class AccountTableViewController: UITableViewController {
 		self.presentViewController(actionSheet, animated: true, completion: nil)
 	}
 	
+	@IBAction func logout(sender: AnyObject) {
+		self.performSegueWithIdentifier("goToLogin", sender: self)		
+	}
+
+	
 }
