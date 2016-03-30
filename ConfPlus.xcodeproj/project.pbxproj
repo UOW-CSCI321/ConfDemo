@@ -146,7 +146,6 @@
 			children = (
 				C94AFA731C98217C00EC88B6 /* AccountTableViewController.swift */,
 				C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */,
-				C9F4E0B81CA0CEC8009CA1A9 /* Model.xcdatamodeld */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -189,6 +188,7 @@
 				C94AFA721C98204F00EC88B6 /* Profile */,
 				E93163691BC5E0B4007408C7 /* Assets.xcassets */,
 				E931636E1BC5E0B4007408C7 /* Info.plist */,
+				C9F4E0B81CA0CEC8009CA1A9 /* Model.xcdatamodeld */,
 				E94288C91CAA815100F8BBBF /* Resources */,
 			);
 			path = ConfPlus;
