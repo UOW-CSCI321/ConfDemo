@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  ConfPlus
+
+  Created by CY Lim on 29/03/2016.
+  Copyright © 2016 Conf+. All rights reserved.
+*/
+"Event Name" = "活动名称";
+
+// Account Profile
+"Profile" = "个人资料";
+"Settings" = "设定";
+"Languages" = "语言";
+"Payment History" = "付款记录";
+"Log Out" = "登出";
+"Cancel" = "取消";
+"英文" = "English";

@@ -1,0 +1,354 @@
+
+/* Class = "UIButton"; normalTitle = "Submit"; ObjectID = "0s5-qd-WEb"; */
+"0s5-qd-WEb.normalTitle" = "Submit";
+
+/* Class = "UIViewController"; title = "Receipt"; ObjectID = "2L2-in-fXa"; */
+"2L2-in-fXa.title" = "Receipt";
+
+/* Class = "UILabel"; text = "Ticket Type and Qty"; ObjectID = "2hu-YX-yKu"; */
+"2hu-YX-yKu.text" = "Ticket Type and Qty";
+
+/* Class = "UILabel"; text = "Exit"; ObjectID = "3Lb-ap-xvp"; */
+"3Lb-ap-xvp.text" = "Exit";
+
+/* Class = "UILabel"; text = "Event Name"; ObjectID = "3l5-dY-t0y"; */
+"3l5-dY-t0y.text" = "Event Name";
+
+/* Class = "UILabel"; text = "People you know attending"; ObjectID = "3nP-AQ-ET8"; */
+"3nP-AQ-ET8.text" = "People you know attending";
+
+/* Class = "UILabel"; text = "Type"; ObjectID = "4J6-5f-UcS"; */
+"4J6-5f-UcS.text" = "Type";
+
+/* Class = "UITableViewController"; title = "My Tickets"; ObjectID = "4wi-Mh-GQc"; */
+"4wi-Mh-GQc.title" = "My Tickets";
+
+/* Class = "UILabel"; text = "Price"; ObjectID = "6FP-x9-ZZR"; */
+"6FP-x9-ZZR.text" = "Price";
+
+/* Class = "UISegmentedControl"; 6VO-MV-pHc.segmentTitles[0] = "Add to timetable"; ObjectID = "6VO-MV-pHc"; */
+"6VO-MV-pHc.segmentTitles[0]" = "Add to timetable";
+
+/* Class = "UISegmentedControl"; 6VO-MV-pHc.segmentTitles[1] = "ask question"; ObjectID = "6VO-MV-pHc"; */
+"6VO-MV-pHc.segmentTitles[1]" = "ask question";
+
+/* Class = "UITableViewSection"; headerTitle = "Ticket details"; ObjectID = "6qj-Yf-Xum"; */
+"6qj-Yf-Xum.headerTitle" = "Ticket details";
+
+/* Class = "UILabel"; text = "Cost"; ObjectID = "76H-K9-Vml"; */
+"76H-K9-Vml.text" = "Cost";
+
+/* Class = "UILabel"; text = "Attending"; ObjectID = "7LE-0g-Oc7"; */
+"7LE-0g-Oc7.text" = "Attending";
+
+/* Class = "UINavigationItem"; title = "Talks"; ObjectID = "9UP-00-YZ4"; */
+"9UP-00-YZ4.title" = "Talks";
+
+/* Class = "UILabel"; text = "App Name"; ObjectID = "AkL-zA-WBf"; */
+"AkL-zA-WBf.text" = "App Name";
+
+/* Class = "UITabBarItem"; title = "Admin"; ObjectID = "B7c-lt-cF4"; */
+"B7c-lt-cF4.title" = "Admin";
+
+/* Class = "UINavigationItem"; title = "Explore"; ObjectID = "BZ8-iy-QlD"; */
+"BZ8-iy-QlD.title" = "Explore";
+
+/* Class = "UILabel"; text = "via linkedin"; ObjectID = "BkH-IT-1co"; */
+"BkH-IT-1co.text" = "via linkedin";
+
+/* Class = "UITableViewSection"; headerTitle = "Details"; ObjectID = "CvM-O4-39R"; */
+"CvM-O4-39R.headerTitle" = "Details";
+
+/* Class = "UIButton"; normalTitle = "Sign up"; ObjectID = "Czc-21-bBO"; */
+"Czc-21-bBO.normalTitle" = "Sign up";
+
+/* Class = "UIViewController"; title = "Login"; ObjectID = "DDo-7g-W5p"; */
+"DDo-7g-W5p.title" = "Login";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "DMa-SB-IzE"; */
+"DMa-SB-IzE.text" = "Detail";
+
+/* Class = "UIButton"; normalTitle = "Purchase Entry Tickets"; ObjectID = "Dy5-BZ-asF"; */
+"Dy5-BZ-asF.normalTitle" = "Purchase Entry Tickets";
+
+/* Class = "UIButton"; normalTitle = "Make Payment"; ObjectID = "EGA-NL-xyN"; */
+"EGA-NL-xyN.normalTitle" = "Make Payment";
+
+/* Class = "UILabel"; text = "Event Title"; ObjectID = "EcY-jD-yQ6"; */
+"EcY-jD-yQ6.text" = "Event Title";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "Ed6-rV-1t0"; */
+"Ed6-rV-1t0.normalTitle" = "Login";
+
+/* Class = "UILabel"; text = "Attendance type"; ObjectID = "FeP-xN-1SL"; */
+"FeP-xN-1SL.text" = "Attendance type";
+
+/* Class = "UINavigationItem"; title = "Security"; ObjectID = "Ft6-h2-yRW"; */
+"Ft6-h2-yRW.title" = "Security";
+
+/* Class = "UILabel"; text = "QR"; ObjectID = "FyE-fd-DLF"; */
+"FyE-fd-DLF.text" = "QR";
+
+/* Class = "UITabBarItem"; title = "Attending"; ObjectID = "Hcl-s0-8pV"; */
+"Hcl-s0-8pV.title" = "Attending";
+
+/* Class = "UIButton"; normalTitle = "Payment History"; ObjectID = "He6-M9-f76"; */
+"He6-M9-f76.normalTitle" = "Payment History";
+
+/* Class = "UITabBarItem"; title = "Messages"; ObjectID = "Irg-Gp-4ha"; */
+"Irg-Gp-4ha.title" = "Messages";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "KO4-YN-bv0"; */
+"KO4-YN-bv0.text" = "Name";
+
+/* Class = "UILabel"; text = "via contacts"; ObjectID = "KbW-nl-Tny"; */
+"KbW-nl-Tny.text" = "via contacts";
+
+/* Class = "UILabel"; text = "Event Location"; ObjectID = "Lbh-iO-4TE"; */
+"Lbh-iO-4TE.text" = "Event Location";
+
+/* Class = "UILabel"; text = "Event Name"; ObjectID = "M6H-E9-0hf"; */
+"M6H-E9-0hf.text" = "Event Name";
+
+/* Class = "UISegmentedControl"; Mda-HT-teP.segmentTitles[0] = "Event"; ObjectID = "Mda-HT-teP"; */
+"Mda-HT-teP.segmentTitles[0]" = "Event";
+
+/* Class = "UISegmentedControl"; Mda-HT-teP.segmentTitles[1] = "Customized"; ObjectID = "Mda-HT-teP"; */
+"Mda-HT-teP.segmentTitles[1]" = "Customized";
+
+/* Class = "UILabel"; text = "Ticket Profile"; ObjectID = "MhE-eX-FCc"; */
+"MhE-eX-FCc.text" = "Ticket Profile";
+
+/* Class = "UITabBarItem"; title = "Events"; ObjectID = "NLo-ah-sfj"; */
+"NLo-ah-sfj.title" = "Events";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "NcO-P5-Ima"; */
+"NcO-P5-Ima.text" = "Description";
+
+/* Class = "UIButton"; normalTitle = "Purchase Tickets on Timetable"; ObjectID = "Nz5-8Y-II0"; */
+"Nz5-8Y-II0.normalTitle" = "Purchase Tickets on Timetable";
+
+/* Class = "UITabBarItem"; title = "Explore"; ObjectID = "OBl-8p-A6n"; */
+"OBl-8p-A6n.title" = "Explore";
+
+/* Class = "UITabBarItem"; title = "Ticket Profile"; ObjectID = "Ofv-of-KXb"; */
+"Ofv-of-KXb.title" = "Ticket Profile";
+
+/* Class = "UILabel"; text = "CC"; ObjectID = "PZQ-B5-fDf"; */
+"PZQ-B5-fDf.text" = "CC";
+
+/* Class = "UILabel"; text = "Timetable"; ObjectID = "QEC-v8-Jji"; */
+"QEC-v8-Jji.text" = "Timetable";
+
+/* Class = "UITextView"; text = "Location Address"; ObjectID = "QWa-qd-WbA"; */
+"QWa-qd-WbA.text" = "Location Address";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "RLw-HN-7zL"; */
+"RLw-HN-7zL.text" = "Name";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "Rbn-Xf-Ksf"; */
+"Rbn-Xf-Ksf.text" = "Date";
+
+/* Class = "UILabel"; text = "Speaker"; ObjectID = "S1n-7Z-Sfm"; */
+"S1n-7Z-Sfm.text" = "Speaker";
+
+/* Class = "UILabel"; text = "$20"; ObjectID = "SvF-83-Oea"; */
+"SvF-83-Oea.text" = "$20";
+
+/* Class = "UILabel"; text = "$xx.yy"; ObjectID = "SxV-zO-iyj"; */
+"SxV-zO-iyj.text" = "$xx.yy";
+
+/* Class = "UITabBarController"; title = "Home"; ObjectID = "T5p-Vp-c9R"; */
+"T5p-Vp-c9R.title" = "Home";
+
+/* Class = "UILabel"; text = "1.231"; ObjectID = "THk-2p-7V1"; */
+"THk-2p-7V1.text" = "1.231";
+
+/* Class = "UINavigationItem"; title = "Root View Controller"; ObjectID = "Tjc-DV-Afm"; */
+"Tjc-DV-Afm.title" = "Root View Controller";
+
+/* Class = "UILabel"; text = "Admin"; ObjectID = "U1v-4Y-G7l"; */
+"U1v-4Y-G7l.text" = "Admin";
+
+/* Class = "UITableViewSection"; headerTitle = "Me"; ObjectID = "U89-4P-al1"; */
+"U89-4P-al1.headerTitle" = "Me";
+
+/* Class = "UINavigationItem"; title = "My Events"; ObjectID = "ULD-Rw-xz5"; */
+"ULD-Rw-xz5.title" = "My Events";
+
+/* Class = "UILabel"; text = "Messages"; ObjectID = "UUq-lR-zrA"; */
+"UUq-lR-zrA.text" = "Messages";
+
+/* Class = "UILabel"; text = "Event Location"; ObjectID = "UjG-sa-6Ke"; */
+"UjG-sa-6Ke.text" = "Event Location";
+
+/* Class = "UIViewController"; title = "ticketDetails"; ObjectID = "UtA-UL-kzt"; */
+"UtA-UL-kzt.title" = "ticketDetails";
+
+/* Class = "UILabel"; text = "Invite people you know"; ObjectID = "V3R-Pu-EVu"; */
+"V3R-Pu-EVu.text" = "Invite people you know";
+
+/* Class = "UILabel"; text = "paypal"; ObjectID = "VNc-Vf-6CL"; */
+"VNc-Vf-6CL.text" = "paypal";
+
+/* Class = "UITableViewController"; title = "Account"; ObjectID = "VdU-2r-Bnz"; */
+"VdU-2r-Bnz.title" = "Account";
+
+/* Class = "UITabBarItem"; title = "Timetable"; ObjectID = "WSR-O5-zRV"; */
+"WSR-O5-zRV.title" = "Timetable";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "Wja-vg-lve"; */
+"Wja-vg-lve.text" = "Email";
+
+/* Class = "UIButton"; normalTitle = "forgot password?"; ObjectID = "YAS-7F-l15"; */
+"YAS-7F-l15.normalTitle" = "forgot password?";
+
+/* Class = "UILabel"; text = "or"; ObjectID = "Yd6-n0-377"; */
+"Yd6-n0-377.text" = "or";
+
+/* Class = "UINavigationItem"; title = "History"; ObjectID = "ZU0-Oh-wgx"; */
+"ZU0-Oh-wgx.title" = "History";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "Home";
+
+/* Class = "UINavigationItem"; title = "Event Name"; ObjectID = "bHM-Il-SUU"; */
+"bHM-Il-SUU.title" = "Event Name";
+
+/* Class = "UILabel"; text = "Event Date"; ObjectID = "bNV-qX-vqS"; */
+"bNV-qX-vqS.text" = "Event Date";
+
+/* Class = "UILabel"; text = "Total"; ObjectID = "bvn-df-dxj"; */
+"bvn-df-dxj.text" = "Total";
+
+/* Class = "UIViewController"; title = "Payment"; ObjectID = "cCl-fq-eRE"; */
+"cCl-fq-eRE.title" = "Payment";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "cnn-oB-5e1"; */
+"cnn-oB-5e1.text" = "Detail";
+
+/* Class = "UILabel"; text = "Seat"; ObjectID = "dKj-fj-0Fw"; */
+"dKj-fj-0Fw.text" = "Seat";
+
+/* Class = "UILabel"; text = "e.g. (1) venue -> rooms ->select seat types, (2) Presentations"; ObjectID = "eDx-0P-zhy"; */
+"eDx-0P-zhy.text" = "e.g. (1) venue -> rooms ->select seat types, (2) Presentations";
+
+/* Class = "UILabel"; text = "Event Name"; ObjectID = "eoQ-09-SV1"; */
+"eoQ-09-SV1.text" = "Event Name";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "eqM-QV-UeB"; */
+"eqM-QV-UeB.text" = "Detail";
+
+/* Class = "UILabel"; text = "Full name"; ObjectID = "fes-0l-g50"; */
+"fes-0l-g50.text" = "Full name";
+
+/* Class = "UILabel"; text = "Contact"; ObjectID = "gCa-ML-To6"; */
+"gCa-ML-To6.text" = "Contact";
+
+/* Class = "UILabel"; text = "date"; ObjectID = "gIb-hW-gbJ"; */
+"gIb-hW-gbJ.text" = "date";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "geE-Mb-QYV"; */
+"geE-Mb-QYV.text" = "Description";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "gpS-iE-Kyw"; */
+"gpS-iE-Kyw.placeholder" = "Username";
+
+/* Class = "UILabel"; text = "Event Title"; ObjectID = "gth-OP-0tu"; */
+"gth-OP-0tu.text" = "Event Title";
+
+/* Class = "UILabel"; text = "10:30-11:30am"; ObjectID = "h5q-co-T1y"; */
+"h5q-co-T1y.text" = "10:30-11:30am";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "hN8-cs-wmx"; */
+"hN8-cs-wmx.text" = "Name";
+
+/* Class = "UILabel"; text = "Detail"; ObjectID = "hdN-Fv-J5U"; */
+"hdN-Fv-J5U.text" = "Detail";
+
+/* Class = "UITableViewSection"; headerTitle = "Settings"; ObjectID = "ht4-qz-lep"; */
+"ht4-qz-lep.headerTitle" = "Settings";
+
+/* Class = "UIBarButtonItem"; title = "Ticket"; ObjectID = "iXE-nQ-VUe"; */
+"iXE-nQ-VUe.title" = "Ticket";
+
+/* Class = "UILabel"; text = "11:30-1:30pm"; ObjectID = "jTv-bA-KeA"; */
+"jTv-bA-KeA.text" = "11:30-1:30pm";
+
+/* Class = "UILabel"; text = "Your ticket/s has been purchased. Your order number is XXXX. Please your email"; ObjectID = "jeB-SY-Haj"; */
+"jeB-SY-Haj.text" = "Your ticket/s has been purchased. Your order number is XXXX. Please your email";
+
+/* Class = "UILabel"; text = "Event Date"; ObjectID = "mL8-g2-a7u"; */
+"mL8-g2-a7u.text" = "Event Date";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "mzV-lL-veO"; */
+"mzV-lL-veO.text" = "Name";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "n4l-H9-xVL"; */
+"n4l-H9-xVL.placeholder" = "Password";
+
+/* Class = "UIButton"; normalTitle = "back to Home Screen"; ObjectID = "nEY-21-EGV"; */
+"nEY-21-EGV.normalTitle" = "back to Home Screen";
+
+/* Class = "UILabel"; text = "1.231"; ObjectID = "nec-ul-APP"; */
+"nec-ul-APP.text" = "1.231";
+
+/* Class = "UIButton"; normalTitle = "Log out"; ObjectID = "pIy-wp-EJ2"; */
+"pIy-wp-EJ2.normalTitle" = "Log out";
+
+/* Class = "UITabBarItem"; title = "Profile"; ObjectID = "pWg-pD-num"; */
+"pWg-pD-num.title" = "Profile";
+
+/* Class = "UILabel"; text = "Pres_name"; ObjectID = "rRE-W5-XiB"; */
+"rRE-W5-XiB.text" = "Pres_name";
+
+/* Class = "UITabBarItem"; title = "Security"; ObjectID = "ri5-8c-hyM"; */
+"ri5-8c-hyM.title" = "Security";
+
+/* Class = "UINavigationItem"; title = "Ticket Profile"; ObjectID = "sUA-kI-KpZ"; */
+"sUA-kI-KpZ.title" = "Ticket Profile";
+
+/* Class = "UINavigationItem"; title = "Messages"; ObjectID = "shn-0Z-YzQ"; */
+"shn-0Z-YzQ.title" = "Messages";
+
+/* Class = "UILabel"; text = "Event Date"; ObjectID = "spq-bo-f1q"; */
+"spq-bo-f1q.text" = "Event Date";
+
+/* Class = "UILabel"; text = "Pres_name2"; ObjectID = "tba-gi-YGA"; */
+"tba-gi-YGA.text" = "Pres_name2";
+
+/* Class = "UILabel"; text = "Event Name"; ObjectID = "tdG-Tg-COp"; */
+"tdG-Tg-COp.text" = "Event Name";
+
+/* Class = "UIButton"; normalTitle = "Languages"; ObjectID = "v1u-d4-1f9"; */
+"v1u-d4-1f9.normalTitle" = "Languages";
+
+/* Class = "UITabBarItem"; title = "Map"; ObjectID = "v36-Y9-B3m"; */
+"v36-Y9-B3m.title" = "Map";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "vZ7-hR-mid"; */
+"vZ7-hR-mid.text" = "Email";
+
+/* Class = "UIButton"; normalTitle = "Purchase Entry & Event Tickets"; ObjectID = "wKz-BX-PtN"; */
+"wKz-BX-PtN.normalTitle" = "Purchase Entry & Event Tickets";
+
+/* Class = "UIViewController"; title = "personalDetails"; ObjectID = "wQA-R6-OCC"; Note = "IF MULTI-VENUE: "; */
+"wQA-R6-OCC.title" = "personalDetails";
+
+/* Class = "UILabel"; text = "Qty"; ObjectID = "x7G-LG-0Ez"; */
+"x7G-LG-0Ez.text" = "Qty";
+
+/* Class = "UILabel"; text = "Type"; ObjectID = "xHs-Dr-Bai"; */
+"xHs-Dr-Bai.text" = "Type";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "xbe-nJ-7f3"; */
+"xbe-nJ-7f3.title" = "Title";
+
+/* Class = "UILabel"; text = "via facebok"; ObjectID = "ydU-SB-0oW"; */
+"ydU-SB-0oW.text" = "via facebok";
+
+/* Class = "UINavigationItem"; title = "Timetable"; ObjectID = "ygh-Td-x1z"; */
+"ygh-Td-x1z.title" = "Timetable";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "z46-hg-J4F"; */
+"z46-hg-J4F.title" = "Item";

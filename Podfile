@@ -4,6 +4,9 @@
 use_frameworks!
 
 target 'ConfPlus' do
+	
+	source 'https://github.com/CocoaPods/Specs.git'
+	pod 'Localize-Swift', '~> 1.1'
 
 end
 
