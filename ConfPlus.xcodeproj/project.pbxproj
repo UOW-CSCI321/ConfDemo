@@ -259,8 +259,8 @@
 		E931635F1BC5E0B4007408C7 /* ConfPlus */ = {
 			isa = PBXGroup;
 			children = (
-				E93163601BC5E0B4007408C7 /* AppDelegate.swift */,
 				C999E89B1CB0DE8D00E05C67 /* Model */,
+				E93163601BC5E0B4007408C7 /* AppDelegate.swift */,
 				E93163661BC5E0B4007408C7 /* Main.storyboard */,
 				E93163921BC5E573007408C7 /* LoginViewController.swift */,
 				E93163961BC62A76007408C7 /* Explore */,

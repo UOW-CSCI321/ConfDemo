@@ -495,15 +495,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nz5-8Y-II0">
-                                <rect key="frame" x="102" y="695" width="211" height="30"/>
-                                <state key="normal" title="Purchase Tickets on Timetable">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="cCl-fq-eRE" kind="show" id="6g5-8q-gxH"/>
-                                </connections>
-                            </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="hVd-cS-4c3">
                                 <rect key="frame" x="0.0" y="64" width="414" height="56"/>
                                 <date key="date" timeIntervalSinceReferenceDate="479283688.51372498">
@@ -518,7 +509,7 @@
                                 </segments>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="e9H-wi-H1S">
-                                <rect key="frame" x="0.0" y="175" width="414" height="523"/>
+                                <rect key="frame" x="0.0" y="175" width="414" height="473"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bLr-1x-dqf">
@@ -588,17 +579,28 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nz5-8Y-II0">
+                                <rect key="frame" x="102" y="649" width="211" height="30"/>
+                                <state key="normal" title="Purchase Tickets on Timetable">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="W1a-UK-Ju2" kind="show" id="81Y-T9-hff"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Timetable" id="ygh-Td-x1z"/>
+                    <navigationItem key="navigationItem" title="Timetable" id="ygh-Td-x1z">
+                        <barButtonItem key="rightBarButtonItem" title="View Cart" id="noP-RD-GVT"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="vNz-TI-ofr" kind="show" id="N4p-xD-mWY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ek9-TJ-l7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1729" y="142"/>
+            <point key="canvasLocation" x="1741" y="168"/>
         </scene>
         <!--Talks-->
         <scene sceneID="AcS-OU-pJs">
@@ -646,6 +648,21 @@
                                     <segment title="ask question"/>
                                 </segments>
                             </segmentedControl>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KTM-Yq-q0l" userLabel="NameForTicketPicker">
+                                <rect key="frame" x="0.0" y="375" width="414" height="244"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1x business class CY Lim, 1x hearing imparement MB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XY-2g-lIg">
+                                <rect key="frame" x="6" y="327" width="403" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cart:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdC-6M-cFQ">
+                                <rect key="frame" x="10" y="303" width="38" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1171,18 +1188,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dy5-BZ-asF">
-                                <rect key="frame" x="135" y="657" width="158" height="30"/>
-                                <state key="normal" title="Purchase Entry Tickets"/>
-                                <connections>
-                                    <segue destination="wQA-R6-OCC" kind="show" id="jco-pX-B1f"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SSR-Pt-oV0">
-                                <rect key="frame" x="0.0" y="375" width="415" height="221"/>
+                                <rect key="frame" x="0.0" y="375" width="415" height="281"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lZT-Wq-0cu">
-                                        <rect key="frame" x="8" y="0.0" width="399" height="221"/>
+                                        <rect key="frame" x="8" y="0.0" width="399" height="281"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="vOX-PH-ucr">
@@ -1236,21 +1246,13 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKz-BX-PtN">
-                                <rect key="frame" x="115" y="611" width="214" height="30"/>
-                                <state key="normal" title="Purchase Entry &amp; Event Tickets">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dy5-BZ-asF">
+                                <rect key="frame" x="198" y="657" width="32" height="30"/>
+                                <state key="normal" title="Next"/>
                                 <connections>
-                                    <segue destination="QPv-8j-aNH" kind="show" id="sTh-hn-5T9"/>
+                                    <segue destination="wQA-R6-OCC" kind="show" id="jco-pX-B1f"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="or" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yd6-n0-377">
-                                <rect key="frame" x="199" y="641" width="16" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1296,22 +1298,29 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hPL-QN-6O4">
-                                <rect key="frame" x="0.0" y="222" width="414" height="514"/>
+                                <rect key="frame" x="0.0" y="222" width="414" height="387"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H2R-8O-K5o">
-                                        <rect key="frame" x="8" y="8" width="398" height="456"/>
+                                        <rect key="frame" x="8" y="8" width="398" height="371"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0s5-qd-WEb">
-                                        <rect key="frame" x="183" y="472" width="49" height="30"/>
-                                        <state key="normal" title="Submit"/>
-                                        <connections>
-                                            <segue destination="cCl-fq-eRE" kind="show" id="1Pp-BK-TyJ"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9J-bM-iW6">
+                                <rect key="frame" x="57" y="612" width="278" height="30"/>
+                                <state key="normal" title="Purchase Entry and Presentation tickets "/>
+                                <connections>
+                                    <segue destination="QPv-8j-aNH" kind="show" id="lC1-qM-3WQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iqc-5x-bmU">
+                                <rect key="frame" x="144" y="649" width="154" height="30"/>
+                                <state key="normal" title="Purchase Entry tickets"/>
+                                <connections>
+                                    <segue destination="W1a-UK-Ju2" kind="show" id="hmh-4n-N6L"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1327,6 +1336,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ytk-Rd-mTS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1257" y="-702"/>
+        </scene>
+        <!--verifiyViewController-->
+        <scene sceneID="kr0-8G-7ED">
+            <objects>
+                <viewController title="verifiyViewController" id="W1a-UK-Ju2" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nY1-gy-aKw"/>
+                        <viewControllerLayoutGuide type="bottom" id="vhO-LM-5O1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5t5-ra-Oss">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cZm-GL-WsT">
+                                <rect key="frame" x="20" y="90" width="385" height="241"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjl-9Z-vlG">
+                                <rect key="frame" x="64" y="502" width="296" height="30"/>
+                                <state key="normal" title="Yes these details are correct, lets purchase"/>
+                                <connections>
+                                    <segue destination="cCl-fq-eRE" kind="show" id="bk4-uw-aTY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5O-ss-Isa">
+                                <rect key="frame" x="111" y="554" width="203" height="30"/>
+                                <state key="normal" title="No these details are incorrect"/>
+                                <connections>
+                                    <segue destination="QPv-8j-aNH" kind="show" id="llZ-AS-2VQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H3G-KT-nrT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1834" y="-727"/>
         </scene>
         <!--Payment-->
         <scene sceneID="elf-yk-Xjc">
@@ -1364,8 +1411,12 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Cg-hd-uOP">
+                                <rect key="frame" x="129" y="604" width="171" height="30"/>
+                                <state key="normal" title="Save my payment details"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGA-NL-xyN">
-                                <rect key="frame" x="184" y="651" width="103" height="30"/>
+                                <rect key="frame" x="163" y="649" width="103" height="30"/>
                                 <state key="normal" title="Make Payment">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1379,7 +1430,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAl-CU-VKf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1808" y="-724"/>
+            <point key="canvasLocation" x="2462" y="-738"/>
         </scene>
         <!--Receipt-->
         <scene sceneID="wvM-N8-uZL">
@@ -1390,7 +1441,7 @@
                         <viewControllerLayoutGuide type="bottom" id="lC3-SJ-PfF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VFE-df-jGq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5sp-Bd-cGC">
@@ -1408,7 +1459,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqV-7u-knr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2329" y="-724"/>
+            <point key="canvasLocation" x="2983" y="-738"/>
         </scene>
         <!--Home-->
         <scene sceneID="54u-mM-r0S">
@@ -1667,7 +1718,7 @@
         <image name="tickets" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sTh-hn-5T9"/>
-        <segue reference="6g5-8q-gxH"/>
+        <segue reference="llZ-AS-2VQ"/>
+        <segue reference="81Y-T9-hff"/>
     </inferredMetricsTieBreakers>
 </document>
