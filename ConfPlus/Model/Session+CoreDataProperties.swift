@@ -17,9 +17,9 @@ extension Session {
     @NSManaged var end_time: NSDate?
     @NSManaged var start_time: NSDate?
     @NSManaged var title: String?
-    @NSManaged var event: NSManagedObject?
+    @NSManaged var event: Event?
     @NSManaged var sessions_attended: NSSet?
-    @NSManaged var speaker: NSManagedObject?
+    @NSManaged var speaker: User?
     @NSManaged var tickets: NSSet?
 
 }

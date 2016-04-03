@@ -16,6 +16,6 @@ extension Reminder {
 
     @NSManaged var message: String?
     @NSManaged var time: NSDate?
-    @NSManaged var event: NSManagedObject?
+    @NSManaged var event: Event?
 
 }

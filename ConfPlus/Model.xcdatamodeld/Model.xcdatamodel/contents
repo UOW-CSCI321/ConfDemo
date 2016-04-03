@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1605" minimumToolsVersion="Xcode 7.0">
     <entity name="Billing" representedClassName=".Billing" syncable="YES">
-        <attribute name="card" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="card_type" attributeType="String" syncable="YES"/>
-        <attribute name="expiry_date" attributeType="Date" syncable="YES"/>
+        <attribute name="card" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="card_type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="expiry_date" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="billings" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Event" representedClassName=".Event" syncable="YES">
-        <attribute name="desc" attributeType="String" syncable="YES"/>
-        <attribute name="event_id" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="from_date" attributeType="Date" syncable="YES"/>
-        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="event_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="from_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="poster" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="poster_url" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="to_date" attributeType="Date" syncable="YES"/>
-        <attribute name="type" attributeType="String" syncable="YES"/>
-        <attribute name="url" attributeType="String" syncable="YES"/>
+        <attribute name="to_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="events_attended" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event_Attended" inverseName="event" inverseEntity="Event_Attended" syncable="YES"/>
         <relationship name="reminders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reminder" inverseName="event" inverseEntity="Reminder" syncable="YES"/>
         <relationship name="sessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Session" inverseName="event" inverseEntity="Session" syncable="YES"/>
@@ -27,19 +27,19 @@
         <relationship name="users" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="events_attended" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Event_Tag" representedClassName=".Event_Tag" syncable="YES">
-        <attribute name="tag_name" attributeType="String" syncable="YES"/>
+        <attribute name="tag_name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="tags" inverseEntity="Event" syncable="YES"/>
     </entity>
     <entity name="Message" representedClassName=".Message" syncable="YES">
-        <attribute name="content" attributeType="String" syncable="YES"/>
-        <attribute name="date" attributeType="Date" syncable="YES"/>
-        <attribute name="receiver_email" attributeType="String" syncable="YES"/>
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="receiver_email" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="sender" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="messages_sent" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Payment" representedClassName=".Payment" syncable="YES">
-        <attribute name="amount" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="payment_date" attributeType="Date" syncable="YES"/>
-        <attribute name="type" attributeType="String" syncable="YES"/>
+        <attribute name="amount" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="payment_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="payments" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Reminder" representedClassName=".Reminder" syncable="YES">
@@ -48,9 +48,9 @@
         <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="reminders" inverseEntity="Event" syncable="YES"/>
     </entity>
     <entity name="Session" representedClassName=".Session" syncable="YES">
-        <attribute name="end_time" attributeType="Date" syncable="YES"/>
-        <attribute name="start_time" attributeType="Date" syncable="YES"/>
-        <attribute name="title" attributeType="String" syncable="YES"/>
+        <attribute name="end_time" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="start_time" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="sessions" inverseEntity="Event" syncable="YES"/>
         <relationship name="sessions_attended" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Session_Attending" inverseName="session" inverseEntity="Session_Attending" syncable="YES"/>
         <relationship name="speaker" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="presenting_sessions" inverseEntity="User" syncable="YES"/>
@@ -64,14 +64,14 @@
     </entity>
     <entity name="Ticket" representedClassName=".Ticket" syncable="YES">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="end_date" attributeType="Date" syncable="YES"/>
-        <attribute name="name" attributeType="String" syncable="YES"/>
-        <attribute name="num_purchased" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="end_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="num_purchased" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="quantity" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="start_date" attributeType="Date" syncable="YES"/>
-        <attribute name="ticket_class" attributeType="String" syncable="YES"/>
-        <attribute name="type" attributeType="String" syncable="YES"/>
+        <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="start_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="ticket_class" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="session" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Session" inverseName="tickets" inverseEntity="Session" syncable="YES"/>
         <relationship name="sessions_attending" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Session_Attending" inverseName="ticket" inverseEntity="Session_Attending" syncable="YES"/>
     </entity>
@@ -80,13 +80,13 @@
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dob" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="email" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email_verified" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="fb_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="first_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="linkedin_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="password" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
@@ -101,7 +101,7 @@
         <relationship name="user_tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User_Tag" inverseName="user" inverseEntity="User_Tag" syncable="YES"/>
     </entity>
     <entity name="User_Tag" representedClassName=".User_Tag" syncable="YES">
-        <attribute name="tag_name" attributeType="String" syncable="YES"/>
+        <attribute name="tag_name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="user_tags" inverseEntity="User" syncable="YES"/>
     </entity>
     <elements>
