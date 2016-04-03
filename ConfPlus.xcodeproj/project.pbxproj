@@ -24,6 +24,30 @@
 		C94AFA711C981FED00EC88B6 /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA701C981FED00EC88B6 /* AdminTableViewController.swift */; };
 		C94AFA741C98217C00EC88B6 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA731C98217C00EC88B6 /* AccountTableViewController.swift */; };
 		C94AFA761C98221400EC88B6 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */; };
+		C999E8B41CB0DEAD00E05C67 /* Reminder+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E89C1CB0DEAD00E05C67 /* Reminder+CoreDataProperties.swift */; };
+		C999E8B51CB0DEAD00E05C67 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E89D1CB0DEAD00E05C67 /* Reminder.swift */; };
+		C999E8B61CB0DEAD00E05C67 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E89E1CB0DEAD00E05C67 /* Session+CoreDataProperties.swift */; };
+		C999E8B71CB0DEAD00E05C67 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E89F1CB0DEAD00E05C67 /* Session.swift */; };
+		C999E8B81CB0DEAD00E05C67 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8A01CB0DEAD00E05C67 /* Event+CoreDataProperties.swift */; };
+		C999E8B91CB0DEAD00E05C67 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8A11CB0DEAD00E05C67 /* Event.swift */; };
+		C999E8BA1CB0DEAD00E05C67 /* Ticket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8A21CB0DEAD00E05C67 /* Ticket+CoreDataProperties.swift */; };
+		C999E8BB1CB0DEAD00E05C67 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8A31CB0DEAD00E05C67 /* Ticket.swift */; };
+		C999E8BC1CB0DEAD00E05C67 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8A41CB0DEAD00E05C67 /* User+CoreDataProperties.swift */; };
+		C999E8BD1CB0DEAD00E05C67 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8A51CB0DEAD00E05C67 /* User.swift */; };
+		C999E8BE1CB0DEAD00E05C67 /* Event_Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8A61CB0DEAD00E05C67 /* Event_Tag+CoreDataProperties.swift */; };
+		C999E8BF1CB0DEAD00E05C67 /* Event_Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8A71CB0DEAD00E05C67 /* Event_Tag.swift */; };
+		C999E8C01CB0DEAD00E05C67 /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8A81CB0DEAD00E05C67 /* Message+CoreDataProperties.swift */; };
+		C999E8C11CB0DEAD00E05C67 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8A91CB0DEAD00E05C67 /* Message.swift */; };
+		C999E8C21CB0DEAD00E05C67 /* Payment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8AA1CB0DEAD00E05C67 /* Payment+CoreDataProperties.swift */; };
+		C999E8C31CB0DEAD00E05C67 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8AB1CB0DEAD00E05C67 /* Payment.swift */; };
+		C999E8C41CB0DEAD00E05C67 /* Session_Attending+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8AC1CB0DEAD00E05C67 /* Session_Attending+CoreDataProperties.swift */; };
+		C999E8C51CB0DEAD00E05C67 /* Session_Attending.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8AD1CB0DEAD00E05C67 /* Session_Attending.swift */; };
+		C999E8C61CB0DEAD00E05C67 /* User_Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8AE1CB0DEAD00E05C67 /* User_Tag+CoreDataProperties.swift */; };
+		C999E8C71CB0DEAD00E05C67 /* User_Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8AF1CB0DEAD00E05C67 /* User_Tag.swift */; };
+		C999E8C81CB0DEAD00E05C67 /* Billing+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8B01CB0DEAD00E05C67 /* Billing+CoreDataProperties.swift */; };
+		C999E8C91CB0DEAD00E05C67 /* Billing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8B11CB0DEAD00E05C67 /* Billing.swift */; };
+		C999E8CA1CB0DEAD00E05C67 /* Event_Attended+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8B21CB0DEAD00E05C67 /* Event_Attended+CoreDataProperties.swift */; };
+		C999E8CB1CB0DEAD00E05C67 /* Event_Attended.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8B31CB0DEAD00E05C67 /* Event_Attended.swift */; };
 		C9F4E0BA1CA0CEC8009CA1A9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9F4E0B81CA0CEC8009CA1A9 /* Model.xcdatamodeld */; };
 		E90201C11C9CB7EB00C7839A /* ExploreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */; };
 		E90201C31C9CC2E200C7839A /* EventDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */; };
@@ -59,6 +83,30 @@
 		C94AFA701C981FED00EC88B6 /* AdminTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AdminTableViewController.swift; path = Events/AdminTableViewController.swift; sourceTree = "<group>"; };
 		C94AFA731C98217C00EC88B6 /* AccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountTableViewController.swift; path = Profile/AccountTableViewController.swift; sourceTree = "<group>"; };
 		C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryTableViewController.swift; path = Profile/HistoryTableViewController.swift; sourceTree = "<group>"; };
+		C999E89C1CB0DEAD00E05C67 /* Reminder+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Reminder+CoreDataProperties.swift"; path = "Model/Reminder+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C999E89D1CB0DEAD00E05C67 /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reminder.swift; path = Model/Reminder.swift; sourceTree = "<group>"; };
+		C999E89E1CB0DEAD00E05C67 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+CoreDataProperties.swift"; path = "Model/Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C999E89F1CB0DEAD00E05C67 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Model/Session.swift; sourceTree = "<group>"; };
+		C999E8A01CB0DEAD00E05C67 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Event+CoreDataProperties.swift"; path = "Model/Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C999E8A11CB0DEAD00E05C67 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Model/Event.swift; sourceTree = "<group>"; };
+		C999E8A21CB0DEAD00E05C67 /* Ticket+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Ticket+CoreDataProperties.swift"; path = "Model/Ticket+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C999E8A31CB0DEAD00E05C67 /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ticket.swift; path = Model/Ticket.swift; sourceTree = "<group>"; };
+		C999E8A41CB0DEAD00E05C67 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "Model/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C999E8A51CB0DEAD00E05C67 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
+		C999E8A61CB0DEAD00E05C67 /* Event_Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Event_Tag+CoreDataProperties.swift"; path = "Model/Event_Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C999E8A71CB0DEAD00E05C67 /* Event_Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event_Tag.swift; path = Model/Event_Tag.swift; sourceTree = "<group>"; };
+		C999E8A81CB0DEAD00E05C67 /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Message+CoreDataProperties.swift"; path = "Model/Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C999E8A91CB0DEAD00E05C67 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Model/Message.swift; sourceTree = "<group>"; };
+		C999E8AA1CB0DEAD00E05C67 /* Payment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Payment+CoreDataProperties.swift"; path = "Model/Payment+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C999E8AB1CB0DEAD00E05C67 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Payment.swift; path = Model/Payment.swift; sourceTree = "<group>"; };
+		C999E8AC1CB0DEAD00E05C67 /* Session_Attending+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session_Attending+CoreDataProperties.swift"; path = "Model/Session_Attending+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C999E8AD1CB0DEAD00E05C67 /* Session_Attending.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session_Attending.swift; path = Model/Session_Attending.swift; sourceTree = "<group>"; };
+		C999E8AE1CB0DEAD00E05C67 /* User_Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User_Tag+CoreDataProperties.swift"; path = "Model/User_Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C999E8AF1CB0DEAD00E05C67 /* User_Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User_Tag.swift; path = Model/User_Tag.swift; sourceTree = "<group>"; };
+		C999E8B01CB0DEAD00E05C67 /* Billing+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Billing+CoreDataProperties.swift"; path = "Model/Billing+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C999E8B11CB0DEAD00E05C67 /* Billing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Billing.swift; path = Model/Billing.swift; sourceTree = "<group>"; };
+		C999E8B21CB0DEAD00E05C67 /* Event_Attended+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Event_Attended+CoreDataProperties.swift"; path = "Model/Event_Attended+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C999E8B31CB0DEAD00E05C67 /* Event_Attended.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event_Attended.swift; path = Model/Event_Attended.swift; sourceTree = "<group>"; };
 		C9F4E0B91CA0CEC8009CA1A9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreTableViewCell.swift; path = Explore/ExploreTableViewCell.swift; sourceTree = "<group>"; };
 		E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailTableViewController.swift; path = Explore/EventDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +198,37 @@
 			name = Profile;
 			sourceTree = "<group>";
 		};
+		C999E89B1CB0DE8D00E05C67 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C999E89C1CB0DEAD00E05C67 /* Reminder+CoreDataProperties.swift */,
+				C999E89D1CB0DEAD00E05C67 /* Reminder.swift */,
+				C999E89E1CB0DEAD00E05C67 /* Session+CoreDataProperties.swift */,
+				C999E89F1CB0DEAD00E05C67 /* Session.swift */,
+				C999E8A01CB0DEAD00E05C67 /* Event+CoreDataProperties.swift */,
+				C999E8A11CB0DEAD00E05C67 /* Event.swift */,
+				C999E8A21CB0DEAD00E05C67 /* Ticket+CoreDataProperties.swift */,
+				C999E8A31CB0DEAD00E05C67 /* Ticket.swift */,
+				C999E8A41CB0DEAD00E05C67 /* User+CoreDataProperties.swift */,
+				C999E8A51CB0DEAD00E05C67 /* User.swift */,
+				C999E8A61CB0DEAD00E05C67 /* Event_Tag+CoreDataProperties.swift */,
+				C999E8A71CB0DEAD00E05C67 /* Event_Tag.swift */,
+				C999E8A81CB0DEAD00E05C67 /* Message+CoreDataProperties.swift */,
+				C999E8A91CB0DEAD00E05C67 /* Message.swift */,
+				C999E8AA1CB0DEAD00E05C67 /* Payment+CoreDataProperties.swift */,
+				C999E8AB1CB0DEAD00E05C67 /* Payment.swift */,
+				C999E8AC1CB0DEAD00E05C67 /* Session_Attending+CoreDataProperties.swift */,
+				C999E8AD1CB0DEAD00E05C67 /* Session_Attending.swift */,
+				C999E8AE1CB0DEAD00E05C67 /* User_Tag+CoreDataProperties.swift */,
+				C999E8AF1CB0DEAD00E05C67 /* User_Tag.swift */,
+				C999E8B01CB0DEAD00E05C67 /* Billing+CoreDataProperties.swift */,
+				C999E8B11CB0DEAD00E05C67 /* Billing.swift */,
+				C999E8B21CB0DEAD00E05C67 /* Event_Attended+CoreDataProperties.swift */,
+				C999E8B31CB0DEAD00E05C67 /* Event_Attended.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		CA6657120F9514BBD729216B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				E93163601BC5E0B4007408C7 /* AppDelegate.swift */,
+				C999E89B1CB0DE8D00E05C67 /* Model */,
 				E93163661BC5E0B4007408C7 /* Main.storyboard */,
 				E93163921BC5E573007408C7 /* LoginViewController.swift */,
 				E93163961BC62A76007408C7 /* Explore */,
@@ -343,28 +423,52 @@
 				C94AFA5A1C980DE400EC88B6 /* TimeTableViewController.swift in Sources */,
 				E90201C91C9CC84A00C7839A /* EventsViewController.swift in Sources */,
 				C94AFA5E1C980ECE00EC88B6 /* MessagesTableViewController.swift in Sources */,
+				C999E8BF1CB0DEAD00E05C67 /* Event_Tag.swift in Sources */,
+				C999E8BC1CB0DEAD00E05C67 /* User+CoreDataProperties.swift in Sources */,
+				C999E8BA1CB0DEAD00E05C67 /* Ticket+CoreDataProperties.swift in Sources */,
 				E90A0A621BCF7143005D611C /* Readme.md in Sources */,
 				E90201C71C9CC74400C7839A /* EventTableViewCell.swift in Sources */,
+				C999E8B61CB0DEAD00E05C67 /* Session+CoreDataProperties.swift in Sources */,
+				C999E8C21CB0DEAD00E05C67 /* Payment+CoreDataProperties.swift in Sources */,
 				C9F4E0BA1CA0CEC8009CA1A9 /* Model.xcdatamodeld in Sources */,
+				C999E8C51CB0DEAD00E05C67 /* Session_Attending.swift in Sources */,
 				C94AFA711C981FED00EC88B6 /* AdminTableViewController.swift in Sources */,
+				C999E8B91CB0DEAD00E05C67 /* Event.swift in Sources */,
+				C999E8C41CB0DEAD00E05C67 /* Session_Attending+CoreDataProperties.swift in Sources */,
 				E93163981BC62AB6007408C7 /* ExploreViewController.swift in Sources */,
 				C94AFA6E1C981F1A00EC88B6 /* AttendingViewController.swift in Sources */,
 				C94AFA761C98221400EC88B6 /* HistoryTableViewController.swift in Sources */,
+				C999E8C31CB0DEAD00E05C67 /* Payment.swift in Sources */,
+				C999E8BB1CB0DEAD00E05C67 /* Ticket.swift in Sources */,
 				C94AFA5C1C980E3B00EC88B6 /* TalksViewController.swift in Sources */,
 				C94AFA4F1C9808AB00EC88B6 /* PersonalDetailsViewController.swift in Sources */,
 				C94AFA661C981CAD00EC88B6 /* MyTicketsTableViewController.swift in Sources */,
+				C999E8CB1CB0DEAD00E05C67 /* Event_Attended.swift in Sources */,
 				E93163611BC5E0B4007408C7 /* AppDelegate.swift in Sources */,
 				E93163931BC5E573007408C7 /* LoginViewController.swift in Sources */,
+				C999E8C91CB0DEAD00E05C67 /* Billing.swift in Sources */,
+				C999E8B51CB0DEAD00E05C67 /* Reminder.swift in Sources */,
 				C94AFA511C980A0B00EC88B6 /* PaymentViewController.swift in Sources */,
 				E90201C11C9CB7EB00C7839A /* ExploreTableViewCell.swift in Sources */,
+				C999E8C61CB0DEAD00E05C67 /* User_Tag+CoreDataProperties.swift in Sources */,
+				C999E8C81CB0DEAD00E05C67 /* Billing+CoreDataProperties.swift in Sources */,
+				C999E8B41CB0DEAD00E05C67 /* Reminder+CoreDataProperties.swift in Sources */,
+				C999E8B71CB0DEAD00E05C67 /* Session.swift in Sources */,
 				C94AFA6A1C981D9000EC88B6 /* TicketProfileTableViewController.swift in Sources */,
 				C94AFA531C980A5400EC88B6 /* ReceiptViewController.swift in Sources */,
+				C999E8C71CB0DEAD00E05C67 /* User_Tag.swift in Sources */,
+				C999E8B81CB0DEAD00E05C67 /* Event+CoreDataProperties.swift in Sources */,
 				C94AFA741C98217C00EC88B6 /* AccountTableViewController.swift in Sources */,
 				E93163911BC5E294007408C7 /* viewEffect.swift in Sources */,
 				C94AFA581C980D7C00EC88B6 /* HomeViewController.swift in Sources */,
+				C999E8C01CB0DEAD00E05C67 /* Message+CoreDataProperties.swift in Sources */,
 				C94AFA4D1C98085B00EC88B6 /* TicketDetailsViewController.swift in Sources */,
+				C999E8CA1CB0DEAD00E05C67 /* Event_Attended+CoreDataProperties.swift in Sources */,
+				C999E8BD1CB0DEAD00E05C67 /* User.swift in Sources */,
 				C94AFA6C1C981E7700EC88B6 /* SecurityViewController.swift in Sources */,
 				C94AFA601C9811BD00EC88B6 /* MapViewController.swift in Sources */,
+				C999E8C11CB0DEAD00E05C67 /* Message.swift in Sources */,
+				C999E8BE1CB0DEAD00E05C67 /* Event_Tag+CoreDataProperties.swift in Sources */,
 				E90201C31C9CC2E200C7839A /* EventDetailTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
