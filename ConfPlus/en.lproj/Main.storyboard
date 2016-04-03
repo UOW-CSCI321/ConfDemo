@@ -980,6 +980,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIy-wp-EJ2">
                                                     <rect key="frame" x="8" y="7" width="398" height="30"/>
                                                     <state key="normal" title="Log out"/>
+                                                    <connections>
+                                                        <action selector="logout:" destination="VdU-2r-Bnz" eventType="touchUpInside" id="8aX-Eu-ICv"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1000,6 +1003,7 @@
                         <outlet property="languageButton" destination="v1u-d4-1f9" id="s8n-6D-t8B"/>
                         <outlet property="logOutButton" destination="pIy-wp-EJ2" id="LHj-Ia-KmC"/>
                         <outlet property="paymentHistoryButton" destination="He6-M9-f76" id="Q9j-jf-MGs"/>
+                        <segue destination="DDo-7g-W5p" kind="showDetail" identifier="goToLogin" id="SbP-JW-UPT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZsA-g1-b87" userLabel="First Responder" sceneMemberID="firstResponder"/>
