@@ -2,7 +2,7 @@
 //  Ticket+CoreDataProperties.swift
 //  
 //
-//  Created by Matthew Boroczky on 3/04/2016.
+//  Created by Matthew Boroczky on 4/04/2016.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -24,6 +24,5 @@ extension Ticket {
     @NSManaged var ticket_class: String?
     @NSManaged var type: String?
     @NSManaged var session: Session?
-    @NSManaged var sessions_attending: NSSet?
 
 }
