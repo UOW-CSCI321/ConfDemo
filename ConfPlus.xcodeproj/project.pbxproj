@@ -48,6 +48,7 @@
 		C999E8FA1CB12C2A00E05C67 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8E21CB12C2A00E05C67 /* Reminder.swift */; };
 		C999E8FB1CB12C2A00E05C67 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8E31CB12C2A00E05C67 /* Session+CoreDataProperties.swift */; };
 		C999E8FC1CB12C2A00E05C67 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = C999E8E41CB12C2A00E05C67 /* Session.swift */; };
+		C999E8FE1CB1308D00E05C67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C999E8FD1CB1308D00E05C67 /* CoreData.framework */; };
 		C9F4E0BA1CA0CEC8009CA1A9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9F4E0B81CA0CEC8009CA1A9 /* Model.xcdatamodeld */; };
 		E90201C11C9CB7EB00C7839A /* ExploreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */; };
 		E90201C31C9CC2E200C7839A /* EventDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */; };
@@ -107,6 +108,7 @@
 		C999E8E21CB12C2A00E05C67 /* Reminder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reminder.swift; path = Model/Reminder.swift; sourceTree = "<group>"; };
 		C999E8E31CB12C2A00E05C67 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+CoreDataProperties.swift"; path = "Model/Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C999E8E41CB12C2A00E05C67 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Model/Session.swift; sourceTree = "<group>"; };
+		C999E8FD1CB1308D00E05C67 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C9F4E0B91CA0CEC8009CA1A9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreTableViewCell.swift; path = Explore/ExploreTableViewCell.swift; sourceTree = "<group>"; };
 		E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailTableViewController.swift; path = Explore/EventDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C999E8FE1CB1308D00E05C67 /* CoreData.framework in Frameworks */,
 				132EF875AB8D87D7144DFAFD /* Pods_ConfPlus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,6 +235,7 @@
 		CA6657120F9514BBD729216B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C999E8FD1CB1308D00E05C67 /* CoreData.framework */,
 				2E6716C6129756C80225EDE5 /* Pods_ConfPlus.framework */,
 			);
 			name = Frameworks;
