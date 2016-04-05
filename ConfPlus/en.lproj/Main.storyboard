@@ -654,13 +654,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1x business class CY Lim, 1x hearing imparement MB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2XY-2g-lIg">
                                 <rect key="frame" x="6" y="327" width="403" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cart:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rdC-6M-cFQ">
                                 <rect key="frame" x="10" y="303" width="38" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -740,12 +740,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <state key="normal" title="forgot password?"/>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="linkedin_login" translatesAutoresizingMaskIntoConstraints="NO" id="52U-yh-su7">
-                                        <rect key="frame" x="43" y="395" width="288" height="52"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fb_login" translatesAutoresizingMaskIntoConstraints="NO" id="fOu-ao-R57">
-                                        <rect key="frame" x="43" y="324" width="286" height="52"/>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ed6-rV-1t0">
                                         <rect key="frame" x="136" y="200" width="102" height="44"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="38"/>
@@ -754,6 +748,9 @@
                                             <segue destination="T5p-Vp-c9R" kind="show" id="kA7-7l-s4k"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fOu-ao-R57">
+                                        <rect key="frame" x="44" y="409" width="286" height="52"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -1710,10 +1707,8 @@
         <image name="admin" width="64" height="64"/>
         <image name="attending" width="64" height="64"/>
         <image name="calendar" width="64" height="64"/>
-        <image name="fb_login" width="288" height="62"/>
         <image name="first" width="30" height="30"/>
         <image name="letter" width="64" height="64"/>
-        <image name="linkedin_login" width="640" height="126"/>
         <image name="second" width="30" height="30"/>
         <image name="tickets" width="64" height="64"/>
     </resources>

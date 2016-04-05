@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="User" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
     <entity name="Attended" representedClassName=".Session_Attending" syncable="YES">
         <attribute name="seat_num" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="session" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Session" inverseName="attended" inverseEntity="Session" syncable="YES"/>
@@ -96,6 +96,7 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="user_tags" inverseEntity="User" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Attended" positionX="1611" positionY="873" width="128" height="88"/>
         <element name="Billing" positionX="1231" positionY="351" width="128" height="103"/>
         <element name="Event" positionX="1836" positionY="351" width="128" height="223"/>
         <element name="Event_Tag" positionX="1629" positionY="576" width="128" height="73"/>
@@ -103,9 +104,8 @@
         <element name="Payment" positionX="1071" positionY="387" width="128" height="103"/>
         <element name="Reminder" positionX="2032" positionY="441" width="128" height="88"/>
         <element name="Session" positionX="1852" positionY="716" width="128" height="148"/>
-        <element name="Attended" positionX="1611" positionY="873" width="128" height="88"/>
         <element name="Ticket_Def" positionX="1845" positionY="918" width="128" height="193"/>
-        <element name="User" positionX="1413" positionY="408" width="128" height="373"/>
+        <element name="User" positionX="1413" positionY="408" width="128" height="375"/>
         <element name="User_Tag" positionX="1098" positionY="675" width="128" height="73"/>
     </elements>
 </model>
