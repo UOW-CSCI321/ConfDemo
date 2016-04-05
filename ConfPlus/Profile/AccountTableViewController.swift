@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import Localize_Swift
+import CoreData
+
 
 class AccountTableViewController: UITableViewController {
 	
@@ -19,10 +21,22 @@ class AccountTableViewController: UITableViewController {
 	var actionSheet: UIAlertController!
 	
 	let availableLanguages = Localize.availableLanguages()
+    
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
+        
+        //get from coredata
+        /*var request = NSFetchRequest(entityName: "User")
+        request.returnsObjectsAsFaults = false;
+        var results:NSArray = context.executeFetchRequest*/
+        let aUser = User()
+        aUser.first_name = "firstname_Test"
+        aUser.last_name = "lastname_Test"
+        //addUser(aUser)
+        
+        
 	}
 	
 	override func viewWillAppear(animated: Bool) {
