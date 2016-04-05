@@ -21,20 +21,62 @@ class AccountTableViewController: UITableViewController {
 	var actionSheet: UIAlertController!
 	
 	let availableLanguages = Localize.availableLanguages()
-    
+	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
-        
+		
         //get from coredata
-        /*var request = NSFetchRequest(entityName: "User")
-        request.returnsObjectsAsFaults = false;
-        var results:NSArray = context.executeFetchRequest*/
-        let aUser = User()
-        aUser.first_name = "firstname_Test"
-        aUser.last_name = "lastname_Test"
-        //addUser(aUser)
+//        var request = NSFetchRequest(entityName: "User")
+//        request.returnsObjectsAsFaults = false;
+		//var results:NSArray = context.executeFetchRequest
+		
+		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+		let context = appDelegate.managedObjectContext
+		
+		let userEntity = NSEntityDescription.entityForName("User", inManagedObjectContext: context)
+		
+		
+		// Save
+		let user = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: context) as! User
+		
+		user.setValue("username", forKey: "username")
+//		user.setValue("upgraded", forKey: "upgraded")
+//		user.setValue("title", forKey: "title")
+//		user.setValue("street", forKey: "street")
+//		user.setValue("state", forKey: "state")
+		user.setValue("password", forKey: "password")
+//		user.setValue("linkedin_id", forKey: "linkedin_id")
+//		user.setValue("last_name", forKey: "last_name")
+//		user.setValue("first_name", forKey: "first_name")
+//		user.setValue("fb_id", forKey: "fb_id");
+//		user.setValue("email_verified", forKey: "email_verified")
+//		user.setValue("email", forKey: "email")
+//		user.setValue("dob", forKey: "dob")
+//		user.setValue("country", forKey: "country")
+//		user.setValue("city", forKey: "city")
+//		user.setValue("active", forKey: "active")
+		
+		do {
+			try context.save()
+		} catch {
+			fatalError("Failure to save context: \(error)")
+		}
+		
+		
+		// Fetch
+		let fetchRequest = NSFetchRequest()
+		fetchRequest.entity = userEntity
+		
+		do {
+			let result = try context.executeFetchRequest(fetchRequest)
+			print(result)
+		} catch {
+			let fetchError = error as NSError
+			print(fetchError)
+		}
+		
         
         
 	}
