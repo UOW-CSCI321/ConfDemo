@@ -17,6 +17,9 @@ class AccountTableViewController: UITableViewController {
 	@IBOutlet weak var languageButton: UIButton!
 	@IBOutlet weak var paymentHistoryButton: UIButton!
 	@IBOutlet weak var logOutButton: UIButton!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var usernameLabel: UILabel!
+    @IBOutlet var emailLabel: UILabel!
 	
 	var actionSheet: UIAlertController!
 	
@@ -40,13 +43,19 @@ class AccountTableViewController: UITableViewController {
 		
 		// Save
 		let user = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: context) as! User
+        user.username = "matts_test_username"
+        user.password = "matts_test_password"
+        user.first_name = "first_name_test"
+        user.last_name = "last_name_test"
+        user.email = "email_test"
 		
-		user.setValue("username", forKey: "username")
+
+		//user.setValue("username", forKey: "username")
 //		user.setValue("upgraded", forKey: "upgraded")
 //		user.setValue("title", forKey: "title")
 //		user.setValue("street", forKey: "street")
 //		user.setValue("state", forKey: "state")
-		user.setValue("password", forKey: "password")
+		//user.setValue("password", forKey: "password")
 //		user.setValue("linkedin_id", forKey: "linkedin_id")
 //		user.setValue("last_name", forKey: "last_name")
 //		user.setValue("first_name", forKey: "first_name")
@@ -68,10 +77,42 @@ class AccountTableViewController: UITableViewController {
 		// Fetch
 		let fetchRequest = NSFetchRequest()
 		fetchRequest.entity = userEntity
+        fetchRequest.returnsObjectsAsFaults = false
 		
 		do {
-			let result = try context.executeFetchRequest(fetchRequest)
-			print(result)
+			let result = try context.executeFetchRequest(fetchRequest) as! [User]
+            
+            if(result.count > 1)
+            {
+                print("error should only have retrieved one record. retrieved \(result.count)")
+                //lets try to delete the data
+                /*let deleterequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+                do { try context.executeFetchRequest(deleterequest)}
+                catch let error as NSError { debugPrint(error) }*/
+                
+                print(result)
+            } else {
+                let fname = result[0].first_name
+                let lname = result[0].last_name
+                var name = fname! + " "
+                name += lname!
+                print("name")
+                print(name)
+                
+                nameLabel.text = name
+                usernameLabel.text = result[0].username
+                
+                var val = "";
+                if((result[0].email_verified) != nil)
+                {
+                    val = "(validated)"
+                }else {
+                    val = "(not validated)"
+                }
+                let email = "result[0].email val"
+                emailLabel.text = email
+            }
+            print(result)
 		} catch {
 			let fetchError = error as NSError
 			print(fetchError)

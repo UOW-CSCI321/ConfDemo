@@ -921,7 +921,7 @@
                         <sections>
                             <tableViewSection headerTitle="Profile" id="U89-4P-al1">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="xlk-Xo-t89">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="15" rowHeight="120" id="xlk-Xo-t89">
                                         <rect key="frame" x="0.0" y="113.5" width="414" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xlk-Xo-t89" id="gYQ-X1-pAF">
@@ -932,13 +932,19 @@
                                                     <rect key="frame" x="8" y="8" width="103" height="104"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KO4-YN-bv0">
-                                                    <rect key="frame" x="116" y="16" width="45" height="21"/>
+                                                    <rect key="frame" x="116" y="16" width="290" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZ7-hR-mid">
-                                                    <rect key="frame" x="120" y="63" width="41" height="21"/>
+                                                    <rect key="frame" x="116" y="84" width="286" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqh-25-0Ow">
+                                                    <rect key="frame" x="119" y="49" width="287" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1014,9 +1020,12 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="0Qk-Id-7Sq"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="emailLabel" destination="vZ7-hR-mid" id="OHD-hL-J58"/>
                         <outlet property="languageButton" destination="v1u-d4-1f9" id="s8n-6D-t8B"/>
                         <outlet property="logOutButton" destination="pIy-wp-EJ2" id="LHj-Ia-KmC"/>
+                        <outlet property="nameLabel" destination="KO4-YN-bv0" id="CiQ-gg-imE"/>
                         <outlet property="paymentHistoryButton" destination="He6-M9-f76" id="Q9j-jf-MGs"/>
+                        <outlet property="usernameLabel" destination="eqh-25-0Ow" id="m1f-c9-k4N"/>
                         <segue destination="DDo-7g-W5p" kind="showDetail" identifier="goToLogin" id="SbP-JW-UPT"/>
                     </connections>
                 </tableViewController>
