@@ -49,8 +49,9 @@ class User: NSManagedObject {
         }
     }*/
     
-    /*init(username: String, upgraded:Bool,title: String,street:String, state:String, password:String, linkedin_id:NSInteger, last_name:String, first_name:String, fb_id:NSInteger, email_verified:Bool, email:String, dob:NSDate, country:String, city:String, active:Bool){
+    init(username: String, upgraded:Bool,title: String,street:String, state:String, password:String, linkedin_id:NSInteger, last_name:String, first_name:String, fb_id:NSInteger, email_verified:Bool, email:String, dob:NSDate, country:String, city:String, active:Bool){
         
+        super.init()
         self.username = username
         self.upgraded = upgraded
         self.title = title
@@ -69,7 +70,7 @@ class User: NSManagedObject {
         self.active = active
     }
     
-    func setName(first: String, second:String) -> Bool
+   /* func setName(first: String, second:String) -> Bool
     {
         self.last_name = first
         self.first_name = second

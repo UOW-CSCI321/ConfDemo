@@ -492,7 +492,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2YM-vS-TwG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ke0-YW-QPB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="hVd-cS-4c3">
@@ -1352,7 +1352,7 @@
                         <viewControllerLayoutGuide type="bottom" id="vhO-LM-5O1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5t5-ra-Oss">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cZm-GL-WsT">
@@ -1390,7 +1390,7 @@
                         <viewControllerLayoutGuide type="bottom" id="VG1-xq-4qM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="iop-SE-hNK">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZQ-B5-fDf">
@@ -1447,7 +1447,7 @@
                         <viewControllerLayoutGuide type="bottom" id="lC3-SJ-PfF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="VFE-df-jGq">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5sp-Bd-cGC">
@@ -1722,7 +1722,7 @@
         <image name="tickets" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="hmh-4n-N6L"/>
         <segue reference="llZ-AS-2VQ"/>
-        <segue reference="81Y-T9-hff"/>
     </inferredMetricsTieBreakers>
 </document>

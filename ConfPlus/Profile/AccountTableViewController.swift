@@ -90,6 +90,8 @@ class AccountTableViewController: UITableViewController {
                 do { try context.executeFetchRequest(deleterequest)}
                 catch let error as NSError { debugPrint(error) }*/
                 
+                deleteIncidents("User")
+                
                 print(result)
             } else {
                 let fname = result[0].first_name
@@ -102,15 +104,18 @@ class AccountTableViewController: UITableViewController {
                 nameLabel.text = name
                 usernameLabel.text = result[0].username
                 
-                var val = "";
+                
+                var val = ""
                 if((result[0].email_verified) != nil)
                 {
                     val = "(validated)"
                 }else {
                     val = "(not validated)"
                 }
-                let email = "result[0].email val"
-                emailLabel.text = email
+                if let email = result[0].email{
+                    emailLabel.text = "\(email) \(val)"
+                }
+                
             }
             print(result)
 		} catch {
@@ -121,6 +126,21 @@ class AccountTableViewController: UITableViewController {
         
         
 	}
+    
+    func deleteIncidents(entity:String) {
+        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDel.managedObjectContext
+        let coord = appDel.persistentStoreCoordinator
+        
+        let fetchRequest = NSFetchRequest(entityName: entity)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try coord.executeRequest(deleteRequest, withContext: context)
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+    }
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
