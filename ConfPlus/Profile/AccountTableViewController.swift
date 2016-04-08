@@ -30,11 +30,8 @@ class AccountTableViewController: UITableViewController {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
 		
-        //get from coredata
-//        var request = NSFetchRequest(entityName: "User")
-//        request.returnsObjectsAsFaults = false;
-		//var results:NSArray = context.executeFetchRequest
-		
+//core data code save
+		/*
 		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 		let context = appDelegate.managedObjectContext
 		
@@ -50,30 +47,15 @@ class AccountTableViewController: UITableViewController {
         user.email = "email_test"
 		
 
-		//user.setValue("username", forKey: "username")
-//		user.setValue("upgraded", forKey: "upgraded")
-//		user.setValue("title", forKey: "title")
-//		user.setValue("street", forKey: "street")
-//		user.setValue("state", forKey: "state")
-		//user.setValue("password", forKey: "password")
-//		user.setValue("linkedin_id", forKey: "linkedin_id")
-//		user.setValue("last_name", forKey: "last_name")
-//		user.setValue("first_name", forKey: "first_name")
-//		user.setValue("fb_id", forKey: "fb_id");
-//		user.setValue("email_verified", forKey: "email_verified")
-//		user.setValue("email", forKey: "email")
-//		user.setValue("dob", forKey: "dob")
-//		user.setValue("country", forKey: "country")
-//		user.setValue("city", forKey: "city")
-//		user.setValue("active", forKey: "active")
 		
 		do {
 			try context.save()
 		} catch {
 			fatalError("Failure to save context: \(error)")
-		}
+		}*/
 		
-		
+//core data fetch
+        /*
 		// Fetch
 		let fetchRequest = NSFetchRequest()
 		fetchRequest.entity = userEntity
@@ -122,12 +104,38 @@ class AccountTableViewController: UITableViewController {
 			let fetchError = error as NSError
 			print(fetchError)
 		}
-		
+		*/
+        
+        //dummy save into nsuserdefaults which will be done on the login screen
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject("matthew", forKey: "firstName")
+        defaults.setObject("boroczky", forKey: "lastName")
+        defaults.setObject("mattattack", forKey: "username")
+        defaults.setObject("mb340@uowmail.edu.au", forKey: "email")
+        
+        //get
+        //let defaults = NSUserDefaults.standardUserDefaults()
+        if let name = defaults.stringForKey("firstName")
+        {
+           if let name2 = defaults.stringForKey("lastName")
+           {
+            nameLabel.text = "\(name) \(name2)"
+           }
+            
+        }
+        if let username = defaults.stringForKey("username")
+        {
+            usernameLabel.text = username
+        }
+        if let email = defaults.stringForKey("email")
+        {
+            emailLabel.text = email
+        }
         
         
 	}
     
-    func deleteIncidents(entity:String) {
+    /*func deleteIncidents(entity:String) {
         let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = appDel.managedObjectContext
         let coord = appDel.persistentStoreCoordinator
@@ -140,7 +148,7 @@ class AccountTableViewController: UITableViewController {
         } catch let error as NSError {
             debugPrint(error)
         }
-    }
+    }*/
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
