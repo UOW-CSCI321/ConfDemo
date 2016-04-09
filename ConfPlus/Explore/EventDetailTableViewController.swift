@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
 
@@ -17,32 +18,48 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        locationMapView.delegate = self
+        //var spanValue = 0.2
+        
+        //locationMapView.delegate = self
         let lat = 21.282778
         let long = -157.829444
-        let initialLocation = CLLocation(latitude: lat, longitude: long)
-        centerMapOnLocation(initialLocation)
         
+        let location = CLLocationCoordinate2DMake(lat, long)
         let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        annotation.coordinate = location
         annotation.title = "title"
         annotation.subtitle = "subtitle"
         locationMapView.addAnnotation(annotation)
+        
+        //var span = MKCoordinateSpanMake(spanValue, spanValue)
+        
+        
+        //let initialLocation = CLLocation(latitude: lat, longitude: long)
+        centerMapOnLocation(location)
+        
+        /*let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        annotation.title = "title"
+        annotation.subtitle = "subtitle"
+        locationMapView.addAnnotation(annotation)*/
     }
     
-    func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+    func centerMapOnLocation(location: CLLocationCoordinate2D) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location,
                                                                   regionRadius * 2.0, regionRadius * 2.0)
         locationMapView.setRegion(coordinateRegion, animated: true)
     }
     
     // called for each annotation
-    /*func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         if let annotation = annotation {
             let identifier = "pin"
             var view: MKPinAnnotationView
@@ -61,7 +78,7 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
             return view
         }
         return nil
-    }*/
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
