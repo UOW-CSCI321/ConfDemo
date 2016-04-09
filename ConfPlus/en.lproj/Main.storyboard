@@ -59,7 +59,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="Sup-1p-DQU">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="timetable" translatesAutoresizingMaskIntoConstraints="NO" id="Sup-1p-DQU">
                                                 <rect key="frame" x="24" y="12" width="76" height="76"/>
                                             </imageView>
                                         </subviews>
@@ -74,7 +74,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="letter" translatesAutoresizingMaskIntoConstraints="NO" id="99D-LX-Pi3">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="message" translatesAutoresizingMaskIntoConstraints="NO" id="99D-LX-Pi3">
                                                 <rect key="frame" x="25" y="12" width="76" height="76"/>
                                             </imageView>
                                         </subviews>
@@ -89,7 +89,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="first" translatesAutoresizingMaskIntoConstraints="NO" id="OPz-Qz-8xH">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="exit" translatesAutoresizingMaskIntoConstraints="NO" id="OPz-Qz-8xH">
                                                 <rect key="frame" x="24" y="12" width="76" height="76"/>
                                             </imageView>
                                         </subviews>
@@ -904,7 +904,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Events" id="NLo-ah-sfj"/>
+                    <tabBarItem key="tabBarItem" title="Events" image="event" id="NLo-ah-sfj"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ryR-bt-fsW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1491,7 +1491,7 @@
         <scene sceneID="jpT-2l-ZEW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MpQ-vr-Yqk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="pWg-pD-num"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="pWg-pD-num"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uHZ-qK-AVX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1510,7 +1510,7 @@
         <scene sceneID="Nx1-Xi-WWK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CZ9-D9-ATB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Explore" id="OBl-8p-A6n"/>
+                    <tabBarItem key="tabBarItem" title="Explore" image="explore" id="OBl-8p-A6n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2FR-Nb-z6P">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1715,11 +1715,15 @@
     <resources>
         <image name="admin" width="64" height="64"/>
         <image name="attending" width="64" height="64"/>
-        <image name="calendar" width="64" height="64"/>
+        <image name="event" width="25" height="25"/>
+        <image name="exit" width="64" height="64"/>
+        <image name="explore" width="25" height="25"/>
         <image name="first" width="30" height="30"/>
-        <image name="letter" width="64" height="64"/>
+        <image name="message" width="64" height="64"/>
+        <image name="profile" width="25" height="25"/>
         <image name="second" width="30" height="30"/>
         <image name="tickets" width="64" height="64"/>
+        <image name="timetable" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="hmh-4n-N6L"/>
