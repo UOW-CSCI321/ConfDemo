@@ -928,8 +928,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="first" translatesAutoresizingMaskIntoConstraints="NO" id="fzZ-h1-mPJ">
-                                                    <rect key="frame" x="8" y="8" width="103" height="104"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="account" translatesAutoresizingMaskIntoConstraints="NO" id="fzZ-h1-mPJ">
+                                                    <rect key="frame" x="8" y="8" width="104" height="104"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KO4-YN-bv0">
                                                     <rect key="frame" x="116" y="16" width="290" height="21"/>
@@ -1713,6 +1713,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="account" width="104" height="104"/>
         <image name="admin" width="64" height="64"/>
         <image name="attending" width="64" height="64"/>
         <image name="event" width="25" height="25"/>
