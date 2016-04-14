@@ -20,6 +20,8 @@ class AccountTableViewController: UITableViewController {
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var usernameLabel: UILabel!
     @IBOutlet var emailLabel: UILabel!
+    @IBOutlet var profilePictureImgView: UIImageView!
+    var companyColour1 : UIColor = UIColor(red: 1, green: 165/255, blue: 0, alpha: 1)
 	
 	var actionSheet: UIAlertController!
 	
@@ -132,6 +134,11 @@ class AccountTableViewController: UITableViewController {
             emailLabel.text = email
         }
         
+        //code to make a circular profile image
+       profilePictureImgView.layer.cornerRadius = profilePictureImgView.frame.size.width/2;
+        profilePictureImgView.clipsToBounds = true;
+        profilePictureImgView.layer.borderWidth = 3.0
+        profilePictureImgView.layer.borderColor = companyColour1.CGColor
         
 	}
     

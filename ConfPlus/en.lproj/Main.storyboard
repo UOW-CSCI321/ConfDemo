@@ -928,7 +928,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="account" translatesAutoresizingMaskIntoConstraints="NO" id="fzZ-h1-mPJ">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="loo" translatesAutoresizingMaskIntoConstraints="NO" id="fzZ-h1-mPJ">
                                                     <rect key="frame" x="8" y="8" width="104" height="104"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KO4-YN-bv0">
@@ -1025,6 +1025,7 @@
                         <outlet property="logOutButton" destination="pIy-wp-EJ2" id="LHj-Ia-KmC"/>
                         <outlet property="nameLabel" destination="KO4-YN-bv0" id="CiQ-gg-imE"/>
                         <outlet property="paymentHistoryButton" destination="He6-M9-f76" id="Q9j-jf-MGs"/>
+                        <outlet property="profilePictureImgView" destination="fzZ-h1-mPJ" id="t0K-f4-yar"/>
                         <outlet property="usernameLabel" destination="eqh-25-0Ow" id="m1f-c9-k4N"/>
                         <segue destination="DDo-7g-W5p" kind="showDetail" identifier="goToLogin" id="SbP-JW-UPT"/>
                     </connections>
@@ -1713,13 +1714,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="account" width="104" height="104"/>
         <image name="admin" width="64" height="64"/>
         <image name="attending" width="64" height="64"/>
         <image name="event" width="25" height="25"/>
         <image name="exit" width="64" height="64"/>
         <image name="explore" width="25" height="25"/>
         <image name="first" width="30" height="30"/>
+        <image name="loo" width="960" height="960"/>
         <image name="message" width="64" height="64"/>
         <image name="profile" width="25" height="25"/>
         <image name="second" width="30" height="30"/>
