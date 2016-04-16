@@ -745,6 +745,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                         <state key="normal" title="Login"/>
                                         <connections>
+                                            <action selector="LoginPressed:" destination="DDo-7g-W5p" eventType="touchUpInside" id="PrG-VE-Lex"/>
                                             <segue destination="T5p-Vp-c9R" kind="show" id="kA7-7l-s4k"/>
                                         </connections>
                                     </button>
@@ -760,6 +761,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="loginView" destination="Bet-7W-0Op" id="3rW-jn-IBC"/>
+                        <outlet property="passwordTextfield" destination="n4l-H9-xVL" id="hdV-yv-AY4"/>
+                        <outlet property="usernameTextfield" destination="gpS-iE-Kyw" id="jl0-SE-zcc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ejk-Ig-O48" userLabel="First Responder" sceneMemberID="firstResponder"/>
