@@ -84,10 +84,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-ConfPlus/Alamofire.framework"
   install_framework "Pods-ConfPlus/Localize_Swift.framework"
   install_framework "Pods-ConfPlus/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-ConfPlus/Alamofire.framework"
   install_framework "Pods-ConfPlus/Localize_Swift.framework"
   install_framework "Pods-ConfPlus/SwiftyJSON.framework"
 fi

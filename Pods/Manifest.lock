@@ -1,8 +1,10 @@
 PODS:
+  - Alamofire (3.3.1)
   - Localize-Swift (1.1)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
+  - Alamofire (~> 3.3)
   - Localize-Swift (~> 1.1)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
@@ -16,6 +18,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
   Localize-Swift: 72fab22c9c271a1041082fa3b53ca64e527ccf4a
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
