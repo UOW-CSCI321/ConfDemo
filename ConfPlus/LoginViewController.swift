@@ -28,7 +28,7 @@ class LoginViewController: UIViewController {
     
     func data_request()
     {
-        let url:NSURL = NSURL(string: "http://b0d1d301.ngrok.io/api/v1")!
+        let url:NSURL = NSURL(string: "b0d1d301.ngrok.io/api/v1")!
         let session = NSURLSession.sharedSession()
         
         let request = NSMutableURLRequest(URL: url)
