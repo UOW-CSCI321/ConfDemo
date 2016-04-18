@@ -205,7 +205,12 @@ class AccountTableViewController: UITableViewController {
 	}
 	
 	@IBAction func logout(sender: AnyObject) {
-		self.performSegueWithIdentifier("goToLogin", sender: self)		
+        
+        //clear NSUserDefaults
+        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(NSBundle.mainBundle().bundleIdentifier!)
+        NSUserDefaults.standardUserDefaults().synchronize()
+        
+        self.performSegueWithIdentifier("goToLogin", sender: self)
 	}
 
 	
