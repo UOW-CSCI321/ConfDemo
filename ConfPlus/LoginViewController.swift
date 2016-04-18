@@ -27,13 +27,18 @@ class LoginViewController: UIViewController {
             if let pwd = defaults.stringForKey("password")
             {
                 //segue to next screen automatically
+                self.performSegueWithIdentifier("homeSegue", sender: self)
             }
         }
 
         viewEffect.rect(loginView)
         // Do any additional setup after loading the view.
         
-        }
+    }
+    
+   /* override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var 
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -62,6 +67,7 @@ class LoginViewController: UIViewController {
                             let defaults = NSUserDefaults.standardUserDefaults()
                             defaults.setObject(password, forKey: "password")
                             defaults.setObject(email, forKey: "email")
+                            self.performSegueWithIdentifier("homeSegue", sender: self)
                         }else {
                             let alertcontroller = UIAlertController(title: "invalid password", message: "Please try again", preferredStyle: .Alert)
                             //let alertview = UIAlertView(title: "invalid username or password", message: "The username and/or password is not valid.. Please try again", delegate: self, cancelButtonTitle: "Ok");

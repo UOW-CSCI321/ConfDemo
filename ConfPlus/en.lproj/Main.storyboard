@@ -746,7 +746,6 @@
                                         <state key="normal" title="Login"/>
                                         <connections>
                                             <action selector="LoginPressed:" destination="DDo-7g-W5p" eventType="touchUpInside" id="PrG-VE-Lex"/>
-                                            <segue destination="T5p-Vp-c9R" kind="show" id="kA7-7l-s4k"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fOu-ao-R57">
@@ -763,6 +762,7 @@
                         <outlet property="loginView" destination="Bet-7W-0Op" id="3rW-jn-IBC"/>
                         <outlet property="passwordTextfield" destination="n4l-H9-xVL" id="hdV-yv-AY4"/>
                         <outlet property="usernameTextfield" destination="gpS-iE-Kyw" id="jl0-SE-zcc"/>
+                        <segue destination="T5p-Vp-c9R" kind="show" identifier="homeSegue" id="nbi-my-4s2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ejk-Ig-O48" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1489,7 +1489,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xkh-hB-1XR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1170" y="142"/>
+            <point key="canvasLocation" x="-1042" y="100"/>
         </scene>
         <!--Profile-->
         <scene sceneID="jpT-2l-ZEW">
