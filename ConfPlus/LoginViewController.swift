@@ -29,125 +29,54 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    /*func parseJSON()
+    func data_request(email : String) -> String
     {
-        let path : String = NSBundle.mainBundle().pathForResource("jsonfile", ofType: "json") as String!
-        let jsonData = NSData(/*contentsOfURL: <#T##NSURL#>*/ contentsOfFile: path) as NSData
-        let readableJSON = JSON
-    }*/
-    
-    /*func loadJSONData()
-    {
-        Alamofire.request(.POST, "b0d1d301.ngrok.io/api/v1?action=getUser")
-            .responseJSON { (request, response, JSON_, error) in
-                if let final = JSON_ {
-                    if let final_2 = JSON(final).dictionaryObject
-                }
-    }*/
-    
-    func data_request(email : String)/* -> String*/
-    {
-        /*let url:NSURL = NSURL(string: "b0d1d301.ngrok.io/api/v1")!
-        let session = NSURLSession.sharedSession()
-        
-        let request = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "POST"
-        request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-        
-        let paramString = "method=getUser&email=matt1@test.com"
-        request.HTTPBody = paramString.dataUsingEncoding(NSUTF8StringEncoding)
-        
-        let task = session.dataTaskWithRequest(request) {
-            (
-            let data, let response, let error) in
-            
-            guard let _:NSData = data, let _:NSURLResponse = response  where error == nil else {
-                print("error")
-                return
-            }
-            
-            let dataString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print(dataString)
-            
-        }
-        
-        task.resume()*/
-        
         let paramaters = [
             "method" : "getUser",
             "email" : email
         ]
         
-        var jsonArray : NSMutableArray?
-        //var password: String
+        var password = "error"
         
         Alamofire.request(.POST, "https://b0d1d301.ngrok.io/api/v1", parameters: paramaters).responseJSON {
-            //response in debugPrint(response)
-            (response) -> Void in
-            if let JSON = response.result.value
+            response in switch response.result
             {
-                jsonArray = JSON as? NSMutableArray
-                /*for item in jsonArray!{
-                 print(item["data"])
-                 }*/
-                //print(JSON["data"])
-                let data = JSON["data"]
-                print(data)
-                //let password = data!![0].password
-                //print(password)
-                
-                
+                case .Success:
+                    if let value = response.result.value
+                    {
+                        let json = JSON(value)
+                        let data = json["data"][0]["password"] //data[0].password
+                        //print("data: \(data)")
+                        password = data.stringValue
+                        //print("password: \(password)")
+                    }
+                case .Failure(let error):
+                    print(error)
+            
             }
+            
         }
-
+        return password;
         
     }
     
     @IBAction func LoginPressed(sender: AnyObject) {
         let username = usernameTextfield.text
         let password = passwordTextfield.text
-        //let real_pwd = data_request(username!)
-        
-        data_request(username!)
-        /*print("LOGIN pressed")
-        let username = usernameTextfield.text
-        let password = passwordTextfield.text
-        
-        let url = NSURL(string: "http://b0d1d301.ngrok.io/api/v1")
-        let request = NSMutableURLRequest(URL: url!)
-        request.HTTPMethod = "POST"
-        
-        let postString = "method=getUser&email=\(username)"
-        print(postString)
-        
-        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
-        
-        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
-            data, response, error in
-            
-            if error != nil {
-                print("error: \(error)")
-                return
-            }
-            
-            //print response obj
-            print("*** response = \(response)")
-            
-            //print response body
-            let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("*** response data \(responseString)")
-            
-            //var err:NSError?
-            let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers) as? NSDictionary
-            
-            if let parseJSON = json {
-                var username = parseJSON["username"] as? String
-                print("username: \(username)")
-            }
-            
-            
+        let real_pwd = data_request(username!)
+       
+        if(real_pwd == password)
+        {
+            //logged in
+        }else {
+            let alertcontroller = UIAlertController(title: "invalid username or password", message: "Please try again", preferredStyle: .Alert)
+            //let alertview = UIAlertView(title: "invalid username or password", message: "The username and/or password is not valid.. Please try again", delegate: self, cancelButtonTitle: "Ok");
+            let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alertcontroller.addAction(defaultAction)
+            //alertview.show()
+            self.presentViewController(alertcontroller, animated: true, completion: nil)
         }
-        task.resume()*/
+        
         
     }
 
