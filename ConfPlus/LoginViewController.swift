@@ -29,14 +29,12 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func data_request(email : String) -> String
+    func data_request(email : String, pwd : String) /*-> String*/
     {
         let paramaters = [
             "method" : "getUser",
             "email" : email
         ]
-        
-        var password = "error"
         
         Alamofire.request(.POST, "https://b0d1d301.ngrok.io/api/v1", parameters: paramaters).responseJSON {
             response in switch response.result
@@ -47,25 +45,43 @@ class LoginViewController: UIViewController {
                         let json = JSON(value)
                         let data = json["data"][0]["password"] //data[0].password
                         //print("data: \(data)")
-                        password = data.stringValue
+                        let password = data.stringValue
                         //print("password: \(password)")
+                        
+                        if(pwd == password)
+                        {
+                            //logged in
+                        }else {
+                            let alertcontroller = UIAlertController(title: "invalid password", message: "Please try again", preferredStyle: .Alert)
+                            //let alertview = UIAlertView(title: "invalid username or password", message: "The username and/or password is not valid.. Please try again", delegate: self, cancelButtonTitle: "Ok");
+                            let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                            alertcontroller.addAction(defaultAction)
+                            //alertview.show()
+                            self.presentViewController(alertcontroller, animated: true, completion: nil)
+                        }
                     }
                 case .Failure(let error):
                     print(error)
+                    let alertcontroller = UIAlertController(title: "invalid username", message: "Please try again", preferredStyle: .Alert)
+                    //let alertview = UIAlertView(title: "invalid username or password", message: "The username and/or password is not valid.. Please try again", delegate: self, cancelButtonTitle: "Ok");
+                    let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                    alertcontroller.addAction(defaultAction)
+                    //alertview.show()
+                    self.presentViewController(alertcontroller, animated: true, completion: nil)
             
             }
             
         }
-        return password;
+        //return password;
         
     }
     
     @IBAction func LoginPressed(sender: AnyObject) {
         let username = usernameTextfield.text
         let password = passwordTextfield.text
-        let real_pwd = data_request(username!)
+        data_request(username!, pwd: password!)
        
-        if(real_pwd == password)
+        /*if(real_pwd == password)
         {
             //logged in
         }else {
@@ -75,7 +91,7 @@ class LoginViewController: UIViewController {
             alertcontroller.addAction(defaultAction)
             //alertview.show()
             self.presentViewController(alertcontroller, animated: true, completion: nil)
-        }
+        }*/
         
         
     }
