@@ -19,6 +19,17 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //if let defaults = NSUserDefaults.standardUserDefaults()
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let name = defaults.stringForKey("email")
+        {
+            if let pwd = defaults.stringForKey("password")
+            {
+                //segue to next screen automatically
+            }
+        }
+
         viewEffect.rect(loginView)
         // Do any additional setup after loading the view.
         
@@ -43,14 +54,14 @@ class LoginViewController: UIViewController {
                     if let value = response.result.value
                     {
                         let json = JSON(value)
-                        let data = json["data"][0]["password"] //data[0].password
-                        //print("data: \(data)")
-                        let password = data.stringValue
-                        //print("password: \(password)")
+                        let password = json["data"][0]["password"].stringValue //data[0].password
                         
                         if(pwd == password)
                         {
                             //logged in
+                            let defaults = NSUserDefaults.standardUserDefaults()
+                            defaults.setObject(password, forKey: "password")
+                            defaults.setObject(email, forKey: "email")
                         }else {
                             let alertcontroller = UIAlertController(title: "invalid password", message: "Please try again", preferredStyle: .Alert)
                             //let alertview = UIAlertView(title: "invalid username or password", message: "The username and/or password is not valid.. Please try again", delegate: self, cancelButtonTitle: "Ok");
@@ -80,19 +91,6 @@ class LoginViewController: UIViewController {
         let username = usernameTextfield.text
         let password = passwordTextfield.text
         data_request(username!, pwd: password!)
-       
-        /*if(real_pwd == password)
-        {
-            //logged in
-        }else {
-            let alertcontroller = UIAlertController(title: "invalid username or password", message: "Please try again", preferredStyle: .Alert)
-            //let alertview = UIAlertView(title: "invalid username or password", message: "The username and/or password is not valid.. Please try again", delegate: self, cancelButtonTitle: "Ok");
-            let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            alertcontroller.addAction(defaultAction)
-            //alertview.show()
-            self.presentViewController(alertcontroller, animated: true, completion: nil)
-        }*/
-        
         
     }
 
