@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="CZ9-D9-ATB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DDo-7g-W5p">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -778,7 +778,7 @@
                         <viewControllerLayoutGuide type="bottom" id="mLE-hS-PH5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bKh-Ah-wga">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="221" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9qa-mF-wI6">
@@ -841,7 +841,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jfb-Gp-XTa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-235" y="-738"/>
+            <point key="canvasLocation" x="-207" y="-702"/>
         </scene>
         <!--Events-->
         <scene sceneID="e9v-3T-3af">
@@ -1091,7 +1091,7 @@
         <!--Event Name-->
         <scene sceneID="Uvn-fd-eIH">
             <objects>
-                <tableViewController id="Woc-Hm-XuT" sceneMemberID="viewController">
+                <tableViewController id="Woc-Hm-XuT" customClass="EventDetailTableViewController" customModule="ConfPlus" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="180" sectionHeaderHeight="28" sectionFooterHeight="28" id="kKc-Hp-B9T">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1180,12 +1180,11 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="locationMapView" destination="02G-8P-uIQ" id="awm-6Z-IBc"/>
-                        <outlet property="tableview" destination="kKc-Hp-B9T" id="1Hz-Zf-qji"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQx-np-Ka7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="324" y="-702"/>
+            <point key="canvasLocation" x="240" y="-702"/>
         </scene>
         <!--ticketDetails-->
         <scene sceneID="ZGS-yz-0fQ">
@@ -1528,7 +1527,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sXc-jo-w67" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-922" y="-714"/>
+            <point key="canvasLocation" x="-686" y="-702"/>
         </scene>
         <!--Ticket Profile-->
         <scene sceneID="jba-rQ-Gma">
