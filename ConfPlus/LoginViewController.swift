@@ -19,26 +19,24 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //if let defaults = NSUserDefaults.standardUserDefaults()
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if let name = defaults.stringForKey("email")
-        {
-            if let pwd = defaults.stringForKey("password")
-            {
-                //segue to next screen automatically
-                self.performSegueWithIdentifier("homeSegue", sender: self)
-            }
-        }
-
+		
         viewEffect.rect(loginView)
         // Do any additional setup after loading the view.
         
     }
-    
-   /* override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var 
-    }*/
+	
+	override func viewDidAppear(animated: Bool) {
+		//if let defaults = NSUserDefaults.standardUserDefaults()
+		let defaults = NSUserDefaults.standardUserDefaults()
+		if let _ = defaults.stringForKey("email") {
+			if let _ = defaults.stringForKey("password") {
+				//segue to next screen automatically
+				performSegueWithIdentifier("homeSegue", sender: self)
+			}
+		}
+
+	}
+	
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -51,7 +49,7 @@ class LoginViewController: UIViewController {
             "method" : "getUser",
             "email" : email
         ]
-        
+		
         Alamofire.request(.POST, "https://b0d1d301.ngrok.io/api/v1", parameters: paramaters).responseJSON {
             response in switch response.result
             {
@@ -69,25 +67,15 @@ class LoginViewController: UIViewController {
                             defaults.setObject(email, forKey: "email")
                             self.performSegueWithIdentifier("homeSegue", sender: self)
                         }else {
-                            let alertcontroller = UIAlertController(title: "invalid password", message: "Please try again", preferredStyle: .Alert)
-                            //let alertview = UIAlertView(title: "invalid username or password", message: "The username and/or password is not valid.. Please try again", delegate: self, cancelButtonTitle: "Ok");
-                            let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                            alertcontroller.addAction(defaultAction)
-                            //alertview.show()
-                            self.presentViewController(alertcontroller, animated: true, completion: nil)
+                            self.showAlert("Invalid Password")
                         }
                     }
                 case .Failure(let error):
                     print(error)
-                    let alertcontroller = UIAlertController(title: "invalid username", message: "Please try again", preferredStyle: .Alert)
-                    //let alertview = UIAlertView(title: "invalid username or password", message: "The username and/or password is not valid.. Please try again", delegate: self, cancelButtonTitle: "Ok");
-                    let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                    alertcontroller.addAction(defaultAction)
-                    //alertview.show()
-                    self.presentViewController(alertcontroller, animated: true, completion: nil)
+					self.showAlert("Invalid Username")
             
             }
-            
+			
         }
         //return password;
         
@@ -99,7 +87,14 @@ class LoginViewController: UIViewController {
         data_request(username!, pwd: password!)
         
     }
-
+	
+	
+	func showAlert(title: String){
+		let alertcontroller = UIAlertController(title: title, message: "Please try again", preferredStyle: .Alert)
+		let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+		alertcontroller.addAction(defaultAction)
+		self.presentViewController(alertcontroller, animated: true, completion: nil)
+	}
     /*
     // MARK: - Navigation
 
