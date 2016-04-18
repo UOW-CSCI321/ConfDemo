@@ -53,7 +53,7 @@
 		C9FD08141CB23BE500C44595 /* Billing+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD07FE1CB23BE500C44595 /* Billing+CoreDataProperties.swift */; };
 		C9FD08151CB23BE500C44595 /* Billing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD07FF1CB23BE500C44595 /* Billing.swift */; };
 		E90201C11C9CB7EB00C7839A /* ExploreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */; };
-		E90201C31C9CC2E200C7839A /* EventDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */; };
+		E90201C31C9CC2E200C7839A /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C21C9CC2E200C7839A /* EventDetailViewController.swift */; };
 		E90201C71C9CC74400C7839A /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C61C9CC74400C7839A /* EventTableViewCell.swift */; };
 		E90201C91C9CC84A00C7839A /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C81C9CC84A00C7839A /* EventsViewController.swift */; };
 		E90A0A621BCF7143005D611C /* Readme.md in Sources */ = {isa = PBXBuildFile; fileRef = E90A0A611BCF7143005D611C /* Readme.md */; };
@@ -115,7 +115,7 @@
 		C9FD07FE1CB23BE500C44595 /* Billing+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Billing+CoreDataProperties.swift"; path = "Model/Billing+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C9FD07FF1CB23BE500C44595 /* Billing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Billing.swift; path = Model/Billing.swift; sourceTree = "<group>"; };
 		E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreTableViewCell.swift; path = Explore/ExploreTableViewCell.swift; sourceTree = "<group>"; };
-		E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailTableViewController.swift; path = Explore/EventDetailTableViewController.swift; sourceTree = "<group>"; };
+		E90201C21C9CC2E200C7839A /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailViewController.swift; path = Explore/EventDetailViewController.swift; sourceTree = "<group>"; };
 		E90201C61C9CC74400C7839A /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTableViewCell.swift; path = Events/EventTableViewCell.swift; sourceTree = "<group>"; };
 		E90201C81C9CC84A00C7839A /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsViewController.swift; path = Events/EventsViewController.swift; sourceTree = "<group>"; };
 		E90A0A611BCF7143005D611C /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
@@ -293,7 +293,7 @@
 			children = (
 				E93163971BC62AB6007408C7 /* ExploreViewController.swift */,
 				E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */,
-				E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */,
+				E90201C21C9CC2E200C7839A /* EventDetailViewController.swift */,
 				C94AFA4C1C98085B00EC88B6 /* TicketDetailsViewController.swift */,
 				C94AFA4E1C9808AB00EC88B6 /* PersonalDetailsViewController.swift */,
 				C94AFA501C980A0B00EC88B6 /* PaymentViewController.swift */,
@@ -481,7 +481,7 @@
 				C94AFA4D1C98085B00EC88B6 /* TicketDetailsViewController.swift in Sources */,
 				C94AFA6C1C981E7700EC88B6 /* SecurityViewController.swift in Sources */,
 				C94AFA601C9811BD00EC88B6 /* MapViewController.swift in Sources */,
-				E90201C31C9CC2E200C7839A /* EventDetailTableViewController.swift in Sources */,
+				E90201C31C9CC2E200C7839A /* EventDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
