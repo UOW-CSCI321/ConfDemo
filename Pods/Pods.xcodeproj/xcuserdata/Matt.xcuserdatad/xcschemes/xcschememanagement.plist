@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
 		<key>Localize-Swift.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -14,15 +19,35 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>14C450530E18CA5F60CDFCA8B2D6A8B9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3CB51CC21BAFC56F670577DAB81D8A42</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>CA4A08D67D3688F6E57A8CA4E8B905A8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CBDF7D83BD7E8162D91B111E097DA11B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

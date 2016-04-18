@@ -8,6 +8,8 @@
 
 import UIKit
 import Localize_Swift
+import Alamofire
+import SwiftyJSON
 
 class LoginViewController: UIViewController {
 
@@ -19,16 +21,33 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         viewEffect.rect(loginView)
         // Do any additional setup after loading the view.
-    }
+        
+        }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func data_request()
+    /*func parseJSON()
     {
-        let url:NSURL = NSURL(string: "b0d1d301.ngrok.io/api/v1")!
+        let path : String = NSBundle.mainBundle().pathForResource("jsonfile", ofType: "json") as String!
+        let jsonData = NSData(/*contentsOfURL: <#T##NSURL#>*/ contentsOfFile: path) as NSData
+        let readableJSON = JSON
+    }*/
+    
+    /*func loadJSONData()
+    {
+        Alamofire.request(.POST, "b0d1d301.ngrok.io/api/v1?action=getUser")
+            .responseJSON { (request, response, JSON_, error) in
+                if let final = JSON_ {
+                    if let final_2 = JSON(final).dictionaryObject
+                }
+    }*/
+    
+    func data_request(email : String)/* -> String*/
+    {
+        /*let url:NSURL = NSURL(string: "b0d1d301.ngrok.io/api/v1")!
         let session = NSURLSession.sharedSession()
         
         let request = NSMutableURLRequest(URL: url)
@@ -52,12 +71,44 @@ class LoginViewController: UIViewController {
             
         }
         
-        task.resume()
+        task.resume()*/
+        
+        let paramaters = [
+            "method" : "getUser",
+            "email" : email
+        ]
+        
+        var jsonArray : NSMutableArray?
+        //var password: String
+        
+        Alamofire.request(.POST, "https://b0d1d301.ngrok.io/api/v1", parameters: paramaters).responseJSON {
+            //response in debugPrint(response)
+            (response) -> Void in
+            if let JSON = response.result.value
+            {
+                jsonArray = JSON as? NSMutableArray
+                /*for item in jsonArray!{
+                 print(item["data"])
+                 }*/
+                //print(JSON["data"])
+                let data = JSON["data"]
+                print(data)
+                //let password = data!![0].password
+                //print(password)
+                
+                
+            }
+        }
+
         
     }
     
     @IBAction func LoginPressed(sender: AnyObject) {
-        data_request()
+        let username = usernameTextfield.text
+        let password = passwordTextfield.text
+        //let real_pwd = data_request(username!)
+        
+        data_request(username!)
         /*print("LOGIN pressed")
         let username = usernameTextfield.text
         let password = passwordTextfield.text

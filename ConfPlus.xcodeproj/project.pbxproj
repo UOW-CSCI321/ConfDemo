@@ -26,6 +26,9 @@
 		C94AFA761C98221400EC88B6 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */; };
 		C999E8FE1CB1308D00E05C67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C999E8FD1CB1308D00E05C67 /* CoreData.framework */; };
 		C9AC4CE31CB7AA6300083F12 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4CE21CB7AA6300083F12 /* CoreLocation.framework */; };
+		C9AC4D031CC45C7700083F12 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4D021CC45C7700083F12 /* SwiftyJSON.framework */; };
+		C9AC4D051CC45EF900083F12 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4D041CC45EF900083F12 /* Alamofire.framework */; };
+		C9AC4D071CC45F0B00083F12 /* Localize_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4D061CC45F0B00083F12 /* Localize_Swift.framework */; };
 		C9F4E0BA1CA0CEC8009CA1A9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9F4E0B81CA0CEC8009CA1A9 /* Model.xcdatamodeld */; };
 		C9FD08001CB23BE500C44595 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD07EA1CB23BE500C44595 /* Session+CoreDataProperties.swift */; };
 		C9FD08011CB23BE500C44595 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD07EB1CB23BE500C44595 /* Session.swift */; };
@@ -85,6 +88,9 @@
 		C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryTableViewController.swift; path = Profile/HistoryTableViewController.swift; sourceTree = "<group>"; };
 		C999E8FD1CB1308D00E05C67 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C9AC4CE21CB7AA6300083F12 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C9AC4D021CC45C7700083F12 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		C9AC4D041CC45EF900083F12 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
+		C9AC4D061CC45F0B00083F12 /* Localize_Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Localize_Swift.framework; path = "Pods/../build/Debug-iphoneos/Localize_Swift.framework"; sourceTree = "<group>"; };
 		C9F4E0B91CA0CEC8009CA1A9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		C9FD07EA1CB23BE500C44595 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+CoreDataProperties.swift"; path = "Model/Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C9FD07EB1CB23BE500C44595 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Model/Session.swift; sourceTree = "<group>"; };
@@ -130,6 +136,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9AC4D071CC45F0B00083F12 /* Localize_Swift.framework in Frameworks */,
+				C9AC4D051CC45EF900083F12 /* Alamofire.framework in Frameworks */,
+				C9AC4D031CC45C7700083F12 /* SwiftyJSON.framework in Frameworks */,
 				C9AC4CE31CB7AA6300083F12 /* CoreLocation.framework in Frameworks */,
 				C999E8FE1CB1308D00E05C67 /* CoreData.framework in Frameworks */,
 				132EF875AB8D87D7144DFAFD /* Pods_ConfPlus.framework in Frameworks */,
@@ -232,6 +241,9 @@
 		CA6657120F9514BBD729216B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C9AC4D061CC45F0B00083F12 /* Localize_Swift.framework */,
+				C9AC4D041CC45EF900083F12 /* Alamofire.framework */,
+				C9AC4D021CC45C7700083F12 /* SwiftyJSON.framework */,
 				C9AC4CE21CB7AA6300083F12 /* CoreLocation.framework */,
 				C999E8FD1CB1308D00E05C67 /* CoreData.framework */,
 				2E6716C6129756C80225EDE5 /* Pods_ConfPlus.framework */,
@@ -584,6 +596,10 @@
 			baseConfigurationReference = 9BB052330EC07A481F9E74B8 /* Pods-ConfPlus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = ConfPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = my.cy.ConfPlus;
@@ -596,6 +612,10 @@
 			baseConfigurationReference = B38CD26C8A5F4DC173A21F21 /* Pods-ConfPlus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = ConfPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = my.cy.ConfPlus;
