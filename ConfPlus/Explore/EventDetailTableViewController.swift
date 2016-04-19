@@ -14,6 +14,9 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
 
 	@IBOutlet weak var locationMapView: MKMapView!
     let regionRadius: CLLocationDistance = 1000
+    let desc = "test description"
+    let address = "test address"
+    
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,18 +97,34 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
 //
 //    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        // #warning Incomplete implementation, return the number of rows
-//        return 0
+//        //return 0
+//        return 4
 //    }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
+//
+//    
+//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//                 //Configure the cell...
+//        if indexPath == 0
+//        {
+//            //poster
+//        } else if indexPath == 1
+//        {
+//            //description
+//        }else if indexPath == 2
+//        {
+//            //poster
+//        } else if indexPath == 3
+//        {
+//            //address
+//        }else {
+//            print("cell was not 0,1,2 or 3 but: \(indexPath)")
+//        }
+//
+//        let cell = tableView.dequeueReusableCellWithIdentifier("posterCell", forIndexPath: indexPath)
+//        
+//        return cell
+//    }
+ 
 
     /*
     // Override to support conditional editing of the table view.
