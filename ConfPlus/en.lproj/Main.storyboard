@@ -1179,7 +1179,10 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="addressTextView" destination="QWa-qd-WbA" id="utA-Uq-DrV"/>
+                        <outlet property="descriptionTextView" destination="MU7-E6-a1o" id="MrU-9g-lkj"/>
                         <outlet property="locationMapView" destination="02G-8P-uIQ" id="awm-6Z-IBc"/>
+                        <outlet property="posterImageView" destination="B7p-2U-fBp" id="n9A-tU-hJv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQx-np-Ka7" userLabel="First Responder" sceneMemberID="firstResponder"/>

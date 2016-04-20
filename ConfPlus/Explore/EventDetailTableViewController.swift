@@ -11,11 +11,16 @@ import MapKit
 import CoreLocation
 
 class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
-
+    @IBOutlet var posterImageView: UIImageView!
+    @IBOutlet var descriptionTextView: UITextView!
 	@IBOutlet weak var locationMapView: MKMapView!
+    @IBOutlet var addressTextView: UITextView!
     let regionRadius: CLLocationDistance = 1000
     let desc = "test description"
     let address = "test address"
+
+    
+    
     
 	
     override func viewDidLoad() {
@@ -31,6 +36,16 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         //var spanValue = 0.2
         
+        //poster
+        let imageName:String = "blithe.jpg"
+        let image = UIImage(named: imageName)
+        posterImageView.image = image
+        
+        
+        //decsription
+        descriptionTextView.text = desc
+        
+        //map
         //locationMapView.delegate = self
         let lat = 21.282778
         let long = -157.829444
@@ -41,6 +56,9 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
         annotation.title = "title"
         annotation.subtitle = "subtitle"
         locationMapView.addAnnotation(annotation)
+        
+        //address
+        addressTextView.text = address
         
         //var span = MKCoordinateSpanMake(spanValue, spanValue)
         
