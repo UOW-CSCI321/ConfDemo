@@ -12,12 +12,17 @@ import CoreLocation
 
 class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
 
-	@IBOutlet weak var locationMapView: MKMapView!
+    @IBOutlet var posterImageView: UIImageView!
+    @IBOutlet var descriptionTextView: UITextView!
+    @IBOutlet weak var locationMapView: MKMapView!
+    @IBOutlet var addressTextView: UITextView!
     let regionRadius: CLLocationDistance = 1000
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
+        
         
         
         
