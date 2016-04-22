@@ -836,6 +836,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Explore" id="BZ8-iy-QlD">
+                        <barButtonItem key="leftBarButtonItem" title="test_ticket_selector" id="Guv-Kf-h6c">
+                            <connections>
+                                <segue destination="920-7A-3uy" kind="show" id="cPg-nX-Tan"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="hD1-3w-01y"/>
                     </navigationItem>
                 </viewController>
@@ -1512,6 +1517,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCl-fX-1sI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-686" y="923"/>
+        </scene>
+        <!--Test Seat-->
+        <scene sceneID="r9L-Yq-Zg8">
+            <objects>
+                <viewController id="920-7A-3uy" customClass="testSeat" customModule="ConfPlus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5Oc-ua-Idk"/>
+                        <viewControllerLayoutGuide type="bottom" id="Pw2-yx-hds"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Z8-34-g0R">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Nm-ef-bs3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1456" y="-1131"/>
         </scene>
         <!--Explore-->
         <scene sceneID="Nx1-Xi-WWK">
