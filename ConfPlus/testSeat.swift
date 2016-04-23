@@ -9,6 +9,7 @@
 import UIKit
 
 class testSeat: UIViewController {
+    @IBOutlet var buttonCollection: [UIButton]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,7 @@ class testSeat: UIViewController {
         
         var x_pos:CGFloat? = 50.0;
         var y_pos:CGFloat? = 50.0;
+        a.frame = CGRectMake(x_pos!, y_pos!, a.frame.width, a.frame.height)
         
         let buttons: [[UIButton]] = [[a,a,a,a],[a,a,a,a]]
         for var x = 0; x < buttons.count; x++ {
@@ -44,8 +46,8 @@ class testSeat: UIViewController {
                 buttons[x][y].frame = CGRectMake(x_pos!, y_pos!, a.frame.width, a.frame.height)
                 y_pos = y_pos! + 50.0
                 
-                line += "\(buttons[x][y].frame.width)-\(buttons[x][y].frame.height)"
-                line+=""
+                line += "\(buttons[x][y].frame.maxX)-\(buttons[x][y].frame.maxY)"
+                line+=", "
             }
             x_pos = x_pos! + 50.0
             print(line)
