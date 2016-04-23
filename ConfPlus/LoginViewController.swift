@@ -22,6 +22,8 @@ class LoginViewController: UIViewController {
 		
         viewEffect.rect(loginView)
         // Do any additional setup after loading the view.
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject("6f7a5a2d.ngrok.io/api/v1", forKey: "server");
         
     }
 	
@@ -49,10 +51,13 @@ class LoginViewController: UIViewController {
             "method" : "getUser",
             "email" : email
         ]
-		
-        Alamofire.request(.POST, "https://b0d1d301.ngrok.io/api/v1", parameters: paramaters).responseJSON {
-            response in switch response.result
-            {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+		if let serverAdd = defaults.stringForKey("server")
+        {
+            Alamofire.request(.POST, "6f7a5a2d.ngrok.io/api/v1", parameters: paramaters).responseJSON {
+                response in switch response.result
+                {
                 case .Success:
                     if let value = response.result.value
                     {
@@ -72,12 +77,16 @@ class LoginViewController: UIViewController {
                     }
                 case .Failure(let error):
                     print(error)
-					self.showAlert("Invalid Username")
-            
+                    self.showAlert("Invalid Username")
+                    
+                }
+                
             }
-			
+ 
+        }else {
+            print("server not set in LoginViewController")
         }
-        //return password;
+                //return password;
         
     }
     
