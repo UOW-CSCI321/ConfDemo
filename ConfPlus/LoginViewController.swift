@@ -23,7 +23,7 @@ class LoginViewController: UIViewController {
         viewEffect.rect(loginView)
         // Do any additional setup after loading the view.
         let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject("6f7a5a2d.ngrok.io/api/v1", forKey: "server");
+        defaults.setObject("https://6f7a5a2d.ngrok.io/api/v1", forKey: "server");
         
     }
 	
@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
         let defaults = NSUserDefaults.standardUserDefaults()
 		if let serverAdd = defaults.stringForKey("server")
         {
-            Alamofire.request(.POST, "6f7a5a2d.ngrok.io/api/v1", parameters: paramaters).responseJSON {
+            Alamofire.request(.POST, serverAdd, parameters: paramaters).responseJSON {
                 response in switch response.result
                 {
                 case .Success:
