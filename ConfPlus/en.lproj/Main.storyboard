@@ -838,6 +838,9 @@
                     <navigationItem key="navigationItem" title="Explore" id="BZ8-iy-QlD">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="hD1-3w-01y"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="exploreEventsTableView" destination="bKh-Ah-wga" id="kSa-4W-RgL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jfb-Gp-XTa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
