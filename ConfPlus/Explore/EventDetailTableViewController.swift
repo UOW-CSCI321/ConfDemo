@@ -11,18 +11,22 @@ import MapKit
 import CoreLocation
 
 class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
-
     @IBOutlet var posterImageView: UIImageView!
     @IBOutlet var descriptionTextView: UITextView!
-    @IBOutlet weak var locationMapView: MKMapView!
+	@IBOutlet weak var locationMapView: MKMapView!
     @IBOutlet var addressTextView: UITextView!
     let regionRadius: CLLocationDistance = 1000
+    let desc = "test description"
+    let address = "test address"
+    var selectedEvent:Event!
+
+    
+    
+    
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+
         
         
         
@@ -33,6 +37,17 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         //var spanValue = 0.2
         
+        //poster
+        let imageName:String = "blithe.jpg"
+        let image = UIImage(named: imageName)
+        posterImageView.image = image
+        
+        
+        //decsription
+        //descriptionTextView.text = desc
+        descriptionTextView.text = selectedEvent.description
+        
+        //map
         //locationMapView.delegate = self
         let lat = 21.282778
         let long = -157.829444
@@ -43,6 +58,9 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
         annotation.title = "title"
         annotation.subtitle = "subtitle"
         locationMapView.addAnnotation(annotation)
+        
+        //address
+        addressTextView.text = address
         
         //var span = MKCoordinateSpanMake(spanValue, spanValue)
         
@@ -99,18 +117,34 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
 //
 //    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        // #warning Incomplete implementation, return the number of rows
-//        return 0
+//        //return 0
+//        return 4
 //    }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
+//
+//    
+//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//                 //Configure the cell...
+//        if indexPath == 0
+//        {
+//            //poster
+//        } else if indexPath == 1
+//        {
+//            //description
+//        }else if indexPath == 2
+//        {
+//            //poster
+//        } else if indexPath == 3
+//        {
+//            //address
+//        }else {
+//            print("cell was not 0,1,2 or 3 but: \(indexPath)")
+//        }
+//
+//        let cell = tableView.dequeueReusableCellWithIdentifier("posterCell", forIndexPath: indexPath)
+//        
+//        return cell
+//    }
+ 
 
     /*
     // Override to support conditional editing of the table view.

@@ -19,67 +19,91 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		
         viewEffect.rect(loginView)
         // Do any additional setup after loading the view.
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject("https://6f7a5a2d.ngrok.io/api/v1", forKey: "server");
         
-        }
+    }
+	
+	override func viewDidAppear(animated: Bool) {
+		//if let defaults = NSUserDefaults.standardUserDefaults()
+		let defaults = NSUserDefaults.standardUserDefaults()
+		if let _ = defaults.stringForKey("email") {
+			if let _ = defaults.stringForKey("password") {
+				//segue to next screen automatically
+				performSegueWithIdentifier("homeSegue", sender: self)
+			}
+		}
+
+	}
+	
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func data_request(email : String) -> String
+    func data_request(email : String, pwd : String) /*-> String*/
     {
         let paramaters = [
             "method" : "getUser",
             "email" : email
         ]
         
-        var password = "error"
-        
-        Alamofire.request(.POST, "https://b0d1d301.ngrok.io/api/v1", parameters: paramaters).responseJSON {
-            response in switch response.result
-            {
+        let defaults = NSUserDefaults.standardUserDefaults()
+		if let serverAdd = defaults.stringForKey("server")
+        {
+            Alamofire.request(.POST, serverAdd, parameters: paramaters).responseJSON {
+                response in switch response.result
+                {
                 case .Success:
                     if let value = response.result.value
                     {
                         let json = JSON(value)
-                        let data = json["data"][0]["password"] //data[0].password
-                        //print("data: \(data)")
-                        password = data.stringValue
-                        //print("password: \(password)")
+                        let password = json["data"][0]["password"].stringValue //data[0].password
+                        
+                        if(pwd == password)
+                        {
+                            //logged in
+                            let defaults = NSUserDefaults.standardUserDefaults()
+                            defaults.setObject(password, forKey: "password")
+                            defaults.setObject(email, forKey: "email")
+                            self.performSegueWithIdentifier("homeSegue", sender: self)
+                        }else {
+                            self.showAlert("Invalid Password")
+                        }
                     }
                 case .Failure(let error):
                     print(error)
-            
+                    self.showAlert("Invalid Username")
+                    
+                }
+                
             }
-            
+ 
+        }else {
+            print("server not set in LoginViewController")
         }
-        return password;
+                //return password;
         
     }
     
     @IBAction func LoginPressed(sender: AnyObject) {
         let username = usernameTextfield.text
         let password = passwordTextfield.text
-        let real_pwd = data_request(username!)
-       
-        if(real_pwd == password)
-        {
-            //logged in
-        }else {
-            let alertcontroller = UIAlertController(title: "invalid username or password", message: "Please try again", preferredStyle: .Alert)
-            //let alertview = UIAlertView(title: "invalid username or password", message: "The username and/or password is not valid.. Please try again", delegate: self, cancelButtonTitle: "Ok");
-            let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            alertcontroller.addAction(defaultAction)
-            //alertview.show()
-            self.presentViewController(alertcontroller, animated: true, completion: nil)
-        }
-        
+        data_request(username!, pwd: password!)
         
     }
-
+	
+	
+	func showAlert(title: String){
+		let alertcontroller = UIAlertController(title: title, message: "Please try again", preferredStyle: .Alert)
+		let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+		alertcontroller.addAction(defaultAction)
+		self.presentViewController(alertcontroller, animated: true, completion: nil)
+	}
     /*
     // MARK: - Navigation
 

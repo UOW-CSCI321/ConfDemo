@@ -114,6 +114,7 @@ class AccountTableViewController: UITableViewController {
         defaults.setObject("boroczky", forKey: "lastName")
         defaults.setObject("mattattack", forKey: "username")
         defaults.setObject("mb340@uowmail.edu.au", forKey: "email")
+        defaults.setObject("6f7a5a2d.ngrok.io/api/v1", forKey: "server");
         
         //get
         //let defaults = NSUserDefaults.standardUserDefaults()
@@ -205,7 +206,12 @@ class AccountTableViewController: UITableViewController {
 	}
 	
 	@IBAction func logout(sender: AnyObject) {
-		self.performSegueWithIdentifier("goToLogin", sender: self)		
+        
+        //clear NSUserDefaults
+        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(NSBundle.mainBundle().bundleIdentifier!)
+        NSUserDefaults.standardUserDefaults().synchronize()
+        
+        self.performSegueWithIdentifier("goToLogin", sender: self)
 	}
 
 	
