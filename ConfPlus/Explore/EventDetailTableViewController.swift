@@ -18,6 +18,7 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
     let regionRadius: CLLocationDistance = 1000
     let desc = "test description"
     let address = "test address"
+    var selectedEvent:Event!
 
     
     
@@ -43,7 +44,8 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
         
         
         //decsription
-        descriptionTextView.text = desc
+        //descriptionTextView.text = desc
+        descriptionTextView.text = selectedEvent.description
         
         //map
         //locationMapView.delegate = self

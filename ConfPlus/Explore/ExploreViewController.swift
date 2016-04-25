@@ -42,6 +42,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("exploreCell", forIndexPath: indexPath) as! ExploreTableViewCell
         cell.eventName.text = aevent.name
         cell.eventDate.text = dateToFullStyleString(aevent.from_date!)
+        print("indexpath: \(indexPath.row)")
         return cell
     }
  
@@ -74,6 +75,13 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
         let newString = dateToFullStyleString(adateObj)
         return newString
     }*/
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var indexPath:NSIndexPath = self.EventsTableView.indexPathForSelectedRow!
+        var eventVC:EventDetailTableViewController = segue.destinationViewController as! EventDetailTableViewController
+        //eventVC.descriptionTextView.text =
+        eventVC.selectedEvent = eventArray[indexPath.row]
+        
+    }
     
     func data_request()
     {
