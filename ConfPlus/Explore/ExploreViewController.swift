@@ -131,9 +131,15 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
         
         //post request
         let paramaters = [
-            "method" : "getEvent",
-            "event_id" : "1"
+            "method" : "getEventsByTag",
+            "tagName" : "testTag"
         ] //at the moment the api call need event id
+        
+        /* WORKING WITH THIS*/
+//        let paramaters = [
+//            "method" : "getEvent",
+//            "event_id" : "1"
+//        ]
         
         let defaults = NSUserDefaults.standardUserDefaults()
         if let serverAdd = defaults.stringForKey("server")
@@ -146,6 +152,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
                     {
                         //create an event object
 //                        var e:Event
+                        let list: NSMutableArray = []
                         let json = JSON(value)
 //                        e.name = json["data"][0]["name"].stringValue
 //                        //let password = json["data"][0]["password"].stringValue //data[0].password
@@ -156,8 +163,14 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
 //                        e.desc = json["data"][0]["description"].stringValue
 //                        e.poster_url = json["data"][0]["poster_url"].stringValue
 //                        self.eventArray.append(e)
+                        
+//                        list.addObjectsFromArray(json["data"][0] as! [AnyObject])
+//                        print(list[0].name)
+                        print(json["data"])
                         let aevent = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
-                        aevent.name = json["data"][0]["name"].stringValue
+                        aevent.name = json["data"][0][0]["name"].stringValue
+                        print("name: \(json["data"][0]["name"].stringValue)")
+                        print(json["data"][0]["from_date"].stringValue)
                         aevent.from_date = self.serverStringToDate(json["data"][0]["from_date"].stringValue)
                         aevent.to_date = self.serverStringToDate(json["data"][0]["to_date"].stringValue)
                         aevent.desc = json["data"][0]["description"].stringValue
