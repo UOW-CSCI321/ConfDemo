@@ -839,7 +839,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="hD1-3w-01y"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="exploreEventsTableView" destination="bKh-Ah-wga" id="kSa-4W-RgL"/>
+                        <outlet property="EventsTableView" destination="9qa-mF-wI6" id="4dO-3G-Pn7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jfb-Gp-XTa" userLabel="First Responder" sceneMemberID="firstResponder"/>

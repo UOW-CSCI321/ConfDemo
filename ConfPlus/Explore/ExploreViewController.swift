@@ -14,8 +14,8 @@ import CoreData
 
 class ExploreViewController: UIViewController, UITableViewDelegate {
 
-    @IBOutlet var exploreEventsTableView: UIView!
     
+    @IBOutlet var EventsTableView: UITableView!
     
    // var eventArray:[Event] = []
     var eventArray = [Event]()
@@ -29,13 +29,9 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        data_request()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        data_request()
-        self.exploreEventsTableView.reloadInputViews()
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -46,42 +42,47 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        print("count: \(eventArray.count)")
         return eventArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let aevent = eventArray[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("exploreCell", forIndexPath: indexPath) as! ExploreTableViewCell
-        cell.eventName.text = "name"
-        cell.eventDate.text = "date"
+        cell.eventName.text = aevent.name
+        cell.eventDate.text = dateToFullStyleString(aevent.from_date!)
+//        cell.eventName.text = "name"
+//        cell.eventDate.text = "date"
 
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDelegate.managedObjectContext
-        let eventEntity = NSEntityDescription.entityForName("Event", inManagedObjectContext: context)
-
-        // Fetch
-        let fetchRequest = NSFetchRequest()
-        fetchRequest.entity = eventEntity
-        fetchRequest.returnsObjectsAsFaults = false
-
-        do {
-            let result = try context.executeFetchRequest(fetchRequest) as! [Event]
-
-            if(result.count > 1)
-            {
-                print("error should only have retrieved one record. retrieved \(result.count)")
-
-                print(result)
-            } else {
-                cell.eventName.text = result[0].name
-                cell.eventDate.text = "\(self.dateToFullStyleString(result[0].from_date!)) to \(self.dateToFullStyleString(result[0].to_date!))"
-                //TODO: poster stuff
-            }
-            print(result)
-        } catch {
-        let fetchError = error as NSError
-        print(fetchError)
-        }
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let context = appDelegate.managedObjectContext
+//        let eventEntity = NSEntityDescription.entityForName("Event", inManagedObjectContext: context)
+//
+//        // Fetch
+//        let fetchRequest = NSFetchRequest()
+//        fetchRequest.entity = eventEntity
+//        fetchRequest.returnsObjectsAsFaults = false
+//
+//        do {
+//            let result = try context.executeFetchRequest(fetchRequest) as! [Event]
+//
+//            if(result.count > 1)
+//            {
+//                print("error should only have retrieved one record. retrieved \(result.count)")
+//
+//                print(result)
+//            } else {
+//                cell.eventName.text = result[0].name
+//                cell.eventDate.text = "\(self.dateToFullStyleString(result[0].from_date!)) to \(self.dateToFullStyleString(result[0].to_date!))"
+//                //TODO: poster stuff
+//            }
+//            print(result)
+//        } catch {
+//        let fetchError = error as NSError
+//        print(fetchError)
+//        }
 
 
 //        cell.eventName.text = eventName
@@ -162,11 +163,15 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
                         aevent.desc = json["data"][0]["description"].stringValue
                         aevent.poster_url = json["data"][0]["poster_url"].stringValue
                         aevent.event_id = json["data"][0]["event_id"].intValue
-     
+                        
+                        self.eventArray.append(aevent);
+                        self.EventsTableView.reloadData()
+
                         
                     }
                 case .Failure(let error):
                     print(error)
+                    //handle if there is no internet connection
                     
                 }
                 
@@ -187,11 +192,11 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
         
         
         
-        do {
-            try context.save()
-        } catch {
-            fatalError("Failure to save context: \(error)")
-        }
+//        do {
+//            try context.save()
+//        } catch {
+//            fatalError("Failure to save context: \(error)")
+//        }
 
         
     }
