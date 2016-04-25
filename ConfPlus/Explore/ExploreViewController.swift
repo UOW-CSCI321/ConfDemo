@@ -132,7 +132,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
         //post request
         let paramaters = [
             "method" : "getEventsByTag",
-            "tagName" : "testTag"
+            "tag_name" : "testTag"
         ] //at the moment the api call need event id
         
         /* WORKING WITH THIS*/
@@ -166,21 +166,28 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
                         
 //                        list.addObjectsFromArray(json["data"][0] as! [AnyObject])
 //                        print(list[0].name)
-                        print(json["data"])
-                        let aevent = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
-                        aevent.name = json["data"][0][0]["name"].stringValue
-                        print("name: \(json["data"][0]["name"].stringValue)")
-                        print(json["data"][0]["from_date"].stringValue)
-                        aevent.from_date = self.serverStringToDate(json["data"][0]["from_date"].stringValue)
-                        aevent.to_date = self.serverStringToDate(json["data"][0]["to_date"].stringValue)
-                        aevent.desc = json["data"][0]["description"].stringValue
-                        aevent.poster_url = json["data"][0]["poster_url"].stringValue
-                        aevent.event_id = json["data"][0]["event_id"].intValue
-                        
-                        self.eventArray.append(aevent);
-                        self.EventsTableView.reloadData()
+                        var iterations = json["data"].count
+                        iterations = iterations-1
+                        for i in 0 ..< json["data"].count
+                        {
+                            let aevent = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
+                            aevent.name = json["data"][i]["name"].stringValue
+                            print("name: \(aevent.name)")
+                            aevent.from_date = self.serverStringToDate(json["data"][i]["from_date"].stringValue)
+                            print("from date:\(aevent.from_date)")
+                            aevent.to_date = self.serverStringToDate(json["data"][i]["to_date"].stringValue)
+                            print("to date:\(aevent.to_date)")
+                            aevent.desc = json["data"][i]["description"].stringValue
+                            print("desc: \(aevent.desc)")
+                            aevent.poster_url = json["data"][i]["poster_url"].stringValue
+                            print("poster: \(aevent.poster_url)")
+                            aevent.event_id = json["data"][i]["event_id"].intValue
+                            print("id: \(aevent.event_id)")
+                            
+                            self.eventArray.append(aevent);
 
-                        
+                        }
+                        self.EventsTableView.reloadData()
                     }
                 case .Failure(let error):
                     print(error)
