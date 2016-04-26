@@ -53,7 +53,7 @@ extension TimeTableViewController: UITableViewDelegate{
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "goToPresentationDetailView"{
-			let _ = segue.destinationViewController as! TalksViewController
+			let vc = segue.destinationViewController as! TalksViewController
 			// TODO: Assign Value into it
 		}
 	}

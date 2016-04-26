@@ -1461,14 +1461,9 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uzq-fw-Ct1">
                                 <rect key="frame" x="0.0" y="692" width="414" height="44"/>
                                 <items>
-                                    <barButtonItem style="plain" id="rne-ZF-Ks9">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xrK-CS-bqc">
-                                            <rect key="frame" x="20" y="7" width="124" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="View Presentation"/>
-                                        </button>
+                                    <barButtonItem title="View Presentation" id="AJs-x0-gfs">
                                         <connections>
-                                            <segue destination="dUV-x4-X2H" kind="presentation" id="72W-iU-9wf"/>
+                                            <segue destination="dUV-x4-X2H" kind="presentation" id="HNE-p4-pIl"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="hIj-qm-a5o"/>
@@ -1783,6 +1778,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dUV-x4-X2H" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Timetable" id="WSR-O5-zRV"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="iiw-ve-5wq"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rKb-en-Qmz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1832,6 +1828,6 @@
         <image name="timetable" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="72W-iU-9wf"/>
+        <segue reference="HNE-p4-pIl"/>
     </inferredMetricsTieBreakers>
 </document>
