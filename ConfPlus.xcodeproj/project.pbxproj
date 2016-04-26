@@ -66,6 +66,7 @@
 		E93163981BC62AB6007408C7 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163971BC62AB6007408C7 /* ExploreViewController.swift */; };
 		E9D055C51CCF0EC10045BA86 /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */; };
 		E9D055C71CCF1CCA0045BA86 /* TimetableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D055C61CCF1CCA0045BA86 /* TimetableTableViewCell.swift */; };
+		E9D055C91CCF20510045BA86 /* PersonalDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D055C81CCF20510045BA86 /* PersonalDetailsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -133,6 +134,7 @@
 		E93163971BC62AB6007408C7 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreViewController.swift; path = Explore/ExploreViewController.swift; sourceTree = "<group>"; };
 		E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
 		E9D055C61CCF1CCA0045BA86 /* TimetableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableTableViewCell.swift; sourceTree = "<group>"; };
+		E9D055C81CCF20510045BA86 /* PersonalDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalDetailsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +306,7 @@
 				C94AFA4E1C9808AB00EC88B6 /* PersonalDetailsViewController.swift */,
 				C94AFA501C980A0B00EC88B6 /* PaymentViewController.swift */,
 				C94AFA521C980A5400EC88B6 /* ReceiptViewController.swift */,
+				E9D055C81CCF20510045BA86 /* PersonalDetailsTableViewCell.swift */,
 			);
 			name = Explore;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				E9D055C51CCF0EC10045BA86 /* TicketTableViewCell.swift in Sources */,
 				C94AFA511C980A0B00EC88B6 /* PaymentViewController.swift in Sources */,
 				C9FD080D1CB23BE500C44595 /* User.swift in Sources */,
+				E9D055C91CCF20510045BA86 /* PersonalDetailsTableViewCell.swift in Sources */,
 				E90201C11C9CB7EB00C7839A /* ExploreTableViewCell.swift in Sources */,
 				C94AFA6A1C981D9000EC88B6 /* TicketProfileTableViewController.swift in Sources */,
 				C94AFA531C980A5400EC88B6 /* ReceiptViewController.swift in Sources */,
