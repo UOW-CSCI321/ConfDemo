@@ -65,6 +65,7 @@
 		E93163931BC5E573007408C7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163921BC5E573007408C7 /* LoginViewController.swift */; };
 		E93163981BC62AB6007408C7 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163971BC62AB6007408C7 /* ExploreViewController.swift */; };
 		E9D055C51CCF0EC10045BA86 /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */; };
+		E9D055C71CCF1CCA0045BA86 /* TimetableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D055C61CCF1CCA0045BA86 /* TimetableTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,6 +132,7 @@
 		E93163921BC5E573007408C7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E93163971BC62AB6007408C7 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreViewController.swift; path = Explore/ExploreViewController.swift; sourceTree = "<group>"; };
 		E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
+		E9D055C61CCF1CCA0045BA86 /* TimetableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 			children = (
 				C94AFA591C980DE400EC88B6 /* TimeTableViewController.swift */,
 				C94AFA5B1C980E3B00EC88B6 /* TalksViewController.swift */,
+				E9D055C61CCF1CCA0045BA86 /* TimetableTableViewCell.swift */,
 			);
 			name = Timetable;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				C94AFA5E1C980ECE00EC88B6 /* MessagesTableViewController.swift in Sources */,
 				E90A0A621BCF7143005D611C /* Readme.md in Sources */,
 				E90201C71C9CC74400C7839A /* EventTableViewCell.swift in Sources */,
+				E9D055C71CCF1CCA0045BA86 /* TimetableTableViewCell.swift in Sources */,
 				C9F4E0BA1CA0CEC8009CA1A9 /* Model.xcdatamodeld in Sources */,
 				C9FD08111CB23BE500C44595 /* Payment.swift in Sources */,
 				C94AFA711C981FED00EC88B6 /* AdminTableViewController.swift in Sources */,
