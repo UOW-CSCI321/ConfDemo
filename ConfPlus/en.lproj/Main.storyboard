@@ -1322,6 +1322,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kFX-LU-SOb">
+                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="xZs-PQ-aJj"/>
+                                    <barButtonItem title="Continue" id="sWa-HT-bs9">
+                                        <connections>
+                                            <segue destination="W1a-UK-Ju2" kind="show" id="zQj-et-TJx"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="H2R-8O-K5o">
                                 <rect key="frame" x="0.0" y="64" width="414" height="628"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -1367,28 +1378,25 @@
                                     <outlet property="delegate" destination="wQA-R6-OCC" id="oZO-P5-ehQ"/>
                                 </connections>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kFX-LU-SOb">
-                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="xZs-PQ-aJj"/>
-                                    <barButtonItem title="Continue" id="sWa-HT-bs9">
-                                        <connections>
-                                            <segue destination="W1a-UK-Ju2" kind="show" id="zQj-et-TJx"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kFX-LU-SOb" firstAttribute="top" secondItem="H2R-8O-K5o" secondAttribute="bottom" id="4oI-Kw-FpR"/>
+                            <constraint firstItem="H2R-8O-K5o" firstAttribute="top" secondItem="pqa-2g-ZTF" secondAttribute="bottom" id="7sQ-pB-ut3"/>
                             <constraint firstItem="kFX-LU-SOb" firstAttribute="leading" secondItem="wfr-RH-gwr" secondAttribute="leadingMargin" constant="-20" id="Q2n-wk-9Kf"/>
+                            <constraint firstItem="H2R-8O-K5o" firstAttribute="top" secondItem="wfr-RH-gwr" secondAttribute="topMargin" constant="64" id="bf4-zi-u9S"/>
                             <constraint firstItem="H2R-8O-K5o" firstAttribute="leading" secondItem="wfr-RH-gwr" secondAttribute="leadingMargin" constant="-20" id="dJI-jU-mM1"/>
                             <constraint firstItem="H2R-8O-K5o" firstAttribute="top" secondItem="pqa-2g-ZTF" secondAttribute="bottom" id="kgy-RQ-0wY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kFX-LU-SOb" secondAttribute="trailing" constant="-20" id="mJn-Jm-7I5"/>
                             <constraint firstItem="aOf-fZ-Y4e" firstAttribute="top" secondItem="kFX-LU-SOb" secondAttribute="bottom" id="rlO-2w-0v4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H2R-8O-K5o" secondAttribute="trailing" constant="-20" id="yXU-X6-qfQ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="7sQ-pB-ut3"/>
+                                <exclude reference="kgy-RQ-0wY"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Event Name" id="16t-3R-4Mf"/>
                     <attributedString key="userComments">
@@ -1407,7 +1415,7 @@
         <!--verifiyViewController-->
         <scene sceneID="kr0-8G-7ED">
             <objects>
-                <viewController title="verifiyViewController" id="W1a-UK-Ju2" sceneMemberID="viewController">
+                <viewController title="verifiyViewController" id="W1a-UK-Ju2" customClass="PaymentViewController" customModule="ConfPlus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nY1-gy-aKw"/>
                         <viewControllerLayoutGuide type="bottom" id="vhO-LM-5O1"/>
@@ -1416,22 +1424,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cZm-GL-WsT">
-                                <rect key="frame" x="20" y="90" width="385" height="241"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cZm-GL-WsT">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjl-9Z-vlG">
-                                <rect key="frame" x="64" y="502" width="296" height="30"/>
-                                <state key="normal" title="Yes these details are correct, lets purchase"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="informationCell" textLabel="HEl-v9-vJU" detailTextLabel="Ed9-Bo-oCM" style="IBUITableViewCellStyleValue1" id="Mmo-CP-Yph">
+                                        <rect key="frame" x="0.0" y="92" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mmo-CP-Yph" id="vDz-G0-NdU">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Ticket Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HEl-v9-vJU">
+                                                    <rect key="frame" x="15" y="12" width="91.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Total Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ed9-Bo-oCM">
+                                                    <rect key="frame" x="322" y="12" width="77" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <segue destination="cCl-fq-eRE" kind="show" id="bk4-uw-aTY"/>
+                                    <outlet property="dataSource" destination="W1a-UK-Ju2" id="OAB-92-4Sa"/>
+                                    <outlet property="delegate" destination="W1a-UK-Ju2" id="KDr-eM-2YM"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5O-ss-Isa">
-                                <rect key="frame" x="111" y="554" width="203" height="30"/>
-                                <state key="normal" title="No these details are incorrect"/>
-                            </button>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uzq-fw-Ct1">
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uzq-fw-Ct1">
                                 <rect key="frame" x="0.0" y="692" width="414" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" id="rne-ZF-Ks9">
@@ -1441,77 +1468,38 @@
                                             <state key="normal" title="View Presentation"/>
                                         </button>
                                         <connections>
-                                            <segue destination="dUV-x4-X2H" kind="presentation" id="SYj-dQ-ekw"/>
+                                            <segue destination="dUV-x4-X2H" kind="presentation" id="72W-iU-9wf"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="hIj-qm-a5o"/>
-                                    <barButtonItem title="Continue" id="Lh4-2R-b93"/>
+                                    <barButtonItem title="Purchase" id="Lh4-2R-b93">
+                                        <connections>
+                                            <action selector="performPurchase:" destination="W1a-UK-Ju2" id="Vbg-08-OsD"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uzq-fw-Ct1" firstAttribute="top" secondItem="cZm-GL-WsT" secondAttribute="bottom" id="Jrd-e1-KXB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cZm-GL-WsT" secondAttribute="trailing" constant="-20" id="Nv4-Hz-zX3"/>
+                            <constraint firstItem="cZm-GL-WsT" firstAttribute="leading" secondItem="5t5-ra-Oss" secondAttribute="leadingMargin" constant="-20" id="QDC-Nh-O7c"/>
+                            <constraint firstItem="uzq-fw-Ct1" firstAttribute="leading" secondItem="5t5-ra-Oss" secondAttribute="leadingMargin" constant="-20" id="VS6-Jg-1zx"/>
+                            <constraint firstItem="vhO-LM-5O1" firstAttribute="top" secondItem="uzq-fw-Ct1" secondAttribute="bottom" id="kXc-HE-Zrf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uzq-fw-Ct1" secondAttribute="trailing" constant="-20" id="xWJ-17-zbu"/>
+                            <constraint firstItem="cZm-GL-WsT" firstAttribute="top" secondItem="5t5-ra-Oss" secondAttribute="topMargin" id="yo9-G8-BoM"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Confirmation" id="T2e-3X-Yx4"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <segue destination="2L2-in-fXa" kind="show" identifier="goToSuccessPurchased" id="ys0-gy-uyu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H3G-KT-nrT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="440" y="-2086"/>
-        </scene>
-        <!--Payment-->
-        <scene sceneID="elf-yk-Xjc">
-            <objects>
-                <viewController storyboardIdentifier="PaymentViewController" title="Payment" id="cCl-fq-eRE" customClass="PaymentViewController" customModule="ConfPlus" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="AhS-uy-xLR"/>
-                        <viewControllerLayoutGuide type="bottom" id="VG1-xq-4qM"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="iop-SE-hNK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZQ-B5-fDf">
-                                <rect key="frame" x="48" y="122" width="25" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="paypal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNc-Vf-6CL">
-                                <rect key="frame" x="48" y="166" width="52" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvn-df-dxj">
-                                <rect key="frame" x="92" y="375" width="37" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$xx.yy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SxV-zO-iyj">
-                                <rect key="frame" x="201" y="374" width="50" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Cg-hd-uOP">
-                                <rect key="frame" x="129" y="604" width="171" height="30"/>
-                                <state key="normal" title="Save my payment details"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGA-NL-xyN">
-                                <rect key="frame" x="163" y="649" width="103" height="30"/>
-                                <state key="normal" title="Make Payment">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="2L2-in-fXa" kind="show" id="w2V-HP-fO0"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oAl-CU-VKf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="946" y="-2086"/>
         </scene>
         <!--Receipt-->
         <scene sceneID="wvM-N8-uZL">
@@ -1525,22 +1513,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5sp-Bd-cGC">
-                                <rect key="frame" x="103" y="81" width="230" height="223"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="matt" translatesAutoresizingMaskIntoConstraints="NO" id="5sp-Bd-cGC">
+                                <rect key="frame" x="87" y="72" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="3Vj-dJ-Cn3"/>
+                                    <constraint firstAttribute="height" constant="240" id="M0O-8z-A0l"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your ticket/s has been purchased. Your order number is XXXX. Please your email" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeB-SY-Haj">
-                                <rect key="frame" x="84" y="364" width="285" height="66"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your ticket/s has been purchased. Your order number is XXXX. Please your email" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeB-SY-Haj">
+                                <rect key="frame" x="27" y="308" width="360" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="dBG-mw-QHU"/>
+                                    <constraint firstAttribute="width" constant="360" id="fyJ-10-2O3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jeB-SY-Haj" firstAttribute="centerX" secondItem="VFE-df-jGq" secondAttribute="centerX" id="S4o-gy-VdG"/>
+                            <constraint firstItem="jeB-SY-Haj" firstAttribute="centerY" secondItem="VFE-df-jGq" secondAttribute="centerY" id="SCo-IG-aJo"/>
+                            <constraint firstItem="5sp-Bd-cGC" firstAttribute="centerX" secondItem="VFE-df-jGq" secondAttribute="centerX" id="T6I-du-tYs"/>
+                            <constraint firstItem="5sp-Bd-cGC" firstAttribute="top" secondItem="bDE-ut-8Pr" secondAttribute="bottom" constant="8" id="p58-1X-LLg"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Receipt" id="bcf-HL-wCy">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="fC6-QL-ucg">
+                            <connections>
+                                <action selector="backToEvent:" destination="2L2-in-fXa" id="Die-pi-B72"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqV-7u-knr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1469" y="-2086"/>
+            <point key="canvasLocation" x="948" y="-2086"/>
         </scene>
         <!--Home-->
         <scene sceneID="54u-mM-r0S">
@@ -1814,6 +1823,7 @@
         <image name="exit" width="64" height="64"/>
         <image name="explore" width="25" height="25"/>
         <image name="first" width="30" height="30"/>
+        <image name="matt" width="720" height="720"/>
         <image name="message" width="64" height="64"/>
         <image name="profile" width="25" height="25"/>
         <image name="second" width="30" height="30"/>
@@ -1822,6 +1832,6 @@
         <image name="timetable" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SYj-dQ-ekw"/>
+        <segue reference="72W-iU-9wf"/>
     </inferredMetricsTieBreakers>
 </document>
