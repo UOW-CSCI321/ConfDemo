@@ -11,14 +11,34 @@ import UIKit
 
 class TicketDetailsViewController: UIViewController {
     
+	@IBOutlet weak var totalPrice: UIBarButtonItem!
+	
+	@IBAction func cancelPurchaseTicket(sender: AnyObject) {
+		self.dismissViewControllerAnimated(true, completion: nil)
+	}
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+}
+
+extension TicketDetailsViewController: UITableViewDelegate{
+	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+		return 1
+	}
+	
+	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return 2
+	}
+	
+	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		
+		let cell = tableView.dequeueReusableCellWithIdentifier("ticketCell", forIndexPath: indexPath) as! TicketTableViewCell
+		
+		cell.ticketCount.text = "0"
+		cell.ticketName.text = "Ticket Name"
+		cell.ticketPrice.text = "AUD 1.00"
+		
+		return cell
+	}
 }

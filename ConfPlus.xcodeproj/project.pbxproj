@@ -64,6 +64,7 @@
 		E93163911BC5E294007408C7 /* viewEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163901BC5E294007408C7 /* viewEffect.swift */; };
 		E93163931BC5E573007408C7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163921BC5E573007408C7 /* LoginViewController.swift */; };
 		E93163981BC62AB6007408C7 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163971BC62AB6007408C7 /* ExploreViewController.swift */; };
+		E9D055C51CCF0EC10045BA86 /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,6 +130,7 @@
 		E93163901BC5E294007408C7 /* viewEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = viewEffect.swift; path = ConfPlus/viewEffect.swift; sourceTree = "<group>"; };
 		E93163921BC5E573007408C7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E93163971BC62AB6007408C7 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreViewController.swift; path = Explore/ExploreViewController.swift; sourceTree = "<group>"; };
+		E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +297,7 @@
 				E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */,
 				E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */,
 				C94AFA4C1C98085B00EC88B6 /* TicketDetailsViewController.swift */,
+				E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */,
 				C94AFA4E1C9808AB00EC88B6 /* PersonalDetailsViewController.swift */,
 				C94AFA501C980A0B00EC88B6 /* PaymentViewController.swift */,
 				C94AFA521C980A5400EC88B6 /* ReceiptViewController.swift */,
@@ -469,6 +472,7 @@
 				C9FD08041CB23BE500C44595 /* Session_Attending+CoreDataProperties.swift in Sources */,
 				C9FD08051CB23BE500C44595 /* Session_Attending.swift in Sources */,
 				E93163931BC5E573007408C7 /* LoginViewController.swift in Sources */,
+				E9D055C51CCF0EC10045BA86 /* TicketTableViewCell.swift in Sources */,
 				C94AFA511C980A0B00EC88B6 /* PaymentViewController.swift in Sources */,
 				C9FD080D1CB23BE500C44595 /* User.swift in Sources */,
 				E90201C11C9CB7EB00C7839A /* ExploreTableViewCell.swift in Sources */,
