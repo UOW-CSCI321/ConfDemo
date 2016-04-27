@@ -45,7 +45,7 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
         
         //decsription
         //descriptionTextView.text = desc
-        descriptionTextView.text = selectedEvent.description
+        descriptionTextView.text = selectedEvent.desc
         
         //map
         //locationMapView.delegate = self
