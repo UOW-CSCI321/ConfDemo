@@ -77,7 +77,8 @@ class LoginViewController: UIViewController {
                     }
                 case .Failure(let error):
                     print(error)
-                    self.showAlert("Invalid Username")
+                    //print("error code: \(error.localizedDescription)")
+                    self.showAlert(error.localizedDescription)
                     
                 }
                 
