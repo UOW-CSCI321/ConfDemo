@@ -37,13 +37,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        /*this is working but we want to get the data from the database*/
-        let aevent = eventArray[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("exploreCell", forIndexPath: indexPath) as! ExploreTableViewCell
-        //cell.eventName.text = aevent.name
-        //cell.eventDate.text = dateToFullStyleString(aevent.from_date!)
-        //print("indexpath: \(indexPath.row)")
-        //return cell
         
         //get from database
         //coredata
@@ -58,45 +52,9 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
         
         do {
             let result = try context.executeFetchRequest(fetchRequest) as! [Event]
-            
-            /*if(result.count > 1)
-            {
-                print("error should only have retrieved one record. retrieved \(result.count)")
-                //lets try to delete the data
-                /*let deleterequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-                 do { try context.executeFetchRequest(deleterequest)}
-                 catch let error as NSError { debugPrint(error) }*/
-                
-                //deleteIncidents("User")
-                
-                print(result)
-            } else {*/
                 cell.eventName.text = result[indexPath.row].name
                 cell.eventDate.text = dateToFullStyleString(result[indexPath.row].from_date!)
-                
-//                let fname = result[0].first_name
-//                let lname = result[0].last_name
-//                var name = fname! + " "
-//                name += lname!
-//                print("name")
-//                print(name)
-//                
-//                nameLabel.text = name
-//                usernameLabel.text = result[0].username
-//                
-//                
-//                var val = ""
-//                if((result[0].email_verified) != nil)
-//                {
-//                    val = "(validated)"
-//                }else {
-//                    val = "(not validated)"
-//                }
-//                if let email = result[0].email{
-//                    emailLabel.text = "\(email) \(val)"
-//                }
-                
-            //}
+
             print(result)
         } catch {
             let fetchError = error as NSError

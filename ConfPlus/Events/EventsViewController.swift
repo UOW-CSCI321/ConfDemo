@@ -103,6 +103,15 @@ class EventsViewController: UIViewController, UITableViewDelegate {
                             self.eventAttendedArray.append(aevent);
                             
                         }
+                        //clear current data in the database
+                        
+                        //save to database
+                        do {
+                            try context.save()
+                        } catch {
+                            fatalError("Failure to save context in ExploreViewController: \(error)")
+                        }
+
                         self.eventsTableView.reloadData()
                         
                     }
@@ -140,22 +149,30 @@ class EventsViewController: UIViewController, UITableViewDelegate {
 
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let aevent = eventAttendedArray[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as! EventTableViewCell
 
-		cell.eventName.text = aevent.name
-		cell.eventDate.text = dateToFullStyleString(aevent.from_date!)
-		
-        return cell
+        //get from database
+        //coredata
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
         
-        /*
-        let aevent = eventArray[indexPath.row]
-        let cell = tableView.dequeueReusableCellWithIdentifier("exploreCell", forIndexPath: indexPath) as! ExploreTableViewCell
-        cell.eventName.text = aevent.name
-        cell.eventDate.text = dateToFullStyleString(aevent.from_date!)
-        print("indexpath: \(indexPath.row)")
-        return cell*/
-
+        let eventEntity = NSEntityDescription.entityForName("Event", inManagedObjectContext: context)
+        // Fetch
+        let fetchRequest = NSFetchRequest()
+        fetchRequest.entity = eventEntity
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        do {
+            let result = try context.executeFetchRequest(fetchRequest) as! [Event]
+            cell.eventName.text = result[indexPath.row].name
+            cell.eventDate.text = dateToFullStyleString(result[indexPath.row].from_date!)
+            
+            print(result)
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+        }
+        return cell
     }
 	
 
