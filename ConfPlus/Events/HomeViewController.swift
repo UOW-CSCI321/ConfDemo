@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
 		if tag == 6 {
 			dismissViewControllerAnimated(true, completion: nil)
 		} else {
-			performSegueWithIdentifier("goToTabView", sender: self)
+			performSegueWithIdentifier("goToTabView", sender: tag)
 		}
 	}
 	
@@ -38,7 +38,7 @@ class HomeViewController: UIViewController {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "goToTabView"{
 			let vc = segue.destinationViewController as! UITabBarController
-			vc.selectedIndex = (sender?.view.tag)! - 1
+			vc.selectedIndex = (sender as! Int) - 1
 		}
 	}
 	
