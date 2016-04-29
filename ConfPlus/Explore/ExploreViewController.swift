@@ -42,7 +42,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier("exploreCell", forIndexPath: indexPath) as! ExploreTableViewCell
         cell.eventName.text = aevent.name
         cell.eventDate.text = dateToFullStyleString(aevent.from_date!)
-        print("indexpath: \(indexPath.row)")
+        //print("indexpath: \(indexPath.row)")
         return cell
     }
  
@@ -131,7 +131,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
                     }
                 case .Failure(let error):
                     print(error)
-                    //handle if there is no internet connection
+                    //handle if there is no internet connection by alerting the user
                     
                 }
                 
