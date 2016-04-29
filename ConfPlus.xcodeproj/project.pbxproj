@@ -16,7 +16,7 @@
 		C94AFA5A1C980DE400EC88B6 /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA591C980DE400EC88B6 /* TimeTableViewController.swift */; };
 		C94AFA5C1C980E3B00EC88B6 /* TalksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA5B1C980E3B00EC88B6 /* TalksViewController.swift */; };
 		C94AFA5E1C980ECE00EC88B6 /* MessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA5D1C980ECE00EC88B6 /* MessagesTableViewController.swift */; };
-		C94AFA601C9811BD00EC88B6 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA5F1C9811BD00EC88B6 /* MapViewController.swift */; };
+		C94AFA601C9811BD00EC88B6 /* EventLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA5F1C9811BD00EC88B6 /* EventLocationViewController.swift */; };
 		C94AFA661C981CAD00EC88B6 /* MyTicketsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA651C981CAD00EC88B6 /* MyTicketsTableViewController.swift */; };
 		C94AFA6A1C981D9000EC88B6 /* TicketProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA691C981D9000EC88B6 /* TicketProfileTableViewController.swift */; };
 		C94AFA6C1C981E7700EC88B6 /* SecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA6B1C981E7700EC88B6 /* SecurityViewController.swift */; };
@@ -82,7 +82,7 @@
 		C94AFA591C980DE400EC88B6 /* TimeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeTableViewController.swift; path = Events/TimeTableViewController.swift; sourceTree = "<group>"; };
 		C94AFA5B1C980E3B00EC88B6 /* TalksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TalksViewController.swift; path = Events/TalksViewController.swift; sourceTree = "<group>"; };
 		C94AFA5D1C980ECE00EC88B6 /* MessagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesTableViewController.swift; path = Events/MessagesTableViewController.swift; sourceTree = "<group>"; };
-		C94AFA5F1C9811BD00EC88B6 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = Events/MapViewController.swift; sourceTree = "<group>"; };
+		C94AFA5F1C9811BD00EC88B6 /* EventLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventLocationViewController.swift; path = Events/EventLocationViewController.swift; sourceTree = "<group>"; };
 		C94AFA651C981CAD00EC88B6 /* MyTicketsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyTicketsTableViewController.swift; path = Events/MyTicketsTableViewController.swift; sourceTree = "<group>"; };
 		C94AFA691C981D9000EC88B6 /* TicketProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketProfileTableViewController.swift; path = Events/TicketProfileTableViewController.swift; sourceTree = "<group>"; };
 		C94AFA6B1C981E7700EC88B6 /* SecurityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SecurityViewController.swift; path = Events/SecurityViewController.swift; sourceTree = "<group>"; };
@@ -173,7 +173,7 @@
 				C94AFA571C980D7C00EC88B6 /* HomeViewController.swift */,
 				C94AFA611C981C0600EC88B6 /* Timetable */,
 				C94AFA5D1C980ECE00EC88B6 /* MessagesTableViewController.swift */,
-				C94AFA5F1C9811BD00EC88B6 /* MapViewController.swift */,
+				C94AFA5F1C9811BD00EC88B6 /* EventLocationViewController.swift */,
 				C94AFA6B1C981E7700EC88B6 /* SecurityViewController.swift */,
 				C94AFA621C981C5C00EC88B6 /* Ticket */,
 				C94AFA6D1C981F1A00EC88B6 /* AttendingViewController.swift */,
@@ -496,7 +496,7 @@
 				C9FD080A1CB23BE500C44595 /* Ticket+CoreDataProperties.swift in Sources */,
 				C94AFA4D1C98085B00EC88B6 /* TicketDetailsViewController.swift in Sources */,
 				C94AFA6C1C981E7700EC88B6 /* SecurityViewController.swift in Sources */,
-				C94AFA601C9811BD00EC88B6 /* MapViewController.swift in Sources */,
+				C94AFA601C9811BD00EC88B6 /* EventLocationViewController.swift in Sources */,
 				E90201C31C9CC2E200C7839A /* EventDetailTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
