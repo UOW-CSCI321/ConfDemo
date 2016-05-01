@@ -78,79 +78,80 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
         locationMapView.addAnnotation(annotation)*/
     }
     
-    func data_request()
-    {
-        //coredata
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDelegate.managedObjectContext
-        
-        let eventEntity = NSEntityDescription.entityForName("Event", inManagedObjectContext: context)
-        
-        //post request
-        let paramaters = [
-            "method" : "getEventsByTag",
-            "tag_name" : "testTag"
-        ] //at the moment the api call need event id
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if let serverAdd = defaults.stringForKey("server")
-        {
-            Alamofire.request(.POST, serverAdd, parameters: paramaters).responseJSON {
-                response in switch response.result
-                {
-                case .Success:
-                    if let value = response.result.value
-                    {
-                        let json = JSON(value)
-                        
-                        for i in 0 ..< json["data"].count
-                        {
-                            let aevent = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
-                            aevent.event_id = json["data"][i]["event_id"].intValue
-                            //print("id: \(aevent.event_id)")
-                            aevent.name = json["data"][i]["name"].stringValue
-                            //print("name: \(aevent.name)")
-                            aevent.type = json["data"][i]["type"].stringValue
-                            aevent.from_date = self.serverStringToDate(json["data"][i]["from_date"].stringValue)
-                            //print("from date:\(aevent.from_date)")
-                            aevent.to_date = self.serverStringToDate(json["data"][i]["to_date"].stringValue)
-                            //print("to date:\(aevent.to_date)")
-                            //aevent.venueid
-                            aevent.desc = json["data"][i]["description"].stringValue
-                            //print("desc: \(aevent.desc)")
-                            //url
-                            aevent.poster_url = json["data"][i]["poster_url"].stringValue
-                            print("poster: \(aevent.poster_url)")
-                            //aevent.tagname
-                            
-                            
-                            self.eventArray.append(aevent);
-                            
-                        }
-                        //clear current data in the database
-                        
-                        //save to database
-                        do {
-                            try context.save()
-                        } catch {
-                            fatalError("Failure to save context in ExploreViewController: \(error)")
-                        }
-                        
-                        //reload tableview - make sure loading from database not loading from server as we are currently
-                        self.EventsTableView.reloadData()
-                    }
-                case .Failure(let error):
-                    print(error)
-                    //handle if there is no internet connection by alerting the user
-                    
-                }
-                
-            }
-            
-        }else {
-            print("server not set in LoginViewController")
-        }
-    }
+    //func data_request()
+//    {
+//        //coredata
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let context = appDelegate.managedObjectContext
+//        
+//        let eventEntity = NSEntityDescription.entityForName("Venue", inManagedObjectContext: context)
+//        let eventid:String = (selectedEvent.event_id?.stringValue)!
+//        
+//        //post request
+//        let paramaters = [
+//            "method" : "getVenue",
+//            "venue_id" : eventid
+//        ] //at the moment the api call need event id
+//        
+//        let defaults = NSUserDefaults.standardUserDefaults()
+//        if let serverAdd = defaults.stringForKey("server")
+//        {
+//            Alamofire.request(.POST, serverAdd, parameters: paramaters).responseJSON {
+//                response in switch response.result
+//                {
+//                case .Success:
+//                    if let value = response.result.value
+//                    {
+//                        let json = JSON(value)
+//                        
+//                        for i in 0 ..< json["data"].count
+//                        {
+//                            let aevent = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
+//                            aevent.event_id = json["data"][i]["event_id"].intValue
+//                            //print("id: \(aevent.event_id)")
+//                            aevent.name = json["data"][i]["name"].stringValue
+//                            //print("name: \(aevent.name)")
+//                            aevent.type = json["data"][i]["type"].stringValue
+//                            aevent.from_date = self.serverStringToDate(json["data"][i]["from_date"].stringValue)
+//                            //print("from date:\(aevent.from_date)")
+//                            aevent.to_date = self.serverStringToDate(json["data"][i]["to_date"].stringValue)
+//                            //print("to date:\(aevent.to_date)")
+//                            //aevent.venueid
+//                            aevent.desc = json["data"][i]["description"].stringValue
+//                            //print("desc: \(aevent.desc)")
+//                            //url
+//                            aevent.poster_url = json["data"][i]["poster_url"].stringValue
+//                            print("poster: \(aevent.poster_url)")
+//                            //aevent.tagname
+//                            
+//                            
+//                            self.eventArray.append(aevent);
+//                            
+//                        }
+//                        //clear current data in the database
+//                        
+//                        //save to database
+//                        do {
+//                            try context.save()
+//                        } catch {
+//                            fatalError("Failure to save context in ExploreViewController: \(error)")
+//                        }
+//                        
+//                        //reload tableview - make sure loading from database not loading from server as we are currently
+//                        self.EventsTableView.reloadData()
+//                    }
+//                case .Failure(let error):
+//                    print(error)
+//                    //handle if there is no internet connection by alerting the user
+//                    
+//                }
+//                
+//            }
+//            
+//        }else {
+//            print("server not set in LoginViewController")
+//        }
+//    }
     
     func centerMapOnLocation(location: CLLocationCoordinate2D) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location,

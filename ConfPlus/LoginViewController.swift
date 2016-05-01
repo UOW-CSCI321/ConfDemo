@@ -18,11 +18,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-        // Do any additional setup after loading the view.
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject("https://6f7a5a2d.ngrok.io/api/v1", forKey: "server");
-        
     }
 	
 	override func viewDidAppear(animated: Bool) {

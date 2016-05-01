@@ -1,8 +1,8 @@
 //
-//  Reminder+CoreDataProperties.swift
+//  Event_Roles+CoreDataProperties.swift
 //  
 //
-//  Created by Matthew Boroczky on 4/04/2016.
+//  Created by Matthew Boroczky on 1/05/2016.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -12,10 +12,10 @@
 import Foundation
 import CoreData
 
-extension Reminder {
+extension Event_Roles {
 
-    @NSManaged var message: String?
-    @NSManaged var time: NSDate?
+    @NSManaged var role_name: String?
+    @NSManaged var user: User?
     @NSManaged var event: Event?
 
 }

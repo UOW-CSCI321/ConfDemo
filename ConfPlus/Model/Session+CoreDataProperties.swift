@@ -2,7 +2,7 @@
 //  Session+CoreDataProperties.swift
 //  
 //
-//  Created by Matthew Boroczky on 4/04/2016.
+//  Created by Matthew Boroczky on 1/05/2016.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -17,8 +17,9 @@ extension Session {
     @NSManaged var end_time: NSDate?
     @NSManaged var start_time: NSDate?
     @NSManaged var title: String?
+    @NSManaged var speaker_email: String?
+    @NSManaged var room_name: String?
     @NSManaged var event: Event?
-    @NSManaged var attended: NSSet?
     @NSManaged var speaker: User?
     @NSManaged var tickets: NSSet?
 

@@ -21,6 +21,8 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject("https://6f7a5a2d.ngrok.io/api/v1", forKey: "server");
         data_request()
     }
     
