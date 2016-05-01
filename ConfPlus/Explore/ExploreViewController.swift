@@ -227,25 +227,6 @@ picString = "data:image/gif;base64,R0lGODlhZABkAOYAAAAYHqX69D1yXfQjFKgPCbqESm0OE
         }else {
             print("server not set in LoginViewController")
         }
-        
-        // Save
-        //let user = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: context) as! User
-       // eventArray = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! [Event]
-        //        user.username = "matts_test_username"
-        //        user.password = "matts_test_password"
-        //        user.first_name = "first_name_test"
-        //        user.last_name = "last_name_test"
-        //        user.email = "email_test"
-        
-        
-        
-//        do {
-//            try context.save()
-//        } catch {
-//            fatalError("Failure to save context: \(error)")
-//        }
-
-        
     }
 
 
