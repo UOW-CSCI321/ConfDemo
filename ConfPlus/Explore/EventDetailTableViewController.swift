@@ -22,14 +22,16 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
     let desc = "test description"
     let address = "test address"
     var selectedEvent:Event!
+    var aVenue:Venue!
 
     
     
     
+    @IBOutlet var eventDetailsTableView: UITableView!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        data_request()
         
         
         
@@ -40,36 +42,72 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         //var spanValue = 0.2
         
-        //poster
-        let imageName:String = "blithe.jpg"
-        let image = UIImage(named: imageName)
-        posterImageView.image = image
-        
-        
-        //decsription
-        //descriptionTextView.text = desc
-        descriptionTextView.text = selectedEvent.desc
-        
-        //map
-        //locationMapView.delegate = self
-        let lat = 21.282778
-        let long = -157.829444
-        
-        let location = CLLocationCoordinate2DMake(lat, long)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = location
-        annotation.title = "title"
-        annotation.subtitle = "subtitle"
-        locationMapView.addAnnotation(annotation)
-        
-        //address
-        addressTextView.text = address
-        
-        //var span = MKCoordinateSpanMake(spanValue, spanValue)
-        
-        
-        //let initialLocation = CLLocation(latitude: lat, longitude: long)
-        centerMapOnLocation(location)
+//        //poster
+//        let imageName:String = "blithe.jpg"
+//        let image = UIImage(named: imageName)
+//        posterImageView.image = image
+//        
+//        
+//        //decsription
+//        //descriptionTextView.text = desc
+//        descriptionTextView.text = selectedEvent.desc
+//        
+//        //map
+//        //locationMapView.delegate = self
+//        aVenue = Venue()
+//        aVenue.venue_id = 0
+//        aVenue.name = ""
+//        aVenue.type = ""
+//        aVenue.street = ""
+//        aVenue.city = ""
+//        aVenue.state = ""
+//        aVenue.country = ""
+//        aVenue.latitude = ""
+//        self.aVenue.longitude = ""
+//        if aVenue.latitude != nil
+//        {
+//            if let lat = aVenue.latitude as? Double //21.282778
+//            {
+//                if let long = aVenue.longitude as? Double //-157.829444
+//                {
+//                    let location = CLLocationCoordinate2DMake(lat, long)
+//                    let annotation = MKPointAnnotation()
+//                    annotation.coordinate = location
+//                    annotation.title = aVenue.name //"title"
+//                    //annotation.subtitle = "subtitle"
+//                    locationMapView.addAnnotation(annotation)
+//                    
+//                    //address
+//                    addressTextView.text = "\(aVenue.street), \(aVenue.city), \(aVenue.state), \(aVenue.country)"
+//                    
+//                    //var span = MKCoordinateSpanMake(spanValue, spanValue)
+//                    
+//                    
+//                    //let initialLocation = CLLocation(latitude: lat, longitude: long)
+//                    centerMapOnLocation(location)
+//                    
+//                }
+//            }
+//
+//        }
+//        //        //let lat = "21.282778"
+//        let long = -157.829444
+//        
+//        let location = CLLocationCoordinate2DMake(lat!, long)
+//        let annotation = MKPointAnnotation()
+//        annotation.coordinate = location
+//        annotation.title = aVenue.name //"title"
+//        //annotation.subtitle = "subtitle"
+//        locationMapView.addAnnotation(annotation)
+//        
+//        //address
+//        addressTextView.text = address
+//        
+//        //var span = MKCoordinateSpanMake(spanValue, spanValue)
+//        
+//        
+//        //let initialLocation = CLLocation(latitude: lat, longitude: long)
+//        centerMapOnLocation(location)
         
         /*let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
@@ -78,80 +116,102 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
         locationMapView.addAnnotation(annotation)*/
     }
     
-    //func data_request()
-//    {
-//        //coredata
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let context = appDelegate.managedObjectContext
-//        
-//        let eventEntity = NSEntityDescription.entityForName("Venue", inManagedObjectContext: context)
-//        let eventid:String = (selectedEvent.event_id?.stringValue)!
-//        
-//        //post request
-//        let paramaters = [
-//            "method" : "getVenue",
-//            "venue_id" : eventid
-//        ] //at the moment the api call need event id
-//        
-//        let defaults = NSUserDefaults.standardUserDefaults()
-//        if let serverAdd = defaults.stringForKey("server")
-//        {
-//            Alamofire.request(.POST, serverAdd, parameters: paramaters).responseJSON {
-//                response in switch response.result
-//                {
-//                case .Success:
-//                    if let value = response.result.value
-//                    {
-//                        let json = JSON(value)
-//                        
-//                        for i in 0 ..< json["data"].count
-//                        {
-//                            let aevent = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
-//                            aevent.event_id = json["data"][i]["event_id"].intValue
-//                            //print("id: \(aevent.event_id)")
-//                            aevent.name = json["data"][i]["name"].stringValue
-//                            //print("name: \(aevent.name)")
-//                            aevent.type = json["data"][i]["type"].stringValue
-//                            aevent.from_date = self.serverStringToDate(json["data"][i]["from_date"].stringValue)
-//                            //print("from date:\(aevent.from_date)")
-//                            aevent.to_date = self.serverStringToDate(json["data"][i]["to_date"].stringValue)
-//                            //print("to date:\(aevent.to_date)")
-//                            //aevent.venueid
-//                            aevent.desc = json["data"][i]["description"].stringValue
-//                            //print("desc: \(aevent.desc)")
-//                            //url
-//                            aevent.poster_url = json["data"][i]["poster_url"].stringValue
-//                            print("poster: \(aevent.poster_url)")
-//                            //aevent.tagname
-//                            
-//                            
-//                            self.eventArray.append(aevent);
-//                            
-//                        }
-//                        //clear current data in the database
-//                        
-//                        //save to database
-//                        do {
-//                            try context.save()
-//                        } catch {
-//                            fatalError("Failure to save context in ExploreViewController: \(error)")
-//                        }
-//                        
-//                        //reload tableview - make sure loading from database not loading from server as we are currently
-//                        self.EventsTableView.reloadData()
-//                    }
-//                case .Failure(let error):
-//                    print(error)
-//                    //handle if there is no internet connection by alerting the user
-//                    
-//                }
-//                
-//            }
-//            
-//        }else {
-//            print("server not set in LoginViewController")
-//        }
-//    }
+    func setData()
+    {
+        let imageName:String = "blithe.jpg"
+        let image = UIImage(named: imageName)
+        posterImageView.image = image
+        
+        let lat = Double(aVenue.latitude!)
+        let long = Double(aVenue.longitude!)
+        
+        let location = CLLocationCoordinate2DMake(lat!, long!)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        annotation.title = aVenue.name //"title"
+        //annotation.subtitle = "subtitle"
+        locationMapView.addAnnotation(annotation)
+        
+        var address:String!
+        address = "\(aVenue.street), \(aVenue.city), \(aVenue.state), \(aVenue.country)"
+        //address
+        addressTextView.text = address
+        
+        //var span = MKCoordinateSpanMake(spanValue, spanValue)
+        
+        
+        //let initialLocation = CLLocation(latitude: lat, longitude: long)
+        centerMapOnLocation(location)
+
+
+    }
+    
+    func data_request()
+    {
+        //coredata
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context = appDelegate.managedObjectContext
+        
+        let eventEntity = NSEntityDescription.entityForName("Venue", inManagedObjectContext: context)
+        let eventid:String = (selectedEvent.event_id?.stringValue)!
+        
+        //post request
+        let paramaters = [
+            "method" : "getVenue",
+            "venue_id" : eventid
+        ] //at the moment the api call need event id
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let serverAdd = defaults.stringForKey("server")
+        {
+            Alamofire.request(.POST, serverAdd, parameters: paramaters).responseJSON {
+                response in switch response.result
+                {
+                case .Success:
+                    if let value = response.result.value
+                    {
+                        let json = JSON(value)
+                        
+                        if json["data"].count > 1
+                        {
+                            print("error should have only received one venue")
+                        }else{
+                            self.aVenue = NSEntityDescription.insertNewObjectForEntityForName("Venue", inManagedObjectContext: context) as! Venue
+                            self.aVenue.venue_id = json["data"][0]["venue_id"].intValue
+                            self.aVenue.name = json["data"][0]["name"].stringValue
+                            self.aVenue.type = json["data"][0]["type"].stringValue
+                            self.aVenue.street = json["data"][0]["street"].stringValue
+                            self.aVenue.city = json["data"][0]["city"].stringValue
+                            self.aVenue.state = json["data"][0]["state"].stringValue
+                            self.aVenue.country = json["data"][0]["country"].stringValue
+                            self.aVenue.latitude = json["data"][0]["latitude"].stringValue
+                            self.aVenue.longitude = json["data"][0]["longitude"].stringValue
+                        }
+                        //clear current data in the database
+                        
+                        //save to database
+                        do {
+                            try context.save()
+                        } catch {
+                            fatalError("Failure to save context in EventDetailsTableViewController: \(error)")
+                        }
+                        
+                        self.setData()
+                        //reload tableview - make sure loading from database not loading from server as we are currently
+                        self.eventDetailsTableView.reloadData()
+                    }
+                case .Failure(let error):
+                    print(error)
+                    //handle if there is no internet connection by alerting the user
+                    
+                }
+                
+            }
+            
+        }else {
+            print("server not set in LoginViewController")
+        }
+    }
     
     func centerMapOnLocation(location: CLLocationCoordinate2D) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location,

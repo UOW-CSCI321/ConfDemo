@@ -1532,6 +1532,7 @@
                     <connections>
                         <outlet property="addressTextView" destination="QWa-qd-WbA" id="utA-Uq-DrV"/>
                         <outlet property="descriptionTextView" destination="MU7-E6-a1o" id="MrU-9g-lkj"/>
+                        <outlet property="eventDetailsTableView" destination="kKc-Hp-B9T" id="MZw-iC-9Ez"/>
                         <outlet property="locationMapView" destination="02G-8P-uIQ" id="awm-6Z-IBc"/>
                         <outlet property="posterImageView" destination="B7p-2U-fBp" id="n9A-tU-hJv"/>
                     </connections>
