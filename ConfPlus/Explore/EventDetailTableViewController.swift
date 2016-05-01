@@ -132,8 +132,8 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
         //annotation.subtitle = "subtitle"
         locationMapView.addAnnotation(annotation)
         
-        var address:String!
-        address = "\(aVenue.street), \(aVenue.city), \(aVenue.state), \(aVenue.country)"
+        var address:String?
+        address = "\(aVenue.street!), \(aVenue.city!), \(aVenue.state!), \(aVenue.country!)"
         //address
         addressTextView.text = address
         
