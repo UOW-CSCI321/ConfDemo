@@ -10,15 +10,36 @@ import Foundation
 import UIKit
 
 class HomeViewController: UIViewController {
-    
+	let MENU_COUNT = 6
+	
+	@IBAction func exitEventDashboard(sender: AnyObject) {
+		self.dismissViewControllerAnimated(true, completion: nil)
+	}
+	
+	func didSelectView(gesture: UIGestureRecognizer){
+		let tag = gesture.view?.tag
+		if tag == 6 {
+			dismissViewControllerAnimated(true, completion: nil)
+		} else {
+			performSegueWithIdentifier("goToTabView", sender: tag)
+		}
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+		// Set the button to rounded edge.
+		for index in 1...MENU_COUNT {
+			viewEffect.rect(self.view.viewWithTag(index)!)
+			self.view.viewWithTag(index)!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(HomeViewController.didSelectView(_:))))
+		}
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "goToTabView"{
+			let vc = segue.destinationViewController as! UITabBarController
+			vc.selectedIndex = (sender as! Int) - 1
+		}
+	}
+	
 }

@@ -13,14 +13,12 @@ import SwiftyJSON
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var loginView: UIView!
     @IBOutlet var usernameTextfield: UITextField!
     @IBOutlet var passwordTextfield: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-        viewEffect.rect(loginView)
         // Do any additional setup after loading the view.
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject("https://6f7a5a2d.ngrok.io/api/v1", forKey: "server");
@@ -33,7 +31,8 @@ class LoginViewController: UIViewController {
 		if let _ = defaults.stringForKey("email") {
 			if let _ = defaults.stringForKey("password") {
 				//segue to next screen automatically
-				performSegueWithIdentifier("homeSegue", sender: self)
+				// performSegueWithIdentifier("homeSegue", sender: self)
+				//self.dismissViewControllerAnimated(true, completion: nil)
 			}
 		}
 
@@ -70,7 +69,8 @@ class LoginViewController: UIViewController {
                             let defaults = NSUserDefaults.standardUserDefaults()
                             defaults.setObject(password, forKey: "password")
                             defaults.setObject(email, forKey: "email")
-                            self.performSegueWithIdentifier("homeSegue", sender: self)
+							//self.performSegueWithIdentifier("homeSegue", sender: self)
+							//self.dismissViewControllerAnimated(true, completion: nil)
                         }else {
                             self.showAlert("Invalid Password")
                         }
@@ -105,14 +105,5 @@ class LoginViewController: UIViewController {
 		alertcontroller.addAction(defaultAction)
 		self.presentViewController(alertcontroller, animated: true, completion: nil)
 	}
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
