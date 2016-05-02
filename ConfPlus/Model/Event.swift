@@ -104,6 +104,7 @@ class Event: NSManagedObject {
         
         let df = NSDateFormatter()
         df.dateStyle = NSDateFormatterStyle.FullStyle
+        df.timeZone = NSTimeZone(name: "GMT")
         let dstring = df.stringFromDate(self.from_date!)
 
         //let dstring = df.stringFromDate(date)
