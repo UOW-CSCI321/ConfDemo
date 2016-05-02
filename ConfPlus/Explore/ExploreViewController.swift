@@ -77,7 +77,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
         do {
             let result = try context.executeFetchRequest(fetchRequest) as! [Event]
                 cell.eventName.text = result[indexPath.row].name
-                cell.eventDate.text = dateToFullStyleString(result[indexPath.row].from_date!)
+                cell.eventDate.text = result[indexPath.row].getFromDateAsString()
             //if let auser = NSURL(stringby)
             let urlString = result[indexPath.row].poster_url
             if(urlString == "")
@@ -122,28 +122,28 @@ picString = "data:image/gif;base64,R0lGODlhZABkAOYAAAAYHqX69D1yXfQjFKgPCbqESm0OE
         return cell
     }
  
-    func serverStringToDate(dateString:String) -> NSDate
-    {
-        //move into model class for event eventually
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = NSTimeZone(name: "GMT")
-        //dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
-        
-        let d1 = dateFormatter.dateFromString(dateString)
-        //print(dateStart)
-        return d1!
-    }
-    
-    func dateToFullStyleString(date:NSDate) -> String
-    {
-        
-        let df = NSDateFormatter()
-        df.dateStyle = NSDateFormatterStyle.FullStyle
-        let dstring = df.stringFromDate(date)
-        //print(dstring)
-        return dstring
-    }
+//    func serverStringToDate(dateString:String) -> NSDate
+//    {
+//        //move into model class for event eventually
+//        let dateFormatter = NSDateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//        dateFormatter.timeZone = NSTimeZone(name: "GMT")
+//        //dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
+//        
+//        let d1 = dateFormatter.dateFromString(dateString)
+//        //print(dateStart)
+//        return d1!
+//    }
+//    
+//    func dateToFullStyleString(date:NSDate) -> String
+//    {
+//        
+//        let df = NSDateFormatter()
+//        df.dateStyle = NSDateFormatterStyle.FullStyle
+//        let dstring = df.stringFromDate(date)
+//        //print(dstring)
+//        return dstring
+//    }
     
     /*func serverStringToDateToString(dateString:String) -> String
     {
@@ -192,9 +192,11 @@ picString = "data:image/gif;base64,R0lGODlhZABkAOYAAAAYHqX69D1yXfQjFKgPCbqESm0OE
                             aevent.name = json["data"][i]["name"].stringValue
                             //print("name: \(aevent.name)")
                             aevent.type = json["data"][i]["type"].stringValue
-                            aevent.from_date = self.serverStringToDate(json["data"][i]["from_date"].stringValue)
+                            //aevent.from_date = self.serverStringToDate(json["data"][i]["from_date"].stringValue)
+                            aevent.setFromDate(json["data"][i]["from_date"].stringValue)
                             //print("from date:\(aevent.from_date)")
-                            aevent.to_date = self.serverStringToDate(json["data"][i]["to_date"].stringValue)
+                            //aevent.to_date = self.serverStringToDate(json["data"][i]["to_date"].stringValue)
+                            aevent.setToDate(json["data"][i]["to_date"].stringValue)
                             //print("to date:\(aevent.to_date)")
                             //aevent.venueid
                             aevent.desc = json["data"][i]["description"].stringValue

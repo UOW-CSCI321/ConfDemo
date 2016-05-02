@@ -35,28 +35,28 @@ class EventsViewController: UIViewController, UITableViewDelegate {
         //return 1
          return eventAttendedArray.count
     }
-    func serverStringToDate(dateString:String) -> NSDate
-    {
-        //move into model class for event eventually
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = NSTimeZone(name: "GMT")
-        //dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
-        
-        let d1 = dateFormatter.dateFromString(dateString)
-        //print(dateStart)
-        return d1!
-    }
-    
-    func dateToFullStyleString(date:NSDate) -> String
-    {
-        
-        let df = NSDateFormatter()
-        df.dateStyle = NSDateFormatterStyle.FullStyle
-        let dstring = df.stringFromDate(date)
-        //print(dstring)
-        return dstring
-    }
+//    func serverStringToDate(dateString:String) -> NSDate
+//    {
+//        //move into model class for event eventually
+//        let dateFormatter = NSDateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//        dateFormatter.timeZone = NSTimeZone(name: "GMT")
+//        //dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
+//        
+//        let d1 = dateFormatter.dateFromString(dateString)
+//        //print(dateStart)
+//        return d1!
+//    }
+//    
+//    func dateToFullStyleString(date:NSDate) -> String
+//    {
+//        
+//        let df = NSDateFormatter()
+//        df.dateStyle = NSDateFormatterStyle.FullStyle
+//        let dstring = df.stringFromDate(date)
+//        //print(dstring)
+//        return dstring
+//    }
 
 
     func data_request()
@@ -89,9 +89,11 @@ class EventsViewController: UIViewController, UITableViewDelegate {
                             let aevent = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
                             aevent.name = json["data"][i]["name"].stringValue
                             //print("name: \(aevent.name)")
-                            aevent.from_date = self.serverStringToDate(json["data"][i]["from_date"].stringValue)
+                            //aevent.from_date = self.serverStringToDate(json["data"][i]["from_date"].stringValue)
+                            aevent.setFromDate(json["data"][i]["from_date"].stringValue)
                             //print("from date:\(aevent.from_date)")
-                            aevent.to_date = self.serverStringToDate(json["data"][i]["to_date"].stringValue)
+                            //aevent.to_date = self.serverStringToDate(json["data"][i]["to_date"].stringValue)
+                            aevent.setToDate(json["data"][i]["to_date"].stringValue)
                             //print("to date:\(aevent.to_date)")
                             aevent.desc = json["data"][i]["description"].stringValue
                             //print("desc: \(aevent.desc)")
@@ -165,7 +167,7 @@ class EventsViewController: UIViewController, UITableViewDelegate {
         do {
             let result = try context.executeFetchRequest(fetchRequest) as! [Event]
             cell.eventName.text = result[indexPath.row].name
-            cell.eventDate.text = dateToFullStyleString(result[indexPath.row].from_date!)
+            cell.eventDate.text = result[indexPath.row].getFromDateAsString()
             
             print(result)
         } catch {
