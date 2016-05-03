@@ -1,11 +1,20 @@
 PODS:
+  - ActionSheetPicker-3.0 (2.0.5)
   - Alamofire (3.3.1)
+  - Alamofire-Synchronous (3.0.0):
+    - Alamofire (~> 3.0)
   - Localize-Swift (1.1)
+  - MPGNotification (1.2.4)
+  - PKHUD (3.1.0)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
+  - ActionSheetPicker-3.0 (~> 2.0.5)
   - Alamofire (~> 3.3)
+  - Alamofire-Synchronous (~> 3.0)
   - Localize-Swift (~> 1.1)
+  - MPGNotification (~> 1.2)
+  - PKHUD
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
 EXTERNAL SOURCES:
@@ -18,8 +27,12 @@ CHECKOUT OPTIONS:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: 8312778b6815578e6a86d630fbcf31dc94c534e7
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  Alamofire-Synchronous: dc5dccc284e03c3b760e09c655dfe6fa292364b6
   Localize-Swift: 72fab22c9c271a1041082fa3b53ca64e527ccf4a
+  MPGNotification: f0e3924087afa9b3eccd5ce624e03965ae31ae61
+  PKHUD: 4167eccdb1b3a892fd80ce2b51cb6ba412a889ab
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0

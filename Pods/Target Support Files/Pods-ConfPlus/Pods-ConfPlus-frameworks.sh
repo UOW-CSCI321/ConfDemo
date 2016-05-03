@@ -84,12 +84,20 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-ConfPlus/ActionSheetPicker_3_0.framework"
   install_framework "Pods-ConfPlus/Alamofire.framework"
+  install_framework "Pods-ConfPlus/Alamofire_Synchronous.framework"
   install_framework "Pods-ConfPlus/Localize_Swift.framework"
+  install_framework "Pods-ConfPlus/MPGNotification.framework"
+  install_framework "Pods-ConfPlus/PKHUD.framework"
   install_framework "Pods-ConfPlus/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-ConfPlus/ActionSheetPicker_3_0.framework"
   install_framework "Pods-ConfPlus/Alamofire.framework"
+  install_framework "Pods-ConfPlus/Alamofire_Synchronous.framework"
   install_framework "Pods-ConfPlus/Localize_Swift.framework"
+  install_framework "Pods-ConfPlus/MPGNotification.framework"
+  install_framework "Pods-ConfPlus/PKHUD.framework"
   install_framework "Pods-ConfPlus/SwiftyJSON.framework"
 fi
