@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9pv-A4-QxB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="T5p-Vp-c9R">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -1256,6 +1256,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Events" image="event" id="NLo-ah-sfj"/>
+                    <connections>
+                        <outlet property="eventsTableView" destination="Cd5-E9-U8U" id="UER-2l-tXg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ryR-bt-fsW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1529,6 +1532,7 @@
                     <connections>
                         <outlet property="addressTextView" destination="QWa-qd-WbA" id="utA-Uq-DrV"/>
                         <outlet property="descriptionTextView" destination="MU7-E6-a1o" id="MrU-9g-lkj"/>
+                        <outlet property="eventDetailsTableView" destination="kKc-Hp-B9T" id="MZw-iC-9Ez"/>
                         <outlet property="locationMapView" destination="02G-8P-uIQ" id="awm-6Z-IBc"/>
                         <outlet property="posterImageView" destination="B7p-2U-fBp" id="n9A-tU-hJv"/>
                     </connections>

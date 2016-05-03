@@ -1,8 +1,8 @@
 //
-//  Session_Attending.swift
+//  Conversation.swift
 //  
 //
-//  Created by Matthew Boroczky on 4/04/2016.
+//  Created by Matthew Boroczky on 1/05/2016.
 //
 //
 
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-class Session_Attending: NSManagedObject {
+class Conversation: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 

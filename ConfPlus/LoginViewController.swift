@@ -18,11 +18,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-        // Do any additional setup after loading the view.
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject("https://6f7a5a2d.ngrok.io/api/v1", forKey: "server");
-        
     }
 	
 	override func viewDidAppear(animated: Bool) {
@@ -77,7 +72,8 @@ class LoginViewController: UIViewController {
                     }
                 case .Failure(let error):
                     print(error)
-                    self.showAlert("Invalid Username")
+                    //print("error code: \(error.localizedDescription)")
+                    self.showAlert(error.localizedDescription)
                     
                 }
                 
