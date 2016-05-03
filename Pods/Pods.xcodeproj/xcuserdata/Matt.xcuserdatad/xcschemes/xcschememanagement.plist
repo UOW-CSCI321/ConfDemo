@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ActionSheetPicker-3.0.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>Alamofire-Synchronous.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>Alamofire.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +23,16 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
+		</dict>
+		<key>MPGNotification.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>PKHUD.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>Pods-ConfPlus.xcscheme</key>
 		<dict>
@@ -37,7 +57,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>3E92BAD6DA2FEF3DDE4BABAB2B59D70F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>41D809180E14D1437CAF24F1E7E68ACE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>ACE4F4F1E353D04AB86B2EF15DB13A00</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -48,6 +83,21 @@
 			<true/>
 		</dict>
 		<key>CBDF7D83BD7E8162D91B111E097DA11B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE0A701D8A271EFE0065667D13272921</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E300E37A22BCF09273483CDA039417FC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F6F0516F82D07656D12F1C0716898F73</key>
 		<dict>
 			<key>primary</key>
 			<true/>
