@@ -160,6 +160,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
         
     }
     
+        
     func data_request()
     {
         //coredata
@@ -189,6 +190,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
                         {
                             let aevent = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
                             aevent.event_id = json["data"][i]["event_id"].intValue
+                            //let event_idString = json["data"][i]["event_id"].stringValue
                             aevent.name = json["data"][i]["name"].stringValue
                             aevent.type = json["data"][i]["type"].stringValue
                             //aevent.from_date = self.serverStringToDate(json["data"][i]["from_date"].stringValue)
@@ -199,13 +201,14 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
                             aevent.desc = json["data"][i]["description"].stringValue
                             //url
                             //aevent.poster_url = json["data"][i]["poster_url"].stringValue
+                            aevent.requestPoster()
                             print("id: \(aevent.event_id)")
                             print("name: \(aevent.name)")
                             print("type: \(aevent.type)")
                             print("from date:\(aevent.from_date)")
                             print("to date:\(aevent.to_date)")
                             print("desc: \(aevent.desc)")
-                            //print("poster: \(aevent.poster_url)")
+                            print("poster: \(aevent.poster_url)")
                             //aevent.tagname
                             
                             
@@ -213,16 +216,17 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
 
                         }
                         //clear current data in the database
-                        
-                        //save to database
-                        do {
-                            try context.save()
-                        } catch {
-                            fatalError("Failure to save context in ExploreViewController: \(error)")
+                        dispatch_sync(dispatch_get_main_queue()){
+                            //save to database
+                            do {
+                                try context.save()
+                            } catch {
+                                fatalError("Failure to save context in ExploreViewController: \(error)")
+                            }
+                            
+                            //reload tableview - make sure loading from database not loading from server as we are currently
+                            self.EventsTableView.reloadData()
                         }
-                        
-                        //reload tableview - make sure loading from database not loading from server as we are currently
-                        self.EventsTableView.reloadData()
                     }
                 case .Failure(let error):
                     print(error)
@@ -233,7 +237,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
             }
             
         }else {
-            print("server not set in LoginViewController")
+            print("server not set in ExploreViewController")
         }
     }
 
