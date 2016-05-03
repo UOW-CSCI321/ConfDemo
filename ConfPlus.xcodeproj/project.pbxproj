@@ -52,6 +52,7 @@
 		C955F16B1CD639AD000BE39C /* Ticket_Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = C955F1511CD639AD000BE39C /* Ticket_Record.swift */; };
 		C955F16E1CD6430A000BE39C /* Venue+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C955F16C1CD6430A000BE39C /* Venue+CoreDataProperties.swift */; };
 		C955F16F1CD6430A000BE39C /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C955F16D1CD6430A000BE39C /* Venue.swift */; };
+		C955F1711CD8A1FD000BE39C /* Alamofire_Synchronous.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C955F1701CD8A1FD000BE39C /* Alamofire_Synchronous.framework */; };
 		C999E8FE1CB1308D00E05C67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C999E8FD1CB1308D00E05C67 /* CoreData.framework */; };
 		C9AC4CE31CB7AA6300083F12 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4CE21CB7AA6300083F12 /* CoreLocation.framework */; };
 		C9AC4D031CC45C7700083F12 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4D021CC45C7700083F12 /* SwiftyJSON.framework */; };
@@ -124,6 +125,7 @@
 		C955F1511CD639AD000BE39C /* Ticket_Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ticket_Record.swift; path = Model/Ticket_Record.swift; sourceTree = "<group>"; };
 		C955F16C1CD6430A000BE39C /* Venue+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Venue+CoreDataProperties.swift"; path = "Model/Venue+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C955F16D1CD6430A000BE39C /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Venue.swift; path = Model/Venue.swift; sourceTree = "<group>"; };
+		C955F1701CD8A1FD000BE39C /* Alamofire_Synchronous.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire_Synchronous.framework; path = "Pods/../build/Debug-iphoneos/Alamofire_Synchronous.framework"; sourceTree = "<group>"; };
 		C999E8FD1CB1308D00E05C67 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C9AC4CE21CB7AA6300083F12 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C9AC4D021CC45C7700083F12 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C955F1711CD8A1FD000BE39C /* Alamofire_Synchronous.framework in Frameworks */,
 				C9AC4D071CC45F0B00083F12 /* Localize_Swift.framework in Frameworks */,
 				C9AC4D051CC45EF900083F12 /* Alamofire.framework in Frameworks */,
 				C9AC4D031CC45C7700083F12 /* SwiftyJSON.framework in Frameworks */,
@@ -268,6 +271,7 @@
 		CA6657120F9514BBD729216B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C955F1701CD8A1FD000BE39C /* Alamofire_Synchronous.framework */,
 				C9AC4D061CC45F0B00083F12 /* Localize_Swift.framework */,
 				C9AC4D041CC45EF900083F12 /* Alamofire.framework */,
 				C9AC4D021CC45C7700083F12 /* SwiftyJSON.framework */,

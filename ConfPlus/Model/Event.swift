@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 import Alamofire
+import Alamofire_Synchronous
 import SwiftyJSON
 
 
@@ -139,35 +140,54 @@ class Event: NSManagedObject {
         ] //at the moment the api call need event id
         
         let defaults = NSUserDefaults.standardUserDefaults()
+        //synchronous alamofire request
         if let serverAdd = defaults.stringForKey("server")
         {
             self.poster_url = ""
-            Alamofire.request(.POST, serverAdd, parameters: paramaters).responseJSON {
-                response in switch response.result
-                {
-                case .Success:
-                    if let value = response.result.value
-                    {
-                        let json = JSON(value)
-                        
-                        if json["data"].count > 1
-                        {
-                            print("error in getPoster. >1 posters returned")
-                        }else
-                        {
-                            self.poster_url = json["data"][0]["poster_data_url"].stringValue
-                        }
-                    }
-                case .Failure(let error):
-                    print(error)
-                    //handle if there is no internet connection by alerting the user
-                }
+            let response = Alamofire.request(.POST, serverAdd, parameters: paramaters).responseJSON()
+            if let value = response.result.value
+            {
+                let json = JSON(value)
                 
+                if json["data"].count > 1
+                {
+                    print("error in getPoster. >1 posters returned")
+                }else
+                {
+                    self.poster_url = json["data"]["poster_data_url"].stringValue
+                    print(self.poster_url)
+                }
             }
-            
         }else {
             print("server not set in ExploreViewController")
         }
-    }
+
+
+        
+//                {
+//                response in switch response.result
+//                {
+//                case .Success:
+//                    if let value = response.result.value
+//                    {
+//                        let json = JSON(value)
+//                        
+//                        if json["data"].count > 1
+//                        {
+//                            print("error in getPoster. >1 posters returned")
+//                        }else
+//                        {
+//                            self.poster_url = json["data"][0]["poster_data_url"].stringValue
+//                        }
+//                    }
+//                case .Failure(let error):
+//                    print(error)
+//                    //handle if there is no internet connection by alerting the user
+//                }
+//            
+//            }
+//            
+//        
+        }
 
 }
