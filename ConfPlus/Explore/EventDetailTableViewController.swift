@@ -118,9 +118,9 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
     
     func setData()
     {
-        let imageName:String = "blithe.jpg"
-        let image = UIImage(named: imageName)
-        posterImageView.image = image
+        //let imageName:String = "blithe.jpg"
+        //let image = UIImage(named: imageName)
+        posterImageView.image = selectedEvent.getImage()
         
         let lat = Double(aVenue.latitude!)
         let long = Double(aVenue.longitude!)
