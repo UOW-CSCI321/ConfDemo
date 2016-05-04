@@ -1595,16 +1595,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="179.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" keyboardDismissMode="onDrag" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MU7-E6-a1o">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" keyboardDismissMode="onDrag" editable="NO" text="Description of the event" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MU7-E6-a1o">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
-                                                    <attributedString key="attributedText">
-                                                        <fragment content="Description of the event">
-                                                            <attributes>
-                                                                <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                                                 </textView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1629,11 +1624,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="179.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Location Address" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QWa-qd-WbA">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Location Address" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWa-qd-WbA">
                                                     <rect key="frame" x="0.0" y="-1" width="414" height="180"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" address="YES"/>
                                                 </textView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1691,7 +1687,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Continue"/>
                                             <connections>
-                                                <segue destination="wQA-R6-OCC" kind="show" id="jco-pX-B1f"/>
+                                                <segue destination="wQA-R6-OCC" kind="show" identifier="goToUserInfoView" id="jco-pX-B1f"/>
                                             </connections>
                                         </button>
                                     </barButtonItem>
@@ -1788,6 +1784,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tableView" destination="lZT-Wq-0cu" id="JiP-sr-Wbv"/>
                         <outlet property="totalPrice" destination="rB1-fH-hkI" id="HVR-3W-ne8"/>
                     </connections>
                 </viewController>
@@ -1813,7 +1810,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="xZs-PQ-aJj"/>
                                     <barButtonItem title="Continue" id="sWa-HT-bs9">
                                         <connections>
-                                            <segue destination="W1a-UK-Ju2" kind="show" id="zQj-et-TJx"/>
+                                            <segue destination="W1a-UK-Ju2" kind="show" identifier="goTo" id="zQj-et-TJx"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
