@@ -14,7 +14,6 @@ import Foundation
 
 
 class ExploreViewController: UIViewController, UITableViewDelegate {
-
     
     @IBOutlet var EventsTableView: UITableView!
     var eventArray = [Event]()

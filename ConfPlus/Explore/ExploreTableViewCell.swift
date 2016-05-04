@@ -11,6 +11,7 @@ import UIKit
 class ExploreTableViewCell: UITableViewCell {
 	
 	
+	@IBOutlet weak var eventCell: UIView!
 	
 	@IBOutlet weak var eventImage: UIImageView!
 	@IBOutlet weak var eventName: UILabel!
@@ -19,6 +20,7 @@ class ExploreTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+		viewEffect.rect(eventCell)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
