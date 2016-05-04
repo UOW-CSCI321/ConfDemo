@@ -35,29 +35,6 @@ class EventsViewController: UIViewController, UITableViewDelegate {
         //return 1
          return eventAttendedArray.count
     }
-//    func serverStringToDate(dateString:String) -> NSDate
-//    {
-//        //move into model class for event eventually
-//        let dateFormatter = NSDateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//        dateFormatter.timeZone = NSTimeZone(name: "GMT")
-//        //dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
-//        
-//        let d1 = dateFormatter.dateFromString(dateString)
-//        //print(dateStart)
-//        return d1!
-//    }
-//    
-//    func dateToFullStyleString(date:NSDate) -> String
-//    {
-//        
-//        let df = NSDateFormatter()
-//        df.dateStyle = NSDateFormatterStyle.FullStyle
-//        let dstring = df.stringFromDate(date)
-//        //print(dstring)
-//        return dstring
-//    }
-
 
     func data_request()
     {
@@ -97,14 +74,14 @@ class EventsViewController: UIViewController, UITableViewDelegate {
                             aevent.url = json["data"][i]["url"].stringValue
                             aevent.requestPoster()
                             
-                            print("id: \(aevent.event_id)")
-                            print("name: \(aevent.name)")
-                            print("type: \(aevent.type)")
-                            print("from date:\(aevent.from_date)")
-                            print("to date:\(aevent.to_date)")
-                            print("desc: \(aevent.desc)")
-                            print("url: \(aevent.url)")
-                            print("poster: \(aevent.poster_url)")
+//                            print("id: \(aevent.event_id)")
+//                            print("name: \(aevent.name)")
+//                            print("type: \(aevent.type)")
+//                            print("from date:\(aevent.from_date)")
+//                            print("to date:\(aevent.to_date)")
+//                            print("desc: \(aevent.desc)")
+//                            print("url: \(aevent.url)")
+//                            print("poster: \(aevent.poster_url)")
                             
                             self.eventAttendedArray.append(aevent);
                             
@@ -132,25 +109,6 @@ class EventsViewController: UIViewController, UITableViewDelegate {
         }else {
             print("server not set in LoginViewController")
         }
-        
-        // Save
-        //let user = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: context) as! User
-        // eventArray = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! [Event]
-        //        user.username = "matts_test_username"
-        //        user.password = "matts_test_password"
-        //        user.first_name = "first_name_test"
-        //        user.last_name = "last_name_test"
-        //        user.email = "email_test"
-        
-        
-        
-        //        do {
-        //            try context.save()
-        //        } catch {
-        //            fatalError("Failure to save context: \(error)")
-        //        }
-        
-        
     }
 
 	

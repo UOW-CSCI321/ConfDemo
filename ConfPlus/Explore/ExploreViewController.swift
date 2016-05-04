@@ -38,26 +38,6 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
         return eventArray.count
     }
     
-//    func imageTypeIsValid(base64string : String) -> String
-//    {
-//        var s1 = base64string
-//        s1.removeRange(s1.startIndex..<s1.startIndex.advancedBy(11))
-//        //.startIndex.advancedBy(10)
-//        //print("imgtype: \(s1)")
-//
-//        let delim : Character = ";"
-//        let index = s1.lowercaseString.characters.indexOf(delim)
-//        //print("index: \(index)")
-//        let imgType = s1.substringToIndex(index!)
-//        //print("imgtype \(imgType)")
-//        
-//        if imgType == "png" || imgType == "PNG" || imgType == "jpeg" || imgType == "JPEG" || imgType == "gif" || imgType == "GIF"
-//        {
-//            //print("valid type")
-//            return imgType
-//        }
-//        return "invalid"
-//    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("exploreCell", forIndexPath: indexPath) as! ExploreTableViewCell
