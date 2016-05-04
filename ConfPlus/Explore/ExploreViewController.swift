@@ -75,8 +75,13 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
         
         do {
             let result = try context.executeFetchRequest(fetchRequest) as! [Event]
-                cell.eventName.text = result[indexPath.row].name
-                cell.eventDate.text = result[indexPath.row].getFromDateAsString()
+            cell.eventName.text = result[indexPath.row].name
+            var dstring = result[indexPath.row].getFromDateAsString()
+            dstring += " - "
+            dstring += result[indexPath.row].getToDateAsString()
+            cell.eventDate.text = dstring
+
+            
             //if let auser = NSURL(stringby)
             let urlString = result[indexPath.row].poster_url
             if(urlString == "")
