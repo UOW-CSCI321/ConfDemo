@@ -85,31 +85,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
             }else
             {
                 var picString = result[indexPath.row].poster_url!
-                print("HERE: \(result[indexPath.row].poster_url!) HERE2")
-               // print(picString)
-//picString = "data:image/gif;base64,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"
-                
-                //result[indexPath.row].poster_url! = picString //TEMPORARY
-//                let imgtype = result[indexPath.row].imageTypeIsValid() //imageTypeIsValid(picString)
-//                if(imgtype == "invalid"){
-//                    print("error image from server is not a valid type")
-//                }else{
-//                    
-//                    let img = "data:image/\(imgtype);base64,"
-//                    if let range = picString.rangeOfString(img, options: .AnchoredSearch)  {
-//                        picString.removeRange(range)
-//                    }
-//                    
-//                    if let decodedData = NSData(base64EncodedString: picString, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters) {
-//                        //print("decoded data: \(decodedData)")
-//                        
-//                        
-//                        if let decodedimage = UIImage(data: decodedData, scale: 1.0){
-//                            print(decodedimage)
-//                            cell.eventImage.image = decodedimage
-//                        }
-//                    }
-//                }
+                //print("HERE: \(result[indexPath.row].poster_url!) HERE2")
                 cell.eventImage.image = result[indexPath.row].getImage()
 
             }
@@ -123,35 +99,6 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
         return cell
     }
  
-//    func serverStringToDate(dateString:String) -> NSDate
-//    {
-//        //move into model class for event eventually
-//        let dateFormatter = NSDateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//        dateFormatter.timeZone = NSTimeZone(name: "GMT")
-//        //dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
-//        
-//        let d1 = dateFormatter.dateFromString(dateString)
-//        //print(dateStart)
-//        return d1!
-//    }
-//    
-//    func dateToFullStyleString(date:NSDate) -> String
-//    {
-//        
-//        let df = NSDateFormatter()
-//        df.dateStyle = NSDateFormatterStyle.FullStyle
-//        let dstring = df.stringFromDate(date)
-//        //print(dstring)
-//        return dstring
-//    }
-    
-    /*func serverStringToDateToString(dateString:String) -> String
-    {
-        let adateObj = serverStringToDate(dateString)
-        let newString = dateToFullStyleString(adateObj)
-        return newString
-    }*/
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var indexPath:NSIndexPath = self.EventsTableView.indexPathForSelectedRow!
         var eventVC:EventDetailTableViewController = segue.destinationViewController as! EventDetailTableViewController
