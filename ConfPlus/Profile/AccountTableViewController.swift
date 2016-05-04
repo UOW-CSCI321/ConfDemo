@@ -27,6 +27,8 @@ class AccountTableViewController: UITableViewController {
 	
 	let availableLanguages = Localize.availableLanguages()
 	
+	let user = NSUserDefaults.standardUserDefaults()
+	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -136,7 +138,7 @@ class AccountTableViewController: UITableViewController {
         }
         
         //code to make a circular profile image
-       profilePictureImgView.layer.cornerRadius = profilePictureImgView.frame.size.width/2;
+		profilePictureImgView.layer.cornerRadius = profilePictureImgView.frame.size.width/2;
         profilePictureImgView.clipsToBounds = true;
         profilePictureImgView.layer.borderWidth = 3.0
         profilePictureImgView.layer.borderColor = companyColour1.CGColor
@@ -161,6 +163,14 @@ class AccountTableViewController: UITableViewController {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AccountTableViewController.setText), name: LCLLanguageChangeNotification, object: nil)
+		
+		
+		guard let _ = user.stringForKey("email") else {
+			performLogin()
+			return
+		}
+		
+		
 	}
 	
 	// Remove the LCLLanguageChangeNotification on viewWillDisappear
@@ -184,6 +194,15 @@ class AccountTableViewController: UITableViewController {
 			return "Settings".localized()
 		}
 		return ""
+	}
+	
+	func performLogin(){
+		let storyboard : UIStoryboard = UIStoryboard(name: "Account", bundle: nil)
+		let vc : LoginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+		
+		let navigationController = UINavigationController(rootViewController: vc)
+		
+		self.presentViewController(navigationController, animated: true, completion: nil)
 	}
 	
 	// MARK: IBActions
@@ -213,6 +232,5 @@ class AccountTableViewController: UITableViewController {
         
         self.performSegueWithIdentifier("goToLogin", sender: self)
 	}
-
 	
 }

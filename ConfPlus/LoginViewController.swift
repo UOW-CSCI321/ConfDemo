@@ -19,25 +19,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-	
-	override func viewDidAppear(animated: Bool) {
-		//if let defaults = NSUserDefaults.standardUserDefaults()
-		let defaults = NSUserDefaults.standardUserDefaults()
-		if let _ = defaults.stringForKey("email") {
-			if let _ = defaults.stringForKey("password") {
-				//segue to next screen automatically
-				// performSegueWithIdentifier("homeSegue", sender: self)
-				//self.dismissViewControllerAnimated(true, completion: nil)
-			}
-		}
-
-	}
-	
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func data_request(email : String, pwd : String) /*-> String*/
     {
@@ -65,7 +46,7 @@ class LoginViewController: UIViewController {
                             defaults.setObject(password, forKey: "password")
                             defaults.setObject(email, forKey: "email")
 							//self.performSegueWithIdentifier("homeSegue", sender: self)
-							//self.dismissViewControllerAnimated(true, completion: nil)
+							self.dismissViewControllerAnimated(true, completion: nil)
                         }else {
                             self.showAlert("Invalid Password")
                         }
@@ -87,15 +68,21 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func LoginPressed(sender: AnyObject) {
-        let username = usernameTextfield.text
-        let password = passwordTextfield.text
-        data_request(username!, pwd: password!)
+		guard let username = usernameTextfield.text where usernameTextfield.text?.characters.count > 0 else {
+			showAlert("Wrong Username")
+			return
+		}
+		guard let password = passwordTextfield.text where passwordTextfield.text?.characters.count > 0 else {
+			showAlert("Wrong Password")
+			return
+		}
+        data_request(username, pwd: password)
         
     }
 	
 	
-	func showAlert(title: String){
-		let alertcontroller = UIAlertController(title: title, message: "Please try again", preferredStyle: .Alert)
+	func showAlert(title: String, message:String="Please try again"){
+		let alertcontroller = UIAlertController(title: title, message: message, preferredStyle: .Alert)
 		let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
 		alertcontroller.addAction(defaultAction)
 		self.presentViewController(alertcontroller, animated: true, completion: nil)
