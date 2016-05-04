@@ -11,14 +11,15 @@ import UIKit
 
 class TicketDetailsViewController: UIViewController {
     
+	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var totalPrice: UIBarButtonItem!
 	
 	@IBAction func cancelPurchaseTicket(sender: AnyObject) {
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 }
 
@@ -40,5 +41,19 @@ extension TicketDetailsViewController: UITableViewDelegate{
 		cell.ticketPrice.text = "AUD 1.00"
 		
 		return cell
+	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "goToUserInfoView"{
+			var totalTicket = 0
+			let totalTicketType = tableView.numberOfRowsInSection(0)
+			for row in 0..<totalTicketType{
+				let cell:TicketTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: 0)) as! TicketTableViewCell
+				totalTicket += Int(cell.ticketCount.text!)!
+			}
+			
+			let vc = segue.destinationViewController as! PersonalDetailsViewController
+			vc.TOTAL_TICKET_QUANTITY = totalTicket
+		}
 	}
 }
