@@ -89,7 +89,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
                 print("poster url is empty")
             }else
             {
-                var picString = result[indexPath.row].poster_url!
+                //var picString = result[indexPath.row].poster_url!
                 //print("HERE: \(result[indexPath.row].poster_url!) HERE2")
                 cell.eventImage.image = result[indexPath.row].getImage()
 
@@ -152,14 +152,15 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
                             aevent.url = json["data"][i]["url"].stringValue
                             //url
                             aevent.requestPoster()
-                            print("id: \(aevent.event_id)")
-                            print("name: \(aevent.name)")
-                            print("type: \(aevent.type)")
-                            print("from date:\(aevent.from_date)")
-                            print("to date:\(aevent.to_date)")
-                            print("desc: \(aevent.desc)")
-                            print("url: \(aevent.url)")
-                            print("poster: \(aevent.poster_url)")
+                            
+//                            print("id: \(aevent.event_id)")
+//                            print("name: \(aevent.name)")
+//                            print("type: \(aevent.type)")
+//                            print("from date:\(aevent.from_date)")
+//                            print("to date:\(aevent.to_date)")
+//                            print("desc: \(aevent.desc)")
+//                            print("url: \(aevent.url)")
+//                            print("poster: \(aevent.poster_url)")
                             //aevent.tagname
                             
                             

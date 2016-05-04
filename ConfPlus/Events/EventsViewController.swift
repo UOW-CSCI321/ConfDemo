@@ -86,21 +86,25 @@ class EventsViewController: UIViewController, UITableViewDelegate {
                         
                         for i in 0 ..< json["data"].count
                         {
-                            let aevent = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
-                            aevent.name = json["data"][i]["name"].stringValue
-                            //print("name: \(aevent.name)")
-                            //aevent.from_date = self.serverStringToDate(json["data"][i]["from_date"].stringValue)
-                            aevent.setFromDate(json["data"][i]["from_date"].stringValue)
-                            //print("from date:\(aevent.from_date)")
-                            //aevent.to_date = self.serverStringToDate(json["data"][i]["to_date"].stringValue)
-                            aevent.setToDate(json["data"][i]["to_date"].stringValue)
-                            //print("to date:\(aevent.to_date)")
-                            aevent.desc = json["data"][i]["description"].stringValue
-                            //print("desc: \(aevent.desc)")
-                            aevent.poster_url = json["data"][i]["poster_url"].stringValue
-                            //print("poster: \(aevent.poster_url)")
+                            let aevent = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event                            
                             aevent.event_id = json["data"][i]["event_id"].intValue
-                            //print("id: \(aevent.event_id)")
+                            aevent.name = json["data"][i]["name"].stringValue
+                            aevent.type = json["data"][i]["type"].stringValue
+                            aevent.setFromDate(json["data"][i]["from_date"].stringValue)
+                            aevent.setToDate(json["data"][i]["to_date"].stringValue)
+                            //aevent.venueid //we do not have venueID in core data as it uses . syntax to get related items
+                            aevent.desc = json["data"][i]["description"].stringValue
+                            aevent.url = json["data"][i]["url"].stringValue
+                            aevent.requestPoster()
+                            
+                            print("id: \(aevent.event_id)")
+                            print("name: \(aevent.name)")
+                            print("type: \(aevent.type)")
+                            print("from date:\(aevent.from_date)")
+                            print("to date:\(aevent.to_date)")
+                            print("desc: \(aevent.desc)")
+                            print("url: \(aevent.url)")
+                            print("poster: \(aevent.poster_url)")
                             
                             self.eventAttendedArray.append(aevent);
                             
@@ -168,8 +172,9 @@ class EventsViewController: UIViewController, UITableViewDelegate {
             let result = try context.executeFetchRequest(fetchRequest) as! [Event]
             cell.eventName.text = result[indexPath.row].name
             cell.eventDate.text = result[indexPath.row].getFromDateAsString()
+            cell.eventImage.image = result[indexPath.row].getImage()
             
-            print(result)
+            //print(result)
         } catch {
             let fetchError = error as NSError
             print(fetchError)
