@@ -194,14 +194,12 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
                             //let event_idString = json["data"][i]["event_id"].stringValue
                             aevent.name = json["data"][i]["name"].stringValue
                             aevent.type = json["data"][i]["type"].stringValue
-                            //aevent.from_date = self.serverStringToDate(json["data"][i]["from_date"].stringValue)
                             aevent.setFromDate(json["data"][i]["from_date"].stringValue)
-                            //aevent.to_date = self.serverStringToDate(json["data"][i]["to_date"].stringValue)
                             aevent.setToDate(json["data"][i]["to_date"].stringValue)
-                            //aevent.venueid
+                            //aevent.venueid //we do not have venueID in core data as it uses . syntax to get related items
                             aevent.desc = json["data"][i]["description"].stringValue
+                            aevent.url = json["data"][i]["url"].stringValue
                             //url
-                            //aevent.poster_url = json["data"][i]["poster_url"].stringValue
                             aevent.requestPoster()
                             print("id: \(aevent.event_id)")
                             print("name: \(aevent.name)")
@@ -209,6 +207,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
                             print("from date:\(aevent.from_date)")
                             print("to date:\(aevent.to_date)")
                             print("desc: \(aevent.desc)")
+                            print("url: \(aevent.url)")
                             print("poster: \(aevent.poster_url)")
                             //aevent.tagname
                             

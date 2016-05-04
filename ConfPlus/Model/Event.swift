@@ -81,7 +81,7 @@ class Event: NSManagedObject {
         //print(dateStart)
         //return d1!
         self.from_date = d1
-        print("setFromdate(\(dateString)) -> \(d1)")
+        //print("setFromdate(\(dateString)) -> \(d1)")
     }
     
     func setToDate/*serverStringToDate*/(dateString:String) /*-> NSDate*/
@@ -97,7 +97,7 @@ class Event: NSManagedObject {
         //print(dateStart)
         //return d1!
         self.to_date = d1
-        print("setTodate(\(dateString)) -> \(d1)")
+        //print("setTodate(\(dateString)) -> \(d1)")
     }
     
     
@@ -112,7 +112,7 @@ class Event: NSManagedObject {
 
         //let dstring = df.stringFromDate(date)
         //print(dstring)
-        print("getFromDate() gets: \(self.from_date) -> \(dstring)")
+        //print("getFromDate() gets: \(self.from_date) -> \(dstring)")
         return dstring
         
     }
@@ -126,7 +126,7 @@ class Event: NSManagedObject {
         
         //let dstring = df.stringFromDate(date)
         //print(dstring)
-        print("getToDate() gets: \(self.from_date) -> \(dstring)")
+        //print("getToDate() gets: \(self.from_date) -> \(dstring)")
         return dstring
     }
     
@@ -155,7 +155,7 @@ class Event: NSManagedObject {
                 }else
                 {
                     self.poster_url = json["data"]["poster_data_url"].stringValue
-                    print(self.poster_url)
+                    //print(self.poster_url)
                 }
             }
         }else {

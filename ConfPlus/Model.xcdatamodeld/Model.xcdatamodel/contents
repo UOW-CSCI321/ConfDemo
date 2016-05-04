@@ -26,6 +26,7 @@
         <relationship name="roles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event_Roles" inverseName="event" inverseEntity="Event_Roles" syncable="YES"/>
         <relationship name="sessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Session" inverseName="event" inverseEntity="Session" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event_Tag" inverseName="event" inverseEntity="Event_Tag" syncable="YES"/>
+        <relationship name="venue" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Venue" inverseName="events" inverseEntity="Venue" syncable="YES"/>
     </entity>
     <entity name="Event_Roles" representedClassName=".Event_Roles" syncable="YES">
         <attribute name="role_name" optional="YES" attributeType="String" syncable="YES"/>
@@ -130,21 +131,22 @@
         <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="venue_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="venue" inverseEntity="Event" syncable="YES"/>
     </entity>
     <elements>
         <element name="Billing" positionX="1231" positionY="351" width="128" height="103"/>
-        <element name="Event" positionX="1836" positionY="351" width="128" height="238"/>
+        <element name="Conversation" positionX="1132" positionY="810" width="128" height="103"/>
+        <element name="Event" positionX="1836" positionY="351" width="128" height="253"/>
+        <element name="Event_Roles" positionX="1611" positionY="528" width="128" height="88"/>
         <element name="Event_Tag" positionX="1620" positionY="639" width="128" height="73"/>
         <element name="Message" positionX="1231" positionY="657" width="128" height="103"/>
+        <element name="Participants" positionX="1285" positionY="909" width="128" height="88"/>
         <element name="Payment" positionX="1231" positionY="486" width="128" height="118"/>
         <element name="Session" positionX="1852" positionY="716" width="128" height="163"/>
         <element name="Ticket_Def" positionX="1861" positionY="936" width="128" height="208"/>
+        <element name="Ticket_Record" positionX="1456" positionY="887" width="128" height="208"/>
         <element name="User" positionX="1413" positionY="408" width="128" height="403"/>
         <element name="User_Tag" positionX="1645" positionY="882" width="128" height="73"/>
-        <element name="Event_Roles" positionX="1611" positionY="528" width="128" height="88"/>
-        <element name="Conversation" positionX="1132" positionY="810" width="128" height="103"/>
-        <element name="Participants" positionX="1285" positionY="909" width="128" height="88"/>
-        <element name="Ticket_Record" positionX="1456" positionY="887" width="128" height="208"/>
-        <element name="Venue" positionX="1539" positionY="765" width="128" height="180"/>
+        <element name="Venue" positionX="2032" positionY="360" width="128" height="193"/>
     </elements>
 </model>
