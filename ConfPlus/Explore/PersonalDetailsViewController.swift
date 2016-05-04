@@ -10,7 +10,7 @@ import UIKit
 
 class PersonalDetailsViewController: UIViewController {
 	
-	var TOTAL_TICKET_QUANTITY:Int = 3
+	var TOTAL_TICKET_QUANTITY:Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
