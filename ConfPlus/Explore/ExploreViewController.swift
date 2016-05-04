@@ -174,10 +174,12 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
             "method" : "getEventsByTag",
             "tag_name" : "testTag"
         ] //at the moment the api call need event id
+		
         
         let defaults = NSUserDefaults.standardUserDefaults()
         if let serverAdd = defaults.stringForKey("server")
         {
+			
             Alamofire.request(.POST, serverAdd, parameters: paramaters).responseJSON {
                 response in switch response.result
                 {
@@ -229,11 +231,9 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
                 case .Failure(let error):
                     print(error)
                     //handle if there is no internet connection by alerting the user
-                    
                 }
                 
             }
-            
         }else {
             print("server not set in ExploreViewController")
         }

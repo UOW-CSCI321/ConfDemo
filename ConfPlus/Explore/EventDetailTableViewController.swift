@@ -15,6 +15,7 @@ import CoreData
 
 class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
     @IBOutlet var posterImageView: UIImageView!
+	@IBOutlet weak var dateLabel: UITableViewCell!
     @IBOutlet var descriptionTextView: UITextView!
 	@IBOutlet weak var locationMapView: MKMapView!
     @IBOutlet var addressTextView: UITextView!
