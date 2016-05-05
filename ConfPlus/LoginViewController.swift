@@ -49,10 +49,11 @@ class LoginViewController: UIViewController {
 							
 							self.user.setObject(email, forKey: "email")
 							self.user.setObject(password, forKey: "password")
-							self.user.setObject(username, forKey: "usernamer")
+							self.user.setObject(username, forKey: "username")
 							self.user.setObject(firstName, forKey: "firstName")
 							self.user.setObject(lastName, forKey: "lastName")
 							
+							HUD.hide()
 							HUD.flash(.Success, delay: 1.0)
 							self.dismissViewControllerAnimated(true, completion: nil)
 						}else {
@@ -61,13 +62,13 @@ class LoginViewController: UIViewController {
 						}
 					}
 				case .Failure(let error):
+					HUD.hide()
 					print(error)
 					self.showAlert(error.localizedDescription)
 					
 				}
 				
 			}
-			HUD.hide()
  
         }else {
             print("server not set in LoginViewController")
