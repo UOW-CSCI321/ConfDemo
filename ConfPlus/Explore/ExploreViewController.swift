@@ -23,6 +23,8 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject("https://6f7a5a2d.ngrok.io/api/v1", forKey: "server");
         data_request()
+		
+		navigationController?.hidesBarsOnSwipe = true
     }
     
 
@@ -153,8 +155,8 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
         return newString
     }*/
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var indexPath:NSIndexPath = self.EventsTableView.indexPathForSelectedRow!
-        var eventVC:EventDetailTableViewController = segue.destinationViewController as! EventDetailTableViewController
+        let indexPath:NSIndexPath = self.EventsTableView.indexPathForSelectedRow!
+        let eventVC:EventDetailTableViewController = segue.destinationViewController as! EventDetailTableViewController
         //eventVC.descriptionTextView.text =
         eventVC.selectedEvent = eventArray[indexPath.row]
         
@@ -174,10 +176,12 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
             "method" : "getEventsByTag",
             "tag_name" : "testTag"
         ] //at the moment the api call need event id
+		
         
         let defaults = NSUserDefaults.standardUserDefaults()
         if let serverAdd = defaults.stringForKey("server")
         {
+			
             Alamofire.request(.POST, serverAdd, parameters: paramaters).responseJSON {
                 response in switch response.result
                 {
@@ -229,11 +233,9 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
                 case .Failure(let error):
                     print(error)
                     //handle if there is no internet connection by alerting the user
-                    
                 }
                 
             }
-            
         }else {
             print("server not set in ExploreViewController")
         }

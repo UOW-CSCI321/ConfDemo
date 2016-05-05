@@ -13,12 +13,48 @@ class MyTicketsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+		
+		populateNavigationBar()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+}
+
+
+//MARK: Navigation Bar Related
+extension MyTicketsTableViewController{
+	func populateNavigationBar(){
+		self.navigationController?.hidesBarsOnSwipe = true
+		
+		let contact = UIBarButtonItem(image: UIImage(named: "security32"), style: .Plain, target: self, action: #selector(performSecurityView))
+		let location = UIBarButtonItem(image: UIImage(named: "second"), style: .Plain, target: self, action: #selector(performLocationView))
+		let cancel = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(performBackToEvent))
+		
+		let space = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: self, action: nil)
+		
+		let buttons = [contact, space, location]
+		
+		self.navigationItem.setRightBarButtonItems(buttons, animated: true)
+		self.navigationItem.setLeftBarButtonItem(cancel, animated: true)
+	}
+	
+	func performSecurityView(){
+		let storyboard : UIStoryboard = UIStoryboard(name: "EventAssistServices", bundle: nil)
+		let vc : SecurityViewController = storyboard.instantiateViewControllerWithIdentifier("SecurityViewController") as! SecurityViewController
+		
+		let navigationController = UINavigationController(rootViewController: vc)
+		
+		self.presentViewController(navigationController, animated: true, completion: nil)
+	}
+	
+	func performLocationView(){
+		let storyboard : UIStoryboard = UIStoryboard(name: "EventAssistServices", bundle: nil)
+		let vc : EventLocationViewController = storyboard.instantiateViewControllerWithIdentifier("EventLocationViewController") as! EventLocationViewController
+		
+		let navigationController = UINavigationController(rootViewController: vc)
+		
+		self.presentViewController(navigationController, animated: true, completion: nil)
+	}
+	
+	func performBackToEvent(){
+		dismissViewControllerAnimated(true, completion: nil)
+	}
 }

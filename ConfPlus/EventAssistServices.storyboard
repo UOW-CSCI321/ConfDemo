@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Security-->
+        <scene sceneID="8MP-Pi-yK9">
+            <objects>
+                <viewController storyboardIdentifier="SecurityViewController" title="Security" id="HfZ-kp-Tc9" customClass="SecurityViewController" customModule="ConfPlus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OW0-sE-6Cq"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Bi-cT-g5v"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="X2o-Lj-EBl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6pu-4m-zY0">
+                                <rect key="frame" x="36" y="181.5" width="303" height="303"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpZ-K3-KeZ">
+                                        <rect key="frame" x="16" y="16" width="271" height="271"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="54"/>
+                                        <state key="normal" title="Help"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="bpZ-K3-KeZ" firstAttribute="centerY" secondItem="6pu-4m-zY0" secondAttribute="centerY" id="5B9-M9-coF"/>
+                                    <constraint firstAttribute="bottom" secondItem="bpZ-K3-KeZ" secondAttribute="bottom" constant="16" id="AJ5-1O-yH0"/>
+                                    <constraint firstItem="bpZ-K3-KeZ" firstAttribute="leading" secondItem="6pu-4m-zY0" secondAttribute="leading" constant="16" id="YCo-I2-vTn"/>
+                                    <constraint firstItem="bpZ-K3-KeZ" firstAttribute="top" secondItem="6pu-4m-zY0" secondAttribute="top" constant="16" id="aAa-E4-ON0"/>
+                                    <constraint firstItem="bpZ-K3-KeZ" firstAttribute="centerX" secondItem="6pu-4m-zY0" secondAttribute="centerX" id="bcH-Gv-gbs"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="360" id="u33-PJ-O3y"/>
+                                    <constraint firstAttribute="width" secondItem="6pu-4m-zY0" secondAttribute="height" multiplier="1:1" id="uWs-Eo-8tV"/>
+                                    <constraint firstAttribute="trailing" secondItem="bpZ-K3-KeZ" secondAttribute="trailing" constant="16" id="zEW-SD-NLw"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5B9-M9-coF"/>
+                                        <exclude reference="bcH-Gv-gbs"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="6pu-4m-zY0" secondAttribute="trailing" constant="20" id="BJ4-cI-Sqa"/>
+                            <constraint firstItem="6pu-4m-zY0" firstAttribute="leading" secondItem="X2o-Lj-EBl" secondAttribute="leadingMargin" constant="20" id="EiB-8f-Er9"/>
+                            <constraint firstItem="6pu-4m-zY0" firstAttribute="centerX" secondItem="X2o-Lj-EBl" secondAttribute="centerX" id="fk9-Pz-2kB"/>
+                            <constraint firstItem="9Bi-cT-g5v" firstAttribute="top" secondItem="6pu-4m-zY0" secondAttribute="bottom" constant="20" id="i9o-TO-7qk"/>
+                            <constraint firstItem="6pu-4m-zY0" firstAttribute="centerY" secondItem="X2o-Lj-EBl" secondAttribute="centerY" id="kPy-mQ-Rzk"/>
+                            <constraint firstItem="6pu-4m-zY0" firstAttribute="top" secondItem="OW0-sE-6Cq" secondAttribute="bottom" constant="20" id="r20-uX-srS"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="r20-uX-srS"/>
+                                <exclude reference="i9o-TO-7qk"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Security" id="vZv-Vf-5qa">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="Gv9-aI-XuB">
+                            <connections>
+                                <action selector="dismissSecurityView:" destination="HfZ-kp-Tc9" id="5aD-pj-dAo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="helpView" destination="6pu-4m-zY0" id="ABn-nd-XxV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dbW-dx-mSX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-709.5" y="738.5"/>
+        </scene>
+        <!--Location-->
+        <scene sceneID="ZZJ-7N-h15">
+            <objects>
+                <viewController storyboardIdentifier="EventLocationViewController" id="1aV-hh-wbu" customClass="EventLocationViewController" customModule="ConfPlus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="acZ-zT-K7v"/>
+                        <viewControllerLayoutGuide type="bottom" id="gkS-NT-fPg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xmf-bZ-WzT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Location" id="L8p-n2-5yi">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="Unk-Jc-Gh8">
+                            <connections>
+                                <action selector="dismissLocationView:" destination="1aV-hh-wbu" id="otc-W7-KiJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X7G-lu-qrc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-127" y="730"/>
+        </scene>
+    </scenes>
+</document>
