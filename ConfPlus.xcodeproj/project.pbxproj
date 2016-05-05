@@ -71,7 +71,6 @@
 		E93163911BC5E294007408C7 /* viewEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163901BC5E294007408C7 /* viewEffect.swift */; };
 		E93163931BC5E573007408C7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163921BC5E573007408C7 /* LoginViewController.swift */; };
 		E93163981BC62AB6007408C7 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163971BC62AB6007408C7 /* ExploreViewController.swift */; };
-		E93C5ABE1CD9D3F300A8BC88 /* TicketSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93C5ABD1CD9D3F300A8BC88 /* TicketSelectionView.xib */; };
 		E9AF00691CDAB9D6004424A1 /* EventAssistServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9AF00681CDAB9D6004424A1 /* EventAssistServices.storyboard */; };
 		E9AF006B1CDABDE1004424A1 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9AF006A1CDABDE1004424A1 /* Account.storyboard */; };
 		E9D055C51CCF0EC10045BA86 /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */; };
@@ -150,7 +149,6 @@
 		E93163901BC5E294007408C7 /* viewEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = viewEffect.swift; path = ConfPlus/viewEffect.swift; sourceTree = "<group>"; };
 		E93163921BC5E573007408C7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E93163971BC62AB6007408C7 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreViewController.swift; path = Explore/ExploreViewController.swift; sourceTree = "<group>"; };
-		E93C5ABD1CD9D3F300A8BC88 /* TicketSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketSelectionView.xib; sourceTree = "<group>"; };
 		E9AF00681CDAB9D6004424A1 /* EventAssistServices.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventAssistServices.storyboard; sourceTree = "<group>"; };
 		E9AF006A1CDABDE1004424A1 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
@@ -334,13 +332,11 @@
 				E93163971BC62AB6007408C7 /* ExploreViewController.swift */,
 				E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */,
 				E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */,
-				C94AFA4C1C98085B00EC88B6 /* TicketDetailsViewController.swift */,
-				E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */,
+				E9AF006E1CDAD702004424A1 /* Ticket */,
 				C94AFA4E1C9808AB00EC88B6 /* PersonalDetailsViewController.swift */,
 				C94AFA501C980A0B00EC88B6 /* PaymentViewController.swift */,
 				C94AFA521C980A5400EC88B6 /* ReceiptViewController.swift */,
 				E9D055C81CCF20510045BA86 /* PersonalDetailsTableViewCell.swift */,
-				E93C5ABD1CD9D3F300A8BC88 /* TicketSelectionView.xib */,
 			);
 			name = Explore;
 			sourceTree = "<group>";
@@ -353,6 +349,15 @@
 			);
 			name = Resources;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		E9AF006E1CDAD702004424A1 /* Ticket */ = {
+			isa = PBXGroup;
+			children = (
+				C94AFA4C1C98085B00EC88B6 /* TicketDetailsViewController.swift */,
+				E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */,
+			);
+			name = Ticket;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,7 +422,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E92C925E1CAA7DDC0093EDCD /* Localizable.strings in Resources */,
-				E93C5ABE1CD9D3F300A8BC88 /* TicketSelectionView.xib in Resources */,
 				E931636A1BC5E0B4007408C7 /* Assets.xcassets in Resources */,
 				E9AF00691CDAB9D6004424A1 /* EventAssistServices.storyboard in Resources */,
 				E9AF006B1CDABDE1004424A1 /* Account.storyboard in Resources */,
