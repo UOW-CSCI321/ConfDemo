@@ -17,14 +17,15 @@ class TimeTableViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+		
+		navigationController?.hidesBarsOnSwipe = true
     }
     
 }
 
 extension TimeTableViewController: UITableViewDelegate{
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 2
+		return 3
 	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

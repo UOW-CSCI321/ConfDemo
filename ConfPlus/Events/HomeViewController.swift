@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 class HomeViewController: UIViewController {
+	
+	
 	let MENU_COUNT = 6
 	
 	@IBAction func exitEventDashboard(sender: AnyObject) {
@@ -19,7 +21,7 @@ class HomeViewController: UIViewController {
 	func didSelectView(gesture: UIGestureRecognizer){
 		let tag = gesture.view?.tag
 		if tag == 6 {
-			dismissViewControllerAnimated(true, completion: nil)
+			performBackToEvent()
 		} else {
 			performSegueWithIdentifier("goToTabView", sender: tag)
 		}
@@ -27,6 +29,9 @@ class HomeViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		populateNavigationBar()
+		
 
 		// Set the button to rounded edge.
 		for index in 1...MENU_COUNT {
@@ -41,5 +46,44 @@ class HomeViewController: UIViewController {
 			vc.selectedIndex = (sender as! Int) - 1
 		}
 	}
+}
+
+//MARK: Navigation Bar Related
+extension HomeViewController{
+	func populateNavigationBar(){
+		self.navigationController?.hidesBarsOnSwipe = true
+		
+		let contact = UIBarButtonItem(image: UIImage(named: "security32"), style: .Plain, target: self, action: #selector(performSecurityView))
+		let location = UIBarButtonItem(image: UIImage(named: "second"), style: .Plain, target: self, action: #selector(performLocationView))
+		
+		let space = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: self, action: nil)
+		
+		let buttons = [contact, space, location]
+		
+		self.navigationItem.setRightBarButtonItems(buttons, animated: true)
+	}
 	
+	func performSecurityView(){
+		let storyboard : UIStoryboard = UIStoryboard(name: "EventAssistServices", bundle: nil)
+		let vc : SecurityViewController = storyboard.instantiateViewControllerWithIdentifier("SecurityViewController") as! SecurityViewController
+		
+		let navigationController = UINavigationController(rootViewController: vc)
+		
+		self.presentViewController(navigationController, animated: true, completion: nil)
+	}
+	
+	func performLocationView(){
+		let storyboard : UIStoryboard = UIStoryboard(name: "EventAssistServices", bundle: nil)
+		let vc : EventLocationViewController = storyboard.instantiateViewControllerWithIdentifier("EventLocationViewController") as! EventLocationViewController
+		
+		let navigationController = UINavigationController(rootViewController: vc)
+		
+		self.presentViewController(navigationController, animated: true, completion: nil)
+	}
+	
+	func performBackToEvent(){
+		dismissViewControllerAnimated(true){
+			self.dismissViewControllerAnimated(true, completion: nil)
+		}
+	}
 }

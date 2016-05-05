@@ -14,16 +14,34 @@ import CoreData
 class EventsViewController: UIViewController, UITableViewDelegate {
     
     var eventAttendedArray = [Event]()
+	let user = NSUserDefaults.standardUserDefaults()
+	
     @IBOutlet var eventsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         data_request()
+		
+		navigationController?.hidesBarsOnSwipe = true
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		guard let _ = user.stringForKey("email") else {
+			performLogin()
+			return
+		}
+	}
+	
+	func performLogin(){
+		let storyboard : UIStoryboard = UIStoryboard(name: "Account", bundle: nil)
+		let vc : LoginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+		
+		let navigationController = UINavigationController(rootViewController: vc)
+		
+		self.presentViewController(navigationController, animated: true, completion: nil)
+	}
 
     // MARK: - Table view data source
 

@@ -27,6 +27,8 @@ class AccountTableViewController: UITableViewController {
 	
 	let availableLanguages = Localize.availableLanguages()
 	
+	let user = NSUserDefaults.standardUserDefaults()
+	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -109,34 +111,19 @@ class AccountTableViewController: UITableViewController {
 		*/
         
         //dummy save into nsuserdefaults which will be done on the login screen
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject("matthew", forKey: "firstName")
-        defaults.setObject("boroczky", forKey: "lastName")
-        defaults.setObject("mattattack", forKey: "username")
-        defaults.setObject("mb340@uowmail.edu.au", forKey: "email")
-        defaults.setObject("6f7a5a2d.ngrok.io/api/v1", forKey: "server");
-        
+//        let defaults = NSUserDefaults.standardUserDefaults()
+//        defaults.setObject("matthew", forKey: "firstName")
+//        defaults.setObject("boroczky", forKey: "lastName")
+//        defaults.setObject("mattattack", forKey: "username")
+//        defaults.setObject("mb340@uowmail.edu.au", forKey: "email")
+//        defaults.setObject("6f7a5a2d.ngrok.io/api/v1", forKey: "server");
+		
         //get
         //let defaults = NSUserDefaults.standardUserDefaults()
-        if let name = defaults.stringForKey("firstName")
-        {
-           if let name2 = defaults.stringForKey("lastName")
-           {
-            nameLabel.text = "\(name) \(name2)"
-           }
-            
-        }
-        if let username = defaults.stringForKey("username")
-        {
-            usernameLabel.text = username
-        }
-        if let email = defaults.stringForKey("email")
-        {
-            emailLabel.text = email
-        }
+		
         
         //code to make a circular profile image
-       profilePictureImgView.layer.cornerRadius = profilePictureImgView.frame.size.width/2;
+		profilePictureImgView.layer.cornerRadius = profilePictureImgView.frame.size.width/2;
         profilePictureImgView.clipsToBounds = true;
         profilePictureImgView.layer.borderWidth = 3.0
         profilePictureImgView.layer.borderColor = companyColour1.CGColor
@@ -161,6 +148,26 @@ class AccountTableViewController: UITableViewController {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AccountTableViewController.setText), name: LCLLanguageChangeNotification, object: nil)
+		
+		
+		guard let email = user.stringForKey("email") else {
+			performLogin()
+			return
+		}
+		
+		emailLabel.text = email
+		if let name = user.stringForKey("firstName")
+		{
+			if let name2 = user.stringForKey("lastName")
+			{
+				nameLabel.text = "\(name) \(name2)"
+			}
+			
+		}
+		if let username = user.stringForKey("username")
+		{
+			usernameLabel.text = username
+		}
 	}
 	
 	// Remove the LCLLanguageChangeNotification on viewWillDisappear
@@ -184,6 +191,16 @@ class AccountTableViewController: UITableViewController {
 			return "Settings".localized()
 		}
 		return ""
+	}
+	
+	func performLogin(){
+		let storyboard : UIStoryboard = UIStoryboard(name: "Account", bundle: nil)
+		let vc : LoginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+		
+		let navigationController = UINavigationController(rootViewController: vc)
+		
+		
+		self.presentViewController(navigationController, animated: true, completion: nil)
 	}
 	
 	// MARK: IBActions
@@ -211,8 +228,7 @@ class AccountTableViewController: UITableViewController {
         NSUserDefaults.standardUserDefaults().removePersistentDomainForName(NSBundle.mainBundle().bundleIdentifier!)
         NSUserDefaults.standardUserDefaults().synchronize()
         
-        self.performSegueWithIdentifier("goToLogin", sender: self)
+        performLogin()
 	}
-
 	
 }

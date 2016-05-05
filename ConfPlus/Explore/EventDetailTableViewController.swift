@@ -15,6 +15,7 @@ import CoreData
 
 class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
     @IBOutlet var posterImageView: UIImageView!
+	@IBOutlet weak var dateLabel: UITableViewCell!
     @IBOutlet var descriptionTextView: UITextView!
 	@IBOutlet weak var locationMapView: MKMapView!
     @IBOutlet var addressTextView: UITextView!
@@ -32,7 +33,8 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         data_request()
-        
+		
+		navigationController?.hidesBarsOnSwipe = true
         
         
         // Uncomment the following line to preserve selection between presentations
