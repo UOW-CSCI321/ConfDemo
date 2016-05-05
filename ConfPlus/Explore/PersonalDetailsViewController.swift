@@ -11,11 +11,12 @@ import UIKit
 class PersonalDetailsViewController: UIViewController {
 	
 	var TOTAL_TICKET_QUANTITY:Int = 1
+	var ticketName = [String]()
+	let type = ["name", "email"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		navigationController?.hidesBarsOnSwipe = true
     }
 }
 
@@ -25,17 +26,16 @@ extension PersonalDetailsViewController: UITableViewDelegate {
 	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 2
+		return type.count
 	}
 	
 	func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return "Ticket-\(section)"
+		return "\(ticketName[section % ticketName.count])-\(section)"
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
 		let cell = tableView.dequeueReusableCellWithIdentifier("personalCell", forIndexPath: indexPath) as! PersonalDetailsTableViewCell
-		let type = ["name", "email"]
 		
 		cell.detailType.text = type[indexPath.row]
 		cell.typeResponseTextField.placeholder = type[indexPath.row]

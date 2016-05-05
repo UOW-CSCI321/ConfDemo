@@ -14,10 +14,6 @@ class TicketTableViewCell: UITableViewCell {
 	@IBOutlet weak var ticketName: UILabel!
 	@IBOutlet weak var ticketPrice: UILabel!
 	
-	@IBAction func addTicketCount(sender: AnyObject) {
-		ticketCount.text = String(Int(ticketCount.text!)! + 1)
-	}
-	
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

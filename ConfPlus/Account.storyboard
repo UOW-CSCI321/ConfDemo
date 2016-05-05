@@ -68,7 +68,6 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="Register"/>
                                                 <connections>
-                                                    <action selector="LoginPressed:" destination="V6o-6F-Ei4" eventType="touchUpInside" id="XdI-HZ-mJ0"/>
                                                     <action selector="dismissRegisterView:" destination="ho9-kV-oXR" eventType="touchUpInside" id="cfu-63-INe"/>
                                                     <segue destination="ho9-kV-oXR" kind="presentation" identifier="goToRegisterView" modalTransitionStyle="flipHorizontal" id="nfJ-fe-Q9V"/>
                                                 </connections>
