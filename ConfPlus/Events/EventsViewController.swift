@@ -21,6 +21,8 @@ class EventsViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         data_request()
+		
+		navigationController?.hidesBarsOnSwipe = true
     }
 
 	override func viewWillAppear(animated: Bool) {

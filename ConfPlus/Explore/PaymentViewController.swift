@@ -11,6 +11,14 @@ import UIKit
 
 class PaymentViewController: UIViewController {
 	
+    override func viewDidLoad() {
+        super.viewDidLoad()
+		
+		navigationController?.hidesBarsOnSwipe = true
+    }
+	
+	
+	//MARK: IBActions
 	@IBAction func performPurchase(sender: AnyObject) {
 		let alertcontroller = UIAlertController(title: "Payment Information", message: "Total Price: AUD 00.00 ", preferredStyle: .Alert)
 		let paypalAction = UIAlertAction(title: "PayPal", style: .Default){ UIAlertAction in
@@ -22,12 +30,7 @@ class PaymentViewController: UIViewController {
 		alertcontroller.addAction(paypalAction)
 		self.presentViewController(alertcontroller, animated: true, completion: nil)
 	}
-	
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-    
+
 }
 
 extension PaymentViewController: UITableViewDelegate{

@@ -22,5 +22,4 @@ class SecurityViewController: UIViewController {
 		
 		viewEffect.round(helpView)
     }
-    
 }

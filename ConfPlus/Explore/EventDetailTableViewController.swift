@@ -33,7 +33,8 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         data_request()
-        
+		
+		navigationController?.hidesBarsOnSwipe = true
         
         
         // Uncomment the following line to preserve selection between presentations

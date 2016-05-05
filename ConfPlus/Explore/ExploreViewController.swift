@@ -23,6 +23,8 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject("https://6f7a5a2d.ngrok.io/api/v1", forKey: "server");
         data_request()
+		
+		navigationController?.hidesBarsOnSwipe = true
     }
     
 
@@ -153,8 +155,8 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
         return newString
     }*/
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var indexPath:NSIndexPath = self.EventsTableView.indexPathForSelectedRow!
-        var eventVC:EventDetailTableViewController = segue.destinationViewController as! EventDetailTableViewController
+        let indexPath:NSIndexPath = self.EventsTableView.indexPathForSelectedRow!
+        let eventVC:EventDetailTableViewController = segue.destinationViewController as! EventDetailTableViewController
         //eventVC.descriptionTextView.text =
         eventVC.selectedEvent = eventArray[indexPath.row]
         
