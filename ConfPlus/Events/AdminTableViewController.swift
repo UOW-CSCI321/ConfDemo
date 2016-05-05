@@ -8,15 +8,32 @@
 
 import Foundation
 import UIKit
+import PKHUD
 
 class AdminTableViewController: UITableViewController {
+	
+	
     
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 		populateNavigationBar()
     }
-    
+	
+	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		let cell:UITableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: indexPath.row, inSection: indexPath.section))!
+		
+		
+		switch cell.textLabel!.text! {
+			case "Attendance":
+				performSegueWithIdentifier("goToQRScannerView", sender: self)
+			case "Back":
+				self.dismissViewControllerAnimated(true, completion: nil)
+		default:
+			HUD.flash(.Label("Features not available yet."), delay: 1.0)
+		}
+	}
+	
 }
 
 //MARK: Navigation Bar Related
@@ -26,14 +43,12 @@ extension AdminTableViewController{
 		
 		let contact = UIBarButtonItem(image: UIImage(named: "security32"), style: .Plain, target: self, action: #selector(performSecurityView))
 		let location = UIBarButtonItem(image: UIImage(named: "second"), style: .Plain, target: self, action: #selector(performLocationView))
-		let cancel = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(performBackToEvent))
 		
 		let space = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: self, action: nil)
 		
 		let buttons = [contact, space, location]
 		
 		self.navigationItem.setRightBarButtonItems(buttons, animated: true)
-		self.navigationItem.setLeftBarButtonItem(cancel, animated: true)
 	}
 	
 	func performSecurityView(){

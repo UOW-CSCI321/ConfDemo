@@ -73,6 +73,7 @@
 		E93163981BC62AB6007408C7 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163971BC62AB6007408C7 /* ExploreViewController.swift */; };
 		E9AF00691CDAB9D6004424A1 /* EventAssistServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9AF00681CDAB9D6004424A1 /* EventAssistServices.storyboard */; };
 		E9AF006B1CDABDE1004424A1 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9AF006A1CDABDE1004424A1 /* Account.storyboard */; };
+		E9AF00711CDAEEFE004424A1 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AF00701CDAEEFE004424A1 /* ScannerViewController.swift */; };
 		E9D055C51CCF0EC10045BA86 /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */; };
 		E9D055C71CCF1CCA0045BA86 /* TimetableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D055C61CCF1CCA0045BA86 /* TimetableTableViewCell.swift */; };
 		E9D055C91CCF20510045BA86 /* PersonalDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D055C81CCF20510045BA86 /* PersonalDetailsTableViewCell.swift */; };
@@ -151,6 +152,7 @@
 		E93163971BC62AB6007408C7 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreViewController.swift; path = Explore/ExploreViewController.swift; sourceTree = "<group>"; };
 		E9AF00681CDAB9D6004424A1 /* EventAssistServices.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventAssistServices.storyboard; sourceTree = "<group>"; };
 		E9AF006A1CDABDE1004424A1 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
+		E9AF00701CDAEEFE004424A1 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScannerViewController.swift; path = Events/ScannerViewController.swift; sourceTree = "<group>"; };
 		E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
 		E9D055C61CCF1CCA0045BA86 /* TimetableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableTableViewCell.swift; sourceTree = "<group>"; };
 		E9D055C81CCF20510045BA86 /* PersonalDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalDetailsTableViewCell.swift; sourceTree = "<group>"; };
@@ -195,9 +197,7 @@
 				C94AFA621C981C5C00EC88B6 /* Ticket */,
 				C94AFA6D1C981F1A00EC88B6 /* AttendingViewController.swift */,
 				C94AFA6F1C981F8200EC88B6 /* Admin */,
-				C94AFA6B1C981E7700EC88B6 /* SecurityViewController.swift */,
-				C94AFA5F1C9811BD00EC88B6 /* EventLocationViewController.swift */,
-				E9AF00681CDAB9D6004424A1 /* EventAssistServices.storyboard */,
+				E9AF006F1CDAE7BA004424A1 /* Security and Location */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -225,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				C94AFA701C981FED00EC88B6 /* AdminTableViewController.swift */,
+				E9AF00701CDAEEFE004424A1 /* ScannerViewController.swift */,
 			);
 			name = Admin;
 			sourceTree = "<group>";
@@ -358,6 +359,16 @@
 				E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */,
 			);
 			name = Ticket;
+			sourceTree = "<group>";
+		};
+		E9AF006F1CDAE7BA004424A1 /* Security and Location */ = {
+			isa = PBXGroup;
+			children = (
+				C94AFA6B1C981E7700EC88B6 /* SecurityViewController.swift */,
+				C94AFA5F1C9811BD00EC88B6 /* EventLocationViewController.swift */,
+				E9AF00681CDAB9D6004424A1 /* EventAssistServices.storyboard */,
+			);
+			name = "Security and Location";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -505,6 +516,7 @@
 				C955F15D1CD639AD000BE39C /* Billing.swift in Sources */,
 				C955F1551CD639AD000BE39C /* Ticket.swift in Sources */,
 				C94AFA761C98221400EC88B6 /* HistoryTableViewController.swift in Sources */,
+				E9AF00711CDAEEFE004424A1 /* ScannerViewController.swift in Sources */,
 				C94AFA5C1C980E3B00EC88B6 /* TalksViewController.swift in Sources */,
 				C955F1591CD639AD000BE39C /* Payment.swift in Sources */,
 				C955F15C1CD639AD000BE39C /* Billing+CoreDataProperties.swift in Sources */,
