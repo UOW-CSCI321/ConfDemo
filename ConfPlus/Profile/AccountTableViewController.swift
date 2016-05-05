@@ -120,22 +120,7 @@ class AccountTableViewController: UITableViewController {
 		
         //get
         //let defaults = NSUserDefaults.standardUserDefaults()
-        if let name = user.stringForKey("firstName")
-        {
-           if let name2 = user.stringForKey("lastName")
-           {
-            nameLabel.text = "\(name) \(name2)"
-           }
-            
-        }
-        if let username = user.stringForKey("username")
-        {
-            usernameLabel.text = username
-        }
-        if let email = user.stringForKey("email")
-        {
-            emailLabel.text = email
-        }
+		
         
         //code to make a circular profile image
 		profilePictureImgView.layer.cornerRadius = profilePictureImgView.frame.size.width/2;
@@ -165,12 +150,24 @@ class AccountTableViewController: UITableViewController {
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AccountTableViewController.setText), name: LCLLanguageChangeNotification, object: nil)
 		
 		
-		guard let _ = user.stringForKey("email") else {
+		guard let email = user.stringForKey("email") else {
 			performLogin()
 			return
 		}
 		
-		
+		emailLabel.text = email
+		if let name = user.stringForKey("firstName")
+		{
+			if let name2 = user.stringForKey("lastName")
+			{
+				nameLabel.text = "\(name) \(name2)"
+			}
+			
+		}
+		if let username = user.stringForKey("username")
+		{
+			usernameLabel.text = username
+		}
 	}
 	
 	// Remove the LCLLanguageChangeNotification on viewWillDisappear
