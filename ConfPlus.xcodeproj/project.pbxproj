@@ -40,8 +40,6 @@
 		C955F15F1CD639AD000BE39C /* Participants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C955F1451CD639AD000BE39C /* Participants.swift */; };
 		C955F1601CD639AD000BE39C /* Event_Roles+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C955F1461CD639AD000BE39C /* Event_Roles+CoreDataProperties.swift */; };
 		C955F1611CD639AD000BE39C /* Event_Roles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C955F1471CD639AD000BE39C /* Event_Roles.swift */; };
-		C955F1621CD639AD000BE39C /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C955F1481CD639AD000BE39C /* Event+CoreDataProperties.swift */; };
-		C955F1631CD639AD000BE39C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C955F1491CD639AD000BE39C /* Event.swift */; };
 		C955F1641CD639AD000BE39C /* Event_Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C955F14A1CD639AD000BE39C /* Event_Tag+CoreDataProperties.swift */; };
 		C955F1651CD639AD000BE39C /* Event_Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = C955F14B1CD639AD000BE39C /* Event_Tag.swift */; };
 		C955F1661CD639AD000BE39C /* User_Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C955F14C1CD639AD000BE39C /* User_Tag+CoreDataProperties.swift */; };
@@ -50,9 +48,11 @@
 		C955F1691CD639AD000BE39C /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = C955F14F1CD639AD000BE39C /* Session.swift */; };
 		C955F16A1CD639AD000BE39C /* Ticket_Record+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C955F1501CD639AD000BE39C /* Ticket_Record+CoreDataProperties.swift */; };
 		C955F16B1CD639AD000BE39C /* Ticket_Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = C955F1511CD639AD000BE39C /* Ticket_Record.swift */; };
-		C955F16E1CD6430A000BE39C /* Venue+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C955F16C1CD6430A000BE39C /* Venue+CoreDataProperties.swift */; };
-		C955F16F1CD6430A000BE39C /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C955F16D1CD6430A000BE39C /* Venue.swift */; };
 		C955F1711CD8A1FD000BE39C /* Alamofire_Synchronous.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C955F1701CD8A1FD000BE39C /* Alamofire_Synchronous.framework */; };
+		C955F1761CDCA3B7000BE39C /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C955F1721CDCA3B7000BE39C /* Event+CoreDataProperties.swift */; };
+		C955F1771CDCA3B7000BE39C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C955F1731CDCA3B7000BE39C /* Event.swift */; };
+		C955F1781CDCA3B7000BE39C /* Venue+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C955F1741CDCA3B7000BE39C /* Venue+CoreDataProperties.swift */; };
+		C955F1791CDCA3B7000BE39C /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C955F1751CDCA3B7000BE39C /* Venue.swift */; };
 		C999E8FE1CB1308D00E05C67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C999E8FD1CB1308D00E05C67 /* CoreData.framework */; };
 		C9AC4CE31CB7AA6300083F12 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4CE21CB7AA6300083F12 /* CoreLocation.framework */; };
 		C9AC4D031CC45C7700083F12 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4D021CC45C7700083F12 /* SwiftyJSON.framework */; };
@@ -117,8 +117,6 @@
 		C955F1451CD639AD000BE39C /* Participants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Participants.swift; path = Model/Participants.swift; sourceTree = "<group>"; };
 		C955F1461CD639AD000BE39C /* Event_Roles+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Event_Roles+CoreDataProperties.swift"; path = "Model/Event_Roles+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C955F1471CD639AD000BE39C /* Event_Roles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event_Roles.swift; path = Model/Event_Roles.swift; sourceTree = "<group>"; };
-		C955F1481CD639AD000BE39C /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Event+CoreDataProperties.swift"; path = "Model/Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		C955F1491CD639AD000BE39C /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Model/Event.swift; sourceTree = "<group>"; };
 		C955F14A1CD639AD000BE39C /* Event_Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Event_Tag+CoreDataProperties.swift"; path = "Model/Event_Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C955F14B1CD639AD000BE39C /* Event_Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event_Tag.swift; path = Model/Event_Tag.swift; sourceTree = "<group>"; };
 		C955F14C1CD639AD000BE39C /* User_Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User_Tag+CoreDataProperties.swift"; path = "Model/User_Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -127,9 +125,11 @@
 		C955F14F1CD639AD000BE39C /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Model/Session.swift; sourceTree = "<group>"; };
 		C955F1501CD639AD000BE39C /* Ticket_Record+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Ticket_Record+CoreDataProperties.swift"; path = "Model/Ticket_Record+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C955F1511CD639AD000BE39C /* Ticket_Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ticket_Record.swift; path = Model/Ticket_Record.swift; sourceTree = "<group>"; };
-		C955F16C1CD6430A000BE39C /* Venue+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Venue+CoreDataProperties.swift"; path = "Model/Venue+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		C955F16D1CD6430A000BE39C /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Venue.swift; path = Model/Venue.swift; sourceTree = "<group>"; };
 		C955F1701CD8A1FD000BE39C /* Alamofire_Synchronous.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire_Synchronous.framework; path = "Pods/../build/Debug-iphoneos/Alamofire_Synchronous.framework"; sourceTree = "<group>"; };
+		C955F1721CDCA3B7000BE39C /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Event+CoreDataProperties.swift"; path = "Model/Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C955F1731CDCA3B7000BE39C /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Model/Event.swift; sourceTree = "<group>"; };
+		C955F1741CDCA3B7000BE39C /* Venue+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Venue+CoreDataProperties.swift"; path = "Model/Venue+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C955F1751CDCA3B7000BE39C /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Venue.swift; path = Model/Venue.swift; sourceTree = "<group>"; };
 		C999E8FD1CB1308D00E05C67 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C9AC4CE21CB7AA6300083F12 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C9AC4D021CC45C7700083F12 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
@@ -247,6 +247,10 @@
 		C9FD07E91CB23BD400C44595 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C955F1721CDCA3B7000BE39C /* Event+CoreDataProperties.swift */,
+				C955F1731CDCA3B7000BE39C /* Event.swift */,
+				C955F1741CDCA3B7000BE39C /* Venue+CoreDataProperties.swift */,
+				C955F1751CDCA3B7000BE39C /* Venue.swift */,
 				C955F1381CD639AD000BE39C /* Conversation+CoreDataProperties.swift */,
 				C955F1391CD639AD000BE39C /* Conversation.swift */,
 				C955F13A1CD639AD000BE39C /* Ticket+CoreDataProperties.swift */,
@@ -263,8 +267,6 @@
 				C955F1451CD639AD000BE39C /* Participants.swift */,
 				C955F1461CD639AD000BE39C /* Event_Roles+CoreDataProperties.swift */,
 				C955F1471CD639AD000BE39C /* Event_Roles.swift */,
-				C955F1481CD639AD000BE39C /* Event+CoreDataProperties.swift */,
-				C955F1491CD639AD000BE39C /* Event.swift */,
 				C955F14A1CD639AD000BE39C /* Event_Tag+CoreDataProperties.swift */,
 				C955F14B1CD639AD000BE39C /* Event_Tag.swift */,
 				C955F14C1CD639AD000BE39C /* User_Tag+CoreDataProperties.swift */,
@@ -273,8 +275,6 @@
 				C955F14F1CD639AD000BE39C /* Session.swift */,
 				C955F1501CD639AD000BE39C /* Ticket_Record+CoreDataProperties.swift */,
 				C955F1511CD639AD000BE39C /* Ticket_Record.swift */,
-				C955F16C1CD6430A000BE39C /* Venue+CoreDataProperties.swift */,
-				C955F16D1CD6430A000BE39C /* Venue.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -516,7 +516,7 @@
 				C94AFA6E1C981F1A00EC88B6 /* AttendingViewController.swift in Sources */,
 				E9F136B71CD30CAF008A3CB6 /* RegisterViewController.swift in Sources */,
 				C955F1671CD639AD000BE39C /* User_Tag.swift in Sources */,
-				C955F16F1CD6430A000BE39C /* Venue.swift in Sources */,
+				C955F1781CDCA3B7000BE39C /* Venue+CoreDataProperties.swift in Sources */,
 				C955F15D1CD639AD000BE39C /* Billing.swift in Sources */,
 				C955F1551CD639AD000BE39C /* Ticket.swift in Sources */,
 				C94AFA761C98221400EC88B6 /* HistoryTableViewController.swift in Sources */,
@@ -525,9 +525,10 @@
 				C955F1591CD639AD000BE39C /* Payment.swift in Sources */,
 				C955F15C1CD639AD000BE39C /* Billing+CoreDataProperties.swift in Sources */,
 				C94AFA4F1C9808AB00EC88B6 /* PersonalDetailsViewController.swift in Sources */,
+				C955F1771CDCA3B7000BE39C /* Event.swift in Sources */,
 				C955F16B1CD639AD000BE39C /* Ticket_Record.swift in Sources */,
+				C955F1791CDCA3B7000BE39C /* Venue.swift in Sources */,
 				C94AFA661C981CAD00EC88B6 /* MyTicketsTableViewController.swift in Sources */,
-				C955F16E1CD6430A000BE39C /* Venue+CoreDataProperties.swift in Sources */,
 				C955F1561CD639AD000BE39C /* Message+CoreDataProperties.swift in Sources */,
 				C955F1611CD639AD000BE39C /* Event_Roles.swift in Sources */,
 				E93163611BC5E0B4007408C7 /* AppDelegate.swift in Sources */,
@@ -539,15 +540,14 @@
 				C94AFA511C980A0B00EC88B6 /* PaymentViewController.swift in Sources */,
 				E9D055C91CCF20510045BA86 /* PersonalDetailsTableViewCell.swift in Sources */,
 				E90201C11C9CB7EB00C7839A /* ExploreTableViewCell.swift in Sources */,
+				C955F1761CDCA3B7000BE39C /* Event+CoreDataProperties.swift in Sources */,
 				C955F15B1CD639AD000BE39C /* User.swift in Sources */,
 				C94AFA6A1C981D9000EC88B6 /* TicketProfileTableViewController.swift in Sources */,
 				C955F1521CD639AD000BE39C /* Conversation+CoreDataProperties.swift in Sources */,
 				C94AFA531C980A5400EC88B6 /* ReceiptViewController.swift in Sources */,
 				C955F15E1CD639AD000BE39C /* Participants+CoreDataProperties.swift in Sources */,
-				C955F1621CD639AD000BE39C /* Event+CoreDataProperties.swift in Sources */,
 				C955F1641CD639AD000BE39C /* Event_Tag+CoreDataProperties.swift in Sources */,
 				C94AFA741C98217C00EC88B6 /* AccountTableViewController.swift in Sources */,
-				C955F1631CD639AD000BE39C /* Event.swift in Sources */,
 				C955F1691CD639AD000BE39C /* Session.swift in Sources */,
 				C955F1581CD639AD000BE39C /* Payment+CoreDataProperties.swift in Sources */,
 				C955F1661CD639AD000BE39C /* User_Tag+CoreDataProperties.swift in Sources */,

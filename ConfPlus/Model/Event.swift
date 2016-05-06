@@ -2,7 +2,7 @@
 //  Event.swift
 //  
 //
-//  Created by Matthew Boroczky on 1/05/2016.
+//  Created by Matthew Boroczky on 6/05/2016.
 //
 //
 
@@ -15,28 +15,28 @@ import SwiftyJSON
 
 
 class Event: NSManagedObject {
-
-// Insert code here to add functionality to your managed object subclass
-        func imageTypeIsValid() -> String
+    
+    // Insert code here to add functionality to your managed object subclass
+    func imageTypeIsValid() -> String
+    {
+        var s1:String = self.poster_url!
+        s1.removeRange(s1.startIndex..<s1.startIndex.advancedBy(11))
+        //.startIndex.advancedBy(10)
+        //print("imgtype: \(s1)")
+        
+        let delim : Character = ";"
+        let index = s1.lowercaseString.characters.indexOf(delim)
+        //print("index: \(index)")
+        let imgType = s1.substringToIndex(index!)
+        //print("imgtype \(imgType)")
+        
+        if imgType == "png" || imgType == "PNG" || imgType == "jpeg" || imgType == "JPEG" || imgType == "gif" || imgType == "GIF"
         {
-            var s1:String = self.poster_url!
-            s1.removeRange(s1.startIndex..<s1.startIndex.advancedBy(11))
-            //.startIndex.advancedBy(10)
-            //print("imgtype: \(s1)")
-    
-            let delim : Character = ";"
-            let index = s1.lowercaseString.characters.indexOf(delim)
-            //print("index: \(index)")
-            let imgType = s1.substringToIndex(index!)
-            //print("imgtype \(imgType)")
-    
-            if imgType == "png" || imgType == "PNG" || imgType == "jpeg" || imgType == "JPEG" || imgType == "gif" || imgType == "GIF"
-            {
-                //print("valid type")
-                return imgType
-            }
-            return "invalid"
+            //print("valid type")
+            return imgType
         }
+        return "invalid"
+    }
     
     func getImage() -> UIImage
     {
@@ -67,7 +67,7 @@ class Event: NSManagedObject {
         let a = UIImage() //dummy
         return a
     }
-
+    
     func setFromDate/*serverStringToDate*/(dateString:String) /*-> NSDate*/
     {
         let dateFormatter = NSDateFormatter()
@@ -103,14 +103,14 @@ class Event: NSManagedObject {
         df.dateStyle = NSDateFormatterStyle.FullStyle
         df.timeZone = NSTimeZone(name: "GMT")
         let dstring = df.stringFromDate(self.from_date!)
-
+        
         //let dstring = df.stringFromDate(date)
         //print(dstring)
         //print("getFromDate() gets: \(self.from_date) -> \(dstring)")
         return dstring
         
     }
-
+    
     func getToDateAsString/*dateToFullStyleString*/() -> String
     {
         
@@ -157,5 +157,5 @@ class Event: NSManagedObject {
             print("server not set in ExploreViewController")
         }
     }
-
+    
 }

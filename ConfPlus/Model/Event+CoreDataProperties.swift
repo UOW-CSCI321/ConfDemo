@@ -2,7 +2,7 @@
 //  Event+CoreDataProperties.swift
 //  
 //
-//  Created by Matthew Boroczky on 1/05/2016.
+//  Created by Matthew Boroczky on 6/05/2016.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -20,12 +20,13 @@ extension Event {
     @NSManaged var name: String?
     @NSManaged var poster: NSData?
     @NSManaged var poster_url: String?
+    @NSManaged var reminder: String?
     @NSManaged var to_date: NSDate?
     @NSManaged var type: String?
     @NSManaged var url: String?
-    @NSManaged var reminder: String?
+    @NSManaged var roles: NSSet?
     @NSManaged var sessions: NSSet?
     @NSManaged var tags: NSSet?
-    @NSManaged var roles: NSSet?
+    @NSManaged var venue: Venue?
 
 }
