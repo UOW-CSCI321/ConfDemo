@@ -70,12 +70,9 @@ class Event: NSManagedObject {
 
     func setFromDate/*serverStringToDate*/(dateString:String) /*-> NSDate*/
     {
-        //move into model class for event eventually
-       
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = NSTimeZone(name: "GMT")
-        //dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
         
         let d1 = dateFormatter.dateFromString(dateString)
         //print(dateStart)
@@ -86,12 +83,9 @@ class Event: NSManagedObject {
     
     func setToDate/*serverStringToDate*/(dateString:String) /*-> NSDate*/
     {
-        //move into model class for event eventually
-        
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = NSTimeZone(name: "GMT")
-        //dateFormatter.dateStyle = NSDateFormatterStyle.FullStyle
         
         let d1 = dateFormatter.dateFromString(dateString)
         //print(dateStart)
@@ -162,33 +156,6 @@ class Event: NSManagedObject {
         }else {
             print("server not set in ExploreViewController")
         }
-
-
-        
-//                {
-//                response in switch response.result
-//                {
-//                case .Success:
-//                    if let value = response.result.value
-//                    {
-//                        let json = JSON(value)
-//                        
-//                        if json["data"].count > 1
-//                        {
-//                            print("error in getPoster. >1 posters returned")
-//                        }else
-//                        {
-//                            self.poster_url = json["data"][0]["poster_data_url"].stringValue
-//                        }
-//                    }
-//                case .Failure(let error):
-//                    print(error)
-//                    //handle if there is no internet connection by alerting the user
-//                }
-//            
-//            }
-//            
-//        
-        }
+    }
 
 }
