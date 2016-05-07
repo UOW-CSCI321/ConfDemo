@@ -11,167 +11,104 @@ import Alamofire
 import SwiftyJSON
 import CoreData
 import Foundation
+import MPGNotification
 
 
-class ExploreViewController: UIViewController, UITableViewDelegate {
+class ExploreViewController: UIViewController {
     
     @IBOutlet var EventsTableView: UITableView!
-    var eventArray = [Event]()
+	
+	var events = [Event]()
+	let user = NSUserDefaults.standardUserDefaults()
+	let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+
+	var isDispatchEmpty:Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject("https://6f7a5a2d.ngrok.io/api/v1", forKey: "server");
-        data_request()
 		
 		navigationController?.hidesBarsOnSwipe = true
+		
+		events = ModelHandler().getExploreData()
+		EventsTableView.reloadData()
     }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return eventArray.count
-    }
-    
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("exploreCell", forIndexPath: indexPath) as! ExploreTableViewCell
-        
-        //get from database
-        //coredata
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDelegate.managedObjectContext
-        
-        let eventEntity = NSEntityDescription.entityForName("Event", inManagedObjectContext: context)
-        // Fetch
-        let fetchRequest = NSFetchRequest()
-        fetchRequest.entity = eventEntity
-        fetchRequest.returnsObjectsAsFaults = false
-        
-        do {
-            let result = try context.executeFetchRequest(fetchRequest) as! [Event]
-            cell.eventName.text = result[indexPath.row].name
-            var dstring = result[indexPath.row].getFromDateAsString()
-            dstring += " - "
-            dstring += result[indexPath.row].getToDateAsString()
-            cell.eventDate.text = dstring
-
-            
-            //if let auser = NSURL(stringby)
-            let urlString = result[indexPath.row].poster_url
-            if(urlString == "")
-            {
-                print("poster url is empty")
-            }else
-            {
-                //var picString = result[indexPath.row].poster_url!
-                //print("HERE: \(result[indexPath.row].poster_url!) HERE2")
-                cell.eventImage.image = result[indexPath.row].getImage()
-
-            }
-            
-
-            //print(result)
-        } catch {
-            let fetchError = error as NSError
-            print(fetchError)
-        }
-        return cell
-    }
- 
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(true)
+		
+		let group: dispatch_group_t = dispatch_group_create()
+		if isDispatchEmpty {
+			isDispatchEmpty = false
+			let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+			notification.duration = 2
+			notification.show()
+			
+			APIManager().getExploreDataFromAPI(group, isDispatchEmpty: &isDispatchEmpty)
+		}
+		
+		let delay = 4 * Double(NSEC_PER_SEC)
+		let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+		dispatch_after(time, dispatch_get_main_queue()) {
+			dispatch_group_notify(group, dispatch_get_main_queue()) {
+				self.isDispatchEmpty = true
+				self.events = ModelHandler().getExploreData()
+				self.EventsTableView.reloadData()
+				print("Reloaded")
+				
+				let notification = MPGNotification(title: "Updated", subtitle: nil, backgroundColor: UIColor.orangeColor(), iconImage: nil)
+				notification.duration = 1
+				notification.show()
+			}
+		}
+		
+		
+	}
+	
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let indexPath:NSIndexPath = self.EventsTableView.indexPathForSelectedRow!
         let eventVC:EventDetailTableViewController = segue.destinationViewController as! EventDetailTableViewController
         //eventVC.descriptionTextView.text =
-        eventVC.selectedEvent = eventArray[indexPath.row]
+        eventVC.selectedEvent = events[indexPath.row]
         
     }
-    
-        
-    func data_request()
-    {
-        //coredata
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDelegate.managedObjectContext
-        
-        let eventEntity = NSEntityDescription.entityForName("Event", inManagedObjectContext: context)
-        
-        //post request
-        let paramaters = [
-            "method" : "getEventsByTag",
-            "tag_name" : "testTag"
-        ] //at the moment the api call need event id
+	
+}
+
+
+//MARK: TableView Related
+extension ExploreViewController: UITableViewDelegate{
+	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+		return 1
+	}
+	
+	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return events.count
+	}
+	
+	
+	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCellWithIdentifier("exploreCell", forIndexPath: indexPath) as! ExploreTableViewCell
 		
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if let serverAdd = defaults.stringForKey("server")
-        {
+		let row = indexPath.row
+		
+		cell.eventName.text = events[row].name
+		
+		let date = "\(events[row].getFromDateAsString()) - \(events[row].getToDateAsString())"
+		cell.eventDate.text = date
+		
+		var poster = UIImage(named: "matt")
+		if (events[row].poster_url != "" || events[row].poster_url != nil) {
+			let dataString = events[row].poster_url!
+			if let dataString = dataString.componentsSeparatedByString(",").last {
+				if let decodedData = NSData(base64EncodedString: dataString, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters) {
+					poster = UIImage(data: decodedData)
+				}
+			}
 			
-            Alamofire.request(.POST, serverAdd, parameters: paramaters).responseJSON {
-                response in switch response.result
-                {
-                case .Success:
-                    if let value = response.result.value
-                    {
-                        let json = JSON(value)
-
-                        for i in 0 ..< json["data"].count
-                        {
-                            let aevent = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
-                            aevent.event_id = json["data"][i]["event_id"].intValue
-                            //let event_idString = json["data"][i]["event_id"].stringValue
-                            aevent.name = json["data"][i]["name"].stringValue
-                            aevent.type = json["data"][i]["type"].stringValue
-                            aevent.setFromDate(json["data"][i]["from_date"].stringValue)
-                            aevent.setToDate(json["data"][i]["to_date"].stringValue)
-                            //aevent.venueid //we do not have venueID in core data as it uses . syntax to get related items
-                            aevent.desc = json["data"][i]["description"].stringValue
-                            aevent.url = json["data"][i]["url"].stringValue
-                            //url
-                            aevent.requestPoster()
-                            
-//                            print("id: \(aevent.event_id)")
-//                            print("name: \(aevent.name)")
-//                            print("type: \(aevent.type)")
-//                            print("from date:\(aevent.from_date)")
-//                            print("to date:\(aevent.to_date)")
-//                            print("desc: \(aevent.desc)")
-//                            print("url: \(aevent.url)")
-//                            print("poster: \(aevent.poster_url)")
-                            //aevent.tagname
-                            
-                            
-                            self.eventArray.append(aevent);
-
-                        }
-
-                        //save to database
-                        do {
-                            try context.save()
-                        } catch {
-                            fatalError("Failure to save context in ExploreViewController: \(error)")
-                        }
-                        
-                        //reload tableview - make sure loading from database not loading from server as we are currently
-                        self.EventsTableView.reloadData()
-                    }
-                case .Failure(let error):
-                    print(error)
-                    //handle if there is no internet connection by alerting the user
-                }
-                
-            }
-        }else {
-            print("server not set in ExploreViewController")
-        }
-    }
-
-
+			
+		}
+		cell.eventImage.image = poster
+		
+		return cell
+	}
 }

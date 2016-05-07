@@ -78,6 +78,9 @@
 		E9D055C51CCF0EC10045BA86 /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */; };
 		E9D055C71CCF1CCA0045BA86 /* TimetableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D055C61CCF1CCA0045BA86 /* TimetableTableViewCell.swift */; };
 		E9D055C91CCF20510045BA86 /* PersonalDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D055C81CCF20510045BA86 /* PersonalDetailsTableViewCell.swift */; };
+		E9E0A64B1CDD805700E187AD /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0A64A1CDD805700E187AD /* APIManager.swift */; };
+		E9E0A64D1CDD80B500E187AD /* APIServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0A64C1CDD80B500E187AD /* APIServer.swift */; };
+		E9E0A6501CDD8C6200E187AD /* ModelHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0A64F1CDD8C6200E187AD /* ModelHandler.swift */; };
 		E9F136B71CD30CAF008A3CB6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F136B61CD30CAF008A3CB6 /* RegisterViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -158,6 +161,9 @@
 		E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
 		E9D055C61CCF1CCA0045BA86 /* TimetableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableTableViewCell.swift; sourceTree = "<group>"; };
 		E9D055C81CCF20510045BA86 /* PersonalDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		E9E0A64A1CDD805700E187AD /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = Model/APIManager.swift; sourceTree = "<group>"; };
+		E9E0A64C1CDD80B500E187AD /* APIServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIServer.swift; sourceTree = "<group>"; };
+		E9E0A64F1CDD8C6200E187AD /* ModelHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelHandler.swift; sourceTree = "<group>"; };
 		E9F136B61CD30CAF008A3CB6 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -275,6 +281,7 @@
 				C955F1511CD639AD000BE39C /* Ticket_Record.swift */,
 				C955F16C1CD6430A000BE39C /* Venue+CoreDataProperties.swift */,
 				C955F16D1CD6430A000BE39C /* Venue.swift */,
+				E9E0A64F1CDD8C6200E187AD /* ModelHandler.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -315,6 +322,7 @@
 		E931635F1BC5E0B4007408C7 /* ConfPlus */ = {
 			isa = PBXGroup;
 			children = (
+				E9E0A64E1CDD869A00E187AD /* API */,
 				C9FD07E91CB23BD400C44595 /* Model */,
 				E93163601BC5E0B4007408C7 /* AppDelegate.swift */,
 				E93163661BC5E0B4007408C7 /* Main.storyboard */,
@@ -372,6 +380,15 @@
 				E9AF00681CDAB9D6004424A1 /* EventAssistServices.storyboard */,
 			);
 			name = "Security and Location";
+			sourceTree = "<group>";
+		};
+		E9E0A64E1CDD869A00E187AD /* API */ = {
+			isa = PBXGroup;
+			children = (
+				E9E0A64A1CDD805700E187AD /* APIManager.swift */,
+				E9E0A64C1CDD80B500E187AD /* APIServer.swift */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -505,12 +522,14 @@
 				C955F15F1CD639AD000BE39C /* Participants.swift in Sources */,
 				C955F1681CD639AD000BE39C /* Session+CoreDataProperties.swift in Sources */,
 				C955F1601CD639AD000BE39C /* Event_Roles+CoreDataProperties.swift in Sources */,
+				E9E0A6501CDD8C6200E187AD /* ModelHandler.swift in Sources */,
 				C955F1541CD639AD000BE39C /* Ticket+CoreDataProperties.swift in Sources */,
 				E90A0A621BCF7143005D611C /* Readme.md in Sources */,
 				E90201C71C9CC74400C7839A /* EventTableViewCell.swift in Sources */,
 				E9D055C71CCF1CCA0045BA86 /* TimetableTableViewCell.swift in Sources */,
 				C9F4E0BA1CA0CEC8009CA1A9 /* Model.xcdatamodeld in Sources */,
 				C94AFA711C981FED00EC88B6 /* AdminTableViewController.swift in Sources */,
+				E9E0A64B1CDD805700E187AD /* APIManager.swift in Sources */,
 				C955F1531CD639AD000BE39C /* Conversation.swift in Sources */,
 				E93163981BC62AB6007408C7 /* ExploreViewController.swift in Sources */,
 				C94AFA6E1C981F1A00EC88B6 /* AttendingViewController.swift in Sources */,
@@ -524,6 +543,7 @@
 				C94AFA5C1C980E3B00EC88B6 /* TalksViewController.swift in Sources */,
 				C955F1591CD639AD000BE39C /* Payment.swift in Sources */,
 				C955F15C1CD639AD000BE39C /* Billing+CoreDataProperties.swift in Sources */,
+				E9E0A64D1CDD80B500E187AD /* APIServer.swift in Sources */,
 				C94AFA4F1C9808AB00EC88B6 /* PersonalDetailsViewController.swift in Sources */,
 				C955F16B1CD639AD000BE39C /* Ticket_Record.swift in Sources */,
 				C94AFA661C981CAD00EC88B6 /* MyTicketsTableViewController.swift in Sources */,
