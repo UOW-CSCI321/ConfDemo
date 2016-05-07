@@ -42,6 +42,9 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
 //        for i in 0...venues.count{
 //            if selectedEvent.venue ==
 //        }
+        //addNewVenue - the same as addNewEvent
+        //getVenueData - i think we actually return an array of event then traverse until we find the event we want and then say aevent.venue
+        //alternative would be to not write getVenueData function and just say selectedEvent.venue
     }
     
     func setData()
