@@ -19,9 +19,6 @@ class ExploreViewController: UIViewController {
     @IBOutlet var EventsTableView: UITableView!
 	
 	var events = [Event]()
-	let user = NSUserDefaults.standardUserDefaults()
-	let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-
 	var isDispatchEmpty:Bool = true
     
     override func viewDidLoad() {
@@ -60,8 +57,6 @@ class ExploreViewController: UIViewController {
 				notification.show()
 			}
 		}
-		
-		
 	}
 	
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
