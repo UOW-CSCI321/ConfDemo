@@ -121,49 +121,58 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
                     if let value = response.result.value
                     {
                         let json = JSON(value)
-
-                        for i in 0 ..< json["data"].count
+                        //print(json)
+                        if(json["success"].stringValue == "false")
                         {
-                            let aevent = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
-                            aevent.event_id = json["data"][i]["event_id"].intValue
-                            //let event_idString = json["data"][i]["event_id"].stringValue
-                            aevent.name = json["data"][i]["name"].stringValue
-                            aevent.type = json["data"][i]["type"].stringValue
-                            aevent.setFromDate(json["data"][i]["from_date"].stringValue)
-                            aevent.setToDate(json["data"][i]["to_date"].stringValue)
-                            //aevent.venueid //we do not have venueID in core data as it uses . syntax to get related items
-                            aevent.desc = json["data"][i]["description"].stringValue
-                            aevent.url = json["data"][i]["url"].stringValue
-                            //url
-                            aevent.requestPoster()
+                            print("ERROR: message: \(json["message"].stringValue)");
+                        }else
+                        {
+                            for i in 0 ..< json["data"].count
+                            {
+                                let aevent = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
+                                aevent.event_id = json["data"][i]["event_id"].intValue
+                                //let event_idString = json["data"][i]["event_id"].stringValue
+                                aevent.name = json["data"][i]["name"].stringValue
+                                aevent.type = json["data"][i]["type"].stringValue
+                                aevent.setFromDate(json["data"][i]["from_date"].stringValue)
+                                aevent.setToDate(json["data"][i]["to_date"].stringValue)
+                                //aevent.venueid //we do not have venueID in core data as it uses . syntax to get related items
+                                aevent.desc = json["data"][i]["description"].stringValue
+                                aevent.url = json["data"][i]["url"].stringValue
+                                //url
+                                aevent.requestPoster()
+                                
+                                //                            print("id: \(aevent.event_id)")
+                                //                            print("name: \(aevent.name)")
+                                //                            print("type: \(aevent.type)")
+                                //                            print("from date:\(aevent.from_date)")
+                                //                            print("to date:\(aevent.to_date)")
+                                //                            print("desc: \(aevent.desc)")
+                                //                            print("url: \(aevent.url)")
+                                //                            print("poster: \(aevent.poster_url)")
+                                //aevent.tagname
+                                
+                                
+                                self.eventArray.append(aevent);
+                                
+                            }
                             
-//                            print("id: \(aevent.event_id)")
-//                            print("name: \(aevent.name)")
-//                            print("type: \(aevent.type)")
-//                            print("from date:\(aevent.from_date)")
-//                            print("to date:\(aevent.to_date)")
-//                            print("desc: \(aevent.desc)")
-//                            print("url: \(aevent.url)")
-//                            print("poster: \(aevent.poster_url)")
-                            //aevent.tagname
+                            //save to database
+                            do {
+                                try context.save()
+                            } catch {
+                                fatalError("Failure to save context in ExploreViewController: \(error)")
+                            }
                             
-                            
-                            self.eventArray.append(aevent);
+                            //reload tableview - make sure loading from database not loading from server as we are currently
+                            //self.EventsTableView.reloadData()
 
                         }
-
-                        //save to database
-                        do {
-                            try context.save()
-                        } catch {
-                            fatalError("Failure to save context in ExploreViewController: \(error)")
-                        }
-                        
-                        //reload tableview - make sure loading from database not loading from server as we are currently
-                        self.EventsTableView.reloadData()
                     }
+                    self.EventsTableView.reloadData()
                 case .Failure(let error):
                     print(error)
+                    self.EventsTableView.reloadData()
                     //handle if there is no internet connection by alerting the user
                 }
                 
