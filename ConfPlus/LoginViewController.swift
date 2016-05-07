@@ -8,9 +8,7 @@
 
 import UIKit
 import Localize_Swift
-import Alamofire
-import SwiftyJSON
-import PKHUD
+import CryptoSwift
 
 class LoginViewController: UIViewController {
 
@@ -22,84 +20,37 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		navigationController?.navigationBarHidden = true
-		
-		user.setObject("https://6f7a5a2d.ngrok.io/api/v1", forKey: "server");
-        user.setObject("AHWQQPOAEkUoMjMPGep4za0PVaIOFyKt", forKey: "api_key")
-        user.setObject("KsBg70irVEho4FojGBHa301mlsKut0lD", forKey: "app_secret")
-    }
-    
-    func data_request(email : String, pwd : String) {
-        if let api_key:String = user.stringForKey("api_key")
-        {
-            if let app_secret:String = user.stringForKey("app_secret")
-            {
-                let paramaters = [
-                    "method" : "getUser",
-                    "email" : email,
-                    "api_key" : api_key,
-                    "app_secret" : app_secret
-                ]
-                
-                if let URL = user.stringForKey("server")
-                {
-                    HUD.show(.Progress)
-                    
-                    Alamofire.request(.POST, URL, parameters: paramaters).responseJSON {response in
-                        switch response.result{
-                        case .Success:
-                            if let value = response.result.value{
-                                let json = JSON(value)
-                                let password = json["data"][0]["password"].stringValue
-                                
-                                if(pwd == password){
-                                    let username = json["data"][0]["username"].string
-                                    let firstName = json["data"][0]["first_name"].string
-                                    let lastName = json["data"][0]["last_name"].string
-                                    
-                                    self.user.setObject(email, forKey: "email")
-                                    self.user.setObject(password, forKey: "password")
-                                    self.user.setObject(username, forKey: "username")
-                                    self.user.setObject(firstName, forKey: "firstName")
-                                    self.user.setObject(lastName, forKey: "lastName")
-                                    
-                                    HUD.hide()
-                                    HUD.flash(.Success, delay: 1.0)
-                                    self.dismissViewControllerAnimated(true, completion: nil)
-                                }else {
-                                    HUD.hide()
-                                    self.showAlert("Invalid Password")
-                                }
-                            }
-                        case .Failure(let error):
-                            HUD.hide()
-                            print(error)
-                            self.showAlert(error.localizedDescription)
-                            
-                        }
-                        
-                    }
-                    
-                }else {
-                    print("server not set in LoginViewController")
-                }
-
-            }
-            
-        }
-        
     }
 	
+	override func viewWillAppear(animated: Bool) {
+		if let _ = user.stringForKey("email"){
+			dismissViewControllerAnimated(true, completion: nil)
+		}
+	}
+	
     @IBAction func LoginPressed(sender: AnyObject) {
-		guard let username = usernameTextfield.text where usernameTextfield.text?.characters.count > 0 else {
-			showAlert("Wrong Username")
+		guard let email = usernameTextfield.text where usernameTextfield.text?.characters.count > 0 else {
+			showAlert("Wrong Email")
 			return
 		}
 		guard let password = passwordTextfield.text where passwordTextfield.text?.characters.count > 0 else {
 			showAlert("Wrong Password")
 			return
 		}
-        data_request(username, pwd: password)
-        
+//		let uPassword: [UInt8] = password.utf8.map {$0}
+//		let uSalt: [UInt8] = "".utf8.map {$0}
+		
+		//let value = try! PKCS5.PBKDF2(password: uPassword, salt: uSalt, iterations: 4096, hashVariant: .sha256).calculate()
+		
+		APIManager().login(email, password: password){ result in
+			if result {
+				self.user.setObject(email, forKey: "email")
+				self.dismissViewControllerAnimated(true, completion: nil)
+			} else {
+				self.showAlert("Incorrect Email or Password")
+			}
+		}
+		
     }
 	
 	

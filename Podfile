@@ -20,4 +20,6 @@ target 'ConfPlus' do
 	# https://github.com/Dalodd/Alamofire-Synchronous
 	pod 'Alamofire-Synchronous', '~> 3.0'
 
+	# https://github.com/krzyzanowskim/CryptoSwift
+	pod 'CryptoSwift'
 end

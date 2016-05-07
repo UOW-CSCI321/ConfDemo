@@ -136,7 +136,7 @@
     <elements>
         <element name="Billing" positionX="1231" positionY="351" width="128" height="103"/>
         <element name="Conversation" positionX="1132" positionY="810" width="128" height="103"/>
-        <element name="Event" positionX="1836" positionY="351" width="128" height="253"/>
+        <element name="Event" positionX="1836" positionY="351" width="128" height="255"/>
         <element name="Event_Roles" positionX="1611" positionY="528" width="128" height="88"/>
         <element name="Event_Tag" positionX="1620" positionY="639" width="128" height="73"/>
         <element name="Message" positionX="1231" positionY="657" width="128" height="103"/>
