@@ -115,6 +115,8 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
                             self.aVenue.country = json["data"][0]["country"].stringValue
                             self.aVenue.latitude = json["data"][0]["latitude"].stringValue
                             self.aVenue.longitude = json["data"][0]["longitude"].stringValue
+                            self.aVenue.mutableSetValueForKey("venue").addObject(self.aVenue)
+                            //self.selectedEvent.venue = self.aVenue //not sure if this will actually change the data the database because the events array is in exploreViewController but this is an event object which we will call save on so it should save
                         }
                         //clear current data in the database
                         
