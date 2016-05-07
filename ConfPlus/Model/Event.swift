@@ -158,7 +158,7 @@ class Event: NSManagedObject {
                 }else
                 {
                     self.poster_url = json["data"]["poster_data_url"].stringValue
-                    print(self.poster_url)
+                    //print(self.poster_url)
                 }
             }
         }else {

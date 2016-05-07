@@ -67,6 +67,7 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
 
             
             //if let auser = NSURL(stringby)
+            //print(result[indexPath.row].poster_url)
             let urlString = result[indexPath.row].poster_url
             if(urlString == "")
             {
@@ -171,11 +172,11 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
                             }
                             
                             //reload tableview - make sure loading from database not loading from server as we are currently
-                            //self.EventsTableView.reloadData()
+                            self.EventsTableView.reloadData()
 
                         }
                     }
-                    self.EventsTableView.reloadData()
+                    //self.EventsTableView.reloadData()
                 case .Failure(let error):
                     print(error)
                     self.EventsTableView.reloadData()
