@@ -21,7 +21,9 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject("https://6f7a5a2d.ngrok.io/api/v1", forKey: "server");
+        defaults.setObject("https://6f7a5a2d.ngrok.io/api/v1", forKey: "server")
+        defaults.setObject("AHWQQPOAEkUoMjMPGep4za0PVaIOFyKt", forKey: "api_key")
+        defaults.setObject("KsBg70irVEho4FojGBHa301mlsKut0lD", forKey: "app_secret")
         data_request()
 		
 		navigationController?.hidesBarsOnSwipe = true
@@ -103,14 +105,19 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
         
         let eventEntity = NSEntityDescription.entityForName("Event", inManagedObjectContext: context)
         
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let api_key:String = defaults.stringForKey("api_key")!
+        let app_secret:String = defaults.stringForKey("app_secret")!
         //post request
         let paramaters = [
             "method" : "getEventsByTag",
             "tag_name" : "testTag"
+            ,"api_key" : api_key,
+             "app_secret" : app_secret
         ] //at the moment the api call need event id
 		
         
-        let defaults = NSUserDefaults.standardUserDefaults()
+        
         if let serverAdd = defaults.stringForKey("server")
         {
 			
@@ -121,7 +128,6 @@ class ExploreViewController: UIViewController, UITableViewDelegate {
                     if let value = response.result.value
                     {
                         let json = JSON(value)
-                        //print(json)
                         if(json["success"].stringValue == "false")
                         {
                             print("ERROR: message: \(json["message"].stringValue)");

@@ -20,6 +20,10 @@ class Event: NSManagedObject {
     func imageTypeIsValid() -> String
     {
         var s1:String = self.poster_url!
+        /*if s1 == ""
+        {
+            return "invalid"
+        }*/
         s1.removeRange(s1.startIndex..<s1.startIndex.advancedBy(11))
         //.startIndex.advancedBy(10)
         //print("imgtype: \(s1)")
@@ -128,13 +132,17 @@ class Event: NSManagedObject {
     func requestPoster()
     {
         let id:NSNumber = self.event_id!
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let api_key:String = defaults.stringForKey("api_key")!
+        let app_secret:String = defaults.stringForKey("app_secret")!
         //post request
         let paramaters = [
             "method" : "getPoster",
-            "event_id" : id
+            "event_id" : id,
+            "api_key" : api_key,
+            "app_secret" : app_secret
         ] //at the moment the api call need event id
         
-        let defaults = NSUserDefaults.standardUserDefaults()
         //synchronous alamofire request
         if let serverAdd = defaults.stringForKey("server")
         {
@@ -150,7 +158,7 @@ class Event: NSManagedObject {
                 }else
                 {
                     self.poster_url = json["data"]["poster_data_url"].stringValue
-                    //print(self.poster_url)
+                    print(self.poster_url)
                 }
             }
         }else {

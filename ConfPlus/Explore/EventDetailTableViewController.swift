@@ -83,14 +83,18 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
         
         let eventEntity = NSEntityDescription.entityForName("Venue", inManagedObjectContext: context)
         let eventid:String = (selectedEvent.event_id?.stringValue)!
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let api_key:String = defaults.stringForKey("api_key")!
+        let app_secret:String = defaults.stringForKey("app_secret")!
         
         //post request
         let paramaters = [
             "method" : "getVenue",
-            "venue_id" : eventid
+            "venue_id" : eventid,
+            "api_key" : api_key,
+            "app_secret" : app_secret
         ] //at the moment the api call need event id
         
-        let defaults = NSUserDefaults.standardUserDefaults()
         if let serverAdd = defaults.stringForKey("server")
         {
             Alamofire.request(.POST, serverAdd, parameters: paramaters).responseJSON {
@@ -100,35 +104,41 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
                     if let value = response.result.value
                     {
                         let json = JSON(value)
-                        
-                        if json["data"].count > 1
+                        if(json["success"].stringValue == "false")
                         {
-                            print("error should have only received one venue")
-                        }else{
-                            self.aVenue = NSEntityDescription.insertNewObjectForEntityForName("Venue", inManagedObjectContext: context) as! Venue
-                            self.aVenue.venue_id = json["data"][0]["venue_id"].intValue
-                            self.aVenue.name = json["data"][0]["name"].stringValue
-                            self.aVenue.type = json["data"][0]["type"].stringValue
-                            self.aVenue.street = json["data"][0]["street"].stringValue
-                            self.aVenue.city = json["data"][0]["city"].stringValue
-                            self.aVenue.state = json["data"][0]["state"].stringValue
-                            self.aVenue.country = json["data"][0]["country"].stringValue
-                            self.aVenue.latitude = json["data"][0]["latitude"].stringValue
-                            self.aVenue.longitude = json["data"][0]["longitude"].stringValue
-                            self.aVenue.mutableSetValueForKey("venue").addObject(self.aVenue)
-                            //self.selectedEvent.venue = self.aVenue //not sure if this will actually change the data the database because the events array is in exploreViewController but this is an event object which we will call save on so it should save
+                            print("ERROR: message: \(json["message"].stringValue)");
+                        }else
+                        {
+                            if json["data"].count > 1
+                            {
+                                print("error should have only received one venue")
+                            }else{
+                                self.aVenue = NSEntityDescription.insertNewObjectForEntityForName("Venue", inManagedObjectContext: context) as! Venue
+                                self.aVenue.venue_id = json["data"][0]["venue_id"].intValue
+                                self.aVenue.name = json["data"][0]["name"].stringValue
+                                self.aVenue.type = json["data"][0]["type"].stringValue
+                                self.aVenue.street = json["data"][0]["street"].stringValue
+                                self.aVenue.city = json["data"][0]["city"].stringValue
+                                self.aVenue.state = json["data"][0]["state"].stringValue
+                                self.aVenue.country = json["data"][0]["country"].stringValue
+                                self.aVenue.latitude = json["data"][0]["latitude"].stringValue
+                                self.aVenue.longitude = json["data"][0]["longitude"].stringValue
+                                //self.aVenue.mutableSetValueForKey("venue").addObject(self.aVenue)
+                               // self.selectedEvent.venue = self.aVenue //not sure if this will actually change the data the database because the events array is in exploreViewController but this is an event object which we will call save on so it should save
+                            }
+                            //clear current data in the database
+                            
+                            //save to database
+                            do {
+                                try context.save()
+                            } catch {
+                                fatalError("Failure to save context in EventDetailsTableViewController: \(error)")
+                            }
+                            
+                            self.setData()
+
                         }
-                        //clear current data in the database
-                        
-                        //save to database
-                        do {
-                            try context.save()
-                        } catch {
-                            fatalError("Failure to save context in EventDetailsTableViewController: \(error)")
-                        }
-                        
-                        self.setData()
-                        //reload tableview - make sure loading from database not loading from server as we are currently
+                                                //reload tableview - make sure loading from database not loading from server as we are currently
                         self.eventDetailsTableView.reloadData()
                     }
                 case .Failure(let error):
