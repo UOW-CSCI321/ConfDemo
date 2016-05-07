@@ -12,6 +12,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import MPGNotification
+import PKHUD
 
 class APIManager{
 	
@@ -84,4 +85,85 @@ class APIManager{
 		})
 		
 	}
+	
+	func register(email : String, password : String, username:String, completion: (result: Bool) -> Void){
+		let paramaters = [
+			"api_key"	:	server.KEY,
+			"app_secret":	server.SECRET,
+			"method"	:	"createUser",
+			"email"		:	email,
+			"password"	:	password,
+			"username"	:	username
+		]
+		
+		Alamofire.request(.POST, server.URL, parameters: paramaters).responseJSON {response in
+			switch response.result{
+			case .Success:
+				if let value = response.result.value{
+					
+					let json = JSON(value)
+					HUD.hide()
+					if json["success"] {
+						HUD.flash(.Success, delay: 1.0)
+						completion(result: true)
+					} else {
+						print(json["data"][0]["message"])
+						completion(result: false)
+					}
+				}
+				
+			case .Failure(let error):
+				HUD.hide()
+				print(error)
+				completion(result: false)
+				//self.showAlert(error.localizedDescription)
+				
+			}
+			
+		}
+		
+	}
+	
+	
+	func login(email : String, password : String, completion: (result: Bool) -> Void) {
+		let paramaters = [
+			"api_key"	:	server.KEY,
+			"app_secret":	server.SECRET,
+			"method"	:	"login",
+			"email"		:	email,
+			"password"	:	password
+		]
+		
+		HUD.show(.Progress)
+		
+		Alamofire.request(.POST, server.URL, parameters: paramaters).responseJSON {response in
+			switch response.result{
+			case .Success:
+				if let value = response.result.value{
+					
+					let json = JSON(value)
+					HUD.hide()
+					if json["success"] {
+						HUD.flash(.Success, delay: 1.0)
+						completion(result: true)
+					} else {
+						print(json["data"][0]["message"])
+						completion(result: false)
+					}
+				}
+				
+			case .Failure(let error):
+				HUD.hide()
+				print(error)
+				completion(result: false)
+				//self.showAlert(error.localizedDescription)
+				
+			}
+			
+		}
+	}
+	
+
+
+
 }
