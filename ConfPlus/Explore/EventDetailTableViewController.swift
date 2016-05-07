@@ -24,6 +24,7 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
     let address = "test address"
     var selectedEvent:Event!
     var aVenue:Venue!
+    var venues:[Venue] = []
 
     
     
@@ -36,8 +37,11 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
 		
 		navigationController?.hidesBarsOnSwipe = true
         
-        aVenue = ModelHandler().getVenueData(selectedEvent.event_id)
-        
+        //aVenue = ModelHandler().getVenueData(selectedEvent.event_id!)
+        venues = ModelHandler().getVenueData()
+//        for i in 0...venues.count{
+//            if selectedEvent.venue ==
+//        }
     }
     
     func setData()

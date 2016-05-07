@@ -62,7 +62,7 @@ class ModelHandler{
 	}
     
     //Venue
-    func getVenueData(event_id:NSNumber) -> Venue
+    func getVenueData() -> [Venue]
     {
         let fetch = NSFetchRequest(entityName: "Venue")
         var venues = [Venue]()
@@ -80,11 +80,11 @@ class ModelHandler{
         } catch {
             print("Could not retrieve venue object")
         }
-        for i in 0..<venues.count
-        {
-            if venues[i].events
-        }
-        return theVenue
+//        for i in 0..<venues.count
+//        {
+//            if venues[i].events
+//        }
+        return venues //theVenue
     }
     
     func addNewVenue(json:JSON) -> Venue
