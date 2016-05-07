@@ -18,10 +18,11 @@ class ModelHandler{
 		do {
 			try context.save()
 		} catch {
-			fatalError("Failure to delete events in ExploreViewController")
+			fatalError("Failure to save context in ModelHandler")
 		}
 	}
 	
+    //Events
 	func getExploreData() -> [Event]{
 		let fetch = NSFetchRequest(entityName: "Event")
 		var events = [Event]()
@@ -59,4 +60,36 @@ class ModelHandler{
 		
 		performUpdate()
 	}
+    
+    //Venue
+    func getVenueData(event_id:NSNumber) -> Venue
+    {
+        let fetch = NSFetchRequest(entityName: "Venue")
+        var venues = [Venue]()
+        //var theVenue = Venue()
+        do {
+            venues = try context.executeFetchRequest(fetch) as! [Venue]
+//            if venues.count > 1
+//            {
+//                print("not getting one venue back")
+//            }
+//            else
+//            {
+//                theVenue = venues[0]
+//            }
+        } catch {
+            print("Could not retrieve venue object")
+        }
+        for i in 0..<venues.count
+        {
+            if venues[i].events
+        }
+        return theVenue
+    }
+    
+    func addNewVenue(json:JSON) -> Venue
+    {
+        let eventEntity = NSEntityDescription.entityForName("Venue", inManagedObjectContext: context)
+
+    }
 }

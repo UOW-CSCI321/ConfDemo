@@ -36,13 +36,8 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
 		
 		navigationController?.hidesBarsOnSwipe = true
         
+        aVenue = ModelHandler().getVenueData(selectedEvent.event_id)
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        //var spanValue = 0.2
     }
     
     func setData()
