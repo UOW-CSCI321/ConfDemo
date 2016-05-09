@@ -35,7 +35,7 @@ class ModelHandler{
 	
     //Events
     //Explore tab
-	func addNewEvent(json: JSON) -> Event{
+    func addNewEvent(json: JSON, attending:NSNumber) -> Event{
 		
 		
 		let entityDescription = NSEntityDescription.entityForName("Event", inManagedObjectContext: context)
@@ -49,6 +49,7 @@ class ModelHandler{
 		event.desc = json["description"].string
 		event.url = json["url"].string
 		event.venue_id = json["venue_id"].string
+        event.user_is_attending = attending
 		
 		//performUpdate()
 		
