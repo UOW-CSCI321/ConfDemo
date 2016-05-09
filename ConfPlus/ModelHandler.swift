@@ -22,9 +22,9 @@ class ModelHandler{
 		}
 	}
 	
-	func getExploreData() -> [Event]{
+	func getEvents(attend: String) -> [Event]{
 		let fetch = NSFetchRequest(entityName: "Event")
-        let predicate = NSPredicate(format: "user_is_attending == %@", 0)
+        let predicate = NSPredicate(format: "attend == %@", attend)
         fetch.predicate = predicate
         
 		var events = [Event]()
@@ -39,8 +39,7 @@ class ModelHandler{
 	
     //Events
     //Explore tab
-    func addNewEvent(json: JSON, attending:NSNumber) -> Event{
-		
+	func addNewEvent(json: JSON, attending:String) -> Event{
 		
 		let entityDescription = NSEntityDescription.entityForName("Event", inManagedObjectContext: context)
 		
@@ -53,7 +52,7 @@ class ModelHandler{
 		event.desc = json["description"].string
 		event.url = json["url"].string
 		event.venue_id = json["venue_id"].string
-        event.user_is_attending = attending
+        event.attend = attending
 		
 		//performUpdate()
 		
@@ -61,7 +60,7 @@ class ModelHandler{
 	}
 	
 	func deleteEventsData(){
-		let events = getExploreData()
+		let events = getEvents("0")
 		for event in events{
 			self.context.deleteObject(event)
 		}

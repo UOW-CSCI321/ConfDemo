@@ -26,7 +26,7 @@ class ExploreViewController: UIViewController {
 		
 		navigationController?.hidesBarsOnSwipe = true
 		
-		events = ModelHandler().getExploreData()
+		events = ModelHandler().getEvents("0")
 		EventsTableView.reloadData()
     }
 	
@@ -40,14 +40,10 @@ class ExploreViewController: UIViewController {
 			notification.duration = 2
 			notification.show()
 			
-			APIManager().getExploreDataFromAPI(group, isDispatchEmpty: &isDispatchEmpty)
-			
-			let delay = 4 * Double(NSEC_PER_SEC)
-			let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-			dispatch_after(time, dispatch_get_main_queue()) {
+			APIManager().getExploreDataFromAPI(group, isDispatchEmpty: &isDispatchEmpty){ result in
 				dispatch_group_notify(group, dispatch_get_main_queue()) {
 					self.isDispatchEmpty = true
-					self.events = ModelHandler().getExploreData()
+					self.events = ModelHandler().getEvents("0")
 					self.EventsTableView.reloadData()
 					print("Reloaded")
 					
@@ -57,8 +53,6 @@ class ExploreViewController: UIViewController {
 				}
 			}
 		}
-		
-		
 	}
 	
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
