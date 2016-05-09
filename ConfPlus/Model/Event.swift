@@ -131,7 +131,7 @@ class Event: NSManagedObject {
     
     func requestPoster()
     {
-        let id:NSNumber = self.event_id!
+        let id = self.event_id!
         let defaults = NSUserDefaults.standardUserDefaults()
         let api_key:String = defaults.stringForKey("api_key")!
         let app_secret:String = defaults.stringForKey("app_secret")!
