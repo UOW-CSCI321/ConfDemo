@@ -62,19 +62,13 @@ class EventsViewController: UIViewController, UITableViewDelegate {
         
         let eventEntity = NSEntityDescription.entityForName("Event", inManagedObjectContext: context)
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let api_key:String = defaults.stringForKey("api_key")!
-        let app_secret:String = defaults.stringForKey("app_secret")!
-        
         //post request
         let paramaters = [
             "method" : "getEventsByTag",
-            "tag_name" : "testTag",
-            "api_key" : api_key,
-            "app_secret" : app_secret
+            "tag_name" : "testTag"
         ] //at the moment the api call need event id
         
-        
+        let defaults = NSUserDefaults.standardUserDefaults()
         if let serverAdd = defaults.stringForKey("server")
         {
             Alamofire.request(.POST, serverAdd, parameters: paramaters).responseJSON {
@@ -84,46 +78,43 @@ class EventsViewController: UIViewController, UITableViewDelegate {
                     if let value = response.result.value
                     {
                         let json = JSON(value)
-                        if(json["success"].stringValue == "false")
+                        
+                        for i in 0 ..< json["data"].count
                         {
-                            print("ERROR: message: \(json["message"].stringValue)");
-                        }else
-                        {
-                            for i in 0 ..< json["data"].count
-                            {
-                                let aevent = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event
-                                aevent.event_id = json["data"][i]["event_id"].intValue
-                                aevent.name = json["data"][i]["name"].stringValue
-                                aevent.type = json["data"][i]["type"].stringValue
-                                aevent.setFromDate(json["data"][i]["from_date"].stringValue)
-                                aevent.setToDate(json["data"][i]["to_date"].stringValue)
-                                //aevent.venueid //we do not have venueID in core data as it uses . syntax to get related items
-                                aevent.desc = json["data"][i]["description"].stringValue
-                                aevent.url = json["data"][i]["url"].stringValue
-                                aevent.requestPoster()
-                                
-//                                print("id: \(aevent.event_id)")
-//                                print("name: \(aevent.name)")
-//                                print("type: \(aevent.type)")
-//                                print("from date:\(aevent.from_date)")
-//                                print("to date:\(aevent.to_date)")
-//                                print("desc: \(aevent.desc)")
-//                                print("url: \(aevent.url)")
-//                                print("poster: \(aevent.poster_url)")
-                                
-                                self.eventAttendedArray.append(aevent);
-                                
-                            }
-                            //clear current data in the database
+                            let aevent = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event                            
+                            aevent.event_id = json["data"][i]["event_id"].string
+                            aevent.name = json["data"][i]["name"].stringValue
+                            aevent.type = json["data"][i]["type"].stringValue
+//                            aevent.setFromDate(json["data"][i]["from_date"].stringValue)
+//                            aevent.setToDate(json["data"][i]["to_date"].stringValue)
+                            //aevent.venueid //we do not have venueID in core data as it uses . syntax to get related items
+                            aevent.desc = json["data"][i]["description"].stringValue
+                            aevent.url = json["data"][i]["url"].stringValue
+//                            aevent.requestPoster()
+							
+//                            print("id: \(aevent.event_id)")
+//                            print("name: \(aevent.name)")
+//                            print("type: \(aevent.type)")
+//                            print("from date:\(aevent.from_date)")
+//                            print("to date:\(aevent.to_date)")
+//                            print("desc: \(aevent.desc)")
+//                            print("url: \(aevent.url)")
+//                            print("poster: \(aevent.poster_url)")
                             
-                            //save to database
-                            do {
-                                try context.save()
-                            } catch {
-                                fatalError("Failure to save context in ExploreViewController: \(error)")
-                            }
+                            self.eventAttendedArray.append(aevent);
+                            
                         }
+                        //clear current data in the database
+                        
+                        //save to database
+                        do {
+                            try context.save()
+                        } catch {
+                            fatalError("Failure to save context in ExploreViewController: \(error)")
+                        }
+
                         self.eventsTableView.reloadData()
+                        
                     }
                 case .Failure(let error):
                     print(error)
@@ -156,8 +147,8 @@ class EventsViewController: UIViewController, UITableViewDelegate {
         do {
             let result = try context.executeFetchRequest(fetchRequest) as! [Event]
             cell.eventName.text = result[indexPath.row].name
-            cell.eventDate.text = result[indexPath.row].getFromDateAsString()
-            cell.eventImage.image = result[indexPath.row].getImage()
+			cell.eventDate.text = "nothign"//result[indexPath.row].getFromDateAsString()
+			//cell.eventImage.image = result[indexPath.row].getImage()
             
             //print(result)
         } catch {
