@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		132EF875AB8D87D7144DFAFD /* Pods_ConfPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E6716C6129756C80225EDE5 /* Pods_ConfPlus.framework */; };
+		C93A980D1CE04AE900418F53 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93A980B1CE04AE900418F53 /* Event+CoreDataProperties.swift */; };
+		C93A980E1CE04AE900418F53 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93A980C1CE04AE900418F53 /* Event.swift */; };
 		C94AFA4D1C98085B00EC88B6 /* TicketDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA4C1C98085B00EC88B6 /* TicketDetailsViewController.swift */; };
 		C94AFA4F1C9808AB00EC88B6 /* PersonalDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA4E1C9808AB00EC88B6 /* PersonalDetailsViewController.swift */; };
 		C94AFA511C980A0B00EC88B6 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA501C980A0B00EC88B6 /* PaymentViewController.swift */; };
@@ -58,8 +60,6 @@
 		E97EB75A1CDF13E5009113A6 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB73E1CDF13E5009113A6 /* Payment.swift */; };
 		E97EB75B1CDF13E5009113A6 /* Conversation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB73F1CDF13E5009113A6 /* Conversation+CoreDataProperties.swift */; };
 		E97EB75C1CDF13E5009113A6 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7401CDF13E5009113A6 /* Conversation.swift */; };
-		E97EB75D1CDF13E5009113A6 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7411CDF13E5009113A6 /* Event+CoreDataProperties.swift */; };
-		E97EB75E1CDF13E5009113A6 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7421CDF13E5009113A6 /* Event.swift */; };
 		E97EB75F1CDF13E5009113A6 /* Ticket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7431CDF13E5009113A6 /* Ticket+CoreDataProperties.swift */; };
 		E97EB7601CDF13E5009113A6 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7441CDF13E5009113A6 /* Ticket.swift */; };
 		E97EB7611CDF13E5009113A6 /* Billing+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7451CDF13E5009113A6 /* Billing+CoreDataProperties.swift */; };
@@ -88,6 +88,8 @@
 		2E6716C6129756C80225EDE5 /* Pods_ConfPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConfPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB052330EC07A481F9E74B8 /* Pods-ConfPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConfPlus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConfPlus/Pods-ConfPlus.debug.xcconfig"; sourceTree = "<group>"; };
 		B38CD26C8A5F4DC173A21F21 /* Pods-ConfPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConfPlus.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConfPlus/Pods-ConfPlus.release.xcconfig"; sourceTree = "<group>"; };
+		C93A980B1CE04AE900418F53 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Event+CoreDataProperties.swift"; path = "Model/Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C93A980C1CE04AE900418F53 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Model/Event.swift; sourceTree = "<group>"; };
 		C94AFA4C1C98085B00EC88B6 /* TicketDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketDetailsViewController.swift; path = Explore/TicketDetailsViewController.swift; sourceTree = "<group>"; };
 		C94AFA4E1C9808AB00EC88B6 /* PersonalDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonalDetailsViewController.swift; path = Explore/PersonalDetailsViewController.swift; sourceTree = "<group>"; };
 		C94AFA501C980A0B00EC88B6 /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentViewController.swift; path = Explore/PaymentViewController.swift; sourceTree = "<group>"; };
@@ -141,8 +143,6 @@
 		E97EB73E1CDF13E5009113A6 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Payment.swift; path = Model/Payment.swift; sourceTree = "<group>"; };
 		E97EB73F1CDF13E5009113A6 /* Conversation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Conversation+CoreDataProperties.swift"; path = "Model/Conversation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E97EB7401CDF13E5009113A6 /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Conversation.swift; path = Model/Conversation.swift; sourceTree = "<group>"; };
-		E97EB7411CDF13E5009113A6 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Event+CoreDataProperties.swift"; path = "Model/Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E97EB7421CDF13E5009113A6 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Model/Event.swift; sourceTree = "<group>"; };
 		E97EB7431CDF13E5009113A6 /* Ticket+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Ticket+CoreDataProperties.swift"; path = "Model/Ticket+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E97EB7441CDF13E5009113A6 /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ticket.swift; path = Model/Ticket.swift; sourceTree = "<group>"; };
 		E97EB7451CDF13E5009113A6 /* Billing+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Billing+CoreDataProperties.swift"; path = "Model/Billing+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -254,6 +254,8 @@
 			isa = PBXGroup;
 			children = (
 				E9E0A64F1CDD8C6200E187AD /* ModelHandler.swift */,
+				C93A980B1CE04AE900418F53 /* Event+CoreDataProperties.swift */,
+				C93A980C1CE04AE900418F53 /* Event.swift */,
 				E97EB7331CDF13E5009113A6 /* Session+CoreDataProperties.swift */,
 				E97EB7341CDF13E5009113A6 /* Session.swift */,
 				E97EB7351CDF13E5009113A6 /* Participants+CoreDataProperties.swift */,
@@ -268,8 +270,6 @@
 				E97EB73E1CDF13E5009113A6 /* Payment.swift */,
 				E97EB73F1CDF13E5009113A6 /* Conversation+CoreDataProperties.swift */,
 				E97EB7401CDF13E5009113A6 /* Conversation.swift */,
-				E97EB7411CDF13E5009113A6 /* Event+CoreDataProperties.swift */,
-				E97EB7421CDF13E5009113A6 /* Event.swift */,
 				E97EB7431CDF13E5009113A6 /* Ticket+CoreDataProperties.swift */,
 				E97EB7441CDF13E5009113A6 /* Ticket.swift */,
 				E97EB7451CDF13E5009113A6 /* Billing+CoreDataProperties.swift */,
@@ -525,6 +525,7 @@
 				E97EB7571CDF13E5009113A6 /* User+CoreDataProperties.swift in Sources */,
 				E9E0A6501CDD8C6200E187AD /* ModelHandler.swift in Sources */,
 				E97EB7621CDF13E5009113A6 /* Billing.swift in Sources */,
+				C93A980D1CE04AE900418F53 /* Event+CoreDataProperties.swift in Sources */,
 				E90A0A621BCF7143005D611C /* Readme.md in Sources */,
 				E97EB7551CDF13E5009113A6 /* Message+CoreDataProperties.swift in Sources */,
 				E90201C71C9CC74400C7839A /* EventTableViewCell.swift in Sources */,
@@ -545,7 +546,6 @@
 				C94AFA5C1C980E3B00EC88B6 /* TalksViewController.swift in Sources */,
 				E9E0A64D1CDD80B500E187AD /* APIServer.swift in Sources */,
 				C94AFA4F1C9808AB00EC88B6 /* PersonalDetailsViewController.swift in Sources */,
-				E97EB75E1CDF13E5009113A6 /* Event.swift in Sources */,
 				E97EB75C1CDF13E5009113A6 /* Conversation.swift in Sources */,
 				C94AFA661C981CAD00EC88B6 /* MyTicketsTableViewController.swift in Sources */,
 				E97EB7591CDF13E5009113A6 /* Payment+CoreDataProperties.swift in Sources */,
@@ -560,12 +560,12 @@
 				E97EB75A1CDF13E5009113A6 /* Payment.swift in Sources */,
 				C94AFA511C980A0B00EC88B6 /* PaymentViewController.swift in Sources */,
 				E9D055C91CCF20510045BA86 /* PersonalDetailsTableViewCell.swift in Sources */,
+				C93A980E1CE04AE900418F53 /* Event.swift in Sources */,
 				E97EB7681CDF13E5009113A6 /* Event_Tag.swift in Sources */,
 				E90201C11C9CB7EB00C7839A /* ExploreTableViewCell.swift in Sources */,
 				E97EB7581CDF13E5009113A6 /* User.swift in Sources */,
 				C94AFA6A1C981D9000EC88B6 /* TicketProfileTableViewController.swift in Sources */,
 				E97EB7661CDF13E5009113A6 /* User_Tag.swift in Sources */,
-				E97EB75D1CDF13E5009113A6 /* Event+CoreDataProperties.swift in Sources */,
 				C94AFA531C980A5400EC88B6 /* ReceiptViewController.swift in Sources */,
 				C94AFA741C98217C00EC88B6 /* AccountTableViewController.swift in Sources */,
 				E93163911BC5E294007408C7 /* viewEffect.swift in Sources */,

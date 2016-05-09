@@ -14,7 +14,7 @@ import CoreData
 class EventsViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet var eventsTableView: UITableView!
-    var eventsAttended = [Event]()
+    var eventAttendedArray = [Event]()
     var isDispatchEmpty:Bool = true
     
 	let user = NSUserDefaults.standardUserDefaults()

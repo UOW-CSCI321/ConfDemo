@@ -2,7 +2,7 @@
 //  Event.swift
 //  
 //
-//  Created by Matthew Boroczky on 6/05/2016.
+//  Created by Matthew Boroczky on 9/05/2016.
 //
 //
 
@@ -10,20 +10,20 @@ import Foundation
 import CoreData
 import UIKit
 import Alamofire
-import Alamofire_Synchronous
+//import Alamofire_Synchronous
 import SwiftyJSON
 
 
 class Event: NSManagedObject {
-    
+
     // Insert code here to add functionality to your managed object subclass
     func imageTypeIsValid() -> String
     {
         var s1:String = self.poster_url!
         /*if s1 == ""
-        {
-            return "invalid"
-        }*/
+         {
+         return "invalid"
+         }*/
         s1.removeRange(s1.startIndex..<s1.startIndex.advancedBy(11))
         //.startIndex.advancedBy(10)
         //print("imgtype: \(s1)")
@@ -129,41 +129,41 @@ class Event: NSManagedObject {
         return dstring
     }
     
-    func requestPoster()
-    {
-        let id = self.event_id!
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let api_key:String = defaults.stringForKey("api_key")!
-        let app_secret:String = defaults.stringForKey("app_secret")!
-        //post request
-        let paramaters = [
-            "method" : "getPoster",
-            "event_id" : id,
-            "api_key" : api_key,
-            "app_secret" : app_secret
-        ] //at the moment the api call need event id
-        
-        //synchronous alamofire request
-        if let serverAdd = defaults.stringForKey("server")
-        {
-            self.poster_url = ""
-            let response = Alamofire.request(.POST, serverAdd, parameters: paramaters).responseJSON()
-            if let value = response.result.value
-            {
-                let json = JSON(value)
-                
-                if json["data"].count > 1
-                {
-                    print("error in getPoster. >1 posters returned")
-                }else
-                {
-                    self.poster_url = json["data"]["poster_data_url"].stringValue
-                    //print(self.poster_url)
-                }
-            }
-        }else {
-            print("server not set in ExploreViewController")
-        }
-    }
-    
+    //this will be replaced with cy's get poster
+//    func requestPoster()
+//    {
+//        let id = self.event_id!
+//        let defaults = NSUserDefaults.standardUserDefaults()
+//        let api_key:String = defaults.stringForKey("api_key")!
+//        let app_secret:String = defaults.stringForKey("app_secret")!
+//        //post request
+//        let paramaters = [
+//            "method" : "getPoster",
+//            "event_id" : id,
+//            "api_key" : api_key,
+//            "app_secret" : app_secret
+//        ] //at the moment the api call need event id
+//        
+//        //synchronous alamofire request
+//        if let serverAdd = defaults.stringForKey("server")
+//        {
+//            self.poster_url = ""
+//            let response = Alamofire.request(.POST, serverAdd, parameters: paramaters).responseJSON()
+//            if let value = response.result.value
+//            {
+//                let json = JSON(value)
+//                
+//                if json["data"].count > 1
+//                {
+//                    print("error in getPoster. >1 posters returned")
+//                }else
+//                {
+//                    self.poster_url = json["data"]["poster_data_url"].stringValue
+//                    //print(self.poster_url)
+//                }
+//            }
+//        }else {
+//            print("server not set in ExploreViewController")
+//        }
+//    }
 }
