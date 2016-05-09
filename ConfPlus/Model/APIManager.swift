@@ -39,7 +39,7 @@ class APIManager{
 					//self.handler.deleteEventsData()
 					
 					for i in 0 ..< json["data"].count {
-						let event = self.handler.addNewEvent(json["data"][i], attending: 0)
+						let event = self.handler.addNewEvent(json["data"][i]/*, attending: 0*/)
 				
 						dispatch_group_enter(group)
 						APIManager().getPoster(event, group: group, isDispatchEmpty: &isDispatchEmpty)
@@ -150,7 +150,7 @@ class APIManager{
                     //self.handler.deleteEventsData()
                     
                     for i in 0 ..< json["data"].count {
-                        let event = self.handler.addNewEvent(json["data"][i], attending: 1)
+                        let event = self.handler.addNewEvent(json["data"][i]/*, attending: 1*/)
                         
                         dispatch_group_enter(group)
                         APIManager().getPoster(event, group: group, isDispatchEmpty: &isDispatchEmpty)

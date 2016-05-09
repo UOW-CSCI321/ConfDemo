@@ -42,35 +42,35 @@ class Event: NSManagedObject {
         return "invalid"
     }
     
-    func getImage() -> UIImage
-    {
-        var picString:String = self.poster_url!
-        //print(picString)
-        let imgtype = self.imageTypeIsValid() //imageTypeIsValid(picString)
-        if(imgtype == "invalid"){
-            print("error image from server is not a valid type")
-            //return nil
-        }else{
-            
-            let img = "data:image/\(imgtype);base64,"
-            if let range = picString.rangeOfString(img, options: .AnchoredSearch)  {
-                picString.removeRange(range)
-            }
-            
-            if let decodedData = NSData(base64EncodedString: picString, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters) {
-                //print("decoded data: \(decodedData)")
-                
-                
-                if let decodedimage = UIImage(data: decodedData, scale: 1.0){
-                    //print(decodedimage)
-                    //cell.eventImage.image = decodedimage
-                    return decodedimage
-                }
-            }
-        }
-        let a = UIImage() //dummy
-        return a
-    }
+//    func getImage() -> UIImage
+//    {
+//        var picString:String = self.poster_url!
+//        //print(picString)
+//        let imgtype = self.imageTypeIsValid() //imageTypeIsValid(picString)
+//        if(imgtype == "invalid"){
+//            print("error image from server is not a valid type")
+//            //return nil
+//        }else{
+//            
+//            let img = "data:image/\(imgtype);base64,"
+//            if let range = picString.rangeOfString(img, options: .AnchoredSearch)  {
+//                picString.removeRange(range)
+//            }
+//            
+//            if let decodedData = NSData(base64EncodedString: picString, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters) {
+//                //print("decoded data: \(decodedData)")
+//                
+//                
+//                if let decodedimage = UIImage(data: decodedData, scale: 1.0){
+//                    //print(decodedimage)
+//                    //cell.eventImage.image = decodedimage
+//                    return decodedimage
+//                }
+//            }
+//        }
+//        let a = UIImage() //dummy
+//        return a
+//    }
     
     func setFromDate/*serverStringToDate*/(dateString:String) /*-> NSDate*/
     {
