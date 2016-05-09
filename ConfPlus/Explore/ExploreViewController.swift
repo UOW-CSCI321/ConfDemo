@@ -40,20 +40,18 @@ class ExploreViewController: UIViewController {
 			notification.duration = 2
 			notification.show()
 			
-			APIManager().getExploreDataFromAPI(group, isDispatchEmpty: &isDispatchEmpty)
-			
-			let delay = 4 * Double(NSEC_PER_SEC)
-			let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-			dispatch_after(time, dispatch_get_main_queue()) {
-				dispatch_group_notify(group, dispatch_get_main_queue()) {
-					self.isDispatchEmpty = true
-					self.events = ModelHandler().getExploreData()
-					self.EventsTableView.reloadData()
-					print("Reloaded")
-					
-					let notification = MPGNotification(title: "Updated", subtitle: nil, backgroundColor: UIColor.orangeColor(), iconImage: nil)
-					notification.duration = 1
-					notification.show()
+			APIManager().getExploreDataFromAPI(group, isDispatchEmpty: &isDispatchEmpty){ result in
+				if result {
+					dispatch_group_notify(group, dispatch_get_main_queue()) {
+						self.isDispatchEmpty = true
+						self.events = ModelHandler().getExploreData()
+						self.EventsTableView.reloadData()
+						print("Reloaded")
+						
+						let notification = MPGNotification(title: "Updated", subtitle: nil, backgroundColor: UIColor.orangeColor(), iconImage: nil)
+						notification.duration = 1
+						notification.show()
+					}
 				}
 			}
 		}

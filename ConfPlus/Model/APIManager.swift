@@ -22,7 +22,7 @@ class APIManager{
 	
 	
 	
-	func getExploreDataFromAPI(group: dispatch_group_t, inout isDispatchEmpty: Bool){
+	func getExploreDataFromAPI(group: dispatch_group_t, inout isDispatchEmpty: Bool, completion: (Bool) -> Void){
 		let paramaters = [
 			"api_key": server.KEY,
 			"app_secret": server.SECRET,
@@ -42,23 +42,27 @@ class APIManager{
 						let event = self.handler.addNewEvent(json["data"][i])
 				
 						dispatch_group_enter(group)
-						APIManager().getPoster(event, group: group, isDispatchEmpty: &isDispatchEmpty)
+						APIManager().getPoster(event, group: group){ result in
+							self.handler.performUpdate()
+						}
 					}
+					completion(true)
 				}
 			case .Failure(let error):
 				print(error.localizedDescription)
 				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
 				notification.show()
+				completion(false)
 			}
 			
 		}
 	}
 
-	func getPoster(event: Event, group: dispatch_group_t, inout isDispatchEmpty: Bool){
+	func getPoster(event: Event, group: dispatch_group_t, completion: (Bool) -> Void){
 		guard let id = event.event_id else {
-			//print(id)
 			return
 		}
+		
 		let paramaters = [
 			"api_key": server.KEY,
 			"app_secret": server.SECRET,
@@ -68,7 +72,6 @@ class APIManager{
 		
 		let poster_queue = dispatch_queue_create("poster_queue", nil)
 		dispatch_async(poster_queue, {
-			isDispatchEmpty = false
 			Alamofire.request(.POST, self.server.URL, parameters: paramaters).responseJSON(){ response in
 				switch response.result{
 				case .Success:
@@ -77,12 +80,17 @@ class APIManager{
 						event.poster_url = json["data"]["poster_data_url"].string
 						
 						print("updated image")
-						self.handler.performUpdate()
+						
+						dispatch_group_leave(group)
+						completion(true)
+					} else {
+						dispatch_group_leave(group)
+						completion(false)
 					}
-					dispatch_group_leave(group)
 				case .Failure(let error):
 					dispatch_group_leave(group)
 					print(error.localizedDescription)
+					completion(false)
 				}
 			}
 		})
