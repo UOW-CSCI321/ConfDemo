@@ -24,7 +24,7 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
     let address = "test address"
     var selectedEvent:Event!
     var aVenue:Venue!
-    var venues:[Venue] = []
+    var venues = [Venue]()
 
     
     
@@ -39,9 +39,9 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
         
         //aVenue = ModelHandler().getVenueData(selectedEvent.event_id!)
         venues = ModelHandler().getVenueData()
-//        for i in 0...venues.count{
-//            if selectedEvent.venue ==
-//        }
+        for i in 0...venues.count{
+            if selectedEvent.venue
+        }
         //addNewVenue - the same as addNewEvent
         //getVenueData - i think we actually return an array of event then traverse until we find the event we want and then say aevent.venue
         //alternative would be to not write getVenueData function and just say selectedEvent.venue

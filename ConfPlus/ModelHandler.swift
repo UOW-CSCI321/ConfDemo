@@ -90,6 +90,18 @@ class ModelHandler{
     func addNewVenue(json:JSON) -> Venue
     {
         let eventEntity = NSEntityDescription.entityForName("Venue", inManagedObjectContext: context)
-
+        let venue = Venue(entity: eventEntity!, insertIntoManagedObjectContext: self.context)
+        
+        venue.venue_id = json["data"][0]["venue_id"].intValue
+        venue.name = json["data"][0]["name"].stringValue
+        venue.type = json["data"][0]["type"].stringValue
+        venue.street = json["data"][0]["street"].stringValue
+        venue.city = json["data"][0]["city"].stringValue
+        venue.state = json["data"][0]["state"].stringValue
+        venue.country = json["data"][0]["country"].stringValue
+        venue.latitude = json["data"][0]["latitude"].stringValue
+        venue.longitude = json["data"][0]["longitude"].stringValue
+        //add the relationship to event somehow?
+        return venue
     }
 }
