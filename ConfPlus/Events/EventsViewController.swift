@@ -82,16 +82,16 @@ class EventsViewController: UIViewController, UITableViewDelegate {
                         for i in 0 ..< json["data"].count
                         {
                             let aevent = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event                            
-                            aevent.event_id = json["data"][i]["event_id"].intValue
+                            aevent.event_id = json["data"][i]["event_id"].string
                             aevent.name = json["data"][i]["name"].stringValue
                             aevent.type = json["data"][i]["type"].stringValue
-                            aevent.setFromDate(json["data"][i]["from_date"].stringValue)
-                            aevent.setToDate(json["data"][i]["to_date"].stringValue)
+//                            aevent.setFromDate(json["data"][i]["from_date"].stringValue)
+//                            aevent.setToDate(json["data"][i]["to_date"].stringValue)
                             //aevent.venueid //we do not have venueID in core data as it uses . syntax to get related items
                             aevent.desc = json["data"][i]["description"].stringValue
                             aevent.url = json["data"][i]["url"].stringValue
-                            aevent.requestPoster()
-                            
+//                            aevent.requestPoster()
+							
 //                            print("id: \(aevent.event_id)")
 //                            print("name: \(aevent.name)")
 //                            print("type: \(aevent.type)")
@@ -147,8 +147,8 @@ class EventsViewController: UIViewController, UITableViewDelegate {
         do {
             let result = try context.executeFetchRequest(fetchRequest) as! [Event]
             cell.eventName.text = result[indexPath.row].name
-            cell.eventDate.text = result[indexPath.row].getFromDateAsString()
-            cell.eventImage.image = result[indexPath.row].getImage()
+			cell.eventDate.text = "nothign"//result[indexPath.row].getFromDateAsString()
+			//cell.eventImage.image = result[indexPath.row].getImage()
             
             //print(result)
         } catch {

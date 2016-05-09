@@ -15,15 +15,15 @@ import CoreData
 
 class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
     @IBOutlet var posterImageView: UIImageView!
-	@IBOutlet weak var dateLabel: UITableViewCell!
+	@IBOutlet weak var dateLabel: UILabel!
     @IBOutlet var descriptionTextView: UITextView!
 	@IBOutlet weak var locationMapView: MKMapView!
     @IBOutlet var addressTextView: UITextView!
     let regionRadius: CLLocationDistance = 1000
     let desc = "test description"
     let address = "test address"
-    var selectedEvent:Event!
-    var aVenue:Venue!
+    var event:Event!
+    var venue:Venue?
 
     
     
@@ -32,37 +32,47 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-        data_request()
 		
 		navigationController?.hidesBarsOnSwipe = true
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        //var spanValue = 0.2
+		
+		setData()
     }
+	
+	override func viewWillAppear(animated: Bool) {
+		APIManager().getVenue(event){ result in
+			if result {
+				self.setData()
+				self.tableView.reloadData()
+			}
+		}
+
+	}
+	
+	func setData(){
+		posterImageView.image = event.getImage()
+		dateLabel.text = "\(event.getFromDateAsString()) - \(event.getToDateAsString())"
+		descriptionTextView.text = event.desc
+		
+		venue = ModelHandler().getVenueByEvent(event)
+		if venue != nil {
+			setVenueData()
+		}
+	}
     
-    func setData()
-    {
-        //let imageName:String = "blithe.jpg"
-        //let image = UIImage(named: imageName)
-        posterImageView.image = selectedEvent.getImage()
-        
-        let lat = Double(aVenue.latitude!)
-        let long = Double(aVenue.longitude!)
+    func setVenueData() {
+		
+        let lat = Double(venue!.latitude!)
+        let long = Double(venue!.longitude!)
         
         let location = CLLocationCoordinate2DMake(lat!, long!)
         let annotation = MKPointAnnotation()
         annotation.coordinate = location
-        annotation.title = aVenue.name //"title"
+        annotation.title = venue!.name //"title"
         //annotation.subtitle = "subtitle"
         locationMapView.addAnnotation(annotation)
         
         var address:String?
-        address = "\(aVenue.street!), \(aVenue.city!), \(aVenue.state!), \(aVenue.country!)"
+        address = "\(venue!.street!), \(venue!.city!), \(venue!.state!), \(venue!.country!)"
         //address
         addressTextView.text = address
         
@@ -75,76 +85,8 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
 
     }
     
-    func data_request()
-    {
-        //coredata
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDelegate.managedObjectContext
-        
-        let eventEntity = NSEntityDescription.entityForName("Venue", inManagedObjectContext: context)
-        let eventid:String = (selectedEvent.event_id?.stringValue)!
-        
-        //post request
-        let paramaters = [
-            "method" : "getVenue",
-            "venue_id" : eventid
-        ] //at the moment the api call need event id
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if let serverAdd = defaults.stringForKey("server")
-        {
-            Alamofire.request(.POST, serverAdd, parameters: paramaters).responseJSON {
-                response in switch response.result
-                {
-                case .Success:
-                    if let value = response.result.value
-                    {
-                        let json = JSON(value)
-                        
-                        if json["data"].count > 1
-                        {
-                            print("error should have only received one venue")
-                        }else{
-                            self.aVenue = NSEntityDescription.insertNewObjectForEntityForName("Venue", inManagedObjectContext: context) as! Venue
-                            self.aVenue.venue_id = json["data"][0]["venue_id"].intValue
-                            self.aVenue.name = json["data"][0]["name"].stringValue
-                            self.aVenue.type = json["data"][0]["type"].stringValue
-                            self.aVenue.street = json["data"][0]["street"].stringValue
-                            self.aVenue.city = json["data"][0]["city"].stringValue
-                            self.aVenue.state = json["data"][0]["state"].stringValue
-                            self.aVenue.country = json["data"][0]["country"].stringValue
-                            self.aVenue.latitude = json["data"][0]["latitude"].stringValue
-                            self.aVenue.longitude = json["data"][0]["longitude"].stringValue
-                        }
-                        //clear current data in the database
-                        
-                        //save to database
-                        do {
-                            try context.save()
-                        } catch {
-                            fatalError("Failure to save context in EventDetailsTableViewController: \(error)")
-                        }
-                        
-                        self.setData()
-                        //reload tableview - make sure loading from database not loading from server as we are currently
-                        self.eventDetailsTableView.reloadData()
-                    }
-                case .Failure(let error):
-                    print(error)
-                    //handle if there is no internet connection by alerting the user
-                    
-                }
-                
-            }
-            
-        }else {
-            print("server not set in LoginViewController")
-        }
-    }
-    
     func centerMapOnLocation(location: CLLocationCoordinate2D) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location,
-                                                                  regionRadius * 2.0, regionRadius * 2.0)
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location, regionRadius * 2.0, regionRadius * 2.0)
         locationMapView.setRegion(coordinateRegion, animated: true)
     }
     
@@ -169,93 +111,5 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
         }
         return nil
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        //return 0
-//        return 4
-//    }
-//
-//    
-//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//                 //Configure the cell...
-//        if indexPath == 0
-//        {
-//            //poster
-//        } else if indexPath == 1
-//        {
-//            //description
-//        }else if indexPath == 2
-//        {
-//            //poster
-//        } else if indexPath == 3
-//        {
-//            //address
-//        }else {
-//            print("cell was not 0,1,2 or 3 but: \(indexPath)")
-//        }
-//
-//        let cell = tableView.dequeueReusableCellWithIdentifier("posterCell", forIndexPath: indexPath)
-//        
-//        return cell
-//    }
- 
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

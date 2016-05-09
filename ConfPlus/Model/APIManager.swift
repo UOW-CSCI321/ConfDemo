@@ -36,7 +36,7 @@ class APIManager{
 				if let value = response.result.value {
 					let json = JSON(value)
 					
-					self.handler.deleteEventsData()
+					//self.handler.deleteEventsData()
 					
 					for i in 0 ..< json["data"].count {
 						let event = self.handler.addNewEvent(json["data"][i])
@@ -55,7 +55,10 @@ class APIManager{
 	}
 
 	func getPoster(event: Event, group: dispatch_group_t, inout isDispatchEmpty: Bool){
-		let id:NSNumber = event.event_id!
+		guard let id = event.event_id else {
+			//print(id)
+			return
+		}
 		let paramaters = [
 			"api_key": server.KEY,
 			"app_secret": server.SECRET,
@@ -86,6 +89,55 @@ class APIManager{
 		
 	}
 	
+	
+	
+
+	func getVenue(event:Event, completion: (result: Bool) -> Void) {
+		guard let id = event.venue_id else {
+			completion(result: false)
+			return
+		}
+		
+		let paramaters = [
+			"api_key"	:	server.KEY,
+			"app_secret":	server.SECRET,
+			"method"	:	"getVenue",
+			"venue_id"	:	id
+		]
+		var venue:Venue? = nil
+		
+		Alamofire.request(.POST, server.URL, parameters: paramaters).responseJSON {response in
+			switch response.result{
+			case .Success:
+				if let value = response.result.value{
+					
+					let json = JSON(value)
+					if json["success"] {
+						venue = self.handler.addNewVenue(json["data"][0])
+						
+						self.handler.saveVenueForEvent(event, venue:venue!)
+						completion(result: true)
+					} else {
+						print(json["data"][0]["message"])
+						completion(result: false)
+					}
+				}
+				
+			case .Failure(let error):
+				print(error.localizedDescription)
+				completion(result: false)
+				
+			}
+			
+		}
+		
+	}
+
+}
+
+
+//Mark: Login and Register
+extension APIManager{
 	func register(email : String, password : String, username:String, completion: (result: Bool) -> Void){
 		let paramaters = [
 			"api_key"	:	server.KEY,
@@ -114,9 +166,10 @@ class APIManager{
 				
 			case .Failure(let error):
 				HUD.hide()
-				print(error)
+				print(error.localizedDescription)
+				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not be the latest.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+				notification.show()
 				completion(result: false)
-				//self.showAlert(error.localizedDescription)
 				
 			}
 			
@@ -154,16 +207,13 @@ class APIManager{
 				
 			case .Failure(let error):
 				HUD.hide()
-				print(error)
+				print(error.localizedDescription)
+				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+				notification.show()
 				completion(result: false)
-				//self.showAlert(error.localizedDescription)
 				
 			}
 			
 		}
 	}
-	
-
-
-
 }
