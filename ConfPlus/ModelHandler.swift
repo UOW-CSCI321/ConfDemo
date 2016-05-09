@@ -24,9 +24,13 @@ class ModelHandler{
 	
 	func getExploreData() -> [Event]{
 		let fetch = NSFetchRequest(entityName: "Event")
+        let predicate = NSPredicate(format: "user_is_attending == %@", 0)
+        fetch.predicate = predicate
+        
 		var events = [Event]()
 		do {
 			events = try context.executeFetchRequest(fetch) as! [Event]
+            //print(events[0])
 		} catch {
 			print("Could not retrieve events object")
 		}
