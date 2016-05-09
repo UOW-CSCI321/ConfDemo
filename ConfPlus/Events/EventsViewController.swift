@@ -13,25 +13,34 @@ import CoreData
 
 class EventsViewController: UIViewController, UITableViewDelegate {
     
-    var eventAttendedArray = [Event]()
+    @IBOutlet var eventsTableView: UITableView!
+    var eventsAttended = [Event]()
+    var isDispatchEmpty:Bool = true
+    
 	let user = NSUserDefaults.standardUserDefaults()
 	
-    @IBOutlet var eventsTableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        data_request()
+        //data_request()
 		
 		navigationController?.hidesBarsOnSwipe = true
+        guard let _ = user.stringForKey("email") else {
+            performLogin()
+            return
+        }
+//eventsAttended = ModelHandler.getAttendedEventsByEmail(user.stringForKey("email")) //returns an array of events that the users is attending
+        //reload
     }
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		guard let _ = user.stringForKey("email") else {
-			performLogin()
-			return
-		}
+//		guard let _ = user.stringForKey("email") else {
+//			performLogin()
+//			return
+//		}
 	}
 	
 	func performLogin(){

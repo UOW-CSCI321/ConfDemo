@@ -33,6 +33,8 @@ class ModelHandler{
 		return events
 	}
 	
+    //Events
+    //Explore tab
 	func addNewEvent(json: JSON) -> Event{
 		
 		
@@ -112,4 +114,44 @@ class ModelHandler{
 		
 		performUpdate()
 	}
+    
+    //events tab
+//    func getAttendedEventsByEmail(email:String) -> [Event]
+//    {
+//        //call getUser(email)
+//        let foundUser = getUser(email)
+//        //get the nsset of event_roles for the user NSSet roles = foundUser.event_roles
+//        let userRoles = foundUser?.event_roles
+//        //each element in the set has one event so traverse through the nsset and get each event - aevent = roles[i].event
+//        for role in userRoles!
+//        {
+//            aEvent = role.event
+//            //append the found event to an array of events
+//        }
+//        //return the array
+//    }
+
+    func getUser(email:String) -> User?
+    {
+        let request = NSFetchRequest()
+        let entityDescription = NSEntityDescription.entityForName("Venue", inManagedObjectContext: context)
+        request.entity = entityDescription
+        request.fetchLimit = 1
+        
+        let predicate = NSPredicate(format: "email == %@", email)
+        request.predicate = predicate
+        
+        do{
+            let results = try context.executeFetchRequest(request)
+            print(results)
+            guard let user = results.first else {
+                print("error")
+                return nil
+            }
+            return user as? User
+        } catch {
+            print("Failed to search for user with email \(email)")
+        }
+        return nil
+    }
 }
