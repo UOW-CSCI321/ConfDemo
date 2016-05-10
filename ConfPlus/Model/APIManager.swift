@@ -175,6 +175,45 @@ class APIManager{
             
         }
     }
+    
+    
+    func getUserFromAPI(email:String, completion: (result: Bool) -> Void) {
+        
+        let paramaters = [
+            "api_key"	:	server.KEY,
+            "app_secret":	server.SECRET,
+            "method"	:	"getUser",
+            "venue_id"	:	email
+        ]
+        var user:User? = nil
+        
+        Alamofire.request(.POST, server.URL, parameters: paramaters).responseJSON {response in
+            switch response.result{
+            case .Success:
+                if let value = response.result.value{
+                    
+                    let json = JSON(value)
+                    if json["success"] {
+                        user = self.handler.addNewUser(json["data"][0])
+                        
+                        //self.handler.saveVenueForEvent(event, venue:venue!)
+                        completion(result: true)
+                    } else {
+                        print(json["data"][0]["message"])
+                        completion(result: false)
+                    }
+                }
+                
+            case .Failure(let error):
+                print(error.localizedDescription)
+                completion(result: false)
+                
+            }
+            
+        }
+        
+    }
+
 
 
 }

@@ -119,26 +119,44 @@ class ModelHandler{
 		performUpdate()
 	}
     
-    //events tab
-//    func getAttendedEventsByEmail(email:String) -> [Event]
-//    {
-//        //call getUser(email)
-//        let foundUser = getUser(email)
-//        //get the nsset of event_roles for the user NSSet roles = foundUser.event_roles
-//        let userRoles = foundUser?.event_roles
-//        //each element in the set has one event so traverse through the nsset and get each event - aevent = roles[i].event
-//        for role in userRoles!
-//        {
-//            aEvent = role.event
-//            //append the found event to an array of events
-//        }
-//        //return the array
-//    }
+    func serverStringToDate(dateString:String) -> NSDate
+    {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.timeZone = NSTimeZone(name: "GMT")
+        
+        let d1 = dateFormatter.dateFromString(dateString)
+        return d1!
+    }
+
+    func addNewUser(json: JSON) -> User
+    {
+        let user = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: self.context) as! User
+        user.email = json["email"].string
+        user.username = json["username"].string
+        user.password = json["password"].string //eventually do some hashing
+        user.title = json["title"].string
+        user.first_name = json["first_name"].string
+        user.last_name = json["last_name"].string
+        user.dob = serverStringToDate(json["dob"].string!)
+        user.street = json["street"].string
+        user.city = json["city"].string
+        user.state = json["state"].string
+        user.country = json["country"].string
+        user.fb_id = json["fb_id"].number
+        user.linkedin_id = json["linkedin_id"].number
+        user.active = json["active"].number
+        user.upgraded = json["upgraded"].number
+        
+        performUpdate()
+        
+        return user
+    }
 
     func getUser(email:String) -> User?
     {
         let request = NSFetchRequest()
-        let entityDescription = NSEntityDescription.entityForName("Venue", inManagedObjectContext: context)
+        let entityDescription = NSEntityDescription.entityForName("User", inManagedObjectContext: context)
         request.entity = entityDescription
         request.fetchLimit = 1
         
