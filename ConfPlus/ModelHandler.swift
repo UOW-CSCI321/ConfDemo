@@ -22,29 +22,24 @@ class ModelHandler{
 		}
 	}
 	
-	func getExploreData() -> [Event]{
-        let request = NSFetchRequest(entityName: "Event")
-        //let entityDescription = NSEntityDescription.entityForName("Event", inManagedObjectContext: context)
-        //request.entity = entityDescription
+	func getEvents(attend: String) -> [Event]{
+		let fetch = NSFetchRequest(entityName: "Event")
+        let predicate = NSPredicate(format: "attend == %@", attend)
+        fetch.predicate = predicate
         
-        let predicate = NSPredicate(format: "user_is_attending == %@", 0) //where attending == false
-        request.predicate = predicate
-        
-        
-        var events = [Event]()
-        do {
-            events = try context.executeFetchRequest(request) as! [Event]
-        } catch {
-            print("Could not retrieve events object")
-        }
-        return events
-
+		var events = [Event]()
+		do {
+			events = try context.executeFetchRequest(fetch) as! [Event]
+            //print(events[0])
+		} catch {
+			print("Could not retrieve events object")
+		}
+		return events
 	}
 	
     //Events
     //Explore tab
-    func addNewEvent(json: JSON) -> Event{
-		
+	func addNewEvent(json: JSON, attending:String) -> Event{
 		
 		let entityDescription = NSEntityDescription.entityForName("Event", inManagedObjectContext: context)
 		
@@ -57,7 +52,7 @@ class ModelHandler{
 		event.desc = json["description"].string
 		event.url = json["url"].string
 		event.venue_id = json["venue_id"].string
-        //event.user_is_attending = attending
+        event.attend = attending
 		
 		//performUpdate()
 		
@@ -65,7 +60,7 @@ class ModelHandler{
 	}
 	
 	func deleteEventsData(){
-		let events = getExploreData()
+		let events = getEvents("0")
 		for event in events{
 			self.context.deleteObject(event)
 		}
@@ -125,8 +120,8 @@ class ModelHandler{
 	}
     
     //events tab
-    func getAttendedEventsByEmail(email:String) -> [Event]
-    {
+//    func getAttendedEventsByEmail(email:String) -> [Event]
+//    {
 //        //call getUser(email)
 //        let foundUser = getUser(email)
 //        //get the nsset of event_roles for the user NSSet roles = foundUser.event_roles
@@ -138,23 +133,7 @@ class ModelHandler{
 //            //append the found event to an array of events
 //        }
 //        //return the array
-        let request = NSFetchRequest(entityName: "Event")
-        let entityDescription = NSEntityDescription.entityForName("Event", inManagedObjectContext: context)
-        request.entity = entityDescription
-        
-        let predicate = NSPredicate(format: "user_is_attending == %@", 1) //where attending == true
-        request.predicate = predicate
-
-
-        var events = [Event]()
-        do {
-            events = try context.executeFetchRequest(request) as! [Event]
-        } catch {
-            print("Could not retrieve events object")
-        }
-        return events
-        
-    }
+//    }
 
     func getUser(email:String) -> User?
     {

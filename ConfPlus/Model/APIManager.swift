@@ -22,7 +22,7 @@ class APIManager{
 	
 	
 	
-	func getExploreDataFromAPI(group: dispatch_group_t, inout isDispatchEmpty: Bool){
+	func getExploreDataFromAPI(group: dispatch_group_t, inout isDispatchEmpty: Bool, completion: (Bool) -> Void){
 		let paramaters = [
 			"api_key": server.KEY,
 			"app_secret": server.SECRET,
@@ -39,22 +39,26 @@ class APIManager{
 					//self.handler.deleteEventsData()
 					
 					for i in 0 ..< json["data"].count {
-						let event = self.handler.addNewEvent(json["data"][i]/*, attending: 0*/)
-				
 						dispatch_group_enter(group)
-						APIManager().getPoster(event, group: group, isDispatchEmpty: &isDispatchEmpty)
+						let event = self.handler.addNewEvent(json["data"][i], attending: "0")
+						
+						APIManager().getPoster(event, group: group){
+							self.handler.performUpdate()
+						}
 					}
 				}
+				completion(true)
 			case .Failure(let error):
 				print(error.localizedDescription)
 				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
 				notification.show()
+				completion(false)
 			}
 			
 		}
 	}
 
-	func getPoster(event: Event, group: dispatch_group_t, inout isDispatchEmpty: Bool){
+	func getPoster(event: Event, group: dispatch_group_t, completion: () -> Void){
 		guard let id = event.event_id else {
 			//print(id)
 			return
@@ -68,7 +72,6 @@ class APIManager{
 		
 		let poster_queue = dispatch_queue_create("poster_queue", nil)
 		dispatch_async(poster_queue, {
-			isDispatchEmpty = false
 			Alamofire.request(.POST, self.server.URL, parameters: paramaters).responseJSON(){ response in
 				switch response.result{
 				case .Success:
@@ -77,12 +80,16 @@ class APIManager{
 						event.poster_url = json["data"]["poster_data_url"].string
 						
 						print("updated image")
-						self.handler.performUpdate()
+						
 					}
+					
 					dispatch_group_leave(group)
+					completion()
+					
 				case .Failure(let error):
 					dispatch_group_leave(group)
 					print(error.localizedDescription)
+					completion()
 				}
 			}
 		})
@@ -132,43 +139,11 @@ class APIManager{
 		}
 		
 	}
-    
-    func getMyEventDataFromAPI(group: dispatch_group_t, inout isDispatchEmpty: Bool){
-        let paramaters = [
-            "api_key": server.KEY,
-            "app_secret": server.SECRET,
-            "method" : "getEventsByTag",
-            "tag_name" : "testTag"
-        ] //at the moment the api call need event id
-        
-        Alamofire.request(.POST, server.URL, parameters: paramaters).responseJSON { response in
-            switch response.result {
-            case .Success:
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    
-                    //self.handler.deleteEventsData()
-                    
-                    for i in 0 ..< json["data"].count {
-                        let event = self.handler.addNewEvent(json["data"][i]/*, attending: 1*/)
-                        
-                        dispatch_group_enter(group)
-                        APIManager().getPoster(event, group: group, isDispatchEmpty: &isDispatchEmpty)
-                    }
-                }
-            case .Failure(let error):
-                print(error.localizedDescription)
-                let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-                notification.show()
-            }
-            
-        }
-    }
 
 }
 
 
-//Mark: Login and Register
+//MARK: Login and Register
 extension APIManager{
 	func register(email : String, password : String, username:String, completion: (result: Bool) -> Void){
 		let paramaters = [
