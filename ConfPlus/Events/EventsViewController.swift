@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import CoreData
+import MPGNotification
 
 class EventsViewController: UIViewController, UITableViewDelegate {
     
@@ -26,21 +27,38 @@ class EventsViewController: UIViewController, UITableViewDelegate {
         //data_request()
 		
 		navigationController?.hidesBarsOnSwipe = true
-        guard let _ = user.stringForKey("email") else {
-            performLogin()
-            return
-        }
-//eventsAttended = ModelHandler.getAttendedEventsByEmail(user.stringForKey("email")) //returns an array of events that the users is attending
-        //reload
+        eventAttendedArray = ModelHandler().getEvents("1") //get attending
+        eventsTableView.reloadData()//reload
     }
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
-//		guard let _ = user.stringForKey("email") else {
-//			performLogin()
-//			return
-//		}
+		guard let _ = user.stringForKey("email") else {
+			performLogin()
+			return
+		}
+        
+        if isDispatchEmpty {
+            let group: dispatch_group_t = dispatch_group_create()
+            isDispatchEmpty = false
+            let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+            notification.duration = 2
+            notification.show()
+            
+            APIManager().getMyEventDataFromAPI(group, isDispatchEmpty: &isDispatchEmpty){ result in
+                dispatch_group_notify(group, dispatch_get_main_queue()) {
+                    self.isDispatchEmpty = true
+                    self.eventAttendedArray = ModelHandler().getEvents("1")
+                    self.eventsTableView.reloadData()
+                    print("Reloaded")
+                    
+                    let notification = MPGNotification(title: "Updated", subtitle: nil, backgroundColor: UIColor.orangeColor(), iconImage: nil)
+                    notification.duration = 1
+                    notification.show()
+                }
+            }
+        }
 	}
 	
 	func performLogin(){
@@ -59,111 +77,21 @@ class EventsViewController: UIViewController, UITableViewDelegate {
     }
 
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return 1
          return eventAttendedArray.count
-    }
-
-    func data_request()
-    {
-        //coredata
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDelegate.managedObjectContext
-        
-        let eventEntity = NSEntityDescription.entityForName("Event", inManagedObjectContext: context)
-        
-        //post request
-        let paramaters = [
-            "method" : "getEventsByTag",
-            "tag_name" : "testTag"
-        ] //at the moment the api call need event id
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if let serverAdd = defaults.stringForKey("server")
-        {
-            Alamofire.request(.POST, serverAdd, parameters: paramaters).responseJSON {
-                response in switch response.result
-                {
-                case .Success:
-                    if let value = response.result.value
-                    {
-                        let json = JSON(value)
-                        
-                        for i in 0 ..< json["data"].count
-                        {
-                            let aevent = NSEntityDescription.insertNewObjectForEntityForName("Event", inManagedObjectContext: context) as! Event                            
-                            aevent.event_id = json["data"][i]["event_id"].string
-                            aevent.name = json["data"][i]["name"].stringValue
-                            aevent.type = json["data"][i]["type"].stringValue
-//                            aevent.setFromDate(json["data"][i]["from_date"].stringValue)
-//                            aevent.setToDate(json["data"][i]["to_date"].stringValue)
-                            //aevent.venueid //we do not have venueID in core data as it uses . syntax to get related items
-                            aevent.desc = json["data"][i]["description"].stringValue
-                            aevent.url = json["data"][i]["url"].stringValue
-//                            aevent.requestPoster()
-							
-//                            print("id: \(aevent.event_id)")
-//                            print("name: \(aevent.name)")
-//                            print("type: \(aevent.type)")
-//                            print("from date:\(aevent.from_date)")
-//                            print("to date:\(aevent.to_date)")
-//                            print("desc: \(aevent.desc)")
-//                            print("url: \(aevent.url)")
-//                            print("poster: \(aevent.poster_url)")
-                            
-                            self.eventAttendedArray.append(aevent);
-                            
-                        }
-                        //clear current data in the database
-                        
-                        //save to database
-                        do {
-                            try context.save()
-                        } catch {
-                            fatalError("Failure to save context in ExploreViewController: \(error)")
-                        }
-
-                        self.eventsTableView.reloadData()
-                        
-                    }
-                case .Failure(let error):
-                    print(error)
-                    //handle if there is no internet connection
-                    
-                }
-                
-            }
-            
-        }else {
-            print("server not set in LoginViewController")
-        }
     }
 
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as! EventTableViewCell
-
-        //get from database
-        //coredata
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDelegate.managedObjectContext
+        let row = indexPath.row
         
-        let eventEntity = NSEntityDescription.entityForName("Event", inManagedObjectContext: context)
-        // Fetch
-        let fetchRequest = NSFetchRequest()
-        fetchRequest.entity = eventEntity
-        fetchRequest.returnsObjectsAsFaults = false
+        cell.eventName.text = eventAttendedArray[row].name
         
-        do {
-            let result = try context.executeFetchRequest(fetchRequest) as! [Event]
-            cell.eventName.text = result[indexPath.row].name
-			cell.eventDate.text = "nothign"//result[indexPath.row].getFromDateAsString()
-			//cell.eventImage.image = result[indexPath.row].getImage()
-            
-            //print(result)
-        } catch {
-            let fetchError = error as NSError
-            print(fetchError)
-        }
+        let date = "\(eventAttendedArray[row].getFromDateAsString()) - \(eventAttendedArray[row].getToDateAsString())"
+        cell.eventDate.text = date
+        
+        cell.eventImage.image = eventAttendedArray[row].getImage()
+        
         return cell
     }
 	

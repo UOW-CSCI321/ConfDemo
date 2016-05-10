@@ -139,6 +139,43 @@ class APIManager{
 		}
 		
 	}
+    
+    func getMyEventDataFromAPI(group: dispatch_group_t, inout isDispatchEmpty: Bool, completion: (Bool) -> Void){
+        let paramaters = [
+            "api_key": server.KEY,
+            "app_secret": server.SECRET,
+            "method" : "getEventsByTag",
+            "tag_name" : "testTag"
+        ] //at the moment the api call need event id
+        
+        Alamofire.request(.POST, server.URL, parameters: paramaters).responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    
+                    //self.handler.deleteEventsData()
+                    
+                    for i in 0 ..< json["data"].count {
+                        dispatch_group_enter(group)
+                        let event = self.handler.addNewEvent(json["data"][i], attending: "1")
+                        
+                        APIManager().getPoster(event, group: group){
+                            self.handler.performUpdate()
+                        }
+                    }
+                }
+                completion(true)
+            case .Failure(let error):
+                print(error.localizedDescription)
+                let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+                notification.show()
+                completion(false)
+            }
+            
+        }
+    }
+
 
 }
 
