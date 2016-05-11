@@ -16,6 +16,7 @@ class RegisterViewController: UIViewController {
 	@IBOutlet weak var passwordTextField: UITextField!
 	
 	let user = NSUserDefaults.standardUserDefaults()
+    let server = APIServer()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,7 @@ class RegisterViewController: UIViewController {
 		
 		APIManager().register(email, password: password, username: username){ result in
 			if result {
+                let email = self.server.hashUserPassword(email)
 				self.user.setObject(email, forKey: "email")
 				self.user.setObject(username, forKey: "username")
 				self.dismissViewControllerAnimated(true, completion: nil)

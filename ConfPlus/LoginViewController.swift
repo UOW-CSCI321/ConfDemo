@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
 
     @IBOutlet var usernameTextfield: UITextField!
     @IBOutlet var passwordTextfield: UITextField!
+    let server = APIServer()
 	
 	let user = NSUserDefaults.standardUserDefaults()
     
@@ -44,6 +45,7 @@ class LoginViewController: UIViewController {
 		
 		APIManager().login(email, password: password){ result in
 			if result {
+                let email = self.server.hashUserPassword(email)
 				self.user.setObject(email, forKey: "email")
 				self.dismissViewControllerAnimated(true, completion: nil)
 			} else {
