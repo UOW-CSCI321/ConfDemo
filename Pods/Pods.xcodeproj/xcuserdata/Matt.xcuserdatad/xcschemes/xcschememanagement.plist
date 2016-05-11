@@ -6,48 +6,58 @@
 	<dict>
 		<key>ActionSheetPicker-3.0.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Alamofire-Synchronous.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Alamofire.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>CryptoSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Localize-Swift.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>MPGNotification.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>7</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>OGCryptoHash.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>PKHUD.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>8</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-ConfPlus.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>14C450530E18CA5F60CDFCA8B2D6A8B9</key>
+		<key>053617A05C5A952CF2888B88D119FE01</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,17 +67,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3CB51CC21BAFC56F670577DAB81D8A42</key>
+		<key>41FEB85FC4DFA138D6B9A295D8911DEF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3E92BAD6DA2FEF3DDE4BABAB2B59D70F</key>
+		<key>4E3BBCA6078A6AAAD053C911572F0B0C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>41D809180E14D1437CAF24F1E7E68ACE</key>
+		<key>688B6F268960EA52D211908262AD6887</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,32 +92,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CA4A08D67D3688F6E57A8CA4E8B905A8</key>
+		<key>ED4337B1B6E594133A328DEA9437A9A7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CBDF7D83BD7E8162D91B111E097DA11B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CE0A701D8A271EFE0065667D13272921</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CFB9C408AFB35F2F3548D2C6B2069882</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E1E05A13D5076FDFA5F7C5358F4A2913</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E300E37A22BCF09273483CDA039417FC</key>
+		<key>EF51CBC83F97B5A8AB63AA17F53BF28A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
