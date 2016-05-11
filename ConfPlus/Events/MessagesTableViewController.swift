@@ -30,7 +30,21 @@ extension MessagesTableViewController: UITableViewDelegate{
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
-		let cell = tableView.dequeueReusableCellWithIdentifier("messageCell", forIndexPath: indexPath)
+        var onlineColour : UIColor = UIColor(red: 0.42, green: 0.92, blue: 0.04, alpha: 1)
+        var offlineColour : UIColor = UIColor(red: 0.99, green: 0.29, blue: 0.01, alpha: 1)
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("messageCell", forIndexPath: indexPath) as! MessageTableViewCell
+        //let iv = UIImageView()
+        //iv.
+        cell.profilePicture.layer.cornerRadius = cell.profilePicture.frame.size.width/2
+        cell.profilePicture.clipsToBounds = true
+        cell.profilePicture.layer.borderWidth = 3.0
+        cell.profilePicture.layer.borderColor = onlineColour.CGColor
+        //cell.imageView = cell.imageView?.frame.size.width/2;
+        //profilePictureImgView.layer.cornerRadius = profilePictureImgView.frame.size.width/2;
+//        profilePictureImgView.clipsToBounds = true;
+//        profilePictureImgView.layer.borderWidth = 3.0
+//        profilePictureImgView.layer.borderColor = companyColour1.CGColor
 		
 		return cell
 	}

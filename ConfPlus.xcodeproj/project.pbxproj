@@ -10,6 +10,7 @@
 		7ABBEDC83FCAF9328A671323 /* Pods_ConfPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29F9F87683BF1E1F1317CBE5 /* Pods_ConfPlus.framework */; };
 		C93A980E1CE04AE900418F53 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93A980C1CE04AE900418F53 /* Event.swift */; };
 		C93A984D1CE3448D00418F53 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93A984C1CE3448D00418F53 /* CryptoSwift.framework */; };
+		C93A984F1CE36B4C00418F53 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93A984E1CE36B4C00418F53 /* MessageTableViewCell.swift */; };
 		C94AFA4D1C98085B00EC88B6 /* TicketDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA4C1C98085B00EC88B6 /* TicketDetailsViewController.swift */; };
 		C94AFA4F1C9808AB00EC88B6 /* PersonalDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA4E1C9808AB00EC88B6 /* PersonalDetailsViewController.swift */; };
 		C94AFA511C980A0B00EC88B6 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA501C980A0B00EC88B6 /* PaymentViewController.swift */; };
@@ -90,6 +91,7 @@
 		29F9F87683BF1E1F1317CBE5 /* Pods_ConfPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConfPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C93A980C1CE04AE900418F53 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Model/Event.swift; sourceTree = "<group>"; };
 		C93A984C1CE3448D00418F53 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = "Pods/../build/Debug-iphoneos/CryptoSwift/CryptoSwift.framework"; sourceTree = "<group>"; };
+		C93A984E1CE36B4C00418F53 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		C94AFA4C1C98085B00EC88B6 /* TicketDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketDetailsViewController.swift; path = Explore/TicketDetailsViewController.swift; sourceTree = "<group>"; };
 		C94AFA4E1C9808AB00EC88B6 /* PersonalDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonalDetailsViewController.swift; path = Explore/PersonalDetailsViewController.swift; sourceTree = "<group>"; };
 		C94AFA501C980A0B00EC88B6 /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentViewController.swift; path = Explore/PaymentViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				C94AFA571C980D7C00EC88B6 /* HomeViewController.swift */,
 				C94AFA611C981C0600EC88B6 /* Timetable */,
 				C94AFA5D1C980ECE00EC88B6 /* MessagesTableViewController.swift */,
+				C93A984E1CE36B4C00418F53 /* MessageTableViewCell.swift */,
 				C94AFA621C981C5C00EC88B6 /* Ticket */,
 				C94AFA6D1C981F1A00EC88B6 /* AttendingViewController.swift */,
 				C94AFA6F1C981F8200EC88B6 /* Admin */,
@@ -576,6 +579,7 @@
 				C94AFA4D1C98085B00EC88B6 /* TicketDetailsViewController.swift in Sources */,
 				E94AA9631CE0858200569032 /* Event+CoreDataProperties.swift in Sources */,
 				C94AFA6C1C981E7700EC88B6 /* SecurityViewController.swift in Sources */,
+				C93A984F1CE36B4C00418F53 /* MessageTableViewCell.swift in Sources */,
 				E97EB7531CDF13E5009113A6 /* Venue+CoreDataProperties.swift in Sources */,
 				E97EB7691CDF13E5009113A6 /* Event_Roles+CoreDataProperties.swift in Sources */,
 				C94AFA601C9811BD00EC88B6 /* EventLocationViewController.swift in Sources */,
