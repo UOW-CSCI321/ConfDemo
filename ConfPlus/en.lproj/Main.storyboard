@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="T5p-Vp-c9R">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oCw-Ku-lcE">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -1283,8 +1283,8 @@
         <!--Edit Profile-->
         <scene sceneID="tcV-oa-qjd">
             <objects>
-                <tableViewController id="oCw-Ku-lcE" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="2Zm-0E-VMd">
+                <tableViewController id="oCw-Ku-lcE" customClass="EditProfileTableViewController" customModule="ConfPlus" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="2Zm-0E-VMd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -1326,17 +1326,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O0U-CB-ABe">
+                                                    <rect key="frame" x="99" y="13.5" width="307" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpS-nQ-day">
                                                     <rect key="frame" x="8" y="11" width="83" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O0U-CB-ABe">
-                                                    <rect key="frame" x="99" y="13.5" width="307" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="O0U-CB-ABe" firstAttribute="trailing" secondItem="u7j-1o-hMZ" secondAttribute="trailingMargin" id="4uE-rc-pzW"/>
@@ -1363,7 +1363,7 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GcM-oJ-Dem">
                                                     <rect key="frame" x="98" y="13.5" width="308" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -1386,6 +1386,9 @@
                                                     <rect key="frame" x="113" y="13.5" width="293" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="editDate:" destination="oCw-Ku-lcE" eventType="editingDidBegin" id="LAC-zF-Ixd"/>
+                                                    </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1DF-NE-SBM">
                                                     <rect key="frame" x="8" y="11" width="97" height="21"/>
@@ -1421,7 +1424,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nwf-I7-ZhK">
-                                                    <rect key="frame" x="62.5" y="13.5" width="343.5" height="17"/>
+                                                    <rect key="frame" x="62" y="13" width="343.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -1528,8 +1531,31 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Edit Profile" id="1Cd-yp-VVa">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="XHE-dT-9fF"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="XHE-dT-9fF">
+                            <connections>
+                                <action selector="performSave:" destination="oCw-Ku-lcE" id="48u-Qh-Dg0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="birthLabel" destination="1DF-NE-SBM" id="sNX-Cj-DmC"/>
+                        <outlet property="cityLabel" destination="hEC-n7-Det" id="yEx-AA-2uM"/>
+                        <outlet property="cityTextField" destination="ykQ-rZ-5rN" id="zLd-CT-g0U"/>
+                        <outlet property="countryLabel" destination="dvd-aj-m5T" id="LMT-Qs-OLp"/>
+                        <outlet property="countryTextField" destination="mz4-hP-Chq" id="lhJ-F8-Zt4"/>
+                        <outlet property="dateTextField" destination="wgn-AT-sul" id="O3G-w5-rc0"/>
+                        <outlet property="firstNameLabel" destination="fpS-nQ-day" id="0Qz-sv-Old"/>
+                        <outlet property="firstNameTextField" destination="O0U-CB-ABe" id="wST-bD-vDx"/>
+                        <outlet property="lastNameLabel" destination="2U6-BH-Y6U" id="8CI-VX-F7O"/>
+                        <outlet property="lastNameTextField" destination="GcM-oJ-Dem" id="yve-mr-aBw"/>
+                        <outlet property="saveButton" destination="XHE-dT-9fF" id="9Ct-m9-xgJ"/>
+                        <outlet property="stateLabel" destination="FTZ-mF-feF" id="goE-Be-ahv"/>
+                        <outlet property="stateTextField" destination="eQZ-zi-jFZ" id="voR-8E-T11"/>
+                        <outlet property="streetLabel" destination="yqT-vG-Yry" id="H49-Bu-zHF"/>
+                        <outlet property="streetTextField" destination="Nwf-I7-ZhK" id="486-Nr-QWo"/>
+                        <outlet property="titleLabel" destination="rC5-Hr-Hrb" id="5DV-90-nI0"/>
+                        <outlet property="titleTextField" destination="lzc-RU-lxR" id="uRh-Bk-4rb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Cw-Dv-PqP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
