@@ -39,15 +39,15 @@ class APIManager{
 					//self.handler.deleteEventsData()
 					
 					for i in 0 ..< json["data"].count {
-						let event = self.handler.addNewEvent(json["data"][i])
-				
 						dispatch_group_enter(group)
-						APIManager().getPoster(event, group: group){ result in
+						let event = self.handler.addNewEvent(json["data"][i], attending: "0")
+						
+						APIManager().getPoster(event, group: group){
 							self.handler.performUpdate()
 						}
 					}
-					completion(true)
 				}
+				completion(true)
 			case .Failure(let error):
 				print(error.localizedDescription)
 				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
@@ -58,11 +58,11 @@ class APIManager{
 		}
 	}
 
-	func getPoster(event: Event, group: dispatch_group_t, completion: (Bool) -> Void){
+	func getPoster(event: Event, group: dispatch_group_t, completion: () -> Void){
 		guard let id = event.event_id else {
+			//print(id)
 			return
 		}
-		
 		let paramaters = [
 			"api_key": server.KEY,
 			"app_secret": server.SECRET,
@@ -81,16 +81,15 @@ class APIManager{
 						
 						print("updated image")
 						
-						dispatch_group_leave(group)
-						completion(true)
-					} else {
-						dispatch_group_leave(group)
-						completion(false)
 					}
+					
+					dispatch_group_leave(group)
+					completion()
+					
 				case .Failure(let error):
 					dispatch_group_leave(group)
 					print(error.localizedDescription)
-					completion(false)
+					completion()
 				}
 			}
 		})
@@ -140,11 +139,87 @@ class APIManager{
 		}
 		
 	}
+    
+    func getMyEventDataFromAPI(group: dispatch_group_t, inout isDispatchEmpty: Bool, completion: (Bool) -> Void){
+        let paramaters = [
+            "api_key": server.KEY,
+            "app_secret": server.SECRET,
+            "method" : "getEventsByTag",
+            "tag_name" : "testTag"
+        ] //at the moment the api call need event id
+        
+        Alamofire.request(.POST, server.URL, parameters: paramaters).responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    
+                    //self.handler.deleteEventsData()
+                    
+                    for i in 0 ..< json["data"].count {
+                        dispatch_group_enter(group)
+                        let event = self.handler.addNewEvent(json["data"][i], attending: "1")
+                        
+                        APIManager().getPoster(event, group: group){
+                            self.handler.performUpdate()
+                        }
+                    }
+                }
+                completion(true)
+            case .Failure(let error):
+                print(error.localizedDescription)
+                let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+                notification.show()
+                completion(false)
+            }
+            
+        }
+    }
+    
+    
+    func getUserFromAPI(email:String, completion: (result: Bool) -> Void) {
+        
+        let paramaters = [
+            "api_key"	:	server.KEY,
+            "app_secret":	server.SECRET,
+            "method"	:	"getUser",
+            "venue_id"	:	email
+        ]
+        var user:User? = nil
+        
+        Alamofire.request(.POST, server.URL, parameters: paramaters).responseJSON {response in
+            switch response.result{
+            case .Success:
+                if let value = response.result.value{
+                    
+                    let json = JSON(value)
+                    if json["success"] {
+                        user = self.handler.addNewUser(json["data"][0])
+                        
+                        //self.handler.saveVenueForEvent(event, venue:venue!)
+                        completion(result: true)
+                    } else {
+                        print(json["data"][0]["message"])
+                        completion(result: false)
+                    }
+                }
+                
+            case .Failure(let error):
+                print(error.localizedDescription)
+                completion(result: false)
+                
+            }
+            
+        }
+        
+    }
+
+
 
 }
 
 
-//Mark: Login and Register
+//MARK: Login and Register
 extension APIManager{
 	func register(email : String, password : String, username:String, completion: (result: Bool) -> Void){
 		let paramaters = [

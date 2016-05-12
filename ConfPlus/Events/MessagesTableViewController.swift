@@ -29,8 +29,15 @@ extension MessagesTableViewController: UITableViewDelegate{
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		
-		let cell = tableView.dequeueReusableCellWithIdentifier("messageCell", forIndexPath: indexPath)
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("messageCell", forIndexPath: indexPath) as! MessageTableViewCell
+        //let iv = UIImageView()
+        //iv.
+        
+        
+        cell.usersName.text = "Matthew Steven Boroczky"
+        cell.messageDescription.text = "Hey michael hows everything with project going? go.."
+        cell.messageDateLabel.text = "9:05pm"
 		
 		return cell
 	}

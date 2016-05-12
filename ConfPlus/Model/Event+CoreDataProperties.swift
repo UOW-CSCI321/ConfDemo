@@ -25,6 +25,7 @@ extension Event {
     @NSManaged var type: String?
     @NSManaged var url: String?
     @NSManaged var venue_id: String?
+    @NSManaged var attend: String?
     @NSManaged var roles: NSSet?
     @NSManaged var sessions: NSSet?
     @NSManaged var tags: NSSet?

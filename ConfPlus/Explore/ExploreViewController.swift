@@ -26,7 +26,7 @@ class ExploreViewController: UIViewController {
 		
 		navigationController?.hidesBarsOnSwipe = true
 		
-		events = ModelHandler().getExploreData()
+		events = ModelHandler().getEvents("0")
 		EventsTableView.reloadData()
     }
 	
@@ -41,22 +41,18 @@ class ExploreViewController: UIViewController {
 			notification.show()
 			
 			APIManager().getExploreDataFromAPI(group, isDispatchEmpty: &isDispatchEmpty){ result in
-				if result {
-					dispatch_group_notify(group, dispatch_get_main_queue()) {
-						self.isDispatchEmpty = true
-						self.events = ModelHandler().getExploreData()
-						self.EventsTableView.reloadData()
-						print("Reloaded")
-						
-						let notification = MPGNotification(title: "Updated", subtitle: nil, backgroundColor: UIColor.orangeColor(), iconImage: nil)
-						notification.duration = 1
-						notification.show()
-					}
+				dispatch_group_notify(group, dispatch_get_main_queue()) {
+					self.isDispatchEmpty = true
+					self.events = ModelHandler().getEvents("0")
+					self.EventsTableView.reloadData()
+					print("Reloaded")
+					
+					let notification = MPGNotification(title: "Updated", subtitle: nil, backgroundColor: UIColor.orangeColor(), iconImage: nil)
+					notification.duration = 1
+					notification.show()
 				}
 			}
 		}
-		
-		
 	}
 	
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

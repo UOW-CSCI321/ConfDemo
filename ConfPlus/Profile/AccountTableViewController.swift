@@ -28,11 +28,17 @@ class AccountTableViewController: UITableViewController {
 	let availableLanguages = Localize.availableLanguages()
 	
 	let user = NSUserDefaults.standardUserDefaults()
+    var aUser = User()
 	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
+
+        
+
+        //nameLabel =
+        //eventsTableView.reloadData()//reload
 		
 //core data code save
 		/*
@@ -151,9 +157,14 @@ class AccountTableViewController: UITableViewController {
 		
 		
 		guard let email = user.stringForKey("email") else {
-			performLogin()
+			performLogin() //change to return email
+            //aUser = ModelHandler().getUser(email)!
 			return
 		}
+        
+//        user.setObject(aUser.first_name, forKey: "firstName")
+//        user.setObject(aUser.last_name, forKey: "lastName")
+//        user.setObject(aUser.username, forKey: "username")
 		
 		emailLabel.text = email
 		if let name = user.stringForKey("firstName")

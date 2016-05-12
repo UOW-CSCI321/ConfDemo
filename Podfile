@@ -22,4 +22,7 @@ target 'ConfPlus' do
 
 	# https://github.com/krzyzanowskim/CryptoSwift
 	pod 'CryptoSwift'
+    
+    # https://github.com/OrangeGroove/OGCryptoHash
+    pod 'OGCryptoHash', '~> 0.2.2'
 end

@@ -22,19 +22,24 @@ class ModelHandler{
 		}
 	}
 	
-	func getExploreData() -> [Event]{
+	func getEvents(attend: String) -> [Event]{
 		let fetch = NSFetchRequest(entityName: "Event")
+        let predicate = NSPredicate(format: "attend == %@", attend)
+        fetch.predicate = predicate
+        
 		var events = [Event]()
 		do {
 			events = try context.executeFetchRequest(fetch) as! [Event]
+            //print(events[0])
 		} catch {
 			print("Could not retrieve events object")
 		}
 		return events
 	}
 	
-	func addNewEvent(json: JSON) -> Event{
-		
+    //Events
+    //Explore tab
+	func addNewEvent(json: JSON, attending:String) -> Event{
 		
 		let entityDescription = NSEntityDescription.entityForName("Event", inManagedObjectContext: context)
 		
@@ -47,6 +52,7 @@ class ModelHandler{
 		event.desc = json["description"].string
 		event.url = json["url"].string
 		event.venue_id = json["venue_id"].string
+        event.attend = attending
 		
 		//performUpdate()
 		
@@ -54,7 +60,7 @@ class ModelHandler{
 	}
 	
 	func deleteEventsData(){
-		let events = getExploreData()
+		let events = getEvents("0")
 		for event in events{
 			self.context.deleteObject(event)
 		}
@@ -112,4 +118,62 @@ class ModelHandler{
 		
 		performUpdate()
 	}
+    
+    func serverStringToDate(dateString:String) -> NSDate
+    {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.timeZone = NSTimeZone(name: "GMT")
+        
+        let d1 = dateFormatter.dateFromString(dateString)
+        return d1!
+    }
+
+    func addNewUser(json: JSON) -> User
+    {
+        let user = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: self.context) as! User
+        user.email = json["email"].string
+        user.username = json["username"].string
+        user.password = json["password"].string //eventually do some hashing
+        user.title = json["title"].string
+        user.first_name = json["first_name"].string
+        user.last_name = json["last_name"].string
+        user.dob = serverStringToDate(json["dob"].string!)
+        user.street = json["street"].string
+        user.city = json["city"].string
+        user.state = json["state"].string
+        user.country = json["country"].string
+        user.fb_id = json["fb_id"].number
+        user.linkedin_id = json["linkedin_id"].number
+        user.active = json["active"].number
+        user.upgraded = json["upgraded"].number
+        
+        performUpdate()
+        
+        return user
+    }
+
+    func getUser(email:String) -> User?
+    {
+        let request = NSFetchRequest()
+        let entityDescription = NSEntityDescription.entityForName("User", inManagedObjectContext: context)
+        request.entity = entityDescription
+        request.fetchLimit = 1
+        
+        let predicate = NSPredicate(format: "email == %@", email)
+        request.predicate = predicate
+        
+        do{
+            let results = try context.executeFetchRequest(request)
+            print(results)
+            guard let user = results.first else {
+                print("error")
+                return nil
+            }
+            return user as? User
+        } catch {
+            print("Failed to search for user with email \(email)")
+        }
+        return nil
+    }
 }
