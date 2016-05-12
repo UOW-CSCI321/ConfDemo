@@ -299,4 +299,40 @@ extension APIManager{
 			
 		}
 	}
+	
+	func getPaymentHistory(email: String, completion: (result:Bool) -> ()){
+		let paramaters = [
+			"api_key"	:	server.KEY,
+			"app_secret":	server.SECRET,
+			"method"	:	"getPaymentHistory",
+			"email"		:	email
+		]
+		
+		Alamofire.request(.POST, server.URL, parameters: paramaters).responseJSON {response in
+			switch response.result{
+			case .Success:
+				if let value = response.result.value{
+					
+					let json = JSON(value)
+					if json["success"] {
+						for history in json["data"] {
+							self.handler.addNewPaymentHistory(history)
+						}
+						completion(result: true)
+					} else {
+						print(json["data"][0]["message"])
+						completion(result: false)
+					}
+				}
+				
+			case .Failure(let error):
+				print(error.localizedDescription)
+				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+				notification.show()
+				completion(result: false)
+				
+			}
+			
+		}
+	}
 }

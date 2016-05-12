@@ -177,3 +177,34 @@ class ModelHandler{
         return nil
     }
 }
+
+
+//MARK: - Account Related
+extension ModelHandler {
+	func addNewPaymentHistory(json:JSON){
+		let entityDescription = NSEntityDescription.entityForName("Payment", inManagedObjectContext: context)
+		
+		let history = Payment(entity: entityDescription!, insertIntoManagedObjectContext: self.context)
+		history.payment_id = json["payment_id"].int
+		history.payment_date = serverStringToDate(json["payment_date"].string!)
+		history.amount = json["amount"].float
+		history.type = json["type"].string
+		
+		performUpdate()
+	}
+	
+	func getPaymentHistory() -> [Payment]{
+		let fetch = NSFetchRequest()
+		let entityDescription = NSEntityDescription.entityForName("Payment", inManagedObjectContext: context)
+		fetch.entity = entityDescription
+		
+		var history = [Payment]()
+		do {
+			history = try context.executeFetchRequest(fetch) as! [Payment]
+			//print(events[0])
+		} catch {
+			print("Could not retrieve payment object")
+		}
+		return history
+	}
+}
