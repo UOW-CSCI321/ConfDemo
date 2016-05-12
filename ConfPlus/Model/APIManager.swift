@@ -20,7 +20,7 @@ class APIManager{
 	let server = APIServer()
 	let handler = ModelHandler()
 	
-	
+	let user = NSUserDefaults.standardUserDefaults()
 	
 	func getExploreDataFromAPI(group: dispatch_group_t, inout isDispatchEmpty: Bool, completion: (Bool) -> Void){
 		let parameters = [
@@ -300,22 +300,73 @@ extension APIManager{
 		}
 	}
 	
+	func getUserInformation(email:String, completion: (result: Bool) -> ()){
+		let parameters = [
+			"api_key"	:	server.KEY,
+			"app_secret":	server.SECRET,
+			"method"	:	"getUser",
+			"venue_id"	:	email
+		]
+		
+		HUD.show(.Progress)
+		Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
+			switch response.result{
+			case .Success:
+				if let value = response.result.value{
+					
+					let json = JSON(value)
+					if json["success"] {
+						HUD.hide()
+						self.user.setObject(json["data"][0]["title"].string, forKey: "title")
+						self.user.setObject(json["data"][0]["firstName"].string, forKey: "firstName")
+						self.user.setObject(json["data"][0]["lastName"].string, forKey: "lastName")
+						self.user.setObject(json["data"][0]["dob"].string, forKey: "birthday")
+						self.user.setObject(json["data"][0]["street"].string, forKey: "street")
+						self.user.setObject(json["data"][0]["city"].string, forKey: "city")
+						self.user.setObject(json["data"][0]["state"].string, forKey: "state")
+						self.user.setObject(json["data"][0]["country"].string, forKey: "country")
+						
+						completion(result: true)
+					} else {
+						HUD.hide()
+						print(json["data"][0]["message"])
+						completion(result: false)
+					}
+				}
+			case .Failure(let error):
+				HUD.hide()
+				print(error.localizedDescription)
+				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+				notification.show()
+				completion(result: false)
+			}
+		}
+	}
+
 	func updateProfile(email: String, title: String?, first_name:String?, last_name:String?, dob:String?, street:String?, city:String?, state:String?, country:String?, completion:(result:Bool) -> ()){
 		var parameters = [
 			"api_key"	:	server.KEY,
 			"app_secret":	server.SECRET,
-			"method"	:	"login",
-			"email"		:	email,
+			"method"	:	"updateUser",
+			"email"		:	email
 		]
 		
 		if let title = title { parameters["title"] = title }
 		if let first_name = first_name { parameters["first_name"] = first_name }
 		if let last_name = last_name { parameters["last_name"] = last_name }
-		if let dob = dob { parameters["dob"] = dob }
+		if let dob = dob {
+			if dob == "" {
+				parameters["dob"] = "1970-12-31 00:00"
+			} else {
+				parameters["dob"] = dob + " 00:00"
+			}
+		}
 		if let street = street { parameters["street"] = street }
 		if let city = city { parameters["city"] = city }
 		if let state = state { parameters["state"] = state }
 		if let country = country { parameters["country"] = country }
+		
+		print(parameters)
 		
 		HUD.show(.Progress)
 		

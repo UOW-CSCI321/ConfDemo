@@ -18,7 +18,7 @@
 "英文" = "English";
 
 // Edit Profile
-"Edit Profile" = "更改个人资料";
+"EditProfile" = "更改个人资料";
 "save" = "储存";
 "Personal Information" = "个人资料";
 "Address" = "地址";
