@@ -18,7 +18,6 @@ class AccountTableViewController: UITableViewController {
 	@IBOutlet weak var paymentHistoryButton: UIButton!
 	@IBOutlet weak var logOutButton: UIButton!
     @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var usernameLabel: UILabel!
     @IBOutlet var emailLabel: UILabel!
     @IBOutlet var profilePictureImgView: UIImageView!
     var companyColour1 : UIColor = UIColor(red: 1, green: 165/255, blue: 0, alpha: 1)
@@ -161,23 +160,10 @@ class AccountTableViewController: UITableViewController {
             //aUser = ModelHandler().getUser(email)!
 			return
 		}
-        
-//        user.setObject(aUser.first_name, forKey: "firstName")
-//        user.setObject(aUser.last_name, forKey: "lastName")
-//        user.setObject(aUser.username, forKey: "username")
 		
 		emailLabel.text = email
-		if let name = user.stringForKey("firstName")
-		{
-			if let name2 = user.stringForKey("lastName")
-			{
-				nameLabel.text = "\(name) \(name2)"
-			}
-			
-		}
-		if let username = user.stringForKey("username")
-		{
-			usernameLabel.text = username
+		if let firstName = user.stringForKey("firstName"), lastName = user.stringForKey("lastName"){
+			nameLabel.text = "\(firstName) \(lastName)"
 		}
 	}
 	

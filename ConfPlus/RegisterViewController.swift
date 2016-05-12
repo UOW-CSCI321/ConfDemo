@@ -36,16 +36,12 @@ class RegisterViewController: UIViewController {
 			return
 		}
 		
-//		let uPassword: [UInt8] = password.utf8.map {$0}
-//		let uSalt: [UInt8] = "".utf8.map {$0}
+		let hashedPassword = APIServer().hashUserPassword(password)
 		
-		//let value = try! PKCS5.PBKDF2(password: uPassword, salt: uSalt, iterations: 4096, hashVariant: .sha256).calculate()
-		
-		APIManager().register(email, password: password, username: username){ result in
+		APIManager().register(email, password: hashedPassword, username: username){ result in
 			if result {
-                let email = self.server.hashUserPassword(email)
+				//let email = self.server.hashUserPassword(email)
 				self.user.setObject(email, forKey: "email")
-				self.user.setObject(username, forKey: "username")
 				self.dismissViewControllerAnimated(true, completion: nil)
 			} else {
 				self.showAlert("Email or Username unavailable.")

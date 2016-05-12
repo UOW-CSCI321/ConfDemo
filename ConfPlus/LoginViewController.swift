@@ -38,14 +38,11 @@ class LoginViewController: UIViewController {
 			showAlert("Wrong Password")
 			return
 		}
-//		let uPassword: [UInt8] = password.utf8.map {$0}
-//		let uSalt: [UInt8] = "".utf8.map {$0}
+		let hashedPassword = APIServer().hashUserPassword(password)
 		
-		//let value = try! PKCS5.PBKDF2(password: uPassword, salt: uSalt, iterations: 4096, hashVariant: .sha256).calculate()
-		
-		APIManager().login(email, password: password){ result in
+		APIManager().login(email, password: hashedPassword){ result in
 			if result {
-                let email = self.server.hashUserPassword(email)
+				//let email = self.server.hashUserPassword(email)
 				self.user.setObject(email, forKey: "email")
 				self.dismissViewControllerAnimated(true, completion: nil)
 			} else {
