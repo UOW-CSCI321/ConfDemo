@@ -315,8 +315,8 @@ extension APIManager{
 					
 					let json = JSON(value)
 					if json["success"] {
-						for history in json["data"] {
-							self.handler.addNewPaymentHistory(history)
+						for i in 0 ..< json["data"].count {
+							self.handler.addNewPaymentHistory(json["data"][i])
 						}
 						completion(result: true)
 					} else {
