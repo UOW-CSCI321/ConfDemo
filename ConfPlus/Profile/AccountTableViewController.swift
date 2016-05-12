@@ -40,8 +40,10 @@ class AccountTableViewController: UITableViewController {
 		emailLabel.text = email
 		
 		if nameLabel.text == "Name" {
-			APIManager().getUserInformation(email){ result in
+			APIManager().getUserInformation(email){ result, data in
+				
 				if let firstName = self.user.stringForKey("firstName"), lastName = self.user.stringForKey("lastName"){
+					print("test")
 					self.nameLabel.text = "\(firstName) \(lastName)"
 					self.tableView.reloadData()
 				}

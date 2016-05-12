@@ -300,12 +300,12 @@ extension APIManager{
 		}
 	}
 	
-	func getUserInformation(email:String, completion: (result: Bool) -> ()){
+	func getUserInformation(email:String, completion: (result: Bool, data:JSON) -> ()){
 		let parameters = [
 			"api_key"	:	server.KEY,
 			"app_secret":	server.SECRET,
 			"method"	:	"getUser",
-			"venue_id"	:	email
+			"email"	:	email
 		]
 		
 		HUD.show(.Progress)
@@ -318,19 +318,20 @@ extension APIManager{
 					if json["success"] {
 						HUD.hide()
 						self.user.setObject(json["data"][0]["title"].string, forKey: "title")
-						self.user.setObject(json["data"][0]["firstName"].string, forKey: "firstName")
-						self.user.setObject(json["data"][0]["lastName"].string, forKey: "lastName")
+						self.user.setObject(json["data"][0]["first_name"].string, forKey: "firstName")
+						self.user.setObject(json["data"][0]["last_name"].string, forKey: "lastName")
 						self.user.setObject(json["data"][0]["dob"].string, forKey: "birthday")
 						self.user.setObject(json["data"][0]["street"].string, forKey: "street")
 						self.user.setObject(json["data"][0]["city"].string, forKey: "city")
 						self.user.setObject(json["data"][0]["state"].string, forKey: "state")
 						self.user.setObject(json["data"][0]["country"].string, forKey: "country")
+						self.user.synchronize()
 						
-						completion(result: true)
+						completion(result: true, data: json["data"][0])
 					} else {
 						HUD.hide()
 						print(json["data"][0]["message"])
-						completion(result: false)
+						completion(result: false, data: nil)
 					}
 				}
 			case .Failure(let error):
@@ -338,7 +339,7 @@ extension APIManager{
 				print(error.localizedDescription)
 				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
 				notification.show()
-				completion(result: false)
+				completion(result: false, data: nil)
 			}
 		}
 	}

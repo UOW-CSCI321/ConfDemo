@@ -25,7 +25,8 @@ class LoginViewController: UIViewController {
 	
 	override func viewWillAppear(animated: Bool) {
 		if let email = user.stringForKey("email"){
-			APIManager().getUserInformation(email){ result in
+			APIManager().getUserInformation(email){ result, data in
+				
 				self.dismissViewControllerAnimated(true, completion: nil)
 			}
 			
