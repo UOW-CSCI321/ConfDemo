@@ -10,6 +10,8 @@
 
 // Account Profile
 "Profile" = "Profile";
+"email" = "Email";
+"name" = "Name";
 "Edit" = "Edit";
 "Settings" = "Settings";
 "Languages" = "Languages";

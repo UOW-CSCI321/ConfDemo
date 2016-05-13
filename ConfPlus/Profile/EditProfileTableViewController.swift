@@ -73,7 +73,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
     }
 	
 	func localizeAttribute(){
-		navigationController?.title = "EditProfile".localized()
+		navigationItem.title = "EditProfile".localized()
 		saveButton.title = "save".localized()
 		
 		titleLabel.text = "title".localized()

@@ -14,9 +14,13 @@ import CoreData
 
 class AccountTableViewController: UITableViewController {
 	
+	@IBOutlet weak var editButton: UIBarButtonItem!
 	@IBOutlet weak var languageButton: UIButton!
 	@IBOutlet weak var paymentHistoryButton: UIButton!
 	@IBOutlet weak var logOutButton: UIButton!
+	@IBOutlet weak var fixNameLabel: UILabel!
+	@IBOutlet weak var fixEmailLabel: UILabel!
+	
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var emailLabel: UILabel!
 	
@@ -39,16 +43,20 @@ class AccountTableViewController: UITableViewController {
 		}
 		emailLabel.text = email
 		
+		setName()
+		
 		if nameLabel.text == "Name" {
-			APIManager().getUserInformation(email){ result, data in
-				
-				if let firstName = self.user.stringForKey("firstName"), lastName = self.user.stringForKey("lastName"){
-					print("test")
-					self.nameLabel.text = "\(firstName) \(lastName)"
-					self.tableView.reloadData()
-				}
+			APIManager().getUserInformation(email){ result in
+				self.setName()
 			}
 		}		
+	}
+	
+	func setName(){
+		if let firstName = self.user.stringForKey("firstName"), lastName = self.user.stringForKey("lastName"){
+			self.nameLabel.text = "\(firstName) \(lastName)"
+			tableView.reloadData()
+		}
 	}
 	
 	// Remove the LCLLanguageChangeNotification on viewWillDisappear
@@ -58,6 +66,12 @@ class AccountTableViewController: UITableViewController {
 	}
 	
 	func setText(){
+		navigationItem.title = "Profile".localized()
+		
+		editButton.title = "Edit".localized()
+		fixNameLabel.text = "name".localized()
+		fixEmailLabel.text = "email".localized()
+		
 		languageButton.setTitle("Languages".localized(), forState: .Normal)
 		paymentHistoryButton.setTitle("Payment History".localized(), forState: .Normal)
 		logOutButton.setTitle("Log Out".localized(), forState: .Normal)
@@ -108,6 +122,8 @@ class AccountTableViewController: UITableViewController {
         //clear NSUserDefaults
         NSUserDefaults.standardUserDefaults().removePersistentDomainForName(NSBundle.mainBundle().bundleIdentifier!)
         NSUserDefaults.standardUserDefaults().synchronize()
+		
+		nameLabel.text = "Name"
         
         performLogin()
 	}
