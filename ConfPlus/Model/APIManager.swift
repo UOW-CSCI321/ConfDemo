@@ -236,9 +236,7 @@ extension APIManager{
 					let json = JSON(value)
 					HUD.hide()
 					if json["success"] {
-						
-						HUD.flash(.Success, delay: 1.0)
-						completion(result: true, data: json["data"])
+						completion(result: true, data: json["data"][0])
 					} else {
 						print(json["data"][0]["message"])
 						completion(result: false, data: nil)
@@ -256,6 +254,43 @@ extension APIManager{
 			
 		}
 		
+	}
+	
+	func getPurchasedTicket(email: String, event_id : String, completion: (result: Bool, data: JSON) -> Void){
+		let parameters = [
+			"api_key"	:	server.KEY,
+			"app_secret":	server.SECRET,
+			"method"	:	"getUserTicketsForEvent",
+			"event_id"	:	event_id,
+			"email"		:	email
+		]
+		
+		Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
+			switch response.result{
+			case .Success:
+				if let value = response.result.value{
+					
+					let json = JSON(value)
+					HUD.hide()
+					if json["success"] {
+						print(json["data"])
+						completion(result: true, data: json["data"][0])
+					} else {
+						print(json["data"][0]["message"])
+						completion(result: false, data: nil)
+					}
+				}
+				
+			case .Failure(let error):
+				HUD.hide()
+				print(error.localizedDescription)
+				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not be the latest.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+				notification.show()
+				completion(result: false, data: nil)
+				
+			}
+			
+		}
 	}
 }
 
