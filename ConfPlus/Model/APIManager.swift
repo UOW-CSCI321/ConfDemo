@@ -218,6 +218,47 @@ class APIManager{
 
 }
 
+//MARK: Event Dashboard
+extension APIManager{
+	func scanQR(ticket_id : String, completion: (result: Bool, data: JSON) -> Void){
+		let parameters = [
+			"api_key"	:	server.KEY,
+			"app_secret":	server.SECRET,
+			"method"	:	"getTicketAndUser",
+			"ticket_id"	:	ticket_id,
+		]
+		
+		Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
+			switch response.result{
+			case .Success:
+				if let value = response.result.value{
+					
+					let json = JSON(value)
+					HUD.hide()
+					if json["success"] {
+						
+						HUD.flash(.Success, delay: 1.0)
+						completion(result: true, data: json["data"])
+					} else {
+						print(json["data"][0]["message"])
+						completion(result: false, data: nil)
+					}
+				}
+				
+			case .Failure(let error):
+				HUD.hide()
+				print(error.localizedDescription)
+				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not be the latest.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+				notification.show()
+				completion(result: false, data: nil)
+				
+			}
+			
+		}
+		
+	}
+}
+
 
 //MARK: Login and Register
 extension APIManager{

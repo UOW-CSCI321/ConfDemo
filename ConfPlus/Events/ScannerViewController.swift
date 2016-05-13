@@ -91,12 +91,22 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
 			foundCode(readableObject.stringValue);
 		}
 		
-		dismissViewControllerAnimated(true, completion: nil)
+		//dismissViewControllerAnimated(true, completion: nil)
 	}
 	
 	func foundCode(code: String) {
-		HUD.flash(.Label(code), delay: 1.0) { _ in
-			self.captureSession.startRunning();
+		APIManager().scanQR(code){ result, data in
+			if result {
+				//TODO: get the data, unwrap it and print name
+				HUD.flash(.Label(data.string), delay: 1.00) { _ in
+					self.captureSession.startRunning();
+				}
+			} else {
+				HUD.flash(.Label("Ticket not found"), delay: 1.00) { _ in
+					self.captureSession.startRunning();
+				}
+			}
+			
 		}
 	}
 	

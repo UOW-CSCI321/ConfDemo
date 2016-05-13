@@ -66,6 +66,8 @@ class AccountTableViewController: UITableViewController {
 	}
 	
 	func setText(){
+		navigationController?.title = "Profile".localized()
+		
 		navigationItem.title = "Profile".localized()
 		
 		editButton.title = "Edit".localized()
