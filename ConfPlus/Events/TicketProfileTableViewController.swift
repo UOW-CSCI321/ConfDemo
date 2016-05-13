@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreImage
 
 class TicketProfileTableViewController: UITableViewController {
 	
@@ -28,6 +29,7 @@ class TicketProfileTableViewController: UITableViewController {
 		
 		if ticket != nil{
 			generateQR()
+			
 			roomDetailLabel.text = ticket?.room_name
 			typeDetailLabel.text = ticket?.type
 			seatDetailLabel.text = String(ticket?.seat_num)
@@ -42,6 +44,15 @@ class TicketProfileTableViewController: UITableViewController {
 	
 	
 	func generateQR(){
+		let data = String(ticket?.record_id).dataUsingEncoding(NSISOLatin1StringEncoding, allowLossyConversion: false)
 		
+		let filter = CIFilter(name: "CIQRCodeGenerator")
+		
+		filter!.setValue(data, forKey: "inputMessage")
+		filter!.setValue("Q", forKey: "inputCorrectionLevel")
+		
+		let qrcodeImage = filter!.outputImage
+		
+		qrImage.image = UIImage(CIImage: qrcodeImage!)
 	}
 }
