@@ -14,142 +14,23 @@ import CoreData
 
 class AccountTableViewController: UITableViewController {
 	
+	@IBOutlet weak var editButton: UIBarButtonItem!
 	@IBOutlet weak var languageButton: UIButton!
 	@IBOutlet weak var paymentHistoryButton: UIButton!
 	@IBOutlet weak var logOutButton: UIButton!
-    @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var usernameLabel: UILabel!
-    @IBOutlet var emailLabel: UILabel!
-    @IBOutlet var profilePictureImgView: UIImageView!
-    var companyColour1 : UIColor = UIColor(red: 1, green: 165/255, blue: 0, alpha: 1)
+	@IBOutlet weak var fixNameLabel: UILabel!
+	@IBOutlet weak var fixEmailLabel: UILabel!
 	
-	var actionSheet: UIAlertController!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var emailLabel: UILabel!
 	
 	let availableLanguages = Localize.availableLanguages()
 	
 	let user = NSUserDefaults.standardUserDefaults()
-    var aUser = User()
-	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view.
-
-        
-
-        //nameLabel =
-        //eventsTableView.reloadData()//reload
-		
-//core data code save
-		/*
-		let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-		let context = appDelegate.managedObjectContext
-		
-		let userEntity = NSEntityDescription.entityForName("User", inManagedObjectContext: context)
-		
-		
-		// Save
-		let user = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: context) as! User
-        user.username = "matts_test_username"
-        user.password = "matts_test_password"
-        user.first_name = "first_name_test"
-        user.last_name = "last_name_test"
-        user.email = "email_test"
-		
-
-		
-		do {
-			try context.save()
-		} catch {
-			fatalError("Failure to save context: \(error)")
-		}*/
-		
-//core data fetch
-        /*
-		// Fetch
-		let fetchRequest = NSFetchRequest()
-		fetchRequest.entity = userEntity
-        fetchRequest.returnsObjectsAsFaults = false
-		
-		do {
-			let result = try context.executeFetchRequest(fetchRequest) as! [User]
-            
-            if(result.count > 1)
-            {
-                print("error should only have retrieved one record. retrieved \(result.count)")
-                //lets try to delete the data
-                /*let deleterequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-                do { try context.executeFetchRequest(deleterequest)}
-                catch let error as NSError { debugPrint(error) }*/
-                
-                deleteIncidents("User")
-                
-                print(result)
-            } else {
-                let fname = result[0].first_name
-                let lname = result[0].last_name
-                var name = fname! + " "
-                name += lname!
-                print("name")
-                print(name)
-                
-                nameLabel.text = name
-                usernameLabel.text = result[0].username
-                
-                
-                var val = ""
-                if((result[0].email_verified) != nil)
-                {
-                    val = "(validated)"
-                }else {
-                    val = "(not validated)"
-                }
-                if let email = result[0].email{
-                    emailLabel.text = "\(email) \(val)"
-                }
-                
-            }
-            print(result)
-		} catch {
-			let fetchError = error as NSError
-			print(fetchError)
-		}
-		*/
-        
-        //dummy save into nsuserdefaults which will be done on the login screen
-//        let defaults = NSUserDefaults.standardUserDefaults()
-//        defaults.setObject("matthew", forKey: "firstName")
-//        defaults.setObject("boroczky", forKey: "lastName")
-//        defaults.setObject("mattattack", forKey: "username")
-//        defaults.setObject("mb340@uowmail.edu.au", forKey: "email")
-//        defaults.setObject("6f7a5a2d.ngrok.io/api/v1", forKey: "server");
-		
-        //get
-        //let defaults = NSUserDefaults.standardUserDefaults()
-		
-        
-        //code to make a circular profile image
-		profilePictureImgView.layer.cornerRadius = profilePictureImgView.frame.size.width/2;
-        profilePictureImgView.clipsToBounds = true;
-        profilePictureImgView.layer.borderWidth = 3.0
-        profilePictureImgView.layer.borderColor = companyColour1.CGColor
-        
 	}
-    
-    /*func deleteIncidents(entity:String) {
-        let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDel.managedObjectContext
-        let coord = appDel.persistentStoreCoordinator
-        
-        let fetchRequest = NSFetchRequest(entityName: entity)
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try coord.executeRequest(deleteRequest, withContext: context)
-        } catch let error as NSError {
-            debugPrint(error)
-        }
-    }*/
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
@@ -158,26 +39,23 @@ class AccountTableViewController: UITableViewController {
 		
 		guard let email = user.stringForKey("email") else {
 			performLogin() //change to return email
-            //aUser = ModelHandler().getUser(email)!
 			return
 		}
-        
-//        user.setObject(aUser.first_name, forKey: "firstName")
-//        user.setObject(aUser.last_name, forKey: "lastName")
-//        user.setObject(aUser.username, forKey: "username")
-		
 		emailLabel.text = email
-		if let name = user.stringForKey("firstName")
-		{
-			if let name2 = user.stringForKey("lastName")
-			{
-				nameLabel.text = "\(name) \(name2)"
+		
+		setName()
+		
+		if nameLabel.text == "Name" {
+			APIManager().getUserInformation(email){ result in
+				self.setName()
 			}
-			
-		}
-		if let username = user.stringForKey("username")
-		{
-			usernameLabel.text = username
+		}		
+	}
+	
+	func setName(){
+		if let firstName = self.user.stringForKey("firstName"), lastName = self.user.stringForKey("lastName"){
+			self.nameLabel.text = "\(firstName) \(lastName)"
+			tableView.reloadData()
 		}
 	}
 	
@@ -188,6 +66,12 @@ class AccountTableViewController: UITableViewController {
 	}
 	
 	func setText(){
+		navigationItem.title = "Profile".localized()
+		
+		editButton.title = "Edit".localized()
+		fixNameLabel.text = "name".localized()
+		fixEmailLabel.text = "email".localized()
+		
 		languageButton.setTitle("Languages".localized(), forState: .Normal)
 		paymentHistoryButton.setTitle("Payment History".localized(), forState: .Normal)
 		logOutButton.setTitle("Log Out".localized(), forState: .Normal)
@@ -217,7 +101,7 @@ class AccountTableViewController: UITableViewController {
 	// MARK: IBActions
 	
 	@IBAction func doChangeLanguage(sender: AnyObject) {
-		actionSheet = UIAlertController(title: nil, message: "Languages".localized(), preferredStyle: UIAlertControllerStyle.ActionSheet)
+		let actionSheet = UIAlertController(title: nil, message: "Languages".localized(), preferredStyle: UIAlertControllerStyle.ActionSheet)
 		for language in availableLanguages {
 			let displayName = Localize.displayNameForLanguage(language)
 			let languageAction = UIAlertAction(title: displayName.localized(), style: .Default, handler: {
@@ -238,6 +122,8 @@ class AccountTableViewController: UITableViewController {
         //clear NSUserDefaults
         NSUserDefaults.standardUserDefaults().removePersistentDomainForName(NSBundle.mainBundle().bundleIdentifier!)
         NSUserDefaults.standardUserDefaults().synchronize()
+		
+		nameLabel.text = "Name"
         
         performLogin()
 	}

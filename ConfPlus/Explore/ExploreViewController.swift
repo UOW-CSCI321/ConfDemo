@@ -46,10 +46,6 @@ class ExploreViewController: UIViewController {
 					self.events = ModelHandler().getEvents("0")
 					self.EventsTableView.reloadData()
 					print("Reloaded")
-					
-					let notification = MPGNotification(title: "Updated", subtitle: nil, backgroundColor: UIColor.orangeColor(), iconImage: nil)
-					notification.duration = 1
-					notification.show()
 				}
 			}
 		}

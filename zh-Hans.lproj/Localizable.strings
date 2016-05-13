@@ -9,9 +9,26 @@
 
 // Account Profile
 "Profile" = "个人资料";
+"email" = "电邮";
+"name" = "姓名";
+"Edit" = "更改";
 "Settings" = "设定";
 "Languages" = "语言";
 "Payment History" = "付款记录";
 "Log Out" = "登出";
 "Cancel" = "取消";
 "英文" = "English";
+
+// Edit Profile
+"EditProfile" = "更改个人资料";
+"save" = "储存";
+"Personal Information" = "个人资料";
+"Address" = "地址";
+"title" = "称号";
+"firstName" = "名";
+"lastName" = "姓";
+"birthday" = "生日日期";
+"street" = "街";
+"city" = "城市";
+"state" = "州";
+"country" = "国家";

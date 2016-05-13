@@ -10,9 +10,26 @@
 
 // Account Profile
 "Profile" = "Profile";
+"email" = "Email";
+"name" = "Name";
+"Edit" = "Edit";
 "Settings" = "Settings";
 "Languages" = "Languages";
 "Payment History" = "Payment History";
 "Log Out" = "Log Out";
 "Cancel" = "Cancel";
 "Chinese" = "中文";
+
+//Edit Profile
+"EditProfile" = "Edit Profile";
+"save" = "Save";
+"Personal Information" = "Personal Information";
+"Address" = "Address";
+"title" = "Title";
+"firstName" = "First Name";
+"lastName" = "Last Name";
+"birthday" = "Birthday";
+"street" = "Street";
+"city" = "City";
+"state" = "State";
+"country" = "Country";
