@@ -56,7 +56,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
 					self.user.setObject(state, forKey: "state")
 					self.user.setObject(country, forKey: "country")
 					
-					navigationController?.popViewControllerAnimated(true)
+					self.navigationController?.popViewControllerAnimated(true)
 				}
 				
 			}
@@ -73,7 +73,7 @@ class EditProfileTableViewController: UITableViewController, UITextFieldDelegate
     }
 	
 	func localizeAttribute(){
-		navigationController?.title = "Edit Profile".localized()
+		navigationItem.title = "EditProfile".localized()
 		saveButton.title = "save".localized()
 		
 		titleLabel.text = "title".localized()

@@ -9,6 +9,8 @@
 
 // Account Profile
 "Profile" = "个人资料";
+"email" = "电邮";
+"name" = "姓名";
 "Edit" = "更改";
 "Settings" = "设定";
 "Languages" = "语言";
@@ -18,7 +20,7 @@
 "英文" = "English";
 
 // Edit Profile
-"Edit Profile" = "更改个人资料";
+"EditProfile" = "更改个人资料";
 "save" = "储存";
 "Personal Information" = "个人资料";
 "Address" = "地址";
