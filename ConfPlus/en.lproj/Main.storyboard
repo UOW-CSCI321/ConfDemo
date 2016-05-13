@@ -284,18 +284,26 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geE-Mb-QYV">
-                                                    <rect key="frame" x="85" y="37" width="288" height="21"/>
+                                                    <rect key="frame" x="85" y="37" width="245" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YzF-lC-xHt">
+                                                    <rect key="frame" x="369" y="38" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="CRj-sG-faG"/>
+                                                        <constraint firstAttribute="width" constant="20" id="HeI-Ug-4eI"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="fLO-Vy-Vbz" firstAttribute="top" secondItem="oLi-RF-TNu" secondAttribute="topMargin" id="3ha-1v-UMJ"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="geE-Mb-QYV" secondAttribute="trailing" constant="33" id="6Wg-Sq-hO6"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="geE-Mb-QYV" secondAttribute="trailing" constant="76" id="6Wg-Sq-hO6"/>
                                                 <constraint firstItem="RLw-HN-7zL" firstAttribute="baseline" secondItem="gIb-hW-gbJ" secondAttribute="baseline" id="CfK-Sr-9TJ"/>
                                                 <constraint firstItem="gIb-hW-gbJ" firstAttribute="trailing" secondItem="oLi-RF-TNu" secondAttribute="trailingMargin" id="JwA-jS-x4N"/>
                                                 <constraint firstItem="RLw-HN-7zL" firstAttribute="leading" secondItem="geE-Mb-QYV" secondAttribute="leading" id="My9-mT-FsG"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="YzF-lC-xHt" secondAttribute="trailing" constant="17" id="RMm-xw-CMU"/>
                                                 <constraint firstItem="geE-Mb-QYV" firstAttribute="top" secondItem="RLw-HN-7zL" secondAttribute="bottom" constant="8" symbolic="YES" id="UGl-aa-Jgg"/>
                                                 <constraint firstItem="RLw-HN-7zL" firstAttribute="leading" secondItem="fLO-Vy-Vbz" secondAttribute="trailing" constant="13" id="WPD-Jo-zL7"/>
                                                 <constraint firstItem="fLO-Vy-Vbz" firstAttribute="leading" secondItem="oLi-RF-TNu" secondAttribute="leadingMargin" id="gZn-BA-2UY"/>
@@ -307,6 +315,7 @@
                                             <outlet property="messageDateLabel" destination="gIb-hW-gbJ" id="MLt-iH-Tgq"/>
                                             <outlet property="messageDescription" destination="geE-Mb-QYV" id="vBe-kt-j2g"/>
                                             <outlet property="profilePicture" destination="fLO-Vy-Vbz" id="aqj-QN-dVs"/>
+                                            <outlet property="seenImage" destination="YzF-lC-xHt" id="eYs-Ln-GKj"/>
                                             <outlet property="usersName" destination="RLw-HN-7zL" id="XcB-Qf-lNu"/>
                                         </connections>
                                     </tableViewCell>
