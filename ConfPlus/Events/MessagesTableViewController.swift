@@ -25,12 +25,15 @@ class MessagesTableViewController: UIViewController {
 		
 		populateNavigationBar()
         let email = user.stringForKey("email")
-        print("email: \(email)")
         userConversations = ModelHandler().getConversation()
-        for i in 1...userConversations.count
+        let numConvos = userConversations.count
+        if numConvos > 0
         {
-            var convosMessages = ModelHandler().getMessageForConversation(userConversations[i])
-            usersMessages.append(convosMessages!)
+            for i in 1...numConvos
+            {
+                var convosMessages = ModelHandler().getMessageForConversation(userConversations[i])
+                usersMessages.append(convosMessages!)
+            }
         }
         conversationTable.reloadData()
     }
@@ -46,14 +49,14 @@ class MessagesTableViewController: UIViewController {
             notification.duration = 2
             notification.show()
             
-            APIManager().getConversationsFromAPI(email, group, isDispatchEmpty: &isDispatchEmpty){ result in
+            APIManager().getConversationsFromAPI(email!, group: group, isDispatchEmpty: &isDispatchEmpty){ result in
                 dispatch_group_notify(group, dispatch_get_main_queue()) {
                     self.isDispatchEmpty = true
                     self.userConversations = ModelHandler().getConversation()
                     self.usersMessages = [[Message]]() //do a new on it to clear the current data as we are appending - don't want duplicates
-                    for i in 1...userConversations.count
+                    for i in 1...self.userConversations.count
                     {
-                        var convosMessages = ModelHandler().getMessageForConversation(userConversations[i])
+                        var convosMessages = ModelHandler().getMessageForConversation(self.userConversations[i])
                         self.usersMessages.append(convosMessages!)
                     }
                     self.conversationTable.reloadData()

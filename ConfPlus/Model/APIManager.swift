@@ -230,9 +230,9 @@ class APIManager{
                     let json = JSON(value)
                     
                     //self.handler.deleteEventsData()
-                    
                     for i in 0 ..< json["data"].count {
                         dispatch_group_enter(group)
+                        print(json["data"][i])
                         let convo = self.handler.addNewConversation(json["data"][i])
                         
                         APIManager().getMessagesForConvo(convo, group: group){

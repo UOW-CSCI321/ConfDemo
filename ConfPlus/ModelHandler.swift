@@ -180,8 +180,10 @@ class ModelHandler{
     func addNewConversation(json: JSON) -> Conversation
     {
         let convo = NSEntityDescription.insertNewObjectForEntityForName("Conversation", inManagedObjectContext: self.context) as! Conversation
-        convo.conversation_id = json["conversation_id"].number
+        convo.conversation_id = json["conversation_id"].string
         convo.name = json["name"].string
+        print(convo.conversation_id)
+        print(convo.name)
         
         performUpdate()
         

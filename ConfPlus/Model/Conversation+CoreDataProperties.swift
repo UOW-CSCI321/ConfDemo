@@ -2,7 +2,7 @@
 //  Conversation+CoreDataProperties.swift
 //  
 //
-//  Created by Matthew Boroczky on 14/05/2016.
+//  Created by Matthew Boroczky on 15/05/2016.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,7 +14,7 @@ import CoreData
 
 extension Conversation {
 
-    @NSManaged var conversation_id: NSNumber?
+    @NSManaged var conversation_id: String?
     @NSManaged var name: String?
     @NSManaged var messages: NSSet?
     @NSManaged var users: NSSet?
