@@ -181,7 +181,7 @@ class ModelHandler{
     {
         let convo = NSEntityDescription.insertNewObjectForEntityForName("Conversation", inManagedObjectContext: self.context) as! Conversation
         convo.conversation_id = json["conversation_id"].number
-        //conversation name will be implemented here
+        convo.name = json["name"].string
         
         performUpdate()
         
@@ -191,11 +191,11 @@ class ModelHandler{
     func addNewMessage(json: JSON) -> Message
     {
         let message = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: self.context) as! Message
-        //convo.conversation_id = json["conversation_id"].number
-        //conversation name will be implemented here
+
         message.content = json["content"].string
         message.date = serverStringToDate(json["updated_at"].string!)
-        //message.sender_email = json["sender_email"].string
+        message.sender_email = json["sender_email"].string
+        
         performUpdate()
         
         return message
