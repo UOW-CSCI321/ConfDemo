@@ -8,13 +8,66 @@
 
 import Foundation
 import UIKit
+import MPGNotification
 
 class MessagesTableViewController: UIViewController {
+    
+    @IBOutlet var conversationTable: UITableView!
+    
+    var usersMessages = [[Message]]()
+    var userConversations = [Conversation]()
+    var isDispatchEmpty:Bool = true
+    
+    let user = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 		populateNavigationBar()
+        let email = user.stringForKey("email")
+        print("email: \(email)")
+        userConversations = ModelHandler().getConversation()
+        for i in 1...userConversations.count
+        {
+            var convosMessages = ModelHandler().getMessageForConversation(userConversations[i])
+            usersMessages.append(convosMessages!)
+        }
+        conversationTable.reloadData()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let email = user.stringForKey("email")
+        
+        if isDispatchEmpty {
+            let group: dispatch_group_t = dispatch_group_create()
+            isDispatchEmpty = false
+            let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+            notification.duration = 2
+            notification.show()
+            
+            APIManager().getConversationsFromAPI(email, group, isDispatchEmpty: &isDispatchEmpty){ result in
+                dispatch_group_notify(group, dispatch_get_main_queue()) {
+                    self.isDispatchEmpty = true
+                    self.userConversations = ModelHandler().getConversation()
+                    self.usersMessages = [[Message]]() //do a new on it to clear the current data as we are appending - don't want duplicates
+                    for i in 1...userConversations.count
+                    {
+                        var convosMessages = ModelHandler().getMessageForConversation(userConversations[i])
+                        self.usersMessages.append(convosMessages!)
+                    }
+                    self.conversationTable.reloadData()
+                    
+//                    self.eventAttendedArray = ModelHandler().getEvents("1")
+//                    self.eventsTableView.reloadData()
+//                    print("Reloaded")
+                    
+                    let notification = MPGNotification(title: "Updated", subtitle: nil, backgroundColor: UIColor.orangeColor(), iconImage: nil)
+                    notification.duration = 1
+                    notification.show()
+                }
+            }
+        }
     }
 	
 }
@@ -25,19 +78,24 @@ extension MessagesTableViewController: UITableViewDelegate{
 	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 2
+		return userConversations.count
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("messageCell", forIndexPath: indexPath) as! MessageTableViewCell
+        let row = indexPath.row
         //let iv = UIImageView()
         //iv.
         
         
-        cell.usersName.text = "Matthew Steven Boroczky"
-        cell.messageDescription.text = "Hey michael hows everything with project going? go.."
-        cell.messageDateLabel.text = "9:05pm"
+//        cell.usersName.text = "Matthew Steven Boroczky"
+//        cell.messageDescription.text = "Hey michael hows everything with project going? go.."
+//        cell.messageDateLabel.text = "9:05pm"
+        cell.usersName.text = userConversations[row].name //conversation name should be the sender name or if group chat the user sets the name
+        let lastMessage = usersMessages[row].last
+        cell.messageDescription.text = lastMessage?.content
+        //cell.messageDateLabel.text = lastMessage?.date //put through a function that converst to string and if its the same date says the time else says the day if its within this week else says the date
 		
 		return cell
 	}

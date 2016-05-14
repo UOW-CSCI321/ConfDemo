@@ -176,6 +176,80 @@ class ModelHandler{
         }
         return nil
     }
+    
+    func addNewConversation(json: JSON) -> Conversation
+    {
+        let convo = NSEntityDescription.insertNewObjectForEntityForName("Conversation", inManagedObjectContext: self.context) as! Conversation
+        convo.conversation_id = json["conversation_id"].number
+        //conversation name will be implemented here
+        
+        performUpdate()
+        
+        return convo
+    }
+    
+    func addNewMessage(json: JSON) -> Message
+    {
+        let message = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: self.context) as! Message
+        //convo.conversation_id = json["conversation_id"].number
+        //conversation name will be implemented here
+        message.content = json["content"].string
+        message.date = serverStringToDate(json["updated_at"].string!)
+        //message.sender_email = json["sender_email"].string
+        performUpdate()
+        
+        return message
+    }
+
+    
+    func getMessageForConversation(conversation:Conversation) -> [Message]?
+    {
+        let request = NSFetchRequest()
+        let entityDescription = NSEntityDescription.entityForName("Message", inManagedObjectContext: context)
+        request.entity = entityDescription
+        //request.fetchLimit = 1
+        
+//        guard let venue_id = event.venue_id else {
+//            print("error 1")
+//            return nil
+//        }
+        //let predicate = NSPredicate(format: "venue_id == %@", venue_id) //get the venu_id from venue where it is = the var venu_id
+        let predicate = NSPredicate(format: "conversation == %@", conversation)
+        request.predicate = predicate
+        
+        var messages = [Message]()
+        do{
+            //let results = try context.executeFetchRequest(request)
+            messages = try context.executeFetchRequest(request) as! [Message]
+            //print(results)
+//            guard let venue = results.first else {
+//                print("error")
+//                return nil
+//            }
+            return messages
+        } catch {
+            print("Failed to search for messages from conversation:\(conversation.conversation_id)")
+        }
+        return nil
+
+    }
+    
+    func getConversation() -> [Conversation]
+    {
+        let fetch = NSFetchRequest(entityName: "Conversation")
+        //let predicate = NSPredicate(format: "attend == %@", attend)
+        //fetch.predicate = predicate
+
+        var conversations = [Conversation]()
+        do {
+            conversations = try context.executeFetchRequest(fetch) as! [Conversation]
+            //print(events[0])
+        } catch {
+            print("Could not retrieve conversation objects")
+        }
+        return conversations
+
+    }
 }
 
 
