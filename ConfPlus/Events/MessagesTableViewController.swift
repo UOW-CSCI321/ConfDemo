@@ -59,6 +59,10 @@ class MessagesTableViewController: UIViewController {
         let indexPath:NSIndexPath = self.conversationTable.indexPathForSelectedRow!
         let messengerVC:MessengerViewController = segue.destinationViewController as! MessengerViewController
         messengerVC.conversationID = userConversations[indexPath.row].conversation_id!
+        messengerVC.senderId = user.stringForKey("email")
+        messengerVC.title = userConversations[indexPath.row].name
+        messengerVC.senderDisplayName = userConversations[indexPath.row].lastmsg_email
+        
         
 //        let eventVC:EventDetailTableViewController = segue.destinationViewController as! EventDetailTableViewController
 //        eventVC.event = events[indexPath.row]
