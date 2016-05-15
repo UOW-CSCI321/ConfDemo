@@ -70,17 +70,15 @@ extension MessagesTableViewController: UITableViewDelegate{
         
         let cell = tableView.dequeueReusableCellWithIdentifier("messageCell", forIndexPath: indexPath) as! MessageTableViewCell
         let row = indexPath.row
-        //let iv = UIImageView()
-        //iv.
         
         
 //        cell.usersName.text = "Matthew Steven Boroczky"
 //        cell.messageDescription.text = "Hey michael hows everything with project going? go.."
 //        cell.messageDateLabel.text = "9:05pm"
-        cell.usersName.text = userConversations[row].name //conversation name should be the sender name or if group chat the user sets the name
-       // let lastMessage = usersMessages[row].last
+        
+        cell.usersName.text = userConversations[row].name //conversation name should be the sender
         cell.messageDescription.text = userConversations[row].lastmsg_content //lastMessage?.content
-        //cell.messageDateLabel.text = lastMessage?.date //put through a function that converst to string and if its the same date says the time else says the day if its within this week else says the date
+        cell.messageDateLabel.text = userConversations[row].getConversationDateAsString() //put through a function that converst to string and if its the same date says the time else says the day if its within this week else says the date
 		
 		return cell
 	}
