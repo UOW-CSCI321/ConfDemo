@@ -71,11 +71,17 @@ class MessengerViewController: JSQMessagesViewController {
     override func collectionView(collectionView: JSQMessagesCollectionView!,
                                  avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
         let message = self.messages[indexPath.item]
-        if message.senderId == self.senderId
-        {
-            
-        }
-        return nil
+//        if message.senderId == self.senderId
+//        {
+//            
+//        }
+//        return nil
+        let i1 = UIImage(named:"matt")
+        let idefault = UIImage(named:"account2")
+        let i = JSQMessagesAvatarImage(avatarImage: i1, highlightedImage: i1, placeholderImage: idefault)
+//        let avatarDatasource = JSQMessageAvatarImageDataSource()
+//        avatarDatasource.
+        return i
     }
     
     func addMessage(id: String, displayName:String, text: String) {
