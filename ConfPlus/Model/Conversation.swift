@@ -1,9 +1,9 @@
 //
 //  Conversation.swift
-//  ConfPlus
+//  
 //
-//  Created by CY Lim on 8/05/2016.
-//  Copyright © 2016 Conf+. All rights reserved.
+//  Created by Matthew Boroczky on 16/05/2016.
+//
 //
 
 import Foundation
@@ -36,5 +36,4 @@ class Conversation: NSManagedObject {
         
         return dstring
     }
-
 }

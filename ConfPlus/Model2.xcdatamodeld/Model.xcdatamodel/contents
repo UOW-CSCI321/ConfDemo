@@ -14,6 +14,11 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="conversation" inverseEntity="Message" syncable="YES"/>
         <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="conversations" inverseEntity="User" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="conversation_id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="Event" representedClassName=".Event" syncable="YES">
         <attribute name="attend" optional="YES" attributeType="String" defaultValueString="0" syncable="YES"/>
@@ -141,7 +146,7 @@
     </entity>
     <elements>
         <element name="Billing" positionX="1231" positionY="351" width="128" height="103"/>
-        <element name="Conversation" positionX="1132" positionY="810" width="128" height="148"/>
+        <element name="Conversation" positionX="1132" positionY="810" width="128" height="150"/>
         <element name="Event" positionX="1836" positionY="351" width="128" height="285"/>
         <element name="Event_Roles" positionX="1611" positionY="528" width="128" height="88"/>
         <element name="Event_Tag" positionX="1620" positionY="639" width="128" height="73"/>
