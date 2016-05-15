@@ -24,22 +24,7 @@ class MessagesTableViewController: UIViewController {
         super.viewDidLoad()
 		
 		populateNavigationBar()
-//        let email = user.stringForKey("email")
         userConversations = ModelHandler().getConversation()
-//        let numConvos = userConversations.count
-//        if numConvos > 0
-//        {
-//            for i in 0...(numConvos-1)
-//            {
-//                var convosMessages = ModelHandler().getMessageForConversation(userConversations[i])
-//                if ((convosMessages?.isEmpty) == nil){
-//                    print("no messages")
-//                }else {
-//                    usersMessages.append(convosMessages!)
-//                }
-//                
-//            }
-//        }
         conversationTable.reloadData()
     }
     
@@ -58,13 +43,7 @@ class MessagesTableViewController: UIViewController {
                 dispatch_group_notify(group, dispatch_get_main_queue()) {
                     self.isDispatchEmpty = true
                     self.userConversations = ModelHandler().getConversation()
-//                    self.usersMessages = [[Message]]() //do a new on it to clear the current data as we are appending - don't want duplicates
-//                    let counter = self.userConversations.count
-//                    for i in 0...(counter-1)
-//                    {
-//                        var convosMessages = ModelHandler().getMessageForConversation(self.userConversations[i])
-//                        self.usersMessages.append(convosMessages!)
-//                    }
+
                     self.conversationTable.reloadData()
                     print("Reloaded")
                     

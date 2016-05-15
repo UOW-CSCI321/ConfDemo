@@ -240,6 +240,7 @@ class APIManager{
 //                        APIManager().getMessagesForConvo(convo, group: group){
 //                            self.handler.performUpdate()
 //                        }
+                        dispatch_group_leave(group)
                     }
                 }
                 completion(true)
