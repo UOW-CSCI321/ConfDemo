@@ -59,7 +59,8 @@ class MessagesTableViewController: UIViewController {
                     self.isDispatchEmpty = true
                     self.userConversations = ModelHandler().getConversation()
                     self.usersMessages = [[Message]]() //do a new on it to clear the current data as we are appending - don't want duplicates
-                    for i in 1...self.userConversations.count
+                    let counter = self.userConversations.count
+                    for i in 0...(counter-1)
                     {
                         var convosMessages = ModelHandler().getMessageForConversation(self.userConversations[i])
                         self.usersMessages.append(convosMessages!)

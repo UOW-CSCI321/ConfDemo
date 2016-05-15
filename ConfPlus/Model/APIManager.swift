@@ -230,7 +230,8 @@ class APIManager{
                     let json = JSON(value)
                     
                     //self.handler.deleteEventsData()
-                    for i in 0 ..< json["data"].count {
+                    let counter = json["data"].count
+                    for i in 0 ..< counter {
                         dispatch_group_enter(group)
                         print(json["data"][i])
                         let convo = self.handler.addNewConversation(json["data"][i])
@@ -272,7 +273,8 @@ class APIManager{
                     if let value = response.result.value {
                         let json = JSON(value)
                         print(json["data"])
-                        for i in 0 ..< json["data"].count {
+                        let counter = json["data"].count
+                        for i in 0 ..< counter{
                             print(json["data"][i])
                             let message = self.handler.addNewMessage(json["data"][i])
                             self.handler.performUpdate()
