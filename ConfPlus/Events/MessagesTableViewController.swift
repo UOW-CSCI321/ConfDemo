@@ -54,6 +54,15 @@ class MessagesTableViewController: UIViewController {
             }
         }
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let indexPath:NSIndexPath = self.conversationTable.indexPathForSelectedRow!
+        let messengerVC:MessengerViewController = segue.destinationViewController as! MessengerViewController
+        messengerVC.conversationID = userConversations[indexPath.row].conversation_id!
+        
+//        let eventVC:EventDetailTableViewController = segue.destinationViewController as! EventDetailTableViewController
+//        eventVC.event = events[indexPath.row]
+    }
 	
 }
 
@@ -78,7 +87,7 @@ extension MessagesTableViewController: UITableViewDelegate{
         
         cell.usersName.text = userConversations[row].name //conversation name should be the sender
         cell.messageDescription.text = userConversations[row].lastmsg_content //lastMessage?.content
-        cell.messageDateLabel.text = userConversations[row].getConversationDateAsString() //put through a function that converst to string and if its the same date says the time else says the day if its within this week else says the date
+        cell.messageDateLabel.text = userConversations[row].getConversationDateAsString()
 		
 		return cell
 	}

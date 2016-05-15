@@ -40,6 +40,9 @@
 		C9AC4D031CC45C7700083F12 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4D021CC45C7700083F12 /* SwiftyJSON.framework */; };
 		C9AC4D051CC45EF900083F12 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4D041CC45EF900083F12 /* Alamofire.framework */; };
 		C9AC4D071CC45F0B00083F12 /* Localize_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4D061CC45F0B00083F12 /* Localize_Swift.framework */; };
+		C9D9DC061CE8885900CF55FA /* JSQMessagesViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D9DC041CE8885900CF55FA /* JSQMessagesViewController.framework */; };
+		C9D9DC071CE8885900CF55FA /* JSQSystemSoundPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D9DC051CE8885900CF55FA /* JSQSystemSoundPlayer.framework */; };
+		C9D9DC091CE88A0300CF55FA /* MessengerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9DC081CE88A0300CF55FA /* MessengerViewController.swift */; };
 		E901E42F1CDB02F600459975 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E901E42E1CDB02F600459975 /* Launch Screen.storyboard */; };
 		E90201C11C9CB7EB00C7839A /* ExploreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */; };
 		E90201C31C9CC2E200C7839A /* EventDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */; };
@@ -120,6 +123,9 @@
 		C9AC4D021CC45C7700083F12 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		C9AC4D041CC45EF900083F12 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		C9AC4D061CC45F0B00083F12 /* Localize_Swift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Localize_Swift.framework; path = "Pods/../build/Debug-iphoneos/Localize_Swift.framework"; sourceTree = "<group>"; };
+		C9D9DC041CE8885900CF55FA /* JSQMessagesViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSQMessagesViewController.framework; path = "../../chord/chord/ConfPlus-gyuqvgyrwksbchgwfawuspwfodhr/Build/Products/Debug-iphonesimulator/JSQMessagesViewController/JSQMessagesViewController.framework"; sourceTree = "<group>"; };
+		C9D9DC051CE8885900CF55FA /* JSQSystemSoundPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSQSystemSoundPlayer.framework; path = "../../chord/chord/ConfPlus-gyuqvgyrwksbchgwfawuspwfodhr/Build/Products/Debug-iphonesimulator/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework"; sourceTree = "<group>"; };
+		C9D9DC081CE88A0300CF55FA /* MessengerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessengerViewController.swift; path = Events/MessengerViewController.swift; sourceTree = "<group>"; };
 		E8AA5B40C1E4EE566A70C9BE /* Pods-ConfPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConfPlus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConfPlus/Pods-ConfPlus.debug.xcconfig"; sourceTree = "<group>"; };
 		E901E42E1CDB02F600459975 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "ConfPlus/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreTableViewCell.swift; path = Explore/ExploreTableViewCell.swift; sourceTree = "<group>"; };
@@ -174,6 +180,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9D9DC061CE8885900CF55FA /* JSQMessagesViewController.framework in Frameworks */,
+				C9D9DC071CE8885900CF55FA /* JSQSystemSoundPlayer.framework in Frameworks */,
 				C93A984D1CE3448D00418F53 /* CryptoSwift.framework in Frameworks */,
 				C955F1711CD8A1FD000BE39C /* Alamofire_Synchronous.framework in Frameworks */,
 				C9AC4D071CC45F0B00083F12 /* Localize_Swift.framework in Frameworks */,
@@ -206,6 +214,7 @@
 				C94AFA611C981C0600EC88B6 /* Timetable */,
 				C94AFA5D1C980ECE00EC88B6 /* MessagesTableViewController.swift */,
 				C93A984E1CE36B4C00418F53 /* MessageTableViewCell.swift */,
+				C9D9DC081CE88A0300CF55FA /* MessengerViewController.swift */,
 				C94AFA621C981C5C00EC88B6 /* Ticket */,
 				C94AFA6D1C981F1A00EC88B6 /* AttendingViewController.swift */,
 				C94AFA6F1C981F8200EC88B6 /* Admin */,
@@ -292,6 +301,8 @@
 		CA6657120F9514BBD729216B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C9D9DC041CE8885900CF55FA /* JSQMessagesViewController.framework */,
+				C9D9DC051CE8885900CF55FA /* JSQSystemSoundPlayer.framework */,
 				C93A984C1CE3448D00418F53 /* CryptoSwift.framework */,
 				C955F1701CD8A1FD000BE39C /* Alamofire_Synchronous.framework */,
 				C9AC4D061CC45F0B00083F12 /* Localize_Swift.framework */,
@@ -577,6 +588,7 @@
 				C93A984F1CE36B4C00418F53 /* MessageTableViewCell.swift in Sources */,
 				E97EB7531CDF13E5009113A6 /* Venue+CoreDataProperties.swift in Sources */,
 				E97EB7691CDF13E5009113A6 /* Event_Roles+CoreDataProperties.swift in Sources */,
+				C9D9DC091CE88A0300CF55FA /* MessengerViewController.swift in Sources */,
 				C94AFA601C9811BD00EC88B6 /* EventLocationViewController.swift in Sources */,
 				C91E85E01CE75E5D0069333B /* Message.swift in Sources */,
 				E90201C31C9CC2E200C7839A /* EventDetailTableViewController.swift in Sources */,

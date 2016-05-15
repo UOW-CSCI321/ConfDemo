@@ -69,19 +69,8 @@ class MessageTableViewCell: UITableViewCell {
     
     func addSeenImage()
     {
-//        let seenImageView: UIImageView = {
-//            let imgView = UIImageView()
-//            imgView.contentMode = .ScaleAspectFill
-//            imgView.layer.cornerRadius = 10
-//            imgView.layer.masksToBounds = true
-//            return imgView
-//        }()
-//        addSubview(seenImageView)
         seenImage.layer.cornerRadius = 10
         seenImage.layer.masksToBounds = true
-        //addConstraintsWithFormat("V:[v0(20)]|", views: seenImage)
-        //addConstraintsWithFormat("H:[v0(20)]|", views: seenImage)
-        //addConstraint(NSLayoutConstraint(item: seenImageView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1, constant: 1))
         seenImage.image = UIImage(named:"matt")
     }
 }
