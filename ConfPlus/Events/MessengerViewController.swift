@@ -29,6 +29,16 @@ class MessengerViewController: JSQMessagesViewController {
 
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        // messages from someone else
+        addMessage("foo", displayName: "cy", text: "Hey person!")
+        // messages sent from local sender
+        addMessage(senderId, displayName: "matt", text: "Yo!")
+        addMessage(senderId, displayName: "matt", text: "I like turtles!")
+        // animates the receiving of a new message on the view
+        finishReceivingMessage()
+    }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!,
                                  messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
@@ -58,9 +68,14 @@ class MessengerViewController: JSQMessagesViewController {
         }
     }
     
-//    override func collectionView(collectionView: JSQMessagesCollectionView!,
-//                                 avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
-//        return nil
-//    }
+    override func collectionView(collectionView: JSQMessagesCollectionView!,
+                                 avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
+        return nil
+    }
+    
+    func addMessage(id: String, displayName:String, text: String) {
+        let message = JSQMessage(senderId: id, displayName: displayName, text: text)
+        messages.append(message)
+    }
 }
 
