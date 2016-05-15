@@ -271,8 +271,9 @@ class APIManager{
                 case .Success:
                     if let value = response.result.value {
                         let json = JSON(value)
-                        
+                        print(json["data"])
                         for i in 0 ..< json["data"].count {
+                            print(json["data"][i])
                             let message = self.handler.addNewMessage(json["data"][i])
                             self.handler.performUpdate()
                         }

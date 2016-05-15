@@ -29,10 +29,15 @@ class MessagesTableViewController: UIViewController {
         let numConvos = userConversations.count
         if numConvos > 0
         {
-            for i in 1...numConvos
+            for i in 0...(numConvos-1)
             {
                 var convosMessages = ModelHandler().getMessageForConversation(userConversations[i])
-                usersMessages.append(convosMessages!)
+                if ((convosMessages?.isEmpty) == nil){
+                    print("no messages")
+                }else {
+                    usersMessages.append(convosMessages!)
+                }
+                
             }
         }
         conversationTable.reloadData()
