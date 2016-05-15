@@ -62,7 +62,7 @@ class MessagesTableViewController: UIViewController {
         messengerVC.senderId = user.stringForKey("email")
         messengerVC.title = userConversations[indexPath.row].name
         messengerVC.senderDisplayName = userConversations[indexPath.row].lastmsg_email
-        
+        self.hidesBottomBarWhenPushed = true //need to hide tab bar to show message bar at the bottom. i tried to move message bar in JSQMessagesViewController but it has some action on it that when clicked it will move back down
         
 //        let eventVC:EventDetailTableViewController = segue.destinationViewController as! EventDetailTableViewController
 //        eventVC.event = events[indexPath.row]
