@@ -234,11 +234,12 @@ class APIManager{
                     for i in 0 ..< counter {
                         dispatch_group_enter(group)
                         print(json["data"][i])
-                        let convo = self.handler.addNewConversation(json["data"][i])
+                        self.handler.addNewConversation(json["data"][i])
+                        self.handler.performUpdate()
                         
-                        APIManager().getMessagesForConvo(convo, group: group){
-                            self.handler.performUpdate()
-                        }
+//                        APIManager().getMessagesForConvo(convo, group: group){
+//                            self.handler.performUpdate()
+//                        }
                     }
                 }
                 completion(true)
@@ -252,48 +253,48 @@ class APIManager{
         }
     }
     
-    func getMessagesForConvo(convo: Conversation, group: dispatch_group_t, completion: () -> Void)
-    {
-        guard let id = convo.conversation_id else {
-            //print(id)
-            return
-        }
-        let parameters = [
-            "api_key": server.KEY,
-            "app_secret": server.SECRET,
-            "method" : "getConversation",
-            "conversation_id" : id
-        ]
-        
-        let message_queue = dispatch_queue_create("message_queue", nil)
-        dispatch_async(message_queue, {
-            Alamofire.request(.POST, self.server.URL, parameters: parameters).responseJSON(){ response in
-                switch response.result{
-                case .Success:
-                    if let value = response.result.value {
-                        let json = JSON(value)
-                        print(json["data"])
-                        let counter = json["data"].count
-                        for i in 0 ..< counter{
-                            print(json["data"][i])
-                            let message = self.handler.addNewMessage(json["data"][i])
-                            self.handler.performUpdate()
-                        }
-
-                    }
-                    
-                    dispatch_group_leave(group)
-                    completion()
-                    
-                case .Failure(let error):
-                    dispatch_group_leave(group)
-                    print(error.localizedDescription)
-                    completion()
-                }
-            }
-        })
-
-    }
+//    func getMessagesForConvo(convo: Conversation, group: dispatch_group_t, completion: () -> Void)
+//    {
+//        guard let id = convo.conversation_id else {
+//            //print(id)
+//            return
+//        }
+//        let parameters = [
+//            "api_key": server.KEY,
+//            "app_secret": server.SECRET,
+//            "method" : "getConversation",
+//            "conversation_id" : id
+//        ]
+//        
+//        let message_queue = dispatch_queue_create("message_queue", nil)
+//        dispatch_async(message_queue, {
+//            Alamofire.request(.POST, self.server.URL, parameters: parameters).responseJSON(){ response in
+//                switch response.result{
+//                case .Success:
+//                    if let value = response.result.value {
+//                        let json = JSON(value)
+//                        print(json["data"])
+//                        let counter = json["data"].count
+//                        for i in 0 ..< counter{
+//                            print(json["data"][i])
+//                            let message = self.handler.addNewMessage(json["data"][i])
+//                            self.handler.performUpdate()
+//                        }
+//
+//                    }
+//                    
+//                    dispatch_group_leave(group)
+//                    completion()
+//                    
+//                case .Failure(let error):
+//                    dispatch_group_leave(group)
+//                    print(error.localizedDescription)
+//                    completion()
+//                }
+//            }
+//        })
+//
+//    }
     
 //    func getMyMessagesFromAPI()
 //    {

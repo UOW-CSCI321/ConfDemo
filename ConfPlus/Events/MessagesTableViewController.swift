@@ -14,7 +14,7 @@ class MessagesTableViewController: UIViewController {
     
     @IBOutlet var conversationTable: UITableView!
     
-    var usersMessages = [[Message]]()
+    //var usersMessages = [[Message]]()
     var userConversations = [Conversation]()
     var isDispatchEmpty:Bool = true
     
@@ -24,22 +24,22 @@ class MessagesTableViewController: UIViewController {
         super.viewDidLoad()
 		
 		populateNavigationBar()
-        let email = user.stringForKey("email")
+//        let email = user.stringForKey("email")
         userConversations = ModelHandler().getConversation()
-        let numConvos = userConversations.count
-        if numConvos > 0
-        {
-            for i in 0...(numConvos-1)
-            {
-                var convosMessages = ModelHandler().getMessageForConversation(userConversations[i])
-                if ((convosMessages?.isEmpty) == nil){
-                    print("no messages")
-                }else {
-                    usersMessages.append(convosMessages!)
-                }
-                
-            }
-        }
+//        let numConvos = userConversations.count
+//        if numConvos > 0
+//        {
+//            for i in 0...(numConvos-1)
+//            {
+//                var convosMessages = ModelHandler().getMessageForConversation(userConversations[i])
+//                if ((convosMessages?.isEmpty) == nil){
+//                    print("no messages")
+//                }else {
+//                    usersMessages.append(convosMessages!)
+//                }
+//                
+//            }
+//        }
         conversationTable.reloadData()
     }
     
@@ -58,18 +58,15 @@ class MessagesTableViewController: UIViewController {
                 dispatch_group_notify(group, dispatch_get_main_queue()) {
                     self.isDispatchEmpty = true
                     self.userConversations = ModelHandler().getConversation()
-                    self.usersMessages = [[Message]]() //do a new on it to clear the current data as we are appending - don't want duplicates
-                    let counter = self.userConversations.count
-                    for i in 0...(counter-1)
-                    {
-                        var convosMessages = ModelHandler().getMessageForConversation(self.userConversations[i])
-                        self.usersMessages.append(convosMessages!)
-                    }
+//                    self.usersMessages = [[Message]]() //do a new on it to clear the current data as we are appending - don't want duplicates
+//                    let counter = self.userConversations.count
+//                    for i in 0...(counter-1)
+//                    {
+//                        var convosMessages = ModelHandler().getMessageForConversation(self.userConversations[i])
+//                        self.usersMessages.append(convosMessages!)
+//                    }
                     self.conversationTable.reloadData()
-                    
-//                    self.eventAttendedArray = ModelHandler().getEvents("1")
-//                    self.eventsTableView.reloadData()
-//                    print("Reloaded")
+                    print("Reloaded")
                     
                     let notification = MPGNotification(title: "Updated", subtitle: nil, backgroundColor: UIColor.orangeColor(), iconImage: nil)
                     notification.duration = 1
@@ -102,8 +99,8 @@ extension MessagesTableViewController: UITableViewDelegate{
 //        cell.messageDescription.text = "Hey michael hows everything with project going? go.."
 //        cell.messageDateLabel.text = "9:05pm"
         cell.usersName.text = userConversations[row].name //conversation name should be the sender name or if group chat the user sets the name
-        let lastMessage = usersMessages[row].last
-        cell.messageDescription.text = lastMessage?.content
+       // let lastMessage = usersMessages[row].last
+        cell.messageDescription.text = userConversations[row].lastmsg_content //lastMessage?.content
         //cell.messageDateLabel.text = lastMessage?.date //put through a function that converst to string and if its the same date says the time else says the day if its within this week else says the date
 		
 		return cell

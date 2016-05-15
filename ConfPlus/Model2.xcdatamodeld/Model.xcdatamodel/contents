@@ -8,6 +8,9 @@
     </entity>
     <entity name="Conversation" representedClassName=".Conversation" syncable="YES">
         <attribute name="conversation_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastmsg_content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastmsg_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lastmsg_email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="conversation" inverseEntity="Message" syncable="YES"/>
         <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="conversations" inverseEntity="User" syncable="YES"/>
@@ -138,7 +141,7 @@
     </entity>
     <elements>
         <element name="Billing" positionX="1231" positionY="351" width="128" height="103"/>
-        <element name="Conversation" positionX="1132" positionY="810" width="128" height="103"/>
+        <element name="Conversation" positionX="1132" positionY="810" width="128" height="148"/>
         <element name="Event" positionX="1836" positionY="351" width="128" height="285"/>
         <element name="Event_Roles" positionX="1611" positionY="528" width="128" height="88"/>
         <element name="Event_Tag" positionX="1620" positionY="639" width="128" height="73"/>

@@ -13,8 +13,8 @@
 		C91E85E01CE75E5D0069333B /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91E85DB1CE75E5D0069333B /* Message.swift */; };
 		C91E85E11CE75E5D0069333B /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91E85DC1CE75E5D0069333B /* User+CoreDataProperties.swift */; };
 		C91E85E21CE75E5D0069333B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91E85DD1CE75E5D0069333B /* User.swift */; };
-		C91E85E51CE76E050069333B /* Conversation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91E85E31CE76E050069333B /* Conversation+CoreDataProperties.swift */; };
 		C91E85E61CE76E050069333B /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91E85E41CE76E050069333B /* Conversation.swift */; };
+		C91E85E81CE841380069333B /* Conversation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91E85E71CE841380069333B /* Conversation+CoreDataProperties.swift */; };
 		C93A980E1CE04AE900418F53 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93A980C1CE04AE900418F53 /* Event.swift */; };
 		C93A984D1CE3448D00418F53 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93A984C1CE3448D00418F53 /* CryptoSwift.framework */; };
 		C93A984F1CE36B4C00418F53 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93A984E1CE36B4C00418F53 /* MessageTableViewCell.swift */; };
@@ -93,8 +93,8 @@
 		C91E85DB1CE75E5D0069333B /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Model/Message.swift; sourceTree = "<group>"; };
 		C91E85DC1CE75E5D0069333B /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "Model/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C91E85DD1CE75E5D0069333B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
-		C91E85E31CE76E050069333B /* Conversation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Conversation+CoreDataProperties.swift"; path = "Model/Conversation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C91E85E41CE76E050069333B /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Conversation.swift; path = Model/Conversation.swift; sourceTree = "<group>"; };
+		C91E85E71CE841380069333B /* Conversation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Conversation+CoreDataProperties.swift"; path = "Model/Conversation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C93A980C1CE04AE900418F53 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Model/Event.swift; sourceTree = "<group>"; };
 		C93A984C1CE3448D00418F53 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = "Pods/../build/Debug-iphoneos/CryptoSwift/CryptoSwift.framework"; sourceTree = "<group>"; };
 		C93A984E1CE36B4C00418F53 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 				E97EB73E1CDF13E5009113A6 /* Payment.swift */,
 				C91E85DA1CE75E5D0069333B /* Message+CoreDataProperties.swift */,
 				C91E85DB1CE75E5D0069333B /* Message.swift */,
-				C91E85E31CE76E050069333B /* Conversation+CoreDataProperties.swift */,
+				C91E85E71CE841380069333B /* Conversation+CoreDataProperties.swift */,
 				C91E85E41CE76E050069333B /* Conversation.swift */,
 				C91E85DC1CE75E5D0069333B /* User+CoreDataProperties.swift */,
 				C91E85DD1CE75E5D0069333B /* User.swift */,
@@ -520,7 +520,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C91E85E51CE76E050069333B /* Conversation+CoreDataProperties.swift in Sources */,
 				E97EB75F1CDF13E5009113A6 /* Ticket+CoreDataProperties.swift in Sources */,
 				C94AFA5A1C980DE400EC88B6 /* TimeTableViewController.swift in Sources */,
 				E97EB7541CDF13E5009113A6 /* Venue.swift in Sources */,
@@ -543,6 +542,7 @@
 				E9F136B71CD30CAF008A3CB6 /* RegisterViewController.swift in Sources */,
 				E97EB74F1CDF13E5009113A6 /* Session+CoreDataProperties.swift in Sources */,
 				E97EB7601CDF13E5009113A6 /* Ticket.swift in Sources */,
+				C91E85E81CE841380069333B /* Conversation+CoreDataProperties.swift in Sources */,
 				C94AFA761C98221400EC88B6 /* HistoryTableViewController.swift in Sources */,
 				E9AF00711CDAEEFE004424A1 /* ScannerViewController.swift in Sources */,
 				E97EB7641CDF13E5009113A6 /* Ticket_Record.swift in Sources */,

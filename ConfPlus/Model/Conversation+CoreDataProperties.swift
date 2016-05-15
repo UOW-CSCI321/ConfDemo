@@ -16,6 +16,9 @@ extension Conversation {
 
     @NSManaged var conversation_id: String?
     @NSManaged var name: String?
+    @NSManaged var lastmsg_email: String?
+    @NSManaged var lastmsg_date: NSDate?
+    @NSManaged var lastmsg_content: String?
     @NSManaged var messages: NSSet?
     @NSManaged var users: NSSet?
 

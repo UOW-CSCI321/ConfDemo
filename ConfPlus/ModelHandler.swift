@@ -182,8 +182,14 @@ class ModelHandler{
         let convo = NSEntityDescription.insertNewObjectForEntityForName("Conversation", inManagedObjectContext: self.context) as! Conversation
         convo.conversation_id = json["conversation_id"].string
         convo.name = json["name"].string
+        convo.lastmsg_content = json["content"].string
+        convo.lastmsg_email = json["sender_email"].string
+        convo.lastmsg_date = serverStringToDate(json["date"].string!)
         print(convo.conversation_id)
         print(convo.name)
+        print(convo.lastmsg_content)
+        print(convo.lastmsg_email)
+        print(convo.lastmsg_date)
         
         performUpdate()
         
