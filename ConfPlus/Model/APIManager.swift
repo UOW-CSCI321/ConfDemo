@@ -22,7 +22,12 @@ class APIManager{
 	
 	let user = NSUserDefaults.standardUserDefaults()
 	
-	func getExploreDataFromAPI(group: dispatch_group_t, inout isDispatchEmpty: Bool, completion: (Bool) -> Void){
+	func fetchError(title: String = "No internet Connection"){
+		let notification = MPGNotification(title: title, subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+		notification.show()
+	}
+	
+	func getExploreDataFromAPI(completion: (result: Bool) -> Void){
 		let parameters = [
 			"api_key": server.KEY,
 			"app_secret": server.SECRET,
@@ -35,32 +40,29 @@ class APIManager{
 			case .Success:
 				if let value = response.result.value {
 					let json = JSON(value)
-					
-					//self.handler.deleteEventsData()
-					
-					for i in 0 ..< json["data"].count {
-						dispatch_group_enter(group)
-						let event = self.handler.addNewEvent(json["data"][i], attending: "0")
-						
-						APIManager().getPoster(event, group: group){
-							self.handler.performUpdate()
+					if json["success"]{
+						for i in 0 ..< json["data"].count {
+							self.handler.addNewEvent(json["data"][i], attending: "0")
 						}
+						completion(result: true)
+					} else {
+						self.fetchError("Connection Issues")
+						completion(result: false)
 					}
 				}
-				completion(true)
+				
 			case .Failure(let error):
 				print(error.localizedDescription)
-				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-				notification.show()
-				completion(false)
+				self.fetchError()
+				completion(result: false)
 			}
 			
 		}
 	}
 
-	func getPoster(event: Event, group: dispatch_group_t, completion: () -> Void){
+	func getPoster(event:Event, completion: (result: Bool) -> Void){
 		guard let id = event.event_id else {
-			//print(id)
+			print("No event id", #function)
 			return
 		}
 		let parameters = [
@@ -70,29 +72,23 @@ class APIManager{
 			"event_id" : id
 		]
 		
-		let poster_queue = dispatch_queue_create("poster_queue", nil)
-		dispatch_async(poster_queue, {
-			Alamofire.request(.POST, self.server.URL, parameters: parameters).responseJSON(){ response in
-				switch response.result{
-				case .Success:
-					if let value = response.result.value {
-						let json = JSON(value)
-						event.poster_url = json["data"]["poster_data_url"].string
-						
-						print("updated image")
-						
+		Alamofire.request(.POST, self.server.URL, parameters: parameters).responseJSON(){ response in
+			switch response.result{
+			case .Success:
+				if let value = response.result.value {
+					let json = JSON(value)
+					if json["success"]{
+						self.handler.updatePosterForEvent(event, data: json["data"]["poster_data_url"].string!)
+						completion(result: true)
+					} else {
+						completion(result: false)
 					}
-					
-					dispatch_group_leave(group)
-					completion()
-					
-				case .Failure(let error):
-					dispatch_group_leave(group)
-					print(error.localizedDescription)
-					completion()
 				}
+			case .Failure(let error):
+				print(error.localizedDescription)
+				completion(result: false)
 			}
-		})
+		}
 		
 	}
 	
@@ -160,9 +156,9 @@ class APIManager{
                         dispatch_group_enter(group)
                         let event = self.handler.addNewEvent(json["data"][i], attending: "1")
                         
-                        APIManager().getPoster(event, group: group){
-                            self.handler.performUpdate()
-                        }
+//                        APIManager().getPoster(event, group: group){
+//                            self.handler.performUpdate()
+//                        }
                     }
                 }
                 completion(true)

@@ -34,14 +34,13 @@ class ExploreViewController: UIViewController {
 		super.viewWillAppear(true)
 		
 		if isDispatchEmpty {
-			let group: dispatch_group_t = dispatch_group_create()
 			isDispatchEmpty = false
 			let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-			notification.duration = 2
 			notification.show()
 			
-			APIManager().getExploreDataFromAPI(group, isDispatchEmpty: &isDispatchEmpty){ result in
-				dispatch_group_notify(group, dispatch_get_main_queue()) {
+			APIManager().getExploreDataFromAPI(){ result in
+				dispatch_async(dispatch_get_main_queue()) {
+					notification.hidden = true
 					self.isDispatchEmpty = true
 					self.events = ModelHandler().getEvents("0")
 					self.EventsTableView.reloadData()
@@ -81,7 +80,16 @@ extension ExploreViewController: UITableViewDelegate{
 		let date = "\(events[row].getFromDateAsString()) - \(events[row].getToDateAsString())"
 		cell.eventDate.text = date
 		
-		cell.eventImage.image = events[row].getImage()
+		dispatch_async(dispatch_get_main_queue(), { () -> Void in
+			if self.events[row].poster_url != nil {
+				cell.eventImage.image = self.events[row].getImage()
+			} else {
+				APIManager().getPoster(self.events[row]){ result in
+					cell.eventImage.image = self.events[row].getImage()
+				}
+			}
+		})
+		
 		
 		return cell
 	}
