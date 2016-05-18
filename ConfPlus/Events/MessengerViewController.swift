@@ -17,10 +17,15 @@ class MessengerViewController: JSQMessagesViewController {
     var conversationID = ""
     var outgoingBubbleImageView: JSQMessagesBubbleImage!
     var incomingBubbleImageView: JSQMessagesBubbleImage!
+    var systemProfilePic: JSQMessagesAvatarImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("conversationid: \(conversationID)")
+        let bgColour = UIColor(white: 0.85, alpha: 1.0)
+        let txtColour = UIColor(white: 0.60, alpha: 1.0)
+        let systFont = UIFont.systemFontOfSize(14/*, weight:10*/)
+        systemProfilePic = JSQMessagesAvatarImageFactory.avatarImageWithUserInitials("cf+", backgroundColor: bgColour, textColor: txtColour, font: systFont, diameter: 30)
         setupBubbles()
     }
     
@@ -79,9 +84,9 @@ class MessengerViewController: JSQMessagesViewController {
         let i1 = UIImage(named:"matt")
         let idefault = UIImage(named:"account2")
         let i = JSQMessagesAvatarImage(avatarImage: i1, highlightedImage: i1, placeholderImage: idefault)
-//        let avatarDatasource = JSQMessageAvatarImageDataSource()
-//        avatarDatasource.
-        return i
+
+
+        return self.systemProfilePic
     }
     
     func addMessage(id: String, displayName:String, text: String) {
