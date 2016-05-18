@@ -116,6 +116,22 @@ class MessengerViewController: JSQMessagesViewController {
         return avatar
     }
     
+    override func collectionView(collectionView: UICollectionView,
+                                 cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath)
+            as! JSQMessagesCollectionViewCell
+        
+        let message = messages[indexPath.item]
+        
+        if message.senderId == senderId {
+            cell.textView!.textColor = UIColor.whiteColor()
+        } else {
+            cell.textView!.textColor = UIColor.blackColor()
+        }
+        
+        return cell
+    }
+    
     func addMessage(id: String, displayName:String, text: String) {
         let today = NSDate()
         let m = JSQMessage(senderId: id, senderDisplayName: displayName, date: today, text: text)
