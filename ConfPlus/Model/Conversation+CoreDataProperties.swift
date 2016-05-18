@@ -1,9 +1,9 @@
 //
 //  Conversation+CoreDataProperties.swift
-//  ConfPlus
+//  
 //
-//  Created by CY Lim on 8/05/2016.
-//  Copyright © 2016 Conf+. All rights reserved.
+//  Created by Matthew Boroczky on 16/05/2016.
+//
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
 //  to delete and recreate this implementation file for your updated model.
@@ -14,9 +14,12 @@ import CoreData
 
 extension Conversation {
 
-    @NSManaged var conversation_id: NSNumber?
+    @NSManaged var conversation_id: String?
+    @NSManaged var lastmsg_content: String?
+    @NSManaged var lastmsg_date: NSDate?
+    @NSManaged var lastmsg_email: String?
     @NSManaged var name: String?
     @NSManaged var messages: NSSet?
-    @NSManaged var participants: NSSet?
+    @NSManaged var users: NSSet?
 
 }

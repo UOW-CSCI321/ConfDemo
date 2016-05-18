@@ -13,6 +13,7 @@ class MessageTableViewCell: UITableViewCell {
     @IBOutlet var usersName: UILabel!
     @IBOutlet var messageDescription: UILabel!
     @IBOutlet var messageDateLabel: UILabel!
+    @IBOutlet var seenImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -68,19 +69,9 @@ class MessageTableViewCell: UITableViewCell {
     
     func addSeenImage()
     {
-        let seenImageView: UIImageView = {
-            let imgView = UIImageView()
-            imgView.contentMode = .ScaleAspectFill
-            imgView.layer.cornerRadius = 10
-            imgView.layer.masksToBounds = true
-            return imgView
-        }()
-        addSubview(seenImageView)
-        
-        addConstraintsWithFormat("V:[v0(20)]|", views: seenImageView)
-        addConstraintsWithFormat("H:[v0(20)]|", views: seenImageView)
-        addConstraint(NSLayoutConstraint(item: seenImageView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1, constant: 1))
-        seenImageView.image = UIImage(named:"matt")
+        seenImage.layer.cornerRadius = 10
+        seenImage.layer.masksToBounds = true
+        seenImage.image = UIImage(named:"matt")
     }
 }
 
