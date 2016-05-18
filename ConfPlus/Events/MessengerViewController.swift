@@ -14,6 +14,7 @@ import JSQMessagesViewController
 class MessengerViewController: JSQMessagesViewController {
     
     var messages = [JSQMessage]()
+    var avatars = [JSQMessagesAvatarImage]()
     var conversationID = ""
     var outgoingBubbleImageView: JSQMessagesBubbleImage!
     var incomingBubbleImageView: JSQMessagesBubbleImage!
@@ -27,6 +28,7 @@ class MessengerViewController: JSQMessagesViewController {
         let systFont = UIFont.systemFontOfSize(14/*, weight:10*/)
         systemProfilePic = JSQMessagesAvatarImageFactory.avatarImageWithUserInitials("cf+", backgroundColor: bgColour, textColor: txtColour, font: systFont, diameter: 30)
         setupBubbles()
+        setupAvatarsArray()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -43,6 +45,17 @@ class MessengerViewController: JSQMessagesViewController {
         addMessage(senderId, displayName: "matt", text: "I like turtles!")
         // animates the receiving of a new message on the view
         finishReceivingMessage()
+    }
+    
+    func setupAvatarsArray() //matt defined
+    {
+        //this will set the images from coredata
+        let i1 = UIImage(named:"matt")
+        let idefault = UIImage(named:"account2")
+        let i = JSQMessagesAvatarImage(avatarImage: i1, highlightedImage: i1, placeholderImage: idefault)
+        avatars.append(i)
+        avatars.append(systemProfilePic)
+        
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!,
@@ -81,17 +94,17 @@ class MessengerViewController: JSQMessagesViewController {
 //            
 //        }
 //        return nil
-        let i1 = UIImage(named:"matt")
-        let idefault = UIImage(named:"account2")
-        let i = JSQMessagesAvatarImage(avatarImage: i1, highlightedImage: i1, placeholderImage: idefault)
 
 
-        return self.systemProfilePic
+        return avatars[indexPath.item]
     }
     
     func addMessage(id: String, displayName:String, text: String) {
-        let message = JSQMessage(senderId: id, displayName: displayName, text: text)
-        messages.append(message)
+        let today = NSDate()
+        let m = JSQMessage(senderId: id, senderDisplayName: displayName, date: today, text: text)
+        //let message = JSQMessage(senderId: id, displayName: displayName, text: text)
+        messages.append(m)
+        //print(m) //data is setting properly
     }
 }
 
