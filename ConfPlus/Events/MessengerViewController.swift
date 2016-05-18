@@ -151,44 +151,55 @@ class MessengerViewController: JSQMessagesViewController {
         //print(m) //data is setting properly
     }
     
-//    override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
-//        //-------------------------------------------------------------------------------------------------------------------------------------------------
-//        let msg = self.messages[indexPath.item]
-//        var preMsg:JSQMessage?
-//        if indexPath.item != 0{
-//            preMsg = self.messages[indexPath.item - 1]
-//        }
-//        
-//        if indexPath.item == 0{
-//            return kJSQMessagesCollectionViewCellLabelHeightDefault
-//        }else if indexPath.item - 1 > 0 && preMsg!.date != msg.date {
-//            let premsg = self.messages[indexPath.item - 1]
-//            let msg = self.messages[indexPath.item]
-//            if msg.date.timeIntervalSinceDate(premsg.date)/60 > 1{
-//                return kJSQMessagesCollectionViewCellLabelHeightDefault
-//            }
-//        }
-//        
-//        return 0.0
-//    }
-//    
-//    override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
-//        //-------------------------------------------------------------------------------------------------------------------------------------------------
-//        let msg = self.messages[indexPath.item]
-//        var preMsg:JSQMessage?
-//        if indexPath.item != 0{
-//            preMsg = self.messages[indexPath.item - 1]
-//        }
-//        
-//        if indexPath.item == 0{
-//            let date = JSQMessagesTimestampFormatter.sharedFormatter().relativeDateForDate(msg.date)
-//            return NSAttributedString(string: date)
-//        }else if indexPath.item - 1 > 0 && preMsg!.date != msg.date{
-//            let date = JSQMessagesTimestampFormatter.sharedFormatter().relativeDateForDate(msg.date)
-//            return NSAttributedString(string: date)
-//        }
-//        return nil
-//    }
+    override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+        //-------------------------------------------------------------------------------------------------------------------------------------------------
+        let msg = self.messages[indexPath.item]
+        print(msg)
+        var preMsg:JSQMessage?
+        if indexPath.item != 0{
+            preMsg = self.messages[indexPath.item - 1]
+            print(preMsg)
+        }
+        
+        if indexPath.item == 0{
+            print(kJSQMessagesCollectionViewCellLabelHeightDefault)
+            return kJSQMessagesCollectionViewCellLabelHeightDefault
+        }else if indexPath.item - 1 > 0 && preMsg!.date != msg.date {
+            print("\(indexPath.item - 1) >0 && \(preMsg!.date) != \(msg.date)")
+            let premsg = self.messages[indexPath.item - 1]
+            print(preMsg)
+            let msg = self.messages[indexPath.item]
+            print(msg)
+            if msg.date.timeIntervalSinceDate(premsg.date)/60 > 1{
+                print(kJSQMessagesCollectionViewCellLabelHeightDefault)
+                return kJSQMessagesCollectionViewCellLabelHeightDefault
+            }
+        }
+        
+        return 0.0
+    }
+    
+    override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
+        //-------------------------------------------------------------------------------------------------------------------------------------------------
+        let msg = self.messages[indexPath.item]
+        var preMsg:JSQMessage?
+        if indexPath.item != 0{
+            preMsg = self.messages[indexPath.item - 1]
+            print(preMsg)
+        }
+        
+        if indexPath.item == 0{
+            let date = JSQMessagesTimestampFormatter.sharedFormatter().relativeDateForDate(msg.date)
+            print(date)
+            return NSAttributedString(string: date)
+        }else if indexPath.item - 1 > 0 && preMsg!.date != msg.date{
+            print("\(indexPath.item - 1) >0 && \(preMsg!.date) != \(msg.date)")
+            let date = JSQMessagesTimestampFormatter.sharedFormatter().relativeDateForDate(msg.date)
+            print(date)
+            return NSAttributedString(string: date)
+        }
+        return nil
+    }
 
 }
 
