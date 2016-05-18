@@ -27,12 +27,12 @@ class APIManager{
 		notification.show()
 	}
 	
-	func getExploreDataFromAPI(completion: (result: Bool) -> Void){
+	func getUpcomingEventsByCountry(country:String, completion: (result: Bool) -> Void){
 		let parameters = [
 			"api_key": server.KEY,
 			"app_secret": server.SECRET,
-			"method" : "getEventsByTag",
-			"tag_name" : "testTag"
+			"method" : "getUpcomingEventsByCountry",
+			"country" : country
 		] //at the moment the api call need event id
 		
 		Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
