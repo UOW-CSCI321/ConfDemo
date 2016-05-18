@@ -249,29 +249,68 @@ class MessengerViewController: JSQMessagesViewController {
 //        }
 //    }
     
-    override func collectionView(collectionView: JSQMessagesCollectionView, attributedTextForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath) -> NSAttributedString? {
-        var message: JSQMessage = messages[indexPath.item]
-        print(message)
-        /**
-         *  iOS7-style sender name labels
-         */
-        if (message.senderId == self.senderId) {
-            print(message.senderId)
-            return nil
+//    override func collectionView(collectionView: JSQMessagesCollectionView, attributedTextForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath) -> NSAttributedString? {
+//        var message: JSQMessage = messages[indexPath.item]
+//        print(message)
+//        /**
+//         *  iOS7-style sender name labels
+//         */
+//        if (message.senderId == self.senderId) {
+//            print(message.senderId)
+//            return nil
+//        }
+//        if indexPath.item - 1 > 0 {
+//            var previousMessage: JSQMessage = messages[indexPath.item - 1]
+//            if (previousMessage.senderId == message.senderId) {
+//                print(previousMessage.senderId)
+//                return nil
+//            }
+//        }
+//        /**
+//         *  Don't specify attributes to use the defaults.
+//         */
+//        let r =  NSAttributedString(string: message.senderDisplayName)
+//        print(r)
+//        return r
+//    }
+    
+    // View  usernames above bubbles
+    override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
+        let message = messages[indexPath.item];
+        
+        // Sent by me, skip
+        if message.senderId == senderId {
+            return nil;
         }
-        if indexPath.item - 1 > 0 {
-            var previousMessage: JSQMessage = messages[indexPath.item - 1]
-            if (previousMessage.senderId == message.senderId) {
-                print(previousMessage.senderId)
-                return nil
+        
+        // Same as previous sender, skip
+        if indexPath.item > 0 {
+            let previousMessage = messages[indexPath.item - 1];
+            if previousMessage.senderId == message.senderId {
+                return nil;
             }
         }
-        /**
-         *  Don't specify attributes to use the defaults.
-         */
-        let r =  NSAttributedString(string: message.senderDisplayName)
-        print(r)
-        return r
+        
+        return NSAttributedString(string:message.senderId)
+    }
+    
+    override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+        let message = messages[indexPath.item]
+        
+        // Sent by me, skip
+        if message.senderId == senderId {
+            return CGFloat(0.0);
+        }
+        
+        // Same as previous sender, skip
+        if indexPath.item > 0 {
+            let previousMessage = messages[indexPath.item - 1];
+            if previousMessage.senderId == message.senderId {
+                return CGFloat(0.0);
+            }
+        }
+        
+        return kJSQMessagesCollectionViewCellLabelHeightDefault
     }
 }
 
