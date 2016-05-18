@@ -28,7 +28,7 @@ class MessengerViewController: JSQMessagesViewController {
         let systFont = UIFont.systemFontOfSize(14/*, weight:10*/)
         systemProfilePic = JSQMessagesAvatarImageFactory.avatarImageWithUserInitials("cf+", backgroundColor: bgColour, textColor: txtColour, font: systFont, diameter: 30)
         setupBubbles()
-        setupAvatarsArray()
+//        setupAvatarsArray()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -39,7 +39,7 @@ class MessengerViewController: JSQMessagesViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         // messages from someone else
-        addMessage("foo", displayName: "cy", text: "Hey person!")
+        addMessage("michael@test.com", displayName: "michael", text: "Hey person!")
         // messages sent from local sender
         addMessage(senderId, displayName: "matt", text: "Yo!")
         addMessage(senderId, displayName: "matt", text: "I like turtles!")
@@ -47,14 +47,24 @@ class MessengerViewController: JSQMessagesViewController {
         finishReceivingMessage()
     }
     
-    func setupAvatarsArray() //matt defined
+    func getImageForEmail(email:String) -> JSQMessagesAvatarImage //matt defined
     {
         //this will set the images from coredata
-        let i1 = UIImage(named:"matt")
-        let idefault = UIImage(named:"account2")
-        let i = JSQMessagesAvatarImage(avatarImage: i1, highlightedImage: i1, placeholderImage: idefault)
-        avatars.append(i)
-        avatars.append(systemProfilePic)
+        if email == "matt3@test.com"
+        {
+            let i1 = UIImage(named:"matt")
+            let idefault = UIImage(named:"account2")
+            let i = JSQMessagesAvatarImage(avatarImage: i1, highlightedImage: i1, placeholderImage: idefault)
+            return i
+        }else if email == "michael@test.com"
+        {
+            let i1 = UIImage(named:"michael")
+            let idefault = UIImage(named:"account2")
+            let i = JSQMessagesAvatarImage(avatarImage: i1, highlightedImage: i1, placeholderImage: idefault)
+            return i
+        }else{
+            return self.systemProfilePic
+        }
         
     }
     
@@ -94,9 +104,9 @@ class MessengerViewController: JSQMessagesViewController {
 //            
 //        }
 //        return nil
+        let avatar = getImageForEmail(message.senderId)
 
-
-        return avatars[indexPath.item]
+        return avatar
     }
     
     func addMessage(id: String, displayName:String, text: String) {
