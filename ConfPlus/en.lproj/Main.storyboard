@@ -793,7 +793,7 @@
                     <navigationItem key="navigationItem" id="ygh-Td-x1z">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="Mda-HT-teP">
-                            <rect key="frame" x="121" y="8" width="173" height="29"/>
+                            <rect key="frame" x="120.5" y="7.5" width="173" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Event"/>

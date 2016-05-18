@@ -42,6 +42,7 @@ class RegisterViewController: UIViewController {
 			if result {
 				//let email = self.server.hashUserPassword(email)
 				self.user.setObject(email, forKey: "email")
+				self.user.setObject(username, forKey: "username")
 				self.dismissViewControllerAnimated(true, completion: nil)
 			} else {
 				self.showAlert("Email or Username unavailable.")
