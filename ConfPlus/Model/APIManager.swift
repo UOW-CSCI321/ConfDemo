@@ -22,8 +22,8 @@ class APIManager{
 	
 	let user = NSUserDefaults.standardUserDefaults()
 	
-	func fetchError(title: String = "No internet Connection"){
-		let notification = MPGNotification(title: title, subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+	func fetchError(title: String = "No internet Connection", message:String = "Data might not updated."){
+		let notification = MPGNotification(title: title, subtitle: message, backgroundColor: UIColor.orangeColor(), iconImage: nil)
 		notification.show()
 	}
 	
@@ -47,6 +47,40 @@ class APIManager{
 						completion(result: true)
 					} else {
 						self.fetchError("Connection Issues")
+						completion(result: false)
+					}
+				}
+				
+			case .Failure(let error):
+				print(error.localizedDescription)
+				self.fetchError()
+				completion(result: false)
+			}
+			
+		}
+	}
+	
+	func getEventsAttending(email:String, criteria:String, completion: (result: Bool) -> Void){
+		let parameters = [
+			"api_key": server.KEY,
+			"app_secret": server.SECRET,
+			"method" : "getEventsAttending",
+			"email" : email,
+			"criteria": criteria
+		] //at the moment the api call need event id
+		
+		Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
+			switch response.result {
+			case .Success:
+				if let value = response.result.value {
+					let json = JSON(value)
+					if json["success"]{
+						for i in 0 ..< json["data"].count {
+							self.handler.addNewEvent(json["data"][i], attending: "1")
+						}
+						completion(result: true)
+					} else {
+						self.fetchError("Life is short", message:"Go to Explore Tab and join some interesting events.")
 						completion(result: false)
 					}
 				}

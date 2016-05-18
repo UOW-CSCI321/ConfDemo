@@ -25,9 +25,7 @@ class ExploreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		navigationController?.hidesBarsOnSwipe = true
-		
+				
 		events = ModelHandler().getEvents("0")
 		EventsTableView.reloadData()
 		
@@ -104,5 +102,16 @@ extension ExploreViewController: UITableViewDelegate{
 			})
 		}
 		return cell
+	}
+	
+	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		let storyboard : UIStoryboard = UIStoryboard(name: "Explore", bundle: nil)
+		let vc : EventDetailTableViewController = storyboard.instantiateViewControllerWithIdentifier("EventDetailTableViewController") as! EventDetailTableViewController
+		
+		vc.event = events[indexPath.row]
+		
+		let navigationController = UINavigationController(rootViewController: vc)
+		
+		self.presentViewController(navigationController, animated: true, completion: nil)
 	}
 }

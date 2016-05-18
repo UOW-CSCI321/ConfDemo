@@ -15,6 +15,7 @@ import CoreData
 
 class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
     @IBOutlet var posterImageView: UIImageView!
+	@IBOutlet weak var eventNameLabel: UILabel!
 	@IBOutlet weak var dateLabel: UILabel!
     @IBOutlet var descriptionTextView: UITextView!
 	@IBOutlet weak var locationMapView: MKMapView!
@@ -32,9 +33,7 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		navigationController?.hidesBarsOnSwipe = true
-		
+				
 		setData()
     }
 	
@@ -50,6 +49,7 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
 	
 	func setData(){
 		posterImageView.image = event.getImage()
+		eventNameLabel.text = event.name
 		dateLabel.text = "\(event.getFromDateAsString()) - \(event.getToDateAsString())"
 		descriptionTextView.text = event.desc
 		
@@ -111,5 +111,11 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
         }
         return nil
     }
+	
+	
+	@IBAction func backButton(sender: AnyObject) {
+		self.dismissViewControllerAnimated(true, completion: nil)
+	}
+	
 
 }

@@ -1,64 +1,81 @@
 //
-//  EventTableViewController.swift
-//  ConfPlus
+//  ExploreViewController.swift
+//  confDemo
 //
-//  Created by CY Lim on 19/03/2016.
-//  Copyright © 2016 Conf+. All rights reserved.
+//  Created by CY Lim on 2015/10/08.
+//  Copyright © 2015年 CY Lim. All rights reserved.
 //
 
 import UIKit
 import Alamofire
 import SwiftyJSON
 import CoreData
+import Foundation
 import MPGNotification
 
-class EventsViewController: UIViewController, UITableViewDelegate {
-    
-    @IBOutlet var eventsTableView: UITableView!
-    var eventAttendedArray = [Event]()
-    var isDispatchEmpty:Bool = true
-    
+
+class EventsViewController: UIViewController {
+	
+	@IBOutlet var EventsTableView: UITableView!
+	
+	var events = [Event]()
+	var criteria = "future"
+	var isDispatchEmpty:Bool = true
+	
+	var refresher: UIRefreshControl!
+	
 	let user = NSUserDefaults.standardUserDefaults()
 	
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //data_request()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		
-		navigationController?.hidesBarsOnSwipe = true
-        eventAttendedArray = ModelHandler().getEvents("1") //get attending
-        eventsTableView.reloadData()//reload
-    }
-
+		events = ModelHandler().getEvents("1")
+		EventsTableView.reloadData()
+		
+		refresher = UIRefreshControl()
+		refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
+		refresher.addTarget(self, action: #selector(self.getEventsFromAPI), forControlEvents: UIControlEvents.ValueChanged)
+		self.EventsTableView.addSubview(refresher)
+	}
+	
 	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(animated)
+		super.viewWillAppear(true)
 		
-		guard let _ = user.stringForKey("email") else {
-			performLogin()
-			return
+		getEventsFromAPI()
+	}
+	
+	@IBAction func selectEventCriteria(sender: UISegmentedControl) {
+		if sender.selectedSegmentIndex == 0 {
+			criteria = "future"
+		} else {
+			criteria = "past"
 		}
-        
-        if isDispatchEmpty {
-            let group: dispatch_group_t = dispatch_group_create()
-            isDispatchEmpty = false
-            let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-            notification.duration = 2
-            notification.show()
-            
-            APIManager().getMyEventDataFromAPI(group, isDispatchEmpty: &isDispatchEmpty){ result in
-                dispatch_group_notify(group, dispatch_get_main_queue()) {
-                    self.isDispatchEmpty = true
-                    self.eventAttendedArray = ModelHandler().getEvents("1")
-                    self.eventsTableView.reloadData()
-                    print("Reloaded")
-                    
-                    let notification = MPGNotification(title: "Updated", subtitle: nil, backgroundColor: UIColor.orangeColor(), iconImage: nil)
-                    notification.duration = 1
-                    notification.show()
-                }
-            }
-        }
+	}
+	
+	func getEventsFromAPI(){
+		if isDispatchEmpty {
+			isDispatchEmpty = false
+			let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+			notification.show()
+			
+			guard let email = user.stringForKey("email") else {
+				performLogin()
+				return
+			}
+			
+			APIManager().getEventsAttending(email, criteria: criteria){ result in
+				dispatch_async(dispatch_get_main_queue()) {
+					notification.hidden = true
+					self.isDispatchEmpty = true
+					self.events = ModelHandler().getEvents("1")
+					self.EventsTableView.reloadData()
+					
+					if self.refresher.refreshing {
+						self.refresher.endRefreshing()
+					}
+				}
+			}
+		}
 	}
 	
 	func performLogin(){
@@ -67,33 +84,62 @@ class EventsViewController: UIViewController, UITableViewDelegate {
 		
 		let navigationController = UINavigationController(rootViewController: vc)
 		
+		
 		self.presentViewController(navigationController, animated: true, completion: nil)
 	}
 
-    // MARK: - Table view data source
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		let indexPath:NSIndexPath = self.EventsTableView.indexPathForSelectedRow!
+		let eventVC:EventDetailTableViewController = segue.destinationViewController as! EventDetailTableViewController
+		eventVC.event = events[indexPath.row]
+	}
+	
+}
 
+
+//MARK: TableView Related
+extension EventsViewController: UITableViewDelegate{
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-
+		return 1
+	}
+	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return eventAttendedArray.count
-    }
 
+		return events.count
+	}
+	
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as! EventTableViewCell
-        let row = indexPath.row
-        
-        cell.eventName.text = eventAttendedArray[row].name
-        
-        let date = "\(eventAttendedArray[row].getFromDateAsString()) - \(eventAttendedArray[row].getToDateAsString())"
-        cell.eventDate.text = date
-        
-        cell.eventImage.image = eventAttendedArray[row].getImage()
-        
-        return cell
-    }
+		let cell = tableView.dequeueReusableCellWithIdentifier("exploreCell", forIndexPath: indexPath) as! ExploreTableViewCell
+		
+		let row = indexPath.row
+		
+		cell.eventName.text = events[row].name
+		
+		let date = "\(events[row].getFromDateAsString()) - \(events[row].getToDateAsString())"
+		cell.eventDate.text = date
+		
+		if let poster = events[row].poster {
+			cell.eventImage.image = UIImage(data: poster)
+		} else {
+			dispatch_async(dispatch_get_main_queue(), { () -> Void in
+				APIManager().getPoster(self.events[row]){ result in
+					cell.eventImage.image = self.events[row].getImage()
+				}
+			})
+		}
+		return cell
+	}
 	
-
+//	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//		let storyboard : UIStoryboard = UIStoryboard(name: "Explore", bundle: nil)
+//		let vc : EventDetailTableViewController = storyboard.instantiateViewControllerWithIdentifier("EventDetailTableViewController") as! EventDetailTableViewController
+//		
+//		vc.event = events[indexPath.row]
+//		
+//		let navigationController = UINavigationController(rootViewController: vc)
+//		
+//		self.presentViewController(navigationController, animated: true, completion: nil)
+//	}
 }

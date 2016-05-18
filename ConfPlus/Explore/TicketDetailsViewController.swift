@@ -12,12 +12,11 @@ import UIKit
 class TicketDetailsViewController: UIViewController {
     
 	@IBOutlet weak var tableView: UITableView!
-	@IBOutlet weak var totalPrice: UIBarButtonItem!
+	@IBOutlet weak var totalPrice: UITextField!
 	
 	// IBOutlet for the Selection View
 	@IBOutlet weak var ticketSelectionView: UIView!
 	@IBOutlet weak var ticketName: UILabel!
-	@IBOutlet weak var ticketPrice: UILabel!
 	@IBOutlet weak var ticketCount: UILabel!
 	
 	
@@ -48,11 +47,6 @@ class TicketDetailsViewController: UIViewController {
 		self.presentViewController(navigationController, animated: true, completion: nil)
 	}
 	
-	//MARK - IBActions
-	@IBAction func cancelPurchaseTicket(sender: AnyObject) {
-		self.dismissViewControllerAnimated(true, completion: nil)
-	}
-	
 }
 
 extension TicketDetailsViewController: UITableViewDelegate{
@@ -81,9 +75,8 @@ extension TicketDetailsViewController: UITableViewDelegate{
 		
 		self.ticketCount.text = cell.ticketCount.text
 		self.ticketName.text = cell.ticketName.text
-		self.ticketPrice.text = cell.ticketPrice.text
 		
-		showshowticketSelectionView()
+		showticketSelectionView()
 	}
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -107,7 +100,7 @@ extension TicketDetailsViewController: UITableViewDelegate{
 // MARK: Ticket Selection View related function
 extension TicketDetailsViewController {
 	
-	func showshowticketSelectionView(){
+	func showticketSelectionView(){
 		ticketSelectionView.hidden = false
 	}
 	
@@ -119,7 +112,7 @@ extension TicketDetailsViewController {
 		self.ticketCount.text = String(Int(ticketCount.text!)! + 1)
 		cell.ticketCount.text = self.ticketCount.text
 		
-		self.totalPrice.title = String(Int(totalPrice.title!)! + Int(cell.ticketPrice.text!)!)
+		self.totalPrice.text = String(Int(totalPrice.text!)! + Int(cell.ticketPrice.text!)!)
 	}
 	
 	@IBAction func decreaseTicketInSelection(sender: AnyObject) {
@@ -130,7 +123,7 @@ extension TicketDetailsViewController {
 			self.ticketCount.text = String(Int(ticketCount.text!)! - 1)
 			cell.ticketCount.text = self.ticketCount.text
 			
-			self.totalPrice.title = String(Int(totalPrice.title!)! - Int(cell.ticketPrice.text!)!)
+			self.totalPrice.text = String(Int(totalPrice.text!)! - Int(cell.ticketPrice.text!)!)
 		}
 		
 	}
