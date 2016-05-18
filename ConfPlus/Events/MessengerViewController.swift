@@ -232,47 +232,6 @@ class MessengerViewController: JSQMessagesViewController {
         return 0.0
     }
     
-//    override func collectionView(collectionView: JSQMessagesCollectionView?, attributedTextForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
-//        let message = messages[indexPath.item]
-//        switch message.senderId {
-//        case senderId:
-//            return nil
-//        default:
-//            guard let senderDisplayName = message.senderDisplayName else {
-//                assertionFailure()
-//                return nil
-//            }
-//            let r = NSAttributedString(string: senderDisplayName)
-//            print(r)
-//            return r
-//            
-//        }
-//    }
-    
-//    override func collectionView(collectionView: JSQMessagesCollectionView, attributedTextForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath) -> NSAttributedString? {
-//        var message: JSQMessage = messages[indexPath.item]
-//        print(message)
-//        /**
-//         *  iOS7-style sender name labels
-//         */
-//        if (message.senderId == self.senderId) {
-//            print(message.senderId)
-//            return nil
-//        }
-//        if indexPath.item - 1 > 0 {
-//            var previousMessage: JSQMessage = messages[indexPath.item - 1]
-//            if (previousMessage.senderId == message.senderId) {
-//                print(previousMessage.senderId)
-//                return nil
-//            }
-//        }
-//        /**
-//         *  Don't specify attributes to use the defaults.
-//         */
-//        let r =  NSAttributedString(string: message.senderDisplayName)
-//        print(r)
-//        return r
-//    }
     
     // View  usernames above bubbles
     override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
