@@ -38,12 +38,23 @@ class MessengerViewController: JSQMessagesViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        //yesterday
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.timeZone = NSTimeZone(name: "GMT")
+        
+        let d1 = dateFormatter.dateFromString("2016-05-16 16:35:00") //dateString	String	"2016-05-01 16:35:00"
+        let d2 = dateFormatter.dateFromString("2016-05-17 16:35:00")
+        let d3 = NSDate()
+        
+        
         // messages from someone else
-        addMessage("michael@test.com", displayName: "michael", text: "Hey person!")
+        addMessage("michael@test.com", displayName: "michael", date: d1!, text: "Hey person!")
         // messages sent from local sender
-        addMessage(senderId, displayName: "matt", text: "Yo!")
-        addMessage(senderId, displayName: "matt", text: "I like turtles!")
-        addMessage("system", displayName: "system", text: "the presentation on 'mobile applications' will start in 15 minutes'")
+        addMessage(senderId, displayName: "matt", date: d2!, text: "Yo!")
+        addMessage(senderId, displayName: "matt", date: d3, text: "I like turtles!")
+        addMessage("system", displayName: "system", date:d3, text: "the presentation on 'mobile applications' will start in 15 minutes'")
         // animates the receiving of a new message on the view
         finishReceivingMessage()
     }
@@ -132,12 +143,52 @@ class MessengerViewController: JSQMessagesViewController {
         return cell
     }
     
-    func addMessage(id: String, displayName:String, text: String) {
-        let today = NSDate()
-        let m = JSQMessage(senderId: id, senderDisplayName: displayName, date: today, text: text)
+    func addMessage(id: String, displayName:String, date:NSDate, text: String) {
+        //let today = NSDate()
+        let m = JSQMessage(senderId: id, senderDisplayName: displayName, date: date, text: text)
         //let message = JSQMessage(senderId: id, displayName: displayName, text: text)
         messages.append(m)
         //print(m) //data is setting properly
     }
+    
+//    override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+//        //-------------------------------------------------------------------------------------------------------------------------------------------------
+//        let msg = self.messages[indexPath.item]
+//        var preMsg:JSQMessage?
+//        if indexPath.item != 0{
+//            preMsg = self.messages[indexPath.item - 1]
+//        }
+//        
+//        if indexPath.item == 0{
+//            return kJSQMessagesCollectionViewCellLabelHeightDefault
+//        }else if indexPath.item - 1 > 0 && preMsg!.date != msg.date {
+//            let premsg = self.messages[indexPath.item - 1]
+//            let msg = self.messages[indexPath.item]
+//            if msg.date.timeIntervalSinceDate(premsg.date)/60 > 1{
+//                return kJSQMessagesCollectionViewCellLabelHeightDefault
+//            }
+//        }
+//        
+//        return 0.0
+//    }
+//    
+//    override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
+//        //-------------------------------------------------------------------------------------------------------------------------------------------------
+//        let msg = self.messages[indexPath.item]
+//        var preMsg:JSQMessage?
+//        if indexPath.item != 0{
+//            preMsg = self.messages[indexPath.item - 1]
+//        }
+//        
+//        if indexPath.item == 0{
+//            let date = JSQMessagesTimestampFormatter.sharedFormatter().relativeDateForDate(msg.date)
+//            return NSAttributedString(string: date)
+//        }else if indexPath.item - 1 > 0 && preMsg!.date != msg.date{
+//            let date = JSQMessagesTimestampFormatter.sharedFormatter().relativeDateForDate(msg.date)
+//            return NSAttributedString(string: date)
+//        }
+//        return nil
+//    }
+
 }
 
