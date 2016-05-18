@@ -46,6 +46,7 @@ class AccountTableViewController: UITableViewController {
 		setName()
 		
 		if nameLabel.text == "Name" {
+			if let username = user.stringForKey("username"){ nameLabel.text = username }
 			APIManager().getUserInformation(email){ result in
 				self.setName()
 			}
@@ -55,8 +56,8 @@ class AccountTableViewController: UITableViewController {
 	func setName(){
 		if let firstName = self.user.stringForKey("firstName"), lastName = self.user.stringForKey("lastName"){
 			self.nameLabel.text = "\(firstName) \(lastName)"
-			tableView.reloadData()
 		}
+		tableView.reloadData()
 	}
 	
 	// Remove the LCLLanguageChangeNotification on viewWillDisappear
@@ -66,6 +67,8 @@ class AccountTableViewController: UITableViewController {
 	}
 	
 	func setText(){
+		navigationController?.title = "Profile".localized()
+		
 		navigationItem.title = "Profile".localized()
 		
 		editButton.title = "Edit".localized()

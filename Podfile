@@ -25,4 +25,7 @@ target 'ConfPlus' do
     
     # https://github.com/OrangeGroove/OGCryptoHash
     pod 'OGCryptoHash', '~> 0.2.2'
+    
+    #https://github.com/jessesquires/JSQMessagesViewController
+    pod 'JSQMessagesViewController', '~> 7.2.0'
 end

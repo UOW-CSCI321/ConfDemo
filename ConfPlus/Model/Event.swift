@@ -22,6 +22,10 @@ class Event: NSManagedObject {
 			if let dataString = poster_url {
 				if let data = dataString.componentsSeparatedByString(",").last {
 					if let decodedData = NSData(base64EncodedString: data, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters) {
+						
+						self.poster = decodedData
+						ModelHandler().performUpdate()
+						
 						return UIImage(data: decodedData)!
 					}
 				}
@@ -62,7 +66,7 @@ class Event: NSManagedObject {
     {
         
         let df = NSDateFormatter()
-        df.dateStyle = NSDateFormatterStyle.FullStyle
+        df.dateStyle = NSDateFormatterStyle.MediumStyle
         df.timeZone = NSTimeZone(name: "GMT")
         let dstring = df.stringFromDate(self.from_date!)
         
@@ -77,7 +81,7 @@ class Event: NSManagedObject {
     {
         
         let df = NSDateFormatter()
-        df.dateStyle = NSDateFormatterStyle.FullStyle
+        df.dateStyle = NSDateFormatterStyle.MediumStyle
         df.timeZone = NSTimeZone(name: "GMT")
         let dstring = df.stringFromDate(self.to_date!)
         

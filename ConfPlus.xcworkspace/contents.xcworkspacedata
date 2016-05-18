@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:ConfPlus/Model.xcdatamodeld">
+   </FileRef>
+   <FileRef
       location = "group:ConfPlus.xcodeproj">
    </FileRef>
    <FileRef

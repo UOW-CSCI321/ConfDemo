@@ -20,32 +20,43 @@ class ExploreViewController: UIViewController {
 	
 	var events = [Event]()
 	var isDispatchEmpty:Bool = true
+	
+	var refresher: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		navigationController?.hidesBarsOnSwipe = true
-		
+				
 		events = ModelHandler().getEvents("0")
 		EventsTableView.reloadData()
+		
+		refresher = UIRefreshControl()
+		refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
+		refresher.addTarget(self, action: #selector(self.getEventsFromAPI), forControlEvents: UIControlEvents.ValueChanged)
+		self.EventsTableView.addSubview(refresher)
     }
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(true)
 		
+		getEventsFromAPI()
+	}
+	
+	func getEventsFromAPI(){
 		if isDispatchEmpty {
-			let group: dispatch_group_t = dispatch_group_create()
 			isDispatchEmpty = false
 			let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-			notification.duration = 2
 			notification.show()
 			
-			APIManager().getExploreDataFromAPI(group, isDispatchEmpty: &isDispatchEmpty){ result in
-				dispatch_group_notify(group, dispatch_get_main_queue()) {
+			APIManager().getUpcomingEventsByCountry("Australia"){ result in
+				dispatch_async(dispatch_get_main_queue()) {
+					notification.hidden = true
 					self.isDispatchEmpty = true
 					self.events = ModelHandler().getEvents("0")
 					self.EventsTableView.reloadData()
-					print("Reloaded")
+					
+					if self.refresher.refreshing {
+						self.refresher.endRefreshing()
+					}
 				}
 			}
 		}
@@ -81,8 +92,26 @@ extension ExploreViewController: UITableViewDelegate{
 		let date = "\(events[row].getFromDateAsString()) - \(events[row].getToDateAsString())"
 		cell.eventDate.text = date
 		
-		cell.eventImage.image = events[row].getImage()
-		
+		if let poster = events[row].poster {
+			cell.eventImage.image = UIImage(data: poster)
+		} else {
+			dispatch_async(dispatch_get_main_queue(), { () -> Void in
+				APIManager().getPoster(self.events[row]){ result in
+					cell.eventImage.image = self.events[row].getImage()
+				}
+			})
+		}
 		return cell
+	}
+	
+	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		let storyboard : UIStoryboard = UIStoryboard(name: "Explore", bundle: nil)
+		let vc : EventDetailTableViewController = storyboard.instantiateViewControllerWithIdentifier("EventDetailTableViewController") as! EventDetailTableViewController
+		
+		vc.event = events[indexPath.row]
+		
+		let navigationController = UINavigationController(rootViewController: vc)
+		
+		self.presentViewController(navigationController, animated: true, completion: nil)
 	}
 }
