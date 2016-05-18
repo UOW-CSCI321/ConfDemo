@@ -43,6 +43,7 @@ class MessengerViewController: JSQMessagesViewController {
         // messages sent from local sender
         addMessage(senderId, displayName: "matt", text: "Yo!")
         addMessage(senderId, displayName: "matt", text: "I like turtles!")
+        addMessage("system", displayName: "system", text: "the presentation on 'mobile applications' will start in 15 minutes'")
         // animates the receiving of a new message on the view
         finishReceivingMessage()
     }
