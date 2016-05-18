@@ -53,9 +53,15 @@ class MessengerViewController: JSQMessagesViewController {
         //this will set the images from coredata
         if email == "matt3@test.com"
         {
+            //image
             let i1 = UIImage(named:"matt")
             let idefault = UIImage(named:"account2")
-            let i = JSQMessagesAvatarImage(avatarImage: i1, highlightedImage: i1, placeholderImage: idefault)
+            let d = UInt((i1?.size.width)!/2)
+            
+            //circular
+            let circular = JSQMessagesAvatarImageFactory.circularAvatarImage(i1, withDiameter: d)
+            
+            let i = JSQMessagesAvatarImage(avatarImage: circular, highlightedImage: i1, placeholderImage: idefault)
             return i
         }else if email == "michael@test.com"
         {
