@@ -24,6 +24,7 @@ class MessengerViewController: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.inputToolbar.contentView.leftBarButtonItem = nil //remove accessorry button
         print("conversationid: \(conversationID)")
         let bgColour = UIColor(white: 0.85, alpha: 1.0)
         let txtColour = UIColor(white: 0.60, alpha: 1.0)
@@ -303,5 +304,7 @@ class MessengerViewController: JSQMessagesViewController {
         
         return kJSQMessagesCollectionViewCellLabelHeightDefault
     }
+    
+
 }
 
