@@ -61,15 +61,15 @@ class MessengerViewController: JSQMessagesViewController {
         let d1 = dateFormatter.dateFromString("2016-05-16 16:35:00") //dateString	String	"2016-05-01 16:35:00"
         //self.attributedTimestampForDate(d1)
         let d2 = dateFormatter.dateFromString("2016-05-17 16:35:00")
-        let d3 = NSDate()
+        let d3 = dateFormatter.dateFromString("2016-05-19 14:36:00")
         
         
         // messages from someone else
         addMessage("michael@test.com", displayName: "michael", date: d1!, text: "Hey person!")
         // messages sent from local sender
         addMessage(senderId, displayName: "matt", date: d2!, text: "Yo!")
-        addMessage(senderId, displayName: "matt", date: d3, text: "I like turtles!")
-        addMessage("system", displayName: "system", date:d3, text: "the presentation on 'mobile applications' will start in 15 minutes'")
+        addMessage(senderId, displayName: "matt", date: d3!, text: "I like turtles!")
+        addMessage("system", displayName: "system", date:d3!, text: "the presentation on 'mobile applications' will start in 15 minutes'")
         // animates the receiving of a new message on the view
         finishReceivingMessage()
     }
