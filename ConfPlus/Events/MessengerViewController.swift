@@ -35,10 +35,9 @@ class MessengerViewController: JSQMessagesViewController {
         var paragraphStyle: NSMutableParagraphStyle = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
         paragraphStyle.alignment = .Center
         
-        
-        
         dateTextAttributes = [NSFontAttributeName: UIFont.boldSystemFontOfSize(12.0), NSForegroundColorAttributeName: color, NSParagraphStyleAttributeName: paragraphStyle]
         timeTextAttributes = [NSFontAttributeName: UIFont.systemFontOfSize(12.0), NSForegroundColorAttributeName: color, NSParagraphStyleAttributeName: paragraphStyle]
+        //
         
         systemProfilePic = JSQMessagesAvatarImageFactory.avatarImageWithUserInitials("cf+", backgroundColor: bgColour, textColor: txtColour, font: systFont, diameter: 30)
         setupBubbles()
@@ -163,10 +162,32 @@ class MessengerViewController: JSQMessagesViewController {
         let m = JSQMessage(senderId: id, senderDisplayName: displayName, date: date, text: text)
         //let message = JSQMessage(senderId: id, displayName: displayName, text: text)
         messages.append(m)
+        print(messages.count)
     }
     //send message
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
+        let d = NSDate.date()
+        let d = NSDate().descriptionWithLocale(NSLocale.currentLocale())
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeZone = NSTimeZone(name: "GMT")
+        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
+        let d2 = dateFormatter.dateFromString(d)
+            
+
         
+            
+//        let dateFormatter = NSDateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//        dateFormatter.timeZone = NSTimeZone(name: "GMT")
+//        
+//        let d1 = dateFormatter.dateFromString(dateString)
+//        //print(dateStart)
+//        //return d1!
+//        self.to_date = d1
+
+        //        let df = NSDateFormatter()
+//        df.locale = NSLocale.currentLocale()
+//        let dstring = df.stringFromDate(d)
         addMessage(senderId, displayName: senderDisplayName, date: date, text: text)
         
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
@@ -222,6 +243,7 @@ class MessengerViewController: JSQMessagesViewController {
          */
         
         var message: JSQMessage = messages[indexPath.item]
+        print(indexPath.item)
         
         if(indexPath.item != 0)
         {
