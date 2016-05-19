@@ -250,7 +250,7 @@ class MessengerViewController: JSQMessagesViewController {
             }
         }
         
-        return NSAttributedString(string:message.senderId)
+        return NSAttributedString(string: message.senderDisplayName)
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
