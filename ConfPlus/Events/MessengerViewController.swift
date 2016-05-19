@@ -179,40 +179,35 @@ class MessengerViewController: JSQMessagesViewController {
             
             if(indexPath.item != 0)
             {
-                //print(messages)
                 print("index: \(messages[indexPath.item].date), index-1: \(messages[indexPath.item - 1].date)")
-//                let previousMessage = messages[indexPath.item - 1]
-//                
-//                //see if the date is the same but not the time
-//                //            let dcf = NSDateComponentsFormatter()
-//                //            dcf.unitsStyle = NSDateComponentsFormatterUnitsStyle.Full
-//                //
-//                //            let interval = message.date.timeIntervalSinceDate(previousMessage.date)
-//                //            dcf.stringFromTimeInterval(interval)
-//                //            let days = dcf.
-//                print("prev: \(previousMessage.date)")
-//                print("curr: \(message.date)")
-//                
                 var order = NSCalendar.currentCalendar().compareDate(messages[indexPath.item - 1].date, toDate: message.date, toUnitGranularity: .Day)
                 switch order {
                 case .OrderedSame:
-                    print("same")
+                    return nil
                 case .OrderedAscending, .OrderedDescending:
-                    print("asc or desc")
-                default:
-                    print("def")
-                    
+                    //print("asc or desc")
+                    let attributedstring = attributedTimestampForDate(message.date) //my function returns australian format
+                    //let a = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.date) //returns american format
+                    print(message.date)
+                    return attributedstring
                 }
 
+            }else if indexPath.item == 0 //first
+            {
+                let attributedstring = attributedTimestampForDate(message.date) //my function returns australian format
+                //let a = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.date) //returns american format
+                print(message.date)
+                return attributedstring
             }
             
             
-            print(message.date)
-            
-            let attributedstring = attributedTimestampForDate(message.date) //my function returns australian format
-            //let a = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.date) //returns american format
-            
-            return attributedstring
+//            print(message.date)
+//            
+//            let attributedstring = attributedTimestampForDate(message.date) //my function returns australian format
+//            //let a = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.date) //returns american format
+//            
+//            return attributedstring
+        return nil
         /*}
         return nil*/
     }
