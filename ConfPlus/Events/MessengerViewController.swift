@@ -174,16 +174,47 @@ class MessengerViewController: JSQMessagesViewController {
          *
          *  Show a timestamp for every 3rd message
          */
-        if indexPath.item % 3 == 0 {
+        //if indexPath.item % 3 == 0 {
             var message: JSQMessage = messages[indexPath.item]
+            
+            if(indexPath.item != 0)
+            {
+                //print(messages)
+                print("index: \(messages[indexPath.item].date), index-1: \(messages[indexPath.item - 1].date)")
+//                let previousMessage = messages[indexPath.item - 1]
+//                
+//                //see if the date is the same but not the time
+//                //            let dcf = NSDateComponentsFormatter()
+//                //            dcf.unitsStyle = NSDateComponentsFormatterUnitsStyle.Full
+//                //
+//                //            let interval = message.date.timeIntervalSinceDate(previousMessage.date)
+//                //            dcf.stringFromTimeInterval(interval)
+//                //            let days = dcf.
+//                print("prev: \(previousMessage.date)")
+//                print("curr: \(message.date)")
+//                
+                var order = NSCalendar.currentCalendar().compareDate(messages[indexPath.item - 1].date, toDate: message.date, toUnitGranularity: .Day)
+                switch order {
+                case .OrderedSame:
+                    print("same")
+                case .OrderedAscending, .OrderedDescending:
+                    print("asc or desc")
+                default:
+                    print("def")
+                    
+                }
+
+            }
+            
+            
             print(message.date)
             
             let attributedstring = attributedTimestampForDate(message.date) //my function returns australian format
             //let a = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.date) //returns american format
             
             return attributedstring
-        }
-        return nil
+        /*}
+        return nil*/
     }
     
     //This function is a copied and modified version of the function attributedTimestampForDate in JSQMessagesTimestampFormatter
