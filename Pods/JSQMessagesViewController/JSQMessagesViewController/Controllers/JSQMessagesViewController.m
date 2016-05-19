@@ -529,8 +529,6 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
     cell.cellTopLabel.attributedText = [collectionView.dataSource collectionView:collectionView attributedTextForCellTopLabelAtIndexPath:indexPath];
     cell.messageBubbleTopLabel.attributedText = [collectionView.dataSource collectionView:collectionView attributedTextForMessageBubbleTopLabelAtIndexPath:indexPath];
-    NSLog(@"cell top: %@", cell.cellTopLabel.attributedText);
-    NSLog(@"message bubble top: %@", cell.messageBubbleTopLabel.attributedText);
 
     cell.cellBottomLabel.attributedText = [collectionView.dataSource collectionView:collectionView attributedTextForCellBottomLabelAtIndexPath:indexPath];
 
@@ -538,11 +536,9 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
 
     if (isOutgoingMessage) {
         cell.messageBubbleTopLabel.textInsets = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, bubbleTopLabelInset);
-        NSLog(@"message bubble top: %@", cell.messageBubbleTopLabel.attributedText);
     }
     else {
         cell.messageBubbleTopLabel.textInsets = UIEdgeInsetsMake(0.0f, bubbleTopLabelInset, 0.0f, 0.0f);
-        NSLog(@"message bubble top: %@", cell.messageBubbleTopLabel.attributedText);
     }
 
     cell.textView.dataDetectorTypes = UIDataDetectorTypeAll;

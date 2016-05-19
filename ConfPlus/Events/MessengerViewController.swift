@@ -45,6 +45,7 @@ class MessengerViewController: JSQMessagesViewController {
         dateFormatter.timeZone = NSTimeZone(name: "GMT")
         
         let d1 = dateFormatter.dateFromString("2016-05-16 16:35:00") //dateString	String	"2016-05-01 16:35:00"
+        self.attributedTimestampForDate(d1)
         let d2 = dateFormatter.dateFromString("2016-05-17 16:35:00")
         let d3 = NSDate()
         
@@ -211,9 +212,34 @@ class MessengerViewController: JSQMessagesViewController {
         if indexPath.item % 3 == 0 {
             var message: JSQMessage = messages[indexPath.item]
             print(message.date)
-            return JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.date)
+            let a = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.date)
+            print(a)
+            return a
         }
         return nil
+    }
+    
+    func attributedTimestampForDate(date: NSDate?) /*-> NSAttributedString?*/ {
+        if (date == nil) {
+            //return nil
+        }
+        //get date and time into seperate strings for GMT
+        let df = NSDateFormatter()
+        df.dateStyle = NSDateFormatterStyle.ShortStyle
+        df.timeStyle = NSDateFormatterStyle.NoStyle
+        df.timeZone = NSTimeZone(name: "GMT")
+        let dstring = df.stringFromDate(date!)
+        df.dateStyle = NSDateFormatterStyle.NoStyle
+        df.timeStyle = NSDateFormatterStyle.ShortStyle
+        let tstring = df.stringFromDate(date!)
+        
+        
+//        var relativeDate: String = self.relativeDateForDate(date)
+//        var time: String = self.timeForDate(date)
+//        var timestamp: NSMutableAttributedString = NSMutableAttributedString(string: relativeDate, attributes: self.dateTextAttributes)
+//        timestamp.appendAttributedString(NSAttributedString(string: " "))
+//        timestamp.appendAttributedString(NSAttributedString(string: time, attributes: self.timeTextAttributes))
+//        return NSAttributedString(attributedString: timestamp)
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout, heightForCellTopLabelAtIndexPath indexPath: NSIndexPath) -> CGFloat {
