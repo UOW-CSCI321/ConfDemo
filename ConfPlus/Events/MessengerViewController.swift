@@ -19,6 +19,8 @@ class MessengerViewController: JSQMessagesViewController {
     var outgoingBubbleImageView: JSQMessagesBubbleImage!
     var incomingBubbleImageView: JSQMessagesBubbleImage!
     var systemProfilePic: JSQMessagesAvatarImage!
+    var dateTextAttributes:NSDictionary = [:]
+    var timeTextAttributes:NSDictionary = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,17 @@ class MessengerViewController: JSQMessagesViewController {
         let bgColour = UIColor(white: 0.85, alpha: 1.0)
         let txtColour = UIColor(white: 0.60, alpha: 1.0)
         let systFont = UIFont.systemFontOfSize(14/*, weight:10*/)
+        
+        //setup for date
+        var color: UIColor = UIColor.lightGrayColor()
+        var paragraphStyle: NSMutableParagraphStyle = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
+        paragraphStyle.alignment = .Center
+        
+        
+        
+        dateTextAttributes = [NSFontAttributeName: UIFont.boldSystemFontOfSize(12.0), NSForegroundColorAttributeName: color, NSParagraphStyleAttributeName: paragraphStyle]
+        timeTextAttributes = [NSFontAttributeName: UIFont.systemFontOfSize(12.0), NSForegroundColorAttributeName: color, NSParagraphStyleAttributeName: paragraphStyle]
+        
         systemProfilePic = JSQMessagesAvatarImageFactory.avatarImageWithUserInitials("cf+", backgroundColor: bgColour, textColor: txtColour, font: systFont, diameter: 30)
         setupBubbles()
 //        setupAvatarsArray()
@@ -224,12 +237,10 @@ class MessengerViewController: JSQMessagesViewController {
         if (date == nil) {
             //return nil
         }
+        
         //get date and time into seperate strings for GMT
         let df = NSDateFormatter()
-         df.dateFormat = "dd/MM/yy"
-        //df.dateStyle = NSDateFormatterStyle.ShortStyle
-        //df.timeStyle = NSDateFormatterStyle.NoStyle
-        //let z = NSTimeZone.localTimeZone()
+        df.dateFormat = "dd/MM/yy"
         df.timeZone = NSTimeZone(name: "GMT")
         let dstring = df.stringFromDate(date!)
         df.dateStyle = NSDateFormatterStyle.NoStyle
@@ -240,8 +251,11 @@ class MessengerViewController: JSQMessagesViewController {
 //        var relativeDate: String = self.relativeDateForDate(date)
 //        var time: String = self.timeForDate(date)
 //        var timestamp: NSMutableAttributedString = NSMutableAttributedString(string: relativeDate, attributes: self.dateTextAttributes)
-//        timestamp.appendAttributedString(NSAttributedString(string: " "))
-//        timestamp.appendAttributedString(NSAttributedString(string: time, attributes: self.timeTextAttributes))
+        var timestamp: NSMutableAttributedString = NSMutableAttributedString(string: dstring, attributes: self.dateTextAttributes as! [String : AnyObject])
+        
+        timestamp.appendAttributedString(NSAttributedString(string: " "))
+        timestamp.appendAttributedString(NSAttributedString(string: tstring, attributes: self.timeTextAttributes as! [String : AnyObject]))
+        print(timestamp)
 //        return NSAttributedString(attributedString: timestamp)
     }
     
