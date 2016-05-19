@@ -250,7 +250,22 @@ class MessengerViewController: JSQMessagesViewController {
          *
          *  Show a timestamp for every 3rd message
          */
-        if indexPath.item % 3 == 0 {
+        
+        var message: JSQMessage = messages[indexPath.item]
+        
+        if(indexPath.item != 0)
+        {
+            print("index: \(messages[indexPath.item].date), index-1: \(messages[indexPath.item - 1].date)")
+            var order = NSCalendar.currentCalendar().compareDate(messages[indexPath.item - 1].date, toDate: message.date, toUnitGranularity: .Day)
+            switch order {
+            case .OrderedSame:
+                return 0.0
+            case .OrderedAscending, .OrderedDescending:
+                return kJSQMessagesCollectionViewCellLabelHeightDefault
+            }
+            
+        }else if indexPath.item == 0 //first
+        {
             return kJSQMessagesCollectionViewCellLabelHeightDefault
         }
         return 0.0
