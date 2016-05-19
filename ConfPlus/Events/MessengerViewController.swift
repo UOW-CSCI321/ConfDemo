@@ -163,6 +163,15 @@ class MessengerViewController: JSQMessagesViewController {
         //let message = JSQMessage(senderId: id, displayName: displayName, text: text)
         messages.append(m)
     }
+    //send message
+    override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
+        
+        addMessage(senderId, displayName: senderDisplayName, date: date, text: text)
+        
+        JSQSystemSoundPlayer.jsq_playMessageSentSound()
+
+        finishSendingMessage()
+    }
     
     
     override func collectionView(collectionView: JSQMessagesCollectionView, attributedTextForCellTopLabelAtIndexPath indexPath: NSIndexPath) -> NSAttributedString? {
