@@ -39,6 +39,7 @@ class MessengerViewController: JSQMessagesViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        
         //yesterday
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -225,8 +226,10 @@ class MessengerViewController: JSQMessagesViewController {
         }
         //get date and time into seperate strings for GMT
         let df = NSDateFormatter()
-        df.dateStyle = NSDateFormatterStyle.ShortStyle
-        df.timeStyle = NSDateFormatterStyle.NoStyle
+         df.dateFormat = "dd/MM/yy"
+        //df.dateStyle = NSDateFormatterStyle.ShortStyle
+        //df.timeStyle = NSDateFormatterStyle.NoStyle
+        //let z = NSTimeZone.localTimeZone()
         df.timeZone = NSTimeZone(name: "GMT")
         let dstring = df.stringFromDate(date!)
         df.dateStyle = NSDateFormatterStyle.NoStyle
