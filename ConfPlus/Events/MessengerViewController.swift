@@ -59,7 +59,7 @@ class MessengerViewController: JSQMessagesViewController {
         dateFormatter.timeZone = NSTimeZone(name: "GMT")
         
         let d1 = dateFormatter.dateFromString("2016-05-16 16:35:00") //dateString	String	"2016-05-01 16:35:00"
-        self.attributedTimestampForDate(d1)
+        //self.attributedTimestampForDate(d1)
         let d2 = dateFormatter.dateFromString("2016-05-17 16:35:00")
         let d3 = NSDate()
         
@@ -226,14 +226,18 @@ class MessengerViewController: JSQMessagesViewController {
         if indexPath.item % 3 == 0 {
             var message: JSQMessage = messages[indexPath.item]
             print(message.date)
-            let a = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.date)
-            print(a)
-            return a
+            
+            let attributedstring = attributedTimestampForDate(message.date)
+            //let a = JSQMessagesTimestampFormatter.sharedFormatter(attributedstring)
+            //let a = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.date)
+            
+            //print(a)
+            return attributedstring
         }
         return nil
     }
     
-    func attributedTimestampForDate(date: NSDate?) /*-> NSAttributedString?*/ {
+    func attributedTimestampForDate(date: NSDate?) -> NSAttributedString? {
         if (date == nil) {
             //return nil
         }
@@ -255,8 +259,8 @@ class MessengerViewController: JSQMessagesViewController {
         
         timestamp.appendAttributedString(NSAttributedString(string: " "))
         timestamp.appendAttributedString(NSAttributedString(string: tstring, attributes: self.timeTextAttributes as! [String : AnyObject]))
-        print(timestamp)
-//        return NSAttributedString(attributedString: timestamp)
+        //print(timestamp)
+        return NSAttributedString(attributedString: timestamp)
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout, heightForCellTopLabelAtIndexPath indexPath: NSIndexPath) -> CGFloat {
