@@ -154,16 +154,14 @@ class MessengerViewController: JSQMessagesViewController {
         } else {
             cell.textView!.textColor = UIColor.blackColor()
         }
-        print(cell.messageBubbleTopLabel.attributedText)
+        //print(cell.messageBubbleTopLabel.attributedText)
         return cell
     }
     
     func addMessage(id: String, displayName:String, date:NSDate, text: String) {
-        //let today = NSDate()
         let m = JSQMessage(senderId: id, senderDisplayName: displayName, date: date, text: text)
         //let message = JSQMessage(senderId: id, displayName: displayName, text: text)
         messages.append(m)
-        //print(m) //data is setting properly
     }
     
     
@@ -172,14 +170,14 @@ class MessengerViewController: JSQMessagesViewController {
          *  This logic should be consistent with what you return from `heightForCellTopLabelAtIndexPath:`
          *  The other label text delegate methods should follow a similar pattern.
          *
-         *  Show a timestamp for every 3rd message
+         *  Show a timestamp for every 3rd message - change to show for every cell that is a new date
          */
         //if indexPath.item % 3 == 0 {
             var message: JSQMessage = messages[indexPath.item]
             
             if(indexPath.item != 0)
             {
-                print("index: \(messages[indexPath.item].date), index-1: \(messages[indexPath.item - 1].date)")
+                //print("index: \(messages[indexPath.item].date), index-1: \(messages[indexPath.item - 1].date)")
                 var order = NSCalendar.currentCalendar().compareDate(messages[indexPath.item - 1].date, toDate: message.date, toUnitGranularity: .Day)
                 switch order {
                 case .OrderedSame:
@@ -188,7 +186,7 @@ class MessengerViewController: JSQMessagesViewController {
                     //print("asc or desc")
                     let attributedstring = attributedTimestampForDate(message.date) //my function returns australian format
                     //let a = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.date) //returns american format
-                    print(message.date)
+                    //print(message.date)
                     return attributedstring
                 }
 
@@ -196,48 +194,10 @@ class MessengerViewController: JSQMessagesViewController {
             {
                 let attributedstring = attributedTimestampForDate(message.date) //my function returns australian format
                 //let a = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.date) //returns american format
-                print(message.date)
+                //print(message.date)
                 return attributedstring
             }
-            
-            
-//            print(message.date)
-//            
-//            let attributedstring = attributedTimestampForDate(message.date) //my function returns australian format
-//            //let a = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.date) //returns american format
-//            
-//            return attributedstring
         return nil
-        /*}
-        return nil*/
-    }
-    
-    //This function is a copied and modified version of the function attributedTimestampForDate in JSQMessagesTimestampFormatter
-    //I needed to modify the function so that the date returned is in the australian format not the american
-    func attributedTimestampForDate(date: NSDate?) -> NSAttributedString? {
-        if (date == nil) {
-            //return nil
-        }
-        
-        //get date and time into seperate strings for GMT
-        let df = NSDateFormatter()
-        df.dateFormat = "dd/MM/yy"
-        df.timeZone = NSTimeZone(name: "GMT")
-        let dstring = df.stringFromDate(date!)
-        df.dateStyle = NSDateFormatterStyle.NoStyle
-        df.timeStyle = NSDateFormatterStyle.ShortStyle
-        let tstring = df.stringFromDate(date!)
-        
-        
-//        var relativeDate: String = self.relativeDateForDate(date)
-//        var time: String = self.timeForDate(date)
-//        var timestamp: NSMutableAttributedString = NSMutableAttributedString(string: relativeDate, attributes: self.dateTextAttributes)
-        var timestamp: NSMutableAttributedString = NSMutableAttributedString(string: dstring, attributes: self.dateTextAttributes as! [String : AnyObject])
-        
-        timestamp.appendAttributedString(NSAttributedString(string: " "))
-        timestamp.appendAttributedString(NSAttributedString(string: tstring, attributes: self.timeTextAttributes as! [String : AnyObject]))
-        //print(timestamp)
-        return NSAttributedString(attributedString: timestamp)
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout, heightForCellTopLabelAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -248,14 +208,14 @@ class MessengerViewController: JSQMessagesViewController {
          *  This logic should be consistent with what you return from `attributedTextForCellTopLabelAtIndexPath:`
          *  The other label height delegate methods should follow similarly
          *
-         *  Show a timestamp for every 3rd message
+         *  Show a timestamp for every 3rd message - change to show for every cell that is a new date
          */
         
         var message: JSQMessage = messages[indexPath.item]
         
         if(indexPath.item != 0)
         {
-            print("index: \(messages[indexPath.item].date), index-1: \(messages[indexPath.item - 1].date)")
+            //print("index: \(messages[indexPath.item].date), index-1: \(messages[indexPath.item - 1].date)")
             var order = NSCalendar.currentCalendar().compareDate(messages[indexPath.item - 1].date, toDate: message.date, toUnitGranularity: .Day)
             switch order {
             case .OrderedSame:
@@ -269,6 +229,30 @@ class MessengerViewController: JSQMessagesViewController {
             return kJSQMessagesCollectionViewCellLabelHeightDefault
         }
         return 0.0
+    }
+
+    
+    //This function is a copied and modified version of the function attributedTimestampForDate in JSQMessagesTimestampFormatter
+    //I needed to modify the function so that the date returned is in the australian format not the american
+    func attributedTimestampForDate(date: NSDate?) -> NSAttributedString? {
+        if (date == nil) {
+            return nil
+        }
+        
+        //get date and time into seperate strings for GMT
+        let df = NSDateFormatter()
+        df.dateFormat = "dd/MM/yy"
+        df.timeZone = NSTimeZone(name: "GMT")
+        let dstring = df.stringFromDate(date!)
+        df.dateStyle = NSDateFormatterStyle.NoStyle
+        df.timeStyle = NSDateFormatterStyle.ShortStyle
+        let tstring = df.stringFromDate(date!)
+        
+        
+        var timestamp: NSMutableAttributedString = NSMutableAttributedString(string: dstring, attributes: self.dateTextAttributes as! [String : AnyObject])
+        timestamp.appendAttributedString(NSAttributedString(string: " "))
+        timestamp.appendAttributedString(NSAttributedString(string: tstring, attributes: self.timeTextAttributes as! [String : AnyObject]))
+        return NSAttributedString(attributedString: timestamp)
     }
     
     
