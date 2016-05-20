@@ -308,11 +308,59 @@ class MessengerViewController: JSQMessagesViewController {
     override func collectionView(collectionView: JSQMessagesCollectionView, didTapMessageBubbleAtIndexPath indexPath: NSIndexPath) {
         print("Tapped message bubble!")
     }
+   
+    //copy function of whats in cocoapod that just returns time not formatted
+//    func relativeTimeForDate(date: NSDate?) -> String? {
+//        if date == nil {
+//            return nil
+//        }
+//        let df = NSDateFormatter()
+//        df.dateStyle = NSDateFormatterStyle.NoStyle // NSDateFormatterMediumStyle
+//        df.timeStyle = NSDateFormatterStyle.ShortStyle // NSDateFormatterNoStyle
+//        return df.stringFromDate(date!)
+//    }
+    func timeForDate(date: NSDate?) -> String? {
+        if date == nil {
+            return nil
+        }
+        let df = NSDateFormatter()
+        df.dateStyle = NSDateFormatterStyle.NoStyle
+        df.timeStyle = NSDateFormatterStyle.ShortStyle
+        return df.stringFromDate(date!)
+    }
     
+    func attributedTimesForDate(date: NSDate?) -> NSAttributedString? {
+        if date == nil {
+            return nil
+        }
+        var relativeDate: String = ""
+        var time: String = timeForDate(date)!
+        let timestamp: NSMutableAttributedString = NSMutableAttributedString(string: relativeDate, attributes: dateTextAttributes as! [String : AnyObject])
+        timestamp.appendAttributedString(NSAttributedString(string: " "))
+        timestamp.appendAttributedString(NSAttributedString(string: time, attributes: timeTextAttributes as! [String : AnyObject]))
+        return NSAttributedString(attributedString: timestamp)
+    }
+    //
+
     //functions for message bottom label
     override func collectionView(collectionView: JSQMessagesCollectionView, attributedTextForCellBottomLabelAtIndexPath indexPath: NSIndexPath) -> NSAttributedString? {
         //return nil
-       return NSAttributedString(string: "test")
+        let message = messages[indexPath.item];
+        let date = message.date
+        
+        //remove date
+//        var comps:NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute], fromDate: date)
+//        let d2 = NSCalendar.currentCalendar().dateFromComponents(comps)
+//        
+//        print("origional date: \(date)")
+//        print("date time only: \(d2)")
+        
+        //let attributedstring = JSQMessagesTimestampFormatter.sharedFormatter().timeForDate(date)
+        //NO USE CUSTOM FUNC
+        let attributedstring = attributedTimesForDate(date)
+        //print(attributedstring)
+        
+       return attributedstring
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout, heightForCellBottomLabelAtIndexPath indexPath: NSIndexPath) -> CGFloat {
