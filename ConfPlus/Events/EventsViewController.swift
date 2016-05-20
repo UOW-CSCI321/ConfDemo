@@ -132,14 +132,14 @@ extension EventsViewController: UITableViewDelegate{
 		return cell
 	}
 	
-//	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//		let storyboard : UIStoryboard = UIStoryboard(name: "Explore", bundle: nil)
-//		let vc : EventDetailTableViewController = storyboard.instantiateViewControllerWithIdentifier("EventDetailTableViewController") as! EventDetailTableViewController
-//		
-//		vc.event = events[indexPath.row]
-//		
-//		let navigationController = UINavigationController(rootViewController: vc)
-//		
-//		self.presentViewController(navigationController, animated: true, completion: nil)
-//	}
+	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		let storyboard : UIStoryboard = UIStoryboard(name: "Event", bundle: nil)
+		let vc : HomeViewController = storyboard.instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
+		
+		vc.event = events[indexPath.row]
+		
+		let navigationController = UINavigationController(rootViewController: vc)
+		
+		self.presentViewController(navigationController, animated: true, completion: nil)
+	}
 }

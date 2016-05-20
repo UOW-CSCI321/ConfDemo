@@ -25,9 +25,6 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
     let address = "test address"
     var event:Event!
     var venue:Venue?
-
-    
-    
     
     @IBOutlet var eventDetailsTableView: UITableView!
 	
@@ -111,11 +108,4 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
         }
         return nil
     }
-	
-	
-	@IBAction func backButton(sender: AnyObject) {
-		self.dismissViewControllerAnimated(true, completion: nil)
-	}
-	
-
 }

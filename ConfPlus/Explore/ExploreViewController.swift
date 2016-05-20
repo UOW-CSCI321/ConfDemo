@@ -12,6 +12,7 @@ import SwiftyJSON
 import CoreData
 import Foundation
 import MPGNotification
+import PKHUD
 
 
 class ExploreViewController: UIViewController {
@@ -29,6 +30,8 @@ class ExploreViewController: UIViewController {
 		events = ModelHandler().getEvents("0")
 		EventsTableView.reloadData()
 		
+		
+		
 		refresher = UIRefreshControl()
 		refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
 		refresher.addTarget(self, action: #selector(self.getEventsFromAPI), forControlEvents: UIControlEvents.ValueChanged)
@@ -37,7 +40,6 @@ class ExploreViewController: UIViewController {
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(true)
-		
 		getEventsFromAPI()
 	}
 	
@@ -110,8 +112,6 @@ extension ExploreViewController: UITableViewDelegate{
 		
 		vc.event = events[indexPath.row]
 		
-		let navigationController = UINavigationController(rootViewController: vc)
-		
-		self.presentViewController(navigationController, animated: true, completion: nil)
+		self.navigationController?.pushViewController(vc, animated: true)
 	}
 }
