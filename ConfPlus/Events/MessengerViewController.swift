@@ -23,6 +23,7 @@ class MessengerViewController: JSQMessagesViewController {
     var timeTextAttributes:NSDictionary = [:]
     //var messagesCollectionViewFlowLayout = AnyObject.self
     var cellIndexPathForCustomHeight = NSIndexPath()
+    var timeIsOpen = [Bool]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -165,6 +166,10 @@ class MessengerViewController: JSQMessagesViewController {
         //let message = JSQMessage(senderId: id, displayName: displayName, text: text)
         messages.append(m)
         print(messages.count)
+        
+        //add time not open to the time array
+        let b = false
+        timeIsOpen.append(b)
     }
     //send message
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
@@ -357,7 +362,16 @@ class MessengerViewController: JSQMessagesViewController {
 
         if indexPath == self.cellIndexPathForCustomHeight //if the cell we are looking at is the one for the customer height
         {
-            return kJSQMessagesCollectionViewCellLabelHeightDefault
+            //return kJSQMessagesCollectionViewCellLabelHeightDefault
+            if timeIsOpen[indexPath.item]
+            {
+               timeIsOpen[indexPath.item] = false
+                return 0.0
+            }
+            else{
+                timeIsOpen[indexPath.item] = true
+                return kJSQMessagesCollectionViewCellLabelHeightDefault
+            }
         }else {
             return 0.0
         }
