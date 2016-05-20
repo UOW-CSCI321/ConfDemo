@@ -362,6 +362,7 @@ class MessengerViewController: JSQMessagesViewController {
             var height:CGFloat = 0.0
             if messagedClicked == 0
             {
+                height = kJSQMessagesCollectionViewCellLabelHeightDefault
                 messagedClicked = 1
             }else if messagedClicked == 1
             {
@@ -371,6 +372,10 @@ class MessengerViewController: JSQMessagesViewController {
             {
                 messagedClicked = 3
             }else if messagedClicked == 3
+            {
+                messagedClicked = 4
+            }
+            else if messagedClicked == 4
             {
                 messagedClicked = 0
             }
