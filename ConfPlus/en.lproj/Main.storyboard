@@ -1365,7 +1365,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="z46-hg-J4F"/>
-                    <navigationItem key="navigationItem" title="Title" id="xbe-nJ-7f3">
+                    <navigationItem key="navigationItem" title="Profile" id="xbe-nJ-7f3">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="0Qk-Id-7Sq">
                             <connections>
                                 <segue destination="oCw-Ku-lcE" kind="show" id="DhJ-vP-qKF"/>
@@ -2019,6 +2019,6 @@
         <image name="profile" width="25" height="25"/>
         <image name="second" width="30" height="30"/>
         <image name="tickets" width="64" height="64"/>
-        <image name="timetable" width="64" height="64"/>
+        <image name="timetable" width="30" height="30"/>
     </resources>
 </document>

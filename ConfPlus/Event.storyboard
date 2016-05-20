@@ -9,7 +9,7 @@
         <!--Overview-->
         <scene sceneID="uSx-16-Vwc">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="3IV-pw-H5f" customClass="HomeViewController" customModule="ConfPlus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" hidesBottomBarWhenPushed="YES" id="3IV-pw-H5f" customClass="HomeViewController" customModule="ConfPlus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1kh-QH-7jR"/>
                         <viewControllerLayoutGuide type="bottom" id="zEh-Kp-7QH"/>
@@ -66,7 +66,7 @@
                                 <rect key="frame" x="0.0" y="177" width="600" height="423"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="uAo-ZH-9a4" rowHeight="54" style="IBUITableViewCellStyleDefault" id="Gxl-KH-rGg">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="featureCell" textLabel="uAo-ZH-9a4" rowHeight="54" style="IBUITableViewCellStyleDefault" id="Gxl-KH-rGg">
                                         <rect key="frame" x="0.0" y="28" width="600" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gxl-KH-rGg" id="RIb-Rt-xHb">
@@ -84,6 +84,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="3IV-pw-H5f" id="Gap-wH-vwe"/>
+                                    <outlet property="delegate" destination="3IV-pw-H5f" id="Vxo-6i-9Ko"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -101,10 +105,14 @@
                         <barButtonItem key="leftBarButtonItem" title="Back" id="WWv-gq-811"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="MrZ-HI-XE6" kind="show" id="PzK-WE-SMs"/>
-                        <segue destination="5TF-VD-gZr" kind="show" id="RCw-yj-Atz"/>
-                        <segue destination="gRB-9D-0Xg" kind="show" id="d67-GF-uzp"/>
-                        <segue destination="lAt-ud-eFM" kind="show" id="RYW-H8-Wqz"/>
+                        <outlet property="eventDate" destination="Sba-2K-R4G" id="EGQ-Wx-jpR"/>
+                        <outlet property="eventLocation" destination="udg-Do-YBT" id="Ma2-YF-ds2"/>
+                        <outlet property="eventName" destination="Pfe-NA-rRo" id="WGV-wa-u3q"/>
+                        <outlet property="tableView" destination="1d7-jB-zuM" id="HHE-tE-kGX"/>
+                        <segue destination="MrZ-HI-XE6" kind="show" identifier="goToTimetable" id="PzK-WE-SMs"/>
+                        <segue destination="5TF-VD-gZr" kind="show" identifier="goToTickets" id="RCw-yj-Atz"/>
+                        <segue destination="gRB-9D-0Xg" kind="show" identifier="goToParticipants" id="d67-GF-uzp"/>
+                        <segue destination="lAt-ud-eFM" kind="show" identifier="goToAdministrations" id="RYW-H8-Wqz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SPT-73-xdL" sceneMemberID="firstResponder"/>
@@ -554,7 +562,7 @@
             </objects>
             <point key="canvasLocation" x="2621" y="995"/>
         </scene>
-        <!--Attending-->
+        <!--Participants-->
         <scene sceneID="7Jl-3P-48E">
             <objects>
                 <viewController storyboardIdentifier="AttendingViewController" id="gRB-9D-0Xg" customClass="AttendingViewController" customModule="ConfPlus" customModuleProvider="target" sceneMemberID="viewController">
@@ -603,7 +611,7 @@
                             <constraint firstAttribute="bottom" secondItem="cCc-X5-K59" secondAttribute="bottom" id="t0f-z8-HYW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Attending" id="TGX-sz-F0M"/>
+                    <navigationItem key="navigationItem" title="Participants" id="TGX-sz-F0M"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KHP-iw-34D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
