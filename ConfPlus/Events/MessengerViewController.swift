@@ -351,26 +351,18 @@ class MessengerViewController: JSQMessagesViewController {
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout, heightForCellBottomLabelAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        print("global indxpath: \(self.cellIndexPathForCustomHeight)")
-        print("indexpath: \(indexPath)")
-        print("indexpath.item: \(indexPath.item)")
-        //set out own collectionViewFlowLayout
-        //self.messagesCollectionViewFlowLayout = collectionViewLayout
+        //print("global indxpath: \(self.cellIndexPathForCustomHeight)")
+        //print("indexpath: \(indexPath)")
+        //print("indexpath.item: \(indexPath.item)")
+
         if indexPath == self.cellIndexPathForCustomHeight //if the cell we are looking at is the one for the customer height
         {
             return kJSQMessagesCollectionViewCellLabelHeightDefault
         }else {
             return 0.0
         }
-        
-        return 0.0
-        //return kJSQMessagesCollectionViewCellLabelHeightDefault
     }
-    
-//    func customCollectionView(collectionView: JSQMessagesCollectionView, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout, heightForCellBottomLabelAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        //return 0.0
-//        return kJSQMessagesCollectionViewCellLabelHeightDefault
-//    }
+
 
 }
 
