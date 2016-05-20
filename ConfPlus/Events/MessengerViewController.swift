@@ -221,7 +221,7 @@ class MessengerViewController: JSQMessagesViewController {
          */
         
         var message: JSQMessage = messages[indexPath.item]
-        print(indexPath.item)
+        //print(indexPath.item)
         
         if(indexPath.item != 0)
         {
@@ -305,6 +305,20 @@ class MessengerViewController: JSQMessagesViewController {
         return kJSQMessagesCollectionViewCellLabelHeightDefault
     }
     
+    override func collectionView(collectionView: JSQMessagesCollectionView, didTapMessageBubbleAtIndexPath indexPath: NSIndexPath) {
+        print("Tapped message bubble!")
+    }
+    
+    //functions for message bottom label
+    override func collectionView(collectionView: JSQMessagesCollectionView, attributedTextForCellBottomLabelAtIndexPath indexPath: NSIndexPath) -> NSAttributedString? {
+        //return nil
+       return NSAttributedString(string: "test")
+    }
+    
+    override func collectionView(collectionView: JSQMessagesCollectionView, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout, heightForCellBottomLabelAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        //return 0.0
+        return kJSQMessagesCollectionViewCellLabelHeightDefault
+    }
 
 }
 
