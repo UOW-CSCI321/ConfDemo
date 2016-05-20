@@ -23,6 +23,7 @@ class MessengerViewController: JSQMessagesViewController {
     var timeTextAttributes:NSDictionary = [:]
     //var messagesCollectionViewFlowLayout = AnyObject.self
     var cellIndexPathForCustomHeight = NSIndexPath()
+    var messagedClicked = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -357,7 +358,23 @@ class MessengerViewController: JSQMessagesViewController {
 
         if indexPath == self.cellIndexPathForCustomHeight //if the cell we are looking at is the one for the customer height
         {
-            return kJSQMessagesCollectionViewCellLabelHeightDefault
+            //return kJSQMessagesCollectionViewCellLabelHeightDefault
+            var height:CGFloat = 0.0
+            if messagedClicked == 0
+            {
+                messagedClicked = 1
+            }else if messagedClicked == 1
+            {
+                height = kJSQMessagesCollectionViewCellLabelHeightDefault
+                messagedClicked = 2
+            }else if messagedClicked == 2
+            {
+                messagedClicked = 3
+            }else if messagedClicked == 3
+            {
+                messagedClicked = 0
+            }
+            return height
         }else {
             return 0.0
         }
