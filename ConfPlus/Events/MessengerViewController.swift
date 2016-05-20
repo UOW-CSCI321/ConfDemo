@@ -166,18 +166,6 @@ class MessengerViewController: JSQMessagesViewController {
     }
     //send message
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
-        let d1 = NSDate()
-//        print(d1)
-//        let d = NSDate().descriptionWithLocale(NSLocale.currentLocale())
-//        let dateFormatter = NSDateFormatter()
-//        dateFormatter.timeZone = NSTimeZone(name: "GMT")
-//        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
-//        let d2 = dateFormatter.dateFromString(d)
-//            
-//
-//        let components = NSDateComponents()
-        
-            
 
         addMessage(senderId, displayName: senderDisplayName, date: date, text: text)
         
@@ -205,19 +193,17 @@ class MessengerViewController: JSQMessagesViewController {
                 case .OrderedSame:
                     return nil
                 case .OrderedAscending, .OrderedDescending:
-                    //print("asc or desc")
                    // let attributedstring = attributedTimestampForDate(message.date) //my function returns australian format
-                    let attributedstring = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.date) //returns american format
-                    print("date: \(message.date) converted to \(attributedstring)")
+                    let attributedstring = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.date)
+                    //print("date: \(message.date) converted to \(attributedstring)")
                     return attributedstring
                 }
 
             }else if indexPath.item == 0 //first
             {
                 //let attributedstring = attributedTimestampForDate(message.date) //my function returns australian format
-                let attributedstring = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.date) //returns american format
-                //print(message.date)
-                print("date: \(message.date) converted to \(attributedstring)")
+                let attributedstring = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.date)
+                //print("date: \(message.date) converted to \(attributedstring)")
                 return attributedstring
             }
         return nil
