@@ -310,15 +310,6 @@ class MessengerViewController: JSQMessagesViewController {
     }
    
     //copy function of whats in cocoapod that just returns time not formatted
-//    func relativeTimeForDate(date: NSDate?) -> String? {
-//        if date == nil {
-//            return nil
-//        }
-//        let df = NSDateFormatter()
-//        df.dateStyle = NSDateFormatterStyle.NoStyle // NSDateFormatterMediumStyle
-//        df.timeStyle = NSDateFormatterStyle.ShortStyle // NSDateFormatterNoStyle
-//        return df.stringFromDate(date!)
-//    }
     func timeForDate(date: NSDate?) -> String? {
         if date == nil {
             return nil
@@ -348,17 +339,9 @@ class MessengerViewController: JSQMessagesViewController {
         let message = messages[indexPath.item];
         let date = message.date
         
-        //remove date
-//        var comps:NSDateComponents = NSCalendar.currentCalendar().components([.Hour, .Minute], fromDate: date)
-//        let d2 = NSCalendar.currentCalendar().dateFromComponents(comps)
-//        
-//        print("origional date: \(date)")
-//        print("date time only: \(d2)")
-        
         //let attributedstring = JSQMessagesTimestampFormatter.sharedFormatter().timeForDate(date)
         //NO USE CUSTOM FUNC
         let attributedstring = attributedTimesForDate(date)
-        //print(attributedstring)
         
        return attributedstring
     }
