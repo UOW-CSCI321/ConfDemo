@@ -21,6 +21,8 @@ class MessengerViewController: JSQMessagesViewController {
     var systemProfilePic: JSQMessagesAvatarImage!
     var dateTextAttributes:NSDictionary = [:]
     var timeTextAttributes:NSDictionary = [:]
+    //var messagesCollectionViewFlowLayout = AnyObject.self
+    var cellIndexPathForCustomHeight = NSIndexPath()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -306,6 +308,8 @@ class MessengerViewController: JSQMessagesViewController {
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView, didTapMessageBubbleAtIndexPath indexPath: NSIndexPath) {
+        self.cellIndexPathForCustomHeight = indexPath //.item //this is the message that we want to change the height for
+        finishReceivingMessage() //this will load the collection view
         print("Tapped message bubble!")
     }
    
@@ -347,9 +351,26 @@ class MessengerViewController: JSQMessagesViewController {
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout, heightForCellBottomLabelAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        //return 0.0
-        return kJSQMessagesCollectionViewCellLabelHeightDefault
+        print("global indxpath: \(self.cellIndexPathForCustomHeight)")
+        print("indexpath: \(indexPath)")
+        print("indexpath.item: \(indexPath.item)")
+        //set out own collectionViewFlowLayout
+        //self.messagesCollectionViewFlowLayout = collectionViewLayout
+        if indexPath == self.cellIndexPathForCustomHeight //if the cell we are looking at is the one for the customer height
+        {
+            return kJSQMessagesCollectionViewCellLabelHeightDefault
+        }else {
+            return 0.0
+        }
+        
+        return 0.0
+        //return kJSQMessagesCollectionViewCellLabelHeightDefault
     }
+    
+//    func customCollectionView(collectionView: JSQMessagesCollectionView, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout, heightForCellBottomLabelAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        //return 0.0
+//        return kJSQMessagesCollectionViewCellLabelHeightDefault
+//    }
 
 }
 
