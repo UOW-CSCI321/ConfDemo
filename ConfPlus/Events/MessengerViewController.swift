@@ -166,28 +166,19 @@ class MessengerViewController: JSQMessagesViewController {
     }
     //send message
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
-        let d = NSDate.date()
-        let d = NSDate().descriptionWithLocale(NSLocale.currentLocale())
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.timeZone = NSTimeZone(name: "GMT")
-        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
-        let d2 = dateFormatter.dateFromString(d)
-            
-
+        let d1 = NSDate()
+//        print(d1)
+//        let d = NSDate().descriptionWithLocale(NSLocale.currentLocale())
+//        let dateFormatter = NSDateFormatter()
+//        dateFormatter.timeZone = NSTimeZone(name: "GMT")
+//        dateFormatter.dateStyle = NSDateFormatterStyle.LongStyle
+//        let d2 = dateFormatter.dateFromString(d)
+//            
+//
+//        let components = NSDateComponents()
         
             
-//        let dateFormatter = NSDateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//        dateFormatter.timeZone = NSTimeZone(name: "GMT")
-//        
-//        let d1 = dateFormatter.dateFromString(dateString)
-//        //print(dateStart)
-//        //return d1!
-//        self.to_date = d1
 
-        //        let df = NSDateFormatter()
-//        df.locale = NSLocale.currentLocale()
-//        let dstring = df.stringFromDate(d)
         addMessage(senderId, displayName: senderDisplayName, date: date, text: text)
         
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
@@ -208,24 +199,25 @@ class MessengerViewController: JSQMessagesViewController {
             
             if(indexPath.item != 0)
             {
-                //print("index: \(messages[indexPath.item].date), index-1: \(messages[indexPath.item - 1].date)")
+                print("index: \(messages[indexPath.item].date), index-1: \(messages[indexPath.item - 1].date)")
                 var order = NSCalendar.currentCalendar().compareDate(messages[indexPath.item - 1].date, toDate: message.date, toUnitGranularity: .Day)
                 switch order {
                 case .OrderedSame:
                     return nil
                 case .OrderedAscending, .OrderedDescending:
                     //print("asc or desc")
-                    let attributedstring = attributedTimestampForDate(message.date) //my function returns australian format
-                    //let a = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.date) //returns american format
-                    //print(message.date)
+                   // let attributedstring = attributedTimestampForDate(message.date) //my function returns australian format
+                    let attributedstring = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.date) //returns american format
+                    print("date: \(message.date) converted to \(attributedstring)")
                     return attributedstring
                 }
 
             }else if indexPath.item == 0 //first
             {
-                let attributedstring = attributedTimestampForDate(message.date) //my function returns australian format
-                //let a = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.date) //returns american format
+                //let attributedstring = attributedTimestampForDate(message.date) //my function returns australian format
+                let attributedstring = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.date) //returns american format
                 //print(message.date)
+                print("date: \(message.date) converted to \(attributedstring)")
                 return attributedstring
             }
         return nil
@@ -263,29 +255,29 @@ class MessengerViewController: JSQMessagesViewController {
         return 0.0
     }
 
-    
+    //This is incorrect as dates on the server are stored as gmt and displayed as gmt+10 not stored as gmt+10 on server
     //This function is a copied and modified version of the function attributedTimestampForDate in JSQMessagesTimestampFormatter
     //I needed to modify the function so that the date returned is in the australian format not the american
-    func attributedTimestampForDate(date: NSDate?) -> NSAttributedString? {
-        if (date == nil) {
-            return nil
-        }
-        
-        //get date and time into seperate strings for GMT
-        let df = NSDateFormatter()
-        df.dateFormat = "dd/MM/yy"
-        df.timeZone = NSTimeZone(name: "GMT")
-        let dstring = df.stringFromDate(date!)
-        df.dateStyle = NSDateFormatterStyle.NoStyle
-        df.timeStyle = NSDateFormatterStyle.ShortStyle
-        let tstring = df.stringFromDate(date!)
-        
-        
-        var timestamp: NSMutableAttributedString = NSMutableAttributedString(string: dstring, attributes: self.dateTextAttributes as! [String : AnyObject])
-        timestamp.appendAttributedString(NSAttributedString(string: " "))
-        timestamp.appendAttributedString(NSAttributedString(string: tstring, attributes: self.timeTextAttributes as! [String : AnyObject]))
-        return NSAttributedString(attributedString: timestamp)
-    }
+//    func attributedTimestampForDate(date: NSDate?) -> NSAttributedString? {
+//        if (date == nil) {
+//            return nil
+//        }
+//        
+//        //get date and time into seperate strings for GMT
+//        let df = NSDateFormatter()
+//        df.dateFormat = "dd/MM/yy"
+//        df.timeZone = NSTimeZone(name: "GMT")
+//        let dstring = df.stringFromDate(date!)
+//        df.dateStyle = NSDateFormatterStyle.NoStyle
+//        df.timeStyle = NSDateFormatterStyle.ShortStyle
+//        let tstring = df.stringFromDate(date!)
+//        
+//        
+//        var timestamp: NSMutableAttributedString = NSMutableAttributedString(string: dstring, attributes: self.dateTextAttributes as! [String : AnyObject])
+//        timestamp.appendAttributedString(NSAttributedString(string: " "))
+//        timestamp.appendAttributedString(NSAttributedString(string: tstring, attributes: self.timeTextAttributes as! [String : AnyObject]))
+//        return NSAttributedString(attributedString: timestamp)
+//    }
     
     
     // View  usernames above bubbles
