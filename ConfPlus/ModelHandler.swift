@@ -185,11 +185,11 @@ class ModelHandler{
         convo.lastmsg_content = json["content"].string
         convo.lastmsg_email = json["sender_email"].string
         convo.lastmsg_date = serverStringToDate(json["date"].string!)
-        print(convo.conversation_id)
-        print(convo.name)
-        print(convo.lastmsg_content)
-        print(convo.lastmsg_email)
-        print(convo.lastmsg_date)
+//        print(convo.conversation_id)
+//        print(convo.name)
+//        print(convo.lastmsg_content)
+//        print(convo.lastmsg_email)
+//        print(convo.lastmsg_date)
         
         performUpdate()
         
@@ -199,13 +199,13 @@ class ModelHandler{
     func addNewMessage(json: JSON) -> Message
     {
         let message = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: self.context) as! Message
-
+        
         message.content = json["content"].string
         message.date = serverStringToDate(json["updated_at"].string!)
         message.sender_email = json["sender_email"].string
-        print(message.content)
-        print(message.date)
-        print(message.sender)
+//        print(message.content)
+//        print(message.date)
+//        print(message.sender_email)
         
         performUpdate()
         
