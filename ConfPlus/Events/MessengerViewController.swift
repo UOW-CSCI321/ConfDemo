@@ -23,7 +23,8 @@ class MessengerViewController: JSQMessagesViewController {
     var timeTextAttributes:NSDictionary = [:]
     //var messagesCollectionViewFlowLayout = AnyObject.self
     var cellIndexPathForCustomHeight = NSIndexPath()
-    var messagedClicked = 0
+    var timeIsOpen = [Bool]()
+    var returnHeight:CGFloat = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -166,6 +167,10 @@ class MessengerViewController: JSQMessagesViewController {
         //let message = JSQMessage(senderId: id, displayName: displayName, text: text)
         messages.append(m)
         print(messages.count)
+        
+        //add time not open to the time array
+        let b = false
+        timeIsOpen.append(b)
     }
     //send message
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
@@ -310,6 +315,20 @@ class MessengerViewController: JSQMessagesViewController {
     
     override func collectionView(collectionView: JSQMessagesCollectionView, didTapMessageBubbleAtIndexPath indexPath: NSIndexPath) {
         self.cellIndexPathForCustomHeight = indexPath //.item //this is the message that we want to change the height for
+        
+        
+        if timeIsOpen[indexPath.item]
+        {
+            timeIsOpen[indexPath.item] = false
+            returnHeight = 0.0
+        }
+        else{
+            timeIsOpen[indexPath.item] = true
+            returnHeight =  kJSQMessagesCollectionViewCellLabelHeightDefault
+        }
+
+        
+        
         finishReceivingMessage() //this will load the collection view
         print("Tapped message bubble!")
     }
@@ -359,27 +378,16 @@ class MessengerViewController: JSQMessagesViewController {
         if indexPath == self.cellIndexPathForCustomHeight //if the cell we are looking at is the one for the customer height
         {
             //return kJSQMessagesCollectionViewCellLabelHeightDefault
-            var height:CGFloat = 0.0
-            if messagedClicked == 0
-            {
-                height = kJSQMessagesCollectionViewCellLabelHeightDefault
-                messagedClicked = 1
-            }else if messagedClicked == 1
-            {
-                height = kJSQMessagesCollectionViewCellLabelHeightDefault
-                messagedClicked = 2
-            }else if messagedClicked == 2
-            {
-                messagedClicked = 3
-            }else if messagedClicked == 3
-            {
-                messagedClicked = 4
-            }
-            else if messagedClicked == 4
-            {
-                messagedClicked = 0
-            }
-            return height
+//            if timeIsOpen[indexPath.item]
+//            {
+//               timeIsOpen[indexPath.item] = false
+//                return 0.0
+//            }
+//            else{
+//                timeIsOpen[indexPath.item] = true
+//                return kJSQMessagesCollectionViewCellLabelHeightDefault
+//            }
+            return returnHeight
         }else {
             return 0.0
         }
