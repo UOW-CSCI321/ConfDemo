@@ -52,7 +52,7 @@ class MessengerViewController: JSQMessagesViewController {
 //        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
 //        refresher.addTarget(self, action: #selector(self.getMessagesFromAPI), forControlEvents: UIControlEvents.ValueChanged)
 //        self.EventsTableView.addSubview(refresher)
-        
+        getMessagesFromAPI()
     }
     
     func getMessagesFromAPI() {
@@ -78,7 +78,7 @@ class MessengerViewController: JSQMessagesViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        getMessagesFromAPI()
+        //getMessagesFromAPI()
     }
     
     override func viewDidAppear(animated: Bool) {
