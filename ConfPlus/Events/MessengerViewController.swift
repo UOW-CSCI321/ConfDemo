@@ -377,16 +377,6 @@ class MessengerViewController: JSQMessagesViewController {
 
         if indexPath == self.cellIndexPathForCustomHeight //if the cell we are looking at is the one for the customer height
         {
-            //return kJSQMessagesCollectionViewCellLabelHeightDefault
-//            if timeIsOpen[indexPath.item]
-//            {
-//               timeIsOpen[indexPath.item] = false
-//                return 0.0
-//            }
-//            else{
-//                timeIsOpen[indexPath.item] = true
-//                return kJSQMessagesCollectionViewCellLabelHeightDefault
-//            }
             return returnHeight
         }else {
             return 0.0
