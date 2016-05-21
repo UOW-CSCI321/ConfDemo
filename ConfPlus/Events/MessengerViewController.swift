@@ -25,11 +25,12 @@ class MessengerViewController: JSQMessagesViewController {
     var cellIndexPathForCustomHeight = NSIndexPath()
     var timeIsOpen = [Bool]()
     var returnHeight:CGFloat = 0.0
+    //var refresher: UIRefreshControl!
+    var isDispatchEmpty:Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.inputToolbar.contentView.leftBarButtonItem = nil //remove accessorry button
-        print("conversationid: \(conversationID)")
         let bgColour = UIColor(white: 0.85, alpha: 1.0)
         let txtColour = UIColor(white: 0.60, alpha: 1.0)
         let systFont = UIFont.systemFontOfSize(14/*, weight:10*/)
@@ -45,12 +46,39 @@ class MessengerViewController: JSQMessagesViewController {
         
         systemProfilePic = JSQMessagesAvatarImageFactory.avatarImageWithUserInitials("cf+", backgroundColor: bgColour, textColor: txtColour, font: systFont, diameter: 30)
         setupBubbles()
-//        setupAvatarsArray()
+
+        //dont think possible to add pull to refresh to lib collection view but this should have infinite scrolling so may not be necessary
+//        refresher = UIRefreshControl()
+//        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
+//        refresher.addTarget(self, action: #selector(self.getMessagesFromAPI), forControlEvents: UIControlEvents.ValueChanged)
+//        self.EventsTableView.addSubview(refresher)
+        
+    }
+    
+    func getMessagesFromAPI() {
+        if isDispatchEmpty {
+            isDispatchEmpty = false
+            let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+            notification.show()
+            
+            APIManager().getMessagesForConversation(conversationID){ result in
+                dispatch_async(dispatch_get_main_queue()) {
+                    notification.hidden = true
+                    self.isDispatchEmpty = true
+//                    self.events = ModelHandler().getEvents("0")
+//                    self.EventsTableView.reloadData()
+                    
+//                    if self.refresher.refreshing {
+//                        self.refresher.endRefreshing()
+//                    }
+                }
+            }
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
+        getMessagesFromAPI()
     }
     
     override func viewDidAppear(animated: Bool) {

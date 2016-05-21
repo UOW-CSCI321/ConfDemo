@@ -254,6 +254,40 @@ class APIManager{
         }
     }
     
+    func getMessagesForConversation(conversationID:String, completion: (result: Bool) -> Void){
+        let parameters = [
+            "api_key": server.KEY,
+            "app_secret": server.SECRET,
+            "method" : "getConversation",
+            "conversation_id" : conversationID
+        ]
+        
+        Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
+            switch response.result {
+                case .Success:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        if json["success"]{
+                            for i in 0 ..< json["data"].count {
+                                //self.handler.addNewEvent(json["data"][i], attending: "1")
+                                self.handler.addNewMessage(json["data"][i])
+                            }
+                            completion(result: true)
+                        } else {
+                            //self.fetchError("Life is short", message:"Go to Explore Tab and join some interesting events.")
+                            completion(result: false)
+                        }
+                    }
+                            
+                case .Failure(let error):
+                            print(error.localizedDescription)
+                            //self.fetchError()
+                            completion(result: false)
+            }
+        
+        }
+    }
+    
 //    func getMessagesForConvo(convo: Conversation, group: dispatch_group_t, completion: () -> Void)
 //    {
 //        guard let id = convo.conversation_id else {
