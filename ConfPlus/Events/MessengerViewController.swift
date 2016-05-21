@@ -24,6 +24,7 @@ class MessengerViewController: JSQMessagesViewController {
     //var messagesCollectionViewFlowLayout = AnyObject.self
     var cellIndexPathForCustomHeight = NSIndexPath()
     var timeIsOpen = [Bool]()
+    var returnHeight:CGFloat = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -314,6 +315,20 @@ class MessengerViewController: JSQMessagesViewController {
     
     override func collectionView(collectionView: JSQMessagesCollectionView, didTapMessageBubbleAtIndexPath indexPath: NSIndexPath) {
         self.cellIndexPathForCustomHeight = indexPath //.item //this is the message that we want to change the height for
+        
+        
+        if timeIsOpen[indexPath.item]
+        {
+            timeIsOpen[indexPath.item] = false
+            returnHeight = 0.0
+        }
+        else{
+            timeIsOpen[indexPath.item] = true
+            returnHeight =  kJSQMessagesCollectionViewCellLabelHeightDefault
+        }
+
+        
+        
         finishReceivingMessage() //this will load the collection view
         print("Tapped message bubble!")
     }
@@ -363,15 +378,16 @@ class MessengerViewController: JSQMessagesViewController {
         if indexPath == self.cellIndexPathForCustomHeight //if the cell we are looking at is the one for the customer height
         {
             //return kJSQMessagesCollectionViewCellLabelHeightDefault
-            if timeIsOpen[indexPath.item]
-            {
-               timeIsOpen[indexPath.item] = false
-                return 0.0
-            }
-            else{
-                timeIsOpen[indexPath.item] = true
-                return kJSQMessagesCollectionViewCellLabelHeightDefault
-            }
+//            if timeIsOpen[indexPath.item]
+//            {
+//               timeIsOpen[indexPath.item] = false
+//                return 0.0
+//            }
+//            else{
+//                timeIsOpen[indexPath.item] = true
+//                return kJSQMessagesCollectionViewCellLabelHeightDefault
+//            }
+            return returnHeight
         }else {
             return 0.0
         }
