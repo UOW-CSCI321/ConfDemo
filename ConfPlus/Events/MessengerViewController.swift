@@ -74,10 +74,16 @@ class MessengerViewController: JSQMessagesViewController {
             //iterate through database messages and create objects and add them to the JSQMessages array
             for i in 0..<count
             {
-                //addMessage(, displayName: <#T##String#>, date: <#T##NSDate#>, text: <#T##String#>)
+                var user = databaseMessages[i].sender
+                var dname:String = (user?.first_name)!
+                dname += " "
+                dname += (user?.last_name)!
+                
+                addMessage(databaseMessages[i].sender_email!, displayName: dname, date: databaseMessages[i].date!, text: databaseMessages[i].content!)
             }
         }
     }
+
     
     func getMessagesFromAPI() {
         if isDispatchEmpty {
@@ -121,13 +127,13 @@ class MessengerViewController: JSQMessagesViewController {
         
         
         // messages from someone else
-        addMessage("michael@test.com", displayName: "michael", date: d1!, text: "Hey person!")
-        // messages sent from local sender
-        addMessage(senderId, displayName: "matt", date: d2!, text: "Yo!")
-        addMessage(senderId, displayName: "matt", date: d3!, text: "I like turtles!")
-        addMessage("system", displayName: "system", date:d3!, text: "the presentation on 'mobile applications' will start in 15 minutes'")
-        // animates the receiving of a new message on the view
-        finishReceivingMessage()
+//        addMessage("michael@test.com", displayName: "michael", date: d1!, text: "Hey person!")
+//        // messages sent from local sender
+//        addMessage(senderId, displayName: "matt", date: d2!, text: "Yo!")
+//        addMessage(senderId, displayName: "matt", date: d3!, text: "I like turtles!")
+//        addMessage("system", displayName: "system", date:d3!, text: "the presentation on 'mobile applications' will start in 15 minutes'")
+//        // animates the receiving of a new message on the view
+//        finishReceivingMessage()
     }
     
     func getImageForEmail(email:String) -> JSQMessagesAvatarImage //matt defined
