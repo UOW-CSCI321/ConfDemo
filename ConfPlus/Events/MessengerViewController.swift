@@ -27,6 +27,8 @@ class MessengerViewController: JSQMessagesViewController {
     var returnHeight:CGFloat = 0.0
     //var refresher: UIRefreshControl!
     var isDispatchEmpty:Bool = true
+    var databaseMessages = [Message]()
+    var conversation:Conversation!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +54,12 @@ class MessengerViewController: JSQMessagesViewController {
 //        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
 //        refresher.addTarget(self, action: #selector(self.getMessagesFromAPI), forControlEvents: UIControlEvents.ValueChanged)
 //        self.EventsTableView.addSubview(refresher)
-        getMessagesFromAPI()
+        
+        
+        
+        
+        //getMessagesFromAPI() //should be called from viewWillAppear but breaking
+        databaseMessages = ModelHandler().getMessageForConversation(conversation)!
     }
     
     func getMessagesFromAPI() {
