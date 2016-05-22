@@ -204,9 +204,10 @@ class ModelHandler{
         message.content = json["content"].string
         message.date = serverStringToDate(json["updated_at"].string!)
         message.sender_email = json["sender_email"].string
-//        print(message.content)
-//        print(message.date)
-//        print(message.sender_email)
+        print(message.message_id)
+        print(message.content)
+        print(message.date)
+        print(message.sender_email)
         
         performUpdate()
         
