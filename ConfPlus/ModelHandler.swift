@@ -238,6 +238,7 @@ class ModelHandler{
         let fetch = NSFetchRequest(entityName: "Conversation")
         //let predicate = NSPredicate(format: "attend == %@", attend)
         //fetch.predicate = predicate
+        //i think predicate is needed here or else if user logs after another user you will see their conversations
 
         var conversations = [Conversation]()
         do {
