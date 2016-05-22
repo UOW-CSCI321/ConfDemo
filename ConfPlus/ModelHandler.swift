@@ -225,8 +225,9 @@ class ModelHandler{
 //            return nil
 //        }
         //let predicate = NSPredicate(format: "venue_id == %@", venue_id) //get the venu_id from venue where it is = the var venu_id
-        let predicate = NSPredicate(format: "conversation == %@", conversation)
-        request.predicate = predicate
+        //COMMENT PREDICATE OUT JUST FOR NOW TO TRY AND GET SOME MESSAGES
+//        let predicate = NSPredicate(format: "conversation == %@", conversation)
+//        request.predicate = predicate
         
         var messages = [Message]()
         do{

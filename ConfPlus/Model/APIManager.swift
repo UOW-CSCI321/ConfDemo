@@ -272,6 +272,7 @@ class APIManager{
                                 //self.handler.addNewEvent(json["data"][i], attending: "1")
                                 self.handler.addNewMessage(json["data"][i])
                             }
+                            self.handler.performUpdate()
                             completion(result: true)
                         } else {
                             //self.fetchError("Life is short", message:"Go to Explore Tab and join some interesting events.")
