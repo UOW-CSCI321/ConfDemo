@@ -72,14 +72,14 @@ class MessengerViewController: JSQMessagesViewController {
             //whipe all messages we have so far to get messages again
             messages = [JSQMessage]()
             //iterate through database messages and create objects and add them to the JSQMessages array
+            //print(databaseMessages[0])
             for i in 0..<count
             {
-                var user = databaseMessages[i].sender
-                var dname:String = (user?.first_name)!
-                dname += " "
-                dname += (user?.last_name)!
-                
-                addMessage(databaseMessages[i].sender_email!, displayName: dname, date: databaseMessages[i].date!, text: databaseMessages[i].content!)
+                //var user = databaseMessages[i].sender
+//                var dname:String = (user?.first_name)! //we cant use user as the only user we store locally is users loggedin
+//                dname += " "
+//                dname += (user?.last_name)!
+                addMessage(databaseMessages[i].sender_email!, displayName: databaseMessages[i].sender_email!, date: databaseMessages[i].date!, text: databaseMessages[i].content!)
             }
             finishSendingMessage()
         }
