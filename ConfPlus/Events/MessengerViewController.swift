@@ -60,6 +60,23 @@ class MessengerViewController: JSQMessagesViewController {
         
         //getMessagesFromAPI() //should be called from viewWillAppear but breaking
         databaseMessages = ModelHandler().getMessageForConversation(conversation)!
+        //^ returns empty array first time
+        messagesToJSQMessages()
+    }
+    
+    func messagesToJSQMessages() //converts array of cordata messages to array of JSQMessages
+    {
+        var count = databaseMessages.count
+        if count > 0
+        {
+            //whipe all messages we have so far to get messages again
+            messages = [JSQMessage]()
+            //iterate through database messages and create objects and add them to the JSQMessages array
+            for i in 0..<count
+            {
+                //addMessage(, displayName: <#T##String#>, date: <#T##NSDate#>, text: <#T##String#>)
+            }
+        }
     }
     
     func getMessagesFromAPI() {
