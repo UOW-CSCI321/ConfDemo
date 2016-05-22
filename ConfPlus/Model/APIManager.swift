@@ -268,21 +268,18 @@ class APIManager{
                     if let value = response.result.value {
                         let json = JSON(value)
                         if json["success"]{
+							print("JSON COUNT: \(json["data"].count)")
                             for i in 0 ..< json["data"].count {
-                                //self.handler.addNewEvent(json["data"][i], attending: "1")
                                 self.handler.addNewMessage(json["data"][i])
                             }
-                            self.handler.performUpdate() //don't think this is needed as its called in addNewMessage
                             completion(result: true)
                         } else {
-                            //self.fetchError("Life is short", message:"Go to Explore Tab and join some interesting events.")
                             completion(result: false)
                         }
                     }
                             
                 case .Failure(let error):
                             print(error.localizedDescription)
-                            //self.fetchError()
                             completion(result: false)
             }
         

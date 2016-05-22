@@ -1,9 +1,9 @@
 //
 //  Message.swift
-//  
+//  ConfPlus
 //
-//  Created by Matthew Boroczky on 22/05/2016.
-//
+//  Created by CY Lim on 22/05/2016.
+//  Copyright © 2016 Conf+. All rights reserved.
 //
 
 import Foundation

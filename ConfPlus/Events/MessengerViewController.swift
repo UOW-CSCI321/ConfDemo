@@ -97,6 +97,7 @@ class MessengerViewController: JSQMessagesViewController {
                     notification.hidden = true
                     self.isDispatchEmpty = true
                     self.databaseMessages = ModelHandler().getMessageForConversation(self.conversation)!
+					print("MESSAGE COUNT: \(self.databaseMessages.count)")
                     self.messagesToJSQMessages()
 //                    self.events = ModelHandler().getEvents("0")
 //                    self.EventsTableView.reloadData()
@@ -227,7 +228,7 @@ class MessengerViewController: JSQMessagesViewController {
         let m = JSQMessage(senderId: id, senderDisplayName: displayName, date: date, text: text)
         //let message = JSQMessage(senderId: id, displayName: displayName, text: text)
         messages.append(m)
-        print(messages.count)
+		//print(messages.count)
         
         //add time not open to the time array
         let b = false
@@ -256,7 +257,7 @@ class MessengerViewController: JSQMessagesViewController {
             
             if(indexPath.item != 0)
             {
-                print("index: \(messages[indexPath.item].date), index-1: \(messages[indexPath.item - 1].date)")
+				//print("index: \(messages[indexPath.item].date), index-1: \(messages[indexPath.item - 1].date)")
                 var order = NSCalendar.currentCalendar().compareDate(messages[indexPath.item - 1].date, toDate: message.date, toUnitGranularity: .Day)
                 switch order {
                 case .OrderedSame:
