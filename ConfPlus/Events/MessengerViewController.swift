@@ -81,6 +81,7 @@ class MessengerViewController: JSQMessagesViewController {
                 
                 addMessage(databaseMessages[i].sender_email!, displayName: dname, date: databaseMessages[i].date!, text: databaseMessages[i].content!)
             }
+            finishSendingMessage()
         }
     }
 
@@ -95,6 +96,8 @@ class MessengerViewController: JSQMessagesViewController {
                 dispatch_async(dispatch_get_main_queue()) {
                     notification.hidden = true
                     self.isDispatchEmpty = true
+                    self.databaseMessages = ModelHandler().getMessageForConversation(self.conversation)!
+                    self.messagesToJSQMessages()
 //                    self.events = ModelHandler().getEvents("0")
 //                    self.EventsTableView.reloadData()
                     
@@ -113,17 +116,17 @@ class MessengerViewController: JSQMessagesViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
+        getMessagesFromAPI()
         
         //yesterday
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = NSTimeZone(name: "GMT")
-        
-        let d1 = dateFormatter.dateFromString("2016-05-16 16:35:00") //dateString	String	"2016-05-01 16:35:00"
-        //self.attributedTimestampForDate(d1)
-        let d2 = dateFormatter.dateFromString("2016-05-17 16:35:00")
-        let d3 = dateFormatter.dateFromString("2016-05-19 14:36:00")
+//        let dateFormatter = NSDateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//        dateFormatter.timeZone = NSTimeZone(name: "GMT")
+//        
+//        let d1 = dateFormatter.dateFromString("2016-05-16 16:35:00") //dateString	String	"2016-05-01 16:35:00"
+//        //self.attributedTimestampForDate(d1)
+//        let d2 = dateFormatter.dateFromString("2016-05-17 16:35:00")
+//        let d3 = dateFormatter.dateFromString("2016-05-19 14:36:00")
         
         
         // messages from someone else
