@@ -55,6 +55,8 @@
     <entity name="Message" representedClassName=".Message" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="display_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="message_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sender_email" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="conversation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Conversation" inverseName="messages" inverseEntity="Conversation" syncable="YES"/>
         <relationship name="sender" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="messages_sent" inverseEntity="User" syncable="YES"/>
@@ -150,7 +152,7 @@
         <element name="Event" positionX="1836" positionY="351" width="128" height="285"/>
         <element name="Event_Roles" positionX="1611" positionY="528" width="128" height="88"/>
         <element name="Event_Tag" positionX="1620" positionY="639" width="128" height="73"/>
-        <element name="Message" positionX="1161" positionY="639" width="128" height="118"/>
+        <element name="Message" positionX="1161" positionY="639" width="128" height="150"/>
         <element name="Payment" positionX="1231" positionY="486" width="128" height="118"/>
         <element name="Session" positionX="1852" positionY="716" width="128" height="163"/>
         <element name="Ticket_Def" positionX="1861" positionY="936" width="128" height="208"/>

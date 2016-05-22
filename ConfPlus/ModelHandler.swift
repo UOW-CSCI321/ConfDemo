@@ -200,6 +200,7 @@ class ModelHandler{
     {
         let message = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: self.context) as! Message
         
+        message.message_id = json["message_id"].string
         message.content = json["content"].string
         message.date = serverStringToDate(json["updated_at"].string!)
         message.sender_email = json["sender_email"].string
