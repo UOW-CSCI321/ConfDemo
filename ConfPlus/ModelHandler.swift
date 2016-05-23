@@ -222,6 +222,7 @@ class ModelHandler{
     {
 		
 		let fetch = NSFetchRequest(entityName: "Message")
+        //fetch.predicate = NSPredicate(format: "conversation == %@", conversation)
 		
 		var messages = [Message]()
 		do {

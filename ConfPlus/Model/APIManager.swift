@@ -286,6 +286,38 @@ class APIManager{
         }
     }
     
+    func sendMessage(email:String, content:String, conversationID:String, completion: (result: Bool) -> ())
+    {
+        let parameters = [
+            "api_key": server.KEY,
+            "app_secret": server.SECRET,
+            "method" : "sendMessage",
+            "conversation_id" : conversationID,
+            "sender_email" : email,
+            "content" : content
+        ]
+        
+        Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    if json["success"]{
+                        print("message sent successfully")
+                        completion(result: true)
+                    } else {
+                        print("message failed to send")
+                        completion(result: false)
+                    }
+                }
+                
+            case .Failure(let error):
+                print(error.localizedDescription)
+                completion(result: false)
+            }
+        }
+    }
+    
 //    func getMessagesForConvo(convo: Conversation, group: dispatch_group_t, completion: () -> Void)
 //    {
 //        guard let id = convo.conversation_id else {

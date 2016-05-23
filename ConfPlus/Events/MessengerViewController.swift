@@ -234,14 +234,69 @@ class MessengerViewController: JSQMessagesViewController {
         let b = false
         timeIsOpen.append(b)
     }
+    
+    func sendMessageByAPI(email:String, conversation_id:String, content:String)
+    {
+        if isDispatchEmpty {
+            isDispatchEmpty = false
+            //let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+            //notification.show()
+            
+            //sendMessage(email:String, content:String, conversationID:String, completion:
+            APIManager().sendMessage(email, content: content, conversationID: conversationID){ result in
+                if result == true
+                {
+                    //return true
+                    print("true")
+                    //if message sent successful playmessagesentsound
+                    JSQSystemSoundPlayer.jsq_playMessageSentSound()
+                }else
+                {
+                    //return false
+                    print("false")
+                    //change colour
+                }
+                self.finishSendingMessage()
+                //change colour back
+                
+                
+//                result in
+//                dispatch_async(dispatch_get_main_queue()) {
+//                    
+//                    //then add the message to dbs - dont think this is needed anymore as the api will call get messages eventually and get this, it will still be displayed
+//                   // self.handler.addNewMessage(json["data"][i])
+//                    //notification.hidden = true
+//                    self.isDispatchEmpty = true
+//                    //self.databaseMessages = ModelHandler().getMessageForConversation(self.conversation)!
+//                    //print("MESSAGE COUNT: \(self.databaseMessages.count)")
+//                    //self.messagesToJSQMessages()
+//                    //                    self.events = ModelHandler().getEvents("0")
+//                    //                    self.EventsTableView.reloadData()
+//                    
+//                    //                    if self.refresher.refreshing {
+//                    //                        self.refresher.endRefreshing()
+//                    //                    }
+//                
+//                }
+            }
+        }
+
+    }
+    
     //send message
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
 
         addMessage(senderId, displayName: senderDisplayName, date: date, text: text)
+        //send the message we just added to the JSQMessage array
+        sendMessageByAPI(senderId, conversation_id: self.conversationID, content: text)
         
-        JSQSystemSoundPlayer.jsq_playMessageSentSound()
+        //else
+            //change bubble colour
+        //finish sending message
+        
+        //JSQSystemSoundPlayer.jsq_playMessageSentSound()
 
-        finishSendingMessage()
+        //finishSendingMessage()
     }
     
     
