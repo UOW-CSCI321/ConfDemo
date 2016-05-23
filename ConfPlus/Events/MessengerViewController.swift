@@ -29,6 +29,7 @@ class MessengerViewController: JSQMessagesViewController {
     var isDispatchEmpty:Bool = true
     var databaseMessages = [Message]()
     var conversation:Conversation!
+    var failedMessages = [Int]() //position of the failed message in messages
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -254,6 +255,8 @@ class MessengerViewController: JSQMessagesViewController {
                 {
                     //return false
                     print("false")
+                    let failedMessageIndex = self.messages.count - 1 //we just added this message to the array and now its failed
+                    self.failedMessages.append(failedMessageIndex)
                     //change colour
                 }
                 self.finishSendingMessage()
@@ -262,7 +265,7 @@ class MessengerViewController: JSQMessagesViewController {
                 
 //                result in
 //                dispatch_async(dispatch_get_main_queue()) {
-//                    
+//
 //                    //then add the message to dbs - dont think this is needed anymore as the api will call get messages eventually and get this, it will still be displayed
 //                   // self.handler.addNewMessage(json["data"][i])
 //                    //notification.hidden = true
@@ -397,6 +400,11 @@ class MessengerViewController: JSQMessagesViewController {
         
         // Sent by me, skip
         if message.senderId == senderId {
+            if self.failedMessages.contains(indexPath.item)
+            {
+                //print("we found a failed message: \(message.text)")
+                return NSAttributedString(string: "Messaged failed to send")
+            }
             return nil;
         }
         
@@ -416,6 +424,11 @@ class MessengerViewController: JSQMessagesViewController {
         
         // Sent by me, skip
         if message.senderId == senderId {
+            if self.failedMessages.contains(indexPath.item)
+            {
+                return kJSQMessagesCollectionViewCellLabelHeightDefault
+            }
+            
             return CGFloat(0.0);
         }
         
