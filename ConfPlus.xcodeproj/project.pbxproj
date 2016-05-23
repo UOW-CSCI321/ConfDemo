@@ -268,9 +268,9 @@
 			isa = PBXGroup;
 			children = (
 				E9E0A64F1CDD8C6200E187AD /* ModelHandler.swift */,
+				E97EB7331CDF13E5009113A6 /* Session+CoreDataProperties.swift */,
 				E94AA9621CE0858200569032 /* Event+CoreDataProperties.swift */,
 				C93A980C1CE04AE900418F53 /* Event.swift */,
-				E97EB7331CDF13E5009113A6 /* Session+CoreDataProperties.swift */,
 				E97EB7341CDF13E5009113A6 /* Session.swift */,
 				E97EB7371CDF13E5009113A6 /* Venue+CoreDataProperties.swift */,
 				E97EB7381CDF13E5009113A6 /* Venue.swift */,

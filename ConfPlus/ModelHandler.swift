@@ -160,7 +160,7 @@ class ModelHandler{
         request.entity = entityDescription
         request.fetchLimit = 1
         
-        let predicate = NSPredicate(format: "email == %@", email)
+        let predicate = NSPredicate(format: "email = %@", email)
         request.predicate = predicate
         
         do{
@@ -233,17 +233,18 @@ class ModelHandler{
 
     }
     
-    func getConversation(email:String) -> [Conversation]?
+    func getConversation(email:String) -> [Conversation]
     {
         let fetch = NSFetchRequest(entityName: "Conversation")
-        fetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+        //fetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         //fetch.predicate = NSPredicate(format: "users.email == %@", "matt3@test.com")
-        if let myself = getUser(email)
-        {
-            fetch.predicate = NSPredicate(format: "users == %@", myself)
-        }else{
-            return nil
-        }
+//        if let myself = getUser(email)
+//        {
+////            myself.messages_sent
+//            fetch.predicate = NSPredicate(format: "users == %@", myself)
+//        }else{
+//            return nil
+//        }
         //i think predicate is needed here or else if user logs after another user you will see their conversations
 
         var conversations = [Conversation]()

@@ -25,7 +25,7 @@ class MessagesTableViewController: UIViewController {
         super.viewDidLoad()
 		let email = user.stringForKey("email")
 		populateNavigationBar()
-        userConversations = ModelHandler().getConversation(email!)!
+        userConversations = ModelHandler().getConversation(email!)
         conversationTable.reloadData()
     }
     
@@ -43,7 +43,7 @@ class MessagesTableViewController: UIViewController {
             APIManager().getConversationsFromAPI(email!, group: group, isDispatchEmpty: &isDispatchEmpty){ result in
                 dispatch_group_notify(group, dispatch_get_main_queue()) {
                     self.isDispatchEmpty = true
-                    self.userConversations = ModelHandler().getConversation(email!)!
+                    self.userConversations = ModelHandler().getConversation(email!)
 
                     self.conversationTable.reloadData()
                     print("Reloaded")
