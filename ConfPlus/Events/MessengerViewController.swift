@@ -267,6 +267,7 @@ class MessengerViewController: JSQMessagesViewController {
                     self.failedMessages.append(failedMessageIndex)
                     //change colour
                 }
+                self.isDispatchEmpty = true
                 self.finishSendingMessage()
                 //change colour back
                 
