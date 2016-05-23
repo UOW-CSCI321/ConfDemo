@@ -18,6 +18,7 @@ class MessengerViewController: JSQMessagesViewController {
     var conversationID = ""
     var outgoingBubbleImageView: JSQMessagesBubbleImage!
     var incomingBubbleImageView: JSQMessagesBubbleImage!
+    var failedOutgoingBubbleImageView: JSQMessagesBubbleImage!
     var systemProfilePic: JSQMessagesAvatarImage!
     var dateTextAttributes:NSDictionary = [:]
     var timeTextAttributes:NSDictionary = [:]
@@ -184,12 +185,19 @@ class MessengerViewController: JSQMessagesViewController {
             UIColor.jsq_messageBubbleBlueColor())
         incomingBubbleImageView = factory.incomingMessagesBubbleImageWithColor(
             UIColor.jsq_messageBubbleLightGrayColor())
+        
+        failedOutgoingBubbleImageView = factory.outgoingMessagesBubbleImageWithColor(
+            UIColor.jsq_messageBubbleRedColor())
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!,
                                  messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
         let message = messages[indexPath.item]
         if message.senderId == senderId { //check if message was sent by local user
+            if self.failedMessages.contains(indexPath.item)
+            {
+                return failedOutgoingBubbleImageView
+            }
             return outgoingBubbleImageView
         } else { // if not local user return incoming message
             return incomingBubbleImageView
