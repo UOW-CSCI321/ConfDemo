@@ -469,7 +469,7 @@ class MessengerViewController: JSQMessagesViewController {
         
         
         finishReceivingMessage() //this will load the collection view
-        print("Tapped message bubble!")
+        //print("Tapped message bubble!")
     }
    
     //copy function of whats in cocoapod that just returns time not formatted
