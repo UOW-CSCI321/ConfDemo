@@ -202,12 +202,12 @@ class ModelHandler{
 		let entityDescription = NSEntityDescription.entityForName("Message", inManagedObjectContext: context)
 		
 		let message = Message(entity: entityDescription!, insertIntoManagedObjectContext: self.context)
-		
+		//print(json)
         message.id = json["message_id"].string
         message.content = json["content"].string
-        message.date = serverStringToDate(json["updated_at"].string!)
+        message.date = serverStringToDate(json["date"].string!)
         message.sender_email = json["sender_email"].string
-//        print(message.message_id)
+        //print(message.message_id)
 //        print(message.content)
 //        print(message.date)
 //        print(message.sender_email)
@@ -222,7 +222,8 @@ class ModelHandler{
     {
 		
 		let fetch = NSFetchRequest(entityName: "Message")
-        //fetch.predicate = NSPredicate(format: "conversation == %@", conversation)
+        print(conversation.conversation_id)
+        //fetch.predicate = NSPredicate(format: "conversation_id == %@", conversation.conversation_id!)
 		
 		var messages = [Message]()
 		do {
