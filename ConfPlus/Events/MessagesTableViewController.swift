@@ -28,7 +28,7 @@ class MessagesTableViewController: UIViewController {
         userConversations = ModelHandler().getConversation(email!)
         conversationTable.reloadData()
     }
-    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         let email = user.stringForKey("email")
@@ -99,6 +99,7 @@ extension MessagesTableViewController: UITableViewDelegate{
 		return cell
 	}
 }
+
 
 //MARK: Navigation Bar Related
 extension MessagesTableViewController{

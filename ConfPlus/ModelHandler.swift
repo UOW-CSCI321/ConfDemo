@@ -238,7 +238,7 @@ class ModelHandler{
     func getConversation(email:String) -> [Conversation]
     {
         let fetch = NSFetchRequest(entityName: "Conversation")
-        //fetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+        fetch.sortDescriptors = [NSSortDescriptor(key: "lastmsg_date", ascending: false)]
         //fetch.predicate = NSPredicate(format: "users.email == %@", "matt3@test.com")
 //        if let myself = getUser(email)
 //        {

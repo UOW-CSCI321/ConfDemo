@@ -277,7 +277,6 @@ class MessengerViewController: JSQMessagesViewController {
         addMessage(senderId, displayName: senderDisplayName, date: date, text: text)
         //send the message we just added to the JSQMessage array
         sendMessageByAPI(senderId, conversation_id: self.conversationID, content: text)
-
     }
     
     
