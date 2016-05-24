@@ -94,7 +94,7 @@ class MessengerViewController: JSQMessagesViewController {
             let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
             notification.show()
             
-            APIManager().getMessagesForConversation(conversationID){ result in
+            APIManager().getMessagesForConversation(conversation){ result in
                 dispatch_async(dispatch_get_main_queue()) {
                     notification.hidden = true
                     self.isDispatchEmpty = true

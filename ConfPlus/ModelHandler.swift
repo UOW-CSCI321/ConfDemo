@@ -196,7 +196,7 @@ class ModelHandler{
         return convo
     }
     
-    func addNewMessage(json: JSON)
+    func addNewMessage(json: JSON) -> Message
     {
 		
 		let entityDescription = NSEntityDescription.entityForName("Message", inManagedObjectContext: context)
@@ -214,16 +214,22 @@ class ModelHandler{
 		
 		performUpdate()
         
-		//return message
+		return message
     }
 
+    func saveMessageForConversation(conversation:Conversation, message:Message){
+        conversation.mutableSetValueForKey("messages").addObject(message)
+        message.conversation = conversation
+        
+        performUpdate()
+    }
     
     func getMessageForConversation(conversation:Conversation) -> [Message]?
     {
 		
 		let fetch = NSFetchRequest(entityName: "Message")
         print(conversation.conversation_id)
-        //fetch.predicate = NSPredicate(format: "conversation_id == %@", conversation.conversation_id!)
+        fetch.predicate = NSPredicate(format: "conversation == %@", conversation)
 		
 		var messages = [Message]()
 		do {

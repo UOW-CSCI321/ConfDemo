@@ -254,13 +254,20 @@ class APIManager{
         }
     }
     
-    func getMessagesForConversation(conversationID:String, completion: (result: Bool) -> Void){
+    func getMessagesForConversation(conversation:Conversation, completion: (result: Bool) -> Void){
+        guard let id = conversation.conversation_id else {
+            completion(result: false)
+            return
+        }
+        
         let parameters = [
             "api_key": server.KEY,
             "app_secret": server.SECRET,
             "method" : "getConversation",
-            "conversation_id" : conversationID
+            "conversation_id" : id
         ]
+        
+        var message:Message? = nil
         
         Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
             switch response.result {
@@ -270,7 +277,8 @@ class APIManager{
                         if json["success"]{
 							print("JSON COUNT: \(json["data"].count)")
                             for i in 0 ..< json["data"].count {
-                                self.handler.addNewMessage(json["data"][i])
+                                message = self.handler.addNewMessage(json["data"][i])
+                                self.handler.saveMessageForConversation(conversation, message: message!)
                             }
                             completion(result: true)
                         } else {
