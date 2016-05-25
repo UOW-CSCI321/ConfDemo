@@ -40,6 +40,10 @@ class HomeViewController: UIViewController {
 		}
 	}
 	
+	@IBAction func performBack(sender: AnyObject) {
+		dismissViewControllerAnimated(true, completion: nil)
+	}
+	
 	func populateEventOverview(){
 		eventName.text = event.name
 		eventDate.text = "\(event.getFromDateAsString()) - \(event.getToDateAsString())"

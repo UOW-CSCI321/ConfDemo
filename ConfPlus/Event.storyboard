@@ -102,7 +102,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Overview" id="aut-37-nSd">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="WWv-gq-811"/>
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="WWv-gq-811">
+                            <connections>
+                                <action selector="performBack:" destination="3IV-pw-H5f" id="XVk-vA-tVY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="eventDate" destination="Sba-2K-R4G" id="EGQ-Wx-jpR"/>

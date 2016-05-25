@@ -91,11 +91,6 @@ class EventsViewController: UIViewController {
 	}
 
 	
-//	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//		let indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow!
-//		let vc:HomeViewController = segue.destinationViewController as! HomeViewController
-//		vc.event = events[indexPath.row]
-//	}
 	
 }
 
