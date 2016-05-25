@@ -22,12 +22,17 @@ class APIManager{
 	
 	let user = NSUserDefaults.standardUserDefaults()
 	
-	func getExploreDataFromAPI(group: dispatch_group_t, inout isDispatchEmpty: Bool, completion: (Bool) -> Void){
+	func fetchError(title: String = "No internet Connection", message:String = "Data might not updated."){
+		let notification = MPGNotification(title: title, subtitle: message, backgroundColor: UIColor.orangeColor(), iconImage: nil)
+		notification.show()
+	}
+	
+	func getUpcomingEventsByCountry(country:String, completion: (result: Bool) -> Void){
 		let parameters = [
 			"api_key": server.KEY,
 			"app_secret": server.SECRET,
-			"method" : "getEventsByTag",
-			"tag_name" : "testTag"
+			"method" : "getUpcomingEventsByCountry",
+			"country" : country
 		] //at the moment the api call need event id
 		
 		Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
@@ -35,32 +40,63 @@ class APIManager{
 			case .Success:
 				if let value = response.result.value {
 					let json = JSON(value)
-					
-					//self.handler.deleteEventsData()
-					
-					for i in 0 ..< json["data"].count {
-						dispatch_group_enter(group)
-						let event = self.handler.addNewEvent(json["data"][i], attending: "0")
-						
-						APIManager().getPoster(event, group: group){
-							self.handler.performUpdate()
+					if json["success"]{
+						for i in 0 ..< json["data"].count {
+							self.handler.addNewEvent(json["data"][i], attending: "0")
 						}
+						completion(result: true)
+					} else {
+						self.fetchError("Connection Issues")
+						completion(result: false)
 					}
 				}
-				completion(true)
+				
 			case .Failure(let error):
 				print(error.localizedDescription)
-				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-				notification.show()
-				completion(false)
+				self.fetchError()
+				completion(result: false)
+			}
+			
+		}
+	}
+	
+	func getEventsAttending(email:String, criteria:String, completion: (result: Bool) -> Void){
+		let parameters = [
+			"api_key": server.KEY,
+			"app_secret": server.SECRET,
+			"method" : "getEventsAttending",
+			"email" : email,
+			"criteria": criteria
+		] //at the moment the api call need event id
+		
+		Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
+			switch response.result {
+			case .Success:
+				if let value = response.result.value {
+					let json = JSON(value)
+					if json["success"]{
+						for i in 0 ..< json["data"].count {
+							self.handler.addNewEvent(json["data"][i], attending: "1")
+						}
+						completion(result: true)
+					} else {
+						self.fetchError("Life is short", message:"Go to Explore Tab and join some interesting events.")
+						completion(result: false)
+					}
+				}
+				
+			case .Failure(let error):
+				print(error.localizedDescription)
+				self.fetchError()
+				completion(result: false)
 			}
 			
 		}
 	}
 
-	func getPoster(event: Event, group: dispatch_group_t, completion: () -> Void){
+	func getPoster(event:Event, completion: (result: Bool) -> Void){
 		guard let id = event.event_id else {
-			//print(id)
+			print("No event id", #function)
 			return
 		}
 		let parameters = [
@@ -70,29 +106,23 @@ class APIManager{
 			"event_id" : id
 		]
 		
-		let poster_queue = dispatch_queue_create("poster_queue", nil)
-		dispatch_async(poster_queue, {
-			Alamofire.request(.POST, self.server.URL, parameters: parameters).responseJSON(){ response in
-				switch response.result{
-				case .Success:
-					if let value = response.result.value {
-						let json = JSON(value)
-						event.poster_url = json["data"]["poster_data_url"].string
-						
-						print("updated image")
-						
+		Alamofire.request(.POST, self.server.URL, parameters: parameters).responseJSON(){ response in
+			switch response.result{
+			case .Success:
+				if let value = response.result.value {
+					let json = JSON(value)
+					if json["success"]{
+						self.handler.updatePosterForEvent(event, data: json["data"]["poster_data_url"].string!)
+						completion(result: true)
+					} else {
+						completion(result: false)
 					}
-					
-					dispatch_group_leave(group)
-					completion()
-					
-				case .Failure(let error):
-					dispatch_group_leave(group)
-					print(error.localizedDescription)
-					completion()
 				}
+			case .Failure(let error):
+				print(error.localizedDescription)
+				completion(result: false)
 			}
-		})
+		}
 		
 	}
 	
@@ -160,9 +190,9 @@ class APIManager{
                         dispatch_group_enter(group)
                         let event = self.handler.addNewEvent(json["data"][i], attending: "1")
                         
-                        APIManager().getPoster(event, group: group){
-                            self.handler.performUpdate()
-                        }
+//                        APIManager().getPoster(event, group: group){
+//                            self.handler.performUpdate()
+//                        }
                     }
                 }
                 completion(true)
@@ -379,6 +409,82 @@ class APIManager{
 
 
 
+}
+
+//MARK: Event Dashboard
+extension APIManager{
+	func scanQR(ticket_id : String, completion: (result: Bool, data: JSON) -> Void){
+		let parameters = [
+			"api_key"	:	server.KEY,
+			"app_secret":	server.SECRET,
+			"method"	:	"getTicketAndUser",
+			"ticket_id"	:	ticket_id,
+		]
+		
+		Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
+			switch response.result{
+			case .Success:
+				if let value = response.result.value{
+					
+					let json = JSON(value)
+					HUD.hide()
+					if json["success"] {
+						completion(result: true, data: json["data"][0])
+					} else {
+						print(json["data"][0]["message"])
+						completion(result: false, data: nil)
+					}
+				}
+				
+			case .Failure(let error):
+				HUD.hide()
+				print(error.localizedDescription)
+				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not be the latest.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+				notification.show()
+				completion(result: false, data: nil)
+				
+			}
+			
+		}
+		
+	}
+	
+	func getPurchasedTicket(email: String, event_id : String, completion: (result: Bool, data: JSON) -> Void){
+		let parameters = [
+			"api_key"	:	server.KEY,
+			"app_secret":	server.SECRET,
+			"method"	:	"getUserTicketsForEvent",
+			"event_id"	:	event_id,
+			"email"		:	email
+		]
+		
+		Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
+			switch response.result{
+			case .Success:
+				if let value = response.result.value{
+					
+					let json = JSON(value)
+					HUD.hide()
+					if json["success"] {
+						print(json["data"])
+						completion(result: true, data: json["data"][0])
+					} else {
+						print(json["data"][0]["message"])
+						completion(result: false, data: nil)
+					}
+				}
+				
+			case .Failure(let error):
+				HUD.hide()
+				print(error.localizedDescription)
+				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not be the latest.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+				notification.show()
+				completion(result: false, data: nil)
+				
+			}
+			
+		}
+	}
 }
 
 

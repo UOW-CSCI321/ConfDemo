@@ -11,41 +11,79 @@ import UIKit
 
 class HomeViewController: UIViewController {
 	
+	@IBOutlet weak var tableView: UITableView!
+	@IBOutlet weak var eventName: UILabel!
+	@IBOutlet weak var eventDate: UILabel!
+	@IBOutlet weak var eventLocation: UITextView!
 	
-	let MENU_COUNT = 6
+	var features = ["Timetable", "Participants", "Tickets"]
+	var event:Event!
 	
-	@IBAction func exitEventDashboard(sender: AnyObject) {
-		self.dismissViewControllerAnimated(true, completion: nil)
-	}
-	
-	func didSelectView(gesture: UIGestureRecognizer){
-		let tag = gesture.view?.tag
-		if tag == 6 {
-			performBackToEvent()
-		} else {
-			performSegueWithIdentifier("goToTabView", sender: tag)
-		}
-	}
+	let user = NSUserDefaults.standardUserDefaults()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+		populateEventOverview()
 		populateNavigationBar()
 		
-
-		// Set the button to rounded edge.
-		for index in 1...MENU_COUNT {
-			viewEffect.rect(self.view.viewWithTag(index)!)
-			self.view.viewWithTag(index)!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(HomeViewController.didSelectView(_:))))
-		}
     }
 	
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		if segue.identifier == "goToTabView"{
-			let vc = segue.destinationViewController as! UITabBarController
-			vc.selectedIndex = (sender as! Int) - 1
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(true)
+		
+		if let role = user.stringForKey("role"){
+			if role == "Admin" {
+				features.append("Administration")
+				tableView.reloadData()
+			}
 		}
 	}
+	
+	func populateEventOverview(){
+		eventName.text = event.name
+		eventDate.text = "\(event.getFromDateAsString()) - \(event.getToDateAsString())"
+		//eventLocation.text = "\(event.venue?.city), \(event.venue?.country)"
+	}
+}
+
+extension HomeViewController: UITableViewDelegate {
+	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+		return 1
+	}
+	
+	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return features.count
+	}
+	
+	
+	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCellWithIdentifier("featureCell", forIndexPath: indexPath)
+		
+		let row = indexPath.row
+		
+		cell.textLabel!.text = features[row]
+		cell.imageView?.image = UIImage(named: features[row])
+		
+		return cell
+	}
+	
+		func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+			let row = indexPath.row
+			
+			switch features[row] {
+				case "Timetable":
+					self.performSegueWithIdentifier("goToTimetable", sender: self)
+				case "Participants":
+					self.performSegueWithIdentifier("goToParticipants", sender: self)
+				case "Tickets":
+					self.performSegueWithIdentifier("goToTickets", sender: self)
+				case "Administrations":
+					self.performSegueWithIdentifier("goToAdministrations", sender: self)
+				default:
+					()
+			}
+		}
 }
 
 //MARK: Navigation Bar Related
@@ -79,11 +117,5 @@ extension HomeViewController{
 		let navigationController = UINavigationController(rootViewController: vc)
 		
 		self.presentViewController(navigationController, animated: true, completion: nil)
-	}
-	
-	func performBackToEvent(){
-		dismissViewControllerAnimated(true){
-			self.dismissViewControllerAnimated(true, completion: nil)
-		}
 	}
 }

@@ -54,7 +54,15 @@ class ModelHandler{
 		event.venue_id = json["venue_id"].string
         event.attend = attending
 		
-		//performUpdate()
+		performUpdate()
+		
+		return event
+	}
+	
+	func updatePosterForEvent(event:Event, data:String) -> Event {
+		event.poster_url = data
+		
+		performUpdate()
 		
 		return event
 	}

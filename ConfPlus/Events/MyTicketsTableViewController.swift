@@ -10,16 +10,43 @@ import Foundation
 import UIKit
 
 class MyTicketsTableViewController: UITableViewController {
+	
+	let ticket = [Ticket_Record]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 		populateNavigationBar()
     }
+	
+	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+		return 1
+	}
+	
+	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return ticket.count
+	}
+	
+	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCellWithIdentifier("ticketListCell", forIndexPath: indexPath)
+		let row = indexPath.row
+		
+		cell.textLabel!.text = ticket[row].ticket_name
+		cell.detailTextLabel!.text = ticket[row].room_name
+		
+		return cell
+	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		let indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow!
+		let vc = segue.destinationViewController as! TicketProfileTableViewController
+		vc.ticket = ticket[indexPath.row]
+	}
+
 }
 
 
-//MARK: Navigation Bar Related
+// MARK: - Navigation Bar Related
 extension MyTicketsTableViewController{
 	func populateNavigationBar(){
 		self.navigationController?.hidesBarsOnSwipe = true
