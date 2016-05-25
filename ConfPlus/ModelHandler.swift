@@ -30,7 +30,7 @@ class ModelHandler{
 		var events = [Event]()
 		do {
 			events = try context.executeFetchRequest(fetch) as! [Event]
-            //print(events[0])
+			//print(events[0])
 		} catch {
 			print("Could not retrieve events object")
 		}
@@ -39,8 +39,8 @@ class ModelHandler{
 	
     //Events
     //Explore tab
-	func addNewEvent(json: JSON, attending:String) -> Event{
-		
+	func addNewEvent(json: JSON, attending:String){
+		print("ADDING EVENT")
 		let entityDescription = NSEntityDescription.entityForName("Event", inManagedObjectContext: context)
 		
 		let event = Event(entity: entityDescription!, insertIntoManagedObjectContext: self.context)
@@ -55,8 +55,6 @@ class ModelHandler{
         event.attend = attending
 		
 		performUpdate()
-		
-		return event
 	}
 	
 	func updatePosterForEvent(event:Event, data:String) -> Event {

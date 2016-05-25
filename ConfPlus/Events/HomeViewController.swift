@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
 	@IBOutlet weak var eventDate: UILabel!
 	@IBOutlet weak var eventLocation: UITextView!
 	
-	var features = ["Timetable", "Participants", "Tickets"]
+	var features = ["Timetable", "Participants", "Tickets", "Message"]
 	var event:Event!
 	
 	let user = NSUserDefaults.standardUserDefaults()
@@ -78,6 +78,8 @@ extension HomeViewController: UITableViewDelegate {
 					self.performSegueWithIdentifier("goToParticipants", sender: self)
 				case "Tickets":
 					self.performSegueWithIdentifier("goToTickets", sender: self)
+				case "Message":
+					self.performSegueWithIdentifier("goToMessages", sender: self)
 				case "Administrations":
 					self.performSegueWithIdentifier("goToAdministrations", sender: self)
 				default:

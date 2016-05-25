@@ -16,10 +16,10 @@ import MPGNotification
 
 class EventsViewController: UIViewController {
 	
-	@IBOutlet var EventsTableView: UITableView!
+	@IBOutlet var tableView: UITableView!
 	
 	var events = [Event]()
-	var criteria = "future"
+	var criteria = "all"
 	var isDispatchEmpty:Bool = true
 	
 	var refresher: UIRefreshControl!
@@ -30,12 +30,12 @@ class EventsViewController: UIViewController {
 		super.viewDidLoad()
 		
 		events = ModelHandler().getEvents("1")
-		EventsTableView.reloadData()
+		tableView.reloadData()
 		
 		refresher = UIRefreshControl()
 		refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
 		refresher.addTarget(self, action: #selector(self.getEventsFromAPI), forControlEvents: UIControlEvents.ValueChanged)
-		self.EventsTableView.addSubview(refresher)
+		self.tableView.addSubview(refresher)
 	}
 	
 	override func viewWillAppear(animated: Bool) {
@@ -68,10 +68,12 @@ class EventsViewController: UIViewController {
 					notification.hidden = true
 					self.isDispatchEmpty = true
 					self.events = ModelHandler().getEvents("1")
-					self.EventsTableView.reloadData()
+					print(self.events.count)
+					self.tableView.reloadData()
 					
 					if self.refresher.refreshing {
 						self.refresher.endRefreshing()
+						
 					}
 				}
 			}
@@ -89,11 +91,11 @@ class EventsViewController: UIViewController {
 	}
 
 	
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		let indexPath:NSIndexPath = self.EventsTableView.indexPathForSelectedRow!
-		let eventVC:EventDetailTableViewController = segue.destinationViewController as! EventDetailTableViewController
-		eventVC.event = events[indexPath.row]
-	}
+//	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//		let indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow!
+//		let vc:HomeViewController = segue.destinationViewController as! HomeViewController
+//		vc.event = events[indexPath.row]
+//	}
 	
 }
 
@@ -105,15 +107,15 @@ extension EventsViewController: UITableViewDelegate{
 	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
 		return events.count
 	}
 	
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier("exploreCell", forIndexPath: indexPath) as! ExploreTableViewCell
+		let cell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as! EventsTableViewCell
 		
 		let row = indexPath.row
+		print(self.events.count)
 		
 		cell.eventName.text = events[row].name
 		
