@@ -23,12 +23,12 @@ class MessagesTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		
+		let email = user.stringForKey("email")
 		populateNavigationBar()
-        userConversations = ModelHandler().getConversation()
+        userConversations = ModelHandler().getConversation(email!)
         conversationTable.reloadData()
     }
-    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         let email = user.stringForKey("email")
@@ -43,7 +43,7 @@ class MessagesTableViewController: UIViewController {
             APIManager().getConversationsFromAPI(email!, group: group, isDispatchEmpty: &isDispatchEmpty){ result in
                 dispatch_group_notify(group, dispatch_get_main_queue()) {
                     self.isDispatchEmpty = true
-                    self.userConversations = ModelHandler().getConversation()
+                    self.userConversations = ModelHandler().getConversation(email!)
 
                     self.conversationTable.reloadData()
                     print("Reloaded")
@@ -63,6 +63,9 @@ class MessagesTableViewController: UIViewController {
         messengerVC.senderId = user.stringForKey("email")
         messengerVC.title = userConversations[indexPath.row].name
         messengerVC.senderDisplayName = userConversations[indexPath.row].lastmsg_email
+        
+        //set conversation object
+        messengerVC.conversation = userConversations[indexPath.row]
         self.hidesBottomBarWhenPushed = true //need to hide tab bar to show message bar at the bottom. i tried to move message bar in JSQMessagesViewController but it has some action on it that when clicked it will move back down
     }
     
@@ -96,6 +99,7 @@ extension MessagesTableViewController: UITableViewDelegate{
 		return cell
 	}
 }
+
 
 //MARK: Navigation Bar Related
 extension MessagesTableViewController{

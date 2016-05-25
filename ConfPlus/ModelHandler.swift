@@ -166,7 +166,7 @@ class ModelHandler{
         request.entity = entityDescription
         request.fetchLimit = 1
         
-        let predicate = NSPredicate(format: "email == %@", email)
+        let predicate = NSPredicate(format: "email = %@", email)
         request.predicate = predicate
         
         do{
@@ -191,71 +191,78 @@ class ModelHandler{
         convo.lastmsg_content = json["content"].string
         convo.lastmsg_email = json["sender_email"].string
         convo.lastmsg_date = serverStringToDate(json["date"].string!)
-        print(convo.conversation_id)
-        print(convo.name)
-        print(convo.lastmsg_content)
-        print(convo.lastmsg_email)
-        print(convo.lastmsg_date)
+//        print(convo.conversation_id)
+//        print(convo.name)
+//        print(convo.lastmsg_content)
+//        print(convo.lastmsg_email)
+//        print(convo.lastmsg_date)
         
         performUpdate()
         
         return convo
     }
     
-    func addNewMessage(json: JSON) -> Message
+    func addNewMessage(json: JSON, conversation:Conversation) -> Message
     {
-        let message = NSEntityDescription.insertNewObjectForEntityForName("Message", inManagedObjectContext: self.context) as! Message
-
+		
+		let entityDescription = NSEntityDescription.entityForName("Message", inManagedObjectContext: context)
+		
+		let message = Message(entity: entityDescription!, insertIntoManagedObjectContext: self.context)
+		//print(json)
+        message.id = json["message_id"].string
         message.content = json["content"].string
-        message.date = serverStringToDate(json["updated_at"].string!)
+        message.date = serverStringToDate(json["date"].string!)
         message.sender_email = json["sender_email"].string
-        print(message.content)
-        print(message.date)
-        print(message.sender)
+        conversation.mutableSetValueForKey("messages").addObject(message)
+        message.conversation = conversation
+        //print(message.message_id)
+//        print(message.content)
+//        print(message.date)
+//        print(message.sender_email)
+		
+		performUpdate()
         
-        performUpdate()
-        
-        return message
+		return message
     }
 
+//    func saveMessageForConversation(conversation:Conversation, message:Message){
+//        conversation.mutableSetValueForKey("messages").addObject(message)
+//        message.conversation = conversation
+//        
+//        performUpdate()
+//    }
     
     func getMessageForConversation(conversation:Conversation) -> [Message]?
     {
-        let request = NSFetchRequest()
-        let entityDescription = NSEntityDescription.entityForName("Message", inManagedObjectContext: context)
-        request.entity = entityDescription
-        //request.fetchLimit = 1
-        
-//        guard let venue_id = event.venue_id else {
-//            print("error 1")
-//            return nil
-//        }
-        //let predicate = NSPredicate(format: "venue_id == %@", venue_id) //get the venu_id from venue where it is = the var venu_id
-        let predicate = NSPredicate(format: "conversation == %@", conversation)
-        request.predicate = predicate
-        
-        var messages = [Message]()
-        do{
-            //let results = try context.executeFetchRequest(request)
-            messages = try context.executeFetchRequest(request) as! [Message]
-            //print(results)
-//            guard let venue = results.first else {
-//                print("error")
-//                return nil
-//            }
-            return messages
-        } catch {
-            print("Failed to search for messages from conversation:\(conversation.conversation_id)")
-        }
-        return nil
+		//print("CONVERSATION ID:\(conversation.conversation_id)")
+		let fetch = NSFetchRequest(entityName: "Message")
+        fetch.predicate = NSPredicate(format: "conversation == %@", conversation)
+		
+		var messages = [Message]()
+		do {
+			messages = try context.executeFetchRequest(fetch) as! [Message]
+            
+            //print(messages.count)
+		} catch {
+			print("Could not retrieve events object")
+		}
+		return messages
 
     }
     
-    func getConversation() -> [Conversation]
+    func getConversation(email:String) -> [Conversation]
     {
         let fetch = NSFetchRequest(entityName: "Conversation")
-        //let predicate = NSPredicate(format: "attend == %@", attend)
-        //fetch.predicate = predicate
+        fetch.sortDescriptors = [NSSortDescriptor(key: "lastmsg_date", ascending: false)]
+        //fetch.predicate = NSPredicate(format: "users.email == %@", "matt3@test.com")
+//        if let myself = getUser(email)
+//        {
+////            myself.messages_sent
+//            fetch.predicate = NSPredicate(format: "users == %@", myself)
+//        }else{
+//            return nil
+//        }
+        //i think predicate is needed here or else if user logs after another user you will see their conversations
 
         var conversations = [Conversation]()
         do {
