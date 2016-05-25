@@ -53,15 +53,15 @@ class EventsViewController: UIViewController {
 	}
 	
 	func getEventsFromAPI(){
+		guard let email = user.stringForKey("email") else {
+			performLogin()
+			return
+		}
+		
 		if isDispatchEmpty {
 			isDispatchEmpty = false
 			let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
 			notification.show()
-			
-			guard let email = user.stringForKey("email") else {
-				performLogin()
-				return
-			}
 			
 			APIManager().getEventsAttending(email, criteria: criteria){ result in
 				dispatch_async(dispatch_get_main_queue()) {
