@@ -277,8 +277,8 @@ class APIManager{
                         if json["success"]{
 							print("JSON COUNT: \(json["data"].count)")
                             for i in 0 ..< json["data"].count {
-                                message = self.handler.addNewMessage(json["data"][i])
-                                self.handler.saveMessageForConversation(conversation, message: message!)
+                                message = self.handler.addNewMessage(json["data"][i], conversation: conversation)
+                                //self.handler.saveMessageForConversation(conversation, message: message!)
                             }
                             completion(result: true)
                         } else {

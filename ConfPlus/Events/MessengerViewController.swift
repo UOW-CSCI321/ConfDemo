@@ -476,7 +476,7 @@ class MessengerViewController: JSQMessagesViewController {
         
        return attributedstring
     }
-    
+
     override func collectionView(collectionView: JSQMessagesCollectionView, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout, heightForCellBottomLabelAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         //print("global indxpath: \(self.cellIndexPathForCustomHeight)")
         //print("indexpath: \(indexPath)")

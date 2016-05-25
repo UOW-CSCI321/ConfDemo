@@ -196,7 +196,7 @@ class ModelHandler{
         return convo
     }
     
-    func addNewMessage(json: JSON) -> Message
+    func addNewMessage(json: JSON, conversation:Conversation) -> Message
     {
 		
 		let entityDescription = NSEntityDescription.entityForName("Message", inManagedObjectContext: context)
@@ -207,6 +207,8 @@ class ModelHandler{
         message.content = json["content"].string
         message.date = serverStringToDate(json["date"].string!)
         message.sender_email = json["sender_email"].string
+        conversation.mutableSetValueForKey("messages").addObject(message)
+        message.conversation = conversation
         //print(message.message_id)
 //        print(message.content)
 //        print(message.date)
@@ -217,23 +219,24 @@ class ModelHandler{
 		return message
     }
 
-    func saveMessageForConversation(conversation:Conversation, message:Message){
-        conversation.mutableSetValueForKey("messages").addObject(message)
-        message.conversation = conversation
-        
-        performUpdate()
-    }
+//    func saveMessageForConversation(conversation:Conversation, message:Message){
+//        conversation.mutableSetValueForKey("messages").addObject(message)
+//        message.conversation = conversation
+//        
+//        performUpdate()
+//    }
     
     func getMessageForConversation(conversation:Conversation) -> [Message]?
     {
-		
+		//print("CONVERSATION ID:\(conversation.conversation_id)")
 		let fetch = NSFetchRequest(entityName: "Message")
-        print(conversation.conversation_id)
         fetch.predicate = NSPredicate(format: "conversation == %@", conversation)
 		
 		var messages = [Message]()
 		do {
 			messages = try context.executeFetchRequest(fetch) as! [Message]
+            
+            //print(messages.count)
 		} catch {
 			print("Could not retrieve events object")
 		}
