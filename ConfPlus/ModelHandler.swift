@@ -228,7 +228,7 @@ class ModelHandler{
     
     func getMessageForConversation(conversation:Conversation) -> [Message]?
     {
-		print("CONVERSATION ID:\(conversation.conversation_id)")
+		//print("CONVERSATION ID:\(conversation.conversation_id)")
 		let fetch = NSFetchRequest(entityName: "Message")
         fetch.predicate = NSPredicate(format: "conversation == %@", conversation)
 		
@@ -236,7 +236,7 @@ class ModelHandler{
 		do {
 			messages = try context.executeFetchRequest(fetch) as! [Message]
             
-            print(messages.count)
+            //print(messages.count)
 		} catch {
 			print("Could not retrieve events object")
 		}

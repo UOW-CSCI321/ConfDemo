@@ -275,7 +275,7 @@ class APIManager{
                     if let value = response.result.value {
                         let json = JSON(value)
                         if json["success"]{
-							print("JSON COUNT: \(json["data"].count)")
+							//print("JSON COUNT: \(json["data"].count)")
                             for i in 0 ..< json["data"].count {
                                 message = self.handler.addNewMessage(json["data"][i], conversation: conversation)
                                 //self.handler.saveMessageForConversation(conversation, message: message!)
