@@ -22,4 +22,8 @@ class SecurityViewController: UIViewController {
 		
 		viewEffect.round(helpView)
     }
+    @IBAction func helpPressed(sender: AnyObject) {
+        var url:NSURL = NSURL(string: "tel:123456789")!
+        UIApplication.sharedApplication().openURL(url)
+    }
 }
