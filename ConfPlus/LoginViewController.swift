@@ -57,16 +57,16 @@ class LoginViewController: UIViewController {
                 //let myself = ModelHandler().getUser(email)
                 
 				//self.dismissViewControllerAnimated(true, completion: nil)
+                APIManager().getUserInformation(email){ result in
+                    let myself = ModelHandler().getUser(email)
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+
 
 			} else {
 				self.showAlert("Incorrect Email or Password")
 			}
 		}
-        APIManager().getUserInformation(email){ result in
-             let myself = ModelHandler().getUser(email)
-            self.dismissViewControllerAnimated(true, completion: nil)
-        }
-       
 		
     }
 	
