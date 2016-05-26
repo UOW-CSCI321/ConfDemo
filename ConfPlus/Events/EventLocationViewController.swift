@@ -21,5 +21,6 @@ class EventLocationViewController:UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(event.venue_id)
     }
 }

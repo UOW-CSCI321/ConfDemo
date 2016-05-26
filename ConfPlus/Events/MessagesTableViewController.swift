@@ -18,6 +18,7 @@ class MessagesTableViewController: UIViewController {
     //var usersMessages = [[Message]]()
     var userConversations = [Conversation]()
     var isDispatchEmpty:Bool = true
+    var event:Event!
     
     let user = NSUserDefaults.standardUserDefaults()
     
@@ -27,6 +28,8 @@ class MessagesTableViewController: UIViewController {
 		populateNavigationBar()
         userConversations = ModelHandler().getConversation(email!)
         conversationTable.reloadData()
+        
+        getVenue()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -56,6 +59,18 @@ class MessagesTableViewController: UIViewController {
         }
     }
     
+    func getVenue()
+    {
+        APIManager().getVenue(self.event){ result in
+            if let eventsVenue = ModelHandler().getVenueByEvent(self.event)
+            {
+                APIManager().getMapForVenue(eventsVenue) { result in
+                    //successfully have the venue map
+                }
+            }
+        }
+    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let indexPath:NSIndexPath = self.conversationTable.indexPathForSelectedRow!
         let messengerVC:MessengerViewController = segue.destinationViewController as! MessengerViewController
@@ -128,6 +143,7 @@ extension MessagesTableViewController{
 	func performLocationView(){
 		let storyboard : UIStoryboard = UIStoryboard(name: "EventAssistServices", bundle: nil)
 		let vc : EventLocationViewController = storyboard.instantiateViewControllerWithIdentifier("EventLocationViewController") as! EventLocationViewController
+        vc.event = self.event
 		
 		let navigationController = UINavigationController(rootViewController: vc)
 		

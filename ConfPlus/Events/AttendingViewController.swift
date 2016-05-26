@@ -10,12 +10,26 @@ import Foundation
 import UIKit
 
 class AttendingViewController: UIViewController {
-    
+    var event:Event!
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+        getVenue()
 		populateNavigationBar()
     }
+    
+    func getVenue()
+    {
+        APIManager().getVenue(self.event){ result in
+            if let eventsVenue = ModelHandler().getVenueByEvent(self.event)
+            {
+                APIManager().getMapForVenue(eventsVenue) { result in
+                    //successfully have the venue map
+                }
+            }
+        }
+    }
+
 }
 
 //MARK: Navigation Bar Related
@@ -34,16 +48,16 @@ extension AttendingViewController{
 	func performSecurityView(){
 		let storyboard : UIStoryboard = UIStoryboard(name: "EventAssistServices", bundle: nil)
 		let vc : SecurityViewController = storyboard.instantiateViewControllerWithIdentifier("SecurityViewController") as! SecurityViewController
-		
+        
 		let navigationController = UINavigationController(rootViewController: vc)
-		
+    
 		self.presentViewController(navigationController, animated: true, completion: nil)
 	}
 	
 	func performLocationView(){
 		let storyboard : UIStoryboard = UIStoryboard(name: "EventAssistServices", bundle: nil)
 		let vc : EventLocationViewController = storyboard.instantiateViewControllerWithIdentifier("EventLocationViewController") as! EventLocationViewController
-		
+		vc.event = self.event
 		let navigationController = UINavigationController(rootViewController: vc)
 		
 		self.presentViewController(navigationController, animated: true, completion: nil)
