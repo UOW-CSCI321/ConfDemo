@@ -19,7 +19,7 @@ class TicketDetailsViewController: UIViewController {
 	@IBOutlet weak var ticketName: UILabel!
 	@IBOutlet weak var ticketCount: UILabel!
 	
-	
+	var event:Event!
 	let user = NSUserDefaults.standardUserDefaults()
 	
     override func viewDidLoad() {

@@ -628,7 +628,7 @@
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <segue destination="r0q-DF-LaA" kind="show" id="dmo-Ct-kk2"/>
+                                                        <segue destination="r0q-DF-LaA" kind="show" identifier="goToTicketDetails" id="dmo-Ct-kk2"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

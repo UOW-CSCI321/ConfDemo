@@ -9,8 +9,6 @@
 import UIKit
 import MapKit
 import CoreLocation
-import Alamofire
-import SwiftyJSON
 import CoreData
 
 class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
@@ -25,7 +23,7 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
     let address = "test address"
     var event:Event!
     var venue:Venue?
-    
+	
     @IBOutlet var eventDetailsTableView: UITableView!
 	
     override func viewDidLoad() {
@@ -42,6 +40,13 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
 			}
 		}
 
+	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "goToTicketDetails" {
+			let vc = segue.destinationViewController as! TicketDetailsViewController
+			vc.event = event
+		}
 	}
 	
 	func setData(){
