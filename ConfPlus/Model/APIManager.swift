@@ -614,6 +614,42 @@ extension APIManager{
 			}
 		}
 	}
+    
+    //func getUserProfilePicFromAPI
+    func getUserProfilePicFromAPI(user:User, completion: (result: Bool) -> Void){
+        guard let email = user.email else {
+            print("No email", #function)
+            return
+        }
+        let parameters = [
+            "api_key": server.KEY,
+            "app_secret": server.SECRET,
+            "method" : "getProfileImage",
+            "email" : email
+        ]
+        
+        Alamofire.request(.POST, self.server.URL, parameters: parameters).responseJSON(){ response in
+            switch response.result{
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    if json["success"]{
+                        //self.handler.updatePosterForEvent(event, data: json["data"]["poster_data_url"].string!)
+                        self.handler.updateUsersProfilePic(user, data: json["data"]["image_data_url"].string!)
+                        completion(result: true)
+                    } else {
+                        completion(result: false)
+                    }
+                }
+            case .Failure(let error):
+                print(error.localizedDescription)
+                completion(result: false)
+            }
+        }
+        
+    }
+
+    
 
 	func updateProfile(email: String, title: String?, first_name:String?, last_name:String?, dob:String?, street:String?, city:String?, state:String?, country:String?, completion:(result:Bool) -> ()){
 		var parameters = [

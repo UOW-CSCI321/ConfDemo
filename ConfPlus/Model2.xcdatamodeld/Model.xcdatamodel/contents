@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="User" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="User" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
     <entity name="Billing" representedClassName=".Billing" syncable="YES">
         <attribute name="card" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="card_type" optional="YES" attributeType="String" syncable="YES"/>
@@ -121,6 +121,7 @@
         <attribute name="last_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="linkedin_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profile_pic_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
@@ -162,7 +163,7 @@
         <element name="Session" positionX="1852" positionY="716" width="128" height="163"/>
         <element name="Ticket_Def" positionX="1861" positionY="936" width="128" height="208"/>
         <element name="Ticket_Record" positionX="1456" positionY="887" width="128" height="208"/>
-        <element name="User" positionX="1413" positionY="408" width="128" height="403"/>
+        <element name="User" positionX="1413" positionY="408" width="128" height="418"/>
         <element name="User_Tag" positionX="1645" positionY="882" width="128" height="73"/>
         <element name="Venue" positionX="2032" positionY="360" width="128" height="195"/>
     </elements>

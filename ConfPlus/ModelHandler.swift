@@ -183,6 +183,17 @@ class ModelHandler{
         return nil
     }
     
+    //func updateUsersProfilePic(user, data: json["data"]["image_data_url"].string!)
+    func updateUsersProfilePic(user:User, data:String) -> User {
+        //event.poster_url = data
+        user.profile_pic_url = data
+        print(user.profile_pic_url)
+        performUpdate()
+        
+        return user
+    }
+    
+    
     func addNewConversation(json: JSON) -> Conversation
     {
         let convo = NSEntityDescription.insertNewObjectForEntityForName("Conversation", inManagedObjectContext: self.context) as! Conversation

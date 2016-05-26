@@ -25,10 +25,16 @@ class LoginViewController: UIViewController {
 	
 	override func viewWillAppear(animated: Bool) {
 		if let email = user.stringForKey("email"){
+            
 			APIManager().getUserInformation(email){ result in
 				self.dismissViewControllerAnimated(true, completion: nil)
 			}
-			
+            
+            if let myself = ModelHandler().getUser(email){
+                APIManager().getUserProfilePicFromAPI(myself) { result in
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+            }
 		}
 	}
 	
