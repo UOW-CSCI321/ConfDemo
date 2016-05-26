@@ -587,7 +587,7 @@ extension APIManager{
 					if json["success"] {
 						HUD.hide()
 						let data = json["data"][0]
-						print(data)
+						//print(data)
 						self.user.setObject(data["title"].string, forKey: "title")
 						self.user.setObject(data["first_name"].string, forKey: "firstName")
 						self.user.setObject(data["last_name"].string, forKey: "lastName")
@@ -633,7 +633,7 @@ extension APIManager{
             case .Success:
                 if let value = response.result.value {
                     let json = JSON(value)
-                    print(json)
+                    //print(json)
                     if json["success"]{
                         //self.handler.updatePosterForEvent(event, data: json["data"]["poster_data_url"].string!)
                         self.handler.updateUsersProfilePic(user, data: json["data"]["image_data_url"].string!)

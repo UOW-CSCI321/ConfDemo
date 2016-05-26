@@ -137,7 +137,7 @@ class ModelHandler{
 
     func addNewUser(json: JSON) -> User
     {
-        print(json)
+        //print(json)
         let user = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: self.context) as! User
         user.email = json["email"].string
         user.username = json["username"].string
@@ -186,11 +186,11 @@ class ModelHandler{
         return nil
     }
     
-    //func updateUsersProfilePic(user, data: json["data"]["image_data_url"].string!)
+    
     func updateUsersProfilePic(user:User, data:String) -> User {
         //event.poster_url = data
         user.profile_pic_url = data
-        print(user.profile_pic_url)
+        //print(user.profile_pic_url)
         performUpdate()
         
         return user
