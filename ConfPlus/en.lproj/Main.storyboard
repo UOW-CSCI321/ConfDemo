@@ -34,7 +34,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lmi-2k-E99">
                                                     <rect key="frame" x="8" y="8" width="398" height="312"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="second" translatesAutoresizingMaskIntoConstraints="NO" id="k5p-ek-4iy">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="matt" translatesAutoresizingMaskIntoConstraints="NO" id="k5p-ek-4iy">
                                                             <rect key="frame" x="0.0" y="8" width="398" height="224"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="150" id="82k-tU-uKh"/>
@@ -163,7 +163,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9LY-AE-VdF">
                                                     <rect key="frame" x="8" y="8" width="398" height="312"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="second" translatesAutoresizingMaskIntoConstraints="NO" id="ICA-ga-3Wd">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="matt" translatesAutoresizingMaskIntoConstraints="NO" id="ICA-ga-3Wd">
                                                             <rect key="frame" x="0.0" y="8" width="398" height="224"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="150" id="jMj-XM-SYe"/>
@@ -272,8 +272,29 @@
                         <sections>
                             <tableViewSection headerTitle="Profile" id="U89-4P-al1">
                                 <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="15" rowHeight="140" id="jhL-7f-GsU">
+                                        <rect key="frame" x="0.0" y="113.5" width="414" height="140"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jhL-7f-GsU" id="iYd-RJ-zcH">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="139.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="account2" translatesAutoresizingMaskIntoConstraints="NO" id="ykd-TC-2ez">
+                                                    <rect key="frame" x="143" y="6" width="128" height="128"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="128" id="kAM-2o-hfe"/>
+                                                        <constraint firstAttribute="width" secondItem="ykd-TC-2ez" secondAttribute="height" multiplier="1:1" id="yVu-R6-Hlq"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ykd-TC-2ez" firstAttribute="centerX" secondItem="iYd-RJ-zcH" secondAttribute="centerX" id="4Hm-uX-Bk5"/>
+                                                <constraint firstItem="ykd-TC-2ez" firstAttribute="centerY" secondItem="iYd-RJ-zcH" secondAttribute="centerY" id="oMD-Cf-snQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="15" rowHeight="44" id="xlk-Xo-t89">
-                                        <rect key="frame" x="0.0" y="113.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="253.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xlk-Xo-t89" id="gYQ-X1-pAF">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -301,7 +322,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="15" rowHeight="44" id="3FC-cO-Ro8">
-                                        <rect key="frame" x="0.0" y="157.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="297.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3FC-cO-Ro8" id="E3w-Gt-JLB">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -333,7 +354,7 @@
                             <tableViewSection headerTitle="Settings" id="ht4-qz-lep">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="jtR-DW-NOK">
-                                        <rect key="frame" x="0.0" y="251.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="391.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jtR-DW-NOK" id="Zwd-yV-DX7">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -370,7 +391,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="wbz-yC-DmZ">
-                                        <rect key="frame" x="0.0" y="295.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="435.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wbz-yC-DmZ" id="8is-NY-EsA">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -393,7 +414,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="EQy-PH-K3Z">
-                                        <rect key="frame" x="0.0" y="339.5" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="479.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EQy-PH-K3Z" id="pOl-57-bLn">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -432,6 +453,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="avatar" destination="ykd-TC-2ez" id="QaG-oj-7Jz"/>
                         <outlet property="editButton" destination="0Qk-Id-7Sq" id="YrB-j8-aID"/>
                         <outlet property="emailLabel" destination="vZ7-hR-mid" id="OHD-hL-J58"/>
                         <outlet property="fixEmailLabel" destination="xmH-MK-Pkq" id="3Pk-SA-ST2"/>
@@ -864,9 +886,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="account2" width="104" height="87"/>
         <image name="event" width="25" height="25"/>
         <image name="explore" width="25" height="25"/>
+        <image name="matt" width="720" height="720"/>
         <image name="profile" width="25" height="25"/>
-        <image name="second" width="30" height="30"/>
     </resources>
 </document>

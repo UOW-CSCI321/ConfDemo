@@ -87,7 +87,6 @@ class ModelHandler{
 		request.fetchLimit = 1
 		
 		guard let venue_id = event.venue_id else {
-			print("error 1")
 			return nil
 		}
 		let predicate = NSPredicate(format: "venue_id == %@", venue_id)
@@ -97,7 +96,6 @@ class ModelHandler{
 			let results = try context.executeFetchRequest(request)
 			print(results)
 			guard let venue = results.first else {
-				print("error 2")
 				return nil
 			}
 			return venue as? Venue
@@ -305,7 +303,6 @@ extension ModelHandler {
 		var history = [Payment]()
 		do {
 			history = try context.executeFetchRequest(fetch) as! [Payment]
-			//print(events[0])
 		} catch {
 			print("Could not retrieve payment object")
 		}

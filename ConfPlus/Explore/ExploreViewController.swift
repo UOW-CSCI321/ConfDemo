@@ -30,8 +30,6 @@ class ExploreViewController: UIViewController {
 		events = ModelHandler().getEvents("0")
 		EventsTableView.reloadData()
 		
-		
-		
 		refresher = UIRefreshControl()
 		refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
 		refresher.addTarget(self, action: #selector(self.getEventsFromAPI), forControlEvents: UIControlEvents.ValueChanged)
@@ -109,7 +107,6 @@ extension ExploreViewController: UITableViewDelegate{
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		let storyboard : UIStoryboard = UIStoryboard(name: "Explore", bundle: nil)
 		let vc : EventDetailTableViewController = storyboard.instantiateViewControllerWithIdentifier("EventDetailTableViewController") as! EventDetailTableViewController
-		print(events[indexPath.row])
 		vc.event = events[indexPath.row]
 		
 		self.navigationController?.pushViewController(vc, animated: true)
