@@ -18,6 +18,8 @@ class MessagesTableViewController: UIViewController {
     //var usersMessages = [[Message]]()
     var userConversations = [Conversation]()
     var isDispatchEmpty:Bool = true
+    var participants = [User]() //hold one user per conversation to display conversation icon
+    var tempParticipants = [User]()
     
     let user = NSUserDefaults.standardUserDefaults()
     
@@ -42,9 +44,32 @@ class MessagesTableViewController: UIViewController {
             
             APIManager().getConversationsFromAPI(email!, group: group, isDispatchEmpty: &isDispatchEmpty){ result in
                 dispatch_group_notify(group, dispatch_get_main_queue()) {
-                    self.isDispatchEmpty = true
+//                    self.isDispatchEmpty = true
                     self.userConversations = ModelHandler().getConversation(email!)
 
+                    let count = self.userConversations.count
+                    for i in 0..<count
+                    {
+                        APIManager().getUsersForConversationFromAPI(self.userConversations[i]) {
+                            result in
+                            self.tempParticipants = ModelHandler().getUsersForConversation(self.userConversations[i]/*.conversation_id!*/)!
+                            let count2 = self.tempParticipants.count
+                            if count2 > 2
+                            {
+                                //append empty user
+                                let u = User()
+                                self.participants.append(u)
+                            }else{
+                                if self.tempParticipants[0].email == email
+                                {
+                                    self.participants.append(self.tempParticipants[0])
+                                }else{
+                                    self.participants.append(self.tempParticipants[1])
+                                }
+                            }
+                        }
+                    }
+                    
                     self.conversationTable.reloadData()
                     print("Reloaded")
                     

@@ -244,6 +244,49 @@ class APIManager{
         
     }
     
+    func getUsersForConversationFromAPI(conversation:Conversation, completion: (result: Bool) -> Void)
+    {
+        guard let id = conversation.conversation_id else {
+            completion(result: false)
+            return
+        }
+        
+        let paramaters = [
+            "api_key"	:	server.KEY,
+            "app_secret":	server.SECRET,
+            "method"	:	"getConversationParticipants",
+            "conversation_id"	:	id
+        ]
+        var user:User? = nil
+        
+        Alamofire.request(.POST, server.URL, parameters: paramaters).responseJSON {response in
+            switch response.result{
+            case .Success:
+                if let value = response.result.value{
+                    
+                    let json = JSON(value)
+                    if json["success"] {
+                        user = self.handler.addNewUser(json["data"][0])
+                        self.handler.saveUserForConversation(user, conversation)
+                        
+                        //self.handler.saveVenueForEvent(event, venue:venue!)
+                        completion(result: true)
+                    } else {
+                        print(json["data"][0]["message"])
+                        completion(result: false)
+                    }
+                }
+                
+            case .Failure(let error):
+                print(error.localizedDescription)
+                completion(result: false)
+                
+            }
+            
+        }
+
+    }
+    
     func getConversationsFromAPI(email:String, group: dispatch_group_t, inout isDispatchEmpty: Bool, completion: (Bool) -> Void) {
     
         let paramaters = [

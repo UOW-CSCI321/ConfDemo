@@ -156,6 +156,7 @@ class ModelHandler{
         user.linkedin_id = json["linkedin_id"].number
         user.active = json["active"].number
         user.upgraded = json["upgraded"].number
+        user.profile_pic_url = json["image_data_url"].string
         
 //        print(user.email)
 //        print(user.username)
@@ -212,6 +213,30 @@ class ModelHandler{
         return user
     }
     
+    func getUsersForConversation(/*conversationId:String*/ conversation:Conversation) -> [User]?
+    {
+        let request = NSFetchRequest()
+        let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: context)
+        
+        let predicate = NSPredicate(format: "ANY conversations == %@", conversation)
+        
+        request.entity = entity
+        request.predicate = predicate
+        
+        var users = [User]()
+        do{
+            users = try context.executeFetchRequest(request) as! [User]
+            return users
+        } catch {
+            print("Failed to search for usesr in conversation \(conversation.conversation_id)")
+        }
+        return nil
+    }
+    
+//    func saveUserForConversation(user:User, conversation:Conversation)
+//    {
+//        conversation.users
+//    }
     
     func addNewConversation(json: JSON) -> Conversation
     {
