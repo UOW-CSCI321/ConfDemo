@@ -11,6 +11,10 @@ import UIKit
 
 class EventLocationViewController:UIViewController {
     
+    @IBOutlet var mapImageView: UIImageView!
+    var event:Event!
+    var venue:Venue?
+    
 	@IBAction func dismissLocationView(sender: AnyObject) {
 		dismissViewControllerAnimated(true, completion: nil)
 	}

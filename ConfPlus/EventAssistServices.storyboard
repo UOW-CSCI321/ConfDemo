@@ -93,6 +93,11 @@
                     <view key="view" contentMode="scaleToFill" id="xmf-bZ-WzT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pzx-4h-u8q">
+                                <rect key="frame" x="0.0" y="61" width="414" height="675"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Location" id="L8p-n2-5yi">
@@ -103,6 +108,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="mapImageView" destination="pzx-4h-u8q" id="k6l-rg-G3x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X7G-lu-qrc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

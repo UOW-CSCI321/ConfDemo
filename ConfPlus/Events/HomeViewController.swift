@@ -132,6 +132,7 @@ extension HomeViewController{
 	func performLocationView(){
 		let storyboard : UIStoryboard = UIStoryboard(name: "EventAssistServices", bundle: nil)
 		let vc : EventLocationViewController = storyboard.instantiateViewControllerWithIdentifier("EventLocationViewController") as! EventLocationViewController
+        vc.event = self.event
 		
 		let navigationController = UINavigationController(rootViewController: vc)
 		
