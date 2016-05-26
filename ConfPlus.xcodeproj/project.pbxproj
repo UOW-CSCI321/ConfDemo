@@ -272,7 +272,6 @@
 		C9FD07E91CB23BD400C44595 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E9E0A64F1CDD8C6200E187AD /* ModelHandler.swift */,
 				E97EB7331CDF13E5009113A6 /* Session+CoreDataProperties.swift */,
 				E94AA9621CE0858200569032 /* Event+CoreDataProperties.swift */,
 				C93A980C1CE04AE900418F53 /* Event.swift */,
@@ -408,6 +407,7 @@
 			children = (
 				E9E0A64A1CDD805700E187AD /* APIManager.swift */,
 				E9E0A64C1CDD80B500E187AD /* APIServer.swift */,
+				E9E0A64F1CDD8C6200E187AD /* ModelHandler.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";

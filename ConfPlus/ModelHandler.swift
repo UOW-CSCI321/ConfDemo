@@ -213,7 +213,7 @@ class ModelHandler{
         return user
     }
     
-    func getUsersForConversation(/*conversationId:String*/ conversation:Conversation) -> [User]?
+    func getUsersForConversation(conversation:Conversation) -> [User]?
     {
         let request = NSFetchRequest()
         let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: context)
@@ -233,10 +233,12 @@ class ModelHandler{
         return nil
     }
     
-//    func saveUserForConversation(user:User, conversation:Conversation)
-//    {
-//        conversation.users
-//    }
+    func saveUserForConversation(user:User, conversation:Conversation)
+    {
+        conversation.mutableSetValueForKey("user").addObject(user)
+        user.mutableSetValueForKey("conversation").addObject(conversation)
+        performUpdate()
+    }
     
     func addNewConversation(json: JSON) -> Conversation
     {

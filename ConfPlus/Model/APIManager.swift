@@ -267,7 +267,9 @@ class APIManager{
                     let json = JSON(value)
                     if json["success"] {
                         user = self.handler.addNewUser(json["data"][0])
-                        self.handler.saveUserForConversation(user, conversation)
+                        //self.handler.saveUserForConversation(user!, conversation: conversation)
+                        user?.mutableSetValueForKey("conversation").addObject(conversation)
+                        conversation.mutableSetValueForKey("user").addObject(user!)
                         
                         //self.handler.saveVenueForEvent(event, venue:venue!)
                         completion(result: true)
