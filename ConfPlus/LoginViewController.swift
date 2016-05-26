@@ -58,8 +58,13 @@ class LoginViewController: UIViewController {
                 
 				//self.dismissViewControllerAnimated(true, completion: nil)
                 APIManager().getUserInformation(email){ result in
-                    let myself = ModelHandler().getUser(email)
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                    if let myself = ModelHandler().getUser(email) {
+                        APIManager().getUserProfilePicFromAPI(myself) { result in
+                            self.dismissViewControllerAnimated(true, completion: nil)
+                        }
+
+                    }
+                    //self.dismissViewControllerAnimated(true, completion: nil)
                 }
 
 

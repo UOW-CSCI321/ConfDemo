@@ -633,6 +633,7 @@ extension APIManager{
             case .Success:
                 if let value = response.result.value {
                     let json = JSON(value)
+                    print(json)
                     if json["success"]{
                         //self.handler.updatePosterForEvent(event, data: json["data"]["poster_data_url"].string!)
                         self.handler.updateUsersProfilePic(user, data: json["data"]["image_data_url"].string!)
