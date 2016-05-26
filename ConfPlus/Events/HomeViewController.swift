@@ -26,7 +26,8 @@ class HomeViewController: UIViewController {
 		
 		populateEventOverview()
 		populateNavigationBar()
-		
+        
+        getVenue()
     }
 	
 	override func viewWillAppear(animated: Bool) {
@@ -49,6 +50,18 @@ class HomeViewController: UIViewController {
 		eventDate.text = "\(event.getFromDateAsString()) - \(event.getToDateAsString())"
 		//eventLocation.text = "\(event.venue?.city), \(event.venue?.country)"
 	}
+    
+    func getVenue()
+    {
+        APIManager().getVenue(self.event){ result in
+             if let eventsVenue = ModelHandler().getVenueByEvent(self.event)
+             {
+                APIManager().getMapForVenue(eventsVenue) { result in
+                    //successfully have the venue map
+                }
+             }
+        }
+    }
 }
 
 extension HomeViewController: UITableViewDelegate {

@@ -1,9 +1,9 @@
 //
 //  Venue+CoreDataProperties.swift
-//  ConfPlus
+//  
 //
-//  Created by CY Lim on 8/05/2016.
-//  Copyright © 2016 Conf+. All rights reserved.
+//  Created by Matthew Boroczky on 27/05/2016.
+//
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
 //  to delete and recreate this implementation file for your updated model.
@@ -23,6 +23,7 @@ extension Venue {
     @NSManaged var street: String?
     @NSManaged var type: String?
     @NSManaged var venue_id: String?
+    @NSManaged var map: String?
     @NSManaged var events: NSSet?
 
 }

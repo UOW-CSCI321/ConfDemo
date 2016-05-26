@@ -125,6 +125,13 @@ class ModelHandler{
 		performUpdate()
 	}
     
+    func updateMapForVenue(venue:Venue, data:String) -> Venue {
+        venue.map = data
+        performUpdate()
+        
+        return venue
+    }
+    
     func serverStringToDate(dateString:String) -> NSDate
     {
         let dateFormatter = NSDateFormatter()

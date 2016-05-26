@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7ABBEDC83FCAF9328A671323 /* Pods_ConfPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29F9F87683BF1E1F1317CBE5 /* Pods_ConfPlus.framework */; };
+		C919F53B1CF774A9008268B8 /* Venue+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C919F5391CF774A9008268B8 /* Venue+CoreDataProperties.swift */; };
+		C919F53C1CF774A9008268B8 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C919F53A1CF774A9008268B8 /* Venue.swift */; };
 		C91E85D81CE739630069333B /* Model2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C91E85D61CE739630069333B /* Model2.xcdatamodeld */; };
 		C91E85E11CE75E5D0069333B /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91E85DC1CE75E5D0069333B /* User+CoreDataProperties.swift */; };
 		C91E85E21CE75E5D0069333B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91E85DD1CE75E5D0069333B /* User.swift */; };
@@ -59,8 +61,6 @@
 		E96D018E1CF1DA6600AC48EE /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96D018D1CF1DA6600AC48EE /* Message+CoreDataProperties.swift */; };
 		E97EB74F1CDF13E5009113A6 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7331CDF13E5009113A6 /* Session+CoreDataProperties.swift */; };
 		E97EB7501CDF13E5009113A6 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7341CDF13E5009113A6 /* Session.swift */; };
-		E97EB7531CDF13E5009113A6 /* Venue+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7371CDF13E5009113A6 /* Venue+CoreDataProperties.swift */; };
-		E97EB7541CDF13E5009113A6 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7381CDF13E5009113A6 /* Venue.swift */; };
 		E97EB7591CDF13E5009113A6 /* Payment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB73D1CDF13E5009113A6 /* Payment+CoreDataProperties.swift */; };
 		E97EB75A1CDF13E5009113A6 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB73E1CDF13E5009113A6 /* Payment.swift */; };
 		E97EB75F1CDF13E5009113A6 /* Ticket+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7431CDF13E5009113A6 /* Ticket+CoreDataProperties.swift */; };
@@ -93,6 +93,8 @@
 /* Begin PBXFileReference section */
 		0DAF2938A2525B6CBC886A11 /* Pods-ConfPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConfPlus.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConfPlus/Pods-ConfPlus.release.xcconfig"; sourceTree = "<group>"; };
 		29F9F87683BF1E1F1317CBE5 /* Pods_ConfPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConfPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C919F5391CF774A9008268B8 /* Venue+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Venue+CoreDataProperties.swift"; path = "Model/Venue+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C919F53A1CF774A9008268B8 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Venue.swift; path = Model/Venue.swift; sourceTree = "<group>"; };
 		C91E85D71CE739630069333B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		C91E85DC1CE75E5D0069333B /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "Model/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C91E85DD1CE75E5D0069333B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
@@ -148,8 +150,6 @@
 		E96D018D1CF1DA6600AC48EE /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E97EB7331CDF13E5009113A6 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+CoreDataProperties.swift"; path = "Model/Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E97EB7341CDF13E5009113A6 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Model/Session.swift; sourceTree = "<group>"; };
-		E97EB7371CDF13E5009113A6 /* Venue+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Venue+CoreDataProperties.swift"; path = "Model/Venue+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E97EB7381CDF13E5009113A6 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Venue.swift; path = Model/Venue.swift; sourceTree = "<group>"; };
 		E97EB73D1CDF13E5009113A6 /* Payment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Payment+CoreDataProperties.swift"; path = "Model/Payment+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E97EB73E1CDF13E5009113A6 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Payment.swift; path = Model/Payment.swift; sourceTree = "<group>"; };
 		E97EB7431CDF13E5009113A6 /* Ticket+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Ticket+CoreDataProperties.swift"; path = "Model/Ticket+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -277,8 +277,6 @@
 				E94AA9621CE0858200569032 /* Event+CoreDataProperties.swift */,
 				C93A980C1CE04AE900418F53 /* Event.swift */,
 				E97EB7341CDF13E5009113A6 /* Session.swift */,
-				E97EB7371CDF13E5009113A6 /* Venue+CoreDataProperties.swift */,
-				E97EB7381CDF13E5009113A6 /* Venue.swift */,
 				E97EB73D1CDF13E5009113A6 /* Payment+CoreDataProperties.swift */,
 				E97EB73E1CDF13E5009113A6 /* Payment.swift */,
 				C9D9DC0C1CE8BDDC00CF55FA /* Conversation+CoreDataProperties.swift */,
@@ -297,6 +295,8 @@
 				E97EB74C1CDF13E5009113A6 /* Event_Tag.swift */,
 				E97EB74D1CDF13E5009113A6 /* Event_Roles+CoreDataProperties.swift */,
 				E97EB74E1CDF13E5009113A6 /* Event_Roles.swift */,
+				C919F5391CF774A9008268B8 /* Venue+CoreDataProperties.swift */,
+				C919F53A1CF774A9008268B8 /* Venue.swift */,
 				E96D018A1CF1D9F400AC48EE /* Message.swift */,
 				E96D018D1CF1DA6600AC48EE /* Message+CoreDataProperties.swift */,
 			);
@@ -542,7 +542,6 @@
 			files = (
 				E97EB75F1CDF13E5009113A6 /* Ticket+CoreDataProperties.swift in Sources */,
 				C94AFA5A1C980DE400EC88B6 /* TimeTableViewController.swift in Sources */,
-				E97EB7541CDF13E5009113A6 /* Venue.swift in Sources */,
 				E90201C91C9CC84A00C7839A /* EventsViewController.swift in Sources */,
 				C91E85E21CE75E5D0069333B /* User.swift in Sources */,
 				E97EB7651CDF13E5009113A6 /* User_Tag+CoreDataProperties.swift in Sources */,
@@ -552,6 +551,7 @@
 				E90A0A621BCF7143005D611C /* Readme.md in Sources */,
 				E9D055C71CCF1CCA0045BA86 /* TimetableTableViewCell.swift in Sources */,
 				E99270271CE43545005F2567 /* EditProfileTableViewController.swift in Sources */,
+				C919F53B1CF774A9008268B8 /* Venue+CoreDataProperties.swift in Sources */,
 				E97EB7501CDF13E5009113A6 /* Session.swift in Sources */,
 				C94AFA711C981FED00EC88B6 /* AdminTableViewController.swift in Sources */,
 				E9E0A64B1CDD805700E187AD /* APIManager.swift in Sources */,
@@ -571,6 +571,7 @@
 				E97EB7591CDF13E5009113A6 /* Payment+CoreDataProperties.swift in Sources */,
 				E97EB7631CDF13E5009113A6 /* Ticket_Record+CoreDataProperties.swift in Sources */,
 				E93163611BC5E0B4007408C7 /* AppDelegate.swift in Sources */,
+				C919F53C1CF774A9008268B8 /* Venue.swift in Sources */,
 				E96D018E1CF1DA6600AC48EE /* Message+CoreDataProperties.swift in Sources */,
 				E97EB7671CDF13E5009113A6 /* Event_Tag+CoreDataProperties.swift in Sources */,
 				C91E85D81CE739630069333B /* Model2.xcdatamodeld in Sources */,
@@ -596,7 +597,6 @@
 				E94AA9631CE0858200569032 /* Event+CoreDataProperties.swift in Sources */,
 				C94AFA6C1C981E7700EC88B6 /* SecurityViewController.swift in Sources */,
 				C93A984F1CE36B4C00418F53 /* MessageTableViewCell.swift in Sources */,
-				E97EB7531CDF13E5009113A6 /* Venue+CoreDataProperties.swift in Sources */,
 				E97EB7691CDF13E5009113A6 /* Event_Roles+CoreDataProperties.swift in Sources */,
 				C9D9DC091CE88A0300CF55FA /* MessengerViewController.swift in Sources */,
 				C94AFA601C9811BD00EC88B6 /* EventLocationViewController.swift in Sources */,

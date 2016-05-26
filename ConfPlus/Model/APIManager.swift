@@ -170,6 +170,45 @@ class APIManager{
 		
 	}
     
+    func getMapForVenue(venue:Venue, completion: (result: Bool) -> Void) {
+        guard let id = venue.venue_id else {
+            completion(result: false)
+            return
+        }
+        
+        let parameters = [
+            "api_key"	:	server.KEY,
+            "app_secret":	server.SECRET,
+            "method"	:	"getVenueMap",
+            "venue_id"	:	id
+        ]
+        var v:Venue? = nil
+        
+        Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
+            switch response.result{
+            case .Success:
+                if let value = response.result.value{
+                    
+                    let json = JSON(value)
+                    if json["success"] {
+                        self.handler.updateMapForVenue(venue, data: json["data"]["image_data_url"].string!)
+                        completion(result: true)
+                    } else {
+                        print(json["data"][0]["message"])
+                        completion(result: false)
+                    }
+                }
+                
+            case .Failure(let error):
+                print(error.localizedDescription)
+                completion(result: false)
+                
+            }
+            
+        }
+
+    }
+    
     func getMyEventDataFromAPI(group: dispatch_group_t, inout isDispatchEmpty: Bool, completion: (Bool) -> Void){
         let paramaters = [
             "api_key": server.KEY,
@@ -213,7 +252,7 @@ class APIManager{
             "api_key"	:	server.KEY,
             "app_secret":	server.SECRET,
             "method"	:	"getUser",
-            "venue_id"	:	email
+            "venue_id"	:	email //email?
         ]
         var user:User? = nil
         
