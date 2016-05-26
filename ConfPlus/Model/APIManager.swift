@@ -597,7 +597,7 @@ extension APIManager{
 						self.user.setObject(data["state"].string, forKey: "state")
 						self.user.setObject(data["country"].string, forKey: "country")
 						self.user.synchronize()
-						
+						self.handler.addNewUser(data)
 						completion(result: true, data: json["data"][0])
 					} else {
 						HUD.hide()

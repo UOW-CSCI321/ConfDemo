@@ -137,6 +137,7 @@ class ModelHandler{
 
     func addNewUser(json: JSON) -> User
     {
+        print(json)
         let user = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: self.context) as! User
         user.email = json["email"].string
         user.username = json["username"].string
@@ -144,7 +145,9 @@ class ModelHandler{
         user.title = json["title"].string
         user.first_name = json["first_name"].string
         user.last_name = json["last_name"].string
-        user.dob = serverStringToDate(json["dob"].string!)
+        if json["dob"].string != nil {
+            user.dob = serverStringToDate(json["dob"].string!)
+        }
         user.street = json["street"].string
         user.city = json["city"].string
         user.state = json["state"].string
