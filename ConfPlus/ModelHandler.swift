@@ -22,9 +22,16 @@ class ModelHandler{
 		}
 	}
 	
-	func getEvents(attend: String) -> [Event]{
+	func getEvents(attend: String, future: Bool = true) -> [Event]{
 		let fetch = NSFetchRequest(entityName: "Event")
-        let predicate = NSPredicate(format: "attend == %@", attend)
+        let attendPredicate = NSPredicate(format: "attend == %@", attend)
+		var datePredicate = NSPredicate()
+		if future {
+			datePredicate = NSPredicate(format: "to_date > %@", NSDate())
+		} else {
+			datePredicate = NSPredicate(format: "to_date < %@", NSDate())
+		}
+		let predicate = NSCompoundPredicate(type: NSCompoundPredicateType.AndPredicateType, subpredicates: [attendPredicate, datePredicate])
         fetch.predicate = predicate
         
 		var events = [Event]()
@@ -40,7 +47,6 @@ class ModelHandler{
     //Events
     //Explore tab
 	func addNewEvent(json: JSON, attending:String){
-		print("ADDING EVENT")
 		let entityDescription = NSEntityDescription.entityForName("Event", inManagedObjectContext: context)
 		
 		let event = Event(entity: entityDescription!, insertIntoManagedObjectContext: self.context)
