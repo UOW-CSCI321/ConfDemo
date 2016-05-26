@@ -17,14 +17,8 @@ target 'ConfPlus' do
 	# https://github.com/MPGNotification/MPGNotification
 	pod 'MPGNotification', '~> 1.2'
 
-	# https://github.com/Dalodd/Alamofire-Synchronous
-	pod 'Alamofire-Synchronous', '~> 3.0'
-
 	# https://github.com/krzyzanowskim/CryptoSwift
 	pod 'CryptoSwift'
-    
-    # https://github.com/OrangeGroove/OGCryptoHash
-    pod 'OGCryptoHash', '~> 0.2.2'
     
     #https://github.com/jessesquires/JSQMessagesViewController
     pod 'JSQMessagesViewController', '~> 7.2.0'
