@@ -11,6 +11,8 @@ import UIKit
 
 class TimeTableViewController: UIViewController {
     
+    var event:Event!
+    
 	@IBAction func backToTicketPurchaseView(sender: AnyObject) {
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}

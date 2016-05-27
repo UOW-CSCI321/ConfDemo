@@ -103,6 +103,29 @@ extension HomeViewController: UITableViewDelegate {
 					()
 			}
 		}
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "goToTimetable" {
+            let vc = segue.destinationViewController as! TimeTableViewController
+            vc.event = event
+        } else if segue.identifier == "goToParticipants"
+        {
+            let vc = segue.destinationViewController as! AttendingViewController
+            vc.event = event
+        } else if segue.identifier == "goToTickets"
+        {
+            let vc = segue.destinationViewController as! MyTicketsTableViewController
+            vc.event = event
+        } else if segue.identifier == "goToMessages"
+        {
+            let vc = segue.destinationViewController as! MessagesTableViewController
+            vc.event = event
+        } else if segue.identifier == "goToAdministrations"
+        {
+            let vc = segue.destinationViewController as! AdminTableViewController
+            vc.event = event
+        }
+        
+    }
 }
 
 //MARK: Navigation Bar Related
