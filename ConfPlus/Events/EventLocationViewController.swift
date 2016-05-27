@@ -26,7 +26,6 @@ class EventLocationViewController:UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         getVenue() //gets venue from api
-        print(venue?.map)
         
     }
     
@@ -38,6 +37,7 @@ class EventLocationViewController:UIViewController {
                 APIManager().getMapForVenue(eventsVenue) { result in
                     self.venue = ModelHandler().getVenueByEvent(self.event)
                     //successfully have the venue map
+                    print(self.venue?.map)
                 }
             }
         }
