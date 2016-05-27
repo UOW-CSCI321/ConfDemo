@@ -25,8 +25,21 @@ class SecurityViewController: UIViewController {
 		viewEffect.round(helpView)
     }
     @IBAction func helpPressed(sender: AnyObject) {
-        var url:NSURL = NSURL(string: "tel:123456789")!
-        UIApplication.sharedApplication().openURL(url)
+        if let num = event.security_num
+        {
+            if num != ""
+            {
+                var url:NSURL = NSURL(string: "tel:\(num)")!
+                UIApplication.sharedApplication().openURL(url)
+            }else {
+                showAlert("No Security", message: "Sorry the event manager has not provided a security number for this event")
+            }
+            
+        }else {
+            showAlert("No Security", message: "Sorry the event manager has not provided a security number for this event")
+        }
+        
+        
     }
     
     func showAlert(title: String, message:String="Please try again"){
