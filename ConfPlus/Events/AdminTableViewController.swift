@@ -12,7 +12,7 @@ import PKHUD
 
 class AdminTableViewController: UITableViewController {
 	
-	
+    var event:Event!
     
     override func viewDidLoad() {
         super.viewDidLoad()
