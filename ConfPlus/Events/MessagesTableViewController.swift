@@ -60,12 +60,20 @@ class MessagesTableViewController: UIViewController {
                                 let u = User()
                                 self.participants.append(u)
                             }else{
-                                if self.tempParticipants[0].email == email
+                                for j in 0..<count2
                                 {
-                                    self.participants.append(self.tempParticipants[0])
-                                }else{
-                                    self.participants.append(self.tempParticipants[1])
+                                    if self.tempParticipants[j].email == email
+                                    {
+                                        self.participants.append(self.tempParticipants[j])
+                                    }
                                 }
+//                                if self.tempParticipants[0].email == email
+//                                {
+//                                    self.participants.append(self.tempParticipants[0])
+//                                }
+//                                else{
+//                                    self.participants.append(self.tempParticipants[1])
+//                                }
                             }
                         }
                     }

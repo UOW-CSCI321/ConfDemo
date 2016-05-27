@@ -219,6 +219,7 @@ class ModelHandler{
         let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: context)
         
         let predicate = NSPredicate(format: "ANY conversations == %@", conversation)
+        //let predicate = NSPredicate(format: "users IN %@.users", conversation)
         
         request.entity = entity
         request.predicate = predicate
@@ -226,6 +227,7 @@ class ModelHandler{
         var users = [User]()
         do{
             users = try context.executeFetchRequest(request) as! [User]
+            print(users)
             return users
         } catch {
             print("Failed to search for usesr in conversation \(conversation.conversation_id)")
@@ -235,8 +237,8 @@ class ModelHandler{
     
     func saveUserForConversation(user:User, conversation:Conversation)
     {
-        conversation.mutableSetValueForKey("user").addObject(user)
-        user.mutableSetValueForKey("conversation").addObject(conversation)
+        conversation.mutableSetValueForKey("users").addObject(user)
+        user.mutableSetValueForKey("conversations").addObject(conversation)
         performUpdate()
     }
     
