@@ -52,6 +52,7 @@ class ModelHandler{
 		event.desc = json["description"].string
 		event.url = json["url"].string
 		event.venue_id = json["venue_id"].string
+        event.security_num = json["contact_num"].string
         event.attend = attending
 		
 		performUpdate()

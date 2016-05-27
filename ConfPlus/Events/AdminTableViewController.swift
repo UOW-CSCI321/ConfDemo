@@ -54,7 +54,7 @@ extension AdminTableViewController{
 	func performSecurityView(){
 		let storyboard : UIStoryboard = UIStoryboard(name: "EventAssistServices", bundle: nil)
 		let vc : SecurityViewController = storyboard.instantiateViewControllerWithIdentifier("SecurityViewController") as! SecurityViewController
-		
+		vc.event = self.event
 		let navigationController = UINavigationController(rootViewController: vc)
 		
 		self.presentViewController(navigationController, animated: true, completion: nil)
@@ -63,7 +63,7 @@ extension AdminTableViewController{
 	func performLocationView(){
 		let storyboard : UIStoryboard = UIStoryboard(name: "EventAssistServices", bundle: nil)
 		let vc : EventLocationViewController = storyboard.instantiateViewControllerWithIdentifier("EventLocationViewController") as! EventLocationViewController
-		
+		vc.event = self.event
 		let navigationController = UINavigationController(rootViewController: vc)
 		
 		self.presentViewController(navigationController, animated: true, completion: nil)

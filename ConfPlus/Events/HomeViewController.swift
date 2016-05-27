@@ -146,6 +146,7 @@ extension HomeViewController{
 	func performSecurityView(){
 		let storyboard : UIStoryboard = UIStoryboard(name: "EventAssistServices", bundle: nil)
 		let vc : SecurityViewController = storyboard.instantiateViewControllerWithIdentifier("SecurityViewController") as! SecurityViewController
+        vc.event = self.event
 		
 		let navigationController = UINavigationController(rootViewController: vc)
 		
