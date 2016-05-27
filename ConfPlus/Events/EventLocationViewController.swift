@@ -37,7 +37,9 @@ class EventLocationViewController:UIViewController {
                 APIManager().getMapForVenue(eventsVenue) { result in
                     self.venue = ModelHandler().getVenueByEvent(self.event)
                     //successfully have the venue map
-                    print(self.venue?.map)
+                    //print(self.venue?.map)
+                    self.mapImageView.image = self.venue?.getImage()
+                    
                 }
             }
         }
