@@ -23,4 +23,23 @@ class EventLocationViewController:UIViewController {
         super.viewDidLoad()
         print(event.venue_id)
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        getVenue() //gets venue from api
+        print(venue?.map)
+        
+    }
+    
+    func getVenue()
+    {
+        APIManager().getVenue(self.event){ result in
+            if let eventsVenue = ModelHandler().getVenueByEvent(self.event)
+            {
+                APIManager().getMapForVenue(eventsVenue) { result in
+                    self.venue = ModelHandler().getVenueByEvent(self.event)
+                    //successfully have the venue map
+                }
+            }
+        }
+    }
 }
