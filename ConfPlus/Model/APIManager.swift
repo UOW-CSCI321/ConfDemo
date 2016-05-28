@@ -311,10 +311,6 @@ class APIManager{
                         print(json["data"][i])
                         self.handler.addNewConversation(json["data"][i])
                         self.handler.performUpdate()
-                        
-//                        APIManager().getMessagesForConvo(convo, group: group){
-//                            self.handler.performUpdate()
-//                        }
                         dispatch_group_leave(group)
                     }
                 }
@@ -328,6 +324,45 @@ class APIManager{
             
         }
     }
+    
+    func getConversationsByUserForEventFromAPI(email:String, eventID:String, group: dispatch_group_t, inout isDispatchEmpty: Bool, completion: (Bool) -> Void)    {
+        
+        let paramaters = [
+            "api_key"	:	server.KEY,
+            "app_secret":	server.SECRET,
+            "method"	:	"getConversationsByUserForEvent",
+            "email"	:	email,
+            "event_id" : eventID
+        ]
+        
+        Alamofire.request(.POST, server.URL, parameters: paramaters).responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    
+                    //self.handler.deleteEventsData()
+                    let counter = json["data"].count
+                    for i in 0 ..< counter {
+                        dispatch_group_enter(group)
+                        print(json["data"][i])
+                        self.handler.addNewConversation(json["data"][i])
+                        self.handler.performUpdate()
+                        dispatch_group_leave(group)
+                    }
+                }
+                completion(true)
+            case .Failure(let error):
+                print(error.localizedDescription)
+                let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+                notification.show()
+                completion(false)
+            }
+            
+        }
+
+    }
+    
     
     func getMessagesForConversation(conversation:Conversation, completion: (result: Bool) -> Void){
         guard let id = conversation.conversation_id else {

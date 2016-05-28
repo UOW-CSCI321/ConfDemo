@@ -42,7 +42,8 @@ class MessagesTableViewController: UIViewController {
             notification.duration = 2
             notification.show()
             
-            APIManager().getConversationsFromAPI(email!, group: group, isDispatchEmpty: &isDispatchEmpty){ result in
+//            APIManager().getConversationsFromAPI(email!, group: group, isDispatchEmpty: &isDispatchEmpty){ result in
+            APIManager().getConversationsByUserForEventFromAPI(email!, eventID: "test", group: group, isDispatchEmpty: &isDispatchEmpty){ result in
                 dispatch_group_notify(group, dispatch_get_main_queue()) {
 //                    self.isDispatchEmpty = true
                     self.userConversations = ModelHandler().getConversation(email!)
