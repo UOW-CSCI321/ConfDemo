@@ -12,6 +12,7 @@ import UIKit
 class MyTicketsTableViewController: UITableViewController {
 	
 	let ticket = [Ticket_Record]()
+    var event:Event!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +65,7 @@ extension MyTicketsTableViewController{
 	func performSecurityView(){
 		let storyboard : UIStoryboard = UIStoryboard(name: "EventAssistServices", bundle: nil)
 		let vc : SecurityViewController = storyboard.instantiateViewControllerWithIdentifier("SecurityViewController") as! SecurityViewController
+        vc.event = self.event
 		
 		let navigationController = UINavigationController(rootViewController: vc)
 		
@@ -73,6 +75,7 @@ extension MyTicketsTableViewController{
 	func performLocationView(){
 		let storyboard : UIStoryboard = UIStoryboard(name: "EventAssistServices", bundle: nil)
 		let vc : EventLocationViewController = storyboard.instantiateViewControllerWithIdentifier("EventLocationViewController") as! EventLocationViewController
+        vc.event = self.event
 		
 		let navigationController = UINavigationController(rootViewController: vc)
 		

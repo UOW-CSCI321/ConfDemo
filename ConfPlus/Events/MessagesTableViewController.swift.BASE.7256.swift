@@ -18,8 +18,6 @@ class MessagesTableViewController: UIViewController {
     //var usersMessages = [[Message]]()
     var userConversations = [Conversation]()
     var isDispatchEmpty:Bool = true
-    var participants = [User]() //hold one user per conversation to display conversation icon
-    var tempParticipants = [User]()
     
     let user = NSUserDefaults.standardUserDefaults()
     
@@ -29,8 +27,6 @@ class MessagesTableViewController: UIViewController {
 		populateNavigationBar()
         userConversations = ModelHandler().getConversation(email!)
         conversationTable.reloadData()
-        
-        getVenue()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -44,43 +40,11 @@ class MessagesTableViewController: UIViewController {
             notification.duration = 2
             notification.show()
             
-//            APIManager().getConversationsFromAPI(email!, group: group, isDispatchEmpty: &isDispatchEmpty){ result in
-            APIManager().getConversationsByUserForEventFromAPI(email!, eventID: "test", group: group, isDispatchEmpty: &isDispatchEmpty){ result in
+            APIManager().getConversationsFromAPI(email!, group: group, isDispatchEmpty: &isDispatchEmpty){ result in
                 dispatch_group_notify(group, dispatch_get_main_queue()) {
-//                    self.isDispatchEmpty = true
+                    self.isDispatchEmpty = true
                     self.userConversations = ModelHandler().getConversation(email!)
 
-                    let count = self.userConversations.count
-                    for i in 0..<count
-                    {
-                        APIManager().getUsersForConversationFromAPI(self.userConversations[i]) {
-                            result in
-                            self.tempParticipants = ModelHandler().getUsersForConversation(self.userConversations[i]/*.conversation_id!*/)!
-                            let count2 = self.tempParticipants.count
-                            if count2 > 2
-                            {
-                                //append empty user
-                                let u = User()
-                                self.participants.append(u)
-                            }else{
-                                for j in 0..<count2
-                                {
-                                    if self.tempParticipants[j].email == email
-                                    {
-                                        self.participants.append(self.tempParticipants[j])
-                                    }
-                                }
-//                                if self.tempParticipants[0].email == email
-//                                {
-//                                    self.participants.append(self.tempParticipants[0])
-//                                }
-//                                else{
-//                                    self.participants.append(self.tempParticipants[1])
-//                                }
-                            }
-                        }
-                    }
-                    
                     self.conversationTable.reloadData()
                     print("Reloaded")
                     
@@ -92,18 +56,6 @@ class MessagesTableViewController: UIViewController {
         }
     }
     
-    func getVenue()
-    {
-        APIManager().getVenue(self.event){ result in
-            if let eventsVenue = ModelHandler().getVenueByEvent(self.event)
-            {
-                APIManager().getMapForVenue(eventsVenue) { result in
-                    //successfully have the venue map
-                }
-            }
-        }
-    }
-
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let indexPath:NSIndexPath = self.conversationTable.indexPathForSelectedRow!
         let messengerVC:MessengerViewController = segue.destinationViewController as! MessengerViewController
@@ -167,7 +119,6 @@ extension MessagesTableViewController{
 	func performSecurityView(){
 		let storyboard : UIStoryboard = UIStoryboard(name: "EventAssistServices", bundle: nil)
 		let vc : SecurityViewController = storyboard.instantiateViewControllerWithIdentifier("SecurityViewController") as! SecurityViewController
-        vc.event = self.event
 		
 		let navigationController = UINavigationController(rootViewController: vc)
 		
@@ -177,7 +128,6 @@ extension MessagesTableViewController{
 	func performLocationView(){
 		let storyboard : UIStoryboard = UIStoryboard(name: "EventAssistServices", bundle: nil)
 		let vc : EventLocationViewController = storyboard.instantiateViewControllerWithIdentifier("EventLocationViewController") as! EventLocationViewController
-        vc.event = self.event
 		
 		let navigationController = UINavigationController(rootViewController: vc)
 		

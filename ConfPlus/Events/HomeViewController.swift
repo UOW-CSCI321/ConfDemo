@@ -26,7 +26,6 @@ class HomeViewController: UIViewController {
 		
 		populateEventOverview()
 		populateNavigationBar()
-		
     }
 	
 	override func viewWillAppear(animated: Bool) {
@@ -49,6 +48,8 @@ class HomeViewController: UIViewController {
 		eventDate.text = "\(event.getFromDateAsString()) - \(event.getToDateAsString())"
 		//eventLocation.text = "\(event.venue?.city), \(event.venue?.country)"
 	}
+    
+  
 }
 
 extension HomeViewController: UITableViewDelegate {
@@ -90,6 +91,29 @@ extension HomeViewController: UITableViewDelegate {
 					()
 			}
 		}
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "goToTimetable" {
+            let vc = segue.destinationViewController as! TimeTableViewController
+            vc.event = event
+        } else if segue.identifier == "goToParticipants"
+        {
+            let vc = segue.destinationViewController as! AttendingViewController
+            vc.event = event
+        } else if segue.identifier == "goToTickets"
+        {
+            let vc = segue.destinationViewController as! MyTicketsTableViewController
+            vc.event = event
+        } else if segue.identifier == "goToMessages"
+        {
+            let vc = segue.destinationViewController as! MessagesTableViewController
+            vc.event = event
+        } else if segue.identifier == "goToAdministrations"
+        {
+            let vc = segue.destinationViewController as! AdminTableViewController
+            vc.event = event
+        }
+        
+    }
 }
 
 //MARK: Navigation Bar Related
@@ -110,6 +134,7 @@ extension HomeViewController{
 	func performSecurityView(){
 		let storyboard : UIStoryboard = UIStoryboard(name: "EventAssistServices", bundle: nil)
 		let vc : SecurityViewController = storyboard.instantiateViewControllerWithIdentifier("SecurityViewController") as! SecurityViewController
+        vc.event = self.event
 		
 		let navigationController = UINavigationController(rootViewController: vc)
 		
@@ -119,6 +144,7 @@ extension HomeViewController{
 	func performLocationView(){
 		let storyboard : UIStoryboard = UIStoryboard(name: "EventAssistServices", bundle: nil)
 		let vc : EventLocationViewController = storyboard.instantiateViewControllerWithIdentifier("EventLocationViewController") as! EventLocationViewController
+        vc.event = self.event
 		
 		let navigationController = UINavigationController(rootViewController: vc)
 		

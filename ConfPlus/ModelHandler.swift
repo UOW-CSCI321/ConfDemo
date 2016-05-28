@@ -52,6 +52,7 @@ class ModelHandler{
 		event.desc = json["description"].string
 		event.url = json["url"].string
 		event.venue_id = json["venue_id"].string
+        event.security_num = json["contact_num"].string
         event.attend = attending
 		
 		performUpdate()
@@ -124,6 +125,13 @@ class ModelHandler{
 		
 		performUpdate()
 	}
+    
+    func updateMapForVenue(venue:Venue, data:String) -> Venue {
+        venue.map = data
+        performUpdate()
+        
+        return venue
+    }
     
     func serverStringToDate(dateString:String) -> NSDate
     {

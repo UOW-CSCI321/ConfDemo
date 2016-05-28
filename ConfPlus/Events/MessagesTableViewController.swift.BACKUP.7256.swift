@@ -18,8 +18,12 @@ class MessagesTableViewController: UIViewController {
     //var usersMessages = [[Message]]()
     var userConversations = [Conversation]()
     var isDispatchEmpty:Bool = true
+<<<<<<< HEAD
     var participants = [User]() //hold one user per conversation to display conversation icon
     var tempParticipants = [User]()
+=======
+    var event:Event!
+>>>>>>> storyboard
     
     let user = NSUserDefaults.standardUserDefaults()
     
