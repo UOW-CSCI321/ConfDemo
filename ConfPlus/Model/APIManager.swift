@@ -379,15 +379,20 @@ class APIManager{
             case .Success:
                 if let value = response.result.value {
                     let json = JSON(value)
-                    
-                    //self.handler.deleteEventsData()
-                    let counter = json["data"].count
-                    for i in 0 ..< counter {
-                        dispatch_group_enter(group)
-                        print(json["data"][i])
-                        self.handler.addNewConversation(json["data"][i])
-                        self.handler.performUpdate()
-                        dispatch_group_leave(group)
+                    if (json["data"]["message"].string != nil)
+                    {
+                        print(json["data"]["message"].string)
+                        
+                    }else{
+                        //self.handler.deleteEventsData()
+                        let counter = json["data"].count
+                        for i in 0 ..< counter {
+                            dispatch_group_enter(group)
+                            print(json["data"][i])
+                            self.handler.addNewConversation(json["data"][i])
+                            self.handler.performUpdate()
+                            dispatch_group_leave(group)
+                        }
                     }
                 }
                 completion(true)
