@@ -20,6 +20,7 @@ class MessagesTableViewController: UIViewController {
     var isDispatchEmpty:Bool = true
     var participants = [User]() //hold one user per conversation to display conversation icon
     var tempParticipants = [User]()
+    var event:Event!
     
     let user = NSUserDefaults.standardUserDefaults()
     
@@ -45,7 +46,7 @@ class MessagesTableViewController: UIViewController {
             notification.show()
             
 //            APIManager().getConversationsFromAPI(email!, group: group, isDispatchEmpty: &isDispatchEmpty){ result in
-            APIManager().getConversationsByUserForEventFromAPI(email!, eventID: "test", group: group, isDispatchEmpty: &isDispatchEmpty){ result in
+            APIManager().getConversationsByUserForEventFromAPI(email!, eventID: event.event_id!, group: group, isDispatchEmpty: &isDispatchEmpty){ result in
                 dispatch_group_notify(group, dispatch_get_main_queue()) {
 //                    self.isDispatchEmpty = true
                     self.userConversations = ModelHandler().getConversation(email!)
