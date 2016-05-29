@@ -235,7 +235,7 @@ class ModelHandler{
         var users = [User]()
         do{
             users = try context.executeFetchRequest(request) as! [User]
-            print(users)
+            //print(users)
             return users
         } catch {
             print("Failed to search for usesr in conversation \(conversation.conversation_id)")
@@ -245,6 +245,7 @@ class ModelHandler{
     
     func saveUserForConversation(user:User, conversation:Conversation)
     {
+        print("saving \(user.first_name) \(user.last_name) \(user.email) for conversation \(conversation.conversation_id)")
         conversation.mutableSetValueForKey("users").addObject(user)
         user.mutableSetValueForKey("conversations").addObject(conversation)
         performUpdate()

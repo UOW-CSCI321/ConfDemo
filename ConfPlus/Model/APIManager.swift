@@ -296,7 +296,6 @@ class APIManager{
             "method"	:	"getConversationParticipants",
             "conversation_id"	:	id
         ]
-        var user:User? = nil
         
         Alamofire.request(.POST, server.URL, parameters: paramaters).responseJSON {response in
             switch response.result{
@@ -305,8 +304,18 @@ class APIManager{
                     
                     let json = JSON(value)
                     if json["success"] {
-                        user = self.handler.addNewUser(json["data"][0])
-                        self.handler.saveUserForConversation(user!, conversation: conversation)
+                        if let counter = json["data"].array?.count
+                        {
+                            if counter < 2 {
+                                print("counter should not be < 2")
+                            }
+                            for i in 0..<counter
+                            {
+                                let user:User = self.handler.addNewUser(json["data"][i])
+                                self.handler.saveUserForConversation(user, conversation: conversation)
+                            }
+                        }
+                        
                         //user?.mutableSetValueForKey("conversations").addObject(conversation)
                         //conversation.mutableSetValueForKey("users").addObject(user!)
                         

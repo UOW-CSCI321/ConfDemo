@@ -57,28 +57,39 @@ class MessagesTableViewController: UIViewController {
                         APIManager().getUsersForConversationFromAPI(self.userConversations[i]) {
                             result in
                             self.tempParticipants = ModelHandler().getUsersForConversation(self.userConversations[i]/*.conversation_id!*/)!
+                            
                             let count2 = self.tempParticipants.count
-                            if count2 > 2
+                            //tmp printing
+                            for k in 0..<count2
                             {
-                                //append empty user
-                                let u = User()
-                                self.participants.append(u)
-                            }else{
-                                for j in 0..<count2
-                                {
-                                    if self.tempParticipants[j].email == email
-                                    {
-                                        self.participants.append(self.tempParticipants[j])
-                                    }
-                                }
-//                                if self.tempParticipants[0].email == email
-//                                {
-//                                    self.participants.append(self.tempParticipants[0])
-//                                }
-//                                else{
-//                                    self.participants.append(self.tempParticipants[1])
-//                                }
+                                let u = self.tempParticipants[k]
+                                print(u.email)
                             }
+                            //
+//                            if count2 > 2
+//                            {
+//                                //append empty user
+////                                let u = User()
+////                                self.participants.append(u)
+//                                print("count>2: \(count2)")
+//                            }else{
+//                                for j in 0..<count2
+//                                {
+//                                    if self.tempParticipants[j].email == email
+//                                    {
+//                                        //self.participants.append(self.tempParticipants[j])
+//                                        self.participants[i] = self.tempParticipants[j]
+//                                        print("setting participants[\(i)] to \(self.tempParticipants[j])")
+//                                    }
+//                                }
+////                                if self.tempParticipants[0].email == email
+////                                {
+////                                    self.participants.append(self.tempParticipants[0])
+////                                }
+////                                else{
+////                                    self.participants.append(self.tempParticipants[1])
+////                                }
+//                            }
                         }
                     }
                     
