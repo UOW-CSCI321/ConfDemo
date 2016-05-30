@@ -22,6 +22,7 @@ class MessagesTableViewController: UIViewController {
     var tempParticipants = [User]()
     var event:Event!
     let companyLogo = UIImage(named: "loo")
+    var usersForConversations = [[User]]()
     
     let user = NSUserDefaults.standardUserDefaults()
     
@@ -63,11 +64,13 @@ class MessagesTableViewController: UIViewController {
                             
                             let count2 = self.tempParticipants.count
 //                            //tmp printing
-//                            for k in 0..<count2
-//                            {
-//                                let u = self.tempParticipants[k]
-//                                print(u.email)
-//                            }
+                            for k in 0..<count2
+                            {
+                                let u = self.tempParticipants[k]
+                                print(u.email)
+                                print(u.first_name)
+                                print(u.last_name)
+                            }
 //                            //
                             if count2 > 2
                             {
@@ -103,6 +106,21 @@ class MessagesTableViewController: UIViewController {
                                     }
                                 }
                             }
+                            //set up images for the message view
+                            self.usersForConversations.append(self.tempParticipants)
+                            //self.usersForConversations[i] = self.tempParticipants
+                            //self.usersForConversations[i].append(self.tempParticipants)
+//                            for k in 0..<count2
+//                            {
+//                                print(self.usersForConversations[i][k].first_name)
+//                                print(self.usersForConversations[i][k].last_name)
+//                                if self.usersForConversations[i][k].profile_pic_url != nil
+//                                {
+//                                    print("has profile pic")
+//                                }else{
+//                                    print("no profile pic")
+//                                }
+//                            }
                             
                             if mattsTempCounter == count
                             {
@@ -110,6 +128,7 @@ class MessagesTableViewController: UIViewController {
 //                                for c in 0..<cc {
 //                                    print(self.participants[c])
 //                                }
+                                print(self.usersForConversations)
                                 self.conversationTable.reloadData()
                                 print("Reloaded")
                             }
@@ -177,7 +196,8 @@ extension MessagesTableViewController: UITableViewDelegate{
         cell.messageDescription.text = userConversations[row].lastmsg_content //lastMessage?.content
         cell.messageDateLabel.text = userConversations[row].getConversationDateAsString()
         
-        cell.profilePicture.image = UIImage(data: userConversations[row].conversation_pic!)
+        //cell.profilePicture.image = UIImage(data: userConversations[row].conversation_pic!)
+        print("usersConversations[\(row)]: \(usersForConversations[row])")
         
 //        let count = self.participants.count
 //        if count > 0
