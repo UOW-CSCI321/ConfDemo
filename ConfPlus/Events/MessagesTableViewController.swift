@@ -47,7 +47,6 @@ class MessagesTableViewController: UIViewController {
             notification.show()
             
             
-//            APIManager().getConversationsFromAPI(email!, group: group, isDispatchEmpty: &isDispatchEmpty){ result in
             APIManager().getConversationsByUserForEventFromAPI(email!, eventID: event.event_id!, group: group, isDispatchEmpty: &isDispatchEmpty){ result in
                 dispatch_group_notify(group, dispatch_get_main_queue()) {
 //                    self.isDispatchEmpty = true
@@ -63,58 +62,41 @@ class MessagesTableViewController: UIViewController {
                             self.tempParticipants = ModelHandler().getUsersForConversation(self.userConversations[i]/*.conversation_id!*/)!
                             
                             let count2 = self.tempParticipants.count
-                            //tmp printing
-                            for k in 0..<count2
-                            {
-                                let u = self.tempParticipants[k]
-                                print(u.email)
-                            }
-                            //
+//                            //tmp printing
+//                            for k in 0..<count2
+//                            {
+//                                let u = self.tempParticipants[k]
+//                                print(u.email)
+//                            }
+//                            //
                             if count2 > 2
                             {
-                                //append empty user
-//                                let u = User()
-//                                self.participants.append(u)
-                                print("count>2: \(count2)")
+                                //print("count>2: \(count2)")
                                 self.participants.append(self.companyLogo!)
                             }else{
                                 for j in 0..<count2
                                 {
                                     if self.tempParticipants[j].email != email
                                     {
-                                        //self.participants.append(self.tempParticipants[j])
                                         self.participants.append(self.tempParticipants[j].getImage())
-                                        //self.participants[i] = self.tempParticipants[j].getImage()
-//                                        print("setting participants[\(i)] to \(self.tempParticipants[j])")
-                                        print("setting participants[\(i)] to temp participants \(j)")
+                                        //print("setting participants[\(i)] to temp participants \(j)")
 
                                     }
                                 }
-//                                if self.tempParticipants[0].email == email
-//                                {
-//                                    self.participants.append(self.tempParticipants[0])
-//                                }
-//                                else{
-//                                    self.participants.append(self.tempParticipants[1])
-//                                }
                             }
                             
                             if mattsTempCounter == count
                             {
-                                let cc = self.participants.count
-                                for c in 0..<cc {
-                                    print(self.participants[c])
-                                }
+//                                let cc = self.participants.count
+//                                for c in 0..<cc {
+//                                    print(self.participants[c])
+//                                }
                                 self.conversationTable.reloadData()
                                 print("Reloaded")
                             }
 
                         }
                     }
-                    
-                    
-                    //self.conversationTable.reloadData()
-                    //print("Reloaded")
                     
                     let notification = MPGNotification(title: "Updated", subtitle: nil, backgroundColor: UIColor.orangeColor(), iconImage: nil)
                     notification.duration = 1
