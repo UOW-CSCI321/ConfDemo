@@ -167,6 +167,7 @@ class MessagesTableViewController: UIViewController {
         messengerVC.senderId = user.stringForKey("email")
         messengerVC.title = userConversations[indexPath.row].name
         messengerVC.senderDisplayName = userConversations[indexPath.row].lastmsg_email
+        messengerVC.users = usersForConversations[indexPath.row]
         
         //set conversation object
         messengerVC.conversation = userConversations[indexPath.row]

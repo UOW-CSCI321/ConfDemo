@@ -31,8 +31,14 @@ class MessengerViewController: JSQMessagesViewController {
     var databaseMessages = [Message]()
     var conversation:Conversation!
     var failedMessages = [Int]() //position of the failed message in messages
+    var users = [User]()
     
     override func viewDidLoad() {
+        let count = users.count
+        for i in 0..<count
+        {
+            print(users[i])
+        }
         super.viewDidLoad()
         self.inputToolbar.contentView.leftBarButtonItem = nil //remove accessorry button
         let bgColour = UIColor(white: 0.85, alpha: 1.0)
