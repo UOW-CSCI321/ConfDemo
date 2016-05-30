@@ -32,18 +32,16 @@ class MessengerViewController: JSQMessagesViewController {
     var conversation:Conversation!
     var failedMessages = [Int]() //position of the failed message in messages
     var users = [User]()
+    var bgColour = UIColor()
+    var txtColour = UIColor()
+    var systFont = UIFont()
     
     override func viewDidLoad() {
-        let count = users.count
-        for i in 0..<count
-        {
-            print(users[i])
-        }
         super.viewDidLoad()
         self.inputToolbar.contentView.leftBarButtonItem = nil //remove accessorry button
-        let bgColour = UIColor(white: 0.85, alpha: 1.0)
-        let txtColour = UIColor(white: 0.60, alpha: 1.0)
-        let systFont = UIFont.systemFontOfSize(14/*, weight:10*/)
+        bgColour = UIColor(white: 0.85, alpha: 1.0)
+        txtColour = UIColor(white: 0.60, alpha: 1.0)
+        systFont = UIFont.systemFontOfSize(14/*, weight:10*/)
         
         //setup for date
         var color: UIColor = UIColor.lightGrayColor()
@@ -148,8 +146,19 @@ class MessengerViewController: JSQMessagesViewController {
 //        finishReceivingMessage()
     }
     
-    func getImageForEmail(email:String) -> JSQMessagesAvatarImage //matt defined
+    func getImageForEmail(email:String, indexPathItem:Int) -> JSQMessagesAvatarImage //matt defined
     {
+        
+        if self.users[indexPathItem].profile_pic_url == nil
+        {
+            var f = self.users[indexPathItem].first_name!
+            let indexStartOfText = f.startIndex.advancedBy(1)
+            f = f.substringToIndex(indexStartOfText)
+            
+            let pic = JSQMessagesAvatarImageFactory.avatarImageWithUserInitials("cf+", backgroundColor: bgColour, textColor: txtColour, font: systFont, diameter: 30)
+        }
+        
+        
         //this will set the images from coredata
         if email == "matt3@test.com"
         {
@@ -218,7 +227,7 @@ class MessengerViewController: JSQMessagesViewController {
 //            
 //        }
 //        return nil
-        let avatar = getImageForEmail(message.senderId)
+        let avatar = getImageForEmail(message.senderId, indexPathItem: indexPath.item)
 
         return avatar
     }
