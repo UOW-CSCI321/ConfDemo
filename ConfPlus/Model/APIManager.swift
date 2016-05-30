@@ -405,7 +405,7 @@ class APIManager{
                         let counter = json["data"].count
                         for i in 0 ..< counter {
                             dispatch_group_enter(group)
-                            print(json["data"][i])
+                            //print(json["data"][i])
                             self.handler.addNewConversation(json["data"][i])
                             self.handler.performUpdate()
                             dispatch_group_leave(group)
