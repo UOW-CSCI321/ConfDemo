@@ -11,9 +11,10 @@ import UIKit
 
 class PaymentViewController: UIViewController {
 	
+	var tickets = [Coupon]()
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
     }
 	
 	
@@ -34,19 +35,27 @@ class PaymentViewController: UIViewController {
 
 extension PaymentViewController: UITableViewDelegate{
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 1
+		return tickets.count
 	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 2
+		return tickets[section].ticket.count
+	}
+
+	func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		return "\(tickets[section].name) - \(tickets[section].email)"
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
-		let cell = tableView.dequeueReusableCellWithIdentifier("informationCell", forIndexPath: indexPath) 
+		let cell = tableView.dequeueReusableCellWithIdentifier("informationCell", forIndexPath: indexPath)
+		let section = indexPath.section
+		let row = indexPath.row
 		
-		cell.textLabel?.text = "ticket-\(indexPath.row)"
-		cell.detailTextLabel?.text = "AUD 00.00"
+		let ticket = tickets[section].ticket[row]
+		
+		cell.textLabel?.text = ticket.name
+		cell.detailTextLabel?.text = ticket.price
 		
 		return cell
 	}
