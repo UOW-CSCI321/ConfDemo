@@ -15,34 +15,48 @@ class PersonalDetailsViewController: UIViewController {
 	
 	var tickets = [Coupon]()
 	let type = ["Name", "Email"]
+	
+	let hud = PKHUD()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		
     }
 	
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		if segue.identifier == "goToConfirmtion" {
+	@IBAction func performContinue(sender: AnyObject) {
+		if self.shouldPerformSegueWithIdentifier("goToConfirmation", sender: nil){
+			self.performSegueWithIdentifier("goToConfirmation", sender: nil)
+		}
+	}
+	
+	override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+		if identifier == "goToConfirmation" {
 			for section in 0..<tableView.numberOfSections{
 				for row in 0..<tableView.numberOfRowsInSection(section){
 					let cell:PersonalDetailsTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as! PersonalDetailsTableViewCell
-					if cell.detailType.text == "Name" {
-						guard let name = cell.typeResponseTextField.text else {
-							HUD.show(.Label("Name must not be empty"))
-							return
-						}
-						tickets[section].name = name
-					} else if cell.detailType.text == "Email" {
-						guard let email = cell.typeResponseTextField.text else {
-							HUD.show(.Label("Email must not be empty"))
-							return
-						}
-						tickets[section].email = email
+					
+					let detail = cell.typeResponseTextField.text
+					if detail == "" {
+						HUD.show(.Label("Fields must not be empty"))
+						return false
+					}
+					
+					let info = cell.detailType.text
+					if info == "Name" {
+						tickets[section].name = detail!
+					} else if info == "Email" {
+						tickets[section].email = detail!
 					}
 					
 				}
 			}
-			
+			return true
+		}
+		
+		return false
+	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "goToConfirmation" {
 			let vc = segue.destinationViewController as! PaymentViewController
 			vc.tickets = tickets
 		}
