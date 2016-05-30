@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7ABBEDC83FCAF9328A671323 /* Pods_ConfPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29F9F87683BF1E1F1317CBE5 /* Pods_ConfPlus.framework */; };
+		C901591B1CFC30FF00FDCDAD /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C901591A1CFC30FF00FDCDAD /* User+CoreDataProperties.swift */; };
 		C919F53B1CF774A9008268B8 /* Venue+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C919F5391CF774A9008268B8 /* Venue+CoreDataProperties.swift */; };
 		C919F53C1CF774A9008268B8 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C919F53A1CF774A9008268B8 /* Venue.swift */; };
 		C919F5401CF8709C008268B8 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C919F53F1CF8709C008268B8 /* Event+CoreDataProperties.swift */; };
@@ -33,7 +34,6 @@
 		C94AFA741C98217C00EC88B6 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA731C98217C00EC88B6 /* AccountTableViewController.swift */; };
 		C94AFA761C98221400EC88B6 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */; };
 		C955F1711CD8A1FD000BE39C /* Alamofire_Synchronous.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C955F1701CD8A1FD000BE39C /* Alamofire_Synchronous.framework */; };
-		C973C70D1CFBCF5500DF8992 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C973C70C1CFBCF5500DF8992 /* User+CoreDataProperties.swift */; };
 		C973C7111CFC110500DF8992 /* Conversation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C973C7101CFC110500DF8992 /* Conversation+CoreDataProperties.swift */; };
 		C999E8FE1CB1308D00E05C67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C999E8FD1CB1308D00E05C67 /* CoreData.framework */; };
 		C9AC4CE31CB7AA6300083F12 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4CE21CB7AA6300083F12 /* CoreLocation.framework */; };
@@ -93,6 +93,7 @@
 /* Begin PBXFileReference section */
 		0DAF2938A2525B6CBC886A11 /* Pods-ConfPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConfPlus.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConfPlus/Pods-ConfPlus.release.xcconfig"; sourceTree = "<group>"; };
 		29F9F87683BF1E1F1317CBE5 /* Pods_ConfPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConfPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C901591A1CFC30FF00FDCDAD /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "Model/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C919F5391CF774A9008268B8 /* Venue+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Venue+CoreDataProperties.swift"; path = "Model/Venue+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C919F53A1CF774A9008268B8 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Venue.swift; path = Model/Venue.swift; sourceTree = "<group>"; };
 		C919F53F1CF8709C008268B8 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Event+CoreDataProperties.swift"; path = "Model/Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -118,7 +119,6 @@
 		C94AFA731C98217C00EC88B6 /* AccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountTableViewController.swift; path = Profile/AccountTableViewController.swift; sourceTree = "<group>"; };
 		C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryTableViewController.swift; path = Profile/HistoryTableViewController.swift; sourceTree = "<group>"; };
 		C955F1701CD8A1FD000BE39C /* Alamofire_Synchronous.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire_Synchronous.framework; path = "Pods/../build/Debug-iphoneos/Alamofire_Synchronous.framework"; sourceTree = "<group>"; };
-		C973C70C1CFBCF5500DF8992 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "Model/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C973C7101CFC110500DF8992 /* Conversation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Conversation+CoreDataProperties.swift"; path = "Model/Conversation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C999E8FD1CB1308D00E05C67 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C9AC4CE21CB7AA6300083F12 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -280,7 +280,7 @@
 				E97EB73E1CDF13E5009113A6 /* Payment.swift */,
 				C973C7101CFC110500DF8992 /* Conversation+CoreDataProperties.swift */,
 				C9D9DC0D1CE8BDDC00CF55FA /* Conversation.swift */,
-				C973C70C1CFBCF5500DF8992 /* User+CoreDataProperties.swift */,
+				C901591A1CFC30FF00FDCDAD /* User+CoreDataProperties.swift */,
 				C91E85DD1CE75E5D0069333B /* User.swift */,
 				E97EB7431CDF13E5009113A6 /* Ticket+CoreDataProperties.swift */,
 				E97EB7441CDF13E5009113A6 /* Ticket.swift */,
@@ -557,7 +557,7 @@
 				E9E0A64B1CDD805700E187AD /* APIManager.swift in Sources */,
 				E93163981BC62AB6007408C7 /* ExploreViewController.swift in Sources */,
 				C94AFA6E1C981F1A00EC88B6 /* AttendingViewController.swift in Sources */,
-				C973C70D1CFBCF5500DF8992 /* User+CoreDataProperties.swift in Sources */,
+				C901591B1CFC30FF00FDCDAD /* User+CoreDataProperties.swift in Sources */,
 				E9F136B71CD30CAF008A3CB6 /* RegisterViewController.swift in Sources */,
 				E97EB74F1CDF13E5009113A6 /* Session+CoreDataProperties.swift in Sources */,
 				E97EB7601CDF13E5009113A6 /* Ticket.swift in Sources */,

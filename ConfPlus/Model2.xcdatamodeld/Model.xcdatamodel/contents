@@ -138,6 +138,11 @@
         <relationship name="presenting_sessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Session" inverseName="speaker" inverseEntity="Session" syncable="YES"/>
         <relationship name="ticket_records" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ticket_Record" inverseName="user" inverseEntity="Ticket_Record" syncable="YES"/>
         <relationship name="user_tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User_Tag" inverseName="user" inverseEntity="User_Tag" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="email"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="User_Tag" representedClassName=".User_Tag" syncable="YES">
         <attribute name="tag_name" optional="YES" attributeType="String" syncable="YES"/>
