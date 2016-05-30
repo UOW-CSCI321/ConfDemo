@@ -8,6 +8,27 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
+import MPGNotification
+import PKHUD
+
+struct Coupon {
+	var ticket: [Tickets]
+	var name: String
+	var email: String
+}
+
+struct Tickets {
+	var title:String
+	var price:String
+	var name:String
+	var _class:String
+	var type:String
+	var venue:String?
+	var room:String?
+	var seat:String?
+	
+}
 
 class TicketDetailsViewController: UIViewController {
     
@@ -22,36 +43,52 @@ class TicketDetailsViewController: UIViewController {
 	var event:Event!
 	let user = NSUserDefaults.standardUserDefaults()
 	
+	var eventTickets = [Tickets]()
+	var selectedTickets = [Coupon]()
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
 		ticketSelectionView.hidden = true
 		viewEffect.rect(ticketSelectionView)
-    }
-	
-	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(true)
 		
-		guard let _ = user.stringForKey("email") else {
-			performLogin()
-			return
+		totalPrice.text = "0"
+		
+		HUD.show(.Progress)
+		APIManager().getEventTickets(event.event_id!){ result, json in
+			self.eventTickets.removeAll()
+			if result{
+				print(json!["data"])
+				for i in 0 ..< json!["data"].count {
+					let data = json!["data"][i]
+					self.eventTickets.append(Tickets(title: data["title"].string!,
+						price: data["price"].string!,
+						name: data["name"].string!,
+						_class: data["class"].string!,
+						type: data["type"].string!,
+						venue: data["venue"].string,
+						room: data["room"].string,
+						seat: data["seat_num"].string))
+				}
+				HUD.hide()
+				self.tableView.reloadData()
+			} else {
+				self.fetchError("No Tickets available!", message: "Contact Event Organizer for the ticket.")
+			}
+			
 		}
-	}
-	
-	func performLogin(){
-		let storyboard : UIStoryboard = UIStoryboard(name: "Account", bundle: nil)
-		let vc : LoginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
-		
-		let navigationController = UINavigationController(rootViewController: vc)
-		
-		self.presentViewController(navigationController, animated: true, completion: nil)
+    }
+
+	func fetchError(title: String = "No internet Connection", message:String = "Data might not updated."){
+		let notification = MPGNotification(title: title, subtitle: message, backgroundColor: UIColor.orangeColor(), iconImage: nil)
+		notification.show()
 	}
 	
 }
 
 extension TicketDetailsViewController: UITableViewDelegate{
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 2
+		return eventTickets.count
 	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,9 +99,11 @@ extension TicketDetailsViewController: UITableViewDelegate{
 		
 		let cell = tableView.dequeueReusableCellWithIdentifier("ticketCell", forIndexPath: indexPath) as! TicketTableViewCell
 		
+		let col = indexPath.section
+		
 		cell.ticketCount.text = "0"
-		cell.ticketName.text = "Ticket Name -\(indexPath.section)"
-		cell.ticketPrice.text = "1"
+		cell.ticketName.text = eventTickets[col].name
+		cell.ticketPrice.text = eventTickets[col].price
 		
 		return cell
 	}
@@ -81,23 +120,20 @@ extension TicketDetailsViewController: UITableViewDelegate{
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "goToUserInfoView"{
-			var ticketName = [String]()
-			var totalTicket = 0
-			let totalTicketType = tableView.numberOfSections
-			for section in 0..<totalTicketType{
+			selectedTickets.removeAll()
+			for section in 0..<tableView.numberOfSections{
 				let cell:TicketTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: section)) as! TicketTableViewCell
-				totalTicket += Int(cell.ticketCount.text!)!
-				ticketName.append(cell.ticketName.text!)
+				for _ in 0..<Int(cell.ticketCount.text!)! {
+					selectedTickets.append(Coupon(ticket: [eventTickets[section]], name: "", email: ""))
+				}
 			}
-			
 			let vc = segue.destinationViewController as! PersonalDetailsViewController
-			vc.TOTAL_TICKET_QUANTITY = totalTicket
-			vc.ticketName = ticketName
+			vc.tickets = selectedTickets
 		}
 	}
 }
 
-// MARK: Ticket Selection View related function
+// MARK: Ticket Selection View Dialog related function
 extension TicketDetailsViewController {
 	
 	func showticketSelectionView(){
@@ -111,8 +147,9 @@ extension TicketDetailsViewController {
 		
 		self.ticketCount.text = String(Int(ticketCount.text!)! + 1)
 		cell.ticketCount.text = self.ticketCount.text
+		//selectedTickets.append(Coupon(ticket:  ticket.append(eventTickets[section!]), name: "", email: ""))
 		
-		self.totalPrice.text = String(Int(totalPrice.text!)! + Int(cell.ticketPrice.text!)!)
+		self.totalPrice.text = String(Double(totalPrice.text!)! + Double(cell.ticketPrice.text!)!)
 	}
 	
 	@IBAction func decreaseTicketInSelection(sender: AnyObject) {
@@ -122,6 +159,7 @@ extension TicketDetailsViewController {
 		if(Int(ticketCount.text!) > 0){
 			self.ticketCount.text = String(Int(ticketCount.text!)! - 1)
 			cell.ticketCount.text = self.ticketCount.text
+			
 			
 			self.totalPrice.text = String(Int(totalPrice.text!)! - Int(cell.ticketPrice.text!)!)
 		}
