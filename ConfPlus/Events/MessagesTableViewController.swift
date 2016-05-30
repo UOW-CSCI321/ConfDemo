@@ -32,7 +32,7 @@ class MessagesTableViewController: UIViewController {
         userConversations = ModelHandler().getConversation(email!)
         conversationTable.reloadData()
         
-        getVenue()
+        //getVenue()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -105,14 +105,16 @@ class MessagesTableViewController: UIViewController {
                                 for c in 0..<cc {
                                     print(self.participants[c])
                                 }
+                                self.conversationTable.reloadData()
+                                print("Reloaded")
                             }
 
                         }
                     }
                     
                     
-                    self.conversationTable.reloadData()
-                    print("Reloaded")
+                    //self.conversationTable.reloadData()
+                    //print("Reloaded")
                     
                     let notification = MPGNotification(title: "Updated", subtitle: nil, backgroundColor: UIColor.orangeColor(), iconImage: nil)
                     notification.duration = 1
@@ -173,6 +175,13 @@ extension MessagesTableViewController: UITableViewDelegate{
         cell.usersName.text = userConversations[row].name //conversation name should be the sender
         cell.messageDescription.text = userConversations[row].lastmsg_content //lastMessage?.content
         cell.messageDateLabel.text = userConversations[row].getConversationDateAsString()
+        
+        let count = self.participants.count
+        if count > 0
+        {
+            cell.profilePicture.image = self.participants[row]
+        }
+        
 		
 		return cell
 	}
