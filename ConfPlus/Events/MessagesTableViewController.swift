@@ -79,9 +79,11 @@ class MessagesTableViewController: UIViewController {
                                 if let a = UIImagePNGRepresentation(self.companyLogo!)
                                 {
                                     self.userConversations[i].conversation_pic = a
+                                    ModelHandler().performUpdate()
                                 }else if let a = UIImageJPEGRepresentation(self.companyLogo!, 1.0)
                                 {
                                     self.userConversations[i].conversation_pic = a
+                                    ModelHandler().performUpdate()
                                 }
                                 
                                 //self.participants.append(self.companyLogo!)
@@ -96,9 +98,11 @@ class MessagesTableViewController: UIViewController {
                                         if let b = UIImagePNGRepresentation(self.tempParticipants[j].getImage())
                                         {
                                             self.userConversations[i].conversation_pic = b
+                                            ModelHandler().performUpdate()
                                         }else if let b = UIImageJPEGRepresentation(self.tempParticipants[j].getImage(), 1.0)
                                         {
                                             self.userConversations[i].conversation_pic = b
+                                            ModelHandler().performUpdate()
                                         }
                                         //self.participants.append(self.tempParticipants[j].getImage())
                                         //print("setting participants[\(i)] to temp participants \(j)")
@@ -196,8 +200,8 @@ extension MessagesTableViewController: UITableViewDelegate{
         cell.messageDescription.text = userConversations[row].lastmsg_content //lastMessage?.content
         cell.messageDateLabel.text = userConversations[row].getConversationDateAsString()
         
-        //cell.profilePicture.image = UIImage(data: userConversations[row].conversation_pic!)
-        print("usersConversations[\(row)]: \(usersForConversations[row])")
+        cell.profilePicture.image = UIImage(data: userConversations[row].conversation_pic!)
+        //print("usersConversations[\(row)]: \(usersForConversations[row])")
         
 //        let count = self.participants.count
 //        if count > 0
