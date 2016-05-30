@@ -18,9 +18,10 @@ class MessagesTableViewController: UIViewController {
     //var usersMessages = [[Message]]()
     var userConversations = [Conversation]()
     var isDispatchEmpty:Bool = true
-    var participants = [User]() //hold one user per conversation to display conversation icon
+    var participants = [UIImage]() //[User]() //hold one user per conversation to display conversation icon
     var tempParticipants = [User]()
     var event:Event!
+    let companyLogo = UIImage(named: "loo")
     
     let user = NSUserDefaults.standardUserDefaults()
     
@@ -45,17 +46,20 @@ class MessagesTableViewController: UIViewController {
             notification.duration = 2
             notification.show()
             
+            
 //            APIManager().getConversationsFromAPI(email!, group: group, isDispatchEmpty: &isDispatchEmpty){ result in
             APIManager().getConversationsByUserForEventFromAPI(email!, eventID: event.event_id!, group: group, isDispatchEmpty: &isDispatchEmpty){ result in
                 dispatch_group_notify(group, dispatch_get_main_queue()) {
 //                    self.isDispatchEmpty = true
                     self.userConversations = ModelHandler().getConversation(email!)
 
+                    var mattsTempCounter = 0
                     let count = self.userConversations.count
                     for i in 0..<count
                     {
                         APIManager().getUsersForConversationFromAPI(self.userConversations[i]) {
                             result in
+                            mattsTempCounter += 1
                             self.tempParticipants = ModelHandler().getUsersForConversation(self.userConversations[i]/*.conversation_id!*/)!
                             
                             let count2 = self.tempParticipants.count
@@ -66,32 +70,46 @@ class MessagesTableViewController: UIViewController {
                                 print(u.email)
                             }
                             //
-//                            if count2 > 2
-//                            {
-//                                //append empty user
-////                                let u = User()
-////                                self.participants.append(u)
-//                                print("count>2: \(count2)")
-//                            }else{
-//                                for j in 0..<count2
-//                                {
-//                                    if self.tempParticipants[j].email == email
-//                                    {
-//                                        //self.participants.append(self.tempParticipants[j])
-//                                        self.participants[i] = self.tempParticipants[j]
+                            if count2 > 2
+                            {
+                                //append empty user
+//                                let u = User()
+//                                self.participants.append(u)
+                                print("count>2: \(count2)")
+                                self.participants.append(self.companyLogo!)
+                            }else{
+                                for j in 0..<count2
+                                {
+                                    if self.tempParticipants[j].email != email
+                                    {
+                                        //self.participants.append(self.tempParticipants[j])
+                                        self.participants.append(self.tempParticipants[j].getImage())
+                                        //self.participants[i] = self.tempParticipants[j].getImage()
 //                                        print("setting participants[\(i)] to \(self.tempParticipants[j])")
-//                                    }
+                                        print("setting participants[\(i)] to temp participants \(j)")
+
+                                    }
+                                }
+//                                if self.tempParticipants[0].email == email
+//                                {
+//                                    self.participants.append(self.tempParticipants[0])
 //                                }
-////                                if self.tempParticipants[0].email == email
-////                                {
-////                                    self.participants.append(self.tempParticipants[0])
-////                                }
-////                                else{
-////                                    self.participants.append(self.tempParticipants[1])
-////                                }
-//                            }
+//                                else{
+//                                    self.participants.append(self.tempParticipants[1])
+//                                }
+                            }
+                            
+                            if mattsTempCounter == count
+                            {
+                                let cc = self.participants.count
+                                for c in 0..<cc {
+                                    print(self.participants[c])
+                                }
+                            }
+
                         }
                     }
+                    
                     
                     self.conversationTable.reloadData()
                     print("Reloaded")

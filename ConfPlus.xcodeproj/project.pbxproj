@@ -12,7 +12,6 @@
 		C919F53C1CF774A9008268B8 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C919F53A1CF774A9008268B8 /* Venue.swift */; };
 		C919F5401CF8709C008268B8 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C919F53F1CF8709C008268B8 /* Event+CoreDataProperties.swift */; };
 		C91E85D81CE739630069333B /* Model2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C91E85D61CE739630069333B /* Model2.xcdatamodeld */; };
-		C91E85E11CE75E5D0069333B /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91E85DC1CE75E5D0069333B /* User+CoreDataProperties.swift */; };
 		C91E85E21CE75E5D0069333B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91E85DD1CE75E5D0069333B /* User.swift */; };
 		C93A980E1CE04AE900418F53 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93A980C1CE04AE900418F53 /* Event.swift */; };
 		C93A984D1CE3448D00418F53 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93A984C1CE3448D00418F53 /* CryptoSwift.framework */; };
@@ -34,6 +33,7 @@
 		C94AFA741C98217C00EC88B6 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA731C98217C00EC88B6 /* AccountTableViewController.swift */; };
 		C94AFA761C98221400EC88B6 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */; };
 		C955F1711CD8A1FD000BE39C /* Alamofire_Synchronous.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C955F1701CD8A1FD000BE39C /* Alamofire_Synchronous.framework */; };
+		C973C70D1CFBCF5500DF8992 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C973C70C1CFBCF5500DF8992 /* User+CoreDataProperties.swift */; };
 		C999E8FE1CB1308D00E05C67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C999E8FD1CB1308D00E05C67 /* CoreData.framework */; };
 		C9AC4CE31CB7AA6300083F12 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4CE21CB7AA6300083F12 /* CoreLocation.framework */; };
 		C9AC4D031CC45C7700083F12 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4D021CC45C7700083F12 /* SwiftyJSON.framework */; };
@@ -97,7 +97,6 @@
 		C919F53A1CF774A9008268B8 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Venue.swift; path = Model/Venue.swift; sourceTree = "<group>"; };
 		C919F53F1CF8709C008268B8 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Event+CoreDataProperties.swift"; path = "Model/Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C91E85D71CE739630069333B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		C91E85DC1CE75E5D0069333B /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "Model/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C91E85DD1CE75E5D0069333B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
 		C93A980C1CE04AE900418F53 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Model/Event.swift; sourceTree = "<group>"; };
 		C93A984C1CE3448D00418F53 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = "Pods/../build/Debug-iphoneos/CryptoSwift/CryptoSwift.framework"; sourceTree = "<group>"; };
@@ -119,6 +118,7 @@
 		C94AFA731C98217C00EC88B6 /* AccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountTableViewController.swift; path = Profile/AccountTableViewController.swift; sourceTree = "<group>"; };
 		C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryTableViewController.swift; path = Profile/HistoryTableViewController.swift; sourceTree = "<group>"; };
 		C955F1701CD8A1FD000BE39C /* Alamofire_Synchronous.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire_Synchronous.framework; path = "Pods/../build/Debug-iphoneos/Alamofire_Synchronous.framework"; sourceTree = "<group>"; };
+		C973C70C1CFBCF5500DF8992 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "Model/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C999E8FD1CB1308D00E05C67 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C9AC4CE21CB7AA6300083F12 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C9AC4D021CC45C7700083F12 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
@@ -280,7 +280,7 @@
 				E97EB73E1CDF13E5009113A6 /* Payment.swift */,
 				C9D9DC0C1CE8BDDC00CF55FA /* Conversation+CoreDataProperties.swift */,
 				C9D9DC0D1CE8BDDC00CF55FA /* Conversation.swift */,
-				C91E85DC1CE75E5D0069333B /* User+CoreDataProperties.swift */,
+				C973C70C1CFBCF5500DF8992 /* User+CoreDataProperties.swift */,
 				C91E85DD1CE75E5D0069333B /* User.swift */,
 				E97EB7431CDF13E5009113A6 /* Ticket+CoreDataProperties.swift */,
 				E97EB7441CDF13E5009113A6 /* Ticket.swift */,
@@ -343,9 +343,10 @@
 			isa = PBXGroup;
 			children = (
 				E9E0A64E1CDD869A00E187AD /* API */,
+				E9E0A64F1CDD8C6200E187AD /* ModelHandler.swift */,
 				C9FD07E91CB23BD400C44595 /* Model */,
-				E93163601BC5E0B4007408C7 /* AppDelegate.swift */,
 				E93163661BC5E0B4007408C7 /* Main.storyboard */,
+				E93163601BC5E0B4007408C7 /* AppDelegate.swift */,
 				E93163961BC62A76007408C7 /* Explore */,
 				C94AFA541C980C2100EC88B6 /* Events */,
 				C94AFA721C98204F00EC88B6 /* Profile */,
@@ -407,7 +408,6 @@
 			children = (
 				E9E0A64A1CDD805700E187AD /* APIManager.swift */,
 				E9E0A64C1CDD80B500E187AD /* APIServer.swift */,
-				E9E0A64F1CDD8C6200E187AD /* ModelHandler.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -557,6 +557,7 @@
 				E9E0A64B1CDD805700E187AD /* APIManager.swift in Sources */,
 				E93163981BC62AB6007408C7 /* ExploreViewController.swift in Sources */,
 				C94AFA6E1C981F1A00EC88B6 /* AttendingViewController.swift in Sources */,
+				C973C70D1CFBCF5500DF8992 /* User+CoreDataProperties.swift in Sources */,
 				E9F136B71CD30CAF008A3CB6 /* RegisterViewController.swift in Sources */,
 				E97EB74F1CDF13E5009113A6 /* Session+CoreDataProperties.swift in Sources */,
 				E97EB7601CDF13E5009113A6 /* Ticket.swift in Sources */,
@@ -601,7 +602,6 @@
 				C9D9DC091CE88A0300CF55FA /* MessengerViewController.swift in Sources */,
 				C94AFA601C9811BD00EC88B6 /* EventLocationViewController.swift in Sources */,
 				E90201C31C9CC2E200C7839A /* EventDetailTableViewController.swift in Sources */,
-				C91E85E11CE75E5D0069333B /* User+CoreDataProperties.swift in Sources */,
 				E97EB7611CDF13E5009113A6 /* Billing+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
