@@ -311,8 +311,16 @@ class APIManager{
                             }
                             for i in 0..<counter
                             {
-                                let user:User = self.handler.addNewUser(json["data"][i])
-                                self.handler.saveUserForConversation(user, conversation: conversation)
+                                if let user:User = self.handler.addNewUser(json["data"][i])
+                                {
+                                    self.handler.saveUserForConversation(user, conversation: conversation)
+                                }else {
+                                    //get the user
+                                    let email:String = json["data"][i]["email"].string!
+                                    let user = self.handler.getUser(email)
+                                    //save user for conversation
+                                    self.handler.saveUserForConversation(user!, conversation: conversation)
+                                }
                             }
                         }
                         

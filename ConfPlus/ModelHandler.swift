@@ -143,7 +143,7 @@ class ModelHandler{
         return d1!
     }
 
-    func addNewUser(json: JSON) -> User
+    func addNewUser(json: JSON) -> User?
     {
         //print(json)
         let user = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: self.context) as! User
@@ -166,23 +166,45 @@ class ModelHandler{
         user.upgraded = json["upgraded"].number
         user.profile_pic_url = json["image_data_url"].string
         
-//        print(user.email)
-//        print(user.username)
-//        print(user.password)
-//        print(user.title)
-//        print(user.first_name)
-//        print(user.last_name)
-//      
-//        print(user.street)
-//        print(user.city)
-//        print(user.state)
-//        print(user.country)
-//        print(user.fb_id)
-//        print(user.linkedin_id)
-//        print(user.active)
-//        print(user.upgraded)
+        print(user.email)
+        print(user.username)
+        print(user.password)
+        print(user.title)
+        print(user.first_name)
+        print(user.last_name)
+      
+        print(user.street)
+        print(user.city)
+        print(user.state)
+        print(user.country)
+        print(user.fb_id)
+        print(user.linkedin_id)
+        print(user.active)
+        print(user.upgraded)
         
         performUpdate()
+        
+        print(user.email)
+        print(user.username)
+        print(user.password)
+        print(user.title)
+        print(user.first_name)
+        print(user.last_name)
+        
+        print(user.street)
+        print(user.city)
+        print(user.state)
+        print(user.country)
+        print(user.fb_id)
+        print(user.linkedin_id)
+        print(user.active)
+        print(user.upgraded)
+        
+        if user.email == nil
+        {
+            return nil
+        }
+
         
         return user
     }
