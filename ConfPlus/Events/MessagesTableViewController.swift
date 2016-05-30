@@ -72,13 +72,32 @@ class MessagesTableViewController: UIViewController {
                             if count2 > 2
                             {
                                 //print("count>2: \(count2)")
-                                self.participants.append(self.companyLogo!)
+                                
+                                if let a = UIImagePNGRepresentation(self.companyLogo!)
+                                {
+                                    self.userConversations[i].conversation_pic = a
+                                }else if let a = UIImageJPEGRepresentation(self.companyLogo!, 1.0)
+                                {
+                                    self.userConversations[i].conversation_pic = a
+                                }
+                                
+                                //self.participants.append(self.companyLogo!)
+                                
+                                
+                                
                             }else{
                                 for j in 0..<count2
                                 {
                                     if self.tempParticipants[j].email != email
                                     {
-                                        self.participants.append(self.tempParticipants[j].getImage())
+                                        if let b = UIImagePNGRepresentation(self.tempParticipants[j].getImage())
+                                        {
+                                            self.userConversations[i].conversation_pic = b
+                                        }else if let b = UIImageJPEGRepresentation(self.tempParticipants[j].getImage(), 1.0)
+                                        {
+                                            self.userConversations[i].conversation_pic = b
+                                        }
+                                        //self.participants.append(self.tempParticipants[j].getImage())
                                         //print("setting participants[\(i)] to temp participants \(j)")
 
                                     }
@@ -158,11 +177,14 @@ extension MessagesTableViewController: UITableViewDelegate{
         cell.messageDescription.text = userConversations[row].lastmsg_content //lastMessage?.content
         cell.messageDateLabel.text = userConversations[row].getConversationDateAsString()
         
-        let count = self.participants.count
-        if count > 0
-        {
-            cell.profilePicture.image = self.participants[row]
-        }
+        cell.profilePicture.image = UIImage(data: userConversations[row].conversation_pic!)
+        
+//        let count = self.participants.count
+//        if count > 0
+//        {
+//            //cell.profilePicture.image = self.participants[row]
+//            cell.profilePicture.image = UIImage(data: userConversations[row].conversation_pic!)
+//        }
         
 		
 		return cell

@@ -34,6 +34,7 @@
 		C94AFA761C98221400EC88B6 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */; };
 		C955F1711CD8A1FD000BE39C /* Alamofire_Synchronous.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C955F1701CD8A1FD000BE39C /* Alamofire_Synchronous.framework */; };
 		C973C70D1CFBCF5500DF8992 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C973C70C1CFBCF5500DF8992 /* User+CoreDataProperties.swift */; };
+		C973C7111CFC110500DF8992 /* Conversation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C973C7101CFC110500DF8992 /* Conversation+CoreDataProperties.swift */; };
 		C999E8FE1CB1308D00E05C67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C999E8FD1CB1308D00E05C67 /* CoreData.framework */; };
 		C9AC4CE31CB7AA6300083F12 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4CE21CB7AA6300083F12 /* CoreLocation.framework */; };
 		C9AC4D031CC45C7700083F12 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4D021CC45C7700083F12 /* SwiftyJSON.framework */; };
@@ -42,7 +43,6 @@
 		C9D9DC061CE8885900CF55FA /* JSQMessagesViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D9DC041CE8885900CF55FA /* JSQMessagesViewController.framework */; };
 		C9D9DC071CE8885900CF55FA /* JSQSystemSoundPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D9DC051CE8885900CF55FA /* JSQSystemSoundPlayer.framework */; };
 		C9D9DC091CE88A0300CF55FA /* MessengerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9DC081CE88A0300CF55FA /* MessengerViewController.swift */; };
-		C9D9DC0E1CE8BDDC00CF55FA /* Conversation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9DC0C1CE8BDDC00CF55FA /* Conversation+CoreDataProperties.swift */; };
 		C9D9DC0F1CE8BDDC00CF55FA /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9DC0D1CE8BDDC00CF55FA /* Conversation.swift */; };
 		E901E42F1CDB02F600459975 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E901E42E1CDB02F600459975 /* Launch Screen.storyboard */; };
 		E90201C11C9CB7EB00C7839A /* ExploreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */; };
@@ -119,6 +119,7 @@
 		C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryTableViewController.swift; path = Profile/HistoryTableViewController.swift; sourceTree = "<group>"; };
 		C955F1701CD8A1FD000BE39C /* Alamofire_Synchronous.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire_Synchronous.framework; path = "Pods/../build/Debug-iphoneos/Alamofire_Synchronous.framework"; sourceTree = "<group>"; };
 		C973C70C1CFBCF5500DF8992 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "Model/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C973C7101CFC110500DF8992 /* Conversation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Conversation+CoreDataProperties.swift"; path = "Model/Conversation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C999E8FD1CB1308D00E05C67 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C9AC4CE21CB7AA6300083F12 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C9AC4D021CC45C7700083F12 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
@@ -127,7 +128,6 @@
 		C9D9DC041CE8885900CF55FA /* JSQMessagesViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSQMessagesViewController.framework; path = "../../chord/chord/ConfPlus-gyuqvgyrwksbchgwfawuspwfodhr/Build/Products/Debug-iphonesimulator/JSQMessagesViewController/JSQMessagesViewController.framework"; sourceTree = "<group>"; };
 		C9D9DC051CE8885900CF55FA /* JSQSystemSoundPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSQSystemSoundPlayer.framework; path = "../../chord/chord/ConfPlus-gyuqvgyrwksbchgwfawuspwfodhr/Build/Products/Debug-iphonesimulator/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework"; sourceTree = "<group>"; };
 		C9D9DC081CE88A0300CF55FA /* MessengerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessengerViewController.swift; path = Events/MessengerViewController.swift; sourceTree = "<group>"; };
-		C9D9DC0C1CE8BDDC00CF55FA /* Conversation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Conversation+CoreDataProperties.swift"; path = "Model/Conversation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C9D9DC0D1CE8BDDC00CF55FA /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Conversation.swift; path = Model/Conversation.swift; sourceTree = "<group>"; };
 		E8AA5B40C1E4EE566A70C9BE /* Pods-ConfPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConfPlus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConfPlus/Pods-ConfPlus.debug.xcconfig"; sourceTree = "<group>"; };
 		E901E42E1CDB02F600459975 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "ConfPlus/Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -278,7 +278,7 @@
 				E97EB7341CDF13E5009113A6 /* Session.swift */,
 				E97EB73D1CDF13E5009113A6 /* Payment+CoreDataProperties.swift */,
 				E97EB73E1CDF13E5009113A6 /* Payment.swift */,
-				C9D9DC0C1CE8BDDC00CF55FA /* Conversation+CoreDataProperties.swift */,
+				C973C7101CFC110500DF8992 /* Conversation+CoreDataProperties.swift */,
 				C9D9DC0D1CE8BDDC00CF55FA /* Conversation.swift */,
 				C973C70C1CFBCF5500DF8992 /* User+CoreDataProperties.swift */,
 				C91E85DD1CE75E5D0069333B /* User.swift */,
@@ -562,7 +562,7 @@
 				E97EB74F1CDF13E5009113A6 /* Session+CoreDataProperties.swift in Sources */,
 				E97EB7601CDF13E5009113A6 /* Ticket.swift in Sources */,
 				C94AFA761C98221400EC88B6 /* HistoryTableViewController.swift in Sources */,
-				C9D9DC0E1CE8BDDC00CF55FA /* Conversation+CoreDataProperties.swift in Sources */,
+				C973C7111CFC110500DF8992 /* Conversation+CoreDataProperties.swift in Sources */,
 				E9AF00711CDAEEFE004424A1 /* ScannerViewController.swift in Sources */,
 				E97EB7641CDF13E5009113A6 /* Ticket_Record.swift in Sources */,
 				C94AFA5C1C980E3B00EC88B6 /* TalksViewController.swift in Sources */,
