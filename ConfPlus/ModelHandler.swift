@@ -117,7 +117,7 @@ class ModelHandler{
 		venue.latitude = json["latitude"].string
 		venue.longitude = json["longitude"].string
 		
-		performUpdate()
+		//performUpdate()
 		
 		return venue
 	}

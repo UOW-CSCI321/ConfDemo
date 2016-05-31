@@ -58,17 +58,16 @@ class TicketDetailsViewController: UIViewController {
 		APIManager().getEventTickets(event.event_id!){ result, json in
 			self.eventTickets.removeAll()
 			if result{
-				print(json!["data"])
 				for i in 0 ..< json!["data"].count {
 					let data = json!["data"][i]
-					self.eventTickets.append(Tickets(title: data["title"].string!,
-						price: data["price"].string!,
-						name: data["name"].string!,
-						_class: data["class"].string!,
-						type: data["type"].string!,
-						venue: data["venue"].string,
-						room: data["room"].string,
-						seat: data["seat_num"].string))
+					self.eventTickets.append(Tickets(title:	data["title"].string!,
+													price:	data["price"].string!,
+													name:	data["name"].string!,
+													_class: data["class"].string!,
+													type:	data["type"].string!,
+													venue:	data["venue"].string,
+													room:	data["room"].string,
+													seat:	data["seat_num"].string))
 				}
 				HUD.hide()
 				self.tableView.reloadData()
