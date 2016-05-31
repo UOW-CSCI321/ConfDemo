@@ -163,14 +163,17 @@ class MessagesTableViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let indexPath:NSIndexPath = self.conversationTable.indexPathForSelectedRow!
         let messengerVC:MessengerViewController = segue.destinationViewController as! MessengerViewController
-        messengerVC.conversationID = userConversations[indexPath.row].conversation_id!
+        let row = indexPath.row
+        messengerVC.conversationID = userConversations[row].conversation_id!
         messengerVC.senderId = user.stringForKey("email")
-        messengerVC.title = userConversations[indexPath.row].name
-        messengerVC.senderDisplayName = userConversations[indexPath.row].lastmsg_email
-        messengerVC.users = usersForConversations[indexPath.row]
+        messengerVC.title = userConversations[row].name
+        messengerVC.senderDisplayName = userConversations[row].lastmsg_email
+        messengerVC.users = usersForConversations[row]
+        print(messengerVC.conversationID)
+        print(messengerVC.users.count)
         
         //set conversation object
-        messengerVC.conversation = userConversations[indexPath.row]
+        messengerVC.conversation = userConversations[row]
         self.hidesBottomBarWhenPushed = true //need to hide tab bar to show message bar at the bottom. i tried to move message bar in JSQMessagesViewController but it has some action on it that when clicked it will move back down
     }
     
