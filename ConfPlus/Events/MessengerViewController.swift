@@ -35,6 +35,7 @@ class MessengerViewController: JSQMessagesViewController {
     var bgColour = UIColor()
     var txtColour = UIColor()
     var systFont = UIFont()
+    var timer = NSTimer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,7 +143,7 @@ class MessengerViewController: JSQMessagesViewController {
             case .OrderedAscending:
                 //local data base does not have the latest message
                 print("need to update")
-                //self.getMessagesFromAPI()
+                self.getMessagesFromAPI()
                 
             }
 
@@ -155,19 +156,16 @@ class MessengerViewController: JSQMessagesViewController {
         //getMessagesFromAPI()
     }
     
-    func test(){
-        print("test")
+    override func viewWillDisappear(animated: Bool) {
+        self.timer.invalidate()
     }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         //timer
-        //var timer = NSTimer()
-        //timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "test", userInfo: nil, repeats: true)
-            //get latest message from server
-        getLatestServerMessage()
-            //if not equal to out latest
-            //get messages from api
+        timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "getLatestServerMessage", userInfo: nil, repeats: true)
+      
         getMessagesFromAPI()
         
         //yesterday
