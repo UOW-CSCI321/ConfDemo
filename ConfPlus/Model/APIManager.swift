@@ -465,10 +465,9 @@ class APIManager{
         }
     }
     
-    func getLatestMessageForConversation(conversation:Conversation, completion: (result: Message) -> Void) {
-        var latestMessage = Message()
+    func getLatestMessageDateForConversation(conversation:Conversation, completion: (result: NSDate?) -> Void) {
         guard let id = conversation.conversation_id else {
-            completion(result: latestMessage)
+            completion(result: nil)
             return
         }
         
@@ -486,19 +485,21 @@ class APIManager{
                     let json = JSON(value)
                     if json["success"]{
                         //print("JSON COUNT: \(json["data"].count)")
-                        latestMessage.content = json["data"]["content"].string
-                        latestMessage.sender_email = json["data"]["sender_email"].string
-                        latestMessage.date = ModelHandler().serverStringToDate(json["data"]["date"].string!)
+//                        latestMessage.content = json["data"]["content"].string
+//                        latestMessage.sender_email = json["data"]["sender_email"].string
+//                        latestMessage.date = ModelHandler().serverStringToDate(json["data"]["date"].string!)
+                        //print("message: \(json["data"]["message_id"].string) \(json["data"]["content"].string) from \(json["data"]["sender_email"].string)")
+                        let latestMessageDate = ModelHandler().serverStringToDate(json["data"]["date"].string!)
                         
-                        completion(result: latestMessage)
+                        completion(result: latestMessageDate)
                     } else {
-                        completion(result: latestMessage)
+                        completion(result: nil)
                     }
                 }
                 
             case .Failure(let error):
                 print(error.localizedDescription)
-                completion(result: latestMessage)
+                completion(result: nil)
             }
             
         }

@@ -117,10 +117,19 @@ class MessengerViewController: JSQMessagesViewController {
     }
     
     func getLatestServerMessage() {
-        APIManager().getLatestMessageForConversation(conversation) { result in
-            let sm = result
-            let sDate = sm.date
-            let dDate = self.databaseMessages[0].date
+        APIManager().getLatestMessageDateForConversation(self.conversation) { result in
+            //let sm = result
+            //var count = self.databaseMessages.count
+            //count - 1 //count is from 1..n not 0.n
+            let sDate = result //sm.date
+//            for i in 0..<count
+//            {
+//                print("\(i) \(self.databaseMessages[i])")
+//            }
+            let msg = self.databaseMessages.last
+            let dDate = msg?.date
+            
+            //print("message: \(msg!.content) from \(msg!.sender_email)")
             
             var order = NSCalendar.currentCalendar().compareDate(dDate!, toDate: sDate!, toUnitGranularity: .Second)
             switch order {
@@ -133,6 +142,7 @@ class MessengerViewController: JSQMessagesViewController {
             case .OrderedAscending:
                 //local data base does not have the latest message
                 print("need to update")
+                //self.getMessagesFromAPI()
                 
             }
 
@@ -145,12 +155,17 @@ class MessengerViewController: JSQMessagesViewController {
         //getMessagesFromAPI()
     }
     
+    func test(){
+        print("test")
+    }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         //timer
+        //var timer = NSTimer()
+        //timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "test", userInfo: nil, repeats: true)
             //get latest message from server
-            getLatestServerMessage()
+        getLatestServerMessage()
             //if not equal to out latest
             //get messages from api
         getMessagesFromAPI()
@@ -180,8 +195,8 @@ class MessengerViewController: JSQMessagesViewController {
     {
         //i don't think index path means anything
         let c = self.users.count
-        print("self.user.count: \(c)")
-        print("email': \(email)")
+        //print("self.user.count: \(c)")
+        //print("email': \(email)")
         
         let idefault = UIImage(named:"account2")
         
