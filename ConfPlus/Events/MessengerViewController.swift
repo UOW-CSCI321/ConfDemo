@@ -74,6 +74,8 @@ class MessengerViewController: JSQMessagesViewController {
     func messagesToJSQMessages() //converts array of cordata messages to array of JSQMessages
     {
         var count = databaseMessages.count
+        var usercount = self.users.count
+        
         if count > 0
         {
             //whipe all messages we have so far to get messages again
@@ -86,7 +88,24 @@ class MessengerViewController: JSQMessagesViewController {
 //                var dname:String = (user?.first_name)! //we cant use user as the only user we store locally is users loggedin
 //                dname += " "
 //                dname += (user?.last_name)!
-                addMessage(databaseMessages[i].sender_email!, displayName: databaseMessages[i].sender_email!, date: databaseMessages[i].date!, text: databaseMessages[i].content!)
+                
+                var dname = ""
+                for j in 0..<usercount
+                {
+                    if users[j].email == databaseMessages[i].sender_email
+                    {
+                        dname = users[j].first_name!
+                        dname += " "
+                        dname += users[j].last_name!
+                        addMessage(databaseMessages[i].sender_email!, displayName: dname, date: databaseMessages[i].date!, text: databaseMessages[i].content!)
+
+                    }
+                }
+                
+                if dname == ""
+                {
+                    addMessage(databaseMessages[i].sender_email!, displayName: databaseMessages[i].sender_email!, date: databaseMessages[i].date!, text: databaseMessages[i].content!)
+                }
             }
             finishSendingMessage()
         }
