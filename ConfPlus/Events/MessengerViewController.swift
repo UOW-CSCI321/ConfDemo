@@ -63,7 +63,7 @@ class MessengerViewController: JSQMessagesViewController {
         
         
         
-        
+        users = ModelHandler().getUsersForConversation(conversation)!
         //getMessagesFromAPI() //should be called from viewWillAppear but breaking
         databaseMessages = ModelHandler().getMessageForConversation(conversation)!
         //^ returns empty array first time
@@ -148,42 +148,44 @@ class MessengerViewController: JSQMessagesViewController {
     
     func getImageForEmail(email:String, indexPathItem:Int) -> JSQMessagesAvatarImage //matt defined
     {
-        
+        //i don't think index path means anything
         let c = self.users.count
         print("self.user.count: \(c)")
         print("email': \(email)")
-        if self.users[indexPathItem].profile_pic_url == nil
-        {
-            var f = self.users[indexPathItem].first_name!
-            let indexStartOfText = f.startIndex.advancedBy(1)
-            f = f.substringToIndex(indexStartOfText)
-            
-            let pic = JSQMessagesAvatarImageFactory.avatarImageWithUserInitials("cf+", backgroundColor: bgColour, textColor: txtColour, font: systFont, diameter: 30)
-        }
+//        if self.users[indexPathItem].profile_pic_url == nil
+//        {
+//            var f = self.users[indexPathItem].first_name!
+//            let indexStartOfText = f.startIndex.advancedBy(1)
+//            f = f.substringToIndex(indexStartOfText)
+//            
+//            let pic = JSQMessagesAvatarImageFactory.avatarImageWithUserInitials("cf+", backgroundColor: bgColour, textColor: txtColour, font: systFont, diameter: 30)
+//        }
         
         
-        //this will set the images from coredata
-        if email == "matt3@test.com"
-        {
-            //image
-            let i1 = UIImage(named:"matt")
-            let idefault = UIImage(named:"account2")
-            let d = UInt((i1?.size.width)!/2)
-            
-            //circular
-            let circular = JSQMessagesAvatarImageFactory.circularAvatarImage(i1, withDiameter: d)
-            
-            let i = JSQMessagesAvatarImage(avatarImage: circular, highlightedImage: i1, placeholderImage: idefault)
-            return i
-        }else if email == "michael@test.com"
-        {
-            let i1 = UIImage(named:"michael")
-            let idefault = UIImage(named:"account2")
-            let i = JSQMessagesAvatarImage(avatarImage: i1, highlightedImage: i1, placeholderImage: idefault)
-            return i
-        }else{
-            return self.systemProfilePic
-        }
+//        //this will set the images from coredata
+//        if email == "matt3@test.com"
+//        {
+//            //image
+//            let i1 = UIImage(named:"matt")
+//            let idefault = UIImage(named:"account2")
+//            let d = UInt((i1?.size.width)!/2)
+//            
+//            //circular
+//            let circular = JSQMessagesAvatarImageFactory.circularAvatarImage(i1, withDiameter: d)
+//            
+//            let i = JSQMessagesAvatarImage(avatarImage: circular, highlightedImage: i1, placeholderImage: idefault)
+//            return i
+//        }else if email == "michael@test.com"
+//        {
+//            let i1 = UIImage(named:"michael")
+//            let idefault = UIImage(named:"account2")
+//            let i = JSQMessagesAvatarImage(avatarImage: i1, highlightedImage: i1, placeholderImage: idefault)
+//            return i
+//        }else{
+//            return self.systemProfilePic
+//        }
+        
+        return self.systemProfilePic
         
     }
     

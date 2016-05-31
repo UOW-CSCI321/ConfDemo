@@ -168,15 +168,15 @@ class MessagesTableViewController: UIViewController {
         messengerVC.senderId = user.stringForKey("email")
         messengerVC.title = userConversations[row].name
         messengerVC.senderDisplayName = userConversations[row].lastmsg_email
-        messengerVC.users = usersForConversations[row]
-        print(messengerVC.conversationID)
-        print(messengerVC.users.count)
-        print("row \(row)")
-        print("usersForConversations[row].count: \(usersForConversations[row].count)")
-        print(usersForConversations[row])
-        print("user")
-        print("user.count \(messengerVC.users.count)")
-        print(messengerVC.users)
+//        messengerVC.users = usersForConversations[row]
+//        print(messengerVC.conversationID)
+//        print(messengerVC.users.count)
+//        print("row \(row)")
+//        print("usersForConversations[row].count: \(usersForConversations[row].count)")
+//        print(usersForConversations[row])
+//        print("user")
+//        print("user.count \(messengerVC.users.count)")
+//        print(messengerVC.users)
         
         //set conversation object
         messengerVC.conversation = userConversations[row]
