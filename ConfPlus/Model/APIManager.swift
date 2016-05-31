@@ -465,6 +465,47 @@ class APIManager{
         }
     }
     
+    func getLatestMessageForConversation(conversation:Conversation, completion: (result: Message) -> Void) {
+        var latestMessage = Message()
+        guard let id = conversation.conversation_id else {
+            completion(result: latestMessage)
+            return
+        }
+        
+        let parameters = [
+            "api_key": server.KEY,
+            "app_secret": server.SECRET,
+            "method" : "getLatestMessage",
+            "conversation_id" : id
+        ]
+        
+        Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    if json["success"]{
+                        //print("JSON COUNT: \(json["data"].count)")
+                        latestMessage.content = json["data"]["content"].string
+                        latestMessage.sender_email = json["data"]["sender_email"].string
+                        latestMessage.date = ModelHandler().serverStringToDate(json["data"]["date"].string!)
+                        
+                        completion(result: latestMessage)
+                    } else {
+                        completion(result: latestMessage)
+                    }
+                }
+                
+            case .Failure(let error):
+                print(error.localizedDescription)
+                completion(result: latestMessage)
+            }
+            
+        }
+
+
+    }
+    
     func sendMessage(email:String, content:String, conversationID:String, completion: (result: Bool) -> ())
     {
         let parameters = [

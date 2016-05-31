@@ -116,6 +116,30 @@ class MessengerViewController: JSQMessagesViewController {
         }
     }
     
+    func getLatestServerMessage() {
+        APIManager().getLatestMessageForConversation(conversation) { result in
+            let sm = result
+            let sDate = sm.date
+            let dDate = self.databaseMessages[0].date
+            
+            var order = NSCalendar.currentCalendar().compareDate(dDate!, toDate: sDate!, toUnitGranularity: .Second)
+            switch order {
+            case .OrderedSame:
+                //local database is up to date with the server
+                print("up to date already")
+            case .OrderedDescending:
+                //local database holds a message later than server
+                print("database updated > server")
+            case .OrderedAscending:
+                //local data base does not have the latest message
+                print("need to update")
+                
+            }
+
+        }
+        
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         //getMessagesFromAPI()
@@ -123,6 +147,12 @@ class MessengerViewController: JSQMessagesViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        //timer
+            //get latest message from server
+            getLatestServerMessage()
+            //if not equal to out latest
+            //get messages from api
         getMessagesFromAPI()
         
         //yesterday
