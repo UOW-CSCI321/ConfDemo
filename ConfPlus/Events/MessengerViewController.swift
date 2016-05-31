@@ -149,6 +149,9 @@ class MessengerViewController: JSQMessagesViewController {
     func getImageForEmail(email:String, indexPathItem:Int) -> JSQMessagesAvatarImage //matt defined
     {
         
+        let c = self.users.count
+        print("self.user.count: \(c)")
+        print("email': \(email)")
         if self.users[indexPathItem].profile_pic_url == nil
         {
             var f = self.users[indexPathItem].first_name!
