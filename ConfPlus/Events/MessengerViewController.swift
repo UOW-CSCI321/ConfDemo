@@ -152,6 +152,49 @@ class MessengerViewController: JSQMessagesViewController {
         let c = self.users.count
         print("self.user.count: \(c)")
         print("email': \(email)")
+        
+        let idefault = UIImage(named:"account2")
+        
+        for i in 0..<c
+        {
+            if self.users[i].email == email //we found a match
+            {
+                if self.users[i].profile_pic_url != nil
+                {
+                    let img = self.users[i].getImage()
+                    let d = UInt((img.size.width)/2) //diameter
+                    
+                    //circular
+                    let circular = JSQMessagesAvatarImageFactory.circularAvatarImage(img, withDiameter: d)
+                    
+                    let avatar = JSQMessagesAvatarImage(avatarImage: circular, highlightedImage: img, placeholderImage: idefault)
+                    
+                    return avatar
+                    
+                }else{
+                    //since they don't have a profile picture return the system default type
+                    
+                    //get first character of firstname
+                    var f = self.users[indexPathItem].first_name!
+                    var indexStartOfText = f.startIndex.advancedBy(1)
+                    f = f.substringToIndex(indexStartOfText)
+                    
+                    //get first character of last name
+                    var l = self.users[indexPathItem].last_name!
+                    indexStartOfText = l.startIndex.advancedBy(1)
+                    l = l.substringToIndex(indexStartOfText)
+                    
+                    let ppString =  f + l
+                    
+                    let avatar = JSQMessagesAvatarImageFactory.avatarImageWithUserInitials(ppString, backgroundColor: bgColour, textColor: txtColour, font: systFont, diameter: 30)
+                    
+                    return avatar
+                }
+                
+                
+                
+            }
+        }
 //        if self.users[indexPathItem].profile_pic_url == nil
 //        {
 //            var f = self.users[indexPathItem].first_name!
