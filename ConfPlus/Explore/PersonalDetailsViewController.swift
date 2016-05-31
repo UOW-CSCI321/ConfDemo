@@ -14,6 +14,7 @@ class PersonalDetailsViewController: UIViewController {
 	@IBOutlet weak var tableView: UITableView!
 	
 	var tickets = [Coupon]()
+	var event = Event()
 	let type = ["Name", "Email"]
 	
 	let hud = PKHUD()
@@ -59,6 +60,7 @@ class PersonalDetailsViewController: UIViewController {
 		if segue.identifier == "goToConfirmation" {
 			let vc = segue.destinationViewController as! PaymentViewController
 			vc.tickets = tickets
+			vc.event = event
 		}
 	}
 	

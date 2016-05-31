@@ -77,6 +77,29 @@ class TicketDetailsViewController: UIViewController {
 			
 		}
     }
+	
+	@IBAction func performContinue(sender: AnyObject) {
+		if shouldPerformSegueWithIdentifier("goToUserInfoView", sender: self){
+			performSegueWithIdentifier("goToUserInfoView", sender: self)
+		}
+	}
+	
+	override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+		if identifier == "goToUserInfoView" {
+			selectedTickets.removeAll()
+			for section in 0..<tableView.numberOfSections{
+				let cell:TicketTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: section)) as! TicketTableViewCell
+				for _ in 0..<Int(cell.ticketCount.text!)! {
+					selectedTickets.append(Coupon(ticket: [eventTickets[section]], name: "", email: ""))
+				}
+			}
+		}
+		if selectedTickets.count > 0 {
+			return true
+		}
+		HUD.show(.Label("Please select ticket to continue"))
+		return false
+	}
 
 	func fetchError(title: String = "No internet Connection", message:String = "Data might not updated."){
 		let notification = MPGNotification(title: title, subtitle: message, backgroundColor: UIColor.orangeColor(), iconImage: nil)
@@ -119,15 +142,10 @@ extension TicketDetailsViewController: UITableViewDelegate{
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "goToUserInfoView"{
-			selectedTickets.removeAll()
-			for section in 0..<tableView.numberOfSections{
-				let cell:TicketTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: section)) as! TicketTableViewCell
-				for _ in 0..<Int(cell.ticketCount.text!)! {
-					selectedTickets.append(Coupon(ticket: [eventTickets[section]], name: "", email: ""))
-				}
-			}
+			
 			let vc = segue.destinationViewController as! PersonalDetailsViewController
 			vc.tickets = selectedTickets
+			vc.event = event
 		}
 	}
 }
@@ -146,7 +164,6 @@ extension TicketDetailsViewController {
 		
 		self.ticketCount.text = String(Int(ticketCount.text!)! + 1)
 		cell.ticketCount.text = self.ticketCount.text
-		//selectedTickets.append(Coupon(ticket:  ticket.append(eventTickets[section!]), name: "", email: ""))
 		
 		self.totalPrice.text = String(Double(totalPrice.text!)! + Double(cell.ticketPrice.text!)!)
 	}
@@ -160,7 +177,7 @@ extension TicketDetailsViewController {
 			cell.ticketCount.text = self.ticketCount.text
 			
 			
-			self.totalPrice.text = String(Int(totalPrice.text!)! - Int(cell.ticketPrice.text!)!)
+			self.totalPrice.text = String(Double(totalPrice.text!)! - Double(cell.ticketPrice.text!)!)
 		}
 		
 	}

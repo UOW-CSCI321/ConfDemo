@@ -227,7 +227,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                             <state key="normal" title="Continue"/>
                                             <connections>
-                                                <segue destination="4W6-XU-Gj4" kind="show" identifier="goToUserInfoView" id="rbq-3w-Ncx"/>
+                                                <action selector="performContinue:" destination="r0q-DF-LaA" eventType="touchUpInside" id="anS-8D-Ifg"/>
                                             </connections>
                                         </button>
                                     </barButtonItem>
@@ -271,6 +271,7 @@
                         <outlet property="ticketName" destination="fjY-t0-2qg" id="piu-Q9-OAr"/>
                         <outlet property="ticketSelectionView" destination="oSl-JF-UIt" id="Fhd-1E-yf1"/>
                         <outlet property="totalPrice" destination="gIf-SD-1MG" id="jO1-83-nrt"/>
+                        <segue destination="4W6-XU-Gj4" kind="show" identifier="goToUserInfoView" id="Lwj-zn-HA1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8eg-gr-Ocb" userLabel="First Responder" sceneMemberID="firstResponder"/>
