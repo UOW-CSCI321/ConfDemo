@@ -44,4 +44,33 @@ extension APIManager{
 			
 		}
 	}
+	
+	func getSessions(event_id:String, completion: (result: Bool, json: JSON?) -> Void){
+		let parameters = [
+			"api_key": server.KEY,
+			"app_secret": server.SECRET,
+			"method" : "getSessions",
+			"event_id" : event_id
+		] //at the moment the api call need event id
+		
+		Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
+			switch response.result {
+			case .Success:
+				if let value = response.result.value {
+					let json = JSON(value)
+					if json["success"]{
+						completion(result: true, json: json)
+					} else {
+						completion(result: false, json: nil)
+					}
+				}
+			
+			case .Failure(let error):
+				print(error.localizedDescription)
+				self.fetchError()
+				completion(result: false, json: nil)
+			}
+		
+		}
+	}
 }

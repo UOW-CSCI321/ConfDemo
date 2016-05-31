@@ -23,6 +23,7 @@ class ExploreViewController: UIViewController {
 	var isDispatchEmpty:Bool = true
 	
 	var refresher: UIRefreshControl!
+	var notification: MPGNotification!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,15 +42,21 @@ class ExploreViewController: UIViewController {
 		getEventsFromAPI()
 	}
 	
+	override func viewWillDisappear(animated: Bool) {
+		super.viewWillDisappear(animated)
+		
+		notification.dismissWithAnimation(false)
+	}
+	
 	func getEventsFromAPI(){
 		if isDispatchEmpty {
 			isDispatchEmpty = false
-			let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+			notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
 			notification.show()
 			
 			APIManager().getUpcomingEventsByCountry("Australia"){ result in
 				dispatch_async(dispatch_get_main_queue()) {
-					notification.hidden = true
+					self.notification.dismissWithAnimation(true)
 					self.isDispatchEmpty = true
 					self.events = ModelHandler().getEvents("0")
 					self.EventsTableView.reloadData()
