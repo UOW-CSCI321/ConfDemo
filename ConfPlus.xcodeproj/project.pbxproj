@@ -82,6 +82,7 @@
 		E9AF00691CDAB9D6004424A1 /* EventAssistServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9AF00681CDAB9D6004424A1 /* EventAssistServices.storyboard */; };
 		E9AF006B1CDABDE1004424A1 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9AF006A1CDABDE1004424A1 /* Account.storyboard */; };
 		E9AF00711CDAEEFE004424A1 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AF00701CDAEEFE004424A1 /* ScannerViewController.swift */; };
+		E9C6C0EC1CFD513800981867 /* PKHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C6C0EB1CFD513800981867 /* PKHUD.framework */; };
 		E9D055C51CCF0EC10045BA86 /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */; };
 		E9D055C71CCF1CCA0045BA86 /* TimetableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D055C61CCF1CCA0045BA86 /* TimetableTableViewCell.swift */; };
 		E9D055C91CCF20510045BA86 /* PersonalDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D055C81CCF20510045BA86 /* PersonalDetailsTableViewCell.swift */; };
@@ -172,6 +173,7 @@
 		E9AF00681CDAB9D6004424A1 /* EventAssistServices.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventAssistServices.storyboard; sourceTree = "<group>"; };
 		E9AF006A1CDABDE1004424A1 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		E9AF00701CDAEEFE004424A1 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScannerViewController.swift; path = Events/ScannerViewController.swift; sourceTree = "<group>"; };
+		E9C6C0EB1CFD513800981867 /* PKHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PKHUD.framework; path = "Pods/../build/Debug-iphoneos/PKHUD/PKHUD.framework"; sourceTree = "<group>"; };
 		E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
 		E9D055C61CCF1CCA0045BA86 /* TimetableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableTableViewCell.swift; sourceTree = "<group>"; };
 		E9D055C81CCF20510045BA86 /* PersonalDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalDetailsTableViewCell.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9C6C0EC1CFD513800981867 /* PKHUD.framework in Frameworks */,
 				C9D9DC061CE8885900CF55FA /* JSQMessagesViewController.framework in Frameworks */,
 				C9D9DC071CE8885900CF55FA /* JSQSystemSoundPlayer.framework in Frameworks */,
 				C93A984D1CE3448D00418F53 /* CryptoSwift.framework in Frameworks */,
@@ -307,6 +310,7 @@
 		CA6657120F9514BBD729216B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E9C6C0EB1CFD513800981867 /* PKHUD.framework */,
 				C9D9DC041CE8885900CF55FA /* JSQMessagesViewController.framework */,
 				C9D9DC051CE8885900CF55FA /* JSQSystemSoundPlayer.framework */,
 				C93A984C1CE3448D00418F53 /* CryptoSwift.framework */,
@@ -442,7 +446,6 @@
 				TargetAttributes = {
 					E931635C1BC5E0B4007408C7 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = 28MW25EY84;
 					};
 				};
 			};
@@ -719,6 +722,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/CryptoSwift",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/PKHUD",
 				);
 				INFOPLIST_FILE = ConfPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -739,6 +743,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/CryptoSwift",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/PKHUD",
 				);
 				INFOPLIST_FILE = ConfPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
