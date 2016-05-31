@@ -14,7 +14,7 @@ class PersonalDetailsViewController: UIViewController {
 	@IBOutlet weak var tableView: UITableView!
 	
 	var tickets = [Coupon]()
-	var event = Event()
+	var event:Event!
 	let type = ["Name", "Email"]
 	
 	let hud = PKHUD()

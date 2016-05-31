@@ -519,6 +519,9 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Confirmation" id="yvD-Rp-tCI"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="do9-dP-lTd" id="Ye3-8f-ssL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ms8-2h-BVc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
