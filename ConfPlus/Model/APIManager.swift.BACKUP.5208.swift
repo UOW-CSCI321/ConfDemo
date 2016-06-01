@@ -170,6 +170,7 @@ class APIManager{
 		
 	}
     
+<<<<<<< HEAD
     func getMapForVenue(venue:Venue, completion: (result: Bool) -> Void) {
         guard let id = venue.venue_id else {
             completion(result: false)
@@ -345,6 +346,8 @@ class APIManager{
 
     }
     
+=======
+>>>>>>> cy-dev2
     func getConversationsFromAPI(email:String, group: dispatch_group_t, inout isDispatchEmpty: Bool, completion: (Bool) -> Void) {
     
         let paramaters = [

@@ -25,5 +25,6 @@ extension Ticket {
     @NSManaged var type: String?
     @NSManaged var session: Session?
     @NSManaged var ticket_records: NSSet?
+	
 
 }

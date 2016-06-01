@@ -14,6 +14,7 @@ import CoreData
 
 class AccountTableViewController: UITableViewController {
 	
+	@IBOutlet weak var avatar: UIImageView!
 	@IBOutlet weak var editButton: UIBarButtonItem!
 	@IBOutlet weak var languageButton: UIButton!
 	@IBOutlet weak var paymentHistoryButton: UIButton!

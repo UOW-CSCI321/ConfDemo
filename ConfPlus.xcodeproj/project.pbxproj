@@ -48,6 +48,7 @@
 		E90201C11C9CB7EB00C7839A /* ExploreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */; };
 		E90201C31C9CC2E200C7839A /* EventDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */; };
 		E90201C91C9CC84A00C7839A /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C81C9CC84A00C7839A /* EventsViewController.swift */; };
+		E9024FF71CF9806F00DFD3AD /* APIManager-Ticketing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9024FF61CF9806F00DFD3AD /* APIManager-Ticketing.swift */; };
 		E90A0A621BCF7143005D611C /* Readme.md in Sources */ = {isa = PBXBuildFile; fileRef = E90A0A611BCF7143005D611C /* Readme.md */; };
 		E91E6B551CEC890400E2759C /* Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E91E6B541CEC890400E2759C /* Event.storyboard */; };
 		E92C925E1CAA7DDC0093EDCD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E92C92601CAA7DDC0093EDCD /* Localizable.strings */; };
@@ -81,6 +82,7 @@
 		E9AF00691CDAB9D6004424A1 /* EventAssistServices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9AF00681CDAB9D6004424A1 /* EventAssistServices.storyboard */; };
 		E9AF006B1CDABDE1004424A1 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9AF006A1CDABDE1004424A1 /* Account.storyboard */; };
 		E9AF00711CDAEEFE004424A1 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AF00701CDAEEFE004424A1 /* ScannerViewController.swift */; };
+		E9C6C0EC1CFD513800981867 /* PKHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9C6C0EB1CFD513800981867 /* PKHUD.framework */; };
 		E9D055C51CCF0EC10045BA86 /* TicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */; };
 		E9D055C71CCF1CCA0045BA86 /* TimetableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D055C61CCF1CCA0045BA86 /* TimetableTableViewCell.swift */; };
 		E9D055C91CCF20510045BA86 /* PersonalDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D055C81CCF20510045BA86 /* PersonalDetailsTableViewCell.swift */; };
@@ -134,6 +136,7 @@
 		E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreTableViewCell.swift; path = Explore/ExploreTableViewCell.swift; sourceTree = "<group>"; };
 		E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventDetailTableViewController.swift; path = Explore/EventDetailTableViewController.swift; sourceTree = "<group>"; };
 		E90201C81C9CC84A00C7839A /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsViewController.swift; path = Events/EventsViewController.swift; sourceTree = "<group>"; };
+		E9024FF61CF9806F00DFD3AD /* APIManager-Ticketing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "APIManager-Ticketing.swift"; sourceTree = "<group>"; };
 		E90A0A611BCF7143005D611C /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		E91E6B541CEC890400E2759C /* Event.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Event.storyboard; sourceTree = "<group>"; };
 		E92C925A1CAA7DC60093EDCD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -170,6 +173,7 @@
 		E9AF00681CDAB9D6004424A1 /* EventAssistServices.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EventAssistServices.storyboard; sourceTree = "<group>"; };
 		E9AF006A1CDABDE1004424A1 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		E9AF00701CDAEEFE004424A1 /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScannerViewController.swift; path = Events/ScannerViewController.swift; sourceTree = "<group>"; };
+		E9C6C0EB1CFD513800981867 /* PKHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PKHUD.framework; path = "Pods/../build/Debug-iphoneos/PKHUD/PKHUD.framework"; sourceTree = "<group>"; };
 		E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewCell.swift; sourceTree = "<group>"; };
 		E9D055C61CCF1CCA0045BA86 /* TimetableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableTableViewCell.swift; sourceTree = "<group>"; };
 		E9D055C81CCF20510045BA86 /* PersonalDetailsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalDetailsTableViewCell.swift; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9C6C0EC1CFD513800981867 /* PKHUD.framework in Frameworks */,
 				C9D9DC061CE8885900CF55FA /* JSQMessagesViewController.framework in Frameworks */,
 				C9D9DC071CE8885900CF55FA /* JSQSystemSoundPlayer.framework in Frameworks */,
 				C93A984D1CE3448D00418F53 /* CryptoSwift.framework in Frameworks */,
@@ -305,6 +310,7 @@
 		CA6657120F9514BBD729216B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E9C6C0EB1CFD513800981867 /* PKHUD.framework */,
 				C9D9DC041CE8885900CF55FA /* JSQMessagesViewController.framework */,
 				C9D9DC051CE8885900CF55FA /* JSQSystemSoundPlayer.framework */,
 				C93A984C1CE3448D00418F53 /* CryptoSwift.framework */,
@@ -363,11 +369,12 @@
 				E93163971BC62AB6007408C7 /* ExploreViewController.swift */,
 				E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */,
 				E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */,
-				E9AF006E1CDAD702004424A1 /* Ticket */,
+				C94AFA4C1C98085B00EC88B6 /* TicketDetailsViewController.swift */,
+				E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */,
 				C94AFA4E1C9808AB00EC88B6 /* PersonalDetailsViewController.swift */,
+				E9D055C81CCF20510045BA86 /* PersonalDetailsTableViewCell.swift */,
 				C94AFA501C980A0B00EC88B6 /* PaymentViewController.swift */,
 				C94AFA521C980A5400EC88B6 /* ReceiptViewController.swift */,
-				E9D055C81CCF20510045BA86 /* PersonalDetailsTableViewCell.swift */,
 				E98F35111CEC6862002B1CC1 /* Explore.storyboard */,
 			);
 			name = Explore;
@@ -382,15 +389,6 @@
 			);
 			name = Resources;
 			path = ..;
-			sourceTree = "<group>";
-		};
-		E9AF006E1CDAD702004424A1 /* Ticket */ = {
-			isa = PBXGroup;
-			children = (
-				C94AFA4C1C98085B00EC88B6 /* TicketDetailsViewController.swift */,
-				E9D055C41CCF0EC10045BA86 /* TicketTableViewCell.swift */,
-			);
-			name = Ticket;
 			sourceTree = "<group>";
 		};
 		E9AF006F1CDAE7BA004424A1 /* Security and Location */ = {
@@ -408,6 +406,8 @@
 			children = (
 				E9E0A64A1CDD805700E187AD /* APIManager.swift */,
 				E9E0A64C1CDD80B500E187AD /* APIServer.swift */,
+				E9E0A64F1CDD8C6200E187AD /* ModelHandler.swift */,
+				E9024FF61CF9806F00DFD3AD /* APIManager-Ticketing.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -447,7 +447,6 @@
 				TargetAttributes = {
 					E931635C1BC5E0B4007408C7 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = 28MW25EY84;
 					};
 				};
 			};
@@ -566,6 +565,7 @@
 				E9AF00711CDAEEFE004424A1 /* ScannerViewController.swift in Sources */,
 				E97EB7641CDF13E5009113A6 /* Ticket_Record.swift in Sources */,
 				C94AFA5C1C980E3B00EC88B6 /* TalksViewController.swift in Sources */,
+				E9024FF71CF9806F00DFD3AD /* APIManager-Ticketing.swift in Sources */,
 				E9E0A64D1CDD80B500E187AD /* APIServer.swift in Sources */,
 				C94AFA4F1C9808AB00EC88B6 /* PersonalDetailsViewController.swift in Sources */,
 				C94AFA661C981CAD00EC88B6 /* MyTicketsTableViewController.swift in Sources */,
@@ -723,6 +723,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/CryptoSwift",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/PKHUD",
 				);
 				INFOPLIST_FILE = ConfPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -743,6 +744,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/CryptoSwift",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/PKHUD",
 				);
 				INFOPLIST_FILE = ConfPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

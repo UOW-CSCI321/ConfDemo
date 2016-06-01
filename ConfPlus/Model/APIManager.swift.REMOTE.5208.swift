@@ -170,181 +170,6 @@ class APIManager{
 		
 	}
     
-    func getMapForVenue(venue:Venue, completion: (result: Bool) -> Void) {
-        guard let id = venue.venue_id else {
-            completion(result: false)
-            return
-        }
-        
-        let parameters = [
-            "api_key"	:	server.KEY,
-            "app_secret":	server.SECRET,
-            "method"	:	"getVenueMap",
-            "venue_id"	:	id
-        ]
-        var v:Venue? = nil
-        
-        Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
-            switch response.result{
-            case .Success:
-                if let value = response.result.value{
-                    
-                    let json = JSON(value)
-                    if json["success"] {
-                        self.handler.updateMapForVenue(venue, data: json["data"]["image_data_url"].string!)
-                        completion(result: true)
-                    } else {
-                        print(json["data"][0]["message"])
-                        completion(result: false)
-                    }
-                }
-                
-            case .Failure(let error):
-                print(error.localizedDescription)
-                completion(result: false)
-                
-            }
-            
-        }
-
-    }
-    
-    func getMyEventDataFromAPI(group: dispatch_group_t, inout isDispatchEmpty: Bool, completion: (Bool) -> Void){
-        let paramaters = [
-            "api_key": server.KEY,
-            "app_secret": server.SECRET,
-            "method" : "getEventsByTag",
-            "tag_name" : "testTag"
-        ] //at the moment the api call need event id
-        
-        Alamofire.request(.POST, server.URL, parameters: paramaters).responseJSON { response in
-            switch response.result {
-            case .Success:
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    
-                    //self.handler.deleteEventsData()
-                    
-                    for i in 0 ..< json["data"].count {
-                        dispatch_group_enter(group)
-                        let event = self.handler.addNewEvent(json["data"][i], attending: "1")
-                        
-//                        APIManager().getPoster(event, group: group){
-//                            self.handler.performUpdate()
-//                        }
-                    }
-                }
-                completion(true)
-            case .Failure(let error):
-                print(error.localizedDescription)
-                let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-                notification.show()
-                completion(false)
-            }
-            
-        }
-    }
-    
-    
-    func getUserFromAPI(email:String, completion: (result: Bool) -> Void) {
-        
-        let paramaters = [
-            "api_key"	:	server.KEY,
-            "app_secret":	server.SECRET,
-            "method"	:	"getUser",
-            "venue_id"	:	email //email?
-        ]
-        var user:User? = nil
-        
-        Alamofire.request(.POST, server.URL, parameters: paramaters).responseJSON {response in
-            switch response.result{
-            case .Success:
-                if let value = response.result.value{
-                    
-                    let json = JSON(value)
-                    if json["success"] {
-                        user = self.handler.addNewUser(json["data"][0])
-                        
-                        //self.handler.saveVenueForEvent(event, venue:venue!)
-                        completion(result: true)
-                    } else {
-                        print(json["data"][0]["message"])
-                        completion(result: false)
-                    }
-                }
-                
-            case .Failure(let error):
-                print(error.localizedDescription)
-                completion(result: false)
-                
-            }
-            
-        }
-        
-    }
-    
-    func getUsersForConversationFromAPI(conversation:Conversation, completion: (result: Bool) -> Void)
-    {
-        guard let id = conversation.conversation_id else {
-            completion(result: false)
-            return
-        }
-        
-        let paramaters = [
-            "api_key"	:	server.KEY,
-            "app_secret":	server.SECRET,
-            "method"	:	"getConversationParticipants",
-            "conversation_id"	:	id
-        ]
-        
-        Alamofire.request(.POST, server.URL, parameters: paramaters).responseJSON {response in
-            switch response.result{
-            case .Success:
-                if let value = response.result.value{
-                    
-                    let json = JSON(value)
-                    if json["success"] {
-                        if let counter = json["data"].array?.count
-                        {
-                            if counter < 2 {
-                                print("counter should not be < 2")
-                            }
-                            for i in 0..<counter
-                            {
-                                if let user:User = self.handler.addNewUser(json["data"][i])
-                                {
-                                    self.handler.saveUserForConversation(user, conversation: conversation)
-                                }else {
-                                    //get the user
-                                    let email:String = json["data"][i]["email"].string!
-                                    let user = self.handler.getUser(email)
-                                    //save user for conversation
-                                    self.handler.saveUserForConversation(user!, conversation: conversation)
-                                }
-                            }
-                        }
-                        
-                        //user?.mutableSetValueForKey("conversations").addObject(conversation)
-                        //conversation.mutableSetValueForKey("users").addObject(user!)
-                        
-                        //self.handler.saveVenueForEvent(event, venue:venue!)
-                        completion(result: true)
-                    } else {
-                        print(json["data"][0]["message"])
-                        completion(result: false)
-                    }
-                }
-                
-            case .Failure(let error):
-                print(error.localizedDescription)
-                completion(result: false)
-                
-            }
-            
-        }
-
-    }
-    
     func getConversationsFromAPI(email:String, group: dispatch_group_t, inout isDispatchEmpty: Bool, completion: (Bool) -> Void) {
     
         let paramaters = [
@@ -367,6 +192,10 @@ class APIManager{
                         print(json["data"][i])
                         self.handler.addNewConversation(json["data"][i])
                         self.handler.performUpdate()
+                        
+//                        APIManager().getMessagesForConvo(convo, group: group){
+//                            self.handler.performUpdate()
+//                        }
                         dispatch_group_leave(group)
                     }
                 }
@@ -380,50 +209,6 @@ class APIManager{
             
         }
     }
-    
-    func getConversationsByUserForEventFromAPI(email:String, eventID:String, group: dispatch_group_t, inout isDispatchEmpty: Bool, completion: (Bool) -> Void)    {
-        
-        let paramaters = [
-            "api_key"	:	server.KEY,
-            "app_secret":	server.SECRET,
-            "method"	:	"getConversationsByUserForEvent",
-            "email"	:	email,
-            "event_id" : eventID
-        ]
-        
-        Alamofire.request(.POST, server.URL, parameters: paramaters).responseJSON { response in
-            switch response.result {
-            case .Success:
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    if (json["data"]["message"].string != nil)
-                    {
-                        print(json["data"]["message"].string)
-                        
-                    }else{
-                        //self.handler.deleteEventsData()
-                        let counter = json["data"].count
-                        for i in 0 ..< counter {
-                            dispatch_group_enter(group)
-                            //print(json["data"][i])
-                            self.handler.addNewConversation(json["data"][i])
-                            self.handler.performUpdate()
-                            dispatch_group_leave(group)
-                        }
-                    }
-                }
-                completion(true)
-            case .Failure(let error):
-                print(error.localizedDescription)
-                let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-                notification.show()
-                completion(false)
-            }
-            
-        }
-
-    }
-    
     
     func getMessagesForConversation(conversation:Conversation, completion: (result: Bool) -> Void){
         guard let id = conversation.conversation_id else {
@@ -463,48 +248,6 @@ class APIManager{
             }
         
         }
-    }
-    
-    func getLatestMessageDateForConversation(conversation:Conversation, completion: (result: NSDate?) -> Void) {
-        guard let id = conversation.conversation_id else {
-            completion(result: nil)
-            return
-        }
-        
-        let parameters = [
-            "api_key": server.KEY,
-            "app_secret": server.SECRET,
-            "method" : "getLatestMessage",
-            "conversation_id" : id
-        ]
-        
-        Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
-            switch response.result {
-            case .Success:
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    if json["success"]{
-                        //print("JSON COUNT: \(json["data"].count)")
-//                        latestMessage.content = json["data"]["content"].string
-//                        latestMessage.sender_email = json["data"]["sender_email"].string
-//                        latestMessage.date = ModelHandler().serverStringToDate(json["data"]["date"].string!)
-                        //print("message: \(json["data"]["message_id"].string) \(json["data"]["content"].string) from \(json["data"]["sender_email"].string)")
-                        let latestMessageDate = ModelHandler().serverStringToDate(json["data"]["date"].string!)
-                        
-                        completion(result: latestMessageDate)
-                    } else {
-                        completion(result: nil)
-                    }
-                }
-                
-            case .Failure(let error):
-                print(error.localizedDescription)
-                completion(result: nil)
-            }
-            
-        }
-
-
     }
     
     func sendMessage(email:String, content:String, conversationID:String, completion: (result: Bool) -> ())
@@ -770,7 +513,7 @@ extension APIManager{
 					if json["success"] {
 						HUD.hide()
 						let data = json["data"][0]
-						//print(data)
+						print(data)
 						self.user.setObject(data["title"].string, forKey: "title")
 						self.user.setObject(data["first_name"].string, forKey: "firstName")
 						self.user.setObject(data["last_name"].string, forKey: "lastName")
@@ -780,7 +523,7 @@ extension APIManager{
 						self.user.setObject(data["state"].string, forKey: "state")
 						self.user.setObject(data["country"].string, forKey: "country")
 						self.user.synchronize()
-						self.handler.addNewUser(data)
+						
 						completion(result: true, data: json["data"][0])
 					} else {
 						HUD.hide()
@@ -797,43 +540,6 @@ extension APIManager{
 			}
 		}
 	}
-    
-    //func getUserProfilePicFromAPI
-    func getUserProfilePicFromAPI(user:User, completion: (result: Bool) -> Void){
-        guard let email = user.email else {
-            print("No email", #function)
-            return
-        }
-        let parameters = [
-            "api_key": server.KEY,
-            "app_secret": server.SECRET,
-            "method" : "getProfileImage",
-            "email" : email
-        ]
-        
-        Alamofire.request(.POST, self.server.URL, parameters: parameters).responseJSON(){ response in
-            switch response.result{
-            case .Success:
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    //print(json)
-                    if json["success"]{
-                        //self.handler.updatePosterForEvent(event, data: json["data"]["poster_data_url"].string!)
-                        self.handler.updateUsersProfilePic(user, data: json["data"]["image_data_url"].string!)
-                        completion(result: true)
-                    } else {
-                        completion(result: false)
-                    }
-                }
-            case .Failure(let error):
-                print(error.localizedDescription)
-                completion(result: false)
-            }
-        }
-        
-    }
-
-    
 
 	func updateProfile(email: String, title: String?, first_name:String?, last_name:String?, dob:String?, street:String?, city:String?, state:String?, country:String?, completion:(result:Bool) -> ()){
 		var parameters = [

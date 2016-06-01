@@ -1,6 +1,0 @@
-framework module OGCryptoHash {
-  umbrella header "OGCryptoHash-umbrella.h"
-
-  export *
-  module * { export * }
-}
