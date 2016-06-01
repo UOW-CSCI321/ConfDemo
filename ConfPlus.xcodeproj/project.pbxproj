@@ -17,6 +17,7 @@
 		C93A980E1CE04AE900418F53 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93A980C1CE04AE900418F53 /* Event.swift */; };
 		C93A984D1CE3448D00418F53 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93A984C1CE3448D00418F53 /* CryptoSwift.framework */; };
 		C93A984F1CE36B4C00418F53 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93A984E1CE36B4C00418F53 /* MessageTableViewCell.swift */; };
+		C946E9401CFF0BD300FB1121 /* QAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C946E93F1CFF0BD300FB1121 /* QAViewController.swift */; };
 		C94AFA4D1C98085B00EC88B6 /* TicketDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA4C1C98085B00EC88B6 /* TicketDetailsViewController.swift */; };
 		C94AFA4F1C9808AB00EC88B6 /* PersonalDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA4E1C9808AB00EC88B6 /* PersonalDetailsViewController.swift */; };
 		C94AFA511C980A0B00EC88B6 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA501C980A0B00EC88B6 /* PaymentViewController.swift */; };
@@ -104,6 +105,7 @@
 		C93A980C1CE04AE900418F53 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Model/Event.swift; sourceTree = "<group>"; };
 		C93A984C1CE3448D00418F53 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = "Pods/../build/Debug-iphoneos/CryptoSwift/CryptoSwift.framework"; sourceTree = "<group>"; };
 		C93A984E1CE36B4C00418F53 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		C946E93F1CFF0BD300FB1121 /* QAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QAViewController.swift; path = Events/QAViewController.swift; sourceTree = "<group>"; };
 		C94AFA4C1C98085B00EC88B6 /* TicketDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketDetailsViewController.swift; path = Explore/TicketDetailsViewController.swift; sourceTree = "<group>"; };
 		C94AFA4E1C9808AB00EC88B6 /* PersonalDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonalDetailsViewController.swift; path = Explore/PersonalDetailsViewController.swift; sourceTree = "<group>"; };
 		C94AFA501C980A0B00EC88B6 /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentViewController.swift; path = Explore/PaymentViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				E91E6B541CEC890400E2759C /* Event.storyboard */,
+				C946E93F1CFF0BD300FB1121 /* QAViewController.swift */,
 				E90201C81C9CC84A00C7839A /* EventsViewController.swift */,
 				E98D51DA1CF5DAB3000D7549 /* EventsTableViewCell.swift */,
 				C94AFA571C980D7C00EC88B6 /* HomeViewController.swift */,
@@ -406,7 +409,6 @@
 			children = (
 				E9E0A64A1CDD805700E187AD /* APIManager.swift */,
 				E9E0A64C1CDD80B500E187AD /* APIServer.swift */,
-				E9E0A64F1CDD8C6200E187AD /* ModelHandler.swift */,
 				E9024FF61CF9806F00DFD3AD /* APIManager-Ticketing.swift */,
 			);
 			name = API;
@@ -595,6 +597,7 @@
 				C94AFA741C98217C00EC88B6 /* AccountTableViewController.swift in Sources */,
 				E93163911BC5E294007408C7 /* viewEffect.swift in Sources */,
 				C94AFA581C980D7C00EC88B6 /* HomeViewController.swift in Sources */,
+				C946E9401CFF0BD300FB1121 /* QAViewController.swift in Sources */,
 				C94AFA4D1C98085B00EC88B6 /* TicketDetailsViewController.swift in Sources */,
 				C94AFA6C1C981E7700EC88B6 /* SecurityViewController.swift in Sources */,
 				C93A984F1CE36B4C00418F53 /* MessageTableViewCell.swift in Sources */,
