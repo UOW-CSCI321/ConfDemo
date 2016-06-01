@@ -139,6 +139,7 @@ class MessagesTableViewController: UIViewController {
                                 let notification = MPGNotification(title: "Updated", subtitle: nil, backgroundColor: UIColor.orangeColor(), iconImage: nil)
                                 notification.duration = 1
                                 notification.show()
+                                self.isDispatchEmpty = true
 
                             }
 
