@@ -44,7 +44,7 @@ class MessagesTableViewController: UIViewController {
             let group: dispatch_group_t = dispatch_group_create()
             isDispatchEmpty = false
             let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-            notification.duration = 2
+            notification.duration = 60
             notification.show()
             
             
@@ -135,14 +135,15 @@ class MessagesTableViewController: UIViewController {
                                 print(self.usersForConversations)
                                 self.conversationTable.reloadData()
                                 print("Reloaded")
+                                
+                                let notification = MPGNotification(title: "Updated", subtitle: nil, backgroundColor: UIColor.orangeColor(), iconImage: nil)
+                                notification.duration = 1
+                                notification.show()
+
                             }
 
                         }
                     }
-                    
-                    let notification = MPGNotification(title: "Updated", subtitle: nil, backgroundColor: UIColor.orangeColor(), iconImage: nil)
-                    notification.duration = 1
-                    notification.show()
                 }
             }
         }
