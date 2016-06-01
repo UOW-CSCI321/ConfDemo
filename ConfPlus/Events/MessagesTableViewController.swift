@@ -135,6 +135,7 @@ class MessagesTableViewController: UIViewController {
                                 print(self.usersForConversations)
                                 self.conversationTable.reloadData()
                                 print("Reloaded")
+                                notification.hidden = true
                                 
                                 let notification = MPGNotification(title: "Updated", subtitle: nil, backgroundColor: UIColor.orangeColor(), iconImage: nil)
                                 notification.duration = 1
