@@ -73,7 +73,7 @@ extension PaymentViewController: UITableViewDelegate{
 		
 		var ticket:Tickets?
 		if tickets.count == section {
-			ticket = Tickets(title: "", price: String(self.totalPrice), name: "TOTAL", _class: "", type: "", venue: "", room: "", seat: "")
+			ticket = Tickets(title: "", price: String(self.totalPrice), name: "TOTAL", _class: "", type: "", venue: "", room: "", seat: "", startTime: NSDate(), endTime: NSDate())
 		} else {
 			ticket = tickets[section].ticket[row]
 		}

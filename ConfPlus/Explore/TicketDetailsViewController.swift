@@ -19,14 +19,16 @@ struct Coupon {
 }
 
 struct Tickets {
-	var title:String
-	var price:String
-	var name:String
-	var _class:String
-	var type:String
+	var title:String?
+	var price:String?
+	var name:String?
+	var _class:String?
+	var type:String?
 	var venue:String?
 	var room:String?
 	var seat:String?
+	var startTime:NSDate?
+	var endTime:NSDate?
 	
 }
 
@@ -44,6 +46,7 @@ class TicketDetailsViewController: UIViewController {
 	let user = NSUserDefaults.standardUserDefaults()
 	
 	var eventTickets = [Tickets]()
+	var sessionTickets = [Tickets]()
 	var selectedTickets = [Coupon]()
 	
     override func viewDidLoad() {
@@ -58,17 +61,24 @@ class TicketDetailsViewController: UIViewController {
 		APIManager().getEventTickets(event.event_id!){ result, json in
 			self.eventTickets.removeAll()
 			if result{
+				let dateFormatter = NSDateFormatter()
+				dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+				dateFormatter.timeZone = NSTimeZone(name: "GMT")
+				
 				for i in 0 ..< json!["data"].count {
 					let data = json!["data"][i]
-					self.eventTickets.append(Tickets(title:	data["title"].string!,
-													price:	data["price"].string!,
-													name:	data["name"].string!,
-													_class: data["class"].string!,
-													type:	data["type"].string!,
+					self.eventTickets.append(Tickets(title:	data["title"].string,
+													price:	data["price"].string,
+													name:	data["name"].string,
+													_class: data["class"].string,
+													type:	data["type"].string,
 													venue:	data["venue"].string,
 													room:	data["room"].string,
-													seat:	data["seat_num"].string))
+													seat:	data["seat_num"].string,
+													startTime:	dateFormatter.dateFromString(data["start_date"].stringValue),
+													endTime:	dateFormatter.dateFromString(data["end_date"].stringValue)))
 				}
+				print(self.eventTickets)
 				HUD.hide()
 				self.tableView.reloadData()
 			} else {

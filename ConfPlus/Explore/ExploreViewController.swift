@@ -45,7 +45,7 @@ class ExploreViewController: UIViewController {
 	override func viewWillDisappear(animated: Bool) {
 		super.viewWillDisappear(animated)
 		
-		notification.dismissWithAnimation(false)
+		notification.dismissWithAnimation(true)
 	}
 	
 	func getEventsFromAPI(){

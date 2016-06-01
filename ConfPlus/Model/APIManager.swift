@@ -142,7 +142,7 @@ class APIManager{
 			"venue_id"	:	id
 		]
 		var venue:Venue? = nil
-		
+
 		Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
 			switch response.result{
 			case .Success:
