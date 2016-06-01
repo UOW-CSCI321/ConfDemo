@@ -87,16 +87,16 @@ class TicketDetailsViewController: UIViewController {
 															count:	"0"))
 					} else {
 						self.sessionTickets.append(Tickets(title:	data["title"].string,
-														price:	data["price"].string,
-														name:	data["name"].string,
-														_class: data["class"].string,
-														type:	data["type"].string,
-														venue:	data["venue"].string,
-														room:	data["room"].string,
-														seat:	data["seat_num"].string,
-														startTime:	startTime,
-														endTime:	endTime,
-														count:	"0"))
+															price:	data["price"].string,
+															name:	data["name"].string,
+															_class: data["class"].string,
+															type:	data["type"].string,
+															venue:	data["venue"].string,
+															room:	data["room"].string,
+															seat:	data["seat_num"].string,
+															startTime:	startTime,
+															endTime:	endTime,
+															count:	"0"))
 					}
 					
 				}

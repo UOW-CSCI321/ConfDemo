@@ -102,6 +102,7 @@ extension ExploreViewController: UITableViewDelegate{
 		if let poster = events[row].poster {
 			cell.eventImage.image = UIImage(data: poster)
 		} else {
+			cell.eventImage.image = UIImage(named: "event_placeholder")
 			dispatch_async(dispatch_get_main_queue(), { () -> Void in
 				APIManager().getPoster(self.events[row]){ result in
 					cell.eventImage.image = self.events[row].getImage()

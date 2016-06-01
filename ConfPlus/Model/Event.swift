@@ -31,7 +31,7 @@ class Event: NSManagedObject {
 				}
 			}
 		}
-		return UIImage(named: "matt")!
+		return UIImage(named: "event_placeholder")!
     }
     
     func setFromDate/*serverStringToDate*/(dateString:String) /*-> NSDate*/

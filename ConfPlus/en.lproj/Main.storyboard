@@ -34,7 +34,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lmi-2k-E99">
                                                     <rect key="frame" x="8" y="8" width="398" height="312"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="matt" translatesAutoresizingMaskIntoConstraints="NO" id="k5p-ek-4iy">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="k5p-ek-4iy">
                                                             <rect key="frame" x="0.0" y="8" width="398" height="224"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="150" id="82k-tU-uKh"/>
@@ -888,6 +888,7 @@
     <resources>
         <image name="account2" width="104" height="87"/>
         <image name="event" width="25" height="25"/>
+        <image name="event_placeholder" width="3720" height="1200"/>
         <image name="explore" width="25" height="25"/>
         <image name="matt" width="720" height="720"/>
         <image name="profile" width="25" height="25"/>
