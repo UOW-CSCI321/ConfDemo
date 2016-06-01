@@ -22,9 +22,16 @@ class ModelHandler{
 		}
 	}
 	
-	func getEvents(attend: String) -> [Event]{
+	func getEvents(attend: String, future: Bool = true) -> [Event]{
 		let fetch = NSFetchRequest(entityName: "Event")
-        let predicate = NSPredicate(format: "attend == %@", attend)
+        let attendPredicate = NSPredicate(format: "attend == %@", attend)
+		var datePredicate = NSPredicate()
+		if future {
+			datePredicate = NSPredicate(format: "to_date > %@", NSDate())
+		} else {
+			datePredicate = NSPredicate(format: "to_date < %@", NSDate())
+		}
+		let predicate = NSCompoundPredicate(type: NSCompoundPredicateType.AndPredicateType, subpredicates: [attendPredicate, datePredicate])
         fetch.predicate = predicate
         
 		var events = [Event]()
@@ -40,7 +47,6 @@ class ModelHandler{
     //Events
     //Explore tab
 	func addNewEvent(json: JSON, attending:String){
-		print("ADDING EVENT")
 		let entityDescription = NSEntityDescription.entityForName("Event", inManagedObjectContext: context)
 		
 		let event = Event(entity: entityDescription!, insertIntoManagedObjectContext: self.context)
@@ -82,7 +88,6 @@ class ModelHandler{
 		request.fetchLimit = 1
 		
 		guard let venue_id = event.venue_id else {
-			print("error 1")
 			return nil
 		}
 		let predicate = NSPredicate(format: "venue_id == %@", venue_id)
@@ -92,7 +97,6 @@ class ModelHandler{
 			let results = try context.executeFetchRequest(request)
 			print(results)
 			guard let venue = results.first else {
-				print("error 2")
 				return nil
 			}
 			return venue as? Venue
@@ -114,7 +118,7 @@ class ModelHandler{
 		venue.latitude = json["latitude"].string
 		venue.longitude = json["longitude"].string
 		
-		performUpdate()
+		//performUpdate()
 		
 		return venue
 	}
@@ -307,7 +311,6 @@ extension ModelHandler {
 		var history = [Payment]()
 		do {
 			history = try context.executeFetchRequest(fetch) as! [Payment]
-			//print(events[0])
 		} catch {
 			print("Could not retrieve payment object")
 		}

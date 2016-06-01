@@ -68,7 +68,7 @@ class APIManager{
 			"email" : email,
 			"criteria": criteria
 		] //at the moment the api call need event id
-		
+
 		Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
 			switch response.result {
 			case .Success:
@@ -142,7 +142,7 @@ class APIManager{
 			"venue_id"	:	id
 		]
 		var venue:Venue? = nil
-		
+
 		Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
 			switch response.result{
 			case .Success:

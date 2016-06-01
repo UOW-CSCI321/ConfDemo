@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 import CoreData
 import Foundation
 import MPGNotification
@@ -19,7 +17,7 @@ class EventsViewController: UIViewController {
 	@IBOutlet var tableView: UITableView!
 	
 	var events = [Event]()
-	var criteria = "all"
+	var criteria = "future"
 	var isDispatchEmpty:Bool = true
 	
 	var refresher: UIRefreshControl!
@@ -28,9 +26,13 @@ class EventsViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		events = ModelHandler().getEvents("1")
-		tableView.reloadData()
+		if criteria == "past"{
+			events = ModelHandler().getEvents("1", future: false)
+			tableView.reloadData()
+		} else {
+			events = ModelHandler().getEvents("1")
+			tableView.reloadData()
+		}
 		
 		refresher = UIRefreshControl()
 		refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -40,7 +42,6 @@ class EventsViewController: UIViewController {
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(true)
-		
 		getEventsFromAPI()
 	}
 	
@@ -50,6 +51,7 @@ class EventsViewController: UIViewController {
 		} else {
 			criteria = "past"
 		}
+		getEventsFromAPI()
 	}
 	
 	func getEventsFromAPI(){
@@ -60,16 +62,17 @@ class EventsViewController: UIViewController {
 		
 		if isDispatchEmpty {
 			isDispatchEmpty = false
-			let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-			notification.show()
 			
 			APIManager().getEventsAttending(email, criteria: criteria){ result in
 				dispatch_async(dispatch_get_main_queue()) {
-					notification.hidden = true
 					self.isDispatchEmpty = true
-					self.events = ModelHandler().getEvents("1")
-					print(self.events.count)
-					self.tableView.reloadData()
+					if self.criteria == "past"{
+						self.events = ModelHandler().getEvents("1", future: false)
+						self.tableView.reloadData()
+					} else {
+						self.events = ModelHandler().getEvents("1")
+						self.tableView.reloadData()
+					}
 					
 					if self.refresher.refreshing {
 						self.refresher.endRefreshing()
@@ -110,7 +113,6 @@ extension EventsViewController: UITableViewDelegate{
 		let cell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as! EventsTableViewCell
 		
 		let row = indexPath.row
-		print(self.events.count)
 		
 		cell.eventName.text = events[row].name
 		
