@@ -15,6 +15,7 @@ class PersonalDetailsViewController: UIViewController {
 	
 	var tickets = [Coupon]()
 	var event:Event!
+	var sessionTickets = [Tickets]()
 	let type = ["Name", "Email"]
 	
 	let hud = PKHUD()

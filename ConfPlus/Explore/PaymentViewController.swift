@@ -15,6 +15,7 @@ class PaymentViewController: UIViewController {
 	
 	var tickets = [Coupon]()
 	var event:Event!
+	var sessionTickets = [Tickets]()
 	var totalPrice = 0.00
 	
     override func viewDidLoad() {
@@ -47,7 +48,16 @@ class PaymentViewController: UIViewController {
 		alertcontroller.addAction(paypalAction)
 		self.presentViewController(alertcontroller, animated: true, completion: nil)
 	}
-
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "goToSessionsTicket" {
+			let col = sender!.section
+			let vc = segue.destinationViewController as! SessionTicketsViewController
+			vc.sessionTickets = sessionTickets
+			vc.ticket = tickets[col!]
+			vc.event = event
+		}
+	}
 }
 
 extension PaymentViewController: UITableViewDelegate{
@@ -73,7 +83,7 @@ extension PaymentViewController: UITableViewDelegate{
 		
 		var ticket:Tickets?
 		if tickets.count == section {
-			ticket = Tickets(title: "", price: String(self.totalPrice), name: "TOTAL", _class: "", type: "", venue: "", room: "", seat: "", startTime: NSDate(), endTime: NSDate())
+			ticket = Tickets(title: "", price: String(self.totalPrice), name: "TOTAL", _class: "", type: "", venue: "", room: "", seat: "", startTime: nil, endTime: nil, count: nil)
 		} else {
 			ticket = tickets[section].ticket[row]
 		}
@@ -82,5 +92,11 @@ extension PaymentViewController: UITableViewDelegate{
 		cell.detailTextLabel?.text = ticket!.price
 		
 		return cell
+	}
+	
+	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		if indexPath.section < (tableView.numberOfSections - 1){
+			self.performSegueWithIdentifier("goToSessionsTicket", sender: indexPath)
+		}
 	}
 }

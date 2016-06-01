@@ -29,7 +29,7 @@ struct Tickets {
 	var seat:String?
 	var startTime:NSDate?
 	var endTime:NSDate?
-	
+	var count:String?
 }
 
 class TicketDetailsViewController: UIViewController {
@@ -76,9 +76,10 @@ class TicketDetailsViewController: UIViewController {
 													room:	data["room"].string,
 													seat:	data["seat_num"].string,
 													startTime:	dateFormatter.dateFromString(data["start_date"].stringValue),
-													endTime:	dateFormatter.dateFromString(data["end_date"].stringValue)))
+													endTime:	dateFormatter.dateFromString(data["end_date"].stringValue),
+													count:	"0"))
 				}
-				print(self.eventTickets)
+				
 				HUD.hide()
 				self.tableView.reloadData()
 			} else {
@@ -98,8 +99,7 @@ class TicketDetailsViewController: UIViewController {
 		if identifier == "goToUserInfoView" {
 			selectedTickets.removeAll()
 			for section in 0..<tableView.numberOfSections{
-				let cell:TicketTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: section)) as! TicketTableViewCell
-				for _ in 0..<Int(cell.ticketCount.text!)! {
+				for _ in 0..<Int(eventTickets[section].count!)! {
 					selectedTickets.append(Coupon(ticket: [eventTickets[section]], name: "", email: ""))
 				}
 			}
@@ -130,10 +130,10 @@ extension TicketDetailsViewController: UITableViewDelegate{
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
 		let cell = tableView.dequeueReusableCellWithIdentifier("ticketCell", forIndexPath: indexPath) as! TicketTableViewCell
-		
+
 		let col = indexPath.section
 		
-		cell.ticketCount.text = "0"
+		cell.ticketCount.text = eventTickets[col].count
 		cell.ticketName.text = eventTickets[col].name
 		cell.ticketPrice.text = eventTickets[col].price
 		
@@ -174,6 +174,7 @@ extension TicketDetailsViewController {
 		
 		self.ticketCount.text = String(Int(ticketCount.text!)! + 1)
 		cell.ticketCount.text = self.ticketCount.text
+		eventTickets[section!].count = cell.ticketCount.text
 		
 		self.totalPrice.text = String(Double(totalPrice.text!)! + Double(cell.ticketPrice.text!)!)
 	}
@@ -185,6 +186,7 @@ extension TicketDetailsViewController {
 		if(Int(ticketCount.text!) > 0){
 			self.ticketCount.text = String(Int(ticketCount.text!)! - 1)
 			cell.ticketCount.text = self.ticketCount.text
+			eventTickets[section!].count = cell.ticketCount.text
 			
 			
 			self.totalPrice.text = String(Double(totalPrice.text!)! - Double(cell.ticketPrice.text!)!)
