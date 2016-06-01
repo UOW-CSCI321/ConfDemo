@@ -56,38 +56,57 @@ class TicketDetailsViewController: UIViewController {
 		viewEffect.rect(ticketSelectionView)
 		
 		totalPrice.text = "0"
+    }
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
 		
 		HUD.show(.Progress)
 		APIManager().getEventTickets(event.event_id!){ result, json in
 			self.eventTickets.removeAll()
+			self.sessionTickets.removeAll()
+			
 			if result{
-				let dateFormatter = NSDateFormatter()
-				dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-				dateFormatter.timeZone = NSTimeZone(name: "GMT")
-				
 				for i in 0 ..< json!["data"].count {
 					let data = json!["data"][i]
-					self.eventTickets.append(Tickets(title:	data["title"].string,
-													price:	data["price"].string,
-													name:	data["name"].string,
-													_class: data["class"].string,
-													type:	data["type"].string,
-													venue:	data["venue"].string,
-													room:	data["room"].string,
-													seat:	data["seat_num"].string,
-													startTime:	dateFormatter.dateFromString(data["start_date"].stringValue),
-													endTime:	dateFormatter.dateFromString(data["end_date"].stringValue),
-													count:	"0"))
+					
+					let startTime = self.getFullDate(data["start_date"].stringValue)
+					let endTime = self.getFullDate(data["end_date"].stringValue)
+					
+					if self.getMinutes(endTime) == "59" {
+						self.eventTickets.append(Tickets(title:	data["title"].string,
+															price:	data["price"].string,
+															name:	data["name"].string,
+															_class: data["class"].string,
+															type:	data["type"].string,
+															venue:	data["venue"].string,
+															room:	data["room"].string,
+															seat:	data["seat_num"].string,
+															startTime:	startTime,
+															endTime:	endTime,
+															count:	"0"))
+					} else {
+						self.sessionTickets.append(Tickets(title:	data["title"].string,
+														price:	data["price"].string,
+														name:	data["name"].string,
+														_class: data["class"].string,
+														type:	data["type"].string,
+														venue:	data["venue"].string,
+														room:	data["room"].string,
+														seat:	data["seat_num"].string,
+														startTime:	startTime,
+														endTime:	endTime,
+														count:	"0"))
+					}
+					
 				}
-				
 				HUD.hide()
 				self.tableView.reloadData()
 			} else {
 				self.fetchError("No Tickets available!", message: "Contact Event Organizer for the ticket.")
 			}
-			
 		}
-    }
+	}
 	
 	@IBAction func performContinue(sender: AnyObject) {
 		if shouldPerformSegueWithIdentifier("goToUserInfoView", sender: self){
@@ -109,6 +128,22 @@ class TicketDetailsViewController: UIViewController {
 		}
 		HUD.show(.Label("Please select ticket to continue"))
 		return false
+	}
+	
+	func getMinutes(date:NSDate) -> String {
+		let dateFormatter = NSDateFormatter()
+		dateFormatter.dateFormat = "mm"
+		dateFormatter.timeZone = NSTimeZone(name: "GMT")
+		
+		return dateFormatter.stringFromDate(date)
+	}
+	
+	func getFullDate(date:String) -> NSDate{
+		let dateFormatter = NSDateFormatter()
+		dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+		dateFormatter.timeZone = NSTimeZone(name: "GMT")
+		
+		return dateFormatter.dateFromString(date)!
 	}
 
 	func fetchError(title: String = "No internet Connection", message:String = "Data might not updated."){
