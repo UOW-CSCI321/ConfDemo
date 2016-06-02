@@ -247,6 +247,8 @@ class ModelHandler{
         return user
     }
     
+    //MARK: - Conversation/Message related
+    
     func getUsersForConversation(conversation:Conversation) -> [User]?
     {
         let request = NSFetchRequest()
@@ -369,8 +371,8 @@ class ModelHandler{
 
     }
     
-    //MARK - Ticket Related
-    func addNewTicket(json: JSON) -> Ticket_Record {
+    //MARK: - Ticket Related
+    func addNewTicket(json: JSON) -> Ticket_Record? {
         let entityDescription = NSEntityDescription.entityForName("Ticket_Record", inManagedObjectContext: context)
         
         let ticket = Ticket_Record(entity: entityDescription!, insertIntoManagedObjectContext: self.context)
@@ -384,19 +386,24 @@ class ModelHandler{
         ticket.room_name = json["room_name"].string
         ticket.seat_num = json["seat_num"].string
         
-        print("adding new ticket:")
-        print(ticket.record_id)
-        print(ticket.event_id)
-        print(ticket.title)
-        print(ticket.ticket_name)
-        print(ticket.ticket_class)
-        print(ticket.type)
-        print(ticket.venue_id)
-        print(ticket.room_name)
-        print(ticket.seat_num)
-        
         performUpdate()
         
+//        print("adding new ticket:")
+//        print(ticket.record_id)
+//        print(ticket.event_id)
+//        print(ticket.title)
+//        print(ticket.ticket_name)
+//        print(ticket.ticket_class)
+//        print(ticket.type)
+//        print(ticket.venue_id)
+//        print(ticket.room_name)
+//        print(ticket.seat_num)
+        
+        if ticket.record_id == nil
+        {
+            return nil
+        }
+
         return ticket
     }
     

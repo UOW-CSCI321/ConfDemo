@@ -45,16 +45,17 @@ class MyTicketsTableViewController: UITableViewController {
             if result {
                 //print(json)
                 let count = json!["data"].count
-                self.tickets.removeAll()
                 for i in 0..<count
                 {
                     let dataForSingleTicket = json!["data"][i]
                     //print(dataForSingleTicket)
-                    let ticket = ModelHandler().addNewTicket(dataForSingleTicket)
-                    ModelHandler().saveTicketForUser(ticket, user: user)
-                    self.tickets.append(ticket)
+                    if let ticket = ModelHandler().addNewTicket(dataForSingleTicket)
+                    {
+                        ModelHandler().saveTicketForUser(ticket, user: user)
+                    }
+                    
                 }
-                //self.tickets = ModelHandler().getTicketsForUser(self.myUser)!
+                self.tickets = ModelHandler().getTicketsForUser(self.myUser)!
                 self.tableView.reloadData()
 
             }
