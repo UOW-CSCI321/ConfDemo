@@ -47,15 +47,6 @@ class SessionDetailViewController: UITableViewController {
 				              topic: data["title"].string,
 				              room: data["room_name"].string,
 				              description: data["description"].string)
-					
-				if self.topic.email != nil {
-					self.getSpeakerInfo(){ result in
-						if result {
-							//avatar.image =
-							self.labelSpeakerName.text = self.topic.speakerName!
-						}
-					}
-				}
 				
 				self.populateDataIntoTableView()
 				
@@ -71,7 +62,8 @@ class SessionDetailViewController: UITableViewController {
 	func getSpeakerInfo(completion: (result:Bool) -> ()){
 		APIManager().getUser(topic.email!, completion: { result, json in
 			if result {
-				
+				let data = json!["data"]
+				self.topic.speakerName = "\(data["first_name"].string) \(data["last_name"].string)"
 			} else {
 				completion(result: false)
 			}
@@ -80,6 +72,15 @@ class SessionDetailViewController: UITableViewController {
 	}
 	
 	func populateDataIntoTableView(){
+		if topic.email != nil {
+			getSpeakerInfo(){ result in
+				if result {
+					//avatar.image =
+					self.labelSpeakerName.text = self.topic.speakerName!
+				}
+			}
+		}
+		
 		labelTopicName.text = topic.topic!
 		labelRoom.text = topic.room!
 		if topic.description != nil {
