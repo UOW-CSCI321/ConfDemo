@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class PaymentViewController: UIViewController {
+class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 	
 	@IBOutlet weak var tableView: UITableView!
 	
@@ -41,6 +41,17 @@ class PaymentViewController: UIViewController {
 		self.presentViewController(alertcontroller, animated: true, completion: nil)
 	}
 	
+	func selectSessionTicketDidFinish(controller: SessionTicketsViewController, email:String, session: [Tickets]) {
+		for ticket in tickets{
+			if ticket.email == email {
+				ticket.ticket.append(session)
+				break
+			}
+		}
+		controller.navigationController?.popViewControllerAnimated(true)
+		tableView.reloadData()
+	}
+	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "goToSessionsTicket" {
 			let col = sender!.section
@@ -48,6 +59,7 @@ class PaymentViewController: UIViewController {
 			vc.sessionTickets = sessionTickets
 			vc.ticket = tickets[col!]
 			vc.event = event
+			vc.delegate = self
 		}
 	}
 	

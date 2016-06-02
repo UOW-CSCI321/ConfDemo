@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 import PKHUD
 
+protocol selectSessionTicketDelegate{
+	func selectSessionTicketDidFinish(controller:SessionTicketsViewController, email:String, session:[Tickets])
+}
+
 class SessionTicketsViewController: UIViewController {
 	
 	@IBOutlet weak var tableView: UITableView!
@@ -20,6 +24,8 @@ class SessionTicketsViewController: UIViewController {
 	
 	var dataSortedByDates = Dictionary<String, [Tickets]>()
 	var dates = [String]()
+	
+	var delegate:selectSessionTicketDelegate?
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()

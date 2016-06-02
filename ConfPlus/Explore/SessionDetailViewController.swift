@@ -17,6 +17,7 @@ struct Topic {
 	var description: String?
 }
 
+
 class SessionDetailViewController: UITableViewController {
 	
 	@IBOutlet weak var avatar: UIImageView!
@@ -24,7 +25,6 @@ class SessionDetailViewController: UITableViewController {
 	@IBOutlet weak var labelTopicName: UILabel!
 	@IBOutlet weak var labelRoom: UILabel!
 	@IBOutlet weak var textViewDescription: UITextView!
-	
 	
 	var event:Event!
 	var ticket:Tickets!
@@ -63,7 +63,7 @@ class SessionDetailViewController: UITableViewController {
 		APIManager().getUser(topic.email!, completion: { result, json in
 			if result {
 				let data = json!["data"]
-				self.topic.speakerName = "\(data["first_name"].string) \(data["last_name"].string)"
+				self.topic.speakerName = "\(data["first_name"].string!) \(data["last_name"].string!)"
 			} else {
 				completion(result: false)
 			}
