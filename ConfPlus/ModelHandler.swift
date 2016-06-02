@@ -147,8 +147,9 @@ class ModelHandler{
         return d1!
     }
 
-    func addNewUser(json: JSON) -> User
+    func addNewUser(json: JSON) -> User?
     {
+        //print(json)
         let user = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: self.context) as! User
         user.email = json["email"].string
         user.username = json["username"].string
@@ -156,7 +157,9 @@ class ModelHandler{
         user.title = json["title"].string
         user.first_name = json["first_name"].string
         user.last_name = json["last_name"].string
-        user.dob = serverStringToDate(json["dob"].string!)
+        if json["dob"].string != nil {
+            user.dob = serverStringToDate(json["dob"].string!)
+        }
         user.street = json["street"].string
         user.city = json["city"].string
         user.state = json["state"].string
@@ -165,8 +168,47 @@ class ModelHandler{
         user.linkedin_id = json["linkedin_id"].number
         user.active = json["active"].number
         user.upgraded = json["upgraded"].number
+        user.profile_pic_url = json["image_data_url"].string
+        
+//        print(user.email)
+//        print(user.username)
+//        print(user.password)
+//        print(user.title)
+//        print(user.first_name)
+//        print(user.last_name)
+//      
+//        print(user.street)
+//        print(user.city)
+//        print(user.state)
+//        print(user.country)
+//        print(user.fb_id)
+//        print(user.linkedin_id)
+//        print(user.active)
+//        print(user.upgraded)
         
         performUpdate()
+        
+//        print(user.email)
+//        print(user.username)
+//        print(user.password)
+//        print(user.title)
+//        print(user.first_name)
+//        print(user.last_name)
+//        
+//        print(user.street)
+//        print(user.city)
+//        print(user.state)
+//        print(user.country)
+//        print(user.fb_id)
+//        print(user.linkedin_id)
+//        print(user.active)
+//        print(user.upgraded)
+        
+        if user.email == nil
+        {
+            return nil
+        }
+
         
         return user
     }
@@ -183,7 +225,7 @@ class ModelHandler{
         
         do{
             let results = try context.executeFetchRequest(request)
-            print(results)
+            //print(results)
             guard let user = results.first else {
                 print("error")
                 return nil
@@ -193,6 +235,46 @@ class ModelHandler{
             print("Failed to search for user with email \(email)")
         }
         return nil
+    }
+    
+    
+    func updateUsersProfilePic(user:User, data:String) -> User {
+        //event.poster_url = data
+        user.profile_pic_url = data
+        //print(user.profile_pic_url)
+        performUpdate()
+        
+        return user
+    }
+    
+    func getUsersForConversation(conversation:Conversation) -> [User]?
+    {
+        let request = NSFetchRequest()
+        let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: context)
+        
+        let predicate = NSPredicate(format: "ANY conversations == %@", conversation)
+        //let predicate = NSPredicate(format: "users IN %@.users", conversation)
+        
+        request.entity = entity
+        request.predicate = predicate
+        
+        var users = [User]()
+        do{
+            users = try context.executeFetchRequest(request) as! [User]
+            //print(users)
+            return users
+        } catch {
+            print("Failed to search for usesr in conversation \(conversation.conversation_id)")
+        }
+        return nil
+    }
+    
+    func saveUserForConversation(user:User, conversation:Conversation)
+    {
+        print("saving \(user.first_name) \(user.last_name) \(user.email) for conversation \(conversation.conversation_id)")
+        conversation.mutableSetValueForKey("users").addObject(user)
+        user.mutableSetValueForKey("conversations").addObject(conversation)
+        performUpdate()
     }
     
     func addNewConversation(json: JSON) -> Conversation

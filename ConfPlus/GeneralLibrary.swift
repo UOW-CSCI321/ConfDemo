@@ -45,7 +45,7 @@ class GeneralLibrary{
 		
 		return dateFormatter.stringFromDate(date)
 	}
-
+	
 	
 	func getMinutes(date:NSDate) -> String {
 		let dateFormatter = NSDateFormatter()

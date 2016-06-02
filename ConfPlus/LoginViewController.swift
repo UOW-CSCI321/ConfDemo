@@ -25,10 +25,16 @@ class LoginViewController: UIViewController {
 	
 	override func viewWillAppear(animated: Bool) {
 		if let email = user.stringForKey("email"){
+            
 			APIManager().getUserInformation(email){ result in
 				self.dismissViewControllerAnimated(true, completion: nil)
 			}
-			
+            
+//            if let myself = ModelHandler().getUser(email){
+//                APIManager().getUserProfilePicFromAPI(myself) { result in
+//                    self.dismissViewControllerAnimated(true, completion: nil)
+//                }
+//            }
 		}
 	}
 	
@@ -47,7 +53,21 @@ class LoginViewController: UIViewController {
 			if result {
 				//let email = self.server.hashUserPassword(email)
 				self.user.setObject(email, forKey: "email")
-				self.dismissViewControllerAnimated(true, completion: nil)
+                //if login successful get the user from database
+                //let myself = ModelHandler().getUser(email)
+                
+				//self.dismissViewControllerAnimated(true, completion: nil)
+                APIManager().getUserInformation(email){ result in
+                    if let myself = ModelHandler().getUser(email) {
+                        APIManager().getUserProfilePicFromAPI(myself) { result in
+                            self.dismissViewControllerAnimated(true, completion: nil)
+                        }
+
+                    }
+                    //self.dismissViewControllerAnimated(true, completion: nil)
+                }
+
+
 			} else {
 				self.showAlert("Incorrect Email or Password")
 			}

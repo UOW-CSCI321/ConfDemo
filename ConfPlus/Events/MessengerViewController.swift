@@ -31,13 +31,18 @@ class MessengerViewController: JSQMessagesViewController {
     var databaseMessages = [Message]()
     var conversation:Conversation!
     var failedMessages = [Int]() //position of the failed message in messages
+    var users = [User]()
+    var bgColour = UIColor()
+    var txtColour = UIColor()
+    var systFont = UIFont()
+    var timer = NSTimer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.inputToolbar.contentView.leftBarButtonItem = nil //remove accessorry button
-        let bgColour = UIColor(white: 0.85, alpha: 1.0)
-        let txtColour = UIColor(white: 0.60, alpha: 1.0)
-        let systFont = UIFont.systemFontOfSize(14/*, weight:10*/)
+        bgColour = UIColor(white: 0.85, alpha: 1.0)
+        txtColour = UIColor(white: 0.60, alpha: 1.0)
+        systFont = UIFont.systemFontOfSize(14/*, weight:10*/)
         
         //setup for date
         var color: UIColor = UIColor.lightGrayColor()
@@ -59,7 +64,7 @@ class MessengerViewController: JSQMessagesViewController {
         
         
         
-        
+        users = ModelHandler().getUsersForConversation(conversation)!
         //getMessagesFromAPI() //should be called from viewWillAppear but breaking
         databaseMessages = ModelHandler().getMessageForConversation(conversation)!
         //^ returns empty array first time
@@ -69,6 +74,8 @@ class MessengerViewController: JSQMessagesViewController {
     func messagesToJSQMessages() //converts array of cordata messages to array of JSQMessages
     {
         var count = databaseMessages.count
+        var usercount = self.users.count
+        
         if count > 0
         {
             //whipe all messages we have so far to get messages again
@@ -81,7 +88,24 @@ class MessengerViewController: JSQMessagesViewController {
 //                var dname:String = (user?.first_name)! //we cant use user as the only user we store locally is users loggedin
 //                dname += " "
 //                dname += (user?.last_name)!
-                addMessage(databaseMessages[i].sender_email!, displayName: databaseMessages[i].sender_email!, date: databaseMessages[i].date!, text: databaseMessages[i].content!)
+                
+                var dname = ""
+                for j in 0..<usercount
+                {
+                    if users[j].email == databaseMessages[i].sender_email
+                    {
+                        dname = users[j].first_name!
+                        dname += " "
+                        dname += users[j].last_name!
+                        addMessage(databaseMessages[i].sender_email!, displayName: dname, date: databaseMessages[i].date!, text: databaseMessages[i].content!)
+
+                    }
+                }
+                
+                if dname == ""
+                {
+                    addMessage(databaseMessages[i].sender_email!, displayName: databaseMessages[i].sender_email!, date: databaseMessages[i].date!, text: databaseMessages[i].content!)
+                }
             }
             finishSendingMessage()
         }
@@ -112,13 +136,55 @@ class MessengerViewController: JSQMessagesViewController {
         }
     }
     
+    func getLatestServerMessage() {
+        APIManager().getLatestMessageDateForConversation(self.conversation) { result in
+            //let sm = result
+            //var count = self.databaseMessages.count
+            //count - 1 //count is from 1..n not 0.n
+            let sDate = result //sm.date
+//            for i in 0..<count
+//            {
+//                print("\(i) \(self.databaseMessages[i])")
+//            }
+            let msg = self.databaseMessages.last
+            let dDate = msg?.date
+            
+            //print("message: \(msg!.content) from \(msg!.sender_email)")
+            
+            var order = NSCalendar.currentCalendar().compareDate(dDate!, toDate: sDate!, toUnitGranularity: .Second)
+            switch order {
+            case .OrderedSame:
+                //local database is up to date with the server
+                print("up to date already")
+            case .OrderedDescending:
+                //local database holds a message later than server
+                print("database updated > server")
+            case .OrderedAscending:
+                //local data base does not have the latest message
+                print("need to update")
+                self.getMessagesFromAPI()
+                
+            }
+
+        }
+        
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         //getMessagesFromAPI()
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        self.timer.invalidate()
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        //timer
+        timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "getLatestServerMessage", userInfo: nil, repeats: true)
+      
         getMessagesFromAPI()
         
         //yesterday
@@ -142,30 +208,89 @@ class MessengerViewController: JSQMessagesViewController {
 //        finishReceivingMessage()
     }
     
-    func getImageForEmail(email:String) -> JSQMessagesAvatarImage //matt defined
+    func getImageForEmail(email:String, indexPathItem:Int) -> JSQMessagesAvatarImage //matt defined
     {
-        //this will set the images from coredata
-        if email == "matt3@test.com"
+        //i don't think index path means anything
+        let c = self.users.count
+        //print("self.user.count: \(c)")
+        //print("email': \(email)")
+        
+        let idefault = UIImage(named:"account2")
+        
+        for i in 0..<c
         {
-            //image
-            let i1 = UIImage(named:"matt")
-            let idefault = UIImage(named:"account2")
-            let d = UInt((i1?.size.width)!/2)
-            
-            //circular
-            let circular = JSQMessagesAvatarImageFactory.circularAvatarImage(i1, withDiameter: d)
-            
-            let i = JSQMessagesAvatarImage(avatarImage: circular, highlightedImage: i1, placeholderImage: idefault)
-            return i
-        }else if email == "michael@test.com"
-        {
-            let i1 = UIImage(named:"michael")
-            let idefault = UIImage(named:"account2")
-            let i = JSQMessagesAvatarImage(avatarImage: i1, highlightedImage: i1, placeholderImage: idefault)
-            return i
-        }else{
-            return self.systemProfilePic
+            if self.users[i].email == email //we found a match
+            {
+                if self.users[i].profile_pic_url != nil
+                {
+                    let img = self.users[i].getImage()
+                    let d = UInt((img.size.width)/2) //diameter
+                    
+                    //circular
+                    let circular = JSQMessagesAvatarImageFactory.circularAvatarImage(img, withDiameter: d)
+                    
+                    let avatar = JSQMessagesAvatarImage(avatarImage: circular, highlightedImage: img, placeholderImage: idefault)
+                    
+                    return avatar
+                    
+                }else{
+                    //since they don't have a profile picture return the system default type
+                    
+                    //get first character of firstname
+                    var f = self.users[indexPathItem].first_name!
+                    var indexStartOfText = f.startIndex.advancedBy(1)
+                    f = f.substringToIndex(indexStartOfText)
+                    
+                    //get first character of last name
+                    var l = self.users[indexPathItem].last_name!
+                    indexStartOfText = l.startIndex.advancedBy(1)
+                    l = l.substringToIndex(indexStartOfText)
+                    
+                    let ppString =  f + l
+                    
+                    let avatar = JSQMessagesAvatarImageFactory.avatarImageWithUserInitials(ppString, backgroundColor: bgColour, textColor: txtColour, font: systFont, diameter: 30)
+                    
+                    return avatar
+                }
+                
+                
+                
+            }
         }
+//        if self.users[indexPathItem].profile_pic_url == nil
+//        {
+//            var f = self.users[indexPathItem].first_name!
+//            let indexStartOfText = f.startIndex.advancedBy(1)
+//            f = f.substringToIndex(indexStartOfText)
+//            
+//            let pic = JSQMessagesAvatarImageFactory.avatarImageWithUserInitials("cf+", backgroundColor: bgColour, textColor: txtColour, font: systFont, diameter: 30)
+//        }
+        
+        
+//        //this will set the images from coredata
+//        if email == "matt3@test.com"
+//        {
+//            //image
+//            let i1 = UIImage(named:"matt")
+//            let idefault = UIImage(named:"account2")
+//            let d = UInt((i1?.size.width)!/2)
+//            
+//            //circular
+//            let circular = JSQMessagesAvatarImageFactory.circularAvatarImage(i1, withDiameter: d)
+//            
+//            let i = JSQMessagesAvatarImage(avatarImage: circular, highlightedImage: i1, placeholderImage: idefault)
+//            return i
+//        }else if email == "michael@test.com"
+//        {
+//            let i1 = UIImage(named:"michael")
+//            let idefault = UIImage(named:"account2")
+//            let i = JSQMessagesAvatarImage(avatarImage: i1, highlightedImage: i1, placeholderImage: idefault)
+//            return i
+//        }else{
+//            return self.systemProfilePic
+//        }
+        
+        return self.systemProfilePic
         
     }
     
@@ -212,7 +337,7 @@ class MessengerViewController: JSQMessagesViewController {
 //            
 //        }
 //        return nil
-        let avatar = getImageForEmail(message.senderId)
+        let avatar = getImageForEmail(message.senderId, indexPathItem: indexPath.item)
 
         return avatar
     }

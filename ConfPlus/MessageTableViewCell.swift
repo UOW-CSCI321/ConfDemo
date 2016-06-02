@@ -27,7 +27,7 @@ class MessageTableViewCell: UITableViewCell {
         
         addCellLineSeperator()
         makeImageCircle(profilePicture, onlineStatus: "online")
-        addSeenImage()
+        //addSeenImage()
         
     }
     
@@ -44,13 +44,13 @@ class MessageTableViewCell: UITableViewCell {
         
         imgv.layer.cornerRadius = imgv.frame.size.width/2
         imgv.clipsToBounds = true
-        imgv.layer.borderWidth = 3.0
-        if(onlineStatus == "online")
-        {
-            imgv.layer.borderColor = onlineColour.CGColor
-        }else{
-            imgv.layer.borderColor = offlineColour.CGColor
-        }
+//        imgv.layer.borderWidth = 3.0
+//        if(onlineStatus == "online")
+//        {
+//            imgv.layer.borderColor = onlineColour.CGColor
+//        }else{
+//            imgv.layer.borderColor = offlineColour.CGColor
+//        }
         
     }
     func addCellLineSeperator()

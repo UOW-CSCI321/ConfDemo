@@ -18,11 +18,12 @@ class MessagesTableViewController: UIViewController {
     //var usersMessages = [[Message]]()
     var userConversations = [Conversation]()
     var isDispatchEmpty:Bool = true
-    var participants = [UIImage]() //[User]() //hold one user per conversation to display conversation icon
+<<<<<<< HEAD
+    var participants = [User]() //hold one user per conversation to display conversation icon
     var tempParticipants = [User]()
+=======
     var event:Event!
-    let companyLogo = UIImage(named: "loo")
-    var usersForConversations = [[User]]()
+>>>>>>> storyboard
     
     let user = NSUserDefaults.standardUserDefaults()
     
@@ -33,7 +34,7 @@ class MessagesTableViewController: UIViewController {
         userConversations = ModelHandler().getConversation(email!)
         conversationTable.reloadData()
         
-        //getVenue()
+        getVenue()
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -44,108 +45,52 @@ class MessagesTableViewController: UIViewController {
             let group: dispatch_group_t = dispatch_group_create()
             isDispatchEmpty = false
             let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-            notification.duration = 60
+            notification.duration = 2
             notification.show()
             
-            
-            APIManager().getConversationsByUserForEventFromAPI(email!, eventID: event.event_id!, group: group, isDispatchEmpty: &isDispatchEmpty){ result in
+//            APIManager().getConversationsFromAPI(email!, group: group, isDispatchEmpty: &isDispatchEmpty){ result in
+            APIManager().getConversationsByUserForEventFromAPI(email!, eventID: "test", group: group, isDispatchEmpty: &isDispatchEmpty){ result in
                 dispatch_group_notify(group, dispatch_get_main_queue()) {
 //                    self.isDispatchEmpty = true
                     self.userConversations = ModelHandler().getConversation(email!)
 
-                    var mattsTempCounter = 0
                     let count = self.userConversations.count
                     for i in 0..<count
                     {
                         APIManager().getUsersForConversationFromAPI(self.userConversations[i]) {
                             result in
-                            mattsTempCounter += 1
                             self.tempParticipants = ModelHandler().getUsersForConversation(self.userConversations[i]/*.conversation_id!*/)!
-                            
                             let count2 = self.tempParticipants.count
-//                            //tmp printing
-                            for k in 0..<count2
-                            {
-                                let u = self.tempParticipants[k]
-                                print(u.email)
-                                print(u.first_name)
-                                print(u.last_name)
-                            }
-//                            //
                             if count2 > 2
                             {
-                                //print("count>2: \(count2)")
-                                
-                                if let a = UIImagePNGRepresentation(self.companyLogo!)
-                                {
-                                    self.userConversations[i].conversation_pic = a
-                                    ModelHandler().performUpdate()
-                                }else if let a = UIImageJPEGRepresentation(self.companyLogo!, 1.0)
-                                {
-                                    self.userConversations[i].conversation_pic = a
-                                    ModelHandler().performUpdate()
-                                }
-                                
-                                //self.participants.append(self.companyLogo!)
-                                
-                                
-                                
+                                //append empty user
+                                let u = User()
+                                self.participants.append(u)
                             }else{
                                 for j in 0..<count2
                                 {
-                                    if self.tempParticipants[j].email != email
+                                    if self.tempParticipants[j].email == email
                                     {
-                                        if let b = UIImagePNGRepresentation(self.tempParticipants[j].getImage())
-                                        {
-                                            self.userConversations[i].conversation_pic = b
-                                            ModelHandler().performUpdate()
-                                        }else if let b = UIImageJPEGRepresentation(self.tempParticipants[j].getImage(), 1.0)
-                                        {
-                                            self.userConversations[i].conversation_pic = b
-                                            ModelHandler().performUpdate()
-                                        }
-                                        //self.participants.append(self.tempParticipants[j].getImage())
-                                        //print("setting participants[\(i)] to temp participants \(j)")
-
+                                        self.participants.append(self.tempParticipants[j])
                                     }
                                 }
-                            }
-                            //set up images for the message view
-                            self.usersForConversations.append(self.tempParticipants)
-                            //self.usersForConversations[i] = self.tempParticipants
-                            //self.usersForConversations[i].append(self.tempParticipants)
-//                            for k in 0..<count2
-//                            {
-//                                print(self.usersForConversations[i][k].first_name)
-//                                print(self.usersForConversations[i][k].last_name)
-//                                if self.usersForConversations[i][k].profile_pic_url != nil
+//                                if self.tempParticipants[0].email == email
 //                                {
-//                                    print("has profile pic")
-//                                }else{
-//                                    print("no profile pic")
+//                                    self.participants.append(self.tempParticipants[0])
 //                                }
-//                            }
-                            
-                            if mattsTempCounter == count
-                            {
-//                                let cc = self.participants.count
-//                                for c in 0..<cc {
-//                                    print(self.participants[c])
+//                                else{
+//                                    self.participants.append(self.tempParticipants[1])
 //                                }
-                                print(self.usersForConversations)
-                                self.conversationTable.reloadData()
-                                print("Reloaded")
-                                notification.hidden = true
-                                
-                                let notification = MPGNotification(title: "Updated", subtitle: nil, backgroundColor: UIColor.orangeColor(), iconImage: nil)
-                                notification.duration = 1
-                                notification.show()
-                                self.isDispatchEmpty = true
-
                             }
-
                         }
                     }
+                    
+                    self.conversationTable.reloadData()
+                    print("Reloaded")
+                    
+                    let notification = MPGNotification(title: "Updated", subtitle: nil, backgroundColor: UIColor.orangeColor(), iconImage: nil)
+                    notification.duration = 1
+                    notification.show()
                 }
             }
         }
@@ -166,23 +111,13 @@ class MessagesTableViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let indexPath:NSIndexPath = self.conversationTable.indexPathForSelectedRow!
         let messengerVC:MessengerViewController = segue.destinationViewController as! MessengerViewController
-        let row = indexPath.row
-        messengerVC.conversationID = userConversations[row].conversation_id!
+        messengerVC.conversationID = userConversations[indexPath.row].conversation_id!
         messengerVC.senderId = user.stringForKey("email")
-        messengerVC.title = userConversations[row].name
-        messengerVC.senderDisplayName = userConversations[row].lastmsg_email
-//        messengerVC.users = usersForConversations[row]
-//        print(messengerVC.conversationID)
-//        print(messengerVC.users.count)
-//        print("row \(row)")
-//        print("usersForConversations[row].count: \(usersForConversations[row].count)")
-//        print(usersForConversations[row])
-//        print("user")
-//        print("user.count \(messengerVC.users.count)")
-//        print(messengerVC.users)
+        messengerVC.title = userConversations[indexPath.row].name
+        messengerVC.senderDisplayName = userConversations[indexPath.row].lastmsg_email
         
         //set conversation object
-        messengerVC.conversation = userConversations[row]
+        messengerVC.conversation = userConversations[indexPath.row]
         self.hidesBottomBarWhenPushed = true //need to hide tab bar to show message bar at the bottom. i tried to move message bar in JSQMessagesViewController but it has some action on it that when clicked it will move back down
     }
     
@@ -212,17 +147,6 @@ extension MessagesTableViewController: UITableViewDelegate{
         cell.usersName.text = userConversations[row].name //conversation name should be the sender
         cell.messageDescription.text = userConversations[row].lastmsg_content //lastMessage?.content
         cell.messageDateLabel.text = userConversations[row].getConversationDateAsString()
-        
-        cell.profilePicture.image = UIImage(data: userConversations[row].conversation_pic!)
-        //print("usersConversations[\(row)]: \(usersForConversations[row])")
-        
-//        let count = self.participants.count
-//        if count > 0
-//        {
-//            //cell.profilePicture.image = self.participants[row]
-//            cell.profilePicture.image = UIImage(data: userConversations[row].conversation_pic!)
-//        }
-        
 		
 		return cell
 	}
