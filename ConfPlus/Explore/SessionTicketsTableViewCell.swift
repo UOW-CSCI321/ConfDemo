@@ -16,7 +16,7 @@ class SessionTicketsTableViewCell: UITableViewCell {
 	@IBOutlet weak var presentationPrice: UILabel!
 	
 	@IBAction func selectedSessionTicket(sender: AnyObject) {
-		if self.backgroundColor = UIColor.clearColor() {
+		if self.backgroundColor == UIColor.clearColor() {
 			self.backgroundColor = UIColor.init(red: 0, green: 0.8, blue: 0, alpha: 0.2)
 		} else {
 			self.backgroundColor = UIColor.clearColor()

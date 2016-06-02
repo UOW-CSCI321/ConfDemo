@@ -10,11 +10,11 @@ import UIKit
 import PKHUD
 
 struct Topic {
-	var email: String?
-	var speakerName: String?
-	var topic: String?
-	var room: String?
-	var description: String?
+	var email: String
+	var speakerName: String
+	var topic: String
+	var room: String
+	var description: String
 }
 
 
@@ -32,35 +32,42 @@ class SessionDetailViewController: UITableViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
 		
 		populateSessionDetail()
-    }
+	}
 	
 	func populateSessionDetail(){
 		HUD.show(.Progress)
-		APIManager().getSession(event.event_id!, title: ticket.title!){ result, json in
-			if result{
-				let data = json!["data"]
-				
-				self.topic = Topic(email: data["speaker_email"].string,
-				              speakerName: "",
-				              topic: data["title"].string,
-				              room: data["room_name"].string,
-				              description: data["description"].string)
-				
-				self.populateDataIntoTableView()
-				
-				for section in 0..<self.tableView.numberOfSections {
-					self.shouldHideSection(section)
+			APIManager().getSession(self.event.event_id!, title: self.ticket.title!){ result, json in
+				if result{
+					let data = json!["data"]
+					
+					self.topic = Topic(email: data["speaker_email"].string ?? "",
+					                   speakerName: "",
+					                   topic: data["title"].string ?? "",
+					                   room: data["room_name"].string ?? "",
+					                   description: data["description"].string ?? "")
+					
 				}
-				HUD.hide()
-				self.tableView.reloadData()
-			}
 		}
+		
+		self.populateDataIntoTableView()
+		
+		for section in 0..<self.tableView.numberOfSections {
+			self.shouldHideSection(section)
+		}
+		HUD.hide()
+		self.tableView.reloadData()
+		
+		
 	}
 	
 	func getSpeakerInfo(completion: (result:Bool) -> ()){
-		APIManager().getUser(topic.email!, completion: { result, json in
+		APIManager().getUser(self.topic.email, completion: { result, json in
 			if result {
 				let data = json!["data"]
 				self.topic.speakerName = "\(data["first_name"].string!) \(data["last_name"].string!)"
@@ -72,22 +79,22 @@ class SessionDetailViewController: UITableViewController {
 	}
 	
 	func populateDataIntoTableView(){
-		if topic.email != nil {
+		if topic.email != "" {
 			getSpeakerInfo(){ result in
 				if result {
 					//avatar.image =
-					self.labelSpeakerName.text = self.topic.speakerName!
+					self.labelSpeakerName.text = self.topic.speakerName
 				}
 			}
 		}
 		
-		labelTopicName.text = topic.topic!
-		labelRoom.text = topic.room!
-		if topic.description != nil {
-			textViewDescription.text = topic.description!
+		labelTopicName.text = topic.topic
+		labelRoom.text = topic.room
+		if topic.description != "" {
+			textViewDescription.text = topic.description
 		}
 	}
-
+	
 }
 
 //MARK:- TableView Helpers Function
@@ -95,9 +102,9 @@ extension SessionDetailViewController {
 	func shouldHideSection(section: Int) -> Bool {
 		switch section {
 		case 0:
-			return (topic.email != nil) ? false : true
+			return topic.email == "" ? true : false
 		case 2:
-			return (topic.description != nil) ? false : true
+			return topic.description == "" ? true : false
 		default:
 			return false
 		}

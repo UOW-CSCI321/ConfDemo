@@ -18,8 +18,6 @@ class PersonalDetailsViewController: UIViewController {
 	var sessionTickets = [Tickets]()
 	let type = ["Name", "Email"]
 	
-	let hud = PKHUD()
-	
 	let user = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
@@ -40,7 +38,7 @@ class PersonalDetailsViewController: UIViewController {
 					
 					let detail = cell.typeResponseTextField.text
 					if detail == "" {
-						HUD.show(.Label("Fields must not be empty"))
+						HUD.flash(.Label("Fields must not be empty"), delay: 1)
 						return false
 					}
 					

@@ -96,6 +96,11 @@ class TicketDetailsViewController: UIViewController {
 					}
 					
 				}
+				
+				if self.eventTickets.count == 0 {
+					self.eventTickets = self.sessionTickets
+					self.sessionTickets.removeAll()
+				}
 				HUD.hide()
 				self.tableView.reloadData()
 			} else {
@@ -128,7 +133,7 @@ class TicketDetailsViewController: UIViewController {
 		if selectedTickets.count > 0 {
 			return true
 		}
-		HUD.show(.Label("Please select ticket to continue"))
+		HUD.flash(.Label("Please select ticket to continue"), delay: 1)
 		return false
 	}
 }

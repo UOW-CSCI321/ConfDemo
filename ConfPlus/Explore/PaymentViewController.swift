@@ -49,13 +49,16 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 	}
 	
 	func selectSessionTicketDidFinish(controller: SessionTicketsViewController, email:String, session: [Tickets]) {
-		for ticket in tickets{
-			if ticket.email == email {
-				let entry = ticket.ticket[0]
-//				ticket.ticket.removeAll()
-//				
-//				ticket.ticket.append(entry)
-//				ticket.ticket.append(session)
+		for index in 0..<tickets.count{
+			if tickets[index].email == email {
+				let entry = tickets[index].ticket[0]
+				tickets[index].ticket.removeAll()
+				
+				tickets[index].ticket.append(entry)
+				for tit in session {
+					tickets[index].ticket.append(tit)
+				}
+				
 				break
 			}
 		}
@@ -133,8 +136,10 @@ extension PaymentViewController: UITableViewDelegate{
 	}
 	
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		if indexPath.section < (tableView.numberOfSections - 1){
-			self.performSegueWithIdentifier("goToSessionsTicket", sender: indexPath)
+		if indexPath.section < (tableView.numberOfSections - 1) && indexPath.row == 0{
+			if self.sessionTickets.count > 0{
+				self.performSegueWithIdentifier("goToSessionsTicket", sender: indexPath)
+			}
 		}
 	}
 }

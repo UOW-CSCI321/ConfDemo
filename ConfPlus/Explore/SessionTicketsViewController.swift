@@ -39,7 +39,7 @@ class SessionTicketsViewController: UIViewController {
 	
 	@IBAction func updateSessionTickets(sender: AnyObject) {
 		if let del = delegate {
-			var sessions:[Tickets]!
+			var sessions = [Tickets]()
 			for section in 0..<tableView.numberOfSections{
 				for row in 0..<tableView.numberOfRowsInSection(section){
 					let cell:SessionTicketsTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as! SessionTicketsTableViewCell
@@ -48,14 +48,19 @@ class SessionTicketsViewController: UIViewController {
 						let itemSection = dataSortedByDates[dates[section]]
 						let item = itemSection![row]
 						
-						sessions.append(item)
+						if sessions.count == 0 {
+							sessions = [item]
+						} else {
+							sessions.append(item)
+						}
+						
 					}
 				}
 			}
 			
 			
-			if sessions!.count > 0 {
-				del.selectSessionTicketDidFinish(self, email: ticket.email, session: sessions!)
+			if sessions.count > 0 {
+				del.selectSessionTicketDidFinish(self, email: ticket.email, session: sessions)
 			} else {
 				navigationController?.popViewControllerAnimated(true)
 			}
