@@ -368,6 +368,48 @@ class ModelHandler{
         return conversations
 
     }
+    
+    //MARK - Ticket Related
+    func addNewTicket(json: JSON) -> Ticket_Record {
+        let entityDescription = NSEntityDescription.entityForName("Ticket_Record", inManagedObjectContext: context)
+        
+        let ticket = Ticket_Record(entity: entityDescription!, insertIntoManagedObjectContext: self.context)
+        ticket.record_id = json["record_id"].string
+        ticket.event_id = json["event_id"].string
+        ticket.title = json["title"].string
+        ticket.ticket_name = json["ticket_name"].string
+        ticket.ticket_class = json["class"].string
+        ticket.type = json["type"].string
+        ticket.venue_id = json["venue_id"].string
+        ticket.room_name = json["room_name"].string
+        ticket.seat_num = json["seat_num"].string
+        
+        print("adding new ticket:")
+        print(ticket.record_id)
+        print(ticket.event_id)
+        print(ticket.title)
+        print(ticket.ticket_name)
+        print(ticket.ticket_class)
+        print(ticket.type)
+        print(ticket.venue_id)
+        print(ticket.room_name)
+        print(ticket.seat_num)
+        
+        performUpdate()
+        
+        return ticket
+    }
+    
+    func saveTicketForUser(ticket:Ticket_Record, user:User){
+        user.mutableSetValueForKey("ticket_records").addObject(ticket)
+        ticket.user = user
+    
+    	//func saveVenueForEvent(event:Event, venue:Venue){
+		//venue.mutableSetValueForKey("events").addObject(event)
+		//event.venue = venue
+		
+		performUpdate()
+	}
 }
 
 

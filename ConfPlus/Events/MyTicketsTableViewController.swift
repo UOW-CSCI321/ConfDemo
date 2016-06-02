@@ -13,12 +13,44 @@ class MyTicketsTableViewController: UITableViewController {
 	
 	let ticket = [Ticket_Record]()
     var event:Event!
+    let user = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 		
+        let email = user.stringForKey("email")
+        //print("email \(email), eventid: \(event.event_id)")
+        
+        //get tickets from model handler for users email
+        //reload table
+        
 		populateNavigationBar()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        let email = self.user.stringForKey("email")
+        let user = ModelHandler().getUser(email!)
+        getMyTicketsFromAPI(self.event, user:user!)
+    }
+    
+    
+    func getMyTicketsFromAPI(event:Event, user:User)
+    {
+        APIManager().getUserTicketsForEvent(event.event_id!, email: user.email!){ result, json in
+            if result {
+                print(json)
+                let count = json!["data"].count
+                for i in 0..<count
+                {
+                    let dataForSingleTicket = json!["data"][i]
+                    print(dataForSingleTicket)
+                    let ticket = ModelHandler().addNewTicket(dataForSingleTicket)
+                    ModelHandler().saveTicketForUser(ticket, user: user)
+                }
+            }
+        }
+    }
+    
 	
 	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return 1

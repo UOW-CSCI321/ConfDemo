@@ -99,15 +99,15 @@
         <relationship name="ticket_records" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ticket_Record" inverseName="ticket_def" inverseEntity="Ticket_Record" syncable="YES"/>
     </entity>
     <entity name="Ticket_Record" representedClassName=".Ticket_Record" syncable="YES">
-        <attribute name="event_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="record_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="event_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="record_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="room_name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="seat_num" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="seat_num" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ticket_class" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ticket_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="venue_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="venue_id" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ticket_def" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ticket_Def" inverseName="ticket_records" inverseEntity="Ticket_Def" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ticket_records" inverseEntity="User" syncable="YES"/>
     </entity>

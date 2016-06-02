@@ -398,7 +398,7 @@
                             <outlet property="delegate" destination="5TF-VD-gZr" id="9hJ-mm-yYk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Tickets" id="elr-6r-a4t"/>
+                    <navigationItem key="navigationItem" title="My Tickets" id="elr-6r-a4t"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CfV-zk-TkT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
