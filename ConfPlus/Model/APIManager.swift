@@ -27,6 +27,7 @@ class APIManager{
 		notification.show()
 	}
 	
+    //MARK: - Event related
 	func getUpcomingEventsByCountry(country:String, completion: (result: Bool) -> Void){
 		let parameters = [
 			"api_key": server.KEY,
@@ -126,8 +127,44 @@ class APIManager{
 		
 	}
 	
+    func getMyEventDataFromAPI(group: dispatch_group_t, inout isDispatchEmpty: Bool, completion: (Bool) -> Void){
+        let paramaters = [
+            "api_key": server.KEY,
+            "app_secret": server.SECRET,
+            "method" : "getEventsByTag",
+            "tag_name" : "testTag"
+        ] //at the moment the api call need event id
+        
+        Alamofire.request(.POST, server.URL, parameters: paramaters).responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    
+                    //self.handler.deleteEventsData()
+                    
+                    for i in 0 ..< json["data"].count {
+                        dispatch_group_enter(group)
+                        let event = self.handler.addNewEvent(json["data"][i], attending: "1")
+                        
+                        //                        APIManager().getPoster(event, group: group){
+                        //                            self.handler.performUpdate()
+                        //                        }
+                    }
+                }
+                completion(true)
+            case .Failure(let error):
+                print(error.localizedDescription)
+                let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+                notification.show()
+                completion(false)
+            }
+            
+        }
+    }
+
 	
-	
+	//MARK: - Venue Related
 
 	func getVenue(event:Event, completion: (result: Bool) -> Void) {
 		guard let id = event.venue_id else {
@@ -209,43 +246,7 @@ class APIManager{
 
     }
     
-    func getMyEventDataFromAPI(group: dispatch_group_t, inout isDispatchEmpty: Bool, completion: (Bool) -> Void){
-        let paramaters = [
-            "api_key": server.KEY,
-            "app_secret": server.SECRET,
-            "method" : "getEventsByTag",
-            "tag_name" : "testTag"
-        ] //at the moment the api call need event id
-        
-        Alamofire.request(.POST, server.URL, parameters: paramaters).responseJSON { response in
-            switch response.result {
-            case .Success:
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    
-                    //self.handler.deleteEventsData()
-                    
-                    for i in 0 ..< json["data"].count {
-                        dispatch_group_enter(group)
-                        let event = self.handler.addNewEvent(json["data"][i], attending: "1")
-                        
-//                        APIManager().getPoster(event, group: group){
-//                            self.handler.performUpdate()
-//                        }
-                    }
-                }
-                completion(true)
-            case .Failure(let error):
-                print(error.localizedDescription)
-                let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-                notification.show()
-                completion(false)
-            }
-            
-        }
-    }
-    
-    
+    //MARK: - Users Related
     func getUserFromAPI(email:String, completion: (result: Bool) -> Void) {
         
         let paramaters = [
@@ -282,6 +283,7 @@ class APIManager{
         }
         
     }
+    
     
     func getUsersForConversationFromAPI(conversation:Conversation, completion: (result: Bool) -> Void)
     {
@@ -345,6 +347,7 @@ class APIManager{
 
     }
     
+    //MARK: - Message/Conversation Related
     func getConversationsFromAPI(email:String, group: dispatch_group_t, inout isDispatchEmpty: Bool, completion: (Bool) -> Void) {
     
         let paramaters = [
@@ -538,59 +541,6 @@ class APIManager{
             }
         }
     }
-    
-//    func getMessagesForConvo(convo: Conversation, group: dispatch_group_t, completion: () -> Void)
-//    {
-//        guard let id = convo.conversation_id else {
-//            //print(id)
-//            return
-//        }
-//        let parameters = [
-//            "api_key": server.KEY,
-//            "app_secret": server.SECRET,
-//            "method" : "getConversation",
-//            "conversation_id" : id
-//        ]
-//        
-//        let message_queue = dispatch_queue_create("message_queue", nil)
-//        dispatch_async(message_queue, {
-//            Alamofire.request(.POST, self.server.URL, parameters: parameters).responseJSON(){ response in
-//                switch response.result{
-//                case .Success:
-//                    if let value = response.result.value {
-//                        let json = JSON(value)
-//                        print(json["data"])
-//                        let counter = json["data"].count
-//                        for i in 0 ..< counter{
-//                            print(json["data"][i])
-//                            let message = self.handler.addNewMessage(json["data"][i])
-//                            self.handler.performUpdate()
-//                        }
-//
-//                    }
-//                    
-//                    dispatch_group_leave(group)
-//                    completion()
-//                    
-//                case .Failure(let error):
-//                    dispatch_group_leave(group)
-//                    print(error.localizedDescription)
-//                    completion()
-//                }
-//            }
-//        })
-//
-//    }
-    
-//    func getMyMessagesFromAPI()
-//    {
-//        //getConversationsByUser(email) -> conversation_id
-//            //self.handler.addNewConversation
-//        //getConversation(conversation_id) ->
-//            //self.handler.addNewMessage
-//    }
-
-
 
 }
 
