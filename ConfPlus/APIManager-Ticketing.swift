@@ -45,12 +45,13 @@ extension APIManager{
 		}
 	}
 	
-	func getSessions(event_id:String, completion: (result: Bool, json: JSON?) -> Void){
+	func getSession(event_id:String, title:String, completion: (result: Bool, json: JSON?) -> Void){
 		let parameters = [
 			"api_key": server.KEY,
 			"app_secret": server.SECRET,
 			"method" : "getSessions",
-			"event_id" : event_id
+			"event_id" : event_id,
+			"title"	:	title
 		] //at the moment the api call need event id
 		
 		Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
