@@ -58,6 +58,10 @@
 		E93163911BC5E294007408C7 /* viewEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163901BC5E294007408C7 /* viewEffect.swift */; };
 		E93163931BC5E573007408C7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163921BC5E573007408C7 /* LoginViewController.swift */; };
 		E93163981BC62AB6007408C7 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163971BC62AB6007408C7 /* ExploreViewController.swift */; };
+		E9320A771D005CA300C7149A /* SessionTicketsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9320A761D005CA300C7149A /* SessionTicketsTableViewCell.swift */; };
+		E9320A791D005F0300C7149A /* GeneralLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9320A781D005F0300C7149A /* GeneralLibrary.swift */; };
+		E9320A7B1D00D77C00C7149A /* NewBillingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9320A7A1D00D77C00C7149A /* NewBillingTableViewController.swift */; };
+		E9320A7D1D00DB3300C7149A /* APIManager-Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9320A7C1D00DB3300C7149A /* APIManager-Account.swift */; };
 		E96D018C1CF1D9F400AC48EE /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96D018A1CF1D9F400AC48EE /* Message.swift */; };
 		E96D018E1CF1DA6600AC48EE /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96D018D1CF1DA6600AC48EE /* Message+CoreDataProperties.swift */; };
 		E97EB74F1CDF13E5009113A6 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7331CDF13E5009113A6 /* Session+CoreDataProperties.swift */; };
@@ -76,6 +80,7 @@
 		E97EB7681CDF13E5009113A6 /* Event_Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB74C1CDF13E5009113A6 /* Event_Tag.swift */; };
 		E97EB7691CDF13E5009113A6 /* Event_Roles+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB74D1CDF13E5009113A6 /* Event_Roles+CoreDataProperties.swift */; };
 		E97EB76A1CDF13E5009113A6 /* Event_Roles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB74E1CDF13E5009113A6 /* Event_Roles.swift */; };
+		E984AF261CFFD982006D4B5C /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984AF251CFFD982006D4B5C /* SessionDetailViewController.swift */; };
 		E98D51DB1CF5DAB3000D7549 /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98D51DA1CF5DAB3000D7549 /* EventsTableViewCell.swift */; };
 		E98F35121CEC6862002B1CC1 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E98F35111CEC6862002B1CC1 /* Explore.storyboard */; };
 		E99270271CE43545005F2567 /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99270261CE43545005F2567 /* EditProfileTableViewController.swift */; };
@@ -90,6 +95,7 @@
 		E9E0A64D1CDD80B500E187AD /* APIServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0A64C1CDD80B500E187AD /* APIServer.swift */; };
 		E9E0A6501CDD8C6200E187AD /* ModelHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0A64F1CDD8C6200E187AD /* ModelHandler.swift */; };
 		E9F136B71CD30CAF008A3CB6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F136B61CD30CAF008A3CB6 /* RegisterViewController.swift */; };
+		E9F3E17D1CFE9B660034A533 /* SessionTicketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F3E17C1CFE9B660034A533 /* SessionTicketsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -149,6 +155,10 @@
 		E93163901BC5E294007408C7 /* viewEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = viewEffect.swift; path = ConfPlus/viewEffect.swift; sourceTree = "<group>"; };
 		E93163921BC5E573007408C7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E93163971BC62AB6007408C7 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreViewController.swift; path = Explore/ExploreViewController.swift; sourceTree = "<group>"; };
+		E9320A761D005CA300C7149A /* SessionTicketsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionTicketsTableViewCell.swift; path = Explore/SessionTicketsTableViewCell.swift; sourceTree = "<group>"; };
+		E9320A781D005F0300C7149A /* GeneralLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralLibrary.swift; sourceTree = "<group>"; };
+		E9320A7A1D00D77C00C7149A /* NewBillingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewBillingTableViewController.swift; path = Profile/NewBillingTableViewController.swift; sourceTree = "<group>"; };
+		E9320A7C1D00DB3300C7149A /* APIManager-Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "APIManager-Account.swift"; sourceTree = "<group>"; };
 		E96D018A1CF1D9F400AC48EE /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		E96D018D1CF1DA6600AC48EE /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E97EB7331CDF13E5009113A6 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+CoreDataProperties.swift"; path = "Model/Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -167,6 +177,7 @@
 		E97EB74C1CDF13E5009113A6 /* Event_Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event_Tag.swift; path = Model/Event_Tag.swift; sourceTree = "<group>"; };
 		E97EB74D1CDF13E5009113A6 /* Event_Roles+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Event_Roles+CoreDataProperties.swift"; path = "Model/Event_Roles+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E97EB74E1CDF13E5009113A6 /* Event_Roles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event_Roles.swift; path = Model/Event_Roles.swift; sourceTree = "<group>"; };
+		E984AF251CFFD982006D4B5C /* SessionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDetailViewController.swift; path = Explore/SessionDetailViewController.swift; sourceTree = "<group>"; };
 		E98D51DA1CF5DAB3000D7549 /* EventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
 		E98F35111CEC6862002B1CC1 /* Explore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
 		E99270261CE43545005F2567 /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditProfileTableViewController.swift; path = Profile/EditProfileTableViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +192,7 @@
 		E9E0A64C1CDD80B500E187AD /* APIServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIServer.swift; sourceTree = "<group>"; };
 		E9E0A64F1CDD8C6200E187AD /* ModelHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelHandler.swift; sourceTree = "<group>"; };
 		E9F136B61CD30CAF008A3CB6 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		E9F3E17C1CFE9B660034A533 /* SessionTicketsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionTicketsViewController.swift; path = Explore/SessionTicketsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,6 +282,7 @@
 				C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */,
 				E99270261CE43545005F2567 /* EditProfileTableViewController.swift */,
 				E9AF006A1CDABDE1004424A1 /* Account.storyboard */,
+				E9320A7A1D00D77C00C7149A /* NewBillingTableViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -366,6 +379,7 @@
 		E93163961BC62A76007408C7 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				E9320A781D005F0300C7149A /* GeneralLibrary.swift */,
 				E93163971BC62AB6007408C7 /* ExploreViewController.swift */,
 				E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */,
 				E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */,
@@ -374,6 +388,9 @@
 				C94AFA4E1C9808AB00EC88B6 /* PersonalDetailsViewController.swift */,
 				E9D055C81CCF20510045BA86 /* PersonalDetailsTableViewCell.swift */,
 				C94AFA501C980A0B00EC88B6 /* PaymentViewController.swift */,
+				E9F3E17C1CFE9B660034A533 /* SessionTicketsViewController.swift */,
+				E9320A761D005CA300C7149A /* SessionTicketsTableViewCell.swift */,
+				E984AF251CFFD982006D4B5C /* SessionDetailViewController.swift */,
 				C94AFA521C980A5400EC88B6 /* ReceiptViewController.swift */,
 				E98F35111CEC6862002B1CC1 /* Explore.storyboard */,
 			);
@@ -408,6 +425,7 @@
 				E9E0A64C1CDD80B500E187AD /* APIServer.swift */,
 				E9E0A64F1CDD8C6200E187AD /* ModelHandler.swift */,
 				E9024FF61CF9806F00DFD3AD /* APIManager-Ticketing.swift */,
+				E9320A7C1D00DB3300C7149A /* APIManager-Account.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -565,6 +583,7 @@
 				E9AF00711CDAEEFE004424A1 /* ScannerViewController.swift in Sources */,
 				E97EB7641CDF13E5009113A6 /* Ticket_Record.swift in Sources */,
 				C94AFA5C1C980E3B00EC88B6 /* TalksViewController.swift in Sources */,
+				E9320A7B1D00D77C00C7149A /* NewBillingTableViewController.swift in Sources */,
 				E9024FF71CF9806F00DFD3AD /* APIManager-Ticketing.swift in Sources */,
 				E9E0A64D1CDD80B500E187AD /* APIServer.swift in Sources */,
 				C94AFA4F1C9808AB00EC88B6 /* PersonalDetailsViewController.swift in Sources */,
@@ -572,6 +591,7 @@
 				E97EB7591CDF13E5009113A6 /* Payment+CoreDataProperties.swift in Sources */,
 				E97EB7631CDF13E5009113A6 /* Ticket_Record+CoreDataProperties.swift in Sources */,
 				E93163611BC5E0B4007408C7 /* AppDelegate.swift in Sources */,
+				E9F3E17D1CFE9B660034A533 /* SessionTicketsViewController.swift in Sources */,
 				C919F53C1CF774A9008268B8 /* Venue.swift in Sources */,
 				E96D018E1CF1DA6600AC48EE /* Message+CoreDataProperties.swift in Sources */,
 				E97EB7671CDF13E5009113A6 /* Event_Tag+CoreDataProperties.swift in Sources */,
@@ -579,6 +599,7 @@
 				E93163931BC5E573007408C7 /* LoginViewController.swift in Sources */,
 				E97EB76A1CDF13E5009113A6 /* Event_Roles.swift in Sources */,
 				E9D055C51CCF0EC10045BA86 /* TicketTableViewCell.swift in Sources */,
+				E984AF261CFFD982006D4B5C /* SessionDetailViewController.swift in Sources */,
 				E97EB75A1CDF13E5009113A6 /* Payment.swift in Sources */,
 				C9D9DC0F1CE8BDDC00CF55FA /* Conversation.swift in Sources */,
 				C94AFA511C980A0B00EC88B6 /* PaymentViewController.swift in Sources */,
@@ -600,6 +621,7 @@
 				C93A984F1CE36B4C00418F53 /* MessageTableViewCell.swift in Sources */,
 				E97EB7691CDF13E5009113A6 /* Event_Roles+CoreDataProperties.swift in Sources */,
 				C9D9DC091CE88A0300CF55FA /* MessengerViewController.swift in Sources */,
+				E9320A7D1D00DB3300C7149A /* APIManager-Account.swift in Sources */,
 				C94AFA601C9811BD00EC88B6 /* EventLocationViewController.swift in Sources */,
 				E90201C31C9CC2E200C7839A /* EventDetailTableViewController.swift in Sources */,
 				E97EB7611CDF13E5009113A6 /* Billing+CoreDataProperties.swift in Sources */,

@@ -29,7 +29,7 @@ struct Tickets {
 	var seat:String?
 	var startTime:NSDate?
 	var endTime:NSDate?
-	
+	var count:String?
 }
 
 class TicketDetailsViewController: UIViewController {
@@ -60,33 +60,60 @@ class TicketDetailsViewController: UIViewController {
 		HUD.show(.Progress)
 		APIManager().getEventTickets(event.event_id!){ result, json in
 			self.eventTickets.removeAll()
+			self.sessionTickets.removeAll()
+			
 			if result{
-				let dateFormatter = NSDateFormatter()
-				dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-				dateFormatter.timeZone = NSTimeZone(name: "GMT")
-				
 				for i in 0 ..< json!["data"].count {
 					let data = json!["data"][i]
-					self.eventTickets.append(Tickets(title:	data["title"].string,
-													price:	data["price"].string,
-													name:	data["name"].string,
-													_class: data["class"].string,
-													type:	data["type"].string,
-													venue:	data["venue"].string,
-													room:	data["room"].string,
-													seat:	data["seat_num"].string,
-													startTime:	dateFormatter.dateFromString(data["start_date"].stringValue),
-													endTime:	dateFormatter.dateFromString(data["end_date"].stringValue)))
+					
+					let startTime = GeneralLibrary().getFullDate(data["start_date"].stringValue)
+					let endTime = GeneralLibrary().getFullDate(data["end_date"].stringValue)
+					
+					if Int(GeneralLibrary().getMinutes(endTime))! % 5 != 0 {
+						self.eventTickets.append(Tickets(title:	data["title"].string,
+							price:	data["price"].string,
+							name:	data["name"].string,
+							_class: data["class"].string,
+							type:	data["type"].string,
+							venue:	data["venue"].string,
+							room:	data["room"].string,
+							seat:	data["seat_num"].string,
+							startTime:	startTime,
+							endTime:	endTime,
+							count:	"0"))
+					} else {
+						self.sessionTickets.append(Tickets(title:	data["title"].string,
+							price:	data["price"].string,
+							name:	data["name"].string,
+							_class: data["class"].string,
+							type:	data["type"].string,
+							venue:	data["venue"].string,
+							room:	data["room"].string,
+							seat:	data["seat_num"].string,
+							startTime:	startTime,
+							endTime:	endTime,
+							count:	"0"))
+					}
+					
 				}
-				print(self.eventTickets)
+				
+				if self.eventTickets.count == 0 {
+					self.eventTickets = self.sessionTickets
+					self.sessionTickets.removeAll()
+				}
 				HUD.hide()
 				self.tableView.reloadData()
 			} else {
-				self.fetchError("No Tickets available!", message: "Contact Event Organizer for the ticket.")
+				GeneralLibrary().fetchError("No Tickets available!", message: "Contact Event Organizer for the ticket.")
 			}
-			
 		}
     }
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		
+	}
 	
 	@IBAction func performContinue(sender: AnyObject) {
 		if shouldPerformSegueWithIdentifier("goToUserInfoView", sender: self){
@@ -98,8 +125,7 @@ class TicketDetailsViewController: UIViewController {
 		if identifier == "goToUserInfoView" {
 			selectedTickets.removeAll()
 			for section in 0..<tableView.numberOfSections{
-				let cell:TicketTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: section)) as! TicketTableViewCell
-				for _ in 0..<Int(cell.ticketCount.text!)! {
+				for _ in 0..<Int(eventTickets[section].count!)! {
 					selectedTickets.append(Coupon(ticket: [eventTickets[section]], name: "", email: ""))
 				}
 			}
@@ -107,15 +133,9 @@ class TicketDetailsViewController: UIViewController {
 		if selectedTickets.count > 0 {
 			return true
 		}
-		HUD.show(.Label("Please select ticket to continue"))
+		HUD.flash(.Label("Please select ticket to continue"), delay: 1)
 		return false
 	}
-
-	func fetchError(title: String = "No internet Connection", message:String = "Data might not updated."){
-		let notification = MPGNotification(title: title, subtitle: message, backgroundColor: UIColor.orangeColor(), iconImage: nil)
-		notification.show()
-	}
-	
 }
 
 extension TicketDetailsViewController: UITableViewDelegate{
@@ -130,10 +150,10 @@ extension TicketDetailsViewController: UITableViewDelegate{
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
 		let cell = tableView.dequeueReusableCellWithIdentifier("ticketCell", forIndexPath: indexPath) as! TicketTableViewCell
-		
+
 		let col = indexPath.section
 		
-		cell.ticketCount.text = "0"
+		cell.ticketCount.text = eventTickets[col].count
 		cell.ticketName.text = eventTickets[col].name
 		cell.ticketPrice.text = eventTickets[col].price
 		
@@ -154,6 +174,7 @@ extension TicketDetailsViewController: UITableViewDelegate{
 		if segue.identifier == "goToUserInfoView"{
 			
 			let vc = segue.destinationViewController as! PersonalDetailsViewController
+			vc.sessionTickets = sessionTickets
 			vc.tickets = selectedTickets
 			vc.event = event
 		}
@@ -174,6 +195,7 @@ extension TicketDetailsViewController {
 		
 		self.ticketCount.text = String(Int(ticketCount.text!)! + 1)
 		cell.ticketCount.text = self.ticketCount.text
+		eventTickets[section!].count = cell.ticketCount.text
 		
 		self.totalPrice.text = String(Double(totalPrice.text!)! + Double(cell.ticketPrice.text!)!)
 	}
@@ -185,6 +207,7 @@ extension TicketDetailsViewController {
 		if(Int(ticketCount.text!) > 0){
 			self.ticketCount.text = String(Int(ticketCount.text!)! - 1)
 			cell.ticketCount.text = self.ticketCount.text
+			eventTickets[section!].count = cell.ticketCount.text
 			
 			
 			self.totalPrice.text = String(Double(totalPrice.text!)! - Double(cell.ticketPrice.text!)!)
