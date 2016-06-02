@@ -983,8 +983,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8i7-e9-QbJ">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="WM4-7Y-STr"/>
+                                    <barButtonItem style="plain" id="r1q-7v-ApP">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qzk-JG-Cul">
+                                            <rect key="frame" x="174" y="1.5" width="252" height="41"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <state key="normal" title="Update Session Tickets"/>
+                                            <connections>
+                                                <action selector="updateSessionTickets:" destination="gFQ-gV-hxt" eventType="touchUpInside" id="L7h-4B-V5t"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="eEE-yE-lp0"/>
+                                </items>
+                            </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jw5-Sh-Wvf">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="presentationCell" editingAccessoryType="disclosureIndicator" rowHeight="85" id="e43-cT-jzp" customClass="TimetableTableViewCell" customModule="ConfPlus" customModuleProvider="target">
@@ -1064,9 +1082,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="8i7-e9-QbJ" firstAttribute="leading" secondItem="cor-eW-t3h" secondAttribute="leadingMargin" constant="-20" id="9Yh-lb-csr"/>
                             <constraint firstItem="Jw5-Sh-Wvf" firstAttribute="top" secondItem="n19-sQ-4Ik" secondAttribute="bottom" constant="-64" id="G0B-5r-HU2"/>
                             <constraint firstItem="Jw5-Sh-Wvf" firstAttribute="leading" secondItem="cor-eW-t3h" secondAttribute="leadingMargin" constant="-20" id="J1l-53-FgX"/>
-                            <constraint firstItem="8gC-qr-gWU" firstAttribute="top" secondItem="Jw5-Sh-Wvf" secondAttribute="bottom" id="bmX-do-TMM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8i7-e9-QbJ" secondAttribute="trailing" constant="-20" id="JeS-Pt-sOG"/>
+                            <constraint firstItem="8i7-e9-QbJ" firstAttribute="top" secondItem="Jw5-Sh-Wvf" secondAttribute="bottom" id="uHX-1E-LIf"/>
+                            <constraint firstItem="8gC-qr-gWU" firstAttribute="top" secondItem="8i7-e9-QbJ" secondAttribute="bottom" id="v0f-Fp-Pov"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Jw5-Sh-Wvf" secondAttribute="trailing" constant="-20" id="vhZ-hs-r6D"/>
                         </constraints>
                     </view>

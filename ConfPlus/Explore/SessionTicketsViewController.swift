@@ -37,6 +37,31 @@ class SessionTicketsViewController: UIViewController {
 		setDataForPresent()
 	}
 	
+	@IBAction func updateSessionTickets(sender: AnyObject) {
+		if let del = delegate {
+			var sessions:[Tickets]!
+			for section in 0..<tableView.numberOfSections{
+				for row in 0..<tableView.numberOfRowsInSection(section){
+					let cell:PersonalDetailsTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as! PersonalDetailsTableViewCell
+					
+					if cell.backgroundColor == UIColor.init(red: 0, green: 0.8, blue: 0, alpha: 0.2) {
+						let itemSection = dataSortedByDates[dates[section]]
+						let item = itemSection![row]
+						
+						sessions.append(item)
+					}
+				}
+			}
+			
+			
+			if sessions!.count > 0 {
+				del.selectSessionTicketDidFinish(self, email: ticket.email, session: sessions!)
+			} else {
+				navigationController?.popViewControllerAnimated(true)
+			}
+		}
+	}
+	
 	func setDataForPresent(){
 		dates.removeAll()
 		dataSortedByDates.removeAll()

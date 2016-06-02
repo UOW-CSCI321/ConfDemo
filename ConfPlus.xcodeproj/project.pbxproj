@@ -58,8 +58,6 @@
 		E93163911BC5E294007408C7 /* viewEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163901BC5E294007408C7 /* viewEffect.swift */; };
 		E93163931BC5E573007408C7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163921BC5E573007408C7 /* LoginViewController.swift */; };
 		E93163981BC62AB6007408C7 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163971BC62AB6007408C7 /* ExploreViewController.swift */; };
-		E9320A731D0053BC00C7149A /* EditTextTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9320A721D0053BC00C7149A /* EditTextTableViewController.swift */; };
-		E9320A751D0053D300C7149A /* CreateEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9320A741D0053D300C7149A /* CreateEventTableViewController.swift */; };
 		E96D018C1CF1D9F400AC48EE /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96D018A1CF1D9F400AC48EE /* Message.swift */; };
 		E96D018E1CF1DA6600AC48EE /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96D018D1CF1DA6600AC48EE /* Message+CoreDataProperties.swift */; };
 		E97EB74F1CDF13E5009113A6 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7331CDF13E5009113A6 /* Session+CoreDataProperties.swift */; };
@@ -153,8 +151,6 @@
 		E93163901BC5E294007408C7 /* viewEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = viewEffect.swift; path = ConfPlus/viewEffect.swift; sourceTree = "<group>"; };
 		E93163921BC5E573007408C7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E93163971BC62AB6007408C7 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreViewController.swift; path = Explore/ExploreViewController.swift; sourceTree = "<group>"; };
-		E9320A721D0053BC00C7149A /* EditTextTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTextTableViewController.swift; sourceTree = "<group>"; };
-		E9320A741D0053D300C7149A /* CreateEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventTableViewController.swift; sourceTree = "<group>"; };
 		E96D018A1CF1D9F400AC48EE /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		E96D018D1CF1DA6600AC48EE /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E97EB7331CDF13E5009113A6 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+CoreDataProperties.swift"; path = "Model/Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -373,8 +369,6 @@
 		E93163961BC62A76007408C7 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				E9320A741D0053D300C7149A /* CreateEventTableViewController.swift */,
-				E9320A721D0053BC00C7149A /* EditTextTableViewController.swift */,
 				E93163971BC62AB6007408C7 /* ExploreViewController.swift */,
 				E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */,
 				E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */,
@@ -572,7 +566,6 @@
 				E97EB7601CDF13E5009113A6 /* Ticket.swift in Sources */,
 				C94AFA761C98221400EC88B6 /* HistoryTableViewController.swift in Sources */,
 				C9D9DC0E1CE8BDDC00CF55FA /* Conversation+CoreDataProperties.swift in Sources */,
-				E9320A731D0053BC00C7149A /* EditTextTableViewController.swift in Sources */,
 				E9AF00711CDAEEFE004424A1 /* ScannerViewController.swift in Sources */,
 				E97EB7641CDF13E5009113A6 /* Ticket_Record.swift in Sources */,
 				C94AFA5C1C980E3B00EC88B6 /* TalksViewController.swift in Sources */,
@@ -610,7 +603,6 @@
 				C94AFA581C980D7C00EC88B6 /* HomeViewController.swift in Sources */,
 				C94AFA4D1C98085B00EC88B6 /* TicketDetailsViewController.swift in Sources */,
 				C94AFA6C1C981E7700EC88B6 /* SecurityViewController.swift in Sources */,
-				E9320A751D0053D300C7149A /* CreateEventTableViewController.swift in Sources */,
 				C93A984F1CE36B4C00418F53 /* MessageTableViewCell.swift in Sources */,
 				E97EB7691CDF13E5009113A6 /* Event_Roles+CoreDataProperties.swift in Sources */,
 				C9D9DC091CE88A0300CF55FA /* MessengerViewController.swift in Sources */,
