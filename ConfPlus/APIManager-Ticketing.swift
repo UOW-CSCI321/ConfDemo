@@ -49,7 +49,7 @@ extension APIManager{
 		let parameters = [
 			"api_key": server.KEY,
 			"app_secret": server.SECRET,
-			"method" : "getSessions",
+			"method" : "getSession",
 			"event_id" : event_id,
 			"title"	:	title
 		] //at the moment the api call need event id
