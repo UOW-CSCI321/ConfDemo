@@ -95,7 +95,21 @@ extension SessionTicketsViewController: UITableViewDelegate{
 	}
 	
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		//self.performSegueWithIdentifier("goToPresentationDetailView", sender: self)
+		self.performSegueWithIdentifier("goToSessionDetail", sender: indexPath)
+	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "goToSessionDetail"{
+			let vc = segue.destinationViewController as! SessionDetailViewController
+			vc.event = event
+			
+			let row = sender!.row
+			let sec = sender!.section
+			
+			let itemSection = dataSortedByDates[dates[sec]]
+			let item = itemSection![row]
+			vc.ticket = item
+		}
 	}
 }
 

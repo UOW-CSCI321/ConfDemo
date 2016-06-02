@@ -76,6 +76,7 @@
 		E97EB7681CDF13E5009113A6 /* Event_Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB74C1CDF13E5009113A6 /* Event_Tag.swift */; };
 		E97EB7691CDF13E5009113A6 /* Event_Roles+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB74D1CDF13E5009113A6 /* Event_Roles+CoreDataProperties.swift */; };
 		E97EB76A1CDF13E5009113A6 /* Event_Roles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB74E1CDF13E5009113A6 /* Event_Roles.swift */; };
+		E984AF261CFFD982006D4B5C /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E984AF251CFFD982006D4B5C /* SessionDetailViewController.swift */; };
 		E98D51DB1CF5DAB3000D7549 /* EventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98D51DA1CF5DAB3000D7549 /* EventsTableViewCell.swift */; };
 		E98F35121CEC6862002B1CC1 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E98F35111CEC6862002B1CC1 /* Explore.storyboard */; };
 		E99270271CE43545005F2567 /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99270261CE43545005F2567 /* EditProfileTableViewController.swift */; };
@@ -168,6 +169,7 @@
 		E97EB74C1CDF13E5009113A6 /* Event_Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event_Tag.swift; path = Model/Event_Tag.swift; sourceTree = "<group>"; };
 		E97EB74D1CDF13E5009113A6 /* Event_Roles+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Event_Roles+CoreDataProperties.swift"; path = "Model/Event_Roles+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E97EB74E1CDF13E5009113A6 /* Event_Roles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event_Roles.swift; path = Model/Event_Roles.swift; sourceTree = "<group>"; };
+		E984AF251CFFD982006D4B5C /* SessionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionDetailViewController.swift; path = Explore/SessionDetailViewController.swift; sourceTree = "<group>"; };
 		E98D51DA1CF5DAB3000D7549 /* EventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewCell.swift; sourceTree = "<group>"; };
 		E98F35111CEC6862002B1CC1 /* Explore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
 		E99270261CE43545005F2567 /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditProfileTableViewController.swift; path = Profile/EditProfileTableViewController.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 				C94AFA501C980A0B00EC88B6 /* PaymentViewController.swift */,
 				E9F3E17C1CFE9B660034A533 /* SessionTicketsViewController.swift */,
 				C94AFA521C980A5400EC88B6 /* ReceiptViewController.swift */,
+				E984AF251CFFD982006D4B5C /* SessionDetailViewController.swift */,
 				E98F35111CEC6862002B1CC1 /* Explore.storyboard */,
 			);
 			name = Explore;
@@ -581,6 +584,7 @@
 				E93163931BC5E573007408C7 /* LoginViewController.swift in Sources */,
 				E97EB76A1CDF13E5009113A6 /* Event_Roles.swift in Sources */,
 				E9D055C51CCF0EC10045BA86 /* TicketTableViewCell.swift in Sources */,
+				E984AF261CFFD982006D4B5C /* SessionDetailViewController.swift in Sources */,
 				E97EB75A1CDF13E5009113A6 /* Payment.swift in Sources */,
 				C9D9DC0F1CE8BDDC00CF55FA /* Conversation.swift in Sources */,
 				C94AFA511C980A0B00EC88B6 /* PaymentViewController.swift in Sources */,
