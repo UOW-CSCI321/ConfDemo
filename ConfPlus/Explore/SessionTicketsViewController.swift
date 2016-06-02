@@ -59,11 +59,11 @@ class SessionTicketsViewController: UIViewController {
 			}
 			
 			
-			if sessions.count > 0 {
+			//if sessions.count > 0 {
 				del.selectSessionTicketDidFinish(self, email: ticket.email, session: sessions)
-			} else {
-				navigationController?.popViewControllerAnimated(true)
-			}
+			//} else {
+			//	navigationController?.popViewControllerAnimated(true)
+			//}
 		}
 	}
 	
