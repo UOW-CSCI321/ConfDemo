@@ -110,6 +110,11 @@
         <attribute name="venue_id" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ticket_def" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ticket_Def" inverseName="ticket_records" inverseEntity="Ticket_Def" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="ticket_records" inverseEntity="User" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="record_id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="User" representedClassName=".User" syncable="YES">
         <attribute name="active" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -168,7 +173,7 @@
     </entity>
     <elements>
         <element name="Billing" positionX="1231" positionY="351" width="128" height="103"/>
-        <element name="Conversation" positionX="1132" positionY="810" width="128" height="165"/>
+        <element name="Conversation" positionX="1132" positionY="825" width="128" height="165"/>
         <element name="Event" positionX="1836" positionY="351" width="128" height="300"/>
         <element name="Event_Roles" positionX="1611" positionY="528" width="128" height="88"/>
         <element name="Event_Tag" positionX="1620" positionY="639" width="128" height="73"/>
