@@ -822,7 +822,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="presentationCell" editingAccessoryType="disclosureIndicator" rowHeight="85" id="e43-cT-jzp" customClass="TimetableTableViewCell" customModule="ConfPlus" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="presentationCell" editingAccessoryType="disclosureIndicator" rowHeight="85" id="e43-cT-jzp" customClass="TimetableTableViewCell" customModule="ConfPlus" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e43-cT-jzp" id="fMD-6B-Bxg">
@@ -907,7 +907,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Sessions" id="Yce-3j-ML6"/>
                     <connections>
-                        <outlet property="tableView" destination="Jw5-Sh-Wvf" id="p55-yD-mgG"/>
+                        <outlet property="tableView" destination="Jw5-Sh-Wvf" id="51E-kx-S1Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Urx-Pl-mKG" userLabel="First Responder" sceneMemberID="firstResponder"/>

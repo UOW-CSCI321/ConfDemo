@@ -20,8 +20,13 @@ class PaymentViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		updateTotalPrice()
     }
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		updateTotalPrice()
+	}
 	
 	//MARK: IBActions
 	@IBAction func performPurchase(sender: AnyObject) {
@@ -48,14 +53,18 @@ class PaymentViewController: UIViewController {
 	
 	func updateTotalPrice(){
 		totalPrice = 0.0
-		for section in 0..<tableView.numberOfSections{
+		for section in 0..<tableView.numberOfSections - 1{
 			for row in 0..<tableView.numberOfRowsInSection(section){
 				let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section))
 				
-				totalPrice += Double((cell?.detailTextLabel?.text)!)!
+				totalPrice += Double(unwrapPrice((cell?.detailTextLabel?.text)!))!
 			}
 		}
 		tableView.reloadData()
+	}
+	
+	func unwrapPrice(price:String) -> String{
+		return price.componentsSeparatedByString(" ").last!
 	}
 }
 
@@ -88,7 +97,7 @@ extension PaymentViewController: UITableViewDelegate{
 		}
 		
 		cell.textLabel?.text = ticket!.name
-		cell.detailTextLabel?.text = ticket!.price
+		cell.detailTextLabel?.text = "$ \(ticket!.price!)"
 		
 		return cell
 	}

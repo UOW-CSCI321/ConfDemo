@@ -56,10 +56,6 @@ class TicketDetailsViewController: UIViewController {
 		viewEffect.rect(ticketSelectionView)
 		
 		totalPrice.text = "0"
-    }
-	
-	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(animated)
 		
 		HUD.show(.Progress)
 		APIManager().getEventTickets(event.event_id!){ result, json in
@@ -75,28 +71,28 @@ class TicketDetailsViewController: UIViewController {
 					
 					if self.getMinutes(endTime) == "59" {
 						self.eventTickets.append(Tickets(title:	data["title"].string,
-															price:	data["price"].string,
-															name:	data["name"].string,
-															_class: data["class"].string,
-															type:	data["type"].string,
-															venue:	data["venue"].string,
-															room:	data["room"].string,
-															seat:	data["seat_num"].string,
-															startTime:	startTime,
-															endTime:	endTime,
-															count:	"0"))
+							price:	data["price"].string,
+							name:	data["name"].string,
+							_class: data["class"].string,
+							type:	data["type"].string,
+							venue:	data["venue"].string,
+							room:	data["room"].string,
+							seat:	data["seat_num"].string,
+							startTime:	startTime,
+							endTime:	endTime,
+							count:	"0"))
 					} else {
 						self.sessionTickets.append(Tickets(title:	data["title"].string,
-															price:	data["price"].string,
-															name:	data["name"].string,
-															_class: data["class"].string,
-															type:	data["type"].string,
-															venue:	data["venue"].string,
-															room:	data["room"].string,
-															seat:	data["seat_num"].string,
-															startTime:	startTime,
-															endTime:	endTime,
-															count:	"0"))
+							price:	data["price"].string,
+							name:	data["name"].string,
+							_class: data["class"].string,
+							type:	data["type"].string,
+							venue:	data["venue"].string,
+							room:	data["room"].string,
+							seat:	data["seat_num"].string,
+							startTime:	startTime,
+							endTime:	endTime,
+							count:	"0"))
 					}
 					
 				}
@@ -106,6 +102,12 @@ class TicketDetailsViewController: UIViewController {
 				self.fetchError("No Tickets available!", message: "Contact Event Organizer for the ticket.")
 			}
 		}
+    }
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		
 	}
 	
 	@IBAction func performContinue(sender: AnyObject) {
@@ -189,6 +191,7 @@ extension TicketDetailsViewController: UITableViewDelegate{
 		if segue.identifier == "goToUserInfoView"{
 			
 			let vc = segue.destinationViewController as! PersonalDetailsViewController
+			vc.sessionTickets = sessionTickets
 			vc.tickets = selectedTickets
 			vc.event = event
 		}
