@@ -38,6 +38,15 @@ class GeneralLibrary{
 		return dateFormatter.dateFromString(date)!
 	}
 	
+	func getFullStringFromDate(date:NSDate) -> String{
+		let dateFormatter = NSDateFormatter()
+		dateFormatter.timeZone = NSTimeZone(name: "GMT")
+		dateFormatter.dateFormat = "YYYY-MM-dd HH:mm"
+		
+		return dateFormatter.stringFromDate(date)
+	}
+
+	
 	func getMinutes(date:NSDate) -> String {
 		let dateFormatter = NSDateFormatter()
 		dateFormatter.dateFormat = "mm"

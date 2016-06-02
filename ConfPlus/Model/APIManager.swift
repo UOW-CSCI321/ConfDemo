@@ -659,7 +659,13 @@ extension APIManager{
 			"api_key"	:	server.KEY,
 			"app_secret":	server.SECRET,
 			"method"	:	"updateUser",
-			"email"		:	email
+			"email"		:	email,
+			"verified"	:	"1",
+			"fb_id"		:	"",
+			"linkedin_id":	"",
+			"active"	:	"",
+			"upgraded"	:	"",
+			"review"	:	"0",
 		]
 		
 		if let title = title { parameters["title"] = title }

@@ -69,7 +69,7 @@ class TicketDetailsViewController: UIViewController {
 					let startTime = GeneralLibrary().getFullDate(data["start_date"].stringValue)
 					let endTime = GeneralLibrary().getFullDate(data["end_date"].stringValue)
 					
-					if GeneralLibrary().getMinutes(endTime) == "59" {
+					if Int(GeneralLibrary().getMinutes(endTime))! % 5 != 0 {
 						self.eventTickets.append(Tickets(title:	data["title"].string,
 							price:	data["price"].string,
 							name:	data["name"].string,

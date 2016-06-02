@@ -57,8 +57,6 @@ class SessionDetailViewController: UITableViewController {
 				} else {
 					self.update()
 				}
-			
-				
 			}
 		}
     }

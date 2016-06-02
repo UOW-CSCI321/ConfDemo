@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import PKHUD
 
 class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 	
@@ -39,6 +40,18 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 		
 		let alertcontroller = UIAlertController(title: "Payment Information", message: "Total Price: $ \(totalPrice)", preferredStyle: .Alert)
 		let paypalAction = UIAlertAction(title: "PayPal", style: .Default){ UIAlertAction in
+			
+//			APIManager().makePayment(email, type: "Event Tickets", amount: String(self.totalPrice), payment_date: GeneralLibrary().getFullStringFromDate(NSDate())){
+//				result in
+//				if result{
+//					for ticket in self.tickets {
+//						APIManager().addSessionAttendee(self.event.event_id!, tickets: ticket)
+//					}
+//					self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
+//				} else {
+//					HUD.flash(.Label("Payment Failed, please try again"), delay: 1)
+//				}
+//			}
 			self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
 			alertcontroller.dismissViewControllerAnimated(true, completion: nil)
 		}
