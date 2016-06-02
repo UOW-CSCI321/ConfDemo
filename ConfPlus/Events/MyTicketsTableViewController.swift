@@ -14,7 +14,7 @@ class MyTicketsTableViewController: UITableViewController {
 	var tickets = [Ticket_Record]()
     var event:Event!
     let user = NSUserDefaults.standardUserDefaults()
-    //var myUser:User!
+    var myUser:User!
     var email:String!
     
     override func viewDidLoad() {
@@ -24,22 +24,18 @@ class MyTicketsTableViewController: UITableViewController {
         //print("email \(email), eventid: \(event.event_id)")
         
         //get tickets from model handler for users email
-        if let myUser = ModelHandler().getUser(email!) {
+        myUser = ModelHandler().getUser(email!)
+        if myUser != nil
+        {
             tickets = ModelHandler().getTicketsForUser(myUser)!
             self.tableView.reloadData()
         }
-        
+
 		populateNavigationBar()
     }
     
     override func viewWillAppear(animated: Bool) {
-        //let email = self.user.stringForKey("email")
-        //let user = ModelHandler().getUser(email!)
-        if let myUser = ModelHandler().getUser(self.email) {
-            getMyTicketsFromAPI(self.event, user: myUser)
-            tickets = ModelHandler().getTicketsForUser(myUser)!
-            self.tableView.reloadData()
-        }
+            getMyTicketsFromAPI(event, user: myUser)
     }
     
     
@@ -49,13 +45,18 @@ class MyTicketsTableViewController: UITableViewController {
             if result {
                 //print(json)
                 let count = json!["data"].count
+                self.tickets.removeAll()
                 for i in 0..<count
                 {
                     let dataForSingleTicket = json!["data"][i]
                     //print(dataForSingleTicket)
                     let ticket = ModelHandler().addNewTicket(dataForSingleTicket)
                     ModelHandler().saveTicketForUser(ticket, user: user)
+                    self.tickets.append(ticket)
                 }
+                //self.tickets = ModelHandler().getTicketsForUser(self.myUser)!
+                self.tableView.reloadData()
+
             }
         }
     }
