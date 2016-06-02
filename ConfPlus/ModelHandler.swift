@@ -22,6 +22,7 @@ class ModelHandler{
 		}
 	}
 	
+    //MARK: - Event Related
 	func getEvents(attend: String, future: Bool = true) -> [Event]{
 		let fetch = NSFetchRequest(entityName: "Event")
         let attendPredicate = NSPredicate(format: "attend == %@", attend)
@@ -80,7 +81,50 @@ class ModelHandler{
 		
 		performUpdate()
 	}
+    
+    //MARK: Session Related
+    func addNewSession(json:JSON) -> Session? {
+        let entityDescription = NSEntityDescription.entityForName("Session", inManagedObjectContext: context)
+        
+        let session = Session(entity: entityDescription!, insertIntoManagedObjectContext: self.context)
+        session.title = json["title"].string
+        session.speaker_email = json["speaker_email"].string
+        session.session_description = json["description"].string
+        session.start_time = serverStringToDate(json["start_time"].string!)
+        session.end_time = serverStringToDate(json["end_time"].string!)
+        
+        performUpdate()
+        
+        if session.title == nil
+        {
+            return nil
+        }
+
+        return session
+    }
+    
+    func saveSessionForUser(session:Session, user:User) {
+        user.mutableSetValueForKey("attending_sessions").addObject(session)
+        session.user = user
+//        venue.mutableSetValueForKey("events").addObject(event)
+//        event.venue = venue
+        //1 venue multiple events
+        //1 user multiple sessions
+        
+        performUpdate()
+    }
+    
+    func saveSessionForEvent(session:Session, event:Event) {
+        //1 event many session
+        event.mutableSetValueForKey("sessions").addObject(session)
+        session.event = event
+        
+        performUpdate()
+    }
+    
+   // func getSessionsForEventByUser()
 	
+    //MARK: - Venue Related
 	func getVenueByEvent(event: Event) -> Venue?{
 		let request = NSFetchRequest()
 		let entityDescription = NSEntityDescription.entityForName("Venue", inManagedObjectContext: context)
@@ -147,6 +191,7 @@ class ModelHandler{
         return d1!
     }
 
+    //MARK: - User related
     func addNewUser(json: JSON) -> User?
     {
         //print(json)

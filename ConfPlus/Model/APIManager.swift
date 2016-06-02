@@ -162,7 +162,42 @@ class APIManager{
             
         }
     }
+    
+    //Mark: Sessions Related
+    
+//    func getSessionsFromAPI(event:Event, completion: (result: Bool) -> Void) {
+//        guard let id = event.venue_id else {
+//            completion(result: false)
+//            return
+//        }
+//        
+//        let parameters = [
+//            "api_key"	:	server.KEY,
+//            "app_secret":	server.SECRET,
+//            "method"	:	"getSessionForEvent",
+//            "event_id"	:	id
+//        ]
+//        
+//
+//    }
 
+    func getMySessionsFromAPI(event:Event, user:User, completion: (result: Bool) -> Void) {
+        guard let id = event.event_id else {
+            completion(result: false)
+            return
+        }
+        //fake json
+        let jsonString = "{'event_id': '8','title': 'Day 1: Presetation A','is_event': 'true','speaker_email': null,'description': null,'start_time': '2016-10-02 12:00:00','end_time': '2016-10-02 14:00:00','venue_id': '9','room_name': 'Room 1','created_at': '2016-05-30 12:11:40','updated_at': '2016-05-30 12:28:53','privacy': 'public','conversation_id': nul}"
+        let json = JSON(jsonString)
+        let session = self.handler.addNewSession(json)
+        if session != nil
+        {
+            self.handler.saveSessionForUser(session!, user: user)
+            self.handler.saveSessionForEvent(session!, event: event)
+            completion(result: true)
+        }
+        
+    }
 	
 	//MARK: - Venue Related
 

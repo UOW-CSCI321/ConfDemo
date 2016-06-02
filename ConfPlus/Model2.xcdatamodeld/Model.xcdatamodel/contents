@@ -78,12 +78,13 @@
     <entity name="Session" representedClassName=".Session" syncable="YES">
         <attribute name="end_time" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="room_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="session_description" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="speaker_email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="start_time" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="sessions" inverseEntity="Event" syncable="YES"/>
-        <relationship name="speaker" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="presenting_sessions" inverseEntity="User" syncable="YES"/>
         <relationship name="tickets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ticket_Def" inverseName="session" inverseEntity="Ticket_Def" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="attending_sessions" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Ticket_Def" representedClassName=".Ticket" syncable="YES">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
@@ -135,12 +136,12 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="upgraded" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="attending_sessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Session" inverseName="user" inverseEntity="Session" syncable="YES"/>
         <relationship name="billings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Billing" inverseName="user" inverseEntity="Billing" syncable="YES"/>
         <relationship name="conversations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Conversation" inverseName="users" inverseEntity="Conversation" syncable="YES"/>
         <relationship name="event_roles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event_Roles" inverseName="user" inverseEntity="Event_Roles" syncable="YES"/>
         <relationship name="messages_sent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="sender" inverseEntity="Message" syncable="YES"/>
         <relationship name="payments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Payment" inverseName="user" inverseEntity="Payment" syncable="YES"/>
-        <relationship name="presenting_sessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Session" inverseName="speaker" inverseEntity="Session" syncable="YES"/>
         <relationship name="ticket_records" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ticket_Record" inverseName="user" inverseEntity="Ticket_Record" syncable="YES"/>
         <relationship name="user_tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User_Tag" inverseName="user" inverseEntity="User_Tag" syncable="YES"/>
         <uniquenessConstraints>
@@ -179,10 +180,10 @@
         <element name="Event_Tag" positionX="1620" positionY="639" width="128" height="73"/>
         <element name="Message" positionX="1161" positionY="639" width="128" height="150"/>
         <element name="Payment" positionX="1231" positionY="486" width="128" height="118"/>
-        <element name="Session" positionX="1852" positionY="716" width="128" height="163"/>
+        <element name="Session" positionX="1852" positionY="716" width="128" height="178"/>
         <element name="Ticket_Def" positionX="1861" positionY="936" width="128" height="208"/>
         <element name="Ticket_Record" positionX="1456" positionY="887" width="128" height="208"/>
-        <element name="User" positionX="1413" positionY="408" width="128" height="435"/>
+        <element name="User" positionX="1413" positionY="408" width="128" height="433"/>
         <element name="User_Tag" positionX="1645" positionY="882" width="128" height="73"/>
         <element name="Venue" positionX="2032" positionY="360" width="128" height="208"/>
     </elements>

@@ -12,6 +12,9 @@ import UIKit
 class TimeTableViewController: UIViewController {
     
     var event:Event!
+    let user = NSUserDefaults.standardUserDefaults()
+    var myUser:User!
+    var sessions = [Session]()
     
 	@IBAction func backToTicketPurchaseView(sender: AnyObject) {
 		self.dismissViewControllerAnimated(true, completion: nil)
@@ -19,8 +22,21 @@ class TimeTableViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
 		navigationController?.hidesBarsOnSwipe = true
+        
+        
+        let email = user.stringForKey("email")
+        myUser = ModelHandler().getUser(email!)
+        if myUser != nil
+        {
+            //sessions = getSessionsForEventByUser
+            //sessions = ModelHandler().getSessionsFromAPI(event, myUser)!
+            //tableView.reloadData()
+            
+
+        }
+
+        
     }
     
 }
