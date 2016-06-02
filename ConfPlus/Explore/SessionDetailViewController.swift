@@ -9,19 +9,27 @@
 import UIKit
 import PKHUD
 
+struct Topic {
+	var email: String?
+	var speakerName: String?
+	var topic: String?
+	var room: String?
+	var description: String?
+}
+
 class SessionDetailViewController: UITableViewController {
 	
 	@IBOutlet weak var avatar: UIImageView!
-	@IBOutlet weak var labelSpeakerName: UIView!
-	@IBOutlet weak var labelTopicName: UIView!
-	@IBOutlet weak var labelVenue: UILabel!
-	@IBOutlet weak var labelRoom: UIView!
+	@IBOutlet weak var labelSpeakerName: UILabel!
+	@IBOutlet weak var labelTopicName: UILabel!
+	@IBOutlet weak var labelRoom: UILabel!
 	@IBOutlet weak var textViewDescription: UITextView!
 	
 	
 	var event:Event!
 	var ticket:Tickets!
-
+	var topic:Topic!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -29,19 +37,66 @@ class SessionDetailViewController: UITableViewController {
     }
 	
 	func populateSessionDetail(){
-		//TODO: API Request
+		HUD.show(.Progress)
+		APIManager().getSession(event.event_id!, title: ticket.title!){ result, json in
+			if result{
+				let data = json!["data"]
+				
+				self.topic = Topic(email: data["speaker_email"].string,
+				              speakerName: "",
+				              topic: data["title"].string,
+				              room: data["room_name"].string,
+				              description: data["description"].string)
+					
+				if self.topic.email != nil {
+					self.getSpeakerInfo(){ result in
+						if result {
+							//avatar.image =
+							self.labelSpeakerName.text = self.topic.speakerName!
+						}
+					}
+				}
+				
+				self.populateDataIntoTableView()
+				
+				for section in 0..<self.tableView.numberOfSections {
+					self.shouldHideSection(section)
+				}
+				HUD.hide()
+				self.tableView.reloadData()
+			}
+		}
 	}
+	
+	func getSpeakerInfo(completion: (result:Bool) -> ()){
+		APIManager().getUser(topic.email!, completion: { result, json in
+			if result {
+				
+			} else {
+				completion(result: false)
+			}
+			
+		})
+	}
+	
+	func populateDataIntoTableView(){
+		labelTopicName.text = topic.topic!
+		labelRoom.text = topic.room!
+		if topic.description != nil {
+			textViewDescription.text = topic.description!
+		}
+	}
+
 }
 
-//MARK:- TableView Helpers Funciton
+//MARK:- TableView Helpers Function
 extension SessionDetailViewController {
 	func shouldHideSection(section: Int) -> Bool {
 		switch section {
 		case 0:
-			//return user!.isProvider() ? false : true
-			return true
+			return (topic.email != nil) ? false : true
 		case 2:
-			return true
+			return (topic.description != nil) ? false : true
 		default:
 			return false
 		}
