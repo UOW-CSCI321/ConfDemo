@@ -220,7 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				E91E6B541CEC890400E2759C /* Event.storyboard */,
-				C946E93F1CFF0BD300FB1121 /* QAViewController.swift */,
 				E90201C81C9CC84A00C7839A /* EventsViewController.swift */,
 				E98D51DA1CF5DAB3000D7549 /* EventsTableViewCell.swift */,
 				C94AFA571C980D7C00EC88B6 /* HomeViewController.swift */,
@@ -228,6 +227,7 @@
 				C94AFA5D1C980ECE00EC88B6 /* MessagesTableViewController.swift */,
 				C93A984E1CE36B4C00418F53 /* MessageTableViewCell.swift */,
 				C9D9DC081CE88A0300CF55FA /* MessengerViewController.swift */,
+				C946E93F1CFF0BD300FB1121 /* QAViewController.swift */,
 				C94AFA621C981C5C00EC88B6 /* Ticket */,
 				C94AFA6D1C981F1A00EC88B6 /* AttendingViewController.swift */,
 				C94AFA6F1C981F8200EC88B6 /* Admin */,

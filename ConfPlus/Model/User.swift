@@ -28,6 +28,6 @@ class User: NSManagedObject {
                 }
             }
         }
-        return UIImage(named: "account2")!
+        return UIImage(named: "account")!
     }
 }

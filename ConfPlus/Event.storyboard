@@ -853,6 +853,9 @@
                                     <constraint firstAttribute="height" constant="72" id="EHe-lh-f4v"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="plus_ourblue"/>
+                                <connections>
+                                    <segue destination="Com-TI-C9T" kind="presentation" id="FCX-Wm-u4D"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -867,6 +870,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Messages" id="Dhx-2p-WUB"/>
                     <connections>
+                        <outlet property="addConversationButton" destination="8BB-FA-sYj" id="oA7-PZ-QWg"/>
                         <outlet property="conversationTable" destination="PRD-Fs-bhg" id="gSv-HL-XPl"/>
                     </connections>
                 </viewController>
@@ -890,7 +894,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y65-J7-8Ne" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3882" y="176"/>
+            <point key="canvasLocation" x="4240" y="-290"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="qSc-dn-UGh">
+            <objects>
+                <viewController id="Com-TI-C9T" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sQC-vL-KAn"/>
+                        <viewControllerLayoutGuide type="bottom" id="fBa-xf-BKQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JnQ-iM-n72">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Iw-2J-Cib" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4219" y="467"/>
         </scene>
     </scenes>
     <resources>

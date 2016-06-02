@@ -14,7 +14,8 @@ import MPGNotification
 class MessagesTableViewController: UIViewController {
     
     @IBOutlet var conversationTable: UITableView!
-    @IBOutlet var AddConversationButtonItem: UIBarButtonItem!
+
+    @IBOutlet var addConversationButton: UIButton!
     
     //var usersMessages = [[Message]]()
     var userConversations = [Conversation]()
@@ -186,11 +187,6 @@ class MessagesTableViewController: UIViewController {
         messengerVC.conversation = userConversations[row]
         self.hidesBottomBarWhenPushed = true //need to hide tab bar to show message bar at the bottom. i tried to move message bar in JSQMessagesViewController but it has some action on it that when clicked it will move back down
     }
-    
-    @IBAction func AddConversationPressed(sender: UIBarButtonItem) {
-        print("PRESSED")
-    }
-
 	
 }
 

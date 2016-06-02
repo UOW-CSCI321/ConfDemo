@@ -53,6 +53,7 @@ class MessageTableViewCell: UITableViewCell {
 //        }
         
     }
+    
     func addCellLineSeperator()
     {
         let dividerLineView: UIView = {
