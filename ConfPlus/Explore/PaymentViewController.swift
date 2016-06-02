@@ -16,25 +16,12 @@ class PaymentViewController: UIViewController {
 	var tickets = [Coupon]()
 	var event:Event!
 	var sessionTickets = [Tickets]()
-	var totalPrice = 0.00
+	var totalPrice:Double = 0.0
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		updateTotalPrice()
     }
-	
-	override func viewDidAppear(animated: Bool) {
-		super.viewDidAppear(animated)
-		
-		totalPrice = 0.00
-		for section in 0..<tableView.numberOfSections{
-			for row in 0..<tableView.numberOfRowsInSection(section){
-				let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section))
-				
-				totalPrice += Double((cell?.detailTextLabel?.text)!)!
-			}
-		}
-		tableView.reloadData()
-	}
 	
 	//MARK: IBActions
 	@IBAction func performPurchase(sender: AnyObject) {
@@ -57,6 +44,18 @@ class PaymentViewController: UIViewController {
 			vc.ticket = tickets[col!]
 			vc.event = event
 		}
+	}
+	
+	func updateTotalPrice(){
+		totalPrice = 0.0
+		for section in 0..<tableView.numberOfSections{
+			for row in 0..<tableView.numberOfRowsInSection(section){
+				let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section))
+				
+				totalPrice += Double((cell?.detailTextLabel?.text)!)!
+			}
+		}
+		tableView.reloadData()
 	}
 }
 
