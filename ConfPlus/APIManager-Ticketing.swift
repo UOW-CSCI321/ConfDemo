@@ -74,4 +74,37 @@ extension APIManager{
 		
 		}
 	}
+	
+	func getUser(email:String, completion: (result: Bool, data:JSON?) -> Void) {
+		
+		let paramaters = [
+			"api_key"	:	server.KEY,
+			"app_secret":	server.SECRET,
+			"method"	:	"getUser",
+			"email"	:	email
+		]
+		
+		Alamofire.request(.POST, server.URL, parameters: paramaters).responseJSON {response in
+			switch response.result{
+			case .Success:
+				if let value = response.result.value{
+					
+					let json = JSON(value)
+					if json["success"] {
+						completion(result: true, data: json)
+					} else {
+						completion(result: false, data: nil)
+					}
+				}
+				
+			case .Failure(let error):
+				print(error.localizedDescription)
+				self.fetchError()
+				completion(result: false, data: nil)
+				
+			}
+			
+		}
+		
+	}
 }
