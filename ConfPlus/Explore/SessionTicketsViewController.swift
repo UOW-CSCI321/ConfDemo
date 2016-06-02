@@ -42,7 +42,7 @@ class SessionTicketsViewController: UIViewController {
 			var sessions:[Tickets]!
 			for section in 0..<tableView.numberOfSections{
 				for row in 0..<tableView.numberOfRowsInSection(section){
-					let cell:PersonalDetailsTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as! PersonalDetailsTableViewCell
+					let cell:SessionTicketsTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as! SessionTicketsTableViewCell
 					
 					if cell.backgroundColor == UIColor.init(red: 0, green: 0.8, blue: 0, alpha: 0.2) {
 						let itemSection = dataSortedByDates[dates[section]]
@@ -106,7 +106,7 @@ extension SessionTicketsViewController: UITableViewDelegate{
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
-		let cell = tableView.dequeueReusableCellWithIdentifier("presentationCell", forIndexPath: indexPath) as! TimetableTableViewCell
+		let cell = tableView.dequeueReusableCellWithIdentifier("sessionTicketCell", forIndexPath: indexPath) as! SessionTicketsTableViewCell
 		let row = indexPath.row
 		let sec = indexPath.section
 		

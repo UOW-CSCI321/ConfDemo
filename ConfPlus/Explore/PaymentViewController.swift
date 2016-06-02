@@ -44,6 +44,10 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 	func selectSessionTicketDidFinish(controller: SessionTicketsViewController, email:String, session: [Tickets]) {
 		for ticket in tickets{
 			if ticket.email == email {
+				let entry = ticket.ticket[0]
+				ticket.ticket.removeAll()
+				
+				ticket.ticket.append(entry)
 				ticket.ticket.append(session)
 				break
 			}
