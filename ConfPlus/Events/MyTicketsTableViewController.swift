@@ -11,26 +11,35 @@ import UIKit
 
 class MyTicketsTableViewController: UITableViewController {
 	
-	let ticket = [Ticket_Record]()
+	var tickets = [Ticket_Record]()
     var event:Event!
     let user = NSUserDefaults.standardUserDefaults()
+    //var myUser:User!
+    var email:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-        let email = user.stringForKey("email")
+        email = user.stringForKey("email")
         //print("email \(email), eventid: \(event.event_id)")
         
         //get tickets from model handler for users email
-        //reload table
+        if let myUser = ModelHandler().getUser(email!) {
+            tickets = ModelHandler().getTicketsForUser(myUser)!
+            self.tableView.reloadData()
+        }
         
 		populateNavigationBar()
     }
     
     override func viewWillAppear(animated: Bool) {
-        let email = self.user.stringForKey("email")
-        let user = ModelHandler().getUser(email!)
-        getMyTicketsFromAPI(self.event, user:user!)
+        //let email = self.user.stringForKey("email")
+        //let user = ModelHandler().getUser(email!)
+        if let myUser = ModelHandler().getUser(self.email) {
+            getMyTicketsFromAPI(self.event, user: myUser)
+            tickets = ModelHandler().getTicketsForUser(myUser)!
+            self.tableView.reloadData()
+        }
     }
     
     
@@ -38,12 +47,12 @@ class MyTicketsTableViewController: UITableViewController {
     {
         APIManager().getUserTicketsForEvent(event.event_id!, email: user.email!){ result, json in
             if result {
-                print(json)
+                //print(json)
                 let count = json!["data"].count
                 for i in 0..<count
                 {
                     let dataForSingleTicket = json!["data"][i]
-                    print(dataForSingleTicket)
+                    //print(dataForSingleTicket)
                     let ticket = ModelHandler().addNewTicket(dataForSingleTicket)
                     ModelHandler().saveTicketForUser(ticket, user: user)
                 }
@@ -57,15 +66,15 @@ class MyTicketsTableViewController: UITableViewController {
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return ticket.count
+		return tickets.count
 	}
 	
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("ticketListCell", forIndexPath: indexPath)
 		let row = indexPath.row
 		
-		cell.textLabel!.text = ticket[row].ticket_name
-		cell.detailTextLabel!.text = ticket[row].room_name
+		cell.textLabel!.text = tickets[row].ticket_name
+		cell.detailTextLabel!.text = tickets[row].room_name
 		
 		return cell
 	}
@@ -73,7 +82,7 @@ class MyTicketsTableViewController: UITableViewController {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		let indexPath:NSIndexPath = self.tableView.indexPathForSelectedRow!
 		let vc = segue.destinationViewController as! TicketProfileTableViewController
-		vc.ticket = ticket[indexPath.row]
+		vc.ticket = tickets[indexPath.row]
 	}
 
 }

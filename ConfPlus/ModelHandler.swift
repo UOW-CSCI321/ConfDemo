@@ -403,13 +403,27 @@ class ModelHandler{
     func saveTicketForUser(ticket:Ticket_Record, user:User){
         user.mutableSetValueForKey("ticket_records").addObject(ticket)
         ticket.user = user
-    
-    	//func saveVenueForEvent(event:Event, venue:Venue){
-		//venue.mutableSetValueForKey("events").addObject(event)
-		//event.venue = venue
 		
 		performUpdate()
 	}
+    
+    func getTicketsForUser(user:User) -> [Ticket_Record]? {
+       
+        let fetch = NSFetchRequest(entityName: "Ticket_Record")
+        fetch.predicate = NSPredicate(format: "user == %@", user)
+
+        var tickets = [Ticket_Record]()
+        do {
+            tickets = try context.executeFetchRequest(fetch) as! [Ticket_Record]
+            
+            //print(messages.count)
+        } catch {
+            print("Could not retrieve events object")
+        }
+        return tickets
+
+    }
+    
 }
 
 
