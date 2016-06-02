@@ -18,6 +18,8 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 	var sessionTickets = [Tickets]()
 	var totalPrice:Double = 0.0
 	
+	let user = NSUserDefaults.standardUserDefaults()
+	
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -30,6 +32,11 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 	
 	//MARK: IBActions
 	@IBAction func performPurchase(sender: AnyObject) {
+		guard let email = user.stringForKey("email") else {
+			performLogin()
+			return
+		}
+		
 		let alertcontroller = UIAlertController(title: "Payment Information", message: "Total Price: $ \(totalPrice)", preferredStyle: .Alert)
 		let paypalAction = UIAlertAction(title: "PayPal", style: .Default){ UIAlertAction in
 			self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
@@ -45,10 +52,10 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 		for ticket in tickets{
 			if ticket.email == email {
 				let entry = ticket.ticket[0]
-				ticket.ticket.removeAll()
-				
-				ticket.ticket.append(entry)
-				ticket.ticket.append(session)
+//				ticket.ticket.removeAll()
+//				
+//				ticket.ticket.append(entry)
+//				ticket.ticket.append(session)
 				break
 			}
 		}
@@ -73,17 +80,24 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 			for row in 0..<tableView.numberOfRowsInSection(section){
 				let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section))
 				
-				totalPrice += Double(unwrapPrice((cell?.detailTextLabel?.text)!))!
+				totalPrice += Double(GeneralLibrary().unwrapPrice((cell?.detailTextLabel?.text)!))!
 			}
 		}
 		tableView.reloadData()
 	}
 	
-	func unwrapPrice(price:String) -> String{
-		return price.componentsSeparatedByString(" ").last!
+	func performLogin(){
+		let storyboard : UIStoryboard = UIStoryboard(name: "Account", bundle: nil)
+		let vc : LoginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+		
+		let navigationController = UINavigationController(rootViewController: vc)
+		
+		
+		self.presentViewController(navigationController, animated: true, completion: nil)
 	}
 }
 
+//MARK:- TableView Related
 extension PaymentViewController: UITableViewDelegate{
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return tickets.count + 1

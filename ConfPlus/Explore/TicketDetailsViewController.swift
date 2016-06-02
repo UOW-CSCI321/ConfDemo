@@ -66,10 +66,10 @@ class TicketDetailsViewController: UIViewController {
 				for i in 0 ..< json!["data"].count {
 					let data = json!["data"][i]
 					
-					let startTime = self.getFullDate(data["start_date"].stringValue)
-					let endTime = self.getFullDate(data["end_date"].stringValue)
+					let startTime = GeneralLibrary().getFullDate(data["start_date"].stringValue)
+					let endTime = GeneralLibrary().getFullDate(data["end_date"].stringValue)
 					
-					if self.getMinutes(endTime) == "59" {
+					if GeneralLibrary().getMinutes(endTime) == "59" {
 						self.eventTickets.append(Tickets(title:	data["title"].string,
 							price:	data["price"].string,
 							name:	data["name"].string,
@@ -99,7 +99,7 @@ class TicketDetailsViewController: UIViewController {
 				HUD.hide()
 				self.tableView.reloadData()
 			} else {
-				self.fetchError("No Tickets available!", message: "Contact Event Organizer for the ticket.")
+				GeneralLibrary().fetchError("No Tickets available!", message: "Contact Event Organizer for the ticket.")
 			}
 		}
     }
@@ -131,28 +131,6 @@ class TicketDetailsViewController: UIViewController {
 		HUD.show(.Label("Please select ticket to continue"))
 		return false
 	}
-	
-	func getMinutes(date:NSDate) -> String {
-		let dateFormatter = NSDateFormatter()
-		dateFormatter.dateFormat = "mm"
-		dateFormatter.timeZone = NSTimeZone(name: "GMT")
-		
-		return dateFormatter.stringFromDate(date)
-	}
-	
-	func getFullDate(date:String) -> NSDate{
-		let dateFormatter = NSDateFormatter()
-		dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-		dateFormatter.timeZone = NSTimeZone(name: "GMT")
-		
-		return dateFormatter.dateFromString(date)!
-	}
-
-	func fetchError(title: String = "No internet Connection", message:String = "Data might not updated."){
-		let notification = MPGNotification(title: title, subtitle: message, backgroundColor: UIColor.orangeColor(), iconImage: nil)
-		notification.show()
-	}
-	
 }
 
 extension TicketDetailsViewController: UITableViewDelegate{

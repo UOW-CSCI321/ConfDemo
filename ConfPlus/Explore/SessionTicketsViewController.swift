@@ -68,7 +68,7 @@ class SessionTicketsViewController: UIViewController {
 		
 		HUD.show(.Progress)
 		for session in sessionTickets  {
-			let date = self.getStringFromDate(session.startTime!)
+			let date = GeneralLibrary().getStringFromDate(session.startTime!)
 			
 			if self.dataSortedByDates.indexForKey(date) == nil {
 				self.dataSortedByDates[date] = [session]
@@ -80,8 +80,8 @@ class SessionTicketsViewController: UIViewController {
 		}
 		dates = Array(dataSortedByDates.keys).sort(<)
 		
-		if getStringFromDate(ticket.ticket[0].startTime!) == getStringFromDate(ticket.ticket[0].endTime!) {
-			dates = dates.filter{$0 == getStringFromDate(ticket.ticket[0].startTime!) }
+		if GeneralLibrary().getStringFromDate(ticket.ticket[0].startTime!) == GeneralLibrary().getStringFromDate(ticket.ticket[0].endTime!) {
+			dates = dates.filter{$0 == GeneralLibrary().getStringFromDate(ticket.ticket[0].startTime!) }
 		}
 		
 		tableView.reloadData()
@@ -115,7 +115,7 @@ extension SessionTicketsViewController: UITableViewDelegate{
 		cell.backgroundColor = UIColor.clearColor()
 		
 		cell.presentationName.text = item.name
-		cell.presentationTime.text = "\(getTimeFromDate(item.startTime!)) - \(getTimeFromDate(item.endTime!))"
+		cell.presentationTime.text = "\(GeneralLibrary().getTimeFromDate(item.startTime!)) - \(GeneralLibrary().getTimeFromDate(item.endTime!))"
 		cell.presentationLocation.text = item.room ?? ""
 		cell.presentationPrice.text = "$ \(item.price!)"
 		
@@ -138,36 +138,5 @@ extension SessionTicketsViewController: UITableViewDelegate{
 			let item = itemSection![row]
 			vc.ticket = item
 		}
-	}
-}
-
-//MARK:- Helpers function
-extension SessionTicketsViewController {
-	func unwrapPrice(price:String) -> String{
-		return price.componentsSeparatedByString(" ").last!
-	}
-	
-	func getTimeFromDate(date:NSDate) -> String {
-		let dateFormatter = NSDateFormatter()
-		dateFormatter.timeZone = NSTimeZone(name: "GMT")
-		dateFormatter.dateFormat = "HH:mm"
-		
-		return dateFormatter.stringFromDate(date)
-	}
-	
-	func getStringFromDate(date:NSDate) -> String{
-		let dateFormatter = NSDateFormatter()
-		dateFormatter.timeZone = NSTimeZone(name: "GMT")
-		dateFormatter.dateFormat = "YYYY-MM-dd"
-		
-		return dateFormatter.stringFromDate(date)
-	}
-	
-	func getDateFromString(date:String) -> NSDate{
-		let dateFormatter = NSDateFormatter()
-		dateFormatter.timeZone = NSTimeZone(name: "GMT")
-		dateFormatter.dateFormat = "YYYY-MM-dd"
-		
-		return dateFormatter.dateFromString(date)!
 	}
 }

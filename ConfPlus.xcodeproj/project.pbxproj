@@ -59,6 +59,7 @@
 		E93163931BC5E573007408C7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163921BC5E573007408C7 /* LoginViewController.swift */; };
 		E93163981BC62AB6007408C7 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163971BC62AB6007408C7 /* ExploreViewController.swift */; };
 		E9320A771D005CA300C7149A /* SessionTicketsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9320A761D005CA300C7149A /* SessionTicketsTableViewCell.swift */; };
+		E9320A791D005F0300C7149A /* GeneralLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9320A781D005F0300C7149A /* GeneralLibrary.swift */; };
 		E96D018C1CF1D9F400AC48EE /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96D018A1CF1D9F400AC48EE /* Message.swift */; };
 		E96D018E1CF1DA6600AC48EE /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96D018D1CF1DA6600AC48EE /* Message+CoreDataProperties.swift */; };
 		E97EB74F1CDF13E5009113A6 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7331CDF13E5009113A6 /* Session+CoreDataProperties.swift */; };
@@ -153,6 +154,7 @@
 		E93163921BC5E573007408C7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E93163971BC62AB6007408C7 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreViewController.swift; path = Explore/ExploreViewController.swift; sourceTree = "<group>"; };
 		E9320A761D005CA300C7149A /* SessionTicketsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionTicketsTableViewCell.swift; path = Explore/SessionTicketsTableViewCell.swift; sourceTree = "<group>"; };
+		E9320A781D005F0300C7149A /* GeneralLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralLibrary.swift; sourceTree = "<group>"; };
 		E96D018A1CF1D9F400AC48EE /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		E96D018D1CF1DA6600AC48EE /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E97EB7331CDF13E5009113A6 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+CoreDataProperties.swift"; path = "Model/Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 		E93163961BC62A76007408C7 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				E9320A781D005F0300C7149A /* GeneralLibrary.swift */,
 				E93163971BC62AB6007408C7 /* ExploreViewController.swift */,
 				E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */,
 				E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */,
@@ -613,6 +616,7 @@
 				C94AFA601C9811BD00EC88B6 /* EventLocationViewController.swift in Sources */,
 				E90201C31C9CC2E200C7839A /* EventDetailTableViewController.swift in Sources */,
 				C91E85E11CE75E5D0069333B /* User+CoreDataProperties.swift in Sources */,
+				E9320A791D005F0300C7149A /* GeneralLibrary.swift in Sources */,
 				E97EB7611CDF13E5009113A6 /* Billing+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
