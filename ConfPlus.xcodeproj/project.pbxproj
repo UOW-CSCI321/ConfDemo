@@ -378,8 +378,8 @@
 				E9D055C81CCF20510045BA86 /* PersonalDetailsTableViewCell.swift */,
 				C94AFA501C980A0B00EC88B6 /* PaymentViewController.swift */,
 				E9F3E17C1CFE9B660034A533 /* SessionTicketsViewController.swift */,
-				C94AFA521C980A5400EC88B6 /* ReceiptViewController.swift */,
 				E984AF251CFFD982006D4B5C /* SessionDetailViewController.swift */,
+				C94AFA521C980A5400EC88B6 /* ReceiptViewController.swift */,
 				E98F35111CEC6862002B1CC1 /* Explore.storyboard */,
 			);
 			name = Explore;

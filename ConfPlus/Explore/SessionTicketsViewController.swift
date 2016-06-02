@@ -49,6 +49,7 @@ class SessionTicketsViewController: UIViewController {
 		}
 		dates = Array(dataSortedByDates.keys).sort(<)
 		
+		//TODO: Better Algorithm for remove unrelated date
 		for index in (0..<dates.count).reverse() {
 			if !(dates[index] >= getStringFromDate(ticket.ticket[0].startTime!) && dates[index] <= getStringFromDate(ticket.ticket[0].endTime!)){
 				dates.removeAtIndex(index)
