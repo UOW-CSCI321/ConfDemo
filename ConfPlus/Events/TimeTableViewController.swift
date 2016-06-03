@@ -47,9 +47,9 @@ class TimeTableViewController: UIViewController {
         APIManager().getSessionsAndUserSessionsFromAPI(event, user: user) { result in
             print("hit")
             
-            let sessions = ModelHandler().getSessionsForEvent(event)
-            let numdays = self.countNumDays()
-            print(numdays)
+            self.sessions = ModelHandler().getSessionsForEvent(event)
+            //let numdays = self.countNumDays()
+            //print(numdays)
         }
     }
     

@@ -16,12 +16,13 @@ extension Session {
 
     @NSManaged var end_time: NSDate?
     @NSManaged var room_name: String?
+    @NSManaged var session_description: String?
     @NSManaged var speaker_email: String?
     @NSManaged var start_time: NSDate?
     @NSManaged var title: String?
-    @NSManaged var session_description: String?
+    @NSManaged var event_id: String?
     @NSManaged var event: Event?
-    @NSManaged var user: User?
     @NSManaged var tickets: NSSet?
+    @NSManaged var user: User?
 
 }

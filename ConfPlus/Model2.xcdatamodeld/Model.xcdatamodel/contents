@@ -77,6 +77,7 @@
     </entity>
     <entity name="Session" representedClassName=".Session" syncable="YES">
         <attribute name="end_time" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="event_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="room_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="session_description" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="speaker_email" optional="YES" attributeType="String" syncable="YES"/>
@@ -85,6 +86,12 @@
         <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="sessions" inverseEntity="Event" syncable="YES"/>
         <relationship name="tickets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ticket_Def" inverseName="session" inverseEntity="Ticket_Def" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="attending_sessions" inverseEntity="User" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="event_id"/>
+                <constraint value="title"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="Ticket_Def" representedClassName=".Ticket" syncable="YES">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
@@ -180,7 +187,7 @@
         <element name="Event_Tag" positionX="1620" positionY="639" width="128" height="73"/>
         <element name="Message" positionX="1161" positionY="639" width="128" height="150"/>
         <element name="Payment" positionX="1231" positionY="486" width="128" height="118"/>
-        <element name="Session" positionX="1852" positionY="716" width="128" height="178"/>
+        <element name="Session" positionX="1852" positionY="716" width="128" height="195"/>
         <element name="Ticket_Def" positionX="1861" positionY="936" width="128" height="208"/>
         <element name="Ticket_Record" positionX="1456" positionY="887" width="128" height="208"/>
         <element name="User" positionX="1413" positionY="408" width="128" height="433"/>
