@@ -176,13 +176,13 @@ extension APIManager{
 			"api_key"	:	server.KEY,
 			"app_secret":	server.SECRET,
 			"method"	:	"updateUser",
-			"email"		:	email,
-			"verified"	:	"1",
-			"fb_id"		:	"",
-			"linkedin_id":	"",
-			"active"	:	"",
-			"upgraded"	:	"",
-			"review"	:	"0",
+			"email"		:	email
+//			"verified"	:	"1",
+//			"fb_id"		:	"",
+//			"linkedin_id":	"",
+//			"active"	:	"",
+//			"upgraded"	:	"",
+//			"review"	:	"0",
 			]
 		
 		if let title = title { parameters["title"] = title }
@@ -190,9 +190,9 @@ extension APIManager{
 		if let last_name = last_name { parameters["last_name"] = last_name }
 		if let dob = dob {
 			if dob == "" {
-				parameters["dob"] = "1970-12-31 00:00"
+				parameters["dob"] = "1970-12-31 00:00:00"
 			} else {
-				parameters["dob"] = dob + " 00:00"
+				parameters["dob"] = dob + " 00:00:00"
 			}
 		}
 		if let street = street { parameters["street"] = street }
@@ -231,7 +231,7 @@ extension APIManager{
 		}
 	}
 	
-	func getPaymentHistory(email: String, completion: (result:Bool) -> ()){
+	func getPaymentHistory(email: String, completion: (result:Bool, json:JSON?) -> ()){
 		let paramaters = [
 			"api_key"	:	server.KEY,
 			"app_secret":	server.SECRET,
@@ -243,26 +243,19 @@ extension APIManager{
 			switch response.result{
 			case .Success:
 				if let value = response.result.value{
-					
 					let json = JSON(value)
 					if json["success"] {
-						for i in 0 ..< json["data"].count {
-							self.handler.addNewPaymentHistory(json["data"][i])
-						}
-						completion(result: true)
+						completion(result: true, json: json)
 					} else {
 						print(json["data"][0]["message"])
-						completion(result: false)
+						completion(result: false, json: nil)
 					}
 				}
-				
 			case .Failure(let error):
 				print(error.localizedDescription)
 				HUD.flash((.Label("No Internet Connection")), delay: 1)
-				completion(result: false)
-				
+				completion(result: false, json: nil)
 			}
-			
 		}
 	}
 	
