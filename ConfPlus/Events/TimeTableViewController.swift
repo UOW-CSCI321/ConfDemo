@@ -51,15 +51,37 @@ class TimeTableViewController: UIViewController {
         }
     }
     
+    func countNumDays(section:Int) -> Int //number of days is the number of sections
+    {
+        var diffdays = [String]()
+        diffdays.append(GeneralLibrary().getStringFromDate(self.sessions[0].start_time!))
+        print("initial value added: \(GeneralLibrary().getStringFromDate(self.sessions[0].start_time!))")
+        let count = self.sessions.count
+        for i in 0..<count
+        {
+            let currSessionDate = GeneralLibrary().getStringFromDate(self.sessions[i].start_time!)
+            print(currSessionDate)
+            if !diffdays.contains(currSessionDate)
+            {
+                diffdays.append(currSessionDate)
+                print("added")
+            }
+        }
+        
+        return 0
+    }
+    
 }
 
 extension TimeTableViewController: UITableViewDelegate{
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return 3
+        //return self.sessions.count
 	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return 2
+        //return countSessionInDay(section)
 	}
 	
 	func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

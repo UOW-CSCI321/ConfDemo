@@ -355,6 +355,7 @@
 			children = (
 				E9E0A64E1CDD869A00E187AD /* API */,
 				E9E0A64F1CDD8C6200E187AD /* ModelHandler.swift */,
+				C91254B41D01975100C63EF8 /* GeneralLibrary.swift */,
 				C9FD07E91CB23BD400C44595 /* Model */,
 				E93163661BC5E0B4007408C7 /* Main.storyboard */,
 				E93163601BC5E0B4007408C7 /* AppDelegate.swift */,
@@ -409,7 +410,6 @@
 		E9E0A64E1CDD869A00E187AD /* API */ = {
 			isa = PBXGroup;
 			children = (
-				C91254B41D01975100C63EF8 /* GeneralLibrary.swift */,
 				E9E0A64A1CDD805700E187AD /* APIManager.swift */,
 				E9E0A64C1CDD80B500E187AD /* APIServer.swift */,
 				E9024FF61CF9806F00DFD3AD /* APIManager-Ticketing.swift */,
