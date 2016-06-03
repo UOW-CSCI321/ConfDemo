@@ -41,7 +41,7 @@ class TimeTableViewController: UIViewController {
     }
     
     func getMySessionsFromAPI(event:Event, user:User) {
-        APIManager().getSessionsFromAPI(event/*, user: user*/) { result in
+        APIManager().getSessionsAndUserSessionsFromAPI(event, user: user) { result in
             print("hit")
         }
     }
