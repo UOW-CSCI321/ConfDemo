@@ -48,15 +48,25 @@ class TimeTableViewController: UIViewController {
             print("hit")
             
             let sessions = ModelHandler().getSessionsForEvent(event)
+            let numdays = self.countNumDays()
+            print(numdays)
         }
     }
     
-    func countNumDays(section:Int) -> Int //number of days is the number of sections
+    func countNumDays() -> Int //number of days is the number of sections
     {
-        var diffdays = [String]()
-        diffdays.append(GeneralLibrary().getStringFromDate(self.sessions[0].start_time!))
-        print("initial value added: \(GeneralLibrary().getStringFromDate(self.sessions[0].start_time!))")
         let count = self.sessions.count
+        if count == 0
+        {
+            return 0
+        }
+        
+        var diffdays = [String]()
+        let d1 = GeneralLibrary().getStringFromDate(self.sessions[0].start_time!)
+        
+        diffdays.append(d1)
+        print("initial value added: \(d1)")
+       
         for i in 0..<count
         {
             let currSessionDate = GeneralLibrary().getStringFromDate(self.sessions[i].start_time!)
@@ -68,7 +78,7 @@ class TimeTableViewController: UIViewController {
             }
         }
         
-        return 0
+        return diffdays.count
     }
     
 }
