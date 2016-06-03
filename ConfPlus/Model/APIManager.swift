@@ -190,6 +190,7 @@ class APIManager{
                 if let value = response.result.value {
                     let json = JSON(value)
                     if json["success"]{
+                        print(json["data"])
                         if let counter = json["data"].array?.count
                         {
                             for i in 0..<counter
