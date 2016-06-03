@@ -280,9 +280,9 @@
 				E9F136B61CD30CAF008A3CB6 /* RegisterViewController.swift */,
 				C94AFA731C98217C00EC88B6 /* AccountTableViewController.swift */,
 				C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */,
+				E9320A7A1D00D77C00C7149A /* NewBillingTableViewController.swift */,
 				E99270261CE43545005F2567 /* EditProfileTableViewController.swift */,
 				E9AF006A1CDABDE1004424A1 /* Account.storyboard */,
-				E9320A7A1D00D77C00C7149A /* NewBillingTableViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
