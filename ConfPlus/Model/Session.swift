@@ -14,4 +14,7 @@ class Session: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 
+    //get day
+    
+    //get time from - time to
 }

@@ -28,21 +28,26 @@ class TimeTableViewController: UIViewController {
         myUser = ModelHandler().getUser(email!)
         if myUser != nil
         {
-            //sessions = getSessionsForEventByUser
-            //sessions = ModelHandler().getSessionsFromAPI(event, myUser)!
-            //tableView.reloadData()
+            sessions = ModelHandler().getSessionsForEvent(event)
+            //self.tableView.reloadData()
             
             //TEMP HERE
-            getMySessionsFromAPI(event, user: myUser)
+            //getMySessionsFromAPI(event, user: myUser)
 
         }
 
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        getMySessionsFromAPI(event, user: myUser)
+    }
+    
     func getMySessionsFromAPI(event:Event, user:User) {
         APIManager().getSessionsAndUserSessionsFromAPI(event, user: user) { result in
             print("hit")
+            
+            let sessions = ModelHandler().getSessionsForEvent(event)
         }
     }
     

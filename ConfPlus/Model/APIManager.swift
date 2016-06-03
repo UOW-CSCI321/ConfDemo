@@ -164,55 +164,7 @@ class APIManager{
     }
     
     //Mark: Sessions Related
-    //temporary
-//    func getSessionsFromAPI(event:Event, completion: (result: Bool) -> Void) {
-//        guard let id = event.event_id else {
-//            completion(result: false)
-//            return
-//        }
-//        
-//        let parameters = [
-//            "api_key"	:	server.KEY,
-//            "app_secret":	server.SECRET,
-//            "method"	:	"getSessionForEvent",
-//            "event_id"	:	id
-//        ]
-//        
-//        Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
-//            switch response.result {
-//            case .Success:
-//                if let value = response.result.value {
-//                    let json = JSON(value)
-//                    if json["success"]{
-//                        if let counter = json["data"].array?.count
-//                        {
-//                            for i in 0..<counter
-//                            {
-//                                let session = self.handler.addNewSession(json["data"][i])
-//                                if session != nil
-//                                {
-//                                    //self.handler.saveSessionForUser(session!, user: user)
-//                                    self.handler.saveSessionForEvent(session!, event: event)
-//                                    completion(result: true)
-//                                }
-//
-//                            }
-//                        }
-//                        completion(result: true)
-//                    } else {
-//                        completion(result: false)
-//                    }
-//                }
-//                
-//            case .Failure(let error):
-//                print(error.localizedDescription)
-//                self.fetchError()
-//                completion(result: false)
-//            }
-//
-//        }
-//    }
-
+    
     func getSessionsAndUserSessionsFromAPI(event:Event, user:User, completion: (result: Bool) -> Void) {
         guard let id = event.event_id else {
             completion(result: false)

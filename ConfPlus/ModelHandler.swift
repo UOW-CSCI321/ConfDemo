@@ -131,7 +131,24 @@ class ModelHandler{
         performUpdate()
     }
     
-   // func getSessionsForEventByUser()
+    func getSessionsForEvent(event:Event) -> [Session]
+    {
+        //print("CONVERSATION ID:\(conversation.conversation_id)")
+        let fetch = NSFetchRequest(entityName: "Session")
+        fetch.predicate = NSPredicate(format: "event == %@", event)
+        fetch.sortDescriptors = [NSSortDescriptor(key: "start_time", ascending: true)]
+        
+        var sessions = [Session]()
+        do {
+            sessions = try context.executeFetchRequest(fetch) as! [Session]
+            
+            //print(messages.count)
+        } catch {
+            print("Could not retrieve events object")
+        }
+        return sessions
+
+    }
 	
     //MARK: - Venue Related
 	func getVenueByEvent(event: Event) -> Venue?{
