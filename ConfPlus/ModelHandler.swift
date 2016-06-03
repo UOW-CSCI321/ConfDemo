@@ -90,8 +90,17 @@ class ModelHandler{
         session.title = json["title"].string
         session.speaker_email = json["speaker_email"].string
         session.session_description = json["description"].string
+        
         session.start_time = serverStringToDate(json["start_time"].string!)
         session.end_time = serverStringToDate(json["end_time"].string!)
+        
+//        print(json)
+//        print(json["title"].string)
+//        print(json["speaker_email"].string)
+//        print(json["description"].string)
+//        
+//        print(json["start_time"].string!)
+//        print(json["end_time"].string!)
         
         performUpdate()
         

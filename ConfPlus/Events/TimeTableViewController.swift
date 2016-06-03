@@ -24,7 +24,6 @@ class TimeTableViewController: UIViewController {
         super.viewDidLoad()
 		navigationController?.hidesBarsOnSwipe = true
         
-        
         let email = user.stringForKey("email")
         myUser = ModelHandler().getUser(email!)
         if myUser != nil
@@ -33,10 +32,18 @@ class TimeTableViewController: UIViewController {
             //sessions = ModelHandler().getSessionsFromAPI(event, myUser)!
             //tableView.reloadData()
             
+            //TEMP HERE
+            getMySessionsFromAPI(event, user: myUser)
 
         }
 
         
+    }
+    
+    func getMySessionsFromAPI(event:Event, user:User) {
+        APIManager().getSessionsFromAPI(event/*, user: user*/) { result in
+            print("hit")
+        }
     }
     
 }
