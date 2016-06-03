@@ -29,6 +29,7 @@ struct Tickets {
 	var seat:String?
 	var startTime:NSDate?
 	var endTime:NSDate?
+	var conversation:String?
 	var count:String?
 }
 
@@ -49,6 +50,25 @@ class TicketDetailsViewController: UIViewController {
 	var sessionTickets = [Tickets]()
 	var selectedTickets = [Coupon]()
 	
+	func addToArray(data:JSON, inout array: [Tickets]){
+		let ticket = data["tickets"][0]
+		if ticket != nil {
+			array.append(Tickets(title: data["title"].string,
+				price: ticket["price"].string,
+				name: ticket["name"].string,
+				_class: ticket["class"].string,
+				type: ticket["type"].string,
+				venue: data["venue_id"].string,
+				room: data["room_name"].string,
+				seat: nil,
+				startTime: GeneralLibrary().getFullDate(data["start_time"].stringValue),
+				endTime: GeneralLibrary().getFullDate(data["end_time"].stringValue),
+				conversation: data["conversation_id"].string,
+				count: "0"))
+		}
+		
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -65,42 +85,14 @@ class TicketDetailsViewController: UIViewController {
 			if result{
 				for i in 0 ..< json!["data"].count {
 					let data = json!["data"][i]
-					
-					let startTime = GeneralLibrary().getFullDate(data["start_date"].stringValue)
-					let endTime = GeneralLibrary().getFullDate(data["end_date"].stringValue)
-					
-					if Int(GeneralLibrary().getMinutes(endTime))! % 5 != 0 {
-						self.eventTickets.append(Tickets(title:	data["title"].string,
-							price:	data["price"].string,
-							name:	data["name"].string,
-							_class: data["class"].string,
-							type:	data["type"].string,
-							venue:	data["venue"].string,
-							room:	data["room"].string,
-							seat:	data["seat_num"].string,
-							startTime:	startTime,
-							endTime:	endTime,
-							count:	"0"))
+					print(data)
+					if data["is_event"] == "true" {
+						self.addToArray(data, array: &self.eventTickets)
 					} else {
-						self.sessionTickets.append(Tickets(title:	data["title"].string,
-							price:	data["price"].string,
-							name:	data["name"].string,
-							_class: data["class"].string,
-							type:	data["type"].string,
-							venue:	data["venue"].string,
-							room:	data["room"].string,
-							seat:	data["seat_num"].string,
-							startTime:	startTime,
-							endTime:	endTime,
-							count:	"0"))
+						self.addToArray(data, array: &self.sessionTickets)
 					}
-					
 				}
 				
-				if self.eventTickets.count == 0 {
-					self.eventTickets = self.sessionTickets
-					self.sessionTickets.removeAll()
-				}
 				HUD.hide()
 				self.tableView.reloadData()
 			} else {

@@ -8,29 +8,43 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
+import PKHUD
+
+struct Payments {
+	var type: String?
+	var amount: String?
+}
 
 class HistoryTableViewController: UIViewController {
 	
 	@IBOutlet weak var tableView: UITableView!
-	var payment = [Payment]()
+	var payment = [Payments]()
 	
 	let user = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		payment = ModelHandler().getPaymentHistory()
     }
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
+		
 		if let email = user.stringForKey("email"){
-			APIManager().getPaymentHistory(email){ result in
+			HUD.show(.Progress)
+			APIManager().getPaymentHistory(email){ result, json in
+				self.payment.removeAll()
+				
 				if result {
-					self.payment = ModelHandler().getPaymentHistory()
-					self.tableView.reloadData()
+					for i in 0 ..< json!["data"].count {
+						let data = json!["data"][i]
+						self.payment.append(Payments(type: data["type"].string, amount: data["amount"].string))
+					}
 				}
+				HUD.hide()
+				self.tableView.reloadData()
 			}
 		}
 		
@@ -58,8 +72,8 @@ extension HistoryTableViewController: UITableViewDelegate{
 		if payment.count > 0 {
 			let row = indexPath.row
 			
-			cell.textLabel!.text = "\(payment[row].payment_id)"
-			cell.detailTextLabel?.text = "$ \(payment[row].amount)"
+			cell.textLabel!.text = "\(payment[row].type!)"
+			cell.detailTextLabel?.text = "$ \(payment[row].amount!)"
 		} else {
 			cell.textLabel!.text = "No payment history yet."
 			cell.detailTextLabel?.text = ""
