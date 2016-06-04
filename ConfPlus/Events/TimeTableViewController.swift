@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MPGNotification
 
 class TimeTableViewController: UIViewController {
     
@@ -47,9 +48,13 @@ class TimeTableViewController: UIViewController {
     }
     
     func getMySessionsFromAPI(event:Event, user:User) {
+        let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+        notification.duration = 60
+        notification.show()
+
         APIManager().getSessionsAndUserSessionsFromAPI(event, user: user) { result in
-            
-            
+  
+            notification.hidden = true
             self.sessions = ModelHandler().getSessionsForEvent(event)
             
             //let numdays = self.countNumDays()
