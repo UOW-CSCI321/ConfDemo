@@ -53,7 +53,10 @@ class TimeTableViewController: UIViewController {
             print(self.sessions)
             //let numdays = self.countNumDays()
             //print(numdays)
-            self.countNumRowsForSection(2)
+            let first = self.countNumRowsForSection(1)
+            let second = self.countNumRowsForSection(2)
+            let third = self.countNumRowsForSection(3)
+            print("num in each section \(first) \(second) \(third)")
         }
     }
     
@@ -85,21 +88,25 @@ class TimeTableViewController: UIViewController {
         return diffdays.count
     }
     
-    func countNumRowsForSection(section:Int) -> Int {
-        print(section)
+    func countNumRowsForSection(section:Int) -> Int? {
         let count = self.sessions.count
         
         var diffdays = [String]()
         let d1 = GeneralLibrary().getStringFromDate(self.sessions[0].start_time!)
         
         diffdays.append(d1)
-        print("initial value added: \(d1)")
+        //print("initial value added: \(d1)")
         
         var i = 0
         var counter = 0
         //for i in 0..<count
         while diffdays.count <= section
         {
+            if i == count
+            {
+                print("last element \(count) counter is \(counter)")
+                return counter
+            }
             let currSessionDate = GeneralLibrary().getStringFromDate(self.sessions[i].start_time!)
             print(currSessionDate)
             if !diffdays.contains(currSessionDate)
@@ -109,19 +116,19 @@ class TimeTableViewController: UIViewController {
                 print(diffdays.count)
                 if diffdays.count - 1 == section
                 {
-                    print(counter)
+                    print("there are \(counter) presentations in the section for day \(section)")
+                    return counter
                 }
                 else {
-                    counter = 0
+                    counter = 0 //reset to count the number of presentations for the next day
                 }
             }
             i += 1
             counter += 1
         }
-        print("there are \(counter) presentations in the section for day \(section)")
         
         
-        return 0
+        return nil
     }
     
 }
