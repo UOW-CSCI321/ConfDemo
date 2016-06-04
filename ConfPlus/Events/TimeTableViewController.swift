@@ -199,6 +199,22 @@ extension TimeTableViewController: UITableViewDelegate{
 		cell.presentationTime.text = "HH:MM - HH:MM"
 		cell.presentationLocation.text = "Building 1, Room 1"
 		cell.presentationPrice.text = "AUD 1.00"
+        
+        if self.sessions.count > 0
+        {
+            cell.presentationName.text = sessions[indexPath.row].title
+            
+            var time = GeneralLibrary().getTimeFromDate(sessions[indexPath.row].start_time!)
+            time += " - "
+            time += GeneralLibrary().getTimeFromDate(sessions[indexPath.row].end_time!)
+            cell.presentationTime.text = time
+            
+            var location = sessions[indexPath.row].room_name
+            cell.presentationLocation.text = location
+            
+            cell.presentationPrice.text = ""
+            
+        }
 		
 		return cell
 	}
