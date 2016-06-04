@@ -195,6 +195,7 @@ class APIManager{
                         {
                             for i in 0..<counter
                             {
+                                //check is session
                                 let session = self.handler.addNewSession(json["data"][i])
                                 //print(json["data"][i])
                                 if session != nil
@@ -205,6 +206,7 @@ class APIManager{
                                         self.handler.saveSessionForUser(session!, user: user)
                                     }
                                     self.handler.saveSessionForEvent(session!, event: event)
+                                    //print("session save in api: \(session?.title) \(session?.event_id) \(session?.event)")
                                     
                                 }
                             }
