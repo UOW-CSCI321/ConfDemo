@@ -13,12 +13,12 @@ import MPGNotification
 import PKHUD
 
 struct Coupon {
-	var ticket: [Tickets]
+	var ticket: [Sessions]
 	var name: String
 	var email: String
 }
 
-struct Tickets {
+struct Sessions {
 	var title:String?
 	var price:String?
 	var name:String?
@@ -46,14 +46,14 @@ class TicketDetailsViewController: UIViewController {
 	var event:Event!
 	let user = NSUserDefaults.standardUserDefaults()
 	
-	var eventTickets = [Tickets]()
-	var sessionTickets = [Tickets]()
+	var eventTickets = [Sessions]()
+	var sessionTickets = [Sessions]()
 	var selectedTickets = [Coupon]()
 	
-	func addToArray(data:JSON, inout array: [Tickets]){
+	func addToArray(data:JSON, inout array: [Sessions]){
 		let ticket = data["tickets"][0]
 		if ticket != nil {
-			array.append(Tickets(title: data["title"].string,
+			array.append(Sessions(title: data["title"].string,
 				price: ticket["price"].string,
 				name: ticket["name"].string,
 				_class: ticket["class"].string,

@@ -15,7 +15,7 @@ class PersonalDetailsViewController: UIViewController {
 	
 	var tickets = [Coupon]()
 	var event:Event!
-	var sessionTickets = [Tickets]()
+	var sessionTickets = [Sessions]()
 	let type = ["Name", "Email"]
 	
 	let user = NSUserDefaults.standardUserDefaults()

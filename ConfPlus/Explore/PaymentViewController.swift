@@ -16,7 +16,7 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 	
 	var tickets = [Coupon]()
 	var event:Event!
-	var sessionTickets = [Tickets]()
+	var sessionTickets = [Sessions]()
 	var totalPrice:Double = 0.0
 	
 	let user = NSUserDefaults.standardUserDefaults()
@@ -61,7 +61,7 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 		self.presentViewController(alertcontroller, animated: true, completion: nil)
 	}
 	
-	func selectSessionTicketDidFinish(controller: SessionTicketsViewController, email:String, session: [Tickets]) {
+	func selectSessionTicketDidFinish(controller: SessionTicketsViewController, email:String, session: [Sessions]) {
 		for index in 0..<tickets.count{
 			if tickets[index].email == email {
 				let entry = tickets[index].ticket[0]
@@ -135,9 +135,9 @@ extension PaymentViewController: UITableViewDelegate{
 		let section = indexPath.section
 		let row = indexPath.row
 		
-		var ticket:Tickets?
+		var ticket:Sessions?
 		if tickets.count == section {
-			ticket = Tickets(title: "", price: String(self.totalPrice), name: "TOTAL", _class: "", type: "", venue: "", room: "", seat: "", startTime: nil, endTime: nil, conversation: nil, count: nil)
+			ticket = Sessions(title: "", price: String(self.totalPrice), name: "TOTAL", _class: "", type: "", venue: "", room: "", seat: "", startTime: nil, endTime: nil, conversation: nil, count: nil)
 		} else {
 			ticket = tickets[section].ticket[row]
 		}
