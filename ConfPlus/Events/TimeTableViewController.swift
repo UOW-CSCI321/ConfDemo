@@ -30,7 +30,7 @@ class TimeTableViewController: UIViewController {
         if myUser != nil
         {
             sessions = ModelHandler().getSessionsForEvent(event)
-            print(sessions)
+            
             //self.tableView.reloadData()
             
             //TEMP HERE
@@ -47,17 +47,18 @@ class TimeTableViewController: UIViewController {
     
     func getMySessionsFromAPI(event:Event, user:User) {
         APIManager().getSessionsAndUserSessionsFromAPI(event, user: user) { result in
-            print("hit")
+            
             
             self.sessions = ModelHandler().getSessionsForEvent(event)
-            print(self.sessions)
+            
             //let numdays = self.countNumDays()
             //print(numdays)
-            let first = self.countNumRowsForSection(1)
-            let second = self.countNumRowsForSection(2)
-            let third = self.countNumRowsForSection(3)
-            let fourth = self.countNumRowsForSection(4)
-            print("num in each section \(first) \(second) \(third) \(fourth)")
+            
+//            let first = self.countNumRowsForSection(1)
+//            let second = self.countNumRowsForSection(2)
+//            let third = self.countNumRowsForSection(3)
+//            let fourth = self.countNumRowsForSection(4)
+//            print("num in each section \(first) \(second) \(third) \(fourth)")
         }
     }
     
@@ -73,16 +74,16 @@ class TimeTableViewController: UIViewController {
         let d1 = GeneralLibrary().getStringFromDate(self.sessions[0].start_time!)
         
         diffdays.append(d1)
-        print("initial value added: \(d1)")
+        //print("initial value added: \(d1)")
        
         for i in 0..<count
         {
             let currSessionDate = GeneralLibrary().getStringFromDate(self.sessions[i].start_time!)
-            print(currSessionDate)
+            //print(currSessionDate)
             if !diffdays.contains(currSessionDate)
             {
                 diffdays.append(currSessionDate)
-                print("added")
+                //print("added")
             }
         }
         
@@ -91,53 +92,55 @@ class TimeTableViewController: UIViewController {
     
     func countNumRowsForSection(section:Int) -> Int? {
         
-        //dummy
-        var sessions = [String]()
-        sessions.append("2016-10-02")
-        sessions.append("2016-10-02")
+        //DUMMY
+//        var sessions = [String]()
+//        sessions.append("2016-10-02")
+//        sessions.append("2016-10-02")
+//        
+//        sessions.append("2016-10-03")
+//        sessions.append("2016-10-03")
+//        
+//        sessions.append("2016-10-04")
+//        sessions.append("2016-10-04")
+//        sessions.append("2016-10-04")
+//        
+//        sessions.append("2016-10-05")
+//        sessions.append("2016-10-05")
+//        sessions.append("2016-10-05")
+//        sessions.append("2016-10-05")
+//        sessions.append("2016-10-05")
+//        sessions.append("2016-10-05")
         
-        sessions.append("2016-10-03")
-        sessions.append("2016-10-03")
-        
-        sessions.append("2016-10-04")
-        sessions.append("2016-10-04")
-        sessions.append("2016-10-04")
-        
-        sessions.append("2016-10-05")
-        sessions.append("2016-10-05")
-        sessions.append("2016-10-05")
-        sessions.append("2016-10-05")
-        sessions.append("2016-10-05")
-        sessions.append("2016-10-05")
+        let sectionM  = section + 1
        
-        let count = sessions.count //self.sessions.count
+        let count = self.sessions.count //sessions.count //DUMMY
         
         var diffdays = [String]()
-        let d1 = sessions[0]//GeneralLibrary().getStringFromDate(self.sessions[0].start_time!)
+        let d1 = GeneralLibrary().getStringFromDate(self.sessions[0].start_time!) //sessions[0] //DUMMY
         
         diffdays.append(d1)
         //print("initial value added: \(d1)")
         
         var i = 0
         var counter = 0
-        //for i in 0..<count
-        while diffdays.count <= section
+        
+        while diffdays.count <= sectionM
         {
             if i == count
             {
-                print("last element \(count) counter is \(counter)")
+                //print("last element \(count) counter is \(counter)")
                 return counter
             }
-            let currSessionDate = sessions[i] //GeneralLibrary().getStringFromDate(self.sessions[i].start_time!)
-            print(currSessionDate)
+            let currSessionDate = GeneralLibrary().getStringFromDate(self.sessions[i].start_time!) //sessions[i] //DUMMY
+            //print(currSessionDate)
             if !diffdays.contains(currSessionDate)
             {
                 diffdays.append(currSessionDate)
-                print("added")
-                print(diffdays.count)
-                if diffdays.count - 1 == section
+                //print("added")
+                //print(diffdays.count)
+                if diffdays.count - 1 == sectionM
                 {
-                    print("there are \(counter) presentations in the section for day \(section)")
+                    //print("there are \(counter) presentations in the section for day \(section)")
                     return counter
                 }
                 else {
@@ -157,15 +160,16 @@ class TimeTableViewController: UIViewController {
 extension TimeTableViewController: UITableViewDelegate{
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         self.numSections = self.countNumDays()
-        //return self.numSections
+        return self.numSections
         
-		return 3
+		//return 3
 	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        //let numRows = countNumRowsForSection(self.numSections)
-		return 2
+        let numRows = countNumRowsForSection(section)
+        return numRows!
+		//return 2
         //return countSessionInDay(section)
 	}
 	
