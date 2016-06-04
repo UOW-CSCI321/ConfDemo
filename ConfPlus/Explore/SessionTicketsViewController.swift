@@ -85,9 +85,7 @@ class SessionTicketsViewController: UIViewController {
 		}
 		dates = Array(dataSortedByDates.keys).sort(<)
 		
-		if GeneralLibrary().getStringFromDate(ticket.ticket[0].startTime!) == GeneralLibrary().getStringFromDate(ticket.ticket[0].endTime!) {
-			dates = dates.filter{$0 == GeneralLibrary().getStringFromDate(ticket.ticket[0].startTime!) }
-		}
+		dates = dates.filter{ $0 >= GeneralLibrary().getStringFromDate(ticket.ticket[0].startTime!) && $0 <= GeneralLibrary().getStringFromDate(ticket.ticket[0].endTime!) }
 		
 		tableView.reloadData()
 		HUD.hide()
