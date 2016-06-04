@@ -43,7 +43,8 @@ extension APIManager{
 			case .Failure(let error):
 				HUD.hide()
 				print(error.localizedDescription)
-				HUD.flash((.Label("No Internet Connection")), delay: 1)
+				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not be the latest.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+				notification.show()
 				completion(result: false)
 				
 			}
@@ -83,7 +84,8 @@ extension APIManager{
 			case .Failure(let error):
 				HUD.hide()
 				print(error.localizedDescription)
-				HUD.flash((.Label("No Internet Connection")), delay: 1)
+				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+				notification.show()
 				completion(result: false)
 				
 			}
@@ -109,7 +111,7 @@ extension APIManager{
 					if json["success"] {
 						HUD.hide()
 						let data = json["data"][0]
-						print(data)
+						//print(data)
 						self.user.setObject(data["title"].string, forKey: "title")
 						self.user.setObject(data["first_name"].string, forKey: "firstName")
 						self.user.setObject(data["last_name"].string, forKey: "lastName")
@@ -119,7 +121,7 @@ extension APIManager{
 						self.user.setObject(data["state"].string, forKey: "state")
 						self.user.setObject(data["country"].string, forKey: "country")
 						self.user.synchronize()
-						
+						self.handler.addNewUser(data)
 						completion(result: true, data: json["data"][0])
 					} else {
 						HUD.hide()
@@ -130,7 +132,8 @@ extension APIManager{
 			case .Failure(let error):
 				HUD.hide()
 				print(error.localizedDescription)
-				HUD.flash((.Label("No Internet Connection")), delay: 1)
+				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+				notification.show()
 				completion(result: false, data: nil)
 			}
 		}
@@ -171,19 +174,15 @@ extension APIManager{
 		
 	}
 	
+	
+	
 	func updateProfile(email: String, title: String?, first_name:String?, last_name:String?, dob:String?, street:String?, city:String?, state:String?, country:String?, completion:(result:Bool) -> ()){
 		var parameters = [
 			"api_key"	:	server.KEY,
 			"app_secret":	server.SECRET,
 			"method"	:	"updateUser",
 			"email"		:	email
-//			"verified"	:	"1",
-//			"fb_id"		:	"",
-//			"linkedin_id":	"",
-//			"active"	:	"",
-//			"upgraded"	:	"",
-//			"review"	:	"0",
-			]
+		]
 		
 		if let title = title { parameters["title"] = title }
 		if let first_name = first_name { parameters["first_name"] = first_name }
@@ -223,7 +222,8 @@ extension APIManager{
 			case .Failure(let error):
 				HUD.hide()
 				print(error.localizedDescription)
-				HUD.flash((.Label("No Internet Connection")), delay: 1)
+				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+				notification.show()
 				completion(result: false)
 				
 			}
@@ -243,6 +243,7 @@ extension APIManager{
 			switch response.result{
 			case .Success:
 				if let value = response.result.value{
+					
 					let json = JSON(value)
 					if json["success"] {
 						completion(result: true, json: json)
@@ -251,14 +252,17 @@ extension APIManager{
 						completion(result: false, json: nil)
 					}
 				}
+				
 			case .Failure(let error):
 				print(error.localizedDescription)
-				HUD.flash((.Label("No Internet Connection")), delay: 1)
+				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+				notification.show()
 				completion(result: false, json: nil)
+				
 			}
+			
 		}
 	}
-	
 	
 	func createBillingInfo(email: String, card:String, type:String, date:String, completion: (result:Bool) -> ()){
 		let paramaters = [
