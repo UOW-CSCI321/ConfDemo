@@ -40,6 +40,7 @@ class TicketProfileTableViewController: UITableViewController {
             titleDetailsLabel.text = title
             
             venueDetailsLabel.text = ticket?.venue_id
+            print(ticket?.venue_id)
             roomDetailLabel.text = ticket?.room_name
 			typeDetailLabel.text = ticket?.type
             classDetailsLabel.text = ticket?.ticket_class
