@@ -93,30 +93,34 @@ class TimeTableViewController: UIViewController {
     func countNumRowsForSection(section:Int) -> Int? {
         
         //DUMMY
-//        var sessions = [String]()
-//        sessions.append("2016-10-02")
-//        sessions.append("2016-10-02")
-//        
-//        sessions.append("2016-10-03")
-//        sessions.append("2016-10-03")
-//        
-//        sessions.append("2016-10-04")
-//        sessions.append("2016-10-04")
-//        sessions.append("2016-10-04")
-//        
-//        sessions.append("2016-10-05")
-//        sessions.append("2016-10-05")
-//        sessions.append("2016-10-05")
-//        sessions.append("2016-10-05")
-//        sessions.append("2016-10-05")
-//        sessions.append("2016-10-05")
+        var sessions = [String]()
+        sessions.append("2016-10-02")
+        sessions.append("2016-10-02")
+        
+        sessions.append("2016-10-03")
+        sessions.append("2016-10-03")
+        
+        sessions.append("2016-10-04")
+        sessions.append("2016-10-04")
+        sessions.append("2016-10-04")
+        
+        sessions.append("2016-10-05")
+        sessions.append("2016-10-05")
+        sessions.append("2016-10-05")
+        sessions.append("2016-10-05")
+        sessions.append("2016-10-05")
+        sessions.append("2016-10-05")
         
         let sectionM  = section + 1
        
-        let count = self.sessions.count //sessions.count //DUMMY
+        //let count = self.sessions.count
+        //DUMMY
+        let count = sessions.count
         
         var diffdays = [String]()
-        let d1 = GeneralLibrary().getStringFromDate(self.sessions[0].start_time!) //sessions[0] //DUMMY
+        //let d1 = GeneralLibrary().getStringFromDate(self.sessions[0].start_time!) //sessions[0]
+        //DUMMY
+        let d1 = sessions[0]
         
         diffdays.append(d1)
         //print("initial value added: \(d1)")
@@ -131,7 +135,9 @@ class TimeTableViewController: UIViewController {
                 //print("last element \(count) counter is \(counter)")
                 return counter
             }
-            let currSessionDate = GeneralLibrary().getStringFromDate(self.sessions[i].start_time!) //sessions[i] //DUMMY
+            //let currSessionDate = GeneralLibrary().getStringFromDate(self.sessions[i].start_time!)
+            //DUMMY
+            let currSessionDate = sessions[i]
             //print(currSessionDate)
             if !diffdays.contains(currSessionDate)
             {
