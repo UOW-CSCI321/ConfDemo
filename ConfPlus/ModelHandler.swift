@@ -140,7 +140,6 @@ class ModelHandler{
     //get sessions only for event
     func getSessionsForEvent(event:Event) -> [Session]
     {
-        //print("CONVERSATION ID:\(conversation.conversation_id)")
         let fetch = NSFetchRequest(entityName: "Session")
         fetch.predicate = NSPredicate(format: "event == %@", event)
         fetch.sortDescriptors = [NSSortDescriptor(key: "start_time", ascending: true)]

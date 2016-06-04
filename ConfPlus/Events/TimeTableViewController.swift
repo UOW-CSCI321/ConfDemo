@@ -29,6 +29,7 @@ class TimeTableViewController: UIViewController {
         if myUser != nil
         {
             sessions = ModelHandler().getSessionsForEvent(event)
+            print(sessions)
             //self.tableView.reloadData()
             
             //TEMP HERE
