@@ -67,4 +67,13 @@ class GeneralLibrary{
 		let notification = MPGNotification(title: title, subtitle: message, backgroundColor: UIColor.orangeColor(), iconImage: nil)
 		notification.show()
 	}
+    
+    func getDateAsAusStyleString(date:NSDate) -> String
+    {
+        let aus = NSDateFormatter()
+        aus.dateFormat = "EEEE - dd/M/yy"
+        let dstring = aus.stringFromDate(date)
+        
+        return dstring
+    }
 }

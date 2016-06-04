@@ -16,6 +16,7 @@ class TimeTableViewController: UIViewController {
     var myUser:User!
     var sessions = [Session]()
     var numSections:Int!
+    var diffdays = [String]()
     
 	@IBAction func backToTicketPurchaseView(sender: AnyObject) {
 		self.dismissViewControllerAnimated(true, completion: nil)
@@ -117,34 +118,34 @@ class TimeTableViewController: UIViewController {
         //DUMMY
         //let count = sessions.count
         
-        var diffdays = [String]()
-        let d1 = GeneralLibrary().getStringFromDate(self.sessions[0].start_time!) //sessions[0]
+        self.diffdays = [String]()
+        let d1 = GeneralLibrary().getDateAsAusStyleString(self.sessions[0].start_time!) //sessions[0]
         //DUMMY
         //let d1 = sessions[0]
         
-        diffdays.append(d1)
+        self.diffdays.append(d1)
         //print("initial value added: \(d1)")
         
         var i = 0
         var counter = 0
         
-        while diffdays.count <= sectionM
+        while self.diffdays.count <= sectionM
         {
             if i == count
             {
                 //print("last element \(count) counter is \(counter)")
                 return counter
             }
-            let currSessionDate = GeneralLibrary().getStringFromDate(self.sessions[i].start_time!)
+            let currSessionDate = GeneralLibrary().getDateAsAusStyleString(self.sessions[i].start_time!)
             //DUMMY
             //let currSessionDate = sessions[i]
             //print(currSessionDate)
-            if !diffdays.contains(currSessionDate)
+            if !self.diffdays.contains(currSessionDate)
             {
-                diffdays.append(currSessionDate)
+                self.diffdays.append(currSessionDate)
                 //print("added")
                 //print(diffdays.count)
-                if diffdays.count - 1 == sectionM
+                if self.diffdays.count - 1 == sectionM
                 {
                     //print("there are \(counter) presentations in the section for day \(section)")
                     return counter
@@ -180,6 +181,13 @@ extension TimeTableViewController: UITableViewDelegate{
 	}
 	
 	func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if self.diffdays.count > 0
+        {
+            let day = self.diffdays[section]
+            print(day)
+            return day
+        }
+        
 		return "Date-\(section)"
 	}
 	
