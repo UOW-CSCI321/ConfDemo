@@ -49,8 +49,8 @@ class TimeTableViewController: UIViewController {
             
             self.sessions = ModelHandler().getSessionsForEvent(event)
             print(self.sessions)
-            //let numdays = self.countNumDays()
-            //print(numdays)
+            let numdays = self.countNumDays()
+            print(numdays)
         }
     }
     
