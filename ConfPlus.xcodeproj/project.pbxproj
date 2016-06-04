@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		7ABBEDC83FCAF9328A671323 /* Pods_ConfPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29F9F87683BF1E1F1317CBE5 /* Pods_ConfPlus.framework */; };
 		C901591B1CFC30FF00FDCDAD /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C901591A1CFC30FF00FDCDAD /* User+CoreDataProperties.swift */; };
+		C90548491D02B4E90077495C /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90548481D02B4E90077495C /* Session+CoreDataProperties.swift */; };
 		C91254AF1D00126A00C63EF8 /* Ticket_Record+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91254AE1D00126A00C63EF8 /* Ticket_Record+CoreDataProperties.swift */; };
 		C91254B51D01975100C63EF8 /* GeneralLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91254B41D01975100C63EF8 /* GeneralLibrary.swift */; };
-		C91254B71D01B44F00C63EF8 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91254B61D01B44F00C63EF8 /* Session+CoreDataProperties.swift */; };
 		C919F53B1CF774A9008268B8 /* Venue+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C919F5391CF774A9008268B8 /* Venue+CoreDataProperties.swift */; };
 		C919F53C1CF774A9008268B8 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C919F53A1CF774A9008268B8 /* Venue.swift */; };
 		C919F5401CF8709C008268B8 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C919F53F1CF8709C008268B8 /* Event+CoreDataProperties.swift */; };
@@ -98,9 +98,9 @@
 		0DAF2938A2525B6CBC886A11 /* Pods-ConfPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConfPlus.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConfPlus/Pods-ConfPlus.release.xcconfig"; sourceTree = "<group>"; };
 		29F9F87683BF1E1F1317CBE5 /* Pods_ConfPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConfPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C901591A1CFC30FF00FDCDAD /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "Model/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C90548481D02B4E90077495C /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+CoreDataProperties.swift"; path = "Model/Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C91254AE1D00126A00C63EF8 /* Ticket_Record+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Ticket_Record+CoreDataProperties.swift"; path = "Model/Ticket_Record+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C91254B41D01975100C63EF8 /* GeneralLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralLibrary.swift; sourceTree = "<group>"; };
-		C91254B61D01B44F00C63EF8 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+CoreDataProperties.swift"; path = "Model/Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C919F5391CF774A9008268B8 /* Venue+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Venue+CoreDataProperties.swift"; path = "Model/Venue+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C919F53A1CF774A9008268B8 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Venue.swift; path = Model/Venue.swift; sourceTree = "<group>"; };
 		C919F53F1CF8709C008268B8 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Event+CoreDataProperties.swift"; path = "Model/Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -284,7 +284,7 @@
 			children = (
 				C919F53F1CF8709C008268B8 /* Event+CoreDataProperties.swift */,
 				C93A980C1CE04AE900418F53 /* Event.swift */,
-				C91254B61D01B44F00C63EF8 /* Session+CoreDataProperties.swift */,
+				C90548481D02B4E90077495C /* Session+CoreDataProperties.swift */,
 				E97EB7341CDF13E5009113A6 /* Session.swift */,
 				E97EB73D1CDF13E5009113A6 /* Payment+CoreDataProperties.swift */,
 				E97EB73E1CDF13E5009113A6 /* Payment.swift */,
@@ -598,7 +598,7 @@
 				C94AFA531C980A5400EC88B6 /* ReceiptViewController.swift in Sources */,
 				E96D018C1CF1D9F400AC48EE /* Message.swift in Sources */,
 				C94AFA741C98217C00EC88B6 /* AccountTableViewController.swift in Sources */,
-				C91254B71D01B44F00C63EF8 /* Session+CoreDataProperties.swift in Sources */,
+				C90548491D02B4E90077495C /* Session+CoreDataProperties.swift in Sources */,
 				E93163911BC5E294007408C7 /* viewEffect.swift in Sources */,
 				C94AFA581C980D7C00EC88B6 /* HomeViewController.swift in Sources */,
 				C946E9401CFF0BD300FB1121 /* QAViewController.swift in Sources */,

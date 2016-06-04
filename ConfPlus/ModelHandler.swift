@@ -84,6 +84,7 @@ class ModelHandler{
     
     //MARK: Session Related
     func addNewSession(json:JSON) -> Session? {
+        
         let entityDescription = NSEntityDescription.entityForName("Session", inManagedObjectContext: context)
         
         let session = Session(entity: entityDescription!, insertIntoManagedObjectContext: self.context)
@@ -94,7 +95,7 @@ class ModelHandler{
         session.start_time = serverStringToDate(json["start_time"].string!)
         session.end_time = serverStringToDate(json["end_time"].string!)
         session.event_id = json["event_id"].string
-        
+                
 //        print(json)
 //        print(json["title"].string)
 //        print(json["speaker_email"].string)
@@ -105,6 +106,7 @@ class ModelHandler{
         
         performUpdate()
         
+        //if the title (the id) is nil then we have already saved it into the database before
         if session.title == nil
         {
             return nil
@@ -135,6 +137,7 @@ class ModelHandler{
         
     }
     
+    //get sessions only for event
     func getSessionsForEvent(event:Event) -> [Session]
     {
         //print("CONVERSATION ID:\(conversation.conversation_id)")
@@ -153,6 +156,9 @@ class ModelHandler{
         return sessions
 
     }
+    
+    //get sessions only for an event that a user is attending
+    //TODO:
 	
     //MARK: - Venue Related
 	func getVenueByEvent(event: Event) -> Venue?{
