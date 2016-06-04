@@ -104,7 +104,7 @@ class ModelHandler{
 //        print(json["start_time"].string!)
 //        print(json["end_time"].string!)
         
-        performUpdate()
+        //performUpdate()
         
         //if the title (the id) is nil then we have already saved it into the database before
         if session.title == nil
@@ -123,7 +123,7 @@ class ModelHandler{
         //1 venue multiple events
         //1 user multiple sessions
         
-        performUpdate()
+        //performUpdate()
     }
     
     func saveSessionForEvent(session:Session, event:Event) {
