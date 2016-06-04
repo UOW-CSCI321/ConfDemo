@@ -56,7 +56,8 @@ class TimeTableViewController: UIViewController {
             let first = self.countNumRowsForSection(1)
             let second = self.countNumRowsForSection(2)
             let third = self.countNumRowsForSection(3)
-            print("num in each section \(first) \(second) \(third)")
+            let fourth = self.countNumRowsForSection(4)
+            print("num in each section \(first) \(second) \(third) \(fourth)")
         }
     }
     
@@ -89,10 +90,30 @@ class TimeTableViewController: UIViewController {
     }
     
     func countNumRowsForSection(section:Int) -> Int? {
-        let count = self.sessions.count
+        
+        //dummy
+        var sessions = [String]()
+        sessions.append("2016-10-02")
+        sessions.append("2016-10-02")
+        
+        sessions.append("2016-10-03")
+        sessions.append("2016-10-03")
+        
+        sessions.append("2016-10-04")
+        sessions.append("2016-10-04")
+        sessions.append("2016-10-04")
+        
+        sessions.append("2016-10-05")
+        sessions.append("2016-10-05")
+        sessions.append("2016-10-05")
+        sessions.append("2016-10-05")
+        sessions.append("2016-10-05")
+        sessions.append("2016-10-05")
+       
+        let count = sessions.count //self.sessions.count
         
         var diffdays = [String]()
-        let d1 = GeneralLibrary().getStringFromDate(self.sessions[0].start_time!)
+        let d1 = sessions[0]//GeneralLibrary().getStringFromDate(self.sessions[0].start_time!)
         
         diffdays.append(d1)
         //print("initial value added: \(d1)")
@@ -107,7 +128,7 @@ class TimeTableViewController: UIViewController {
                 print("last element \(count) counter is \(counter)")
                 return counter
             }
-            let currSessionDate = GeneralLibrary().getStringFromDate(self.sessions[i].start_time!)
+            let currSessionDate = sessions[i] //GeneralLibrary().getStringFromDate(self.sessions[i].start_time!)
             print(currSessionDate)
             if !diffdays.contains(currSessionDate)
             {
