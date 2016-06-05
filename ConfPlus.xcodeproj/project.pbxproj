@@ -239,7 +239,6 @@
 				C94AFA5D1C980ECE00EC88B6 /* MessagesTableViewController.swift */,
 				C93A984E1CE36B4C00418F53 /* MessageTableViewCell.swift */,
 				C9D9DC081CE88A0300CF55FA /* MessengerViewController.swift */,
-				C946E93F1CFF0BD300FB1121 /* QAViewController.swift */,
 				C94AFA621C981C5C00EC88B6 /* Ticket */,
 				C94AFA6D1C981F1A00EC88B6 /* AttendingViewController.swift */,
 				C94AFA6F1C981F8200EC88B6 /* Admin */,
@@ -254,6 +253,7 @@
 				C94AFA591C980DE400EC88B6 /* TimeTableViewController.swift */,
 				C94AFA5B1C980E3B00EC88B6 /* TalksViewController.swift */,
 				E9D055C61CCF1CCA0045BA86 /* TimetableTableViewCell.swift */,
+				C946E93F1CFF0BD300FB1121 /* QAViewController.swift */,
 			);
 			name = Timetable;
 			sourceTree = "<group>";

@@ -253,24 +253,6 @@
             </objects>
             <point key="canvasLocation" x="1828" y="-661"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Gkt-5c-1pa">
-            <objects>
-                <viewController id="2Fy-BC-e1v" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6HS-qe-aaa"/>
-                        <viewControllerLayoutGuide type="bottom" id="45D-fw-5iB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="zms-Om-31k">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EHn-i7-xZm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3429" y="-643"/>
-        </scene>
         <!--My Tickets-->
         <scene sceneID="g8s-ZI-bs3">
             <objects>
@@ -884,7 +866,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y65-J7-8Ne" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4240" y="-290"/>
+            <point key="canvasLocation" x="4268" y="-344"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="qSc-dn-UGh">
@@ -938,8 +920,8 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="OS1-bv-Ism"/>
                                                     <exclude reference="NNv-Az-Tdt"/>
+                                                    <exclude reference="OS1-bv-Ism"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -1034,6 +1016,9 @@
                                                     <state key="normal" title="Talk">
                                                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <segue destination="eQM-A2-dYS" kind="show" id="I03-hI-kLL"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1086,6 +1071,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bVk-TJ-Lpm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2627" y="-670"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="q5w-Zx-8fE">
+            <objects>
+                <viewController id="eQM-A2-dYS" customClass="QAViewController" customModule="ConfPlus" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ILJ-g6-KYR"/>
+                        <viewControllerLayoutGuide type="bottom" id="73F-uj-lVz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JU9-Za-Kzz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7IM-zu-UAZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3450" y="-686"/>
         </scene>
     </scenes>
     <resources>

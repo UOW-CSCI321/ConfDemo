@@ -102,6 +102,26 @@ class TalksViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
+    //dont think this is ever called
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+//        let sessions = self.getSessionsForSection(indexPath.section)
+//        let theSession = sessions![indexPath.row]
+//        //print(theSession)
+//        self.performSegueWithIdentifier("TimetableToTalk", sender: theSession)
+//        //self.performSegueWithIdentifier("TimetableToTalk", sender: self)
+        print(indexPath.section)
+        print(indexPath.row)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print(segue.identifier)
+        //if segue.identifier == "TalksToQA"{
+            let vc:QAViewController = segue.destinationViewController as! QAViewController
+            vc.session = self.mySession
+        //}
+    }
+    
 }
 
 //MARK:- TableView Helpers Function
