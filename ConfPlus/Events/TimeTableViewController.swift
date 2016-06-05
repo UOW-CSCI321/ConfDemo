@@ -212,9 +212,9 @@ class TimeTableViewController: UIViewController {
             {
                 self.diffdays.append(currSessionDate)
                 sessionsForDay.removeLast()
-                print("WE SHOULD HAVE SESSIONS FOR DAY")
-                print(sessionsForDay)
-                print("DONE")
+//                print("WE SHOULD HAVE SESSIONS FOR DAY")
+//                print(sessionsForDay)
+//                print("DONE")
                 //print("added")
                 //print(diffdays.count)
                 if self.diffdays.count - 1 == sectionM
@@ -276,27 +276,29 @@ class TimeTableViewController: UIViewController {
 		cell.presentationLocation.text = "Building 1, Room 1"
 		cell.presentationPrice.text = "AUD 1.00"
         
-        print("INDEX PATH: row \(indexPath.row), section \(indexPath.section)")
-        let first = getSessionsForSection(0)
-        let second = getSessionsForSection(1)
-        let third = getSessionsForSection(2)
-        print("first")
-        print(first)
-        print("second")
-        print(second)
-        print("third")
-        print(third)
+//        print("INDEX PATH: row \(indexPath.row), section \(indexPath.section)")
+//        let first = getSessionsForSection(0)
+//        let second = getSessionsForSection(1)
+//        let third = getSessionsForSection(2)
+//        print("first")
+//        print(first)
+//        print("second")
+//        print(second)
+//        print("third")
+//        print(third)
+        let sessionForSection = getSessionsForSection(indexPath.section)
+        //let thisSession = sessionForSection![indexPath.row]
         
-        if self.sessions.count > 0
+        if sessionForSection!.count > 0
         {
-            cell.presentationName.text = sessions[indexPath.row].title
+            cell.presentationName.text = sessionForSection![indexPath.row].title
             
-            var time = GeneralLibrary().getTimeFromDate(sessions[indexPath.row].start_time!)
+            var time = GeneralLibrary().getTimeFromDate(sessionForSection![indexPath.row].start_time!)
             time += " - "
-            time += GeneralLibrary().getTimeFromDate(sessions[indexPath.row].end_time!)
+            time += GeneralLibrary().getTimeFromDate(sessionForSection![indexPath.row].end_time!)
             cell.presentationTime.text = time
             
-            var location = sessions[indexPath.row].room_name
+            var location = sessionForSection![indexPath.row].room_name
             cell.presentationLocation.text = location
             
             cell.presentationPrice.text = ""
