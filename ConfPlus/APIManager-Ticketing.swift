@@ -110,7 +110,7 @@ extension APIManager{
 	func addSessionAttendee(event_id:String, tickets:Coupon){
 		
 		for ticket in tickets.ticket {
-			let parameters = [
+			var parameters = [
 				"api_key": server.KEY,
 				"app_secret": server.SECRET,
 				"method" : "addSessionAttendee",
@@ -122,9 +122,9 @@ extension APIManager{
 				"email" : tickets.email
 			]
 			
-			if let venue_id = ticket.venue_id { parameters["venue_id"] = venue_id }
-			if let room_name = ticket.room_name { parameters["room_name"] = room_name }
-			if let venue_id = ticket.venue_id { parameters["venue_id"] = venue_id }
+			if let venue_id = ticket.venue { parameters["venue_id"] = venue_id }
+			if let room_name = ticket.room { parameters["room_name"] = room_name }
+			if let venue_id = ticket.seat { parameters["seat_num"] = venue_id }
 			
 			Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
 				switch response.result {
@@ -133,6 +133,7 @@ extension APIManager{
 						let json = JSON(value)
 						if json["success"]{
 						} else {
+							print("failed to addSessionAttendee")
 						}
 					}
 					

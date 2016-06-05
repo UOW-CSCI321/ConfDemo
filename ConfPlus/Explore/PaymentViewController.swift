@@ -39,20 +39,8 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 		}
 		
 		let alertcontroller = UIAlertController(title: "Payment Information", message: "Total Price: $ \(totalPrice)", preferredStyle: .Alert)
-		let paypalAction = UIAlertAction(title: "PayPal", style: .Default){ UIAlertAction in
-			
-//			APIManager().makePayment(email, type: "Event Tickets", amount: String(self.totalPrice), payment_date: GeneralLibrary().getFullStringFromDate(NSDate())){
-//				result in
-//				if result{
-//					for ticket in self.tickets {
-//						APIManager().addSessionAttendee(self.event.event_id!, tickets: ticket)
-//					}
-//					self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
-//				} else {
-//					HUD.flash(.Label("Payment Failed, please try again"), delay: 1)
-//				}
-//			}
-			self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
+		let paypalAction = UIAlertAction(title: "Credit Card", style: .Default){ UIAlertAction in
+			self.makePayment(email)
 			alertcontroller.dismissViewControllerAnimated(true, completion: nil)
 		}
 		let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
@@ -61,20 +49,44 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 		self.presentViewController(alertcontroller, animated: true, completion: nil)
 	}
 	
-	func selectSessionTicketDidFinish(controller: SessionTicketsViewController, email:String, session: [Sessions]) {
-		for index in 0..<tickets.count{
-			if tickets[index].email == email {
-				let entry = tickets[index].ticket[0]
-				tickets[index].ticket.removeAll()
-				
-				tickets[index].ticket.append(entry)
-				for tit in session {
-					tickets[index].ticket.append(tit)
+	func makePayment(email:String){
+		if event.payee == nil { event.payee = "merchant@cy.my" }
+		if event.cardNum == nil { event.cardNum = "1234 5678 9012 3456" }
+		
+		APIManager().makePayment(email, type: "Event Tickets",
+		                         amount: String(self.totalPrice),
+		                         payment_date: GeneralLibrary().getFullStringFromDate(NSDate()),
+		                         payee: event.payee!,
+		                         cardNum: event.cardNum!){ result in
+			if result{
+				for ticket in self.tickets {
+					APIManager().addSessionAttendee(self.event.event_id!, tickets: ticket)
 				}
-				
-				break
+				self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
+			} else {
+				HUD.flash(.Label("Payment Failed, please try again"), delay: 1)
 			}
 		}
+		self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
+	}
+	
+	func selectSessionTicketDidFinish(controller: SessionTicketsViewController, email:String, col:Int, session: [Sessions]) {
+		if tickets[col].email == email {
+			let entry = tickets[col].ticket[0]
+			tickets[col].ticket.removeAll()
+			
+			tickets[col].ticket.append(entry)
+			for tit in session {
+				tickets[col].ticket.append(tit)
+			}
+		}
+//		for index in 0..<tickets.count{
+//			if tickets[index].email == email {
+//				
+//				
+//				break
+//			}
+//		}
 		controller.navigationController?.popViewControllerAnimated(true)
 		tableView.reloadData()
 	}
@@ -86,6 +98,7 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 			vc.sessionTickets = sessionTickets
 			vc.ticket = tickets[col!]
 			vc.event = event
+			vc.col = col
 			vc.delegate = self
 		}
 	}
@@ -105,9 +118,7 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 	func performLogin(){
 		let storyboard : UIStoryboard = UIStoryboard(name: "Account", bundle: nil)
 		let vc : LoginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
-		
 		let navigationController = UINavigationController(rootViewController: vc)
-		
 		
 		self.presentViewController(navigationController, animated: true, completion: nil)
 	}

@@ -11,7 +11,7 @@ import UIKit
 import PKHUD
 
 protocol selectSessionTicketDelegate{
-	func selectSessionTicketDidFinish(controller:SessionTicketsViewController, email:String, session:[Sessions])
+	func selectSessionTicketDidFinish(controller:SessionTicketsViewController, email:String, col:Int, session:[Sessions])
 }
 
 class SessionTicketsViewController: UIViewController {
@@ -21,6 +21,7 @@ class SessionTicketsViewController: UIViewController {
 	var sessionTickets = [Sessions]()
 	var ticket:Coupon!
 	var event:Event!
+	var col:Int!
 	
 	var dataSortedByDates = Dictionary<String, [Sessions]>()
 	var dates = [String]()
@@ -60,7 +61,7 @@ class SessionTicketsViewController: UIViewController {
 			
 			
 			//if sessions.count > 0 {
-				del.selectSessionTicketDidFinish(self, email: ticket.email, session: sessions)
+			del.selectSessionTicketDidFinish(self, email: ticket.email, col: col, session: sessions)
 			//} else {
 			//	navigationController?.popViewControllerAnimated(true)
 			//}
