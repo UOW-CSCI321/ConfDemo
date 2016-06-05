@@ -61,7 +61,7 @@ class TalksViewController: UITableViewController {
             APIManager().getUserInformation(self.mySession.speaker_email!, completion: { result, json in
                 if result {
                     //let data = json["data"][0]
-                    print(json["first_name"].string)
+                    //print(json["first_name"].string)
                     //print(data)
                     
                     self.topic.speakerName = "\(json["first_name"].string!) \(json["last_name"].string!)"
