@@ -9,6 +9,7 @@
 
 import UIKit
 import PKHUD
+import MPGNotification
 
 
 class TalksViewController: UITableViewController {
@@ -29,16 +30,7 @@ class TalksViewController: UITableViewController {
         super.viewDidLoad()
        
         HUD.show(.Progress)
-        //APIManager().getSession(self.event.event_id!, title: self.ticket.title!){ result, json in
-            //if result{
-//                let data = json!["data"][0]
-//                
-//                self.topic = Topic(email: data["speaker_email"].string,
-//                                   speakerName: nil,
-//                                   topic: data["title"].string,
-//                                   room: data["room_name"].string,
-//                                   description: data["description"].string)
-        print(mySession.session_description)
+        
         self.topic = Topic(email: self.mySession.speaker_email,
                            speakerName: nil,
                            topic: self.mySession.title,
@@ -47,7 +39,25 @@ class TalksViewController: UITableViewController {
         
         if self.mySession.speaker_email != nil {
             //get user from model handler before getting from api
-            //TODO ^
+            if let myself = ModelHandler().getUser(self.mySession.speaker_email!) {
+                self.avatar.image = myself.getImage()
+                GeneralLibrary().makeImageCircle(self.avatar)
+                self.update()
+            }
+        } else {
+            self.update()
+        }
+        self.tableView.reloadData()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        if self.mySession.speaker_email != nil {
+            
+            let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+            notification.duration = 60
+            notification.show()
+            
+            //from api
             APIManager().getUserInformation(self.mySession.speaker_email!, completion: { result, json in
                 if result {
                     //let data = json["data"][0]
@@ -63,10 +73,11 @@ class TalksViewController: UITableViewController {
                             if let myself2 = ModelHandler().getUser(self.mySession.speaker_email!) {
                                 self.avatar.image = myself2.getImage()
                                 GeneralLibrary().makeImageCircle(self.avatar)
+                                notification.hidden = true
                             }
                         }
                     }
-
+                    
                     
                     self.update()
                 }
@@ -74,22 +85,7 @@ class TalksViewController: UITableViewController {
         } else {
             self.update()
         }
-        
-//                if self.topic.email != nil {
-//                    APIManager().getUser(self.topic.email!, completion: { result, json in
-//                        if result {
-//                            let data = json!["data"][0]
-//                            self.topic.speakerName = "\(data["first_name"].string!) \(data["last_name"].string!)"
-//                            self.labelSpeakerName.text = self.topic.speakerName
-//                            
-//                            self.update()
-//                        }
-//                    })
-//                } else {
-//                    self.update()
-//                }
-           // }
-        //}
+        self.tableView.reloadData()
     }
     
     func update(){
