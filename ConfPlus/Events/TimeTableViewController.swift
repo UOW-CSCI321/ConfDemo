@@ -58,8 +58,8 @@ class TimeTableViewController: UIViewController {
   
             notification.hidden = true
             self.sessions = ModelHandler().getSessionsForEvent(event)
-            print("printing sessions")
-            print(self.sessions)
+            //print("printing sessions")
+            //print(self.sessions)
             
             self.timetableTableView.reloadData()
             
@@ -260,7 +260,7 @@ class TimeTableViewController: UIViewController {
         if self.diffdays.count > 0
         {
             let day = self.diffdays[section]
-            print(day)
+            //print(day)
             return day
         }
         
@@ -298,7 +298,7 @@ class TimeTableViewController: UIViewController {
             time += GeneralLibrary().getTimeFromDate(sessionForSection![indexPath.row].end_time!)
             cell.presentationTime.text = time
             
-            var location = sessionForSection![indexPath.row].room_name
+            var location = sessionForSection![indexPath.row].room_name            
             cell.presentationLocation.text = location
             
             cell.presentationPrice.text = ""

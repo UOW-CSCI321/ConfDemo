@@ -95,6 +95,7 @@ class ModelHandler{
         session.start_time = serverStringToDate(json["start_time"].string!)
         session.end_time = serverStringToDate(json["end_time"].string!)
         session.event_id = json["event_id"].string
+        session.room_name = json["room_name"].string
                 
 //        print(json)
 //        print(json["title"].string)
