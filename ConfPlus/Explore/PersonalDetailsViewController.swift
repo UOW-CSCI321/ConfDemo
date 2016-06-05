@@ -16,7 +16,7 @@ class PersonalDetailsViewController: UIViewController {
 	var tickets = [Coupon]()
 	var event:Event!
 	var sessionTickets = [Tickets]()
-	let type = ["Name", "Email"]
+	let type = ["Name", "Email", "Class", "Type"]
 	
 	let user = NSUserDefaults.standardUserDefaults()
     
@@ -78,16 +78,28 @@ extension PersonalDetailsViewController: UITableViewDelegate {
 	}
 	
 	func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return tickets[section].ticket[0].name
+		return "\(tickets[section].ticket[0].title!) - \(tickets[section].ticket[0].name!)"
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
 		let cell = tableView.dequeueReusableCellWithIdentifier("personalCell", forIndexPath: indexPath) as! PersonalDetailsTableViewCell
 		
+		let section = indexPath.section
 		let row = indexPath.row
 		cell.detailType.text = type[row]
 		cell.typeResponseTextField.placeholder = type[row]
+		
+		switch type[row] {
+			case "Type":
+				cell.typeResponseTextField.text = tickets[section].ticket[0].type
+				cell.typeResponseTextField.enabled = false
+			case "Class":
+				cell.typeResponseTextField.text = tickets[section].ticket[0]._class
+				cell.typeResponseTextField.enabled = false
+		default:
+			cell.typeResponseTextField.enabled = true
+		}
 		
 		if indexPath.section == 0 {
 			if let email = user.stringForKey("email"), name = user.stringForKey("firstName") {
