@@ -25,6 +25,7 @@ class TalksViewController: UITableViewController {
     var topic = Topic()
     
     var mySession:Session!
+    let user = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,11 +116,32 @@ class TalksViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print(segue.identifier)
-        //if segue.identifier == "TalksToQA"{
-            let vc:QAViewController = segue.destinationViewController as! QAViewController
-            vc.session = self.mySession
-        //}
+        let vc:QAViewController = segue.destinationViewController as! QAViewController
+        vc.session = self.mySession
+        
+        vc.senderId = user.stringForKey("email")
+        
+        var title:String = self.topic.topic!
+        
+        //title = "123456789123456789123456789123456789"
+        //handles long names
+        if title.characters.count > 23 { //27
+            let n = title.characters.count
+            var numGoBack = title.characters.count - 23
+            numGoBack -= (numGoBack + numGoBack)
+            let r = title.startIndex.advancedBy(0)..<title.endIndex.advancedBy(numGoBack)
+            
+            title = title.substringWithRange(r)
+            title += "... Q&A"
+        }else{
+            title += " Q&A"
+        }
+        
+        vc.title = title
+        vc.senderDisplayName = "test"
+        //messengerVC.title = userConversations[row].name
+        //messengerVC.senderDisplayName = userConversations[row].lastmsg_email
+        self.hidesBottomBarWhenPushed = true
     }
     
 }
