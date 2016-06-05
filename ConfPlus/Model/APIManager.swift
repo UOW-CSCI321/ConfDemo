@@ -692,14 +692,41 @@ class APIManager{
 
     }
     
-    func getConversation(conversation_id:String, completion: (Bool) -> Void) {
+    func getConversation(conversation_id:String, completion: (result: Bool) -> Void) {
         let parameters = [
             "api_key": server.KEY,
             "app_secret": server.SECRET,
             "method" : "getConversation",
-            "conversation_id" : conversation_id,
+            "conversation_id" : conversation_id
         ]
         
+        Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    if (json["data"]["message"].string != nil)
+                    {
+                        print(json["data"]["message"].string)
+                        
+                    }else{
+                        //print(json["data"][0])
+                        let convo = self.handler.addNewConversation(json["data"][0])
+                        print(convo.conversation_id)
+                        //self.handler.performUpdate()
+                        completion(result: true)
+                    }
+                    completion(result: true)
+                }
+                
+            case .Failure(let error):
+                print(error.localizedDescription)
+                let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+                notification.show()
+                completion(result: false)
+            }
+            
+        }
         //self.handler.addNewConversation(json["data"][i])
         //self.handler.performUpdate()
     }

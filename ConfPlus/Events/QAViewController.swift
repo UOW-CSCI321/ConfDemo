@@ -173,6 +173,13 @@ class QAViewController: JSQMessagesViewController {
             if convo_id != nil{
                 print(convo_id)
                 //need to get Conversation not conversation id
+                APIManager().getConversation(convo_id!) { result in
+                    print("here")
+                   //get from model
+                    let convoArrayOf1 = ModelHandler().getAConversation(convo_id!)
+                    let convo = convoArrayOf1[0]
+                    print(convo.conversation_id)
+                }
                 
                 //get user
                     //add relationship between user and conversation

@@ -452,6 +452,23 @@ class ModelHandler{
 
     }
     
+    func getAConversation(conversation_id:String) -> [Conversation]
+    {
+        let fetch = NSFetchRequest(entityName: "Conversation")
+        fetch.predicate = NSPredicate(format: "conversation_id == %@", conversation_id)
+        fetch.fetchLimit = 1
+        
+        var conversation = [Conversation]()
+        do {
+            conversation = try context.executeFetchRequest(fetch) as! [Conversation]
+            //print(events[0])
+        } catch {
+            print("Could not retrieve conversation objects")
+        }
+        return conversation
+
+    }
+    
     //MARK: - Ticket Related
     func addNewTicket(json: JSON) -> Ticket_Record? {
         let entityDescription = NSEntityDescription.entityForName("Ticket_Record", inManagedObjectContext: context)
