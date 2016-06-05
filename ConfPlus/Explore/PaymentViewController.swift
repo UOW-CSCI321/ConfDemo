@@ -16,7 +16,7 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 	
 	var tickets = [Coupon]()
 	var event:Event!
-	var sessionTickets = [Sessions]()
+	var sessionTickets = [Tickets]()
 	var totalPrice:Double = 0.0
 	
 	let user = NSUserDefaults.standardUserDefaults()
@@ -70,7 +70,7 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 		self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
 	}
 	
-	func selectSessionTicketDidFinish(controller: SessionTicketsViewController, email:String, col:Int, session: [Sessions]) {
+	func selectSessionTicketDidFinish(controller: SessionTicketsViewController, email:String, col:Int, session: [Tickets]) {
 		if tickets[col].email == email {
 			let entry = tickets[col].ticket[0]
 			tickets[col].ticket.removeAll()
@@ -80,13 +80,6 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 				tickets[col].ticket.append(tit)
 			}
 		}
-//		for index in 0..<tickets.count{
-//			if tickets[index].email == email {
-//				
-//				
-//				break
-//			}
-//		}
 		controller.navigationController?.popViewControllerAnimated(true)
 		tableView.reloadData()
 	}
@@ -146,9 +139,9 @@ extension PaymentViewController: UITableViewDelegate{
 		let section = indexPath.section
 		let row = indexPath.row
 		
-		var ticket:Sessions?
+		var ticket:Tickets?
 		if tickets.count == section {
-			ticket = Sessions(title: "", price: String(self.totalPrice), name: "TOTAL", _class: "", type: "", venue: "", room: "", seat: "", startTime: nil, endTime: nil, conversation: nil, count: nil)
+			ticket = Tickets(title: "", price: String(self.totalPrice), name: "TOTAL", _class: "", type: "", venue: "", room: "", seat: "", startTime: nil, endTime: nil, count: nil)
 		} else {
 			ticket = tickets[section].ticket[row]
 		}

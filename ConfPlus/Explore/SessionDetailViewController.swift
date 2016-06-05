@@ -27,7 +27,7 @@ class SessionDetailViewController: UITableViewController {
 	@IBOutlet weak var textViewDescription: UITextView!
 	
 	var event:Event!
-	var ticket:Sessions!
+	var ticket:Tickets!
 	var topic = Topic()
 	
     override func viewDidLoad() {

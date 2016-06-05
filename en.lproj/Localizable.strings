@@ -33,3 +33,5 @@
 "city" = "City";
 "state" = "State";
 "country" = "Country";
+
+"selectTicket" = "Please select ticket to continue";

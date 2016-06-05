@@ -11,19 +11,19 @@ import UIKit
 import PKHUD
 
 protocol selectSessionTicketDelegate{
-	func selectSessionTicketDidFinish(controller:SessionTicketsViewController, email:String, col:Int, session:[Sessions])
+	func selectSessionTicketDidFinish(controller:SessionTicketsViewController, email:String, col:Int, session:[Tickets])
 }
 
 class SessionTicketsViewController: UIViewController {
 	
 	@IBOutlet weak var tableView: UITableView!
 	
-	var sessionTickets = [Sessions]()
+	var sessionTickets = [Tickets]()
 	var ticket:Coupon!
 	var event:Event!
 	var col:Int!
 	
-	var dataSortedByDates = Dictionary<String, [Sessions]>()
+	var dataSortedByDates = Dictionary<String, [Tickets]>()
 	var dates = [String]()
 	
 	var delegate:selectSessionTicketDelegate?
@@ -40,7 +40,7 @@ class SessionTicketsViewController: UIViewController {
 	
 	@IBAction func updateSessionTickets(sender: AnyObject) {
 		if let del = delegate {
-			var sessions = [Sessions]()
+			var sessions = [Tickets]()
 			for section in 0..<tableView.numberOfSections{
 				for row in 0..<tableView.numberOfRowsInSection(section){
 					let cell:SessionTicketsTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as! SessionTicketsTableViewCell
