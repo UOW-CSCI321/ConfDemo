@@ -243,6 +243,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Timetable" id="RcM-k7-hGy"/>
+                    <connections>
+                        <outlet property="timetableTableView" destination="tQ8-zu-utS" id="OgM-4w-inf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Yg-oy-oQF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

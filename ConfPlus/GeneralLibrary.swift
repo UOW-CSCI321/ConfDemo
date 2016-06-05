@@ -29,7 +29,17 @@ class GeneralLibrary{
 		
 		return dateFormatter.stringFromDate(date)
 	}
-	
+    
+    func getDateAsAusStyleString(date:NSDate) -> String
+    {
+        let aus = NSDateFormatter()
+        aus.timeZone = NSTimeZone(name: "GMT")
+        aus.dateFormat = "EEEE - dd/M/yy"
+        let dstring = aus.stringFromDate(date)
+        
+        return dstring
+    }
+    
 	func getDateFromString(date:String) -> NSDate{
 		let dateFormatter = NSDateFormatter()
 		dateFormatter.timeZone = NSTimeZone(name: "GMT")
@@ -67,13 +77,4 @@ class GeneralLibrary{
 		let notification = MPGNotification(title: title, subtitle: message, backgroundColor: UIColor.orangeColor(), iconImage: nil)
 		notification.show()
 	}
-    
-    func getDateAsAusStyleString(date:NSDate) -> String
-    {
-        let aus = NSDateFormatter()
-        aus.dateFormat = "EEEE - dd/M/yy"
-        let dstring = aus.stringFromDate(date)
-        
-        return dstring
-    }
 }

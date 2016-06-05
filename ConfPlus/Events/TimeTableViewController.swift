@@ -19,6 +19,7 @@ class TimeTableViewController: UIViewController {
     var numSections:Int!
     var diffdays = [String]()
     
+    @IBOutlet weak var timetableTableView: UITableView!
 	@IBAction func backToTicketPurchaseView(sender: AnyObject) {
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
@@ -32,7 +33,7 @@ class TimeTableViewController: UIViewController {
         if myUser != nil
         {
             sessions = ModelHandler().getSessionsForEvent(event)
-            
+            self.timetableTableView.reloadData()
             //self.tableView.reloadData()
             
             //TEMP HERE
@@ -56,6 +57,10 @@ class TimeTableViewController: UIViewController {
   
             notification.hidden = true
             self.sessions = ModelHandler().getSessionsForEvent(event)
+            print("printing sessions")
+            print(self.sessions)
+            
+            self.timetableTableView.reloadData()
             
             //let numdays = self.countNumDays()
             //print(numdays)
@@ -118,13 +123,19 @@ class TimeTableViewController: UIViewController {
 //        sessions.append("2016-10-05")
         
         let sectionM  = section + 1
+
+//        print("PRINTIN SESSION IN COUNT NUM ROWS FOR SECTION")
+//        print(self.sessions)
+//        print("END")
        
         let count = self.sessions.count
         //DUMMY
         //let count = sessions.count
         
+        
         self.diffdays = [String]()
         let d1 = GeneralLibrary().getDateAsAusStyleString(self.sessions[0].start_time!) //sessions[0]
+//        let d1 = GeneralLibrary().getStringFromDate(self.sessions[0].start_time!)
         //DUMMY
         //let d1 = sessions[0]
         
@@ -142,6 +153,7 @@ class TimeTableViewController: UIViewController {
                 return counter
             }
             let currSessionDate = GeneralLibrary().getDateAsAusStyleString(self.sessions[i].start_time!)
+//            let currSessionDate = GeneralLibrary().getStringFromDate(self.sessions[i].start_time!)
             //DUMMY
             //let currSessionDate = sessions[i]
             //print(currSessionDate)
@@ -167,9 +179,9 @@ class TimeTableViewController: UIViewController {
         return nil
     }
     
-}
+//}
 
-extension TimeTableViewController: UITableViewDelegate{
+//extension TimeTableViewController: UITableViewDelegate{
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         self.numSections = self.countNumDays()
         return self.numSections
@@ -234,4 +246,5 @@ extension TimeTableViewController: UITableViewDelegate{
 			// TODO: Assign Value into it
 		}
 	}
+//}
 }
