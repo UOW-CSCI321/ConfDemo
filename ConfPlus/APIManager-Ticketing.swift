@@ -119,11 +119,12 @@ extension APIManager{
 				"ticket_name" : ticket.name!,
 				"class" : ticket._class!,
 				"type" : ticket.type!,
-				"venue_id" : ticket.venue!,
-				"room_name" : ticket.room!,
-				"seat_num" : ticket.seat!,
 				"email" : tickets.email
 			]
+			
+			if let venue_id = ticket.venue_id { parameters["venue_id"] = venue_id }
+			if let room_name = ticket.room_name { parameters["room_name"] = room_name }
+			if let venue_id = ticket.venue_id { parameters["venue_id"] = venue_id }
 			
 			Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
 				switch response.result {
@@ -145,15 +146,17 @@ extension APIManager{
 		
 	}
 	
-	func makePayment(email:String, type:String, amount:String, payment_date:String, completion: (result: Bool) -> ()){
+	func makePayment(email:String, type:String, amount:String, payment_date:String, payee:String, cardNum:String, completion: (result: Bool) -> ()){
 		let parameters = [
-			"api_key": server.KEY,
-			"app_secret": server.SECRET,
-			"method" : "addSessionAttendee",
-			"type"	: type,
-			"amount" : amount,
-			"payment_date": payment_date,
-			"email" : email
+			"api_key"	:	server.KEY,
+			"app_secret":	server.SECRET,
+			"method"	:	"makePayment",
+			"type"		:	type,
+			"amount"	:	amount,
+			"payment_date":	payment_date,
+			"email"		:	email,
+			"payee"		:	payee,
+			"cardNum"	:	cardNum
 		]
 		
 		Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
