@@ -27,9 +27,9 @@ class QAViewController: JSQMessagesViewController {
 //    var timeIsOpen = [Bool]()
 //    var returnHeight:CGFloat = 0.0
 //    //var refresher: UIRefreshControl!
-//    var isDispatchEmpty:Bool = true
-//    var databaseMessages = [Message]()
-//    var conversation:Conversation!
+    var isDispatchEmpty:Bool = true
+    var databaseMessages = [Message]()
+    var conversation:Conversation!
 //    var failedMessages = [Int]() //position of the failed message in messages
 //    var users = [User]()
 //    var bgColour = UIColor()
@@ -38,6 +38,7 @@ class QAViewController: JSQMessagesViewController {
 //    var timer = NSTimer()
     
     var session:Session!
+    var userEmail:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,27 +112,22 @@ class QAViewController: JSQMessagesViewController {
     
     
     func getMessagesFromAPI() {
-//        if isDispatchEmpty {
-//            isDispatchEmpty = false
-//            let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-//            notification.show()
-//            
-//            APIManager().getMessagesForConversation(conversation){ result in
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    notification.hidden = true
-//                    self.isDispatchEmpty = true
-//                    self.databaseMessages = ModelHandler().getMessageForConversation(self.conversation)!
-//                    print("MESSAGE COUNT: \(self.databaseMessages.count)")
-//                    self.messagesToJSQMessages()
-//                    //                    self.events = ModelHandler().getEvents("0")
-//                    //                    self.EventsTableView.reloadData()
-//                    
-//                    //                    if self.refresher.refreshing {
-//                    //                        self.refresher.endRefreshing()
-//                    //                    }
-//                }
-//            }
-//        }
+        if isDispatchEmpty {
+            isDispatchEmpty = false
+            let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+            notification.show()
+            
+            APIManager().getMessagesForConversation(conversation){ result in
+                dispatch_async(dispatch_get_main_queue()) {
+                    notification.hidden = true
+                    self.isDispatchEmpty = true
+                    self.databaseMessages = ModelHandler().getMessageForConversation(self.conversation)!
+                    print("MESSAGE COUNT: \(self.databaseMessages.count)")
+                    print(self.databaseMessages)
+                    //self.messagesToJSQMessages()
+                }
+            }
+        }
     }
     
     func getLatestServerMessage() {
@@ -177,8 +173,17 @@ class QAViewController: JSQMessagesViewController {
                     print("here")
                    //get from model
                     let convoArrayOf1 = ModelHandler().getAConversation(convo_id!)
-                    let convo = convoArrayOf1[0]
-                    print(convo.conversation_id)
+                    self.conversation = convoArrayOf1[0]
+                    //print(self.conversation.conversation_id)
+                    
+                    //ModelHandler().getUser(self.userEmail)
+                    //THE CONVERSATION HAS NOW BEEN SAVED
+                    //api manager get users from conversation (Conversation)
+                    APIManager().getUsersForConversationFromAPI(self.conversation) { result in
+                        print(result)
+                        self.getMessagesFromAPI()
+                    }
+                    
                 }
                 
                 //get user
@@ -191,7 +196,7 @@ class QAViewController: JSQMessagesViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         addConvoForSession()
-        //getMessagesFromAPI()
+        //getMessagesFromAPI() called in add convo for session instead
     }
     
     override func viewWillDisappear(animated: Bool) {

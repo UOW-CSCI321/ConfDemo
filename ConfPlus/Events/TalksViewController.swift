@@ -108,6 +108,7 @@ class TalksViewController: UITableViewController {
         vc.session = self.mySession
         
         vc.senderId = user.stringForKey("email")
+        vc.userEmail = user.stringForKey("email")
         
         var title:String = self.topic.topic!
         
