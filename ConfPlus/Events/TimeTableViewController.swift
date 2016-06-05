@@ -18,6 +18,7 @@ class TimeTableViewController: UIViewController {
     var sessions = [Session]()
     var numSections:Int!
     var diffdays = [String]()
+    var prevSection:Int!
     
     @IBOutlet weak var timetableTableView: UITableView!
 	@IBAction func backToTicketPurchaseView(sender: AnyObject) {
@@ -179,6 +180,59 @@ class TimeTableViewController: UIViewController {
         return nil
     }
     
+    func getSessionsForSection(section:Int) -> /*[Session]*/ Int? {
+        let sectionM  = section + 1
+        
+        let count = self.sessions.count
+        
+        var sessionsForDay = [Session]()
+        
+        self.diffdays = [String]()
+        let d1 = GeneralLibrary().getDateAsAusStyleString(self.sessions[0].start_time!) //sessions[0]
+        
+        self.diffdays.append(d1)
+        //print("initial value added: \(d1)")
+        
+        var i = 0
+        var counter = 0
+        
+        while self.diffdays.count <= sectionM
+        {
+            if i == count
+            {
+                //print("last element \(count) counter is \(counter)")
+                return counter
+            }
+            let currSessionDate = GeneralLibrary().getDateAsAusStyleString(self.sessions[i].start_time!)
+            sessionsForDay.append(self.sessions[i])
+          
+            if !self.diffdays.contains(currSessionDate)
+            {
+                self.diffdays.append(currSessionDate)
+                print("WE SHOULD HAVE SESSIONS FOR DAY")
+                print(sessionsForDay)
+                print("DONE")
+                //print("added")
+                //print(diffdays.count)
+                if self.diffdays.count - 1 == sectionM
+                {
+                    //print("there are \(counter) presentations in the section for day \(section)")
+                    return counter
+                }
+                else {
+                    counter = 0 //reset to count the number of presentations for the next day
+                    sessionsForDay = [Session]()
+                }
+            }
+            i += 1
+            counter += 1
+        }
+        
+        
+        return nil
+
+    }
+    
 //}
 
 //extension TimeTableViewController: UITableViewDelegate{
@@ -216,6 +270,9 @@ class TimeTableViewController: UIViewController {
 		cell.presentationTime.text = "HH:MM - HH:MM"
 		cell.presentationLocation.text = "Building 1, Room 1"
 		cell.presentationPrice.text = "AUD 1.00"
+        
+        print("INDEX PATH: row \(indexPath.row), section \(indexPath.section)")
+        let temp = getSessionsForSection(1)
         
         if self.sessions.count > 0
         {
