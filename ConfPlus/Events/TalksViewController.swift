@@ -103,7 +103,6 @@ class TalksViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let vc:QAViewController = segue.destinationViewController as! QAViewController
         vc.session = self.mySession

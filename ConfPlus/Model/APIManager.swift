@@ -691,6 +691,18 @@ class APIManager{
         }
 
     }
+    
+    func getConversation(conversation_id:String, completion: (Bool) -> Void) {
+        let parameters = [
+            "api_key": server.KEY,
+            "app_secret": server.SECRET,
+            "method" : "getConversation",
+            "conversation_id" : conversation_id,
+        ]
+        
+        //self.handler.addNewConversation(json["data"][i])
+        //self.handler.performUpdate()
+    }
 
 }
 

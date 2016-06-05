@@ -172,6 +172,10 @@ class QAViewController: JSQMessagesViewController {
         APIManager().getAddConversationidForSession(self.session.event_id!, title: self.session.title!) { result, convo_id in
             if convo_id != nil{
                 print(convo_id)
+                //need to get Conversation not conversation id
+                
+                //get user
+                    //add relationship between user and conversation
             }
         }
         
