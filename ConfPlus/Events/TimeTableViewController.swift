@@ -180,7 +180,7 @@ class TimeTableViewController: UIViewController {
         return nil
     }
     
-    func getSessionsForSection(section:Int) -> /*[Session]*/ Int? {
+    func getSessionsForSection(section:Int) -> [Session]? {
         let sectionM  = section + 1
         
         let count = self.sessions.count
@@ -201,14 +201,17 @@ class TimeTableViewController: UIViewController {
             if i == count
             {
                 //print("last element \(count) counter is \(counter)")
-                return counter
+                //return counter
+                return sessionsForDay
             }
             let currSessionDate = GeneralLibrary().getDateAsAusStyleString(self.sessions[i].start_time!)
             sessionsForDay.append(self.sessions[i])
+            //print(sessionsForDay)
           
             if !self.diffdays.contains(currSessionDate)
             {
                 self.diffdays.append(currSessionDate)
+                sessionsForDay.removeLast()
                 print("WE SHOULD HAVE SESSIONS FOR DAY")
                 print(sessionsForDay)
                 print("DONE")
@@ -217,11 +220,13 @@ class TimeTableViewController: UIViewController {
                 if self.diffdays.count - 1 == sectionM
                 {
                     //print("there are \(counter) presentations in the section for day \(section)")
-                    return counter
+                    //return counter
+                    return sessionsForDay
                 }
                 else {
                     counter = 0 //reset to count the number of presentations for the next day
                     sessionsForDay = [Session]()
+                    sessionsForDay.append(self.sessions[i])
                 }
             }
             i += 1
@@ -272,7 +277,15 @@ class TimeTableViewController: UIViewController {
 		cell.presentationPrice.text = "AUD 1.00"
         
         print("INDEX PATH: row \(indexPath.row), section \(indexPath.section)")
-        let temp = getSessionsForSection(1)
+        let first = getSessionsForSection(0)
+        let second = getSessionsForSection(1)
+        let third = getSessionsForSection(2)
+        print("first")
+        print(first)
+        print("second")
+        print(second)
+        print("third")
+        print(third)
         
         if self.sessions.count > 0
         {
