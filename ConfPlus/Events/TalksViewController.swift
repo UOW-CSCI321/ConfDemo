@@ -46,11 +46,24 @@ class TalksViewController: UITableViewController {
                            description: self.mySession.session_description)
         
         if self.mySession.speaker_email != nil {
-            APIManager().getUser(self.mySession.speaker_email!, completion: { result, json in
+            //get user from model handler before getting from api
+            //TODO ^
+            APIManager().getUserInformation(self.mySession.speaker_email!, completion: { result, json in
                 if result {
-                    let data = json!["data"][0]
-                    self.topic.speakerName = "\(data["first_name"].string!) \(data["last_name"].string!)"
+                    //let data = json["data"][0]
+                    print(json["first_name"].string)
+                    //print(data)
+                    
+                    self.topic.speakerName = "\(json["first_name"].string!) \(json["last_name"].string!)"
                     self.labelSpeakerName.text = self.topic.speakerName
+                    
+                    //get profile image
+                    if let myself = ModelHandler().getUser(self.mySession.speaker_email!) {
+                        APIManager().getUserProfilePicFromAPI(myself) { result in
+                            print("here")
+                        }
+                    }
+
                     
                     self.update()
                 }
