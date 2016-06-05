@@ -259,9 +259,13 @@ class TimeTableViewController: UIViewController {
 	func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if self.diffdays.count > 0
         {
-            let day = self.diffdays[section]
-            //print(day)
-            return day
+            //print(self.diffdays.count)
+            if self.diffdays.count > section
+            {
+                let day = self.diffdays[section]
+                //print(day)
+                return day
+            }
         }
         
 		return "Date-\(section)"
@@ -274,7 +278,7 @@ class TimeTableViewController: UIViewController {
 		cell.presentationName.text = "Presentation Name"
 		cell.presentationTime.text = "HH:MM - HH:MM"
 		cell.presentationLocation.text = "Building 1, Room 1"
-		cell.presentationPrice.text = "AUD 1.00"
+		cell.presentationPrice.text = ""
         
         cell.addToCartLabel.text = ""
         cell.addToCartButton.hidden = true
@@ -304,8 +308,6 @@ class TimeTableViewController: UIViewController {
             var location = sessionForSection![indexPath.row].room_name            
             cell.presentationLocation.text = location
             
-            cell.presentationPrice.text = ""
-            
         }
         
 		
@@ -313,14 +315,44 @@ class TimeTableViewController: UIViewController {
 	}
 	
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		self.performSegueWithIdentifier("goToPresentationDetailView", sender: self)
+        
+        let sessions = self.getSessionsForSection(indexPath.section)
+        let theSession = sessions![indexPath.row]
+        //print(theSession)
+        self.performSegueWithIdentifier("TimetableToTalk", sender: theSession)
+		//self.performSegueWithIdentifier("TimetableToTalk", sender: self)
 	}
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		if segue.identifier == "goToPresentationDetailView"{
+        //print(segue.identifier)
+		if segue.identifier == "TimetableToTalk"{
 			let vc = segue.destinationViewController as! TalksViewController
+            vc.mySession = sender as! Session
+            print(sender)
+//           let itemSection = sender!.section
+//            let item = sender!.row
+//            print(sender)
+//            if itemSection != nil
+//            {
+//                print(itemSection)
+//                print(item)
+//            }
 			// TODO: Assign Value into it
 		}
 	}
+    
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "goToSessionDetail"{
+//            let vc = segue.destinationViewController as! SessionDetailViewController
+//            vc.event = event
+//            
+//            let row = sender!.row
+//            let sec = sender!.section
+//            
+//            let itemSection = dataSortedByDates[dates[sec]]
+//            let item = itemSection![row]
+//            vc.ticket = item
+//        }
+//    }
 //}
 }
