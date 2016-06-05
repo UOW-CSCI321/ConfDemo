@@ -23,10 +23,12 @@
     </entity>
     <entity name="Event" representedClassName=".Event" syncable="YES">
         <attribute name="attend" optional="YES" attributeType="String" defaultValueString="0" syncable="YES"/>
+        <attribute name="cardNum" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="event_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="from_date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="payee" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="poster" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="poster_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reminder" optional="YES" attributeType="String" syncable="YES"/>
@@ -169,7 +171,7 @@
     <elements>
         <element name="Billing" positionX="1231" positionY="351" width="128" height="103"/>
         <element name="Conversation" positionX="1132" positionY="810" width="128" height="165"/>
-        <element name="Event" positionX="1836" positionY="351" width="128" height="300"/>
+        <element name="Event" positionX="1836" positionY="351" width="128" height="330"/>
         <element name="Event_Roles" positionX="1611" positionY="528" width="128" height="88"/>
         <element name="Event_Tag" positionX="1620" positionY="639" width="128" height="73"/>
         <element name="Message" positionX="1161" positionY="639" width="128" height="150"/>

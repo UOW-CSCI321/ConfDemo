@@ -59,6 +59,8 @@ class ModelHandler{
 		event.url = json["url"].string
 		event.venue_id = json["venue_id"].string
         event.security_num = json["contact_num"].string
+		event.payee = json["payee"].string
+		event.cardNum = json["cardNum"].string
         event.attend = attending
 		
 		performUpdate()
