@@ -30,7 +30,7 @@ struct Tickets {
 	var seat:String?
 	var startTime:NSDate?
 	var endTime:NSDate?
-	var endSales:NSDate?
+	var endSales:String?
 	var count:String?
 }
 
@@ -67,10 +67,10 @@ class TicketDetailsViewController: UIViewController {
 			                   seat: nil,
 			                   startTime: GeneralLibrary().getFullDate(data["start_time"].stringValue),
 			                   endTime: GeneralLibrary().getFullDate(data["end_time"].stringValue),
-			                   endSales: GeneralLibrary().getFullDate(info["sale_end_date"].stringValue),
+			                   endSales: info["sale_end_date"].string,
 			                   count: "0")
 				
-				if GeneralLibrary.getStringFromDate(NSDate()) <= GeneralLibrary.getStringFromDate(tit.endSales){
+				if GeneralLibrary().getFullStringFromDate(NSDate()) <= tit.endSales || tit.endSales == nil {
 					if array.indexForKey(tit.title!) == nil {
 						array[tit.title!] = [tit]
 					} else {
@@ -98,10 +98,13 @@ class TicketDetailsViewController: UIViewController {
 				for i in 0 ..< json!["data"].count {
 					let data = json!["data"][i]
 					print(data)
-					if data["is_event"] == "true" {
-						self.addToArray(data, array: &self.eventTickets)
-					} else {
-						self.addToArray(data, array: &self.sessionTickets)
+					if data["privacy"] == "public"{
+						if data["is_event"] == "true" {
+							self.addToArray(data, array: &self.eventTickets)
+						} else {
+							self.addToArray(data, array: &self.sessionTickets)
+						}
+
 					}
 					self.titles = Array(self.eventTickets.keys)
 				}
