@@ -185,7 +185,8 @@ extension TicketDetailsViewController: UITableViewDelegate{
 	
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		let section = indexPath.section
-		let cell:TicketTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: section)) as! TicketTableViewCell
+		let row = indexPath.row
+		let cell:TicketTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as! TicketTableViewCell
 		
 		self.ticketCount.text = cell.ticketCount.text
 		self.ticketName.text = cell.ticketName.text
