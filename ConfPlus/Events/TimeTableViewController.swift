@@ -276,6 +276,9 @@ class TimeTableViewController: UIViewController {
 		cell.presentationLocation.text = "Building 1, Room 1"
 		cell.presentationPrice.text = "AUD 1.00"
         
+        cell.addToCartLabel.text = ""
+        cell.addToCartButton.hidden = true
+        
 //        print("INDEX PATH: row \(indexPath.row), section \(indexPath.section)")
 //        let first = getSessionsForSection(0)
 //        let second = getSessionsForSection(1)
@@ -304,6 +307,7 @@ class TimeTableViewController: UIViewController {
             cell.presentationPrice.text = ""
             
         }
+        
 		
 		return cell
 	}

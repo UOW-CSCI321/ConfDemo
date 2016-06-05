@@ -220,6 +220,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="addToCartButton" destination="SeW-TM-qg6" id="uVX-d2-LMQ"/>
+                                            <outlet property="addToCartLabel" destination="bje-XR-PFN" id="lFQ-wx-GP7"/>
                                             <outlet property="presentationLocation" destination="wle-lf-1QW" id="uXo-Lz-wpo"/>
                                             <outlet property="presentationName" destination="Hv2-kS-JHG" id="Est-ff-Eap"/>
                                             <outlet property="presentationPrice" destination="aqO-Wy-2EA" id="Rdw-qe-z2m"/>
