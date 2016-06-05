@@ -15,9 +15,10 @@ class PersonalDetailsViewController: UIViewController {
 	
 	var tickets = [Coupon]()
 	var event:Event!
+	var sessionTickets = [Tickets]()
 	let type = ["Name", "Email"]
 	
-	let hud = PKHUD()
+	let user = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,7 @@ class PersonalDetailsViewController: UIViewController {
 					
 					let detail = cell.typeResponseTextField.text
 					if detail == "" {
-						HUD.show(.Label("Fields must not be empty"))
+						HUD.flash(.Label("Fields must not be empty"), delay: 1)
 						return false
 					}
 					
@@ -59,6 +60,7 @@ class PersonalDetailsViewController: UIViewController {
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "goToConfirmation" {
 			let vc = segue.destinationViewController as! PaymentViewController
+			vc.sessionTickets = sessionTickets
 			vc.tickets = tickets
 			vc.event = event
 		}
@@ -83,8 +85,19 @@ extension PersonalDetailsViewController: UITableViewDelegate {
 		
 		let cell = tableView.dequeueReusableCellWithIdentifier("personalCell", forIndexPath: indexPath) as! PersonalDetailsTableViewCell
 		
-		cell.detailType.text = type[indexPath.row]
-		cell.typeResponseTextField.placeholder = type[indexPath.row]
+		let row = indexPath.row
+		cell.detailType.text = type[row]
+		cell.typeResponseTextField.placeholder = type[row]
+		
+		if indexPath.section == 0 {
+			if let email = user.stringForKey("email"), name = user.stringForKey("firstName") {
+				if cell.typeResponseTextField.placeholder == "Name" && cell.typeResponseTextField.text != nil {
+					cell.typeResponseTextField.text = name
+				} else if cell.typeResponseTextField.placeholder == "Email" && cell.typeResponseTextField.text != nil {
+					cell.typeResponseTextField.text = email
+				}
+			}
+		}
 		
 		return cell
 	}

@@ -8,37 +8,50 @@
 
 import Foundation
 import UIKit
+import PKHUD
 
-class PaymentViewController: UIViewController {
+class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 	
 	@IBOutlet weak var tableView: UITableView!
 	
 	var tickets = [Coupon]()
 	var event:Event!
-	var totalPrice = 0.00
+	var sessionTickets = [Tickets]()
+	var totalPrice:Double = 0.0
+	
+	let user = NSUserDefaults.standardUserDefaults()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 	
-	override func viewDidAppear(animated: Bool) {
-		super.viewDidAppear(animated)
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
 		
-		totalPrice = 0.00
-		for section in 0..<tableView.numberOfSections{
-			for row in 0..<tableView.numberOfRowsInSection(section){
-				let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section))
-				
-				totalPrice += Double((cell?.detailTextLabel?.text)!)!
-			}
-		}
-		tableView.reloadData()
+		updateTotalPrice()
 	}
 	
 	//MARK: IBActions
 	@IBAction func performPurchase(sender: AnyObject) {
+		guard let email = user.stringForKey("email") else {
+			performLogin()
+			return
+		}
+		
 		let alertcontroller = UIAlertController(title: "Payment Information", message: "Total Price: $ \(totalPrice)", preferredStyle: .Alert)
 		let paypalAction = UIAlertAction(title: "PayPal", style: .Default){ UIAlertAction in
+			
+//			APIManager().makePayment(email, type: "Event Tickets", amount: String(self.totalPrice), payment_date: GeneralLibrary().getFullStringFromDate(NSDate())){
+//				result in
+//				if result{
+//					for ticket in self.tickets {
+//						APIManager().addSessionAttendee(self.event.event_id!, tickets: ticket)
+//					}
+//					self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
+//				} else {
+//					HUD.flash(.Label("Payment Failed, please try again"), delay: 1)
+//				}
+//			}
 			self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
 			alertcontroller.dismissViewControllerAnimated(true, completion: nil)
 		}
@@ -47,9 +60,60 @@ class PaymentViewController: UIViewController {
 		alertcontroller.addAction(paypalAction)
 		self.presentViewController(alertcontroller, animated: true, completion: nil)
 	}
-
+	
+	func selectSessionTicketDidFinish(controller: SessionTicketsViewController, email:String, session: [Tickets]) {
+		for index in 0..<tickets.count{
+			if tickets[index].email == email {
+				let entry = tickets[index].ticket[0]
+				tickets[index].ticket.removeAll()
+				
+				tickets[index].ticket.append(entry)
+				for tit in session {
+					tickets[index].ticket.append(tit)
+				}
+				
+				break
+			}
+		}
+		controller.navigationController?.popViewControllerAnimated(true)
+		tableView.reloadData()
+	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "goToSessionsTicket" {
+			let col = sender!.section
+			let vc = segue.destinationViewController as! SessionTicketsViewController
+			vc.sessionTickets = sessionTickets
+			vc.ticket = tickets[col!]
+			vc.event = event
+			vc.delegate = self
+		}
+	}
+	
+	func updateTotalPrice(){
+		totalPrice = 0.0
+		for section in 0..<tableView.numberOfSections - 1{
+			for row in 0..<tableView.numberOfRowsInSection(section){
+				let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section))
+				
+				totalPrice += Double(GeneralLibrary().unwrapPrice((cell?.detailTextLabel?.text)!))!
+			}
+		}
+		tableView.reloadData()
+	}
+	
+	func performLogin(){
+		let storyboard : UIStoryboard = UIStoryboard(name: "Account", bundle: nil)
+		let vc : LoginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+		
+		let navigationController = UINavigationController(rootViewController: vc)
+		
+		
+		self.presentViewController(navigationController, animated: true, completion: nil)
+	}
 }
 
+//MARK:- TableView Related
 extension PaymentViewController: UITableViewDelegate{
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return tickets.count + 1
@@ -73,14 +137,22 @@ extension PaymentViewController: UITableViewDelegate{
 		
 		var ticket:Tickets?
 		if tickets.count == section {
-			ticket = Tickets(title: "", price: String(self.totalPrice), name: "TOTAL", _class: "", type: "", venue: "", room: "", seat: "", startTime: NSDate(), endTime: NSDate())
+			ticket = Tickets(title: "", price: String(self.totalPrice), name: "TOTAL", _class: "", type: "", venue: "", room: "", seat: "", startTime: nil, endTime: nil, conversation: nil, count: nil)
 		} else {
 			ticket = tickets[section].ticket[row]
 		}
 		
 		cell.textLabel?.text = ticket!.name
-		cell.detailTextLabel?.text = ticket!.price
+		cell.detailTextLabel?.text = "$ \(ticket!.price!)"
 		
 		return cell
+	}
+	
+	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		if indexPath.section < (tableView.numberOfSections - 1) && indexPath.row == 0{
+			if self.sessionTickets.count > 0{
+				self.performSegueWithIdentifier("goToSessionsTicket", sender: indexPath)
+			}
+		}
 	}
 }
