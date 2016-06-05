@@ -318,9 +318,7 @@ class TimeTableViewController: UIViewController {
         
         let sessions = self.getSessionsForSection(indexPath.section)
         let theSession = sessions![indexPath.row]
-        //print(theSession)
         self.performSegueWithIdentifier("TimetableToTalk", sender: theSession)
-		//self.performSegueWithIdentifier("TimetableToTalk", sender: self)
 	}
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -328,16 +326,6 @@ class TimeTableViewController: UIViewController {
 		if segue.identifier == "TimetableToTalk"{
 			let vc = segue.destinationViewController as! TalksViewController
             vc.mySession = sender as! Session
-            print(sender)
-//           let itemSection = sender!.section
-//            let item = sender!.row
-//            print(sender)
-//            if itemSection != nil
-//            {
-//                print(itemSection)
-//                print(item)
-//            }
-			// TODO: Assign Value into it
 		}
 	}
     

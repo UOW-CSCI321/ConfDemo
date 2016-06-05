@@ -41,7 +41,6 @@ class QAViewController: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(session)
         self.inputToolbar.contentView.leftBarButtonItem = nil //remove accessorry button
 //        bgColour = UIColor(white: 0.85, alpha: 1.0)
 //        txtColour = UIColor(white: 0.60, alpha: 1.0)
