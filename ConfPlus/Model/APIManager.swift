@@ -654,6 +654,43 @@ class APIManager{
             }
         }
     }
+    
+    func getAddConversationidForSession(event_id:String, title:String, completion: (result: Bool, convo_id: String?) -> Void){
+        let parameters = [
+            "api_key": server.KEY,
+            "app_secret": server.SECRET,
+            "method" : "addConversationForSession",
+            "event_id" : event_id,
+            "title" : title
+        ]
+        
+        Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
+            switch response.result{
+            case .Success:
+                if let value = response.result.value{
+                    
+                    let json = JSON(value)
+                    HUD.hide()
+                    if json["success"] {
+                        completion(result: true, convo_id : json["data"]["conversation_id"].string)
+                    } else {
+                        print(json["data"][0]["message"])
+                        completion(result: false, convo_id: nil)
+                    }
+                }
+                
+            case .Failure(let error):
+                HUD.hide()
+                print(error.localizedDescription)
+                let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not be the latest.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+                notification.show()
+                completion(result: false, convo_id:  nil)
+                
+            }
+            
+        }
+
+    }
 
 }
 

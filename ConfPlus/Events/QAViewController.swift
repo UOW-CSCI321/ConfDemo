@@ -66,6 +66,8 @@ class QAViewController: JSQMessagesViewController {
 //        databaseMessages = ModelHandler().getMessageForConversation(conversation)!
 //        //^ returns empty array first time
 //        messagesToJSQMessages()
+        
+        //here we want to pull messages for sessions where title = tile and event_id = event id - in vdl
     }
     
     func messagesToJSQMessages() //converts array of cordata messages to array of JSQMessages
@@ -167,8 +169,18 @@ class QAViewController: JSQMessagesViewController {
         
     }
     
+    func addConvoForSession() {
+        APIManager().getAddConversationidForSession(self.session.event_id!, title: self.session.title!) { result, convo_id in
+            if convo_id != nil{
+                print(convo_id)
+            }
+        }
+        
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        addConvoForSession()
         //getMessagesFromAPI()
     }
     
