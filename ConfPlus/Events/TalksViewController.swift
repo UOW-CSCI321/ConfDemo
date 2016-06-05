@@ -61,7 +61,8 @@ class TalksViewController: UITableViewController {
                     if let myself = ModelHandler().getUser(self.mySession.speaker_email!) {
                         APIManager().getUserProfilePicFromAPI(myself) { result in
                             if let myself2 = ModelHandler().getUser(self.mySession.speaker_email!) {
-                                print(myself2.profile_pic_url)
+                                self.avatar.image = myself2.getImage()
+                                GeneralLibrary().makeImageCircle(self.avatar)
                             }
                         }
                     }
