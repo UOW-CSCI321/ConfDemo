@@ -27,11 +27,10 @@ class TalksViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(self.mySession)
-        print(self.mySession.event_id)
-//        HUD.show(.Progress)
-//        APIManager().getSession(self.event.event_id!, title: self.ticket.title!){ result, json in
-//            if result{
+       
+        HUD.show(.Progress)
+        //APIManager().getSession(self.event.event_id!, title: self.ticket.title!){ result, json in
+            //if result{
 //                let data = json!["data"][0]
 //                
 //                self.topic = Topic(email: data["speaker_email"].string,
@@ -39,7 +38,27 @@ class TalksViewController: UITableViewController {
 //                                   topic: data["title"].string,
 //                                   room: data["room_name"].string,
 //                                   description: data["description"].string)
-//                
+        print(mySession.session_description)
+        self.topic = Topic(email: self.mySession.speaker_email,
+                           speakerName: nil,
+                           topic: self.mySession.title,
+                           room: self.mySession.room_name,
+                           description: self.mySession.session_description)
+        
+        if self.mySession.speaker_email != nil {
+            APIManager().getUser(self.mySession.speaker_email!, completion: { result, json in
+                if result {
+                    let data = json!["data"][0]
+                    self.topic.speakerName = "\(data["first_name"].string!) \(data["last_name"].string!)"
+                    self.labelSpeakerName.text = self.topic.speakerName
+                    
+                    self.update()
+                }
+            })
+        } else {
+            self.update()
+        }
+        
 //                if self.topic.email != nil {
 //                    APIManager().getUser(self.topic.email!, completion: { result, json in
 //                        if result {
@@ -53,22 +72,22 @@ class TalksViewController: UITableViewController {
 //                } else {
 //                    self.update()
 //                }
-//            }
-//        }
+           // }
+        //}
     }
     
     func update(){
-//        self.labelTopicName.text = self.topic.topic
-//        self.labelRoom.text = self.topic.room
-//        if self.topic.description != "" {
-//            self.textViewDescription.text = self.topic.description
-//        }
-//        
-//        for section in 0..<self.tableView.numberOfSections {
-//            self.shouldHideSection(section)
-//        }
-//        HUD.hide()
-//        self.tableView.reloadData()
+        self.labelTopicName.text = self.topic.topic
+        self.labelRoom.text = self.topic.room
+        if self.topic.description != "" {
+            self.textViewDescription.text = self.topic.description
+        }
+        
+        for section in 0..<self.tableView.numberOfSections {
+            self.shouldHideSection(section)
+        }
+        HUD.hide()
+        self.tableView.reloadData()
     }
     
 }
