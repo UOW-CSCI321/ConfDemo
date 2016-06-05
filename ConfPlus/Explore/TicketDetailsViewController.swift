@@ -11,14 +11,15 @@ import UIKit
 import SwiftyJSON
 import MPGNotification
 import PKHUD
+import Localize_Swift
 
 struct Coupon {
-	var ticket: [Sessions]
+	var ticket: [Tickets]
 	var name: String
 	var email: String
 }
 
-struct Sessions {
+struct Tickets {
 	var title:String?
 	var price:String?
 	var name:String?
@@ -29,7 +30,7 @@ struct Sessions {
 	var seat:String?
 	var startTime:NSDate?
 	var endTime:NSDate?
-	var conversation:String?
+	var endSales:NSDate?
 	var count:String?
 }
 
@@ -46,27 +47,38 @@ class TicketDetailsViewController: UIViewController {
 	var event:Event!
 	let user = NSUserDefaults.standardUserDefaults()
 	
-	var eventTickets = [Sessions]()
-	var sessionTickets = [Sessions]()
+	var titles = [String]()
+	var eventTickets = Dictionary<String, [Tickets]>()
+	var sessionTickets = Dictionary<String, [Tickets]>()
 	var selectedTickets = [Coupon]()
 	
-	func addToArray(data:JSON, inout array: [Sessions]){
-		let ticket = data["tickets"][0]
-		if ticket != nil {
-			array.append(Sessions(title: data["title"].string,
-				price: ticket["price"].string,
-				name: ticket["name"].string,
-				_class: ticket["class"].string,
-				type: ticket["type"].string,
-				venue: data["venue_id"].string,
-				room: data["room_name"].string,
-				seat: nil,
-				startTime: GeneralLibrary().getFullDate(data["start_time"].stringValue),
-				endTime: GeneralLibrary().getFullDate(data["end_time"].stringValue),
-				conversation: data["conversation_id"].string,
-				count: "0"))
+	func addToArray(data:JSON, inout array: Dictionary<String, [Tickets]>){
+		let tickets = data["tickets"]
+		for index in 0..<tickets.count {
+			let info = tickets[index]
+			if info != nil {
+				let tit = Tickets(title: info["title"].string,
+			                   price: info["price"].string,
+			                   name: info["name"].string,
+			                   _class: info["class"].string,
+			                   type: info["type"].string,
+			                   venue: data["venue_id"].string,
+			                   room: data["room_name"].string,
+			                   seat: nil,
+			                   startTime: GeneralLibrary().getFullDate(data["start_time"].stringValue),
+			                   endTime: GeneralLibrary().getFullDate(data["end_time"].stringValue),
+			                   endSales: GeneralLibrary().getFullDate(info["sale_end_date"].stringValue),
+			                   count: "0")
+				
+				if GeneralLibrary.getStringFromDate(NSDate()) <= GeneralLibrary.getStringFromDate(tit.endSales){
+					if array.indexForKey(tit.title!) == nil {
+						array[tit.title!] = [tit]
+					} else {
+						array[tit.title!]!.append(tit)
+					}
+				}
+			}
 		}
-		
 	}
 	
     override func viewDidLoad() {
@@ -91,6 +103,7 @@ class TicketDetailsViewController: UIViewController {
 					} else {
 						self.addToArray(data, array: &self.sessionTickets)
 					}
+					self.titles = Array(self.eventTickets.keys)
 				}
 				
 				HUD.hide()
@@ -117,37 +130,52 @@ class TicketDetailsViewController: UIViewController {
 		if identifier == "goToUserInfoView" {
 			selectedTickets.removeAll()
 			for section in 0..<tableView.numberOfSections{
-				for _ in 0..<Int(eventTickets[section].count!)! {
-					selectedTickets.append(Coupon(ticket: [eventTickets[section]], name: "", email: ""))
+				let itemSection = eventTickets[titles[section]]
+				
+				for row in 0..<tableView.numberOfRowsInSection(section) {
+					let cell:TicketTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as! TicketTableViewCell
+					
+					let item = itemSection![row]
+					for _ in 0..<Int(cell.ticketCount.text!)!{
+						selectedTickets.append(Coupon(ticket: [item], name: "", email: ""))
+					}
 				}
 			}
 		}
 		if selectedTickets.count > 0 {
 			return true
 		}
-		HUD.flash(.Label("Please select ticket to continue"), delay: 1)
+		HUD.flash(.Label("selectTicket".localized()), delay: 1)
 		return false
 	}
 }
 
 extension TicketDetailsViewController: UITableViewDelegate{
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return eventTickets.count
+		return titles.count
 	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 1
+		return eventTickets[titles[section]]!.count
+	}
+	
+	func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		return titles[section]
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
 		let cell = tableView.dequeueReusableCellWithIdentifier("ticketCell", forIndexPath: indexPath) as! TicketTableViewCell
 
-		let col = indexPath.section
+		let row = indexPath.row
+		let sec = indexPath.section
 		
-		cell.ticketCount.text = eventTickets[col].count
-		cell.ticketName.text = eventTickets[col].name
-		cell.ticketPrice.text = eventTickets[col].price
+		let itemSection = eventTickets[titles[sec]]
+		let item = itemSection![row]
+		
+		cell.ticketCount.text = item.count
+		cell.ticketName.text = item.name
+		cell.ticketPrice.text = item.price
 		
 		return cell
 	}
@@ -166,7 +194,7 @@ extension TicketDetailsViewController: UITableViewDelegate{
 		if segue.identifier == "goToUserInfoView"{
 			
 			let vc = segue.destinationViewController as! PersonalDetailsViewController
-			vc.sessionTickets = sessionTickets
+			//vc.sessionTickets = sessionTickets
 			vc.tickets = selectedTickets
 			vc.event = event
 		}
@@ -183,23 +211,25 @@ extension TicketDetailsViewController {
 	// Button Action for the Selection View
 	@IBAction func increaseTicketInSelection(sender: AnyObject) {
 		let section = tableView.indexPathForSelectedRow?.section
-		let cell:TicketTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: section!)) as! TicketTableViewCell
+		let row = tableView.indexPathForSelectedRow?.row
+		let cell:TicketTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row!, inSection: section!)) as! TicketTableViewCell
 		
 		self.ticketCount.text = String(Int(ticketCount.text!)! + 1)
 		cell.ticketCount.text = self.ticketCount.text
-		eventTickets[section!].count = cell.ticketCount.text
+		//eventTickets[titles[section!]]!.count = cell.ticketCount.text
 		
 		self.totalPrice.text = String(Double(totalPrice.text!)! + Double(cell.ticketPrice.text!)!)
 	}
 	
 	@IBAction func decreaseTicketInSelection(sender: AnyObject) {
 		let section = tableView.indexPathForSelectedRow?.section
-		let cell:TicketTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: section!)) as! TicketTableViewCell
+		let row = tableView.indexPathForSelectedRow?.row
+		let cell:TicketTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row!, inSection: section!)) as! TicketTableViewCell
 		
 		if(Int(ticketCount.text!) > 0){
 			self.ticketCount.text = String(Int(ticketCount.text!)! - 1)
 			cell.ticketCount.text = self.ticketCount.text
-			eventTickets[section!].count = cell.ticketCount.text
+			//eventTickets[titles[section!]]!.count = cell.ticketCount.text
 			
 			
 			self.totalPrice.text = String(Double(totalPrice.text!)! - Double(cell.ticketPrice.text!)!)
