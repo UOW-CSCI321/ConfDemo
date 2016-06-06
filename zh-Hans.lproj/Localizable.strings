@@ -136,4 +136,8 @@
 "Invalid Username" = "不正当用户名";
 "Invalid Password" = "不正当密码";
 "Invalid email" = "不正当电邮";
+"warnSecurity" = "没有保安功能";
+
+"warnSecurityMessage" = "管理员没有设定保安号码";
+
 

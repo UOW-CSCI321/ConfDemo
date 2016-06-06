@@ -7,7 +7,6 @@
 */
 "Event Name" = "Event Name";
 
-
 // Account Profile
 "Profile" = "Profile";
 "email" = "Email";
@@ -82,7 +81,6 @@
 "Event Tickets" = "Event tickets";
 "Total" = "Total";
 
-
 //Account Storyboard
 "Login" = "Login";
 "Register" = "Register";
@@ -138,5 +136,10 @@
 "Invalid Username" = "Invalid Username";
 "Invalid Password" = "Invalid Password";
 "Invalid email" = "Invalid email";
+"warnSecurity" = "No Security";
+
+"warnSecurityMessage" = "Sorry the event manager has not provided a security number for this event";
+
+
 
 
