@@ -23,7 +23,7 @@
     </entity>
     <entity name="Event" representedClassName=".Event" syncable="YES">
         <attribute name="attend" optional="YES" attributeType="String" defaultValueString="0" syncable="YES"/>
-        <attribute name="card_number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cardNum" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="event_id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="from_date" optional="YES" attributeType="Date" syncable="YES"/>
@@ -186,7 +186,7 @@
     <elements>
         <element name="Billing" positionX="1231" positionY="351" width="128" height="103"/>
         <element name="Conversation" positionX="1132" positionY="825" width="128" height="165"/>
-        <element name="Event" positionX="1836" positionY="351" width="128" height="343"/>
+        <element name="Event" positionX="1836" positionY="351" width="128" height="345"/>
         <element name="Event_Roles" positionX="1611" positionY="528" width="128" height="88"/>
         <element name="Event_Tag" positionX="1620" positionY="639" width="128" height="73"/>
         <element name="Message" positionX="1161" positionY="639" width="128" height="150"/>

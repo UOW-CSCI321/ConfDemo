@@ -1,9 +1,9 @@
 //
 //  Event+CoreDataProperties.swift
-//  
+//  ConfPlus
 //
-//  Created by Matthew Boroczky on 6/06/2016.
-//
+//  Created by CY Lim on 7/06/2016.
+//  Copyright © 2016 Conf+. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
 //  to delete and recreate this implementation file for your updated model.
@@ -15,7 +15,7 @@ import CoreData
 extension Event {
 
     @NSManaged var attend: String?
-    @NSManaged var card_number: String?
+    @NSManaged var cardNum: String?
     @NSManaged var desc: String?
     @NSManaged var event_id: String?
     @NSManaged var from_date: NSDate?
@@ -32,7 +32,7 @@ extension Event {
     @NSManaged var roles: NSSet?
     @NSManaged var sessions: NSSet?
     @NSManaged var tags: NSSet?
-    @NSManaged var venue: Venue?
     @NSManaged var users: NSSet?
+    @NSManaged var venue: Venue?
 
 }
