@@ -174,13 +174,14 @@ class QAViewController: JSQMessagesViewController {
                    //get from model
                     let convoArrayOf1 = ModelHandler().getAConversation(convo_id!)
                     self.conversation = convoArrayOf1[0]
-                    //print(self.conversation.conversation_id)
+                    print(self.conversation.conversation_id)
                     
                     //ModelHandler().getUser(self.userEmail)
                     //THE CONVERSATION HAS NOW BEEN SAVED
                     //api manager get users from conversation (Conversation)
-                    APIManager().getUsersForConversationFromAPI(self.conversation) { result in
-                        print(result)
+                    APIManager().getUsersForConversationFromAPI(self.conversation) { result in //this should add profile pics of users getting from server
+                        //print(result)
+                        //NOT SURE IF SAVING USERS FOR CONVERSATION -IS SAVING
                         self.getMessagesFromAPI()
                     }
                     
