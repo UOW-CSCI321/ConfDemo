@@ -400,7 +400,7 @@ class QAViewController: JSQMessagesViewController {
         if isDispatchEmpty {
             isDispatchEmpty = false
             
-            APIManager().sendMessage(email, content: content, conversationID: conversationID){ result in
+            APIManager().sendMessage(email, content: content, conversationID: conversation_id){ result in
                 if result == true
                 {
                     //return true
@@ -427,7 +427,7 @@ class QAViewController: JSQMessagesViewController {
         
         addMessage(senderId, displayName: senderDisplayName, date: date, text: text)
         //send the message we just added to the JSQMessage array
-        sendMessageByAPI(senderId, conversation_id: self.conversationID, content: text)
+        sendMessageByAPI(senderId, conversation_id: self.conversation.conversation_id!, content: text)
     }
     
     
