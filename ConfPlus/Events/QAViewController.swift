@@ -41,6 +41,8 @@ class QAViewController: JSQMessagesViewController {
     var userEmail:String!
     var speakerIncomingBubbleImageView: JSQMessagesBubbleImage!
     var speakerEmail:String!
+    var notification:MPGNotification!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +50,8 @@ class QAViewController: JSQMessagesViewController {
         bgColour = UIColor(white: 0.85, alpha: 1.0)
         txtColour = UIColor(white: 0.60, alpha: 1.0)
         systFont = UIFont.systemFontOfSize(14/*, weight:10*/)
+        
+        notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
         
         //setup for date
         var color: UIColor = UIColor.lightGrayColor()
@@ -116,12 +120,9 @@ class QAViewController: JSQMessagesViewController {
     func getMessagesFromAPI() {
         if isDispatchEmpty {
             isDispatchEmpty = false
-            let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-            notification.show()
-            
             APIManager().getMessagesForConversation(conversation){ result in
                 dispatch_async(dispatch_get_main_queue()) {
-                    notification.hidden = true
+                    self.notification.hidden = true
                     self.isDispatchEmpty = true
                     self.databaseMessages = ModelHandler().getMessageForConversation(self.conversation)!
                     print("MESSAGE COUNT: \(self.databaseMessages.count)")
@@ -167,6 +168,7 @@ class QAViewController: JSQMessagesViewController {
     }
     
     func addConvoForSession() {
+        self.notification.show()
         APIManager().getAddConversationidForSession(self.session.event_id!, title: self.session.title!) { result, convo_id in
             if convo_id != nil{
                 print(convo_id)
