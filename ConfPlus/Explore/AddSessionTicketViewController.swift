@@ -87,6 +87,12 @@ extension AddSessionTicketViewController: UITableViewDelegate{
 		let itemSection = selectedSessions[titles[sec]]
 		let item = itemSection![row]
 		
+		if row == 0 {
+			cell.accessoryType = .Checkmark
+		} else {
+			cell.accessoryType = .None
+		}
+	
 		cell.name.text = item.name
 		cell._class.text = item._class
 		cell.type.text = item.type
@@ -96,6 +102,11 @@ extension AddSessionTicketViewController: UITableViewDelegate{
 	}
 	
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-		//TODO: set the checkmark to coresponding cell
+		for row in 0..<tableView.numberOfRowsInSection(indexPath.section){
+			let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: indexPath.section)) as! AddSessionTicketTableViewCell
+			cell.accessoryType = .None
+		}
+		let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: indexPath.row, inSection: indexPath.section)) as! AddSessionTicketTableViewCell
+		cell.accessoryType = .Checkmark
 	}
 }

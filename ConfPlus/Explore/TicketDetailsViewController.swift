@@ -116,12 +116,6 @@ class TicketDetailsViewController: UIViewController {
 		}
     }
 	
-	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(animated)
-		
-		
-	}
-	
 	@IBAction func performContinue(sender: AnyObject) {
 		if shouldPerformSegueWithIdentifier("goToUserInfoView", sender: self){
 			performSegueWithIdentifier("goToUserInfoView", sender: self)
