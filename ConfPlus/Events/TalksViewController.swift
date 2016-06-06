@@ -64,22 +64,24 @@ class TalksViewController: UITableViewController {
                     //let data = json["data"][0]
                     //print(json["first_name"].string)
                     //print(data)
-                    
-                    self.topic.speakerName = "\(json["first_name"].string!) \(json["last_name"].string!)"
-                    self.labelSpeakerName.text = self.topic.speakerName
-                    
-                    //get profile image
-                    if let myself = ModelHandler().getUser(self.mySession.speaker_email!) {
-                        APIManager().getUserProfilePicFromAPI(myself) { result in
-                            if let myself2 = ModelHandler().getUser(self.mySession.speaker_email!) {
-                                self.avatar.image = myself2.getImage()
-                                GeneralLibrary().makeImageCircle(self.avatar)
-                                notification.hidden = true
+                    print(json)
+                    if json["first_name"].string == nil {
+                        print("ERROR: speaker has not had their name set")
+                    }else{
+                        self.topic.speakerName = "\(json["first_name"].string!) \(json["last_name"].string!)"
+                        self.labelSpeakerName.text = self.topic.speakerName
+                        
+                        //get profile image
+                        if let myself = ModelHandler().getUser(self.mySession.speaker_email!) {
+                            APIManager().getUserProfilePicFromAPI(myself) { result in
+                                if let myself2 = ModelHandler().getUser(self.mySession.speaker_email!) {
+                                    self.avatar.image = myself2.getImage()
+                                    GeneralLibrary().makeImageCircle(self.avatar)
+                                    notification.hidden = true
+                                }
                             }
                         }
                     }
-                    
-                    
                     self.update()
                 }
             })
