@@ -71,7 +71,6 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 	}
 	
 	func selectSessionTicketDidFinish(controller: AddSessionTicketViewController, email:String, col:Int, session: [Tickets]) {
-		print("called")
 		if tickets[col].email == email {
 			let entry = tickets[col].ticket[0]
 			tickets[col].ticket.removeAll()

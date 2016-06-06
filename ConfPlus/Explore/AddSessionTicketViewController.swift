@@ -30,6 +30,7 @@ class AddSessionTicketViewController: UIViewController {
 				for row in 0..<tableView.numberOfRowsInSection(section){
 					let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as! AddSessionTicketTableViewCell
 					
+					//TODO: A way to save checkmark, cell might have issues
 					if cell.accessoryType == .Checkmark {
 						let itemSection = selectedSessions[titles[section]]
 						let item = itemSection![row]
@@ -44,7 +45,6 @@ class AddSessionTicketViewController: UIViewController {
 				}
 			}
 			
-			print("called")
 			del.selectSessionTicketDidFinish(self, email: ticket.email, col: col, session: sessions)
 			
 		}

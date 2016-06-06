@@ -132,6 +132,7 @@ class TicketDetailsViewController: UIViewController {
 					let cell:TicketTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as! TicketTableViewCell
 					
 					let item = itemSection![row]
+					//TODO: have a way to edit the ticket count, don't use cell
 					for _ in 0..<Int(cell.ticketCount.text!)!{
 						selectedTickets.append(Coupon(ticket: [item], name: "", email: ""))
 					}
