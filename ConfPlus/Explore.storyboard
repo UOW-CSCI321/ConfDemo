@@ -1104,7 +1104,7 @@
         <!--Add Sessions-->
         <scene sceneID="CBB-WP-SG9">
             <objects>
-                <viewController id="bmN-bB-6d4" customClass="AddSessionTicketViewController" customModule="ConfPlus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="bmN-bB-6d4" customClass="AddSessionTicketViewController" customModule="ConfPlus" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3ZT-FK-ox0"/>
                         <viewControllerLayoutGuide type="bottom" id="QfS-CA-z5T"/>
@@ -1135,11 +1135,11 @@
                                 </items>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hy0-ZQ-Ve7">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" rowHeight="70" id="JN6-zw-bNe" customClass="AddSessionTicketTableViewCell" customModule="ConfPlus" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="70"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="addSessionTicketCell" rowHeight="70" id="JN6-zw-bNe" customClass="AddSessionTicketTableViewCell" customModule="ConfPlus" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JN6-zw-bNe" id="TCZ-3S-RK1">
                                             <rect key="frame" x="0.0" y="0.0" width="561" height="69.5"/>
@@ -1197,7 +1197,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="hy0-ZQ-Ve7" firstAttribute="top" secondItem="3ZT-FK-ox0" secondAttribute="bottom" constant="-64" id="59T-U0-HMa"/>
+                            <constraint firstItem="hy0-ZQ-Ve7" firstAttribute="top" secondItem="3ZT-FK-ox0" secondAttribute="bottom" id="59T-U0-HMa"/>
                             <constraint firstItem="oQt-Wd-1Oi" firstAttribute="top" secondItem="hy0-ZQ-Ve7" secondAttribute="bottom" id="7Ha-Xw-2q2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hy0-ZQ-Ve7" secondAttribute="trailing" constant="-20" id="ARa-Oc-VgU"/>
                             <constraint firstItem="hy0-ZQ-Ve7" firstAttribute="leading" secondItem="ff2-fD-lvQ" secondAttribute="leadingMargin" constant="-20" id="BcZ-fF-iIx"/>

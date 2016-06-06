@@ -70,7 +70,7 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 		self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
 	}
 	
-	func selectSessionTicketDidFinish(controller: SessionTicketsViewController, email:String, col:Int, session: [Tickets]) {
+	func selectSessionTicketDidFinish(controller: AddSessionTicketViewController, email:String, col:Int, session: [Tickets]) {
 		if tickets[col].email == email {
 			let entry = tickets[col].ticket[0]
 			tickets[col].ticket.removeAll()

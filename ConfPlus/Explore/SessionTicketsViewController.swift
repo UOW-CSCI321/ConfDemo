@@ -18,10 +18,12 @@ class SessionTicketsViewController: UIViewController {
 	var ticket:Coupon!
 	var event:Event!
 	var col:Int!
-	var titles = [String]()
+	//var titles = [String]()
 	
 	var dataSortedByDates = Dictionary<String, [Tickets]>()
 	var dates = [String]()
+	
+	var selectedSessions = Dictionary<String, [Tickets]>()
 	
 	var delegate:selectSessionTicketDelegate?
 	
@@ -51,6 +53,7 @@ class SessionTicketsViewController: UIViewController {
 		
 		HUD.show(.Progress)
 		for session in sessionTickets  {
+			print("TEST \(session.0)")
 			if session.1.count > 0 {
 				let ticket = session.1[0]
 				
@@ -74,7 +77,21 @@ class SessionTicketsViewController: UIViewController {
 	
 	override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
 		if identifier == "goToSessionTicketSelection" {
-			
+			selectedSessions.removeAll()
+			for section in 0..<tableView.numberOfSections{
+				for row in 0..<tableView.numberOfRowsInSection(section){
+					let cell:SessionTicketsTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as! SessionTicketsTableViewCell
+					
+					if cell.backgroundColor == UIColor.init(red: 0, green: 0.8, blue: 0, alpha: 0.2) {
+						let itemSection = dataSortedByDates[dates[section]]
+						let item = itemSection![row]
+						
+						
+						selectedSessions[item.title!] = sessionTickets[item.title!]
+						
+					}
+				}
+			}
 			return true
 		}
 		return false
@@ -96,6 +113,7 @@ class SessionTicketsViewController: UIViewController {
 			vc.col = col
 			vc.delegate = delegate
 			vc.ticket = ticket
+			vc.selectedSessions = selectedSessions
 		}
 	}
 }
@@ -127,7 +145,6 @@ extension SessionTicketsViewController: UITableViewDelegate{
 		cell.presentationName.text = item.title
 		cell.presentationTime.text = "\(GeneralLibrary().getTimeFromDate(item.startTime!)) - \(GeneralLibrary().getTimeFromDate(item.endTime!))"
 		cell.presentationLocation.text = item.room ?? ""
-		//cell.presentationPrice.text = "$ \(item.price!)"
 		
 		return cell
 	}
