@@ -11,6 +11,7 @@ import UIKit
 
 class AttendingViewController: UIViewController {
     var event:Event!
+    var users = [User]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,14 +19,14 @@ class AttendingViewController: UIViewController {
         getVenue()
 		populateNavigationBar()
         
-        //getusersforevent
+        self.users =  ModelHandler().getUsersForEvent(self.event)!
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         //api call to get users for a conversation
         APIManager().getEventAttendeesFromAPI(self.event) { result in
-            let users = ModelHandler().getUsersForEvent(self.event)
-            print(users)
+            self.users = ModelHandler().getUsersForEvent(self.event)!
         }
     }
     
