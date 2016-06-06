@@ -198,8 +198,6 @@ class QAViewController: JSQMessagesViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        addConvoForSession()
-        //getMessagesFromAPI() called in add convo for session instead
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -211,7 +209,8 @@ class QAViewController: JSQMessagesViewController {
         
 //        //timer
 //        timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "getLatestServerMessage", userInfo: nil, repeats: true)
-//        
+//      
+        addConvoForSession()
 //        getMessagesFromAPI()
         
         //yesterday
