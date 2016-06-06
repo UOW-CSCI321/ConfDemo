@@ -12,6 +12,11 @@ import PKHUD
 
 class NewBillingTableViewController: UITableViewController, UITextFieldDelegate {
 	
+	@IBOutlet weak var saveButton: UIBarButtonItem!
+	@IBOutlet weak var cardLabel: UILabel!
+	@IBOutlet weak var typeLabel: UILabel!
+	@IBOutlet weak var expireLabel: UILabel!
+	
 	@IBOutlet weak var cardTextField: UITextField!
 	@IBOutlet weak var typeTextField: UITextField!
 	@IBOutlet weak var expireTextField: UITextField!
@@ -22,6 +27,10 @@ class NewBillingTableViewController: UITableViewController, UITextFieldDelegate 
 		super.viewDidLoad()
 		typeTextField.delegate = self
 		expireTextField.delegate = self
+	}
+	
+	override func viewWillAppear(animated: Bool) {
+		setText()
 	}
 	
 	@IBAction func performSave(sender: AnyObject) {
@@ -57,9 +66,9 @@ class NewBillingTableViewController: UITableViewController, UITextFieldDelegate 
 			picker, value, index in
 			
 			print("value = \(value)")
-			
+
 			let dateFormatter = NSDateFormatter()
-			dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+			dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
 			let temp = dateFormatter.stringFromDate(value as! NSDate) as NSString
 			self.expireTextField.text = temp as String
 			
@@ -70,6 +79,22 @@ class NewBillingTableViewController: UITableViewController, UITextFieldDelegate 
 		datePicker.minimumDate = NSDate()
 		datePicker.locale = NSLocale(localeIdentifier: "en_AU")
 		datePicker.showActionSheetPicker()
+	}
+	
+	func setText(){
+		navigationItem.title = "New Billing".localized()
+		
+		saveButton.title = "save".localized()
+		cardLabel.text = "Card Number".localized()
+		typeLabel.text = "Card Type".localized()
+		expireLabel.text = "Expire Date".localized()
+	}
+	
+	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		if section == 0 {
+			return "Billing Information".localized()
+		}
+		return ""
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

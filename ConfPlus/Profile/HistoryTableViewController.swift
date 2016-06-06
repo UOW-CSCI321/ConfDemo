@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import SwiftyJSON
 import PKHUD
+import Localize_Swift
 
 struct Payments {
 	var type: String?
@@ -31,6 +32,7 @@ class HistoryTableViewController: UIViewController {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
+		setText()
 		
 		if let email = user.stringForKey("email"){
 			HUD.show(.Progress)
@@ -48,6 +50,10 @@ class HistoryTableViewController: UIViewController {
 			}
 		}
 		
+	}
+	
+	func setText(){
+		navigationItem.title = "Payment History".localized()
 	}
 }
 
@@ -75,7 +81,7 @@ extension HistoryTableViewController: UITableViewDelegate{
 			cell.textLabel!.text = "\(payment[row].type!)"
 			cell.detailTextLabel?.text = "$ \(payment[row].amount!)"
 		} else {
-			cell.textLabel!.text = "No payment history yet."
+			cell.textLabel!.text = "warnNoPayment".localized()
 			cell.detailTextLabel?.text = ""
 		}
 		
