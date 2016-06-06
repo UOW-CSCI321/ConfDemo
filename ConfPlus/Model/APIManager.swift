@@ -434,6 +434,7 @@ class APIManager{
                     if json["success"] {
                         if let counter = json["data"].array?.count
                         {
+                            var users = [User]()
                             for i in 0..<counter
                             {
                                 //print(json["data"][i])
@@ -441,11 +442,28 @@ class APIManager{
                                 {
                                     print("got user")
                                     //append to array of user
+                                    users.append(user)
+                                    print("added user \(user.email!)")
                                 }else{
-                                    print("todo get user")
+                                    print("getting user")
                                     //get users
                                     //apprend to array
+                                    
+                                    let user = self.handler.getUser(json["data"][i]["email"].string!)
+                                    //append to array if its not already in the array
+                                    if !users.contains(user!){
+                                        users.append(user!)
+                                        print("added user \(user?.email!)")
+                                    }else {
+                                        print("\(user!.email!) already in array")
+                                    }
+                                    
                                 }
+                            }
+                            let count = users.count
+                            for i in 0..<count {
+                                //self.handler.saveUserForEvent(users[i], event: event)
+                                print(users[i].email)
                             }
                             //for user array size
                                 //save element relationship with event

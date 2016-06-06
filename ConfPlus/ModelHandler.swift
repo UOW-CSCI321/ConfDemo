@@ -261,7 +261,7 @@ class ModelHandler{
             user.last_name = "nil"
         }
         
-        print("adding new user: \(user.email!) \(user.first_name!) \(user.last_name!)")
+        //print("adding new user: \(user.email!) \(user.first_name!) \(user.last_name!)")
 //        print(user.email)
 //        print(user.username)
 //        print(user.password)
@@ -337,6 +337,15 @@ class ModelHandler{
         performUpdate()
         
         return user
+    }
+    
+    func saveUserForEvent(user:User, event:Event)
+    {
+        print("saving \(user.first_name) \(user.last_name) \(user.email) for event \(event.name)")
+        event.mutableSetValueForKey("users").addObject(user)
+        user.mutableSetValueForKey("events").addObject(event)
+        
+        performUpdate()
     }
     
     //MARK: - Conversation/Message related
