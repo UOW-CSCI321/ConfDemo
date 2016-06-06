@@ -341,7 +341,7 @@ class ModelHandler{
     
     func saveUserForEvent(user:User, event:Event)
     {
-        print("saving \(user.first_name) \(user.last_name) \(user.email) for event \(event.name)")
+        print("saving \(user.first_name!) \(user.last_name!) \(user.email!) for event \(event.name!)")
         event.mutableSetValueForKey("users").addObject(user)
         user.mutableSetValueForKey("events").addObject(event)
         

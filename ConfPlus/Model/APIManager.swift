@@ -462,8 +462,8 @@ class APIManager{
                             }
                             let count = users.count
                             for i in 0..<count {
-                                //self.handler.saveUserForEvent(users[i], event: event)
-                                print(users[i].email)
+                                self.handler.saveUserForEvent(users[i], event: event)
+                                //print(users[i].email)
                             }
                             //for user array size
                                 //save element relationship with event
