@@ -97,7 +97,6 @@ class TicketDetailsViewController: UIViewController {
 			if result{
 				for i in 0 ..< json!["data"].count {
 					let data = json!["data"][i]
-					print(data)
 					if data["privacy"] == "public"{
 						if data["is_event"] == "true" {
 							self.addToArray(data, array: &self.eventTickets)

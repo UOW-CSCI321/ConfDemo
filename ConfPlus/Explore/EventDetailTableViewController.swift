@@ -28,9 +28,6 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		
-		print("EVENT ID: \(event.event_id)")
 		setData()
     }
 	

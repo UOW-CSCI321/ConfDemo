@@ -53,7 +53,6 @@ class SessionTicketsViewController: UIViewController {
 		
 		HUD.show(.Progress)
 		for session in sessionTickets  {
-			print("TEST \(session.0)")
 			if session.1.count > 0 {
 				let ticket = session.1[0]
 				
