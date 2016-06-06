@@ -710,10 +710,11 @@ class APIManager{
                         print(json["data"]["message"].string)
                         
                     }else{
-                        //print(json["data"][0])
+                        print(json["data"])
                         let convo = self.handler.addNewConversation(json["data"][0])
-                        print(convo.conversation_id)
+                        //let convo = ModelHandler().addNewConversation(json["data"][0])
                         //self.handler.performUpdate()
+                        print(convo.conversation_id)
                         completion(result: true)
                     }
                     completion(result: true)

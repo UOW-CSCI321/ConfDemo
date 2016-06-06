@@ -58,7 +58,7 @@ class QAViewController: JSQMessagesViewController {
         timeTextAttributes = [NSFontAttributeName: UIFont.systemFontOfSize(12.0), NSForegroundColorAttributeName: color, NSParagraphStyleAttributeName: paragraphStyle]
         //
         
-        systemProfilePic = JSQMessagesAvatarImageFactory.avatarImageWithUserInitials("cf+", backgroundColor: bgColour, textColor: txtColour, font: systFont, diameter: 30)
+        systemProfilePic = JSQMessagesAvatarImageFactory.avatarImageWithUserInitials("E", backgroundColor: bgColour, textColor: txtColour, font: systFont, diameter: 30)
         setupBubbles()
 //
 //        
@@ -175,20 +175,25 @@ class QAViewController: JSQMessagesViewController {
                     print("here")
                    //get from model
                     let convoArrayOf1 = ModelHandler().getAConversation(convo_id!)
-                    self.conversation = convoArrayOf1[0]
-                    print(self.conversation.conversation_id)
-                    
-                    //ModelHandler().getUser(self.userEmail)
-                    //THE CONVERSATION HAS NOW BEEN SAVED
-                    //api manager get users from conversation (Conversation)
-                    APIManager().getUsersForConversationFromAPI(self.conversation) { result in //this should add profile pics of users getting from server
-                        //print(result)
-                        //NOT SURE IF SAVING USERS FOR CONVERSATION -IS SAVING
-                        self.users =  ModelHandler().getUsersForConversation(self.conversation)!
-                        //print(self.users)
-                        self.getMessagesFromAPI()
+                    if convoArrayOf1.count > 0
+                    {
+                        self.conversation = convoArrayOf1[0]
+                        print(self.conversation.conversation_id)
+                        
+                        //ModelHandler().getUser(self.userEmail)
+                        //THE CONVERSATION HAS NOW BEEN SAVED
+                        //api manager get users from conversation (Conversation)
+                        APIManager().getUsersForConversationFromAPI(self.conversation) { result in //this should add profile pics of users getting from server
+                            //print(result)
+                            //NOT SURE IF SAVING USERS FOR CONVERSATION -IS SAVING
+                            self.users =  ModelHandler().getUsersForConversation(self.conversation)!
+                            //print(self.users)
+                            self.getMessagesFromAPI()
+                        }
+
+                    }else {
+                        print("Error: since not getting conversation so messenger won't work")
                     }
-                    
                 }
                 
                 //get user
@@ -211,7 +216,7 @@ class QAViewController: JSQMessagesViewController {
         addConvoForSession()
         
         //timer
-        timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "getLatestServerMessage", userInfo: nil, repeats: true)
+        //timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "getLatestServerMessage", userInfo: nil, repeats: true)
 //
         
 //        getMessagesFromAPI()

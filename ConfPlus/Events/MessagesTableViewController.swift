@@ -212,8 +212,10 @@ extension MessagesTableViewController: UITableViewDelegate{
         cell.usersName.text = userConversations[row].name //conversation name should be the sender
         cell.messageDescription.text = userConversations[row].lastmsg_content //lastMessage?.content
         cell.messageDateLabel.text = userConversations[row].getConversationDateAsString()
+        if userConversations[row].conversation_pic != nil{
+            cell.profilePicture.image = UIImage(data: userConversations[row].conversation_pic!)
+        }
         
-        cell.profilePicture.image = UIImage(data: userConversations[row].conversation_pic!)
         //print("usersConversations[\(row)]: \(usersForConversations[row])")
         
 //        let count = self.participants.count

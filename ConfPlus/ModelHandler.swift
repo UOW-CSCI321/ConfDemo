@@ -367,14 +367,24 @@ class ModelHandler{
         convo.name = json["name"].string
         convo.lastmsg_content = json["content"].string
         convo.lastmsg_email = json["sender_email"].string
-        convo.lastmsg_date = serverStringToDate(json["date"].string!)
-//        print(convo.conversation_id)
-//        print(convo.name)
-//        print(convo.lastmsg_content)
-//        print(convo.lastmsg_email)
-//        print(convo.lastmsg_date)
+        if json["date"].string != nil {
+            convo.lastmsg_date = serverStringToDate(json["date"].string!)
+        }
+        print(json)
+        print(convo.conversation_id)
+        print(convo.name)
+        print(convo.lastmsg_content)
+        print(convo.lastmsg_email)
+        print(convo.lastmsg_date)
         
         performUpdate()
+        
+        print(convo.conversation_id)
+        print(convo.name)
+        print(convo.lastmsg_content)
+        print(convo.lastmsg_email)
+        print(convo.lastmsg_date)
+
         
         return convo
     }
@@ -431,7 +441,7 @@ class ModelHandler{
     {
         let fetch = NSFetchRequest(entityName: "Conversation")
         fetch.sortDescriptors = [NSSortDescriptor(key: "lastmsg_date", ascending: false)]
-        //fetch.predicate = NSPredicate(format: "users.email == %@", "matt3@test.com")
+        fetch.predicate = NSPredicate(format: "name != %@", "")
 //        if let myself = getUser(email)
 //        {
 ////            myself.messages_sent
