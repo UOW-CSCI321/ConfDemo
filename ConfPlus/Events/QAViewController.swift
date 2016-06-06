@@ -24,7 +24,7 @@ class QAViewController: JSQMessagesViewController {
 //    var timeTextAttributes:NSDictionary = [:]
 //    //var messagesCollectionViewFlowLayout = AnyObject.self
 //    var cellIndexPathForCustomHeight = NSIndexPath()
-//    var timeIsOpen = [Bool]()
+    var timeIsOpen = [Bool]()
 //    var returnHeight:CGFloat = 0.0
 //    //var refresher: UIRefreshControl!
     var isDispatchEmpty:Bool = true
@@ -72,42 +72,42 @@ class QAViewController: JSQMessagesViewController {
     
     func messagesToJSQMessages() //converts array of cordata messages to array of JSQMessages
     {
-//        var count = databaseMessages.count
-//        var usercount = self.users.count
-//        
-//        if count > 0
-//        {
-//            //whipe all messages we have so far to get messages again
-//            messages = [JSQMessage]()
-//            //iterate through database messages and create objects and add them to the JSQMessages array
-//            //print(databaseMessages[0])
-//            for i in 0..<count
-//            {
-//                //var user = databaseMessages[i].sender
-//                //                var dname:String = (user?.first_name)! //we cant use user as the only user we store locally is users loggedin
-//                //                dname += " "
-//                //                dname += (user?.last_name)!
-//                
-//                var dname = ""
-//                for j in 0..<usercount
-//                {
-//                    if users[j].email == databaseMessages[i].sender_email
-//                    {
-//                        dname = users[j].first_name!
-//                        dname += " "
-//                        dname += users[j].last_name!
-//                        addMessage(databaseMessages[i].sender_email!, displayName: dname, date: databaseMessages[i].date!, text: databaseMessages[i].content!)
-//                        
-//                    }
-//                }
-//                
-//                if dname == ""
-//                {
-//                    addMessage(databaseMessages[i].sender_email!, displayName: databaseMessages[i].sender_email!, date: databaseMessages[i].date!, text: databaseMessages[i].content!)
-//                }
-//            }
-//            finishSendingMessage()
-//        }
+        var count = databaseMessages.count
+        var usercount = self.users.count
+        
+        if count > 0
+        {
+            //whipe all messages we have so far to get messages again
+            messages = [JSQMessage]()
+            //iterate through database messages and create objects and add them to the JSQMessages array
+            //print(databaseMessages[0])
+            for i in 0..<count
+            {
+                //var user = databaseMessages[i].sender
+                //                var dname:String = (user?.first_name)! //we cant use user as the only user we store locally is users loggedin
+                //                dname += " "
+                //                dname += (user?.last_name)!
+                
+                var dname = ""
+                for j in 0..<usercount
+                {
+                    if users[j].email == databaseMessages[i].sender_email
+                    {
+                        dname = users[j].first_name!
+                        dname += " "
+                        dname += users[j].last_name!
+                        addMessage(databaseMessages[i].sender_email!, displayName: dname, date: databaseMessages[i].date!, text: databaseMessages[i].content!)
+                        
+                    }
+                }
+                
+                if dname == ""
+                {
+                    addMessage(databaseMessages[i].sender_email!, displayName: databaseMessages[i].sender_email!, date: databaseMessages[i].date!, text: databaseMessages[i].content!)
+                }
+            }
+            finishSendingMessage()
+        }
     }
     
     
@@ -183,8 +183,8 @@ class QAViewController: JSQMessagesViewController {
                         //print(result)
                         //NOT SURE IF SAVING USERS FOR CONVERSATION -IS SAVING
                         self.users =  ModelHandler().getUsersForConversation(self.conversation)!
-                        print(self.users)
-                       // self.getMessagesFromAPI()
+                        //print(self.users)
+                        self.getMessagesFromAPI()
                     }
                     
                 }
@@ -385,17 +385,17 @@ class QAViewController: JSQMessagesViewController {
 //        return cell
 //    }
 //    
-//    func addMessage(id: String, displayName:String, date:NSDate, text: String) {
-//        let m = JSQMessage(senderId: id, senderDisplayName: displayName, date: date, text: text)
-//        //let message = JSQMessage(senderId: id, displayName: displayName, text: text)
-//        messages.append(m)
-//        //print(messages.count)
-//        
-//        //add time not open to the time array
-//        let b = false
-//        timeIsOpen.append(b)
-//    }
-//    
+    func addMessage(id: String, displayName:String, date:NSDate, text: String) {
+        let m = JSQMessage(senderId: id, senderDisplayName: displayName, date: date, text: text)
+        //let message = JSQMessage(senderId: id, displayName: displayName, text: text)
+        messages.append(m)
+        //print(messages.count)
+        
+        //add time not open to the time array
+        let b = false
+        timeIsOpen.append(b)
+    }
+//
 //    func sendMessageByAPI(email:String, conversation_id:String, content:String)
 //    {
 //        if isDispatchEmpty {
