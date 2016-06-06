@@ -439,25 +439,16 @@ class APIManager{
                                 //print(json["data"][i])
                                 if let user:User = self.handler.addNewUser(json["data"][i])
                                 {
-                                    print(user)
-                                    //save user for event not conversation
-                                    //self.handler.saveUserForConversation(user, conversation: conversation)
+                                    print("got user")
+                                    //append to array of user
+                                }else{
+                                    print("todo get user")
+                                    //get users
+                                    //apprend to array
                                 }
-                                //if user nill
-                                    //get user
-                                        //save user for event
-                                
-                                
-                                //add new user
-                                    //if nil
-                                        //get user
-                                //get session for title and event_id
-                                //if session nil
-                                    //add sessions
-                                        //save session for event if not done so in add session
-                                //now that we have a session:
-                                //1. save user for session
                             }
+                            //for user array size
+                                //save element relationship with event
                         }
                         
                         completion(result: true)
