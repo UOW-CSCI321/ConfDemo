@@ -142,7 +142,7 @@ class TicketDetailsViewController: UIViewController {
 		if selectedTickets.count > 0 {
 			return true
 		}
-		HUD.flash(.Label("selectTicket".localized()), delay: 1)
+		HUD.flash(.Label("warnSelectTicket".localized()), delay: 1)
 		return false
 	}
 }

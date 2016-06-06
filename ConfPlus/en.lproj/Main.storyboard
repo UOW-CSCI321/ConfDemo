@@ -898,7 +898,7 @@
             </objects>
             <point key="canvasLocation" x="-330" y="1925"/>
         </scene>
-        <!--History-->
+        <!--Payment History-->
         <scene sceneID="egE-dH-Fr6">
             <objects>
                 <viewController storyboardIdentifier="HistoryTableViewController" id="sfj-Ji-26K" customClass="HistoryTableViewController" customModule="ConfPlus" customModuleProvider="target" sceneMemberID="viewController">
@@ -947,7 +947,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="History" id="ZU0-Oh-wgx"/>
+                    <navigationItem key="navigationItem" title="Payment History" id="ZU0-Oh-wgx"/>
                     <connections>
                         <outlet property="tableView" destination="NqB-DL-58l" id="Mod-2M-tWr"/>
                     </connections>

@@ -34,4 +34,79 @@
 "state" = "State";
 "country" = "Country";
 
-"selectTicket" = "Please select ticket to continue";
+//New Billing
+"New Billing" = "New Billing";
+"Card Number" = "Card Number";
+"Card Type" = "Card Type";
+"Expire Date" = "Expire Date";
+
+"Pull to refresh" = "Pull to refresh";
+"Explore" = "Explore";
+"My Events" = "My Events"
+"Current Events" = "Current Events";
+"Past Events" = "Past Events";
+
+//Explore Storyboard
+"Event Details" = "Event Details";
+"Purchase Tickets" = "Purchase Tickets";
+"Ticket Details" = "Ticket Details";
+"Update Tickets" = "Update Tickets";
+"Participants Details" = "Participants Details";
+"Name" = "Name";
+"Email" = "Email";
+"Type" = "Type";
+"Class" = "Class";
+"Continue" = "Continue";
+"Confirm Purchase" = "Confirm Purchase";
+"Confirmation" = "Confirmation";
+"Receipt" = "Receipt";
+"Complete" = "Complete";
+"Sessions" = "Sessions";
+"Add sessions" = "Add Sessions";
+"Update Session Tickets" = "Update Session Tickets";
+"Topic" = "Topic";
+"Room" = "Room";
+"Payment Information" = "Payment Information";
+"Credit Card" = "Credit Card";
+"Event Tickets" = "Event tickets";
+"Total" = "Total";
+
+
+//Account Storyboard
+"Login" = "Login";
+"Register" = "Register";
+"Forgot Password" = "Forgot Password";
+"Password" = "Password";
+
+//EventAssistant Storyboard
+"Help" = "Help";
+
+//Event Storyboard
+"Back" = "Back";
+"Overview" = "Overview";
+"Timetable" = "Timetable";
+"Ask Question" = "Ask Question";
+"Messages" = "Messages";
+"Tickets" = "Tickets";
+"Seat" = "Seat";
+"Ticket details" = "Ticket Details";
+"Details" = "Details";
+"Administrations" = "Administrations";
+"Feautures" = "Features";
+"Attendance" = "Attendance";
+"Notification" = "Notification";
+"Presentation" = "Presentation";
+"Venue & Location" = "Venue & Location";
+"Participants" = "Participants";
+
+//Warning Dialog
+"warnInternet" = "Internet Connection Issues";
+"warnEvents" = "No Events Available";
+"warnUpdate" = "Data might not up to date";
+"warnSelect" = "To purchase tickets for sessions, press on the ticket for each participants";
+"warnSuccess" = "Your tickets had been purchased. Hope you enjoy the events.";
+"warnTickets" = "No Tickets Available!";
+"warnContact" = "Contact Event Organizer for more information";
+"warnSelectTicket" = "Please select ticket to continue";
+"warnEmpty" = "Fields must not be empty";
+"warnPaymentFail" = "Payment Failed, please try again";
