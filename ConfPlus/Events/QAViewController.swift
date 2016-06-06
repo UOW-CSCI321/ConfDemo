@@ -13,7 +13,7 @@ import JSQMessagesViewController
 
 class QAViewController: JSQMessagesViewController {
     
-//    var messages = [JSQMessage]()
+    var messages = [JSQMessage]()
 //    var avatars = [JSQMessagesAvatarImage]()
 //    var conversationID = ""
 //    var outgoingBubbleImageView: JSQMessagesBubbleImage!
@@ -31,7 +31,7 @@ class QAViewController: JSQMessagesViewController {
     var databaseMessages = [Message]()
     var conversation:Conversation!
 //    var failedMessages = [Int]() //position of the failed message in messages
-//    var users = [User]()
+    var users = [User]()
 //    var bgColour = UIColor()
 //    var txtColour = UIColor()
 //    var systFont = UIFont()
@@ -123,8 +123,8 @@ class QAViewController: JSQMessagesViewController {
                     self.isDispatchEmpty = true
                     self.databaseMessages = ModelHandler().getMessageForConversation(self.conversation)!
                     print("MESSAGE COUNT: \(self.databaseMessages.count)")
-                    print(self.databaseMessages)
-                    //self.messagesToJSQMessages()
+                    //print(self.databaseMessages)
+                    self.messagesToJSQMessages()
                 }
             }
         }
@@ -182,7 +182,9 @@ class QAViewController: JSQMessagesViewController {
                     APIManager().getUsersForConversationFromAPI(self.conversation) { result in //this should add profile pics of users getting from server
                         //print(result)
                         //NOT SURE IF SAVING USERS FOR CONVERSATION -IS SAVING
-                        self.getMessagesFromAPI()
+                        self.users =  ModelHandler().getUsersForConversation(self.conversation)!
+                        print(self.users)
+                       // self.getMessagesFromAPI()
                     }
                     
                 }
