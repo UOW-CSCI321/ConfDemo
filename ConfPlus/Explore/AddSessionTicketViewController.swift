@@ -28,23 +28,23 @@ class AddSessionTicketViewController: UIViewController {
 			var sessions = [Tickets]()
 			for section in 0..<tableView.numberOfSections{
 				for row in 0..<tableView.numberOfRowsInSection(section){
-					let cell:SessionTicketsTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as! SessionTicketsTableViewCell
+					let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as! AddSessionTicketTableViewCell
 					
-//					if cell.backgroundColor == UIColor.init(red: 0, green: 0.8, blue: 0, alpha: 0.2) {
-//						let itemSection = dataSortedByDates[dates[section]]
-//						let item = itemSection![row]
-//						
-//						if sessions.count == 0 {
-//							sessions = [item]
-//						} else {
-//							sessions.append(item)
-//						}
-//						
-//					}
+					if cell.accessoryType == .Checkmark {
+						let itemSection = selectedSessions[titles[section]]
+						let item = itemSection![row]
+						
+						if sessions.count == 0 {
+							sessions = [item]
+						} else {
+							sessions.append(item)
+						}
+						
+					}
 				}
 			}
 			
-			
+			print("called")
 			del.selectSessionTicketDidFinish(self, email: ticket.email, col: col, session: sessions)
 			
 		}
@@ -52,13 +52,11 @@ class AddSessionTicketViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
 		setDataForPresent()
     }
 	
 	func setDataForPresent(){
 		titles = Array(selectedSessions.keys)
-		
 		tableView.reloadData()
 	}
 

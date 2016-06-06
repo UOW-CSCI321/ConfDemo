@@ -1124,12 +1124,9 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                             <state key="normal" title="Update Session Tickets"/>
                                             <connections>
-                                                <action selector="updateSessionTickets:" destination="gFQ-gV-hxt" eventType="touchUpInside" id="XX1-vL-me6"/>
+                                                <action selector="performUpdateTickets:" destination="bmN-bB-6d4" eventType="touchUpInside" id="o2C-sd-NUG"/>
                                             </connections>
                                         </button>
-                                        <connections>
-                                            <action selector="performUpdateTickets:" destination="bmN-bB-6d4" id="fZU-cM-SgQ"/>
-                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Fha-GO-0MY"/>
                                 </items>
