@@ -399,7 +399,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyp-Tl-t0Y">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                                    <state key="normal" title="New Billing Info"/>
+                                                    <state key="normal" title="New Billing"/>
                                                     <connections>
                                                         <segue destination="srz-Rh-g9Z" kind="show" id="XbU-gX-3s7"/>
                                                     </connections>
@@ -772,7 +772,7 @@
             </objects>
             <point key="canvasLocation" x="-1030" y="1925"/>
         </scene>
-        <!--New Billing Info-->
+        <!--New Billing-->
         <scene sceneID="rsh-ur-fWG">
             <objects>
                 <tableViewController id="srz-Rh-g9Z" customClass="NewBillingTableViewController" customModule="ConfPlus" customModuleProvider="target" sceneMemberID="viewController">
@@ -881,7 +881,7 @@
                             <outlet property="delegate" destination="srz-Rh-g9Z" id="Hgm-4f-VwE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="New Billing Info" id="gJA-81-zBs">
+                    <navigationItem key="navigationItem" title="New Billing" id="gJA-81-zBs">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="qhc-kd-H1A">
                             <connections>
                                 <action selector="performSave:" destination="srz-Rh-g9Z" id="JIz-mo-Vp8"/>
