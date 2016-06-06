@@ -109,7 +109,10 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="forgotButton" destination="mYi-rm-Vl9" id="WsL-XK-XJh"/>
+                        <outlet property="loginButton" destination="7H2-l0-Dv4" id="lPa-V7-4C8"/>
                         <outlet property="passwordTextfield" destination="MDZ-5U-ckj" id="WYk-zg-vwo"/>
+                        <outlet property="registerButton" destination="8lV-3m-OBi" id="eF5-59-E15"/>
                         <outlet property="usernameTextfield" destination="joa-ac-bu4" id="si7-NP-WfC"/>
                     </connections>
                 </viewController>
@@ -213,7 +216,9 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="XcN-0L-RPC" id="rSX-AO-0t5"/>
+                        <outlet property="loginButton" destination="OPe-4R-2eM" id="owP-PL-qTx"/>
                         <outlet property="passwordTextField" destination="Xgn-aC-tl2" id="aXO-gl-cna"/>
+                        <outlet property="registerButton" destination="PvH-Nx-2lA" id="Bex-EO-q7e"/>
                         <outlet property="usernameTextField" destination="A1j-q4-20D" id="aIA-lE-RDS"/>
                     </connections>
                 </viewController>

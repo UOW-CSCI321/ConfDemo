@@ -88,6 +88,7 @@
 "Register" = "Register";
 "Forgot Password" = "Forgot Password";
 "Password" = "Password";
+"Username" = "Username";
 
 //EventAssistant Storyboard
 "Help" = "Help";
@@ -126,3 +127,16 @@
 
 "warnEmpty" = "Fields must not be empty";
 "warnPaymentFail" = "Payment Failed, please try again";
+"warnNoPayment" = "No payment history yet.";
+"warnTryAgain" = "Please try again";
+
+"warnLogin" = "Incorrect Email or Password";
+"Wrong Email" = "Wrong Email";
+"Wrong Password" = "Wrong Password";
+"OK" = "OK";
+
+"Invalid Username" = "Invalid Username";
+"Invalid Password" = "Invalid Password";
+"Invalid email" = "Invalid email";
+
+

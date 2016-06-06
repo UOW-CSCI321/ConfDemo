@@ -86,6 +86,7 @@
 "Register" = "注册";
 "Forgot Password" = "忘记密码";
 "Password" = "密码";
+"Username" = "用户名";
 
 //EventAssistant Storyboard
 "Help" = "帮助";
@@ -124,3 +125,15 @@
 
 "warnEmpty" = "不能为空";
 "warnPaymentFail" = "付款失败，请重试";
+"warnNoPayment" = "没有付款记录";
+"warnTryAgain" = "请重试";
+
+"warnLogin" = "（电邮）或（密码）错误";
+"Wrong Email" = "电邮错误";
+"Wrong Password" = "密码错误";
+"OK" = "确认";
+
+"Invalid Username" = "不正当用户名";
+"Invalid Password" = "不正当密码";
+"Invalid email" = "不正当电邮";
+
