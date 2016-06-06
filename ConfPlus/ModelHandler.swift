@@ -217,13 +217,16 @@ class ModelHandler{
         return venue
     }
     
-    func serverStringToDate(dateString:String) -> NSDate
+    func serverStringToDate(dateString:String) -> NSDate?
     {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = NSTimeZone(name: "GMT")
         
         let d1 = dateFormatter.dateFromString(dateString)
+        if d1 == nil {
+            return nil
+        }
         return d1!
     }
 
@@ -251,6 +254,14 @@ class ModelHandler{
         user.upgraded = json["upgraded"].number
         user.profile_pic_url = json["image_data_url"].string
         
+        if user.first_name == nil{
+            user.first_name = "nil"
+        }
+        if user.last_name == nil {
+            user.last_name = "nil"
+        }
+        
+        print("adding new user: \(user.email!) \(user.first_name!) \(user.last_name!)")
 //        print(user.email)
 //        print(user.username)
 //        print(user.password)

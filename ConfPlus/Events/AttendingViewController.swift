@@ -13,9 +13,19 @@ class AttendingViewController: UIViewController {
     var event:Event!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 		
         getVenue()
 		populateNavigationBar()
+        
+        //getusersforevent
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        //api call to get users for a conversation
+        APIManager().getEventAttendeesFromAPI(self.event) { result in
+            
+        }
     }
     
     func getVenue()

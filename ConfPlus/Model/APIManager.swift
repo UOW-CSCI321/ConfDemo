@@ -411,54 +411,70 @@ class APIManager{
 
     }
     
-//    func getEventAttendeesFromAPI(event:Event, completion: (result: Bool) -> Void) {
-//        
-//        guard let id = event.event_id else {
-//            completion(result: false)
-//            return
-//        }
-//
-//        let paramaters = [
-//            "api_key"	:	server.KEY,
-//            "app_secret":	server.SECRET,
-//            "method"	:	"getEventAttendees",
-//            "event_id"	:	id
-//        ]
-//
-//        Alamofire.request(.POST, server.URL, parameters: paramaters).responseJSON {response in
-//            switch response.result{
-//            case .Success:
-//                if let value = response.result.value{
-//                    
-//                    let json = JSON(value)
-//                    if json["success"] {
-//                        if let counter = json["data"].array?.count
-//                        {
-//                            for i in 0..<counter
-//                            {
-//                                print(json["data"][i])
-//                                /*if let user:User = self.handler.addNewUser(json["data"][i])
-//                                {
-//                                    //self.handler.saveUserForConversation(user, conversation: conversation)
-//                                }*/
-//                            }
-//                        }
-//                        
-//                        completion(result: true)
-//                    } else {
-//                        print(json["data"][0]["message"])
-//                        completion(result: false)
-//                    }
-//                }
-//                
-//            case .Failure(let error):
-//                print(error.localizedDescription)
-//                completion(result: false)
-//                
-//            }
-//
-//        }
-//    }
+    func getEventAttendeesFromAPI(event:Event, completion: (result: Bool) -> Void) {
+        
+        guard let id = event.event_id else {
+            completion(result: false)
+            return
+        }
+
+        let paramaters = [
+            "api_key"	:	server.KEY,
+            "app_secret":	server.SECRET,
+            "method"	:	"getEventAttendees",
+            "event_id"	:	id
+        ]
+
+        Alamofire.request(.POST, server.URL, parameters: paramaters).responseJSON {response in
+            switch response.result{
+            case .Success:
+                if let value = response.result.value{
+                    
+                    let json = JSON(value)
+                    if json["success"] {
+                        if let counter = json["data"].array?.count
+                        {
+                            for i in 0..<counter
+                            {
+                                //print(json["data"][i])
+                                if let user:User = self.handler.addNewUser(json["data"][i])
+                                {
+                                    print(user)
+                                    //save user for event not conversation
+                                    //self.handler.saveUserForConversation(user, conversation: conversation)
+                                }
+                                //if user nill
+                                    //get user
+                                        //save user for event
+                                
+                                
+                                //add new user
+                                    //if nil
+                                        //get user
+                                //get session for title and event_id
+                                //if session nil
+                                    //add sessions
+                                        //save session for event if not done so in add session
+                                //now that we have a session:
+                                //1. save user for session
+                            }
+                        }
+                        
+                        completion(result: true)
+                    } else {
+                        print(json["data"][0]["message"])
+                        completion(result: false)
+                    }
+                }
+                
+            case .Failure(let error):
+                print(error.localizedDescription)
+                completion(result: false)
+                
+            }
+
+        }
+    }
     
     //MARK: - Message/Conversation Related
     func getConversationsFromAPI(email:String, group: dispatch_group_t, inout isDispatchEmpty: Bool, completion: (Bool) -> Void) {
