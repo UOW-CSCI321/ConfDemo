@@ -348,6 +348,28 @@ class ModelHandler{
         performUpdate()
     }
     
+    func getUsersForEvent(event:Event) -> [User]?
+    {
+        let request = NSFetchRequest()
+        let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: context)
+        
+        let predicate = NSPredicate(format: "ANY events == %@", event)
+        
+        request.entity = entity
+        request.predicate = predicate
+        
+        var users = [User]()
+        do{
+            users = try context.executeFetchRequest(request) as! [User]
+            //print(users)
+            return users
+        } catch {
+            print("Failed to search for usesr in event \(event.event_id)")
+        }
+        return nil
+
+    }
+    
     //MARK: - Conversation/Message related
     
     func getUsersForConversation(conversation:Conversation) -> [User]?

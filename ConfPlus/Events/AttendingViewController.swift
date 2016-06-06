@@ -24,7 +24,8 @@ class AttendingViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         //api call to get users for a conversation
         APIManager().getEventAttendeesFromAPI(self.event) { result in
-            
+            let users = ModelHandler().getUsersForEvent(self.event)
+            print(users)
         }
     }
     

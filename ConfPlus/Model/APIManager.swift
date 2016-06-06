@@ -440,22 +440,17 @@ class APIManager{
                                 //print(json["data"][i])
                                 if let user:User = self.handler.addNewUser(json["data"][i])
                                 {
-                                    print("got user")
-                                    //append to array of user
+                                    //print("got user")
                                     users.append(user)
                                     print("added user \(user.email!)")
                                 }else{
-                                    print("getting user")
-                                    //get users
-                                    //apprend to array
-                                    
+                                    //print("getting user")
                                     let user = self.handler.getUser(json["data"][i]["email"].string!)
-                                    //append to array if its not already in the array
                                     if !users.contains(user!){
                                         users.append(user!)
-                                        print("added user \(user?.email!)")
+                                        //print("added user \(user?.email!)")
                                     }else {
-                                        print("\(user!.email!) already in array")
+                                        //print("\(user!.email!) already in array")
                                     }
                                     
                                 }
