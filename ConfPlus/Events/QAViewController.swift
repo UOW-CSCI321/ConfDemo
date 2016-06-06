@@ -131,36 +131,36 @@ class QAViewController: JSQMessagesViewController {
     }
     
     func getLatestServerMessage() {
-//        APIManager().getLatestMessageDateForConversation(self.conversation) { result in
-//            //let sm = result
-//            //var count = self.databaseMessages.count
-//            //count - 1 //count is from 1..n not 0.n
-//            let sDate = result //sm.date
-//            //            for i in 0..<count
-//            //            {
-//            //                print("\(i) \(self.databaseMessages[i])")
-//            //            }
-//            let msg = self.databaseMessages.last
-//            let dDate = msg?.date
-//            
-//            //print("message: \(msg!.content) from \(msg!.sender_email)")
-//            
-//            var order = NSCalendar.currentCalendar().compareDate(dDate!, toDate: sDate!, toUnitGranularity: .Second)
-//            switch order {
-//            case .OrderedSame:
-//                //local database is up to date with the server
-//                print("up to date already")
-//            case .OrderedDescending:
-//                //local database holds a message later than server
-//                print("database updated > server")
-//            case .OrderedAscending:
-//                //local data base does not have the latest message
-//                print("need to update")
-//                self.getMessagesFromAPI()
-//                
-//            }
-//            
-//        }
+        APIManager().getLatestMessageDateForConversation(self.conversation) { result in
+            //let sm = result
+            //var count = self.databaseMessages.count
+            //count - 1 //count is from 1..n not 0.n
+            let sDate = result //sm.date
+            //            for i in 0..<count
+            //            {
+            //                print("\(i) \(self.databaseMessages[i])")
+            //            }
+            let msg = self.databaseMessages.last
+            let dDate = msg?.date
+            
+            //print("message: \(msg!.content) from \(msg!.sender_email)")
+            
+            var order = NSCalendar.currentCalendar().compareDate(dDate!, toDate: sDate!, toUnitGranularity: .Second)
+            switch order {
+            case .OrderedSame:
+                //local database is up to date with the server
+                print("up to date already")
+            case .OrderedDescending:
+                //local database holds a message later than server
+                print("database updated > server")
+            case .OrderedAscending:
+                //local data base does not have the latest message
+                print("need to update")
+                self.getMessagesFromAPI()
+                
+            }
+            
+        }
         
     }
     
@@ -201,16 +201,17 @@ class QAViewController: JSQMessagesViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        //self.timer.invalidate()
+        self.timer.invalidate()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-//        //timer
-//        timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "getLatestServerMessage", userInfo: nil, repeats: true)
-//      
         addConvoForSession()
+        
+        //timer
+        timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "getLatestServerMessage", userInfo: nil, repeats: true)
+//
+        
 //        getMessagesFromAPI()
         
         //yesterday
