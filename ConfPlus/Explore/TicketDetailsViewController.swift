@@ -198,7 +198,7 @@ extension TicketDetailsViewController: UITableViewDelegate{
 		if segue.identifier == "goToUserInfoView"{
 			
 			let vc = segue.destinationViewController as! PersonalDetailsViewController
-			//vc.sessionTickets = sessionTickets
+			vc.sessionTickets = sessionTickets
 			vc.tickets = selectedTickets
 			vc.event = event
 		}

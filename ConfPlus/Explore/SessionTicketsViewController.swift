@@ -10,18 +10,15 @@ import Foundation
 import UIKit
 import PKHUD
 
-protocol selectSessionTicketDelegate{
-	func selectSessionTicketDidFinish(controller:SessionTicketsViewController, email:String, col:Int, session:[Tickets])
-}
-
 class SessionTicketsViewController: UIViewController {
 	
 	@IBOutlet weak var tableView: UITableView!
 	
-	var sessionTickets = [Tickets]()
+	var sessionTickets = Dictionary<String, [Tickets]>()
 	var ticket:Coupon!
 	var event:Event!
 	var col:Int!
+	var titles = [String]()
 	
 	var dataSortedByDates = Dictionary<String, [Tickets]>()
 	var dates = [String]()
@@ -38,33 +35,13 @@ class SessionTicketsViewController: UIViewController {
 		setDataForPresent()
 	}
 	
+	@IBAction func performCancel(sender: AnyObject) {
+		self.dismissViewControllerAnimated(true, completion: nil)
+	}
+	
 	@IBAction func updateSessionTickets(sender: AnyObject) {
-		if let del = delegate {
-			var sessions = [Tickets]()
-			for section in 0..<tableView.numberOfSections{
-				for row in 0..<tableView.numberOfRowsInSection(section){
-					let cell:SessionTicketsTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as! SessionTicketsTableViewCell
-					
-					if cell.backgroundColor == UIColor.init(red: 0, green: 0.8, blue: 0, alpha: 0.2) {
-						let itemSection = dataSortedByDates[dates[section]]
-						let item = itemSection![row]
-						
-						if sessions.count == 0 {
-							sessions = [item]
-						} else {
-							sessions.append(item)
-						}
-						
-					}
-				}
-			}
-			
-			
-			//if sessions.count > 0 {
-			del.selectSessionTicketDidFinish(self, email: ticket.email, col: col, session: sessions)
-			//} else {
-			//	navigationController?.popViewControllerAnimated(true)
-			//}
+		if shouldPerformSegueWithIdentifier("goToSessionTicketSelection", sender: nil){
+			performSegueWithIdentifier("goToSessionTicketSelection", sender: nil)
 		}
 	}
 	
@@ -74,15 +51,18 @@ class SessionTicketsViewController: UIViewController {
 		
 		HUD.show(.Progress)
 		for session in sessionTickets  {
-			let date = GeneralLibrary().getStringFromDate(session.startTime!)
-			
-			if self.dataSortedByDates.indexForKey(date) == nil {
-				self.dataSortedByDates[date] = [session]
-			} else {
-				self.dataSortedByDates[date]!.append(session)
+			if session.1.count > 0 {
+				let ticket = session.1[0]
+				
+				let date = GeneralLibrary().getStringFromDate(ticket.startTime!)
+				
+				if self.dataSortedByDates.indexForKey(date) == nil {
+					self.dataSortedByDates[date] = [ticket]
+				} else {
+					self.dataSortedByDates[date]?.append(ticket)
+				}
+				self.dataSortedByDates[date]?.sortInPlace({ $0.startTime!.compare($1.startTime!) == NSComparisonResult.OrderedAscending })
 			}
-			
-			self.dataSortedByDates[date]?.sortInPlace({ $0.startTime!.compare($1.startTime!) == NSComparisonResult.OrderedAscending })
 		}
 		dates = Array(dataSortedByDates.keys).sort(<)
 		
@@ -92,6 +72,32 @@ class SessionTicketsViewController: UIViewController {
 		HUD.hide()
 	}
 	
+	override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+		if identifier == "goToSessionTicketSelection" {
+			
+			return true
+		}
+		return false
+	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "goToSessionDetail"{
+			let vc = segue.destinationViewController as! SessionDetailViewController
+			vc.event = event
+			
+			let row = sender!.row
+			let sec = sender!.section
+			
+			let itemSection = dataSortedByDates[dates[sec]]
+			let item = itemSection![row]
+			vc.ticket = item
+		} else if segue.identifier == "goToSessionTicketSelection" {
+			let vc = segue.destinationViewController as! AddSessionTicketViewController
+			vc.col = col
+			vc.delegate = delegate
+			vc.ticket = ticket
+		}
+	}
 }
 
 //MARK:- TableView Related
@@ -118,29 +124,15 @@ extension SessionTicketsViewController: UITableViewDelegate{
 		let item = itemSection![row]
 		cell.backgroundColor = UIColor.clearColor()
 		
-		cell.presentationName.text = item.name
+		cell.presentationName.text = item.title
 		cell.presentationTime.text = "\(GeneralLibrary().getTimeFromDate(item.startTime!)) - \(GeneralLibrary().getTimeFromDate(item.endTime!))"
 		cell.presentationLocation.text = item.room ?? ""
-		cell.presentationPrice.text = "$ \(item.price!)"
+		//cell.presentationPrice.text = "$ \(item.price!)"
 		
 		return cell
 	}
 	
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		self.performSegueWithIdentifier("goToSessionDetail", sender: indexPath)
-	}
-	
-	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		if segue.identifier == "goToSessionDetail"{
-			let vc = segue.destinationViewController as! SessionDetailViewController
-			vc.event = event
-			
-			let row = sender!.row
-			let sec = sender!.section
-			
-			let itemSection = dataSortedByDates[dates[sec]]
-			let item = itemSection![row]
-			vc.ticket = item
-		}
 	}
 }

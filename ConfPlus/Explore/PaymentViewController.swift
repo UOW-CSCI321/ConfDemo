@@ -16,7 +16,7 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 	
 	var tickets = [Coupon]()
 	var event:Event!
-	var sessionTickets = [Tickets]()
+	var sessionTickets = Dictionary<String, [Tickets]>()
 	var totalPrice:Double = 0.0
 	
 	let user = NSUserDefaults.standardUserDefaults()
@@ -80,14 +80,15 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 				tickets[col].ticket.append(tit)
 			}
 		}
-		controller.navigationController?.popViewControllerAnimated(true)
+		controller.dismissViewControllerAnimated(true, completion: nil)
 		tableView.reloadData()
 	}
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "goToSessionsTicket" {
 			let col = sender!.section
-			let vc = segue.destinationViewController as! SessionTicketsViewController
+			let nv = segue.destinationViewController as! UINavigationController
+			let vc = nv.topViewController as! SessionTicketsViewController
 			vc.sessionTickets = sessionTickets
 			vc.ticket = tickets[col!]
 			vc.event = event
