@@ -39,6 +39,8 @@ class QAViewController: JSQMessagesViewController {
     
     var session:Session!
     var userEmail:String!
+    var speakerIncomingBubbleImageView: JSQMessagesBubbleImage!
+    var speakerEmail:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -340,6 +342,7 @@ class QAViewController: JSQMessagesViewController {
         
         failedOutgoingBubbleImageView = factory.outgoingMessagesBubbleImageWithColor(
             UIColor.jsq_messageBubbleRedColor())
+        speakerIncomingBubbleImageView = factory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleGreenColor())
     }
 
     override func collectionView(collectionView: JSQMessagesCollectionView!,
@@ -352,6 +355,10 @@ class QAViewController: JSQMessagesViewController {
             }
             return outgoingBubbleImageView
         } else { // if not local user return incoming message
+            if message.senderId == speakerEmail
+            {
+                return speakerIncomingBubbleImageView
+            }
             return incomingBubbleImageView
         }
     }

@@ -128,8 +128,8 @@ class TalksViewController: UITableViewController {
         
         vc.title = title
         vc.senderDisplayName = "test"
-        //messengerVC.title = userConversations[row].name
-        //messengerVC.senderDisplayName = userConversations[row].lastmsg_email
+        vc.speakerEmail = self.mySession.speaker_email
+       
         self.hidesBottomBarWhenPushed = true
     }
     
