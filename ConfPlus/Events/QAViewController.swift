@@ -542,6 +542,10 @@ class QAViewController: JSQMessagesViewController {
                 return NSAttributedString(string: "Messaged failed to send")
             }
             return nil;
+        } else if message.senderId == speakerEmail { //if speaker email indicate it is the speaker
+            var rtrnString = "Presenter - "
+            rtrnString += speakerEmail
+            return NSAttributedString(string: rtrnString)
         }
         
         // Same as previous sender, skip
