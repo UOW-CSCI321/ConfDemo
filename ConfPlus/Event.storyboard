@@ -611,6 +611,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Participants" id="TGX-sz-F0M"/>
+                    <connections>
+                        <outlet property="attendingTableView" destination="cCc-X5-K59" id="vjA-8T-Vuc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KHP-iw-34D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

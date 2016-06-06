@@ -190,6 +190,7 @@ class MessagesTableViewController: UIViewController {
 	
 }
 
+//MARK: Table Related
 extension MessagesTableViewController: UITableViewDelegate{
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return 1
