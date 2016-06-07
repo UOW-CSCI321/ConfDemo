@@ -30,6 +30,6 @@ class Venue: NSManagedObject {
                 }
             }
         }
-        return UIImage(named: "launch")!
+        return UIImage(named: "CeBIT")!
     }
 }
