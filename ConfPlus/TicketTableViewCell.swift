@@ -13,6 +13,8 @@ class TicketTableViewCell: UITableViewCell {
 	@IBOutlet weak var ticketCount: UILabel!
 	@IBOutlet weak var ticketName: UILabel!
 	@IBOutlet weak var ticketPrice: UILabel!
+	@IBOutlet weak var ticketClass: UILabel!
+	@IBOutlet weak var ticketType: UILabel!
 	
     override func awakeFromNib() {
         super.awakeFromNib()

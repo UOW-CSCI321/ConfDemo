@@ -33,7 +33,7 @@ class ExploreViewController: UIViewController {
 		EventsTableView.reloadData()
 		
 		refresher = UIRefreshControl()
-		refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
+		refresher.attributedTitle = NSAttributedString(string: "Pull to refresh".localized())
 		refresher.addTarget(self, action: #selector(self.getEventsFromAPI), forControlEvents: UIControlEvents.ValueChanged)
 		self.EventsTableView.addSubview(refresher)
     }
@@ -59,7 +59,7 @@ class ExploreViewController: UIViewController {
 	func getEventsFromAPI(){
 		if isDispatchEmpty {
 			isDispatchEmpty = false
-			notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+			notification = MPGNotification(title: "warnUpdate".localized(), subtitle: "warnUpdateMessage".localized(), backgroundColor: UIColor.orangeColor(), iconImage: nil)
 			notification.show()
 			
 			APIManager().getUpcomingEventsByCountry("Australia"){ result in

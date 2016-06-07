@@ -119,7 +119,7 @@
 //Warning Dialog
 "warnInternet" = "网络连接问题";
 "warnEvents" = "没有可用活动";
-"warnUpdate" = "日期无效";
+"warnUpdate" = "数据未更新";
 "warnSelect" = "如果要买这个时期的票，请点击每个需要参与的人的票券";
 
 "warnSuccess" = "你的票券已经购买成功！ 希望你可以玩的开心";
@@ -143,5 +143,6 @@
 "warnSecurity" = "没有保安功能";
 
 "warnSecurityMessage" = "管理员没有设定保安号码";
-
-
+"warnComplete" = "欲购买票卷，请点击确认购买";
+"warnUpdate" = "更新中";
+"warnUpdateMessage" = "更新可能需要一些时间";
