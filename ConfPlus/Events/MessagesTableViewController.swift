@@ -23,7 +23,7 @@ class MessagesTableViewController: UIViewController {
     var participants = [UIImage]() //[User]() //hold one user per conversation to display conversation icon
     var tempParticipants = [User]()
     var event:Event!
-    let companyLogo = UIImage(named: "loo")
+    let companyLogo = UIImage(named: "logo")
     var usersForConversations = [[User]]()
     
     let user = NSUserDefaults.standardUserDefaults()

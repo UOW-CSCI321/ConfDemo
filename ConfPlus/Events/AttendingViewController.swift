@@ -85,7 +85,7 @@ extension AttendingViewController: UITableViewDelegate{
         if users[row].profile_pic_url != nil {
             cell.profilePicture.image = users[row].getImage()
         }else{
-            cell.profilePicture.image = UIImage(named: "matt")
+            cell.profilePicture.image = UIImage(named: "logo")
         }
         
         return cell
