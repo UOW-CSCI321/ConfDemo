@@ -109,12 +109,14 @@
 "Details" = "详细资料";
 "Administrations" = "管理";
 "Feautures" = "特点";
-"Attendance" = "出席";
+"Participants" = "出席者";
 
 "Notification" = "通知";
 "Presentation" = "演讲";
 "Venue & Location" = "会场地点";
 "Participants" = "参与者";
+
+"Security" = "安全及帮助";
 
 //Warning Dialog
 "warnInternet" = "网络连接问题";

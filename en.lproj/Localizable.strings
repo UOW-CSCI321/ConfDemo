@@ -109,12 +109,14 @@
 "Details" = "Details";
 "Administrations" = "Administrations";
 "Feautures" = "Features";
-"Attendance" = "Attendance";
+"Participants" = "Participants";
 
 "Notification" = "Notification";
 "Presentation" = "Presentation";
 "Venue & Location" = "Venue & Location";
 "Participants" = "Participants";
+
+"Security" = "Help & Security";
 
 //Warning Dialog
 "warnInternet" = "Internet Connection Issues";

@@ -22,6 +22,8 @@ class EventLocationViewController:UIViewController, UIScrollViewDelegate {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		navigationItem.title = "Venue & Location".localized()
+		
         //print(event.venue_id)
         self.scrollview.delegate = self
         print(scrollview.frame.size.height)
