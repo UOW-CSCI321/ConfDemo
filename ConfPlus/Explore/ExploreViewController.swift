@@ -59,7 +59,7 @@ class ExploreViewController: UIViewController {
 	func getEventsFromAPI(){
 		if isDispatchEmpty {
 			isDispatchEmpty = false
-			notification = MPGNotification(title: "warnUpdate".localized(), subtitle: "warnUpdateMessage".localized(), backgroundColor: UIColor.orangeColor(), iconImage: nil)
+			notification = MPGNotification(title: "Updating".localized(), subtitle: "warnUpdateMessage".localized(), backgroundColor: UIColor.orangeColor(), iconImage: nil)
 			notification.show()
 			
 			APIManager().getUpcomingEventsByCountry("Australia"){ result in

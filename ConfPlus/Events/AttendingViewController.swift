@@ -36,12 +36,13 @@ class AttendingViewController: UIViewController, MFMessageComposeViewControllerD
     
     override func viewWillAppear(animated: Bool) {
         //api call to get users for a conversation
-        let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+        let notification = MPGNotification(title: "Updating".localized(), subtitle: "warnUpdateMessage".localized(), backgroundColor: UIColor.orangeColor(), iconImage: nil)
         notification.duration = 60
         notification.show()
         APIManager().getEventAttendeesFromAPI(self.event) { result in
+			notification.dismissWithAnimation(true)
             self.users = ModelHandler().getUsersForEvent(self.event)!
-            notification.hidden = true
+            notification.dismissWithAnimation(true)
             //print(self.users)
             //self.attendingTableView.reloadData()
             

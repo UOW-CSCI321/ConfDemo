@@ -153,7 +153,7 @@
 
 "warnSecurityMessage" = "管理员没有设定保安号码";
 "warnComplete" = "欲购买票卷，请点击确认购买";
-"warnUpdate" = "更新中";
+"Updating" = "更新中";
 "warnUpdateMessage" = "更新可能需要一些时间";
 
 "warnFeatures" = "功能未开启";

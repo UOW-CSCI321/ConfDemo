@@ -75,13 +75,13 @@ class TimeTableViewController: UIViewController {
     }
     
     func getMySessionsFromAPI(event:Event, user:User) {
-        let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+        let notification = MPGNotification(title: "Updating".localized(), subtitle: "warnUpdateMessage".localized(), backgroundColor: UIColor.orangeColor(), iconImage: nil)
         notification.duration = 60
         notification.show()
 
         APIManager().getSessionsAndUserSessionsFromAPI(event, user: user) { result in
   
-            notification.hidden = true
+            notification.dismissWithAnimation(true)
             self.sessions = ModelHandler().getSessionsForEventForUser(event, user: user)
             //print("printing sessions")
             //print(self.sessions)
