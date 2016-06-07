@@ -70,6 +70,7 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 		if event.payee == nil { event.payee = "merchant@cy.my" }
 		if event.cardNum == nil { event.cardNum = "1234 5678 9012 3456" }
 		
+		HUD.show(.Progress)
 		APIManager().makePayment(email, type: "Event Tickets".localized(),
 		                         amount: String(self.totalPrice),
 		                         payment_date: GeneralLibrary().getFullStringFromDate(NSDate()),
@@ -79,8 +80,10 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 				for ticket in self.tickets {
 					APIManager().addSessionAttendee(self.event.event_id!, tickets: ticket)
 				}
+				HUD.hide()
 				self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
 			} else {
+				HUD.hide()
 				HUD.flash(.Label("warnPaymentFail".localized()), delay: 1)
 			}
 		}

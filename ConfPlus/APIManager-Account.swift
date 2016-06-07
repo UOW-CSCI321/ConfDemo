@@ -43,8 +43,7 @@ extension APIManager{
 			case .Failure(let error):
 				HUD.hide()
 				print(error.localizedDescription)
-				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not be the latest.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-				notification.show()
+				HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				completion(result: false)
 				
 			}
@@ -84,8 +83,7 @@ extension APIManager{
 			case .Failure(let error):
 				HUD.hide()
 				print(error.localizedDescription)
-				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-				notification.show()
+				HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				completion(result: false)
 				
 			}
@@ -132,8 +130,7 @@ extension APIManager{
 			case .Failure(let error):
 				HUD.hide()
 				print(error.localizedDescription)
-				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-				notification.show()
+				HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				completion(result: false, data: nil)
 			}
 		}
@@ -168,6 +165,7 @@ extension APIManager{
 				}
 			case .Failure(let error):
 				print(error.localizedDescription)
+				HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				completion(result: false)
 			}
 		}
@@ -222,8 +220,7 @@ extension APIManager{
 			case .Failure(let error):
 				HUD.hide()
 				print(error.localizedDescription)
-				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-				notification.show()
+				HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				completion(result: false)
 				
 			}
@@ -255,8 +252,7 @@ extension APIManager{
 				
 			case .Failure(let error):
 				print(error.localizedDescription)
-				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-				notification.show()
+				HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				completion(result: false, json: nil)
 				
 			}
@@ -291,7 +287,7 @@ extension APIManager{
 				
 			case .Failure(let error):
 				print(error.localizedDescription)
-				HUD.flash(.Label("No Internet Connection"), delay: 1)
+				HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				completion(result: false)
 				
 			}

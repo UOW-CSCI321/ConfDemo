@@ -22,7 +22,7 @@ class APIManager{
 	
 	let user = NSUserDefaults.standardUserDefaults()
 	
-	func fetchError(title: String = "No internet Connection", message:String = "Data might not updated."){
+	func fetchError(title: String = "warnInternet".localized(), message:String = "warnUpdate".localized()){
 		let notification = MPGNotification(title: title, subtitle: message, backgroundColor: UIColor.orangeColor(), iconImage: nil)
 		notification.show()
 	}
@@ -47,7 +47,7 @@ class APIManager{
 						}
 						completion(result: true)
 					} else {
-						self.fetchError("Connection Issues")
+						self.fetchError()
 						completion(result: false)
 					}
 				}
@@ -81,7 +81,7 @@ class APIManager{
 						}
 						completion(result: true)
 					} else {
-						self.fetchError("Life is short", message:"Go to Explore Tab and join some interesting events.")
+						HUD.flash(.Label("warnEvents".localized()), delay: 1)
 						completion(result: false)
 					}
 				}
@@ -155,8 +155,7 @@ class APIManager{
                 completion(true)
             case .Failure(let error):
                 print(error.localizedDescription)
-                let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-                notification.show()
+                self.fetchError()
                 completion(false)
             }
             
@@ -509,8 +508,7 @@ class APIManager{
                 completion(true)
             case .Failure(let error):
                 print(error.localizedDescription)
-                let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-                notification.show()
+                self.fetchError()
                 completion(false)
             }
             
@@ -551,8 +549,7 @@ class APIManager{
                 completion(true)
             case .Failure(let error):
                 print(error.localizedDescription)
-                let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-                notification.show()
+                self.fetchError()
                 completion(false)
             }
             
@@ -702,8 +699,7 @@ class APIManager{
             case .Failure(let error):
                 HUD.hide()
                 print(error.localizedDescription)
-                let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not be the latest.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-                notification.show()
+                self.fetchError()
                 completion(result: false, convo_id:  nil)
                 
             }
@@ -742,8 +738,7 @@ class APIManager{
                 
             case .Failure(let error):
                 print(error.localizedDescription)
-                let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not updated.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-                notification.show()
+                self.fetchError()
                 completion(result: false)
             }
             
@@ -782,8 +777,7 @@ extension APIManager{
 			case .Failure(let error):
 				HUD.hide()
 				print(error.localizedDescription)
-				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not be the latest.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-				notification.show()
+				self.fetchError()
 				completion(result: false, data: nil)
 				
 			}
@@ -820,8 +814,7 @@ extension APIManager{
 			case .Failure(let error):
 				HUD.hide()
 				print(error.localizedDescription)
-				let notification = MPGNotification(title: "No internet Connection", subtitle: "Data might not be the latest.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
-				notification.show()
+				self.fetchError()
 				completion(result: false, data: nil)
 				
 			}

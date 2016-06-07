@@ -38,7 +38,7 @@ extension APIManager{
 				
 			case .Failure(let error):
 				print(error.localizedDescription)
-				self.fetchError()
+				HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				completion(result: false, json: nil)
 			}
 			
@@ -68,7 +68,7 @@ extension APIManager{
                 
             case .Failure(let error):
                 print(error.localizedDescription)
-                self.fetchError()
+                HUD.flash(.Label("warnInternet".localized()), delay: 1)
                 completion(result: false, json: nil)
             }
             
@@ -97,7 +97,7 @@ extension APIManager{
 			
 			case .Failure(let error):
 				print(error.localizedDescription)
-				self.fetchError()
+				HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				completion(result: false, json: nil)
 			}
 		
@@ -129,7 +129,7 @@ extension APIManager{
                 
             case .Failure(let error):
                 print(error.localizedDescription)
-                self.fetchError()
+                HUD.flash(.Label("warnInternet".localized()), delay: 1)
                 completion(result: false, json: nil)
             }
             
@@ -161,7 +161,7 @@ extension APIManager{
 				
 			case .Failure(let error):
 				print(error.localizedDescription)
-				self.fetchError()
+				HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				completion(result: false, data: nil)
 				
 			}
@@ -201,7 +201,7 @@ extension APIManager{
 					
 				case .Failure(let error):
 					print(error.localizedDescription)
-					HUD.flash(.Label("No internet"), delay: 0.5)
+					HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				}
 				
 			}
@@ -236,7 +236,7 @@ extension APIManager{
 				
 			case .Failure(let error):
 				print(error.localizedDescription)
-				HUD.flash(.Label("No internet"), delay: 0.5)
+				HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				completion(result: false)
 			}
 			
