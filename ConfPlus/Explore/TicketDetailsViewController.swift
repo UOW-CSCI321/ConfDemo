@@ -183,6 +183,8 @@ extension TicketDetailsViewController: UITableViewDelegate{
 		cell.ticketCount.text = item.count
 		cell.ticketName.text = item.name
 		cell.ticketPrice.text = item.price
+		cell.ticketClass.text = item._class
+		cell.ticketType.text = item.type
 		
 		return cell
 	}

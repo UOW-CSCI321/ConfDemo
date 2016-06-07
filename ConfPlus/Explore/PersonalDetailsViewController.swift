@@ -17,7 +17,7 @@ class PersonalDetailsViewController: UIViewController {
 	var tickets = [Coupon]()
 	var event:Event!
 	var sessionTickets = Dictionary<String, [Tickets]>()
-	let type = ["Name", "Email", "Class", "Type"]
+	let type = ["Name", "Email"]
 	
 	let user = NSUserDefaults.standardUserDefaults()
     
@@ -48,7 +48,7 @@ class PersonalDetailsViewController: UIViewController {
 					
 					let detail = cell.typeResponseTextField.text
 					if detail == "" {
-						HUD.flash(.Label("Fields must not be empty"), delay: 1)
+						HUD.flash(.Label("warnEmpty".localized()), delay: 1)
 						return false
 					}
 					
@@ -100,18 +100,7 @@ extension PersonalDetailsViewController: UITableViewDelegate {
 		cell.detailType.text = type[row].localized()
 		cell.typeResponseTextField.placeholder = type[row].localized()
 		
-		switch type[row].localized() {
-			case "Type".localized():
-				cell.typeResponseTextField.text = tickets[section].ticket[0].type
-				cell.typeResponseTextField.enabled = false
-			case "Class".localized():
-				cell.typeResponseTextField.text = tickets[section].ticket[0]._class
-				cell.typeResponseTextField.enabled = false
-		default:
-			cell.typeResponseTextField.enabled = true
-		}
-		
-		if indexPath.section == 0 {
+		if section == 0 {
 			if let email = user.stringForKey("email"), name = user.stringForKey("firstName") {
 				if cell.typeResponseTextField.placeholder == "Name".localized() && cell.typeResponseTextField.text != nil {
 					cell.typeResponseTextField.text = name
