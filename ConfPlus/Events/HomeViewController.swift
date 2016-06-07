@@ -54,7 +54,7 @@ class HomeViewController: UIViewController {
 	func populateEventOverview(){
 		eventName.text = event.name
 		eventDate.text = "\(event.getFromDateAsString()) - \(event.getToDateAsString())"
-		//eventLocation.text = "\(event.venue?.city), \(event.venue?.country)"
+		eventLocation.text = "\(event.venue?.city), \(event.venue?.country)"
 	}
     
   
