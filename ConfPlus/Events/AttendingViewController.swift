@@ -33,6 +33,7 @@ class AttendingViewController: UIViewController {
         //api call to get users for a conversation
         APIManager().getEventAttendeesFromAPI(self.event) { result in
             self.users = ModelHandler().getUsersForEvent(self.event)!
+            print(self.users)
             //for each user in the array try to get their profile pic
 //            let counter = self.users.count
 //            
@@ -86,7 +87,12 @@ extension AttendingViewController: UITableViewDelegate{
         name += users[row].last_name!
         cell.usersName.text = name
         
-        cell.messageDescription.text = users[row].email!
+        if let username = users[row].username {
+            cell.messageDescription.text = username
+        }else {
+            cell.messageDescription.text = users[row].email!
+        }
+        
         cell.messageDateLabel.text = ""
         if users[row].profile_pic_url != nil {
             cell.profilePicture.image = users[row].getImage()
