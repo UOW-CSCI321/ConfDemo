@@ -54,7 +54,11 @@ class SessionDetailViewController: UITableViewController {
 					APIManager().getUser(self.topic.email!, completion: { result, json in
 						if result {
 							let data = json!["data"][0]
-							self.topic.speakerName = "\(data["first_name"].string!) \(data["last_name"].string!)"
+							if let fname = data["first_name"].string, lname = data["last_name"].string{
+								self.topic.speakerName = "\(fname) \(lname)"
+							} else {
+								self.topic.speakerName = "Unknown"
+							}
 							self.labelSpeakerName.text = self.topic.speakerName
 							
 							self.update()

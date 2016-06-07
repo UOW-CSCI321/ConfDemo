@@ -143,5 +143,5 @@
 "warnSecurity" = "没有保安功能";
 
 "warnSecurityMessage" = "管理员没有设定保安号码";
-
+"warnComplete" = "欲购买票卷，请点击确认购买";
 

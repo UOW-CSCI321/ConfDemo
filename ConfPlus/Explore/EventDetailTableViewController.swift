@@ -48,6 +48,7 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
 		if segue.identifier == "goToTicketDetails" {
 			let vc = segue.destinationViewController as! TicketDetailsViewController
 			vc.event = event
+			print(event.event_id)
 		}
 	}
 	

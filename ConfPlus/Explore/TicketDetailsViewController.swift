@@ -112,8 +112,10 @@ class TicketDetailsViewController: UIViewController {
 				
 				HUD.hide()
 				self.tableView.reloadData()
-			} else {
-				GeneralLibrary().fetchError("No Tickets available!", message: "Contact Event Organizer for the ticket.")
+			}
+			
+			if self.titles.count == 0 {
+				HUD.flash(.Label("warnTickets".localized()), delay: 1)
 			}
 		}
     }

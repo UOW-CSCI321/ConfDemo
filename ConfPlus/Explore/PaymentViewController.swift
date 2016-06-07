@@ -38,7 +38,13 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 		navigationItem.title = "Confirmation".localized()
 		
 		confirmButton.setTitle("Confirm Purchase".localized(), forState: .Normal)
-		disclosureText.text = "warnSelect".localized()
+		
+		if sessionTickets.count > 0 {
+			disclosureText.text = "warnSelect".localized()
+		} else {
+			disclosureText.text = "warnComplete".localized()
+		}
+		
 	}
 	
 	//MARK: IBActions
