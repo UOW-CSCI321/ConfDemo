@@ -351,6 +351,7 @@ class TimeTableViewController: UIViewController {
 		if segue.identifier == "TimetableToTalk"{
 			let vc = segue.destinationViewController as! TalksViewController
             vc.mySession = sender as! Session
+            vc.segment = self.segment
 		}
 	}
     

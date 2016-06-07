@@ -29,6 +29,7 @@ class TalksViewController: UITableViewController {
     var event:Event!
     var ticket:Tickets!
     var topic = Topic()
+    var segment:UISegmentedControl!
     
     var mySession:Session!
     let user = NSUserDefaults.standardUserDefaults()
@@ -106,6 +107,9 @@ class TalksViewController: UITableViewController {
 		roomLabel.text = "Room".localized()
 		
 		talkButton.setTitle("Talk".localized(), forState: .Normal)
+        if self.segment.selectedSegmentIndex == 1{
+            talkButton.hidden = true
+        }
 	}
     
     func update(){
