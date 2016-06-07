@@ -236,7 +236,6 @@ extension APIManager{
 				
 			case .Failure(let error):
 				print(error.localizedDescription)
-				HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				completion(result: false)
 			}
 			

@@ -67,28 +67,40 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 	}
 	
 	func makePayment(email:String){
-		if event.payee == nil  || event.cardNum == nil {
+		if event.payee == ""  || event.cardNum == "" {
 			event.payee = "merchant@cy.my"
 			event.cardNum = "1234 5678 9012 3456"
 		}
 		
 		HUD.show(.Progress)
-		APIManager().makePayment(email, type: "Event Tickets".localized(),
-		                         amount: String(self.totalPrice),
-		                         payment_date: GeneralLibrary().getFullStringFromDate(NSDate()),
-		                         payee: event.payee!,
-		                         cardNum: event.cardNum!){ result in
-			if result{
-				for ticket in self.tickets {
-					APIManager().addSessionAttendee(self.event.event_id!, tickets: ticket)
+		APIManager().getBillingInfo(email){ result in
+			if result {
+				APIManager().makePayment(email, type: "Event Tickets".localized(),
+				                         amount: String(self.totalPrice),
+				                         payment_date: GeneralLibrary().getFullStringFromDate(NSDate()),
+				                         payee: self.event.payee!,
+				                         cardNum: self.event.cardNum!){ result in
+					if result{
+						for ticket in self.tickets {
+							APIManager().addSessionAttendee(self.event.event_id!, tickets: ticket)
+						}
+						HUD.hide(animated: true)
+						self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
+					} else {
+						HUD.hide(animated: true)
+						HUD.flash(.Label("warnPaymentFail".localized()), delay: 1)
+					}
 				}
-				HUD.hide()
-				self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
 			} else {
-				HUD.hide()
-				HUD.flash(.Label("warnPaymentFail".localized()), delay: 1)
+				HUD.hide(animated: true)
+				HUD.flash(.Label("warnPaymentMethod".localized()), delay: 1)
+				let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+				let vc : NewBillingTableViewController = storyboard.instantiateViewControllerWithIdentifier("NewBillingTableViewController") as! NewBillingTableViewController
+				self.showViewController(vc, sender: self)
+				//self.presentViewController(vc, animated: true, completion: nil)
 			}
 		}
+		
 	}
 	
 	func selectSessionTicketDidFinish(controller: AddSessionTicketViewController, email:String, col:Int, session: [Tickets]) {

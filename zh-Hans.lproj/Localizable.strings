@@ -160,3 +160,5 @@
 "warnNoTicket" = "没有相关票卷";
 "warnNoSupport" = "本设备不支持使用此功能，请尝试使用其他设备。";
 "warnNoSupportMessage" = "功能不支持";
+
+"warnPaymentMethod" = "用户还未设定付款资讯";

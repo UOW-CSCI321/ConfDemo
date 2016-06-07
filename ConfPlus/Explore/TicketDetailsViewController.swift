@@ -110,7 +110,7 @@ class TicketDetailsViewController: UIViewController {
 					self.titles = Array(self.eventTickets.keys)
 				}
 				
-				HUD.hide()
+				HUD.hide(animated: true)
 				self.tableView.reloadData()
 			}
 			
