@@ -30,6 +30,6 @@ class Venue: NSManagedObject {
                 }
             }
         }
-        return UIImage(named: "matt")!
+        return UIImage(named: "launch")!
     }
 }
