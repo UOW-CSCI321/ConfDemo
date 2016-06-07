@@ -16,15 +16,19 @@ class AttendingViewController: UIViewController {
     
     @IBOutlet weak var attendingTableView: UITableView!
     
+    @IBOutlet weak var inviteTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let inviteDelegate = InviteTable()
+        self.inviteTableView.delegate = inviteDelegate
 		
         getVenue()
 		populateNavigationBar()
         
         self.users =  ModelHandler().getUsersForEvent(self.event)!
         self.attendingTableView.reloadData()
+        
         
     }
     
