@@ -67,8 +67,10 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 	}
 	
 	func makePayment(email:String){
-		if event.payee == nil { event.payee = "merchant@cy.my" }
-		if event.cardNum == nil { event.cardNum = "1234 5678 9012 3456" }
+		if event.payee == nil  || event.cardNum == nil {
+			event.payee = "merchant@cy.my"
+			event.cardNum = "1234 5678 9012 3456"
+		}
 		
 		HUD.show(.Progress)
 		APIManager().makePayment(email, type: "Event Tickets".localized(),
