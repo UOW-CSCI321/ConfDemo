@@ -27,8 +27,8 @@ class AttendingViewController: UIViewController {
 		populateNavigationBar()
         
         self.users =  ModelHandler().getUsersForEvent(self.event)!
+        //self.attendingTableView.reloadData()
         self.attendingTableView.reloadData()
-        
         
     }
     
@@ -41,7 +41,8 @@ class AttendingViewController: UIViewController {
             self.users = ModelHandler().getUsersForEvent(self.event)!
             notification.hidden = true
             //print(self.users)
-            self.attendingTableView.reloadData()
+            //self.attendingTableView.reloadData()
+            
         }
     }
     
@@ -69,7 +70,7 @@ extension AttendingViewController: UITableViewDelegate{
 		if tableView == attendingTableView {
 			return users.count
 		} else {
-			return 1
+			return 3
 		}
     }
     
@@ -100,9 +101,22 @@ extension AttendingViewController: UITableViewDelegate{
 		} else {
 			let cell = tableView.dequeueReusableCellWithIdentifier("inviteTableViewCell", forIndexPath: indexPath) as! inviteTableViewCell
 			let row = indexPath.row
-			
-			cell.inviteLabel.text = "test"
-			cell.inviteImageView.image = UIImage(named: "michael")
+            
+            if row == 0{
+                cell.inviteLabel.text = "Invite via Contacts"
+                cell.inviteImageView.image = UIImage(named: "contacts")
+                
+            }else if row == 1 {
+                cell.inviteLabel.text = "Invite via Facebook"
+                cell.inviteImageView.image = UIImage(named: "FB-f-Logo__blue_50")
+            }else if row == 2 {
+                cell.inviteLabel.text = "Invite via LinkedIn"
+                cell.inviteImageView.image = UIImage(named: "linkedin")
+            }else {
+                cell.inviteLabel.text = ""
+                cell.inviteImageView = nil
+            }
+            cell.backgroundColor = UIColor(red: 0.94, green: 0.90, blue: 0.90, alpha: 0.5)
 			
 			return cell
 		}
