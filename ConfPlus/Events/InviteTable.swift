@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 class InviteTable : NSObject, UITableViewDelegate {
+	
+	override init() {
+		super.init()
+		
+	}
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -17,7 +22,7 @@ class InviteTable : NSObject, UITableViewDelegate {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-    
+	
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("inviteTableViewCell", forIndexPath: indexPath) as! inviteTableViewCell

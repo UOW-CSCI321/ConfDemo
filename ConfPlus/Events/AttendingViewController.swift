@@ -20,8 +20,8 @@ class AttendingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let inviteDelegate = InviteTable()
-        self.inviteTableView.delegate = inviteDelegate
+//		let inviteDelegate = InviteTable()
+//        inviteTableView.delegate = inviteDelegate
 		
         getVenue()
 		populateNavigationBar()
@@ -66,40 +66,55 @@ extension AttendingViewController: UITableViewDelegate{
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+		if tableView == attendingTableView {
+			return users.count
+		} else {
+			return 1
+		}
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCellWithIdentifier("messageCell", forIndexPath: indexPath) as! MessageTableViewCell
-        let row = indexPath.row
-        
-        var name:String = users[row].first_name!
-        name += " "
-        name += users[row].last_name!
-        cell.usersName.text = name
-        
-        if let username = users[row].username {
-            cell.messageDescription.text = username
-        }else {
-            cell.messageDescription.text = users[row].email!
-        }
-        
-        cell.messageDateLabel.text = ""
-        if users[row].profile_pic_url != nil {
-            cell.profilePicture.image = users[row].getImage()
-        }else{
-            cell.profilePicture.image = UIImage(named: "logo")
-        }
-        
-        return cell
+		if tableView == attendingTableView {
+			let cell = tableView.dequeueReusableCellWithIdentifier("messageCell", forIndexPath: indexPath) as! MessageTableViewCell
+			let row = indexPath.row
+			
+			var name:String = users[row].first_name!
+			name += " "
+			name += users[row].last_name!
+			cell.usersName.text = name
+			
+			if let username = users[row].username {
+				cell.messageDescription.text = username
+			}else {
+				cell.messageDescription.text = users[row].email!
+			}
+			
+			cell.messageDateLabel.text = ""
+			if users[row].profile_pic_url != nil {
+				cell.profilePicture.image = users[row].getImage()
+			}else{
+				cell.profilePicture.image = UIImage(named: "logo")
+			}
+			
+			return cell
+		} else {
+			let cell = tableView.dequeueReusableCellWithIdentifier("inviteTableViewCell", forIndexPath: indexPath) as! inviteTableViewCell
+			let row = indexPath.row
+			
+			cell.inviteLabel.text = "test"
+			cell.inviteImageView.image = UIImage(named: "michael")
+			
+			return cell
+		}
+		
+		
     }
 }
 
 
 //MARK: Navigation Bar Related
 extension AttendingViewController{
-	func populateNavigationBar(){		
+	func populateNavigationBar(){
 		let contact = UIBarButtonItem(image: UIImage(named: "security32"), style: .Plain, target: self, action: #selector(performSecurityView))
 		let location = UIBarButtonItem(image: UIImage(named: "second"), style: .Plain, target: self, action: #selector(performLocationView))
 		
