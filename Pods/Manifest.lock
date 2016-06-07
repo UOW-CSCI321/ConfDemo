@@ -2,6 +2,7 @@ PODS:
   - ActionSheetPicker-3.0 (2.0.5)
   - Alamofire (3.4.0)
   - CryptoSwift (0.4.1)
+  - HCSStarRatingView (1.4.5)
   - JSQMessagesViewController (7.2.0):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
@@ -14,6 +15,7 @@ DEPENDENCIES:
   - ActionSheetPicker-3.0 (~> 2.0.5)
   - Alamofire (~> 3.3)
   - CryptoSwift
+  - HCSStarRatingView (~> 1.4.5)
   - JSQMessagesViewController (~> 7.2.0)
   - Localize-Swift (~> 1.1)
   - MPGNotification (~> 1.2)
@@ -33,6 +35,7 @@ SPEC CHECKSUMS:
   ActionSheetPicker-3.0: 8312778b6815578e6a86d630fbcf31dc94c534e7
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
   CryptoSwift: 25b5aff3f260967391f8fff2e9abe4254d2c6fd5
+  HCSStarRatingView: bff3f89314d3b5013ce826ea11897d3129ff6b8c
   JSQMessagesViewController: 73cab48aa92fc2d512f3b6724f3425cc47a19eb5
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   Localize-Swift: 72fab22c9c271a1041082fa3b53ca64e527ccf4a
@@ -40,6 +43,6 @@ SPEC CHECKSUMS:
   PKHUD: 4167eccdb1b3a892fd80ce2b51cb6ba412a889ab
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 0950c5138f09bfb089f667cdd0a509cb654810a6
+PODFILE CHECKSUM: 3774f4ffd41d81a10e636e1045c4b09fbd16aa56
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.0.0.rc.1

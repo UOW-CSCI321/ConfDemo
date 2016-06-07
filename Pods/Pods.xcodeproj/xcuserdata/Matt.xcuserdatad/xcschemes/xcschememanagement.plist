@@ -32,6 +32,11 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>HCSStarRatingView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>JSQMessagesViewController.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -47,7 +52,7 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>1</integer>
 		</dict>
 		<key>MPGNotification.xcscheme</key>
 		<dict>
@@ -75,14 +80,14 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>2</integer>
 		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>10</integer>
+			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -142,6 +147,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>97E5D28D3DA6F0CA23C263B2B5833B9F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>98B2918BE00E598D0945110578B09F2F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>ACE4F4F1E353D04AB86B2EF15DB13A00</key>
 		<dict>
 			<key>primary</key>
@@ -178,6 +193,11 @@
 			<true/>
 		</dict>
 		<key>F6F0516F82D07656D12F1C0716898F73</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F81D873AB5F857A3823564A85D410260</key>
 		<dict>
 			<key>primary</key>
 			<true/>
