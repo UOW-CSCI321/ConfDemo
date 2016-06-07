@@ -221,6 +221,7 @@ extension APIManager{
 			"payee"		:	payee,
 			"cardNum"	:	cardNum
 		]
+		print(parameters)
 		
 		Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
 			switch response.result {

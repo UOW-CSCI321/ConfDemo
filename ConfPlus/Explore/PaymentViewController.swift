@@ -87,7 +87,6 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 				HUD.flash(.Label("warnPaymentFail".localized()), delay: 1)
 			}
 		}
-		self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
 	}
 	
 	func selectSessionTicketDidFinish(controller: AddSessionTicketViewController, email:String, col:Int, session: [Tickets]) {
