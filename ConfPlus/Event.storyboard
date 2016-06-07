@@ -155,14 +155,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tQ8-zu-utS">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="103" width="600" height="596"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="presentationCell" editingAccessoryType="disclosureIndicator" rowHeight="85" id="ypC-3K-gOB" customClass="TimetableTableViewCell" customModule="ConfPlus" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="85"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="presentationCell" editingAccessoryType="disclosureIndicator" rowHeight="74" id="ypC-3K-gOB" customClass="TimetableTableViewCell" customModule="ConfPlus" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ypC-3K-gOB" id="Pfj-cV-tsc">
-                                            <rect key="frame" x="0.0" y="0.0" width="567" height="84"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="73"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Arz-A8-KUO">
@@ -177,20 +177,20 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeW-TM-qg6">
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeW-TM-qg6">
                                                     <rect key="frame" x="467" y="0.0" width="100" height="85"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="GIy-Qd-Vrm"/>
                                                     </constraints>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AUD 00.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqO-Wy-2EA">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="AUD 00.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqO-Wy-2EA">
                                                     <rect key="frame" x="474" y="32" width="85" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add to Cart" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bje-XR-PFN">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Add to Cart" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bje-XR-PFN">
                                                     <rect key="frame" x="485" y="9" width="66" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -234,17 +234,36 @@
                                     <outlet property="delegate" destination="MrZ-HI-XE6" id="mdH-wT-cTJ"/>
                                 </connections>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="geT-Oq-zR7">
+                                <rect key="frame" x="240" y="72" width="121" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="121" id="Ryd-Wi-JgF"/>
+                                    <constraint firstAttribute="height" constant="28" id="oeF-D8-xp9"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Current"/>
+                                    <segment title="General"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentPressed:" destination="MrZ-HI-XE6" eventType="valueChanged" id="eEJ-9g-SZe"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="tQ8-zu-utS" secondAttribute="trailing" constant="-20" id="2v4-5d-Am1"/>
-                            <constraint firstItem="tQ8-zu-utS" firstAttribute="top" secondItem="ONf-fF-PO6" secondAttribute="bottom" constant="-64" id="SXa-Gd-Ugo"/>
-                            <constraint firstItem="Cnm-GW-cKn" firstAttribute="top" secondItem="tQ8-zu-utS" secondAttribute="bottom" id="UYb-u5-v94"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="geT-Oq-zR7" secondAttribute="trailing" constant="219" id="7Fh-qW-a0j"/>
+                            <constraint firstItem="tQ8-zu-utS" firstAttribute="top" secondItem="geT-Oq-zR7" secondAttribute="bottom" constant="3" id="8u8-jT-E6t"/>
+                            <constraint firstItem="Cnm-GW-cKn" firstAttribute="top" secondItem="tQ8-zu-utS" secondAttribute="bottom" constant="-99" id="UYb-u5-v94"/>
+                            <constraint firstItem="geT-Oq-zR7" firstAttribute="top" secondItem="ONf-fF-PO6" secondAttribute="bottom" constant="8" id="dQT-ae-0he"/>
                             <constraint firstItem="tQ8-zu-utS" firstAttribute="leading" secondItem="yOD-uN-HUZ" secondAttribute="leadingMargin" constant="-20" id="gG1-rF-zSU"/>
+                            <constraint firstItem="tQ8-zu-utS" firstAttribute="top" secondItem="geT-Oq-zR7" secondAttribute="bottom" constant="3" id="gX5-aR-XpA"/>
+                            <constraint firstItem="geT-Oq-zR7" firstAttribute="leading" secondItem="yOD-uN-HUZ" secondAttribute="leadingMargin" constant="220" id="wRp-87-YEY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Timetable" id="RcM-k7-hGy"/>
                     <connections>
+                        <outlet property="segment" destination="geT-Oq-zR7" id="hLf-a0-fiV"/>
                         <outlet property="timetableTableView" destination="tQ8-zu-utS" id="OgM-4w-inf"/>
                         <segue destination="EYM-3U-Vuj" kind="show" identifier="TimetableToTalk" id="zKo-66-VD0"/>
                     </connections>

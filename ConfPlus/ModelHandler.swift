@@ -160,7 +160,63 @@ class ModelHandler{
     }
     
     //get sessions only for an event that a user is attending
-    //TODO:
+    func getSessionsForEventForUser(event:Event, user:User) -> [Session]
+    {
+        let fetch = NSFetchRequest(entityName: "Session")
+        let predicateEvent = NSPredicate(format: "event == %@", event)
+        let predicateUser = NSPredicate(format: "user == %@", user)
+        let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicateEvent, predicateUser])
+        
+        fetch.predicate = predicate
+        fetch.sortDescriptors = [NSSortDescriptor(key: "start_time", ascending: true)]
+        
+        var sessions = [Session]()
+        do {
+            sessions = try context.executeFetchRequest(fetch) as! [Session]
+            
+            //print(messages.count)
+        } catch {
+            print("Could not retrieve events object")
+        }
+        return sessions
+        
+    }
+    
+    //i did this for session instead of event
+//    func getSessionsForEventForUserByDate(event:Event, user:User, pastOrCurrent:String) -> [Session]
+//    {
+//        let fetch = NSFetchRequest(entityName: "Session")
+//        let predicateEvent = NSPredicate(format: "event == %@", event)
+//        let predicateUser = NSPredicate(format: "user == %@", user)
+//        
+//        var predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicateEvent, predicateUser])
+//        
+//        var predicateDate:NSPredicate!
+//        let now = NSDate()
+//        if pastOrCurrent == "past"{
+//            predicateDate = NSPredicate(format: "to_date > %@", now)
+//            predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicateEvent, predicateUser, predicateDate])
+//        }else{
+//            predicateDate = NSPredicate(format: "from_date < %@", now)
+//            predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicateEvent, predicateUser, predicateDate])
+//        }
+//        
+//        
+//        
+//        fetch.predicate = predicate
+//        fetch.sortDescriptors = [NSSortDescriptor(key: "start_time", ascending: true)]
+//        
+//        var sessions = [Session]()
+//        do {
+//            sessions = try context.executeFetchRequest(fetch) as! [Session]
+//            
+//            //print(messages.count)
+//        } catch {
+//            print("Could not retrieve events object")
+//        }
+//        return sessions
+//        
+//    }
 	
     //MARK: - Venue Related
 	func getVenueByEvent(event: Event) -> Venue?{

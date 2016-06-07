@@ -21,6 +21,7 @@ class TimeTableViewController: UIViewController {
     var prevSection:Int!
     
     @IBOutlet weak var timetableTableView: UITableView!
+    @IBOutlet weak var segment: UISegmentedControl!
 	@IBAction func backToTicketPurchaseView(sender: AnyObject) {
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
@@ -48,6 +49,18 @@ class TimeTableViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         getMySessionsFromAPI(event, user: myUser)
     }
+    @IBAction func segmentPressed(sender: AnyObject) {
+        if segment.selectedSegmentIndex == 0{
+            //mine
+            self.sessions = ModelHandler().getSessionsForEventForUser(event, user: myUser)
+            self.timetableTableView.reloadData()
+            
+        } else{
+            //general
+            sessions = ModelHandler().getSessionsForEvent(event)
+            self.timetableTableView.reloadData()
+        }
+    }
     
     func getMySessionsFromAPI(event:Event, user:User) {
         let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
@@ -57,11 +70,11 @@ class TimeTableViewController: UIViewController {
         APIManager().getSessionsAndUserSessionsFromAPI(event, user: user) { result in
   
             notification.hidden = true
-            self.sessions = ModelHandler().getSessionsForEvent(event)
+//            self.sessions = ModelHandler().getSessionsForEventForUser(event, user: user)
             //print("printing sessions")
             //print(self.sessions)
             
-            self.timetableTableView.reloadData()
+//            self.timetableTableView.reloadData()
             
             //let numdays = self.countNumDays()
             //print(numdays)
