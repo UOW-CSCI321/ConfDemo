@@ -2,7 +2,7 @@
 //  PaymentViewController.swift
 //  confDemo
 //
-//  Created by Matthew Boroczky on 15/03/2016.
+//  Created by CY Lim on 15/03/2016.
 //  Copyright © 2016 CY Lim. All rights reserved.
 //
 
@@ -13,6 +13,8 @@ import PKHUD
 class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 	
 	@IBOutlet weak var tableView: UITableView!
+	@IBOutlet weak var confirmButton: UIButton!
+	@IBOutlet weak var disclosureText: UILabel!
 	
 	var tickets = [Coupon]()
 	var event:Event!
@@ -28,7 +30,15 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
+		setText()
 		updateTotalPrice()
+	}
+	
+	func setText(){
+		navigationItem.title = "Confirmation".localized()
+		
+		confirmButton.setTitle("Confirm Purchase".localized(), forState: .Normal)
+		disclosureText.text = "warnSelect".localized()
 	}
 	
 	//MARK: IBActions
@@ -38,12 +48,13 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 			return
 		}
 		
-		let alertcontroller = UIAlertController(title: "Payment Information", message: "Total Price: $ \(totalPrice)", preferredStyle: .Alert)
-		let paypalAction = UIAlertAction(title: "Credit Card", style: .Default){ UIAlertAction in
+		let message = "Total".localized() + ": $ " + String(totalPrice)
+		let alertcontroller = UIAlertController(title: "Payment Information".localized(), message: message, preferredStyle: .Alert)
+		let paypalAction = UIAlertAction(title: "Credit Card".localized(), style: .Default){ UIAlertAction in
 			self.makePayment(email)
 			alertcontroller.dismissViewControllerAnimated(true, completion: nil)
 		}
-		let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+		let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .Cancel, handler: nil)
 		alertcontroller.addAction(cancelAction)
 		alertcontroller.addAction(paypalAction)
 		self.presentViewController(alertcontroller, animated: true, completion: nil)
@@ -53,7 +64,7 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 		if event.payee == nil { event.payee = "merchant@cy.my" }
 		if event.cardNum == nil { event.cardNum = "1234 5678 9012 3456" }
 		
-		APIManager().makePayment(email, type: "Event Tickets",
+		APIManager().makePayment(email, type: "Event Tickets".localized(),
 		                         amount: String(self.totalPrice),
 		                         payment_date: GeneralLibrary().getFullStringFromDate(NSDate()),
 		                         payee: event.payee!,
@@ -64,7 +75,7 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 				}
 				self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
 			} else {
-				HUD.flash(.Label("Payment Failed, please try again"), delay: 1)
+				HUD.flash(.Label("warnPaymentFail".localized()), delay: 1)
 			}
 		}
 		self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
@@ -130,7 +141,7 @@ extension PaymentViewController: UITableViewDelegate{
 	}
 
 	func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		if tickets.count == section { return "Total" }
+		if tickets.count == section { return "Total".localized() }
 		return "\(tickets[section].name) - \(tickets[section].email)"
 	}
 	
@@ -142,7 +153,7 @@ extension PaymentViewController: UITableViewDelegate{
 		
 		var ticket:Tickets?
 		if tickets.count == section {
-			ticket = Tickets(title: "", price: String(self.totalPrice), name: "TOTAL", _class: "", type: "", venue: "", room: "", seat: "", startTime: nil, endTime: nil, endSales:nil, count: nil)
+			ticket = Tickets(title: "", price: String(self.totalPrice), name: "Total".localized(), _class: "", type: "", venue: "", room: "", seat: "", startTime: nil, endTime: nil, endSales:nil, count: nil)
 		} else {
 			ticket = tickets[section].ticket[row]
 		}

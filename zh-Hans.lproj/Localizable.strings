@@ -81,6 +81,10 @@
 "Event Tickets" = "活动票券";
 "Total" = "总计";
 
+"Speaker Information" = "讲者资料";
+"Session Information" = "活动信息";
+"Description" = "详情";
+
 //Account Storyboard
 "Login" = "登入";
 "Register" = "注册";
@@ -116,7 +120,7 @@
 "warnInternet" = "网络连接问题";
 "warnEvents" = "没有可用活动";
 "warnUpdate" = "日期无效";
-"warnSelect" = "如果要买这个时期的票，请点击每个需要参与的人的票券选项";
+"warnSelect" = "如果要买这个时期的票，请点击每个需要参与的人的票券";
 
 "warnSuccess" = "你的票券已经购买成功！ 希望你可以玩的开心";
 "warnTickets" = "没有可用的票券!";

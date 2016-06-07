@@ -12,6 +12,7 @@ import CoreLocation
 import CoreData
 
 class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
+	@IBOutlet weak var purchaseButton: UIButton!
     @IBOutlet var posterImageView: UIImageView!
 	@IBOutlet weak var eventNameLabel: UILabel!
 	@IBOutlet weak var dateLabel: UILabel!
@@ -28,10 +29,12 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		print(event.event_id)
 		setData()
     }
 	
 	override func viewWillAppear(animated: Bool) {
+		setText()
 		APIManager().getVenue(event){ result in
 			if result {
 				self.setData()
@@ -46,6 +49,12 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
 			let vc = segue.destinationViewController as! TicketDetailsViewController
 			vc.event = event
 		}
+	}
+	
+	func setText(){
+		navigationItem.title = "Event Details".localized()
+		
+		purchaseButton.setTitle("Purchase Tickets".localized(), forState: .Normal)
 	}
 	
 	func setData(){

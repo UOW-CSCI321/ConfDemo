@@ -26,6 +26,10 @@ class SessionDetailViewController: UITableViewController {
 	@IBOutlet weak var labelRoom: UILabel!
 	@IBOutlet weak var textViewDescription: UITextView!
 	
+	@IBOutlet weak var nameLabel: UILabel!
+	@IBOutlet weak var topicLabel: UILabel!
+	@IBOutlet weak var roomLabel: UILabel!
+	
 	var event:Event!
 	var ticket:Tickets!
 	var topic = Topic()
@@ -34,6 +38,8 @@ class SessionDetailViewController: UITableViewController {
         super.viewDidLoad()
 		
 		HUD.show(.Progress)
+		setText()
+		
 		APIManager().getSession(self.event.event_id!, title: self.ticket.title!){ result, json in
 			if result{
 				let data = json!["data"][0]
@@ -60,6 +66,13 @@ class SessionDetailViewController: UITableViewController {
 			}
 		}
     }
+	func setText(){
+		navigationItem.title = "Details".localized()
+		
+		nameLabel.text = "Name".localized()
+		topicLabel.text = "Topic".localized()
+		roomLabel.text = "Room".localized()
+	}
 	
 	func update(){
 		self.labelTopicName.text = self.topic.topic
@@ -88,6 +101,17 @@ extension SessionDetailViewController {
 		default:
 			return false
 		}
+	}
+	
+	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		if section == 0{
+			return "Speaker Information".localized()
+		} else if section == 1{
+			return "Session Information".localized()
+		} else if section == 2{
+			return "Description".localized()
+		}
+		return ""
 	}
 	
 	// Hide Header(s)

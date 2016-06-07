@@ -2,7 +2,7 @@
 //  TicketDetailsViewController.swift
 //  confDemo
 //
-//  Created by Matthew Boroczky on 15/03/2016.
+//  Created by CY Lim on 15/03/2016.
 //  Copyright © 2016 CY Lim. All rights reserved.
 //
 
@@ -35,6 +35,8 @@ struct Tickets {
 }
 
 class TicketDetailsViewController: UIViewController {
+	@IBOutlet weak var updateButton: UIButton!
+	@IBOutlet weak var continueButton: UIButton!
     
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var totalPrice: UITextField!
@@ -115,6 +117,17 @@ class TicketDetailsViewController: UIViewController {
 			}
 		}
     }
+	
+	override func viewWillAppear(animated: Bool) {
+		setText()
+	}
+	
+	func setText(){
+		navigationItem.title = "Ticket Details".localized()
+		
+		updateButton.setTitle("Update Tickets".localized(), forState: .Normal)
+		continueButton.setTitle("Continue".localized(), forState: .Normal)
+	}
 	
 	@IBAction func performContinue(sender: AnyObject) {
 		if shouldPerformSegueWithIdentifier("goToUserInfoView", sender: self){

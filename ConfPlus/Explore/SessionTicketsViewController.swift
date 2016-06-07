@@ -12,6 +12,8 @@ import PKHUD
 
 class SessionTicketsViewController: UIViewController {
 	
+	@IBOutlet weak var cancelButton: UIBarButtonItem!
+	@IBOutlet weak var continueButton: UIButton!
 	@IBOutlet weak var tableView: UITableView!
 	
 	var sessionTickets = Dictionary<String, [Tickets]>()
@@ -33,8 +35,15 @@ class SessionTicketsViewController: UIViewController {
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		
+		setText()
 		setDataForPresent()
+	}
+	
+	func setText(){
+		navigationItem.title = "Sessions".localized()
+		
+		cancelButton.title = "Cancel".localized()
+		continueButton.setTitle("Continue".localized(), forState: .Normal)
 	}
 	
 	@IBAction func performCancel(sender: AnyObject) {

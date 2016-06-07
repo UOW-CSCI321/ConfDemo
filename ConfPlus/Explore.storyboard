@@ -267,11 +267,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Ticket Details" id="zI0-pZ-POc"/>
                     <connections>
+                        <outlet property="continueButton" destination="MEq-Jt-htB" id="U9a-xb-brB"/>
                         <outlet property="tableView" destination="jPS-Dt-N4i" id="Les-Kh-Gv5"/>
                         <outlet property="ticketCount" destination="Xvl-o2-jzj" id="a5m-AJ-zvj"/>
                         <outlet property="ticketName" destination="fjY-t0-2qg" id="piu-Q9-OAr"/>
                         <outlet property="ticketSelectionView" destination="oSl-JF-UIt" id="Fhd-1E-yf1"/>
                         <outlet property="totalPrice" destination="gIf-SD-1MG" id="jO1-83-nrt"/>
+                        <outlet property="updateButton" destination="yST-I9-zgV" id="K3h-wD-fNr"/>
                         <segue destination="4W6-XU-Gj4" kind="show" identifier="goToUserInfoView" id="Lwj-zn-HA1"/>
                     </connections>
                 </viewController>
@@ -317,7 +319,7 @@
                                     </mask>
                                 </variation>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="nm6-CJ-UXF">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="nm6-CJ-UXF">
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -400,6 +402,7 @@
                         </fragment>
                     </attributedString>
                     <connections>
+                        <outlet property="continueButton" destination="g0E-m8-cYE" id="JiD-Fb-tNh"/>
                         <outlet property="tableView" destination="nm6-CJ-UXF" id="QwI-XC-GpE"/>
                         <segue destination="4XF-jC-2fY" kind="show" identifier="goToConfirmation" id="Qd5-xs-DJd"/>
                     </connections>
@@ -518,6 +521,8 @@
                     <navigationItem key="navigationItem" title="Confirmation" id="yvD-Rp-tCI"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="confirmButton" destination="rRM-8x-CQy" id="TMi-zk-EOk"/>
+                        <outlet property="disclosureText" destination="HeK-3N-rQF" id="fTC-7e-jUB"/>
                         <outlet property="tableView" destination="do9-dP-lTd" id="Ye3-8f-ssL"/>
                         <segue destination="cbP-W2-wEl" kind="presentation" identifier="goToSessionsTicket" modalTransitionStyle="flipHorizontal" id="VIq-5l-wzj"/>
                         <segue destination="pfh-1l-BSH" kind="show" identifier="goToSuccessPurchased" id="j2c-Y3-0m7"/>
@@ -595,6 +600,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Receipt" id="q9j-Kb-cAX"/>
+                    <connections>
+                        <outlet property="textLabel" destination="yUm-XD-9QM" id="XGm-PB-xsM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N0a-CH-1i8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -757,7 +765,10 @@
                         <outlet property="labelRoom" destination="cSI-hi-pE7" id="qZJ-ht-XLn"/>
                         <outlet property="labelSpeakerName" destination="FIh-Qj-kMf" id="H6o-VE-KfA"/>
                         <outlet property="labelTopicName" destination="8TT-c0-cEj" id="RMe-RO-kOW"/>
+                        <outlet property="nameLabel" destination="aEV-6c-xU9" id="cdg-l2-lle"/>
+                        <outlet property="roomLabel" destination="be9-yo-Uol" id="NAF-Ly-quJ"/>
                         <outlet property="textViewDescription" destination="2IX-xm-dnH" id="XOy-C8-Bfe"/>
+                        <outlet property="topicLabel" destination="ehE-Xd-gvj" id="yj8-Y3-upj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1cL-8K-Y9P" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -944,6 +955,7 @@
                         <outlet property="eventNameLabel" destination="iLv-UE-ttd" id="8Bk-rg-bXa"/>
                         <outlet property="locationMapView" destination="qCY-yS-NTC" id="Y68-hF-rgP"/>
                         <outlet property="posterImageView" destination="MYW-pw-jzd" id="AI1-62-UAh"/>
+                        <outlet property="purchaseButton" destination="9Sy-A0-UBH" id="8hX-E0-YxJ"/>
                         <outlet property="tableView" destination="xq3-0x-ZDJ" id="AW9-cl-aa2"/>
                     </connections>
                 </tableViewController>
@@ -981,24 +993,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8i7-e9-QbJ">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="WM4-7Y-STr"/>
-                                    <barButtonItem style="plain" id="r1q-7v-ApP">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qzk-JG-Cul">
-                                            <rect key="frame" x="251" y="1.5" width="97" height="41"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                            <state key="normal" title="Continue"/>
-                                            <connections>
-                                                <action selector="updateSessionTickets:" destination="gFQ-gV-hxt" eventType="touchUpInside" id="L7h-4B-V5t"/>
-                                            </connections>
-                                        </button>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="eEE-yE-lp0"/>
-                                </items>
-                            </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jw5-Sh-Wvf">
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1072,6 +1066,24 @@
                                     <outlet property="delegate" destination="gFQ-gV-hxt" id="PX7-Be-73t"/>
                                 </connections>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8i7-e9-QbJ">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="WM4-7Y-STr"/>
+                                    <barButtonItem style="plain" id="r1q-7v-ApP">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qzk-JG-Cul">
+                                            <rect key="frame" x="251" y="1.5" width="97" height="41"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <state key="normal" title="Continue"/>
+                                            <connections>
+                                                <action selector="updateSessionTickets:" destination="gFQ-gV-hxt" eventType="touchUpInside" id="L7h-4B-V5t"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="eEE-yE-lp0"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1092,6 +1104,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="bcF-qw-vso" id="chl-YZ-QTN"/>
+                        <outlet property="continueButton" destination="qzk-JG-Cul" id="ccY-lm-zDa"/>
                         <outlet property="tableView" destination="Jw5-Sh-Wvf" id="51E-kx-S1Y"/>
                         <segue destination="LRJ-ST-Saz" kind="show" identifier="goToSessionDetail" id="skM-BE-Qab"/>
                         <segue destination="bmN-bB-6d4" kind="show" identifier="goToSessionTicketSelection" id="vAT-to-vAS"/>
@@ -1206,6 +1220,7 @@
                     <navigationItem key="navigationItem" title="Add Sessions" id="yKF-aH-ZKP"/>
                     <connections>
                         <outlet property="tableView" destination="hy0-ZQ-Ve7" id="coM-Nt-tC9"/>
+                        <outlet property="updateButton" destination="YLd-KI-Vfo" id="3h8-tB-P3O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R3D-ft-9YQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

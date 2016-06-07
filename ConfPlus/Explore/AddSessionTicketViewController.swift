@@ -15,6 +15,7 @@ protocol selectSessionTicketDelegate{
 class AddSessionTicketViewController: UIViewController {
 	
 	@IBOutlet weak var tableView: UITableView!
+	@IBOutlet weak var updateButton: UIButton!
 	
 	var delegate:selectSessionTicketDelegate?
 	var col:Int!
@@ -56,10 +57,16 @@ class AddSessionTicketViewController: UIViewController {
     }
 	
 	func setDataForPresent(){
+		setText()
 		titles = Array(selectedSessions.keys)
 		tableView.reloadData()
 	}
-
+	
+	func setText(){
+		navigationItem.title = "Add sessions".localized()
+		
+		updateButton.setTitle("Update Session Tickets".localized(), forState: .Normal)
+	}
 }
 
 //MARK:- TableView Related
