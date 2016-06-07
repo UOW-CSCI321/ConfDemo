@@ -15,8 +15,9 @@ class HomeViewController: UIViewController {
 	@IBOutlet weak var eventName: UILabel!
 	@IBOutlet weak var eventDate: UILabel!
 	@IBOutlet weak var eventLocation: UITextView!
+	@IBOutlet weak var backButton: UIBarButtonItem!
 	
-	var features = ["Timetable", "Participants", "Tickets", "Message"]
+	var features = ["Timetable", "Participants", "Tickets", "Messages"]
 	var event:Event!
 	
 	let user = NSUserDefaults.standardUserDefaults()
@@ -31,12 +32,19 @@ class HomeViewController: UIViewController {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(true)
 		
+		setText()
 		if let role = user.stringForKey("role"){
 			if role == "Admin" {
-				features.append("Administration")
+				features.append("Administrations".localized())
 				tableView.reloadData()
 			}
 		}
+	}
+	
+	func setText(){
+		navigationItem.title = "Overview".localized()
+		backButton.title = "Back".localized()
+		
 	}
 	
 	@IBAction func performBack(sender: AnyObject) {
@@ -67,7 +75,7 @@ extension HomeViewController: UITableViewDelegate {
 		
 		let row = indexPath.row
 		
-		cell.textLabel!.text = features[row]
+		cell.textLabel!.text = features[row].localized()
 		cell.imageView?.image = UIImage(named: features[row])
 		
 		return cell
@@ -77,15 +85,15 @@ extension HomeViewController: UITableViewDelegate {
 			let row = indexPath.row
 			
 			switch features[row] {
-				case "Timetable":
+				case "Timetable".localized():
 					self.performSegueWithIdentifier("goToTimetable", sender: self)
-				case "Participants":
+				case "Participants".localized():
 					self.performSegueWithIdentifier("goToParticipants", sender: self)
-				case "Tickets":
+				case "Tickets".localized():
 					self.performSegueWithIdentifier("goToTickets", sender: self)
-				case "Message":
+				case "Messages".localized():
 					self.performSegueWithIdentifier("goToMessages", sender: self)
-				case "Administrations":
+				case "Administrations".localized():
 					self.performSegueWithIdentifier("goToAdministrations", sender: self)
 				default:
 					()
@@ -122,7 +130,7 @@ extension HomeViewController{
 		self.navigationController?.hidesBarsOnSwipe = true
 		
 		let contact = UIBarButtonItem(image: UIImage(named: "security32"), style: .Plain, target: self, action: #selector(performSecurityView))
-		let location = UIBarButtonItem(image: UIImage(named: "second"), style: .Plain, target: self, action: #selector(performLocationView))
+		let location = UIBarButtonItem(image: UIImage(named: "map"), style: .Plain, target: self, action: #selector(performLocationView))
 		
 		let space = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: self, action: nil)
 		
