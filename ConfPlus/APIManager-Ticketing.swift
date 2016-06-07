@@ -186,7 +186,7 @@ extension APIManager{
 			
 			if let venue_id = ticket.venue { parameters["venue_id"] = venue_id }
 			if let room_name = ticket.room { parameters["room_name"] = room_name }
-			if let venue_id = ticket.seat { parameters["seat_num"] = venue_id }
+			if let seat_num = ticket.seat { parameters["seat_num"] = seat_num }
 			
 			Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
 				switch response.result {

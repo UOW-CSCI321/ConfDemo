@@ -22,6 +22,7 @@ class NewBillingTableViewController: UITableViewController, UITextFieldDelegate 
 	@IBOutlet weak var expireTextField: UITextField!
 	
 	let user = NSUserDefaults.standardUserDefaults()
+	var date = String()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -34,12 +35,12 @@ class NewBillingTableViewController: UITableViewController, UITextFieldDelegate 
 	}
 	
 	@IBAction func performSave(sender: AnyObject) {
-		guard let card = cardTextField.text, type = typeTextField.text, date = expireTextField.text else {
-			HUD.flash(.Label("Please fill all the information"), delay: 1)
+		guard let card = cardTextField.text, type = typeTextField.text else {
+			HUD.flash(.Label("warnEmpty".localized()), delay: 1)
 			return
 		}
 		if card.characters.count < 10 || type.characters.count == 0 || date.characters.count == 0 {
-			HUD.flash(.Label("Please fill all the information"), delay: 1)
+			HUD.flash(.Label("warnEmpty".localized()), delay: 1)
 			return
 		}
 		HUD.show(.Progress)
@@ -52,7 +53,7 @@ class NewBillingTableViewController: UITableViewController, UITextFieldDelegate 
 	}
 	
 	@IBAction func editType(sender: AnyObject) {
-		ActionSheetStringPicker(title: "Card Type", rows: ["MasterCard", "VISA", "AMEX"], initialSelection: 0, doneBlock: {
+		ActionSheetStringPicker(title: "Card Type".localized(), rows: ["MasterCard", "VISA", "AMEX"], initialSelection: 0, doneBlock: {
 			picker, value, index in
 			
 			self.typeTextField.text = (index as! String)
@@ -62,7 +63,7 @@ class NewBillingTableViewController: UITableViewController, UITextFieldDelegate 
 	}
 	
 	@IBAction func editExpire(sender: AnyObject) {
-		let datePicker = ActionSheetDatePicker(title: "Expiry Date", datePickerMode: UIDatePickerMode.Date , selectedDate: NSDate(), doneBlock: {
+		let datePicker = ActionSheetDatePicker(title: "Expiry Date".localized(), datePickerMode: UIDatePickerMode.Date , selectedDate: NSDate(), doneBlock: {
 			picker, value, index in
 			
 			print("value = \(value)")
@@ -70,7 +71,8 @@ class NewBillingTableViewController: UITableViewController, UITextFieldDelegate 
 			let dateFormatter = NSDateFormatter()
 			dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
 			let temp = dateFormatter.stringFromDate(value as! NSDate) as NSString
-			self.expireTextField.text = temp as String
+			self.date = temp as String
+			self.expireTextField.text = self.date.substringToIndex(self.date.startIndex.advancedBy(7))
 			
 			print("index = \(index)")
 			print("picker = \(picker)")
