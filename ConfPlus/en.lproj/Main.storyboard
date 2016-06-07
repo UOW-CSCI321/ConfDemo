@@ -153,15 +153,15 @@
                                 <color key="separatorColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="328" id="cKQ-xn-rzy" customClass="EventsTableViewCell" customModule="ConfPlus" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="328"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="eventCell" rowHeight="360" id="cKQ-xn-rzy" customClass="EventsTableViewCell" customModule="ConfPlus" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="360"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" tableViewCell="cKQ-xn-rzy" id="tdF-fI-Hjc">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="328"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="360"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9LY-AE-VdF">
-                                                    <rect key="frame" x="8" y="8" width="398" height="312"/>
+                                                    <rect key="frame" x="8" y="8" width="398" height="360"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="ICA-ga-3Wd">
                                                             <rect key="frame" x="0.0" y="8" width="398" height="224"/>
@@ -187,6 +187,13 @@
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G1W-FT-uCw" customClass="HCSStarRatingView">
+                                                            <rect key="frame" x="59" y="300" width="281" height="34"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <connections>
+                                                                <action selector="didChangeValue:" destination="cKQ-xn-rzy" eventType="valueChanged" id="Ega-pE-FG9"/>
+                                                            </connections>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -212,7 +219,7 @@
                                             <color key="backgroundColor" red="0.87930164700000002" green="0.87930164700000002" blue="0.87930164700000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="9LY-AE-VdF" firstAttribute="leading" secondItem="tdF-fI-Hjc" secondAttribute="leadingMargin" id="HPU-9a-28N"/>
-                                                <constraint firstItem="9LY-AE-VdF" firstAttribute="bottom" secondItem="tdF-fI-Hjc" secondAttribute="bottomMargin" id="ffV-eO-5gF"/>
+                                                <constraint firstItem="9LY-AE-VdF" firstAttribute="bottom" secondItem="tdF-fI-Hjc" secondAttribute="bottomMargin" constant="16" id="ffV-eO-5gF"/>
                                                 <constraint firstItem="9LY-AE-VdF" firstAttribute="trailing" secondItem="tdF-fI-Hjc" secondAttribute="trailingMargin" id="oea-AW-x9d"/>
                                                 <constraint firstItem="9LY-AE-VdF" firstAttribute="top" secondItem="tdF-fI-Hjc" secondAttribute="topMargin" id="wdY-Qu-TEF"/>
                                             </constraints>
@@ -222,6 +229,7 @@
                                             <outlet property="eventDate" destination="QeD-1n-vfB" id="DiN-Lp-1M8"/>
                                             <outlet property="eventImage" destination="ICA-ga-3Wd" id="xgb-of-sQs"/>
                                             <outlet property="eventName" destination="p56-xc-ret" id="AFs-Qg-OkZ"/>
+                                            <outlet property="starsView" destination="9LY-AE-VdF" id="jm2-Cc-w2r"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
