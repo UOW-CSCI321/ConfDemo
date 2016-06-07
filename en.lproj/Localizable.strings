@@ -144,6 +144,7 @@
 
 "warnSecurityMessage" = "Sorry the event manager has not provided a security number for this event";
 "warnComplete" = "To purchase tickets, press on Confirm Purchase";
-
+"warnUpdate" = "Updating";
+"warnUpdateMessage" = "it might takes some time for updating.";
 
 
