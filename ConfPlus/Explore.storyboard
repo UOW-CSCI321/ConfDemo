@@ -621,6 +621,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Receipt" id="q9j-Kb-cAX"/>
                     <connections>
+                        <outlet property="completeButton" destination="9kv-Bp-TLm" id="PT1-O6-ctI"/>
                         <outlet property="textLabel" destination="yUm-XD-9QM" id="XGm-PB-xsM"/>
                     </connections>
                 </viewController>
