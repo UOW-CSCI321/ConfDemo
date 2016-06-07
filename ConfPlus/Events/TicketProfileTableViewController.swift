@@ -82,18 +82,22 @@ class TicketProfileTableViewController: UITableViewController {
 	}
 	
 	func generateQR(){
-		let data = String(ticket?.record_id).dataUsingEncoding(NSISOLatin1StringEncoding, allowLossyConversion: false)
+		if let data = String(ticket!.record_id!).dataUsingEncoding(NSISOLatin1StringEncoding, allowLossyConversion: false) {
+			let filter = CIFilter(name: "CIQRCodeGenerator")
+			
+			filter!.setValue(data, forKey: "inputMessage")
+			filter!.setValue("Q", forKey: "inputCorrectionLevel")
+			
+			let transform = CGAffineTransformMakeScale(5, 5)
+			
+			let qrcodeImage = filter!.outputImage?.imageByApplyingTransform(transform)
+			
+			qrImage.image = UIImage(CIImage: qrcodeImage!)
+		} else {
+			qrImage.image = UIImage(named: "launch")
+		}
 		
-		let filter = CIFilter(name: "CIQRCodeGenerator")
 		
-		filter!.setValue(data, forKey: "inputMessage")
-		filter!.setValue("Q", forKey: "inputCorrectionLevel")
-        
-        let transform = CGAffineTransformMakeScale(5, 5)
-		
-		let qrcodeImage = filter!.outputImage?.imageByApplyingTransform(transform)
-		
-		qrImage.image = UIImage(CIImage: qrcodeImage!)
 	}
 	
 	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
