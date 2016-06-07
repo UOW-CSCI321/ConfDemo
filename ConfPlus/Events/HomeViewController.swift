@@ -84,7 +84,7 @@ extension HomeViewController: UITableViewDelegate {
 		func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 			let row = indexPath.row
 			
-			switch features[row] {
+			switch features[row].localized() {
 				case "Timetable".localized():
 					self.performSegueWithIdentifier("goToTimetable", sender: self)
 				case "Participants".localized():

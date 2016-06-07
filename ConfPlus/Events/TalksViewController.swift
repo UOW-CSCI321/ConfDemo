@@ -13,7 +13,13 @@ import MPGNotification
 
 
 class TalksViewController: UITableViewController {
-    
+	
+	@IBOutlet weak var nameLabel: UILabel!
+	@IBOutlet weak var topicLabel: UILabel!
+	@IBOutlet weak var roomLabel: UILabel!
+	@IBOutlet weak var talkButton: UIButton!
+	
+	
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var labelSpeakerName: UILabel!
     @IBOutlet weak var labelTopicName: UILabel!
@@ -52,6 +58,7 @@ class TalksViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+		setText()
         if self.mySession.speaker_email != nil {
             
             let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
@@ -90,6 +97,16 @@ class TalksViewController: UITableViewController {
         }
         self.tableView.reloadData()
     }
+	
+	func setText(){
+		navigationItem.title = "Details".localized()
+		
+		nameLabel.text = "Name".localized()
+		topicLabel.text = "Topic".localized()
+		roomLabel.text = "Room".localized()
+		
+		talkButton.setTitle("Talk".localized(), forState: .Normal)
+	}
     
     func update(){
         self.labelTopicName.text = self.topic.topic
@@ -180,4 +197,15 @@ extension TalksViewController {
             footerView.textLabel!.textColor = UIColor.clearColor()
         }
     }
+	
+	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		if section == 0 {
+			return "Speaker Information".localized()
+		} else if section == 1 {
+			return "Session Information".localized()
+		} else if section == 2 {
+			return "Description".localized()
+		}
+		return ""
+	}
 }

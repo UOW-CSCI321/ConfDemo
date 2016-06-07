@@ -21,6 +21,7 @@ class AttendingViewController: UIViewController, MFMessageComposeViewControllerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		navigationItem.title = "Participants".localized()
 //		let inviteDelegate = InviteTable()
 //        inviteTableView.delegate = inviteDelegate
 		
@@ -137,16 +138,17 @@ extension AttendingViewController: UITableViewDelegate{
 		} else {
 			let cell = tableView.dequeueReusableCellWithIdentifier("inviteTableViewCell", forIndexPath: indexPath) as! inviteTableViewCell
 			let row = indexPath.row
-            
+			
+			var message = "Invite".localized()
             if row == 0{
-                cell.inviteLabel.text = "Invite via Contacts"
+                cell.inviteLabel.text = "\(message) Contacts"
                 cell.inviteImageView.image = UIImage(named: "contacts")
                 
             }else if row == 1 {
-                cell.inviteLabel.text = "Invite via Facebook"
+                cell.inviteLabel.text = "\(message) Facebook"
                 cell.inviteImageView.image = UIImage(named: "FB-f-Logo__blue_50")
             }else if row == 2 {
-                cell.inviteLabel.text = "Invite via LinkedIn"
+                cell.inviteLabel.text = "\(message) LinkedIn"
                 cell.inviteImageView.image = UIImage(named: "linkedin")
             }else {
                 cell.inviteLabel.text = ""
@@ -172,7 +174,7 @@ extension AttendingViewController: UITableViewDelegate{
 extension AttendingViewController{
 	func populateNavigationBar(){
 		let contact = UIBarButtonItem(image: UIImage(named: "security32"), style: .Plain, target: self, action: #selector(performSecurityView))
-		let location = UIBarButtonItem(image: UIImage(named: "second"), style: .Plain, target: self, action: #selector(performLocationView))
+		let location = UIBarButtonItem(image: UIImage(named: "map"), style: .Plain, target: self, action: #selector(performLocationView))
 		
 		let space = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: self, action: nil)
 		

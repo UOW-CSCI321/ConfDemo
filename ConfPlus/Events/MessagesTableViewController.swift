@@ -30,6 +30,7 @@ class MessagesTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		navigationItem.title = "Messages".localized()
         let email = user.stringForKey("email")
 		populateNavigationBar()
         userConversations = ModelHandler().getConversation(email!)

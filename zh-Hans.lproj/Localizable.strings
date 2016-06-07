@@ -117,6 +117,13 @@
 "Participants" = "参与者";
 
 "Security" = "安全及帮助";
+"Invite" = "分享";
+"Notification" = "通知";
+"Presentation" = "表演";
+
+"Current" = "已购时间";
+"General" = "所有时间";
+"Talk"= "问答";
 
 //Warning Dialog
 "warnInternet" = "网络连接问题";
@@ -148,3 +155,5 @@
 "warnComplete" = "欲购买票卷，请点击确认购买";
 "warnUpdate" = "更新中";
 "warnUpdateMessage" = "更新可能需要一些时间";
+
+"warnFeatures" = "功能未开启";

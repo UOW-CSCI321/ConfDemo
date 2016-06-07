@@ -19,6 +19,7 @@ class MyTicketsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		navigationItem.title = "Tickets".localized()
 		
         email = user.stringForKey("email")
         //print("email \(email), eventid: \(event.event_id)")
@@ -96,7 +97,7 @@ extension MyTicketsTableViewController{
 		self.navigationController?.hidesBarsOnSwipe = true
 		
 		let contact = UIBarButtonItem(image: UIImage(named: "security32"), style: .Plain, target: self, action: #selector(performSecurityView))
-		let location = UIBarButtonItem(image: UIImage(named: "second"), style: .Plain, target: self, action: #selector(performLocationView))
+		let location = UIBarButtonItem(image: UIImage(named: "map"), style: .Plain, target: self, action: #selector(performLocationView))
 		
 		let space = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: self, action: nil)
 		

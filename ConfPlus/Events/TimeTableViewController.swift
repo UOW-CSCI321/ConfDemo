@@ -12,6 +12,7 @@ import MPGNotification
 
 class TimeTableViewController: UIViewController {
     
+	@IBOutlet weak var segmentControl: UISegmentedControl!
     var event:Event!
     let user = NSUserDefaults.standardUserDefaults()
     var myUser:User!
@@ -47,8 +48,19 @@ class TimeTableViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+		setText()
+		
         getMySessionsFromAPI(event, user: myUser)
     }
+	
+	func setText(){
+		navigationItem.title = "Timetable".localized()
+		
+		segmentControl.setTitle("Current".localized(), forSegmentAtIndex: 0)
+		segmentControl.setTitle("General".localized(), forSegmentAtIndex: 1)
+		
+	}
+	
     @IBAction func segmentPressed(sender: AnyObject) {
         if segment.selectedSegmentIndex == 0{
             //mine
