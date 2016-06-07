@@ -22,4 +22,7 @@ target 'ConfPlus' do
     
     #https://github.com/jessesquires/JSQMessagesViewController
     pod 'JSQMessagesViewController', '~> 7.2.0'
+    
+    #https://github.com/hsousa/HCSStarRatingView
+    pod 'HCSStarRatingView', '~> 1.4.5'
 end

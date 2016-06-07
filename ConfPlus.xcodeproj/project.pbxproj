@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7ABBEDC83FCAF9328A671323 /* Pods_ConfPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29F9F87683BF1E1F1317CBE5 /* Pods_ConfPlus.framework */; };
+		C901F6831D07468A00C64E57 /* HCSStarRatingView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C901F6821D07468A00C64E57 /* HCSStarRatingView.framework */; };
 		C90548491D02B4E90077495C /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90548481D02B4E90077495C /* Session+CoreDataProperties.swift */; };
 		C91254AF1D00126A00C63EF8 /* Ticket_Record+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91254AE1D00126A00C63EF8 /* Ticket_Record+CoreDataProperties.swift */; };
 		C91254B51D01975100C63EF8 /* GeneralLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91254B41D01975100C63EF8 /* GeneralLibrary.swift */; };
@@ -105,6 +106,7 @@
 /* Begin PBXFileReference section */
 		0DAF2938A2525B6CBC886A11 /* Pods-ConfPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConfPlus.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConfPlus/Pods-ConfPlus.release.xcconfig"; sourceTree = "<group>"; };
 		29F9F87683BF1E1F1317CBE5 /* Pods_ConfPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConfPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C901F6821D07468A00C64E57 /* HCSStarRatingView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HCSStarRatingView.framework; path = "Pods/../build/Debug-iphoneos/HCSStarRatingView/HCSStarRatingView.framework"; sourceTree = "<group>"; };
 		C90548481D02B4E90077495C /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+CoreDataProperties.swift"; path = "Model/Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C91254AE1D00126A00C63EF8 /* Ticket_Record+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Ticket_Record+CoreDataProperties.swift"; path = "Model/Ticket_Record+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C91254B41D01975100C63EF8 /* GeneralLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralLibrary.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C901F6831D07468A00C64E57 /* HCSStarRatingView.framework in Frameworks */,
 				E9C6C0EC1CFD513800981867 /* PKHUD.framework in Frameworks */,
 				C9D9DC061CE8885900CF55FA /* JSQMessagesViewController.framework in Frameworks */,
 				C9D9DC071CE8885900CF55FA /* JSQSystemSoundPlayer.framework in Frameworks */,
@@ -334,6 +337,7 @@
 		CA6657120F9514BBD729216B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C901F6821D07468A00C64E57 /* HCSStarRatingView.framework */,
 				E9C6C0EB1CFD513800981867 /* PKHUD.framework */,
 				C9D9DC041CE8885900CF55FA /* JSQMessagesViewController.framework */,
 				C9D9DC051CE8885900CF55FA /* JSQSystemSoundPlayer.framework */,
@@ -765,6 +769,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/CryptoSwift",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/PKHUD",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/HCSStarRatingView",
 				);
 				INFOPLIST_FILE = ConfPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -786,6 +791,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/CryptoSwift",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/PKHUD",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/HCSStarRatingView",
 				);
 				INFOPLIST_FILE = ConfPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
