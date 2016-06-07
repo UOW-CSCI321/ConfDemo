@@ -35,6 +35,8 @@
 		C94AFA711C981FED00EC88B6 /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA701C981FED00EC88B6 /* AdminTableViewController.swift */; };
 		C94AFA741C98217C00EC88B6 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA731C98217C00EC88B6 /* AccountTableViewController.swift */; };
 		C94AFA761C98221400EC88B6 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */; };
+		C970775F1D06A61B00B25944 /* InviteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C970775E1D06A61B00B25944 /* InviteTableViewCell.swift */; };
+		C97077631D06A9C400B25944 /* InviteTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97077621D06A9C400B25944 /* InviteTable.swift */; };
 		C973C7111CFC110500DF8992 /* Conversation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C973C7101CFC110500DF8992 /* Conversation+CoreDataProperties.swift */; };
 		C999E8FE1CB1308D00E05C67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C999E8FD1CB1308D00E05C67 /* CoreData.framework */; };
 		C9AC4CE31CB7AA6300083F12 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4CE21CB7AA6300083F12 /* CoreLocation.framework */; };
@@ -131,6 +133,8 @@
 		C94AFA731C98217C00EC88B6 /* AccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountTableViewController.swift; path = Profile/AccountTableViewController.swift; sourceTree = "<group>"; };
 		C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryTableViewController.swift; path = Profile/HistoryTableViewController.swift; sourceTree = "<group>"; };
 		C955F1701CD8A1FD000BE39C /* Alamofire_Synchronous.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire_Synchronous.framework; path = "Pods/../build/Debug-iphoneos/Alamofire_Synchronous.framework"; sourceTree = "<group>"; };
+		C970775E1D06A61B00B25944 /* InviteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InviteTableViewCell.swift; path = Events/InviteTableViewCell.swift; sourceTree = "<group>"; };
+		C97077621D06A9C400B25944 /* InviteTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InviteTable.swift; path = Events/InviteTable.swift; sourceTree = "<group>"; };
 		C973C7101CFC110500DF8992 /* Conversation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Conversation+CoreDataProperties.swift"; path = "Model/Conversation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C999E8FD1CB1308D00E05C67 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C9AC4CE21CB7AA6300083F12 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -243,6 +247,8 @@
 				C9D9DC081CE88A0300CF55FA /* MessengerViewController.swift */,
 				C94AFA621C981C5C00EC88B6 /* Ticket */,
 				C94AFA6D1C981F1A00EC88B6 /* AttendingViewController.swift */,
+				C970775E1D06A61B00B25944 /* InviteTableViewCell.swift */,
+				C97077621D06A9C400B25944 /* InviteTable.swift */,
 				C94AFA6F1C981F8200EC88B6 /* Admin */,
 				E9AF006F1CDAE7BA004424A1 /* Security and Location */,
 			);
@@ -567,6 +573,7 @@
 				C94AFA5A1C980DE400EC88B6 /* TimeTableViewController.swift in Sources */,
 				E90201C91C9CC84A00C7839A /* EventsViewController.swift in Sources */,
 				C91E85E21CE75E5D0069333B /* User.swift in Sources */,
+				C970775F1D06A61B00B25944 /* InviteTableViewCell.swift in Sources */,
 				E97EB7651CDF13E5009113A6 /* User_Tag+CoreDataProperties.swift in Sources */,
 				C94AFA5E1C980ECE00EC88B6 /* MessagesTableViewController.swift in Sources */,
 				E9E0A6501CDD8C6200E187AD /* ModelHandler.swift in Sources */,
@@ -621,6 +628,7 @@
 				E96D018C1CF1D9F400AC48EE /* Message.swift in Sources */,
 				C9FD93191D05A92D0066391A /* User+CoreDataProperties.swift in Sources */,
 				C94AFA741C98217C00EC88B6 /* AccountTableViewController.swift in Sources */,
+				C97077631D06A9C400B25944 /* InviteTable.swift in Sources */,
 				C90548491D02B4E90077495C /* Session+CoreDataProperties.swift in Sources */,
 				E93163911BC5E294007408C7 /* viewEffect.swift in Sources */,
 				C94AFA581C980D7C00EC88B6 /* HomeViewController.swift in Sources */,
