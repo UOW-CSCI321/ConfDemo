@@ -43,7 +43,7 @@ class AttendingViewController: UIViewController, MFMessageComposeViewControllerD
             self.users = ModelHandler().getUsersForEvent(self.event)!
             notification.hidden = true
             //print(self.users)
-            //self.attendingTableView.reloadData()
+            self.attendingTableView.reloadData()
             
         }
     }
