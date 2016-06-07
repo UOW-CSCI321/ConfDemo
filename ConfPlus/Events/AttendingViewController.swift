@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 import MPGNotification
+import MessageUI
 
-class AttendingViewController: UIViewController {
+class AttendingViewController: UIViewController, MFMessageComposeViewControllerDelegate {
     var event:Event!
     var users = [User]()
     
@@ -46,6 +47,41 @@ class AttendingViewController: UIViewController {
         }
     }
     
+    //MARK: SMS
+    func messageComposeViewController(controller: MFMessageComposeViewController, didFinishWithResult result: MessageComposeResult) {
+        switch result.rawValue {
+        case MessageComposeResultCancelled.rawValue :
+            print("message canceled")
+            
+        case MessageComposeResultFailed.rawValue :
+            print("message failed")
+            
+        case MessageComposeResultSent.rawValue :
+            print("message sent")
+            
+        default:
+            break
+        }
+        controller.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func sendMessage() {
+        let messageVC = MFMessageComposeViewController()
+        
+        var content = "Hey! i'm attending "
+        content += self.event.name!
+        content += ", i have a feeling you'll like this event. check it out at http://www.eventure.management/events/"
+        content += self.event.event_id!
+        messageVC.body = content
+        
+        //messageVC.recipients
+        messageVC.messageComposeDelegate = self
+        if MFMessageComposeViewController.canSendText() {
+            presentViewController(messageVC, animated: true, completion: nil)
+        }
+    }
+    
+    //MARK: Venue
     func getVenue()
     {
         APIManager().getVenue(self.event){ result in
@@ -120,8 +156,14 @@ extension AttendingViewController: UITableViewDelegate{
 			
 			return cell
 		}
-		
-		
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if tableView == inviteTableView{
+            if indexPath.row == 0{
+                self.sendMessage()
+            }
+        }
     }
 }
 
