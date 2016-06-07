@@ -252,7 +252,10 @@ class ModelHandler{
         user.linkedin_id = json["linkedin_id"].number
         user.active = json["active"].number
         user.upgraded = json["upgraded"].number
-        user.profile_pic_url = json["image_data_url"].string
+        
+        if json["image_data_url"].string != "No image available" {
+            user.profile_pic_url = json["image_data_url"].string
+        }
         
         if user.first_name == nil{
             user.first_name = "nil"

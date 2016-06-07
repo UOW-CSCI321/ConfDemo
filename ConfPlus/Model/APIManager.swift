@@ -421,7 +421,7 @@ class APIManager{
         let paramaters = [
             "api_key"	:	server.KEY,
             "app_secret":	server.SECRET,
-            "method"	:	"getEventAttendees",
+            "method"	:	"getEventAttendeesWithImage",
             "event_id"	:	id
         ]
 

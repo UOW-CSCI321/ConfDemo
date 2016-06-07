@@ -24,8 +24,8 @@ class AttendingViewController: UIViewController {
         getVenue()
 		populateNavigationBar()
         
-        self.users =  ModelHandler().getUsersForEvent(self.event)!
-        self.attendingTableView.reloadData()
+        //self.users =  ModelHandler().getUsersForEvent(self.event)!
+        //self.attendingTableView.reloadData()
         
     }
     
@@ -34,6 +34,20 @@ class AttendingViewController: UIViewController {
         APIManager().getEventAttendeesFromAPI(self.event) { result in
             self.users = ModelHandler().getUsersForEvent(self.event)!
             //for each user in the array try to get their profile pic
+//            let counter = self.users.count
+//            
+//            for i in 0..<counter{
+//                
+//                print(self.users[i].profile_pic_url)
+////                APIManager().getUserProfilePicFromAPI(self.users[i]) { result in
+////                    self.users = ModelHandler().getUsersForEvent(self.event)!
+////                    let counter2 = self.users.count
+////                    for j in 0..<counter{
+////                        
+////                    }
+////                }
+//                
+//            }
             self.attendingTableView.reloadData()
         }
     }
@@ -74,6 +88,11 @@ extension AttendingViewController: UITableViewDelegate{
         
         cell.messageDescription.text = users[row].email!
         cell.messageDateLabel.text = ""
+        if users[row].profile_pic_url != nil {
+            cell.profilePicture.image = users[row].getImage()
+        }else{
+            cell.profilePicture.image = UIImage(named: "matt")
+        }
 //        if userConversations[row].conversation_pic != nil{
 //            cell.profilePicture.image = UIImage(data: userConversations[row].conversation_pic!)
 //        }
