@@ -142,11 +142,8 @@ class TicketDetailsViewController: UIViewController {
 				let itemSection = eventTickets[titles[section]]
 				
 				for row in 0..<tableView.numberOfRowsInSection(section) {
-					let cell:TicketTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as! TicketTableViewCell
-					
 					let item = itemSection![row]
-					//TODO: have a way to edit the ticket count, don't use cell
-					for _ in 0..<Int(cell.ticketCount.text!)!{
+					for _ in 0..<Int(item.count!)!{
 						selectedTickets.append(Coupon(ticket: [item], name: "", email: ""))
 					}
 				}
@@ -227,7 +224,7 @@ extension TicketDetailsViewController {
 		
 		self.ticketCount.text = String(Int(ticketCount.text!)! + 1)
 		cell.ticketCount.text = self.ticketCount.text
-		//eventTickets[titles[section!]]!.count = cell.ticketCount.text
+		eventTickets[titles[section!]]![row!].count = cell.ticketCount.text
 		
 		self.totalPrice.text = String(Double(totalPrice.text!)! + Double(cell.ticketPrice.text!)!)
 	}
@@ -240,7 +237,7 @@ extension TicketDetailsViewController {
 		if(Int(ticketCount.text!) > 0){
 			self.ticketCount.text = String(Int(ticketCount.text!)! - 1)
 			cell.ticketCount.text = self.ticketCount.text
-			//eventTickets[titles[section!]]!.count = cell.ticketCount.text
+			eventTickets[titles[section!]]![row!].count = cell.ticketCount.text
 			
 			
 			self.totalPrice.text = String(Double(totalPrice.text!)! - Double(cell.ticketPrice.text!)!)
