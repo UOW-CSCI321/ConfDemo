@@ -2,7 +2,7 @@
 //  PaymentViewController.swift
 //  confDemo
 //
-//  Created by Matthew Boroczky on 15/03/2016.
+//  Created by CY Lim on 15/03/2016.
 //  Copyright © 2016 CY Lim. All rights reserved.
 //
 
@@ -13,10 +13,12 @@ import PKHUD
 class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 	
 	@IBOutlet weak var tableView: UITableView!
+	@IBOutlet weak var confirmButton: UIButton!
+	@IBOutlet weak var disclosureText: UILabel!
 	
 	var tickets = [Coupon]()
 	var event:Event!
-	var sessionTickets = [Tickets]()
+	var sessionTickets = Dictionary<String, [Tickets]>()
 	var totalPrice:Double = 0.0
 	
 	let user = NSUserDefaults.standardUserDefaults()
@@ -28,7 +30,15 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
+		setText()
 		updateTotalPrice()
+	}
+	
+	func setText(){
+		navigationItem.title = "Confirmation".localized()
+		
+		confirmButton.setTitle("Confirm Purchase".localized(), forState: .Normal)
+		disclosureText.text = "warnSelect".localized()
 	}
 	
 	//MARK: IBActions
@@ -38,54 +48,62 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 			return
 		}
 		
-		let alertcontroller = UIAlertController(title: "Payment Information", message: "Total Price: $ \(totalPrice)", preferredStyle: .Alert)
-		let paypalAction = UIAlertAction(title: "PayPal", style: .Default){ UIAlertAction in
-			
-//			APIManager().makePayment(email, type: "Event Tickets", amount: String(self.totalPrice), payment_date: GeneralLibrary().getFullStringFromDate(NSDate())){
-//				result in
-//				if result{
-//					for ticket in self.tickets {
-//						APIManager().addSessionAttendee(self.event.event_id!, tickets: ticket)
-//					}
-//					self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
-//				} else {
-//					HUD.flash(.Label("Payment Failed, please try again"), delay: 1)
-//				}
-//			}
-			self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
+		let message = "Total".localized() + ": $ " + String(totalPrice)
+		let alertcontroller = UIAlertController(title: "Payment Information".localized(), message: message, preferredStyle: .Alert)
+		let paypalAction = UIAlertAction(title: "Credit Card".localized(), style: .Default){ UIAlertAction in
+			self.makePayment(email)
 			alertcontroller.dismissViewControllerAnimated(true, completion: nil)
 		}
-		let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+		let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .Cancel, handler: nil)
 		alertcontroller.addAction(cancelAction)
 		alertcontroller.addAction(paypalAction)
 		self.presentViewController(alertcontroller, animated: true, completion: nil)
 	}
 	
-	func selectSessionTicketDidFinish(controller: SessionTicketsViewController, email:String, session: [Tickets]) {
-		for index in 0..<tickets.count{
-			if tickets[index].email == email {
-				let entry = tickets[index].ticket[0]
-				tickets[index].ticket.removeAll()
-				
-				tickets[index].ticket.append(entry)
-				for tit in session {
-					tickets[index].ticket.append(tit)
+	func makePayment(email:String){
+		if event.payee == nil { event.payee = "merchant@cy.my" }
+		if event.cardNum == nil { event.cardNum = "1234 5678 9012 3456" }
+		
+		APIManager().makePayment(email, type: "Event Tickets".localized(),
+		                         amount: String(self.totalPrice),
+		                         payment_date: GeneralLibrary().getFullStringFromDate(NSDate()),
+		                         payee: event.payee!,
+		                         cardNum: event.cardNum!){ result in
+			if result{
+				for ticket in self.tickets {
+					APIManager().addSessionAttendee(self.event.event_id!, tickets: ticket)
 				}
-				
-				break
+				self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
+			} else {
+				HUD.flash(.Label("warnPaymentFail".localized()), delay: 1)
 			}
 		}
-		controller.navigationController?.popViewControllerAnimated(true)
+		self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
+	}
+	
+	func selectSessionTicketDidFinish(controller: AddSessionTicketViewController, email:String, col:Int, session: [Tickets]) {
+		if tickets[col].email == email {
+			let entry = tickets[col].ticket[0]
+			tickets[col].ticket.removeAll()
+			
+			tickets[col].ticket.append(entry)
+			for tit in session {
+				tickets[col].ticket.append(tit)
+			}
+		}
+		controller.dismissViewControllerAnimated(true, completion: nil)
 		tableView.reloadData()
 	}
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		if segue.identifier == "goToSessionsTicket" {
 			let col = sender!.section
-			let vc = segue.destinationViewController as! SessionTicketsViewController
+			let nv = segue.destinationViewController as! UINavigationController
+			let vc = nv.topViewController as! SessionTicketsViewController
 			vc.sessionTickets = sessionTickets
 			vc.ticket = tickets[col!]
 			vc.event = event
+			vc.col = col
 			vc.delegate = self
 		}
 	}
@@ -105,9 +123,7 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 	func performLogin(){
 		let storyboard : UIStoryboard = UIStoryboard(name: "Account", bundle: nil)
 		let vc : LoginViewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
-		
 		let navigationController = UINavigationController(rootViewController: vc)
-		
 		
 		self.presentViewController(navigationController, animated: true, completion: nil)
 	}
@@ -125,7 +141,7 @@ extension PaymentViewController: UITableViewDelegate{
 	}
 
 	func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		if tickets.count == section { return "Total" }
+		if tickets.count == section { return "Total".localized() }
 		return "\(tickets[section].name) - \(tickets[section].email)"
 	}
 	
@@ -137,7 +153,7 @@ extension PaymentViewController: UITableViewDelegate{
 		
 		var ticket:Tickets?
 		if tickets.count == section {
-			ticket = Tickets(title: "", price: String(self.totalPrice), name: "TOTAL", _class: "", type: "", venue: "", room: "", seat: "", startTime: nil, endTime: nil, conversation: nil, count: nil)
+			ticket = Tickets(title: "", price: String(self.totalPrice), name: "Total".localized(), _class: "", type: "", venue: "", room: "", seat: "", startTime: nil, endTime: nil, endSales:nil, count: nil)
 		} else {
 			ticket = tickets[section].ticket[row]
 		}

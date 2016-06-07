@@ -8,9 +8,11 @@
 
 import Foundation
 import UIKit
+import Localize_Swift
 
 class SecurityViewController: UIViewController {
 	
+	@IBOutlet weak var helpButton: UIButton!
 	@IBOutlet weak var helpView: UIView!
     var event:Event!
 	
@@ -24,6 +26,11 @@ class SecurityViewController: UIViewController {
 		
 		viewEffect.round(helpView)
     }
+	
+	override func viewWillAppear(animated: Bool) {
+		setText()
+	}
+	
     @IBAction func helpPressed(sender: AnyObject) {
         if let num = event.security_num
         {
@@ -32,19 +39,23 @@ class SecurityViewController: UIViewController {
                 var url:NSURL = NSURL(string: "tel:\(num)")!
                 UIApplication.sharedApplication().openURL(url)
             }else {
-                showAlert("No Security", message: "Sorry the event manager has not provided a security number for this event")
+                showAlert("warnSecurity".localized(), message: "warnSecurityMessage".localized())
             }
             
         }else {
-            showAlert("No Security", message: "Sorry the event manager has not provided a security number for this event")
+            showAlert("warnSecurity".localized(), message: "warnSecurityMessage".localized())
         }
         
         
     }
+	
+	func setText(){
+		helpButton.setTitle("Help".localized(), forState: .Normal)
+	}
     
-    func showAlert(title: String, message:String="Please try again"){
+    func showAlert(title: String, message:String="warnTryAgain".localized()){
         let alertcontroller = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        let defaultAction = UIAlertAction(title: "OK".localized(), style: .Default, handler: nil)
         alertcontroller.addAction(defaultAction)
         self.presentViewController(alertcontroller, animated: true, completion: nil)
     }

@@ -10,16 +10,17 @@ import Foundation
 import UIKit
 
 class ReceiptViewController: UIViewController {
+	@IBOutlet weak var textLabel: UILabel!
     
 	@IBAction func backToEvent(sender: AnyObject) {
 		navigationController?.popToRootViewControllerAnimated(true)
-		//self.dismissViewControllerAnimated(true, completion: nil)
 	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		navigationItem.title = "Receipt".localized()
+		textLabel.text = "warnSuccess".localized()
 		
-        navigationController?.hidesBarsOnSwipe = true
     }
     
 }

@@ -2,7 +2,7 @@
 //  PersonalDetailsViewController.swift
 //  confDemo
 //
-//  Created by Matthew Boroczky on 15/03/2016.
+//  Created by CY Lim on 15/03/2016.
 //  Copyright © 2016 CY Lim. All rights reserved.
 //
 
@@ -11,18 +11,28 @@ import PKHUD
 
 class PersonalDetailsViewController: UIViewController {
 	
+	@IBOutlet weak var continueButton: UIButton!
 	@IBOutlet weak var tableView: UITableView!
 	
 	var tickets = [Coupon]()
 	var event:Event!
-	var sessionTickets = [Tickets]()
-	let type = ["Name", "Email"]
+	var sessionTickets = Dictionary<String, [Tickets]>()
+	let type = ["Name", "Email", "Class", "Type"]
 	
 	let user = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+	
+	override func viewWillAppear(animated: Bool) {
+		setText()
+	}
+	
+	func setText(){
+		navigationItem.title = "Participants Details".localized()
+		continueButton.setTitle("Continue".localized(), forState: .Normal)
+	}
 	
 	@IBAction func performContinue(sender: AnyObject) {
 		if self.shouldPerformSegueWithIdentifier("goToConfirmation", sender: nil){
@@ -43,9 +53,9 @@ class PersonalDetailsViewController: UIViewController {
 					}
 					
 					let info = cell.detailType.text
-					if info == "Name" {
+					if info == "Name".localized() {
 						tickets[section].name = detail!
-					} else if info == "Email" {
+					} else if info == "Email".localized() {
 						tickets[section].email = detail!
 					}
 					
@@ -78,22 +88,34 @@ extension PersonalDetailsViewController: UITableViewDelegate {
 	}
 	
 	func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return tickets[section].ticket[0].name
+		return "\(tickets[section].ticket[0].title!) - \(tickets[section].ticket[0].name!)"
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
 		let cell = tableView.dequeueReusableCellWithIdentifier("personalCell", forIndexPath: indexPath) as! PersonalDetailsTableViewCell
 		
+		let section = indexPath.section
 		let row = indexPath.row
-		cell.detailType.text = type[row]
-		cell.typeResponseTextField.placeholder = type[row]
+		cell.detailType.text = type[row].localized()
+		cell.typeResponseTextField.placeholder = type[row].localized()
+		
+		switch type[row].localized() {
+			case "Type".localized():
+				cell.typeResponseTextField.text = tickets[section].ticket[0].type
+				cell.typeResponseTextField.enabled = false
+			case "Class".localized():
+				cell.typeResponseTextField.text = tickets[section].ticket[0]._class
+				cell.typeResponseTextField.enabled = false
+		default:
+			cell.typeResponseTextField.enabled = true
+		}
 		
 		if indexPath.section == 0 {
 			if let email = user.stringForKey("email"), name = user.stringForKey("firstName") {
-				if cell.typeResponseTextField.placeholder == "Name" && cell.typeResponseTextField.text != nil {
+				if cell.typeResponseTextField.placeholder == "Name".localized() && cell.typeResponseTextField.text != nil {
 					cell.typeResponseTextField.text = name
-				} else if cell.typeResponseTextField.placeholder == "Email" && cell.typeResponseTextField.text != nil {
+				} else if cell.typeResponseTextField.placeholder == "Email".localized() && cell.typeResponseTextField.text != nil {
 					cell.typeResponseTextField.text = email
 				}
 			}

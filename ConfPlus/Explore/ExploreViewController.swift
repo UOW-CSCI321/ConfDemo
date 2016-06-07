@@ -13,6 +13,7 @@ import CoreData
 import Foundation
 import MPGNotification
 import PKHUD
+import Localize_Swift
 
 
 class ExploreViewController: UIViewController {
@@ -39,6 +40,8 @@ class ExploreViewController: UIViewController {
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(true)
+		
+		setText()
 		getEventsFromAPI()
 	}
 	
@@ -46,6 +49,11 @@ class ExploreViewController: UIViewController {
 		super.viewWillDisappear(animated)
 		
 		notification.dismissWithAnimation(true)
+	}
+	
+	func setText(){
+		navigationItem.title = "Explore".localized()
+		navigationController?.title = "Explore".localized()
 	}
 	
 	func getEventsFromAPI(){

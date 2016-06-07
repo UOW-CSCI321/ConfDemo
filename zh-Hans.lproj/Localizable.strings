@@ -1,10 +1,10 @@
-/* 
-  Localizable.strings
-  ConfPlus
-
-  Created by CY Lim on 29/03/2016.
-  Copyright © 2016 Conf+. All rights reserved.
-*/
+/*
+ Localizable.strings
+ ConfPlus
+ 
+ Created by CY Lim on 29/03/2016.
+ Copyright © 2016 Conf+. All rights reserved.
+ */
 "Event Name" = "活动名称";
 
 // Account Profile
@@ -12,10 +12,12 @@
 "email" = "电邮";
 "name" = "姓名";
 "Edit" = "更改";
+
 "Settings" = "设定";
 "Languages" = "语言";
 "Payment History" = "付款记录";
 "Log Out" = "登出";
+
 "Cancel" = "取消";
 "英文" = "English";
 
@@ -24,11 +26,122 @@
 "save" = "储存";
 "Personal Information" = "个人资料";
 "Address" = "地址";
+
 "title" = "称号";
 "firstName" = "名";
 "lastName" = "姓";
 "birthday" = "生日日期";
+
 "street" = "街";
 "city" = "城市";
 "state" = "州";
 "country" = "国家";
+
+//New Billing
+"New Billing" = "新付款方式";
+"Card Number" = "卡号";
+"Card Type" = "卡片种类";
+"Expire Date" = "有效期";
+
+"Pull to refresh" = "拉动刷新";
+"Explore" = "探索";
+"My Events" = "我的活动";
+"Current Events" = "现在的活动";
+
+"Past Events" = "以前的活动";
+"Billing Information" = "付款资讯";
+
+//Explore Storyboard
+"Event Details" = "活动详细资料";
+"Purchase Tickets" = "购票";
+"Ticket Details" = "票务信息";
+"Update Tickets" = "更新门票";
+
+"Participants Details" = "参与者信息";
+"Name" = "姓名";
+"Email" = "电子邮件";
+"Type" = "种类";
+
+"Class" = "等级";
+"Continue" = "继续";
+"Confirm Purchase" = "确认购买";
+"Confirmation" = "确认";
+
+"Receipt" = "收据";
+"Complete" = "完成";
+"Sessions" = "活动阶段";
+"Add sessions" = "增加阶段";
+
+"Update Session Tickets" = "更新阶段票券";
+"Topic" = "主题";
+"Room" = "房间";
+"Payment Information" = "付款信息";
+
+"Credit Card" = "信用卡";
+"Event Tickets" = "活动票券";
+"Total" = "总计";
+
+"Speaker Information" = "讲者资料";
+"Session Information" = "活动信息";
+"Description" = "详情";
+
+//Account Storyboard
+"Login" = "登入";
+"Register" = "注册";
+"Forgot Password" = "忘记密码";
+"Password" = "密码";
+"Username" = "用户名";
+
+//EventAssistant Storyboard
+"Help" = "帮助";
+
+//Event Storyboard
+"Back" = "返回";
+"Overview" = "概括";
+"Timetable" = "时间表";
+"Ask Question" = "询问";
+
+"Messages" = "消息";
+"Tickets" = "票券";
+"Seat" = "座位";
+"Ticket details" = "票券详情";
+
+"Details" = "详细资料";
+"Administrations" = "管理";
+"Feautures" = "特点";
+"Attendance" = "出席";
+
+"Notification" = "通知";
+"Presentation" = "演讲";
+"Venue & Location" = "会场地点";
+"Participants" = "参与者";
+
+//Warning Dialog
+"warnInternet" = "网络连接问题";
+"warnEvents" = "没有可用活动";
+"warnUpdate" = "日期无效";
+"warnSelect" = "如果要买这个时期的票，请点击每个需要参与的人的票券";
+
+"warnSuccess" = "你的票券已经购买成功！ 希望你可以玩的开心";
+"warnTickets" = "没有可用的票券!";
+"warnContact" = "联系组织方获得更多信息";
+"warnSelectTicket" = "请选择需要的票券";
+
+"warnEmpty" = "不能为空";
+"warnPaymentFail" = "付款失败，请重试";
+"warnNoPayment" = "没有付款记录";
+"warnTryAgain" = "请重试";
+
+"warnLogin" = "（电邮）或（密码）错误";
+"Wrong Email" = "电邮错误";
+"Wrong Password" = "密码错误";
+"OK" = "确认";
+
+"Invalid Username" = "不正当用户名";
+"Invalid Password" = "不正当密码";
+"Invalid email" = "不正当电邮";
+"warnSecurity" = "没有保安功能";
+
+"warnSecurityMessage" = "管理员没有设定保安号码";
+
+

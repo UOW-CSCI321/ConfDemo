@@ -20,35 +20,21 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6pu-4m-zY0">
                                 <rect key="frame" x="36" y="182" width="303" height="303"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpZ-K3-KeZ">
-                                        <rect key="frame" x="16" y="16" width="271" height="271"/>
-                                        <gestureRecognizers/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="54"/>
-                                        <state key="normal" title="Help"/>
-                                        <connections>
-                                            <action selector="helpPressed:" destination="HfZ-kp-Tc9" eventType="touchUpInside" id="ui7-Zj-qao"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="bpZ-K3-KeZ" firstAttribute="centerY" secondItem="6pu-4m-zY0" secondAttribute="centerY" id="5B9-M9-coF"/>
-                                    <constraint firstAttribute="bottom" secondItem="bpZ-K3-KeZ" secondAttribute="bottom" constant="16" id="AJ5-1O-yH0"/>
-                                    <constraint firstItem="bpZ-K3-KeZ" firstAttribute="leading" secondItem="6pu-4m-zY0" secondAttribute="leading" constant="16" id="YCo-I2-vTn"/>
-                                    <constraint firstItem="bpZ-K3-KeZ" firstAttribute="top" secondItem="6pu-4m-zY0" secondAttribute="top" constant="16" id="aAa-E4-ON0"/>
-                                    <constraint firstItem="bpZ-K3-KeZ" firstAttribute="centerX" secondItem="6pu-4m-zY0" secondAttribute="centerX" id="bcH-Gv-gbs"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="360" id="u33-PJ-O3y"/>
                                     <constraint firstAttribute="width" secondItem="6pu-4m-zY0" secondAttribute="height" multiplier="1:1" id="uWs-Eo-8tV"/>
-                                    <constraint firstAttribute="trailing" secondItem="bpZ-K3-KeZ" secondAttribute="trailing" constant="16" id="zEW-SD-NLw"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="5B9-M9-coF"/>
-                                        <exclude reference="bcH-Gv-gbs"/>
-                                    </mask>
-                                </variation>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpZ-K3-KeZ">
+                                <rect key="frame" x="52" y="198" width="271" height="271"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="54"/>
+                                <state key="normal" title="Help"/>
+                                <connections>
+                                    <action selector="helpPressed:" destination="HfZ-kp-Tc9" eventType="touchUpInside" id="ui7-Zj-qao"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -75,6 +61,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="helpButton" destination="bpZ-K3-KeZ" id="x0y-Yg-fNF"/>
                         <outlet property="helpView" destination="6pu-4m-zY0" id="ABn-nd-XxV"/>
                     </connections>
                 </viewController>

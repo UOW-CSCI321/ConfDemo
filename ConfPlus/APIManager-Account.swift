@@ -189,9 +189,9 @@ extension APIManager{
 		if let last_name = last_name { parameters["last_name"] = last_name }
 		if let dob = dob {
 			if dob == "" {
-				parameters["dob"] = "1970-12-31 00:00:00"
+				parameters["dob"] = "2000-10-10 10:10:10"
 			} else {
-				parameters["dob"] = dob + " 00:00:00"
+				parameters["dob"] = dob + " 10:10:10"
 			}
 		}
 		if let street = street { parameters["street"] = street }

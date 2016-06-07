@@ -10,11 +10,13 @@ import UIKit
 import CoreData
 import Foundation
 import MPGNotification
+import Localize_Swift
 
 
 class EventsViewController: UIViewController {
 	
 	@IBOutlet var tableView: UITableView!
+	@IBOutlet weak var eventSegment: UISegmentedControl!
 	
 	var events = [Event]()
 	var criteria = "future"
@@ -42,6 +44,8 @@ class EventsViewController: UIViewController {
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(true)
+		
+		setText()
 		getEventsFromAPI()
 	}
 	
@@ -52,6 +56,13 @@ class EventsViewController: UIViewController {
 			criteria = "past"
 		}
 		getEventsFromAPI()
+	}
+	
+	func setText(){
+		navigationController?.title = "My Events".localized()
+		
+		eventSegment.setTitle("Current Events", forSegmentAtIndex: 0)
+		eventSegment.setTitle("Past Events", forSegmentAtIndex: 1)
 	}
 	
 	func getEventsFromAPI(){

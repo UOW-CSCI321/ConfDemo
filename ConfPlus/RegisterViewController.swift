@@ -8,9 +8,13 @@
 
 import UIKit
 import CryptoSwift
+import Localize_Swift
 
 class RegisterViewController: UIViewController {
 
+	@IBOutlet weak var registerButton: UIButton!
+	@IBOutlet weak var loginButton: UIButton!
+	
 	@IBOutlet weak var usernameTextField: UITextField!
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
@@ -21,18 +25,22 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+	
+	override func viewWillAppear(animated: Bool) {
+		setText()
+	}
     
 	@IBAction func performRegister(sender: AnyObject) {
 		guard let username = usernameTextField.text where usernameTextField.text?.characters.count > 0 else {
-			showAlert("Invalid Username")
+			showAlert("Invalid Username".localized())
 			return
 		}
 		guard let password = passwordTextField.text where passwordTextField.text?.characters.count > 0 else {
-			showAlert("Invalid Password")
+			showAlert("Invalid Password".localized())
 			return
 		}
 		guard let email = emailTextField.text where emailTextField.text?.characters.count > 0 else {
-			showAlert("Invalid email")
+			showAlert("Invalid email".localized())
 			return
 		}
 		
@@ -45,7 +53,7 @@ class RegisterViewController: UIViewController {
 				self.user.setObject(username, forKey: "username")
 				self.dismissViewControllerAnimated(true, completion: nil)
 			} else {
-				self.showAlert("Email or Username unavailable.")
+				self.showAlert("warnLogin".localized())
 			}
 		}
 	}
@@ -54,9 +62,18 @@ class RegisterViewController: UIViewController {
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
 	
-	func showAlert(title: String, message:String="Please try again"){
+	func setText(){
+		registerButton.setTitle("Register".localized(), forState: .Normal)
+		loginButton.setTitle("Login".localized(), forState: .Normal)
+		
+		usernameTextField.placeholder = "Username".localized()
+		emailTextField.placeholder = "Email".localized()
+		passwordTextField.placeholder = "Password".localized()
+	}
+	
+	func showAlert(title: String, message:String="warnTryAgain".localized()){
 		let alertcontroller = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-		let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+		let defaultAction = UIAlertAction(title: "OK".localized(), style: .Default, handler: nil)
 		alertcontroller.addAction(defaultAction)
 		self.presentViewController(alertcontroller, animated: true, completion: nil)
 	}

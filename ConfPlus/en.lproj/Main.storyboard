@@ -254,6 +254,7 @@
                         </segmentedControl>
                     </navigationItem>
                     <connections>
+                        <outlet property="eventSegment" destination="rO9-Ft-lO3" id="aaL-DU-K0l"/>
                         <outlet property="tableView" destination="rir-LX-hLk" id="IxR-pc-sxH"/>
                     </connections>
                 </viewController>
@@ -399,7 +400,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyp-Tl-t0Y">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                                    <state key="normal" title="New Billing Info"/>
+                                                    <state key="normal" title="New Billing"/>
                                                     <connections>
                                                         <segue destination="srz-Rh-g9Z" kind="show" id="XbU-gX-3s7"/>
                                                     </connections>
@@ -469,7 +470,7 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="z46-hg-J4F"/>
                     <navigationItem key="navigationItem" title="Profile" id="xbe-nJ-7f3">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="0Qk-Id-7Sq">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="0Qk-Id-7Sq">
                             <connections>
                                 <segue destination="oCw-Ku-lcE" kind="show" id="DhJ-vP-qKF"/>
                             </connections>
@@ -484,6 +485,7 @@
                         <outlet property="languageButton" destination="v1u-d4-1f9" id="s8n-6D-t8B"/>
                         <outlet property="logOutButton" destination="pIy-wp-EJ2" id="LHj-Ia-KmC"/>
                         <outlet property="nameLabel" destination="KO4-YN-bv0" id="CiQ-gg-imE"/>
+                        <outlet property="newBillingButton" destination="jyp-Tl-t0Y" id="QRT-cc-pju"/>
                         <outlet property="paymentHistoryButton" destination="He6-M9-f76" id="Q9j-jf-MGs"/>
                     </connections>
                 </tableViewController>
@@ -772,7 +774,7 @@
             </objects>
             <point key="canvasLocation" x="-1030" y="1925"/>
         </scene>
-        <!--New Billing Info-->
+        <!--New Billing-->
         <scene sceneID="rsh-ur-fWG">
             <objects>
                 <tableViewController id="srz-Rh-g9Z" customClass="NewBillingTableViewController" customModule="ConfPlus" customModuleProvider="target" sceneMemberID="viewController">
@@ -827,7 +829,7 @@
                                                     </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9r-nC-IQI">
-                                                    <rect key="frame" x="8" y="11.5" width="38" height="21"/>
+                                                    <rect key="frame" x="8" y="11" width="38" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -881,7 +883,7 @@
                             <outlet property="delegate" destination="srz-Rh-g9Z" id="Hgm-4f-VwE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="New Billing Info" id="gJA-81-zBs">
+                    <navigationItem key="navigationItem" title="New Billing" id="gJA-81-zBs">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="qhc-kd-H1A">
                             <connections>
                                 <action selector="performSave:" destination="srz-Rh-g9Z" id="JIz-mo-Vp8"/>
@@ -889,8 +891,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cardLabel" destination="pqb-Jm-8tq" id="SAF-Ml-cQ3"/>
                         <outlet property="cardTextField" destination="KLZ-4X-VlL" id="CBo-7k-z0w"/>
+                        <outlet property="expireLabel" destination="i9e-Vd-N6Q" id="Fge-u4-2ny"/>
                         <outlet property="expireTextField" destination="QQt-ea-fPI" id="JpI-ec-T5J"/>
+                        <outlet property="saveButton" destination="qhc-kd-H1A" id="tXE-rG-W14"/>
+                        <outlet property="typeLabel" destination="x9r-nC-IQI" id="5aa-ua-ipE"/>
                         <outlet property="typeTextField" destination="HfA-oJ-6mP" id="MSL-Qd-lV2"/>
                     </connections>
                 </tableViewController>
@@ -898,7 +904,7 @@
             </objects>
             <point key="canvasLocation" x="-330" y="1925"/>
         </scene>
-        <!--History-->
+        <!--Payment History-->
         <scene sceneID="egE-dH-Fr6">
             <objects>
                 <viewController storyboardIdentifier="HistoryTableViewController" id="sfj-Ji-26K" customClass="HistoryTableViewController" customModule="ConfPlus" customModuleProvider="target" sceneMemberID="viewController">
@@ -947,7 +953,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="History" id="ZU0-Oh-wgx"/>
+                    <navigationItem key="navigationItem" title="Payment History" id="ZU0-Oh-wgx"/>
                     <connections>
                         <outlet property="tableView" destination="NqB-DL-58l" id="Mod-2M-tWr"/>
                     </connections>

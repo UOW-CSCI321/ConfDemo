@@ -12,6 +12,10 @@ import CryptoSwift
 
 class LoginViewController: UIViewController {
 
+	@IBOutlet weak var loginButton: UIButton!
+	@IBOutlet weak var registerButton: UIButton!
+	@IBOutlet weak var forgotButton: UIButton!
+	
     @IBOutlet var usernameTextfield: UITextField!
     @IBOutlet var passwordTextfield: UITextField!
     let server = APIServer()
@@ -24,6 +28,9 @@ class LoginViewController: UIViewController {
     }
 	
 	override func viewWillAppear(animated: Bool) {
+		
+		setText()
+		
 		if let email = user.stringForKey("email"){
             
 			APIManager().getUserInformation(email){ result in
@@ -40,11 +47,11 @@ class LoginViewController: UIViewController {
 	
     @IBAction func LoginPressed(sender: AnyObject) {
 		guard let email = usernameTextfield.text where usernameTextfield.text?.characters.count > 0 else {
-			showAlert("Wrong Email")
+			showAlert("Wrong Email".localized())
 			return
 		}
 		guard let password = passwordTextfield.text where passwordTextfield.text?.characters.count > 0 else {
-			showAlert("Wrong Password")
+			showAlert("Wrong Password".localized())
 			return
 		}
 		let hashedPassword = APIServer().hashUserPassword(password)
@@ -69,14 +76,22 @@ class LoginViewController: UIViewController {
 
 
 			} else {
-				self.showAlert("Incorrect Email or Password")
+				self.showAlert("warnLogin".localized())
 			}
 		}
 		
     }
 	
+	func setText(){
+		loginButton.setTitle("Login".localized(), forState: .Normal)
+		registerButton.setTitle("Register".localized(), forState: .Normal)
+		forgotButton.setTitle("Forgot Password".localized(), forState: .Normal)
+		
+		usernameTextfield.placeholder = "Email".localized()
+		passwordTextfield.placeholder = "Password".localized()
+	}
 	
-	func showAlert(title: String, message:String="Please try again"){
+	func showAlert(title: String, message:String="warnTryAgain".localized()){
 		let alertcontroller = UIAlertController(title: title, message: message, preferredStyle: .Alert)
 		let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
 		alertcontroller.addAction(defaultAction)

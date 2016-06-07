@@ -17,6 +17,7 @@ class AccountTableViewController: UITableViewController {
 	@IBOutlet weak var avatar: UIImageView!
 	@IBOutlet weak var editButton: UIBarButtonItem!
 	@IBOutlet weak var languageButton: UIButton!
+	@IBOutlet weak var newBillingButton: UIButton!
 	@IBOutlet weak var paymentHistoryButton: UIButton!
 	@IBOutlet weak var logOutButton: UIButton!
 	@IBOutlet weak var fixNameLabel: UILabel!
@@ -37,6 +38,8 @@ class AccountTableViewController: UITableViewController {
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
+		
+		setText()
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AccountTableViewController.setText), name: LCLLanguageChangeNotification, object: nil)
 		
 		
@@ -97,6 +100,7 @@ class AccountTableViewController: UITableViewController {
 		fixEmailLabel.text = "email".localized()
 		
 		languageButton.setTitle("Languages".localized(), forState: .Normal)
+		newBillingButton.setTitle("New Billing".localized(), forState: .Normal)
 		paymentHistoryButton.setTitle("Payment History".localized(), forState: .Normal)
 		logOutButton.setTitle("Log Out".localized(), forState: .Normal)
 		

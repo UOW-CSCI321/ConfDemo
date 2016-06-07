@@ -13,7 +13,6 @@ class SessionTicketsTableViewCell: UITableViewCell {
 	@IBOutlet weak var presentationName: UILabel!
 	@IBOutlet weak var presentationTime: UILabel!
 	@IBOutlet weak var presentationLocation: UILabel!
-	@IBOutlet weak var presentationPrice: UILabel!
 	
 	@IBAction func selectedSessionTicket(sender: AnyObject) {
 		if self.backgroundColor == UIColor.clearColor() {
