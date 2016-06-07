@@ -25,6 +25,7 @@ class APIManager{
 	func fetchError(title: String = "warnInternet".localized(), message:String = "warnUpdate".localized()){
 		let notification = MPGNotification(title: title, subtitle: message, backgroundColor: UIColor.orangeColor(), iconImage: nil)
 		notification.show()
+		
 	}
 	
     //MARK: - Event related
@@ -54,7 +55,7 @@ class APIManager{
 				
 			case .Failure(let error):
 				print(error.localizedDescription)
-				self.fetchError()
+				HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				completion(result: false)
 			}
 			
@@ -88,7 +89,7 @@ class APIManager{
 				
 			case .Failure(let error):
 				print(error.localizedDescription)
-				self.fetchError()
+				HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				completion(result: false)
 			}
 			
@@ -155,7 +156,7 @@ class APIManager{
                 completion(true)
             case .Failure(let error):
                 print(error.localizedDescription)
-                self.fetchError()
+                HUD.flash(.Label("warnInternet".localized()), delay: 1)
                 completion(false)
             }
             
@@ -219,7 +220,7 @@ class APIManager{
                 
             case .Failure(let error):
                 print(error.localizedDescription)
-                self.fetchError()
+                HUD.flash(.Label("warnInternet".localized()), delay: 1)
                 completion(result: false)
             }
             
@@ -508,7 +509,7 @@ class APIManager{
                 completion(true)
             case .Failure(let error):
                 print(error.localizedDescription)
-                self.fetchError()
+                HUD.flash(.Label("warnInternet".localized()), delay: 1)
                 completion(false)
             }
             
@@ -549,7 +550,7 @@ class APIManager{
                 completion(true)
             case .Failure(let error):
                 print(error.localizedDescription)
-                self.fetchError()
+                HUD.flash(.Label("warnInternet".localized()), delay: 1)
                 completion(false)
             }
             
@@ -699,7 +700,7 @@ class APIManager{
             case .Failure(let error):
                 HUD.hide()
                 print(error.localizedDescription)
-                self.fetchError()
+                HUD.flash(.Label("warnInternet".localized()), delay: 1)
                 completion(result: false, convo_id:  nil)
                 
             }
@@ -738,7 +739,7 @@ class APIManager{
                 
             case .Failure(let error):
                 print(error.localizedDescription)
-                self.fetchError()
+                HUD.flash(.Label("warnInternet".localized()), delay: 1)
                 completion(result: false)
             }
             
@@ -777,7 +778,7 @@ extension APIManager{
 			case .Failure(let error):
 				HUD.hide()
 				print(error.localizedDescription)
-				self.fetchError()
+				HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				completion(result: false, data: nil)
 				
 			}
@@ -814,7 +815,7 @@ extension APIManager{
 			case .Failure(let error):
 				HUD.hide()
 				print(error.localizedDescription)
-				self.fetchError()
+				HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				completion(result: false, data: nil)
 				
 			}
