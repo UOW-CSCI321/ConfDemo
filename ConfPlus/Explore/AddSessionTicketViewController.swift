@@ -23,6 +23,7 @@ class AddSessionTicketViewController: UIViewController {
 	
 	var selectedSessions = Dictionary<String, [Tickets]>()
 	var titles = [String]()
+	var selected = [[Bool]]()
 
 	@IBAction func performUpdateTickets(sender: AnyObject) {
 		if let del = delegate {
@@ -60,6 +61,15 @@ class AddSessionTicketViewController: UIViewController {
 	func setDataForPresent(){
 		setText()
 		titles = Array(selectedSessions.keys)
+		for i in 0..<titles.count {
+			selected.append(Array(count:selectedSessions[titles[i]]!.count, repeatedValue:Bool()))
+		}
+		
+		for i in 0..<selected.count{
+			selected[i][0] = true
+		}
+
+		
 		tableView.reloadData()
 	}
 	
@@ -93,7 +103,7 @@ extension AddSessionTicketViewController: UITableViewDelegate{
 		let itemSection = selectedSessions[titles[sec]]
 		let item = itemSection![row]
 		
-		if row == 0 {
+		if selected[sec][row] == true {
 			cell.accessoryType = .Checkmark
 		} else {
 			cell.accessoryType = .None
@@ -111,8 +121,10 @@ extension AddSessionTicketViewController: UITableViewDelegate{
 		for row in 0..<tableView.numberOfRowsInSection(indexPath.section){
 			let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: indexPath.section)) as! AddSessionTicketTableViewCell
 			cell.accessoryType = .None
+			selected[indexPath.section][row] = false
 		}
 		let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: indexPath.row, inSection: indexPath.section)) as! AddSessionTicketTableViewCell
 		cell.accessoryType = .Checkmark
+		selected[indexPath.section][indexPath.row] = true
 	}
 }
