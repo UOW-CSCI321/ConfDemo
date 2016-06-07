@@ -1040,7 +1040,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="sessionTicketCell" editingAccessoryType="disclosureIndicator" rowHeight="85" id="e43-cT-jzp" customClass="SessionTicketsTableViewCell" customModule="ConfPlus" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="85"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e43-cT-jzp" id="fMD-6B-Bxg">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="84.5"/>
