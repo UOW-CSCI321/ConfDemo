@@ -67,9 +67,13 @@ extension AttendingViewController: UITableViewDelegate{
         let cell = tableView.dequeueReusableCellWithIdentifier("messageCell", forIndexPath: indexPath) as! MessageTableViewCell
         let row = indexPath.row
         
-//        cell.usersName.text = userConversations[row].name //conversation name should be the sender
-//        cell.messageDescription.text = userConversations[row].lastmsg_content //lastMessage?.content
-//        cell.messageDateLabel.text = userConversations[row].getConversationDateAsString()
+        var name:String = users[row].first_name!
+        name += " "
+        name += users[row].last_name!
+        cell.usersName.text = name
+        
+        cell.messageDescription.text = users[row].email!
+        cell.messageDateLabel.text = ""
 //        if userConversations[row].conversation_pic != nil{
 //            cell.profilePicture.image = UIImage(data: userConversations[row].conversation_pic!)
 //        }
