@@ -48,6 +48,7 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
 		if segue.identifier == "goToTicketDetails" {
 			let vc = segue.destinationViewController as! TicketDetailsViewController
 			vc.event = event
+			print(event.event_id)
 		}
 	}
 	
@@ -73,28 +74,31 @@ class EventDetailTableViewController: UITableViewController, MKMapViewDelegate {
 		
         let lat = Double(venue!.latitude!)
         let long = Double(venue!.longitude!)
-        
-        let location = CLLocationCoordinate2DMake(lat!, long!)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = location
-        annotation.title = venue!.name //"title"
-        //annotation.subtitle = "subtitle"
-        locationMapView.addAnnotation(annotation)
-        
-        var address:String?
-        address = "\(venue!.street!), \(venue!.city!), \(venue!.state!), \(venue!.country!)"
-        //address
-        addressTextView.text = address
-        
-        //var span = MKCoordinateSpanMake(spanValue, spanValue)
-        
-        
-        //let initialLocation = CLLocation(latitude: lat, longitude: long)
-        centerMapOnLocation(location)
+		if (lat > -90 && lat < 90 && long > -180 && long < 180){
+			let location = CLLocationCoordinate2DMake(lat!, long!)
+			let annotation = MKPointAnnotation()
+			annotation.coordinate = location
+			annotation.title = venue!.name //"title"
+			//annotation.subtitle = "subtitle"
+			locationMapView.addAnnotation(annotation)
+			
+			var address:String?
+			address = "\(venue!.street!), \(venue!.city!), \(venue!.state!), \(venue!.country!)"
+			//address
+			addressTextView.text = address
+			
+			//var span = MKCoordinateSpanMake(spanValue, spanValue)
+			
+			
+			//let initialLocation = CLLocation(latitude: lat, longitude: long)
+			centerMapOnLocation(location)
+		}
+		
+		
 
 
     }
-    
+	
     func centerMapOnLocation(location: CLLocationCoordinate2D) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location, regionRadius * 2.0, regionRadius * 2.0)
         locationMapView.setRegion(coordinateRegion, animated: true)

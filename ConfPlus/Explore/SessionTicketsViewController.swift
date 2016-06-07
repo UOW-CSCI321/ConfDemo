@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import PKHUD
 
-class SessionTicketsViewController: UIViewController {
+class SessionTicketsViewController: UIViewController, CellDelegate {
 	
 	@IBOutlet weak var cancelButton: UIBarButtonItem!
 	@IBOutlet weak var continueButton: UIButton!
@@ -20,7 +20,6 @@ class SessionTicketsViewController: UIViewController {
 	var ticket:Coupon!
 	var event:Event!
 	var col:Int!
-	//var titles = [String]()
 	
 	var dataSortedByDates = Dictionary<String, [Tickets]>()
 	var dates = [String]()
@@ -28,6 +27,7 @@ class SessionTicketsViewController: UIViewController {
 	var selectedSessions = Dictionary<String, [Tickets]>()
 	
 	var delegate:selectSessionTicketDelegate?
+	var selected = [[Bool]]()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -37,6 +37,17 @@ class SessionTicketsViewController: UIViewController {
 		super.viewWillAppear(animated)
 		setText()
 		setDataForPresent()
+	}
+	
+	func cellClicked(cell:UITableViewCell){
+		let indexPath = tableView.indexPathForCell(cell)
+		if cell.backgroundColor == UIColor.clearColor() {
+			cell.backgroundColor = UIColor.init(red: 0, green: 0.8, blue: 0, alpha: 0.2)
+			selected[(indexPath?.section)!][indexPath!.row] = true
+		} else {
+			cell.backgroundColor = UIColor.clearColor()
+			selected[(indexPath?.section)!][indexPath!.row] = false
+		}
 	}
 	
 	func setText(){
@@ -79,6 +90,10 @@ class SessionTicketsViewController: UIViewController {
 		
 		dates = dates.filter{ $0 >= GeneralLibrary().getStringFromDate(ticket.ticket[0].startTime!) && $0 <= GeneralLibrary().getStringFromDate(ticket.ticket[0].endTime!) }
 		
+		for i in 0..<dates.count {
+			selected.append(Array(count:dataSortedByDates[dates[i]]!.count, repeatedValue:Bool()))
+		}
+		
 		tableView.reloadData()
 		HUD.hide()
 	}
@@ -88,15 +103,13 @@ class SessionTicketsViewController: UIViewController {
 			selectedSessions.removeAll()
 			for section in 0..<tableView.numberOfSections{
 				for row in 0..<tableView.numberOfRowsInSection(section){
+					tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: row, inSection: section) , atScrollPosition: UITableViewScrollPosition.Top, animated: false)
 					let cell:SessionTicketsTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as! SessionTicketsTableViewCell
-					
 					if cell.backgroundColor == UIColor.init(red: 0, green: 0.8, blue: 0, alpha: 0.2) {
 						let itemSection = dataSortedByDates[dates[section]]
 						let item = itemSection![row]
 						
-						
 						selectedSessions[item.title!] = sessionTickets[item.title!]
-						
 					}
 				}
 			}
@@ -141,18 +154,22 @@ extension SessionTicketsViewController: UITableViewDelegate{
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		
-		let cell = tableView.dequeueReusableCellWithIdentifier("sessionTicketCell", forIndexPath: indexPath) as! SessionTicketsTableViewCell
 		let row = indexPath.row
 		let sec = indexPath.section
+		let cell = tableView.dequeueReusableCellWithIdentifier("sessionTicketCell", forIndexPath: indexPath) as! SessionTicketsTableViewCell
 		
 		let itemSection = dataSortedByDates[dates[sec]]
 		let item = itemSection![row]
-		cell.backgroundColor = UIColor.clearColor()
+		if selected[sec][row] == true {
+			cell.backgroundColor = UIColor.init(red: 0, green: 0.8, blue: 0, alpha: 0.2)
+		} else {
+			cell.backgroundColor = UIColor.clearColor()
+		}
 		
 		cell.presentationName.text = item.title
 		cell.presentationTime.text = "\(GeneralLibrary().getTimeFromDate(item.startTime!)) - \(GeneralLibrary().getTimeFromDate(item.endTime!))"
 		cell.presentationLocation.text = item.room ?? ""
+		cell.delegate = self
 		
 		return cell
 	}

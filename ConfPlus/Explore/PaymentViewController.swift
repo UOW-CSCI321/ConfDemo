@@ -38,7 +38,13 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 		navigationItem.title = "Confirmation".localized()
 		
 		confirmButton.setTitle("Confirm Purchase".localized(), forState: .Normal)
-		disclosureText.text = "warnSelect".localized()
+		
+		if sessionTickets.count > 0 {
+			disclosureText.text = "warnSelect".localized()
+		} else {
+			disclosureText.text = "warnComplete".localized()
+		}
+		
 	}
 	
 	//MARK: IBActions
@@ -64,6 +70,7 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 		if event.payee == nil { event.payee = "merchant@cy.my" }
 		if event.cardNum == nil { event.cardNum = "1234 5678 9012 3456" }
 		
+		HUD.show(.Progress)
 		APIManager().makePayment(email, type: "Event Tickets".localized(),
 		                         amount: String(self.totalPrice),
 		                         payment_date: GeneralLibrary().getFullStringFromDate(NSDate()),
@@ -73,12 +80,13 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 				for ticket in self.tickets {
 					APIManager().addSessionAttendee(self.event.event_id!, tickets: ticket)
 				}
+				HUD.hide()
 				self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
 			} else {
+				HUD.hide()
 				HUD.flash(.Label("warnPaymentFail".localized()), delay: 1)
 			}
 		}
-		self.performSegueWithIdentifier("goToSuccessPurchased", sender: self)
 	}
 	
 	func selectSessionTicketDidFinish(controller: AddSessionTicketViewController, email:String, col:Int, session: [Tickets]) {
@@ -112,6 +120,7 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 		totalPrice = 0.0
 		for section in 0..<tableView.numberOfSections - 1{
 			for row in 0..<tableView.numberOfRowsInSection(section){
+				tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: row, inSection: section) , atScrollPosition: UITableViewScrollPosition.Top, animated: false)
 				let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section))
 				
 				totalPrice += Double(GeneralLibrary().unwrapPrice((cell?.detailTextLabel?.text)!))!

@@ -8,18 +8,27 @@
 
 import UIKit
 
+protocol CellDelegate {
+	func cellClicked(cell:UITableViewCell)
+}
+
 class SessionTicketsTableViewCell: UITableViewCell {
 	
 	@IBOutlet weak var presentationName: UILabel!
 	@IBOutlet weak var presentationTime: UILabel!
 	@IBOutlet weak var presentationLocation: UILabel!
+	var delegate:CellDelegate?
 	
 	@IBAction func selectedSessionTicket(sender: AnyObject) {
-		if self.backgroundColor == UIColor.clearColor() {
-			self.backgroundColor = UIColor.init(red: 0, green: 0.8, blue: 0, alpha: 0.2)
-		} else {
-			self.backgroundColor = UIColor.clearColor()
+		if let del = delegate {
+			del.cellClicked(self)
 		}
+		
+//		if self.backgroundColor == UIColor.clearColor() {
+//			self.backgroundColor = UIColor.init(red: 0, green: 0.8, blue: 0, alpha: 0.2)
+//		} else {
+//			self.backgroundColor = UIColor.clearColor()
+//		}
 	}
 	
 	override func awakeFromNib() {

@@ -51,7 +51,7 @@ class GeneralLibrary{
 	func getFullStringFromDate(date:NSDate) -> String{
 		let dateFormatter = NSDateFormatter()
 		dateFormatter.timeZone = NSTimeZone(name: "GMT")
-		dateFormatter.dateFormat = "YYYY-MM-dd HH:mm"
+		dateFormatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
 		
 		return dateFormatter.stringFromDate(date)
 	}

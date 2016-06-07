@@ -38,7 +38,7 @@ extension APIManager{
 				
 			case .Failure(let error):
 				print(error.localizedDescription)
-				self.fetchError()
+				HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				completion(result: false, json: nil)
 			}
 			
@@ -68,7 +68,7 @@ extension APIManager{
                 
             case .Failure(let error):
                 print(error.localizedDescription)
-                self.fetchError()
+                HUD.flash(.Label("warnInternet".localized()), delay: 1)
                 completion(result: false, json: nil)
             }
             
@@ -97,7 +97,7 @@ extension APIManager{
 			
 			case .Failure(let error):
 				print(error.localizedDescription)
-				self.fetchError()
+				HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				completion(result: false, json: nil)
 			}
 		
@@ -129,7 +129,7 @@ extension APIManager{
                 
             case .Failure(let error):
                 print(error.localizedDescription)
-                self.fetchError()
+                HUD.flash(.Label("warnInternet".localized()), delay: 1)
                 completion(result: false, json: nil)
             }
             
@@ -161,7 +161,7 @@ extension APIManager{
 				
 			case .Failure(let error):
 				print(error.localizedDescription)
-				self.fetchError()
+				HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				completion(result: false, data: nil)
 				
 			}
@@ -186,7 +186,7 @@ extension APIManager{
 			
 			if let venue_id = ticket.venue { parameters["venue_id"] = venue_id }
 			if let room_name = ticket.room { parameters["room_name"] = room_name }
-			if let venue_id = ticket.seat { parameters["seat_num"] = venue_id }
+			if let seat_num = ticket.seat { parameters["seat_num"] = seat_num }
 			
 			Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
 				switch response.result {
@@ -201,7 +201,7 @@ extension APIManager{
 					
 				case .Failure(let error):
 					print(error.localizedDescription)
-					HUD.flash(.Label("No internet"), delay: 0.5)
+					HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				}
 				
 			}
@@ -221,6 +221,7 @@ extension APIManager{
 			"payee"		:	payee,
 			"cardNum"	:	cardNum
 		]
+		print(parameters)
 		
 		Alamofire.request(.POST, server.URL, parameters: parameters).responseJSON { response in
 			switch response.result {
@@ -236,7 +237,7 @@ extension APIManager{
 				
 			case .Failure(let error):
 				print(error.localizedDescription)
-				HUD.flash(.Label("No internet"), delay: 0.5)
+				HUD.flash(.Label("warnInternet".localized()), delay: 1)
 				completion(result: false)
 			}
 			

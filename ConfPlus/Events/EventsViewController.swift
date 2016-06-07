@@ -61,8 +61,8 @@ class EventsViewController: UIViewController {
 	func setText(){
 		navigationController?.title = "My Events".localized()
 		
-		eventSegment.setTitle("Current Events", forSegmentAtIndex: 0)
-		eventSegment.setTitle("Past Events", forSegmentAtIndex: 1)
+		eventSegment.setTitle("Current Events".localized(), forSegmentAtIndex: 0)
+		eventSegment.setTitle("Past Events".localized(), forSegmentAtIndex: 1)
 	}
 	
 	func getEventsFromAPI(){

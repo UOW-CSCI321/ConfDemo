@@ -11,6 +11,7 @@ import UIKit
 
 class ReceiptViewController: UIViewController {
 	@IBOutlet weak var textLabel: UILabel!
+	@IBOutlet weak var completeButton: UIButton!
     
 	@IBAction func backToEvent(sender: AnyObject) {
 		navigationController?.popToRootViewControllerAnimated(true)
@@ -21,6 +22,7 @@ class ReceiptViewController: UIViewController {
 		navigationItem.title = "Receipt".localized()
 		textLabel.text = "warnSuccess".localized()
 		
+		completeButton.setTitle("Complete".localized(), forState: .Normal)
     }
     
 }
