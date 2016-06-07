@@ -35,7 +35,7 @@ class TimeTableViewController: UIViewController {
         myUser = ModelHandler().getUser(email!)
         if myUser != nil
         {
-            sessions = ModelHandler().getSessionsForEvent(event)
+            sessions = ModelHandler().getSessionsForEventForUser(event, user: myUser)
             self.timetableTableView.reloadData()
             //self.tableView.reloadData()
             
