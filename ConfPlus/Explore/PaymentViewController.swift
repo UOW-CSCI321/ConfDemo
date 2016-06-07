@@ -120,6 +120,7 @@ class PaymentViewController: UIViewController, selectSessionTicketDelegate {
 		totalPrice = 0.0
 		for section in 0..<tableView.numberOfSections - 1{
 			for row in 0..<tableView.numberOfRowsInSection(section){
+				tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: row, inSection: section) , atScrollPosition: UITableViewScrollPosition.Top, animated: false)
 				let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section))
 				
 				totalPrice += Double(GeneralLibrary().unwrapPrice((cell?.detailTextLabel?.text)!))!

@@ -44,6 +44,7 @@ class PersonalDetailsViewController: UIViewController {
 		if identifier == "goToConfirmation" {
 			for section in 0..<tableView.numberOfSections{
 				for row in 0..<tableView.numberOfRowsInSection(section){
+					tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: row, inSection: section) , atScrollPosition: UITableViewScrollPosition.Top, animated: false)
 					let cell:PersonalDetailsTableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: section)) as! PersonalDetailsTableViewCell
 					
 					let detail = cell.typeResponseTextField.text

@@ -1053,7 +1053,7 @@
                                                         <constraint firstAttribute="width" constant="100" id="fAY-YW-JX3"/>
                                                     </constraints>
                                                     <connections>
-                                                        <action selector="selectedSessionTicket:" destination="e43-cT-jzp" eventType="touchUpInside" id="zLC-R9-M2O"/>
+                                                        <action selector="selectedSessionTicket:" destination="e43-cT-jzp" eventType="touchUpInside" id="egx-2o-s7C"/>
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cart" translatesAutoresizingMaskIntoConstraints="NO" id="2yM-uH-U0R">
