@@ -88,8 +88,10 @@ class TicketProfileTableViewController: UITableViewController {
 		
 		filter!.setValue(data, forKey: "inputMessage")
 		filter!.setValue("Q", forKey: "inputCorrectionLevel")
+        
+        let transform = CGAffineTransformMakeScale(5, 5)
 		
-		let qrcodeImage = filter!.outputImage
+		let qrcodeImage = filter!.outputImage?.imageByApplyingTransform(transform)
 		
 		qrImage.image = UIImage(CIImage: qrcodeImage!)
 	}
