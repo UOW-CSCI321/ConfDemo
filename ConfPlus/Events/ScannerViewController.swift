@@ -59,8 +59,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
 	}
 	
 	func failed() {
-		let ac = UIAlertController(title: "Scanning not supported", message: "Your device does not support scanning a code from an item. Please use a device with a camera.", preferredStyle: .Alert)
-		ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+		let ac = UIAlertController(title: "warnNoSupportMessage".localized(), message: "warnNoSupport".localized(), preferredStyle: .Alert)
+		ac.addAction(UIAlertAction(title: "OK".localized(), style: .Default, handler: nil))
 		presentViewController(ac, animated: true, completion: nil)
 		captureSession = nil
 	}
@@ -95,14 +95,16 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
 	}
 	
 	func foundCode(code: String) {
+		HUD.show(.Progress)
 		APIManager().scanQR(code){ result, data in
+			HUD.hide(animated: true)
 			if result {
-				//TODO: get the data, unwrap it and print name
-				HUD.flash(.Label(data.string), delay: 1.00) { _ in
+				let message = "\(data[0]["title"].string!)\n\(data[1]["email"].string!)"
+				HUD.flash(.Label(message), delay: 1.00) { _ in
 					self.captureSession.startRunning();
 				}
 			} else {
-				HUD.flash(.Label("Ticket not found"), delay: 1.00) { _ in
+				HUD.flash(.Label("warnNoTicket".localized()), delay: 1.00) { _ in
 					self.captureSession.startRunning();
 				}
 			}

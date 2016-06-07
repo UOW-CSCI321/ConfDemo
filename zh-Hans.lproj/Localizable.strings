@@ -157,3 +157,6 @@
 "warnUpdateMessage" = "更新可能需要一些时间";
 
 "warnFeatures" = "功能未开启";
+"warnNoTicket" = "没有相关票卷";
+"warnNoSupport" = "本设备不支持使用此功能，请尝试使用其他设备。";
+"warnNoSupportMessage" = "功能不支持";

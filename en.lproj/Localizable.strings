@@ -157,3 +157,6 @@
 "warnUpdateMessage" = "it might takes some time for updating.";
 
 "warnFeatures" = "Features not available yet.";
+"warnNoTicket" = "Ticket Not Found";
+"warnNoSupport" = "This feature is not supported on the device. Please try another device";
+"warnNoSupportMessage" = "Features Not Support";
