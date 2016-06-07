@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MPGNotification
 
 class AttendingViewController: UIViewController {
     var event:Event!
@@ -18,37 +19,24 @@ class AttendingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.attendingTableView.delegate = self
-        //self.attendingTableView.dataSource = self
 		
         getVenue()
 		populateNavigationBar()
         
-        //self.users =  ModelHandler().getUsersForEvent(self.event)!
-        //self.attendingTableView.reloadData()
+        self.users =  ModelHandler().getUsersForEvent(self.event)!
+        self.attendingTableView.reloadData()
         
     }
     
     override func viewWillAppear(animated: Bool) {
         //api call to get users for a conversation
+        let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+        notification.duration = 60
+        notification.show()
         APIManager().getEventAttendeesFromAPI(self.event) { result in
             self.users = ModelHandler().getUsersForEvent(self.event)!
-            print(self.users)
-            //for each user in the array try to get their profile pic
-//            let counter = self.users.count
-//            
-//            for i in 0..<counter{
-//                
-//                print(self.users[i].profile_pic_url)
-////                APIManager().getUserProfilePicFromAPI(self.users[i]) { result in
-////                    self.users = ModelHandler().getUsersForEvent(self.event)!
-////                    let counter2 = self.users.count
-////                    for j in 0..<counter{
-////                        
-////                    }
-////                }
-//                
-//            }
+            notification.hidden = true
+            //print(self.users)
             self.attendingTableView.reloadData()
         }
     }
@@ -99,9 +87,6 @@ extension AttendingViewController: UITableViewDelegate{
         }else{
             cell.profilePicture.image = UIImage(named: "matt")
         }
-//        if userConversations[row].conversation_pic != nil{
-//            cell.profilePicture.image = UIImage(data: userConversations[row].conversation_pic!)
-//        }
         
         return cell
     }
