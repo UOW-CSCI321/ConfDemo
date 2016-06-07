@@ -19,6 +19,7 @@ class EventsTableViewCell: UITableViewCell {
 	@IBOutlet weak var eventDate: UILabel!
     @IBOutlet weak var starsView: UIView!
     var rating:HCSStarRatingView!
+    var ratinngInt:Int!
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -37,14 +38,16 @@ class EventsTableViewCell: UITableViewCell {
 		
 		// Configure the view for the selected state
 	}
-//    @IBAction func didChangeValue(sender: AnyObject) {
-//        let val = sender.value as Float
-//        print("value changed to \(val)")
-//    }
     
     @IBAction func didChangeValue(sender: HCSStarRatingView) {
+        ratinngInt = Int(sender.value)
+        
         let val = sender.value
-        print("value changed to \(val)")
+        print("value changed to \(ratinngInt)")
+    }
+    
+    func getRating() -> Int {
+        return self.ratinngInt
     }
 	
 }
