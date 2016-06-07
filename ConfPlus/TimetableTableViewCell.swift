@@ -14,7 +14,9 @@ class TimetableTableViewCell: UITableViewCell {
 	@IBOutlet weak var presentationTime: UILabel!
 	@IBOutlet weak var presentationLocation: UILabel!
 	@IBOutlet weak var presentationPrice: UILabel!
-
+    @IBOutlet weak var addToCartButton: UIButton!
+    @IBOutlet weak var addToCartLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

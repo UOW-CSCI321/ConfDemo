@@ -14,6 +14,8 @@ import MPGNotification
 class MessagesTableViewController: UIViewController {
     
     @IBOutlet var conversationTable: UITableView!
+
+    @IBOutlet var addConversationButton: UIButton!
     
     //var usersMessages = [[Message]]()
     var userConversations = [Conversation]()
@@ -28,7 +30,7 @@ class MessagesTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		let email = user.stringForKey("email")
+        let email = user.stringForKey("email")
 		populateNavigationBar()
         userConversations = ModelHandler().getConversation(email!)
         conversationTable.reloadData()
@@ -185,11 +187,10 @@ class MessagesTableViewController: UIViewController {
         messengerVC.conversation = userConversations[row]
         self.hidesBottomBarWhenPushed = true //need to hide tab bar to show message bar at the bottom. i tried to move message bar in JSQMessagesViewController but it has some action on it that when clicked it will move back down
     }
-    
-
 	
 }
 
+//MARK: Table Related
 extension MessagesTableViewController: UITableViewDelegate{
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return 1
@@ -212,8 +213,10 @@ extension MessagesTableViewController: UITableViewDelegate{
         cell.usersName.text = userConversations[row].name //conversation name should be the sender
         cell.messageDescription.text = userConversations[row].lastmsg_content //lastMessage?.content
         cell.messageDateLabel.text = userConversations[row].getConversationDateAsString()
+        if userConversations[row].conversation_pic != nil{
+            cell.profilePicture.image = UIImage(data: userConversations[row].conversation_pic!)
+        }
         
-        cell.profilePicture.image = UIImage(data: userConversations[row].conversation_pic!)
         //print("usersConversations[\(row)]: \(usersForConversations[row])")
         
 //        let count = self.participants.count

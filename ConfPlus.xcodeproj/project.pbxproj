@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7ABBEDC83FCAF9328A671323 /* Pods_ConfPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29F9F87683BF1E1F1317CBE5 /* Pods_ConfPlus.framework */; };
-		C901591B1CFC30FF00FDCDAD /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C901591A1CFC30FF00FDCDAD /* User+CoreDataProperties.swift */; };
+		C90548491D02B4E90077495C /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90548481D02B4E90077495C /* Session+CoreDataProperties.swift */; };
+		C91254AF1D00126A00C63EF8 /* Ticket_Record+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91254AE1D00126A00C63EF8 /* Ticket_Record+CoreDataProperties.swift */; };
+		C91254B51D01975100C63EF8 /* GeneralLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91254B41D01975100C63EF8 /* GeneralLibrary.swift */; };
 		C919F53B1CF774A9008268B8 /* Venue+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C919F5391CF774A9008268B8 /* Venue+CoreDataProperties.swift */; };
 		C919F53C1CF774A9008268B8 /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C919F53A1CF774A9008268B8 /* Venue.swift */; };
 		C91E85D81CE739630069333B /* Model2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C91E85D61CE739630069333B /* Model2.xcdatamodeld */; };
@@ -16,6 +18,7 @@
 		C93A980E1CE04AE900418F53 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93A980C1CE04AE900418F53 /* Event.swift */; };
 		C93A984D1CE3448D00418F53 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C93A984C1CE3448D00418F53 /* CryptoSwift.framework */; };
 		C93A984F1CE36B4C00418F53 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93A984E1CE36B4C00418F53 /* MessageTableViewCell.swift */; };
+		C946E9401CFF0BD300FB1121 /* QAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C946E93F1CFF0BD300FB1121 /* QAViewController.swift */; };
 		C94AFA4D1C98085B00EC88B6 /* TicketDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA4C1C98085B00EC88B6 /* TicketDetailsViewController.swift */; };
 		C94AFA4F1C9808AB00EC88B6 /* PersonalDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA4E1C9808AB00EC88B6 /* PersonalDetailsViewController.swift */; };
 		C94AFA511C980A0B00EC88B6 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA501C980A0B00EC88B6 /* PaymentViewController.swift */; };
@@ -32,7 +35,6 @@
 		C94AFA711C981FED00EC88B6 /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA701C981FED00EC88B6 /* AdminTableViewController.swift */; };
 		C94AFA741C98217C00EC88B6 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA731C98217C00EC88B6 /* AccountTableViewController.swift */; };
 		C94AFA761C98221400EC88B6 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */; };
-		C955F1711CD8A1FD000BE39C /* Alamofire_Synchronous.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C955F1701CD8A1FD000BE39C /* Alamofire_Synchronous.framework */; };
 		C973C7111CFC110500DF8992 /* Conversation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C973C7101CFC110500DF8992 /* Conversation+CoreDataProperties.swift */; };
 		C999E8FE1CB1308D00E05C67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C999E8FD1CB1308D00E05C67 /* CoreData.framework */; };
 		C9AC4CE31CB7AA6300083F12 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4CE21CB7AA6300083F12 /* CoreLocation.framework */; };
@@ -43,6 +45,7 @@
 		C9D9DC071CE8885900CF55FA /* JSQSystemSoundPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9D9DC051CE8885900CF55FA /* JSQSystemSoundPlayer.framework */; };
 		C9D9DC091CE88A0300CF55FA /* MessengerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9DC081CE88A0300CF55FA /* MessengerViewController.swift */; };
 		C9D9DC0F1CE8BDDC00CF55FA /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D9DC0D1CE8BDDC00CF55FA /* Conversation.swift */; };
+		C9FD93191D05A92D0066391A /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FD93181D05A92D0066391A /* User+CoreDataProperties.swift */; };
 		E901E42F1CDB02F600459975 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E901E42E1CDB02F600459975 /* Launch Screen.storyboard */; };
 		E90201C11C9CB7EB00C7839A /* ExploreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */; };
 		E90201C31C9CC2E200C7839A /* EventDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90201C21C9CC2E200C7839A /* EventDetailTableViewController.swift */; };
@@ -59,11 +62,11 @@
 		E93163981BC62AB6007408C7 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93163971BC62AB6007408C7 /* ExploreViewController.swift */; };
 		E9320A7B1D00D77C00C7149A /* NewBillingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9320A7A1D00D77C00C7149A /* NewBillingTableViewController.swift */; };
 		E9320A7D1D00DB3300C7149A /* APIManager-Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9320A7C1D00DB3300C7149A /* APIManager-Account.swift */; };
-		E96991211D0528E3001F0C22 /* AddSessionTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96991201D0528E3001F0C22 /* AddSessionTicketViewController.swift */; };
-		E96991231D052B6E001F0C22 /* AddSessionTicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96991221D052B6E001F0C22 /* AddSessionTicketTableViewCell.swift */; };
+		E96991251D06344A001F0C22 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96991241D06344A001F0C22 /* Event+CoreDataProperties.swift */; };
 		E96D018C1CF1D9F400AC48EE /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96D018A1CF1D9F400AC48EE /* Message.swift */; };
 		E96D018E1CF1DA6600AC48EE /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96D018D1CF1DA6600AC48EE /* Message+CoreDataProperties.swift */; };
-		E97EB74F1CDF13E5009113A6 /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7331CDF13E5009113A6 /* Session+CoreDataProperties.swift */; };
+		E97DCC001D06696A00AC7834 /* AddSessionTicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DCBFE1D06696A00AC7834 /* AddSessionTicketTableViewCell.swift */; };
+		E97DCC011D06696A00AC7834 /* AddSessionTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97DCBFF1D06696A00AC7834 /* AddSessionTicketViewController.swift */; };
 		E97EB7501CDF13E5009113A6 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7341CDF13E5009113A6 /* Session.swift */; };
 		E97EB7591CDF13E5009113A6 /* Payment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB73D1CDF13E5009113A6 /* Payment+CoreDataProperties.swift */; };
 		E97EB75A1CDF13E5009113A6 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB73E1CDF13E5009113A6 /* Payment.swift */; };
@@ -71,7 +74,6 @@
 		E97EB7601CDF13E5009113A6 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7441CDF13E5009113A6 /* Ticket.swift */; };
 		E97EB7611CDF13E5009113A6 /* Billing+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7451CDF13E5009113A6 /* Billing+CoreDataProperties.swift */; };
 		E97EB7621CDF13E5009113A6 /* Billing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7461CDF13E5009113A6 /* Billing.swift */; };
-		E97EB7631CDF13E5009113A6 /* Ticket_Record+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7471CDF13E5009113A6 /* Ticket_Record+CoreDataProperties.swift */; };
 		E97EB7641CDF13E5009113A6 /* Ticket_Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7481CDF13E5009113A6 /* Ticket_Record.swift */; };
 		E97EB7651CDF13E5009113A6 /* User_Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB7491CDF13E5009113A6 /* User_Tag+CoreDataProperties.swift */; };
 		E97EB7661CDF13E5009113A6 /* User_Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97EB74A1CDF13E5009113A6 /* User_Tag.swift */; };
@@ -93,9 +95,7 @@
 		E9E0A64B1CDD805700E187AD /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0A64A1CDD805700E187AD /* APIManager.swift */; };
 		E9E0A64D1CDD80B500E187AD /* APIServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0A64C1CDD80B500E187AD /* APIServer.swift */; };
 		E9E0A6501CDD8C6200E187AD /* ModelHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E0A64F1CDD8C6200E187AD /* ModelHandler.swift */; };
-		E9E43DC01D00E7CE00D73780 /* GeneralLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E43DBF1D00E7CE00D73780 /* GeneralLibrary.swift */; };
 		E9E43DC21D00E83400D73780 /* SessionTicketsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E43DC11D00E83400D73780 /* SessionTicketsTableViewCell.swift */; };
-		E9F0729B1D031087006B4CE9 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F0729A1D031087006B4CE9 /* Event+CoreDataProperties.swift */; };
 		E9F136B71CD30CAF008A3CB6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F136B61CD30CAF008A3CB6 /* RegisterViewController.swift */; };
 		E9F3E17D1CFE9B660034A533 /* SessionTicketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F3E17C1CFE9B660034A533 /* SessionTicketsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -103,7 +103,9 @@
 /* Begin PBXFileReference section */
 		0DAF2938A2525B6CBC886A11 /* Pods-ConfPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConfPlus.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConfPlus/Pods-ConfPlus.release.xcconfig"; sourceTree = "<group>"; };
 		29F9F87683BF1E1F1317CBE5 /* Pods_ConfPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConfPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C901591A1CFC30FF00FDCDAD /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "Model/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C90548481D02B4E90077495C /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+CoreDataProperties.swift"; path = "Model/Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C91254AE1D00126A00C63EF8 /* Ticket_Record+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Ticket_Record+CoreDataProperties.swift"; path = "Model/Ticket_Record+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C91254B41D01975100C63EF8 /* GeneralLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralLibrary.swift; sourceTree = "<group>"; };
 		C919F5391CF774A9008268B8 /* Venue+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Venue+CoreDataProperties.swift"; path = "Model/Venue+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C919F53A1CF774A9008268B8 /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Venue.swift; path = Model/Venue.swift; sourceTree = "<group>"; };
 		C91E85D71CE739630069333B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 		C93A980C1CE04AE900418F53 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Model/Event.swift; sourceTree = "<group>"; };
 		C93A984C1CE3448D00418F53 /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = "Pods/../build/Debug-iphoneos/CryptoSwift/CryptoSwift.framework"; sourceTree = "<group>"; };
 		C93A984E1CE36B4C00418F53 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		C946E93F1CFF0BD300FB1121 /* QAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QAViewController.swift; path = Events/QAViewController.swift; sourceTree = "<group>"; };
 		C94AFA4C1C98085B00EC88B6 /* TicketDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TicketDetailsViewController.swift; path = Explore/TicketDetailsViewController.swift; sourceTree = "<group>"; };
 		C94AFA4E1C9808AB00EC88B6 /* PersonalDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersonalDetailsViewController.swift; path = Explore/PersonalDetailsViewController.swift; sourceTree = "<group>"; };
 		C94AFA501C980A0B00EC88B6 /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentViewController.swift; path = Explore/PaymentViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +141,7 @@
 		C9D9DC051CE8885900CF55FA /* JSQSystemSoundPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSQSystemSoundPlayer.framework; path = "../../chord/chord/ConfPlus-gyuqvgyrwksbchgwfawuspwfodhr/Build/Products/Debug-iphonesimulator/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework"; sourceTree = "<group>"; };
 		C9D9DC081CE88A0300CF55FA /* MessengerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessengerViewController.swift; path = Events/MessengerViewController.swift; sourceTree = "<group>"; };
 		C9D9DC0D1CE8BDDC00CF55FA /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Conversation.swift; path = Model/Conversation.swift; sourceTree = "<group>"; };
+		C9FD93181D05A92D0066391A /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "Model/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E8AA5B40C1E4EE566A70C9BE /* Pods-ConfPlus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConfPlus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ConfPlus/Pods-ConfPlus.debug.xcconfig"; sourceTree = "<group>"; };
 		E901E42E1CDB02F600459975 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "ConfPlus/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E90201C01C9CB7EB00C7839A /* ExploreTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreTableViewCell.swift; path = Explore/ExploreTableViewCell.swift; sourceTree = "<group>"; };
@@ -158,11 +162,11 @@
 		E93163971BC62AB6007408C7 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExploreViewController.swift; path = Explore/ExploreViewController.swift; sourceTree = "<group>"; };
 		E9320A7A1D00D77C00C7149A /* NewBillingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewBillingTableViewController.swift; path = Profile/NewBillingTableViewController.swift; sourceTree = "<group>"; };
 		E9320A7C1D00DB3300C7149A /* APIManager-Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "APIManager-Account.swift"; sourceTree = "<group>"; };
-		E96991201D0528E3001F0C22 /* AddSessionTicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddSessionTicketViewController.swift; path = Explore/AddSessionTicketViewController.swift; sourceTree = "<group>"; };
-		E96991221D052B6E001F0C22 /* AddSessionTicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddSessionTicketTableViewCell.swift; path = Explore/AddSessionTicketTableViewCell.swift; sourceTree = "<group>"; };
+		E96991241D06344A001F0C22 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Event+CoreDataProperties.swift"; path = "Model/Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E96D018A1CF1D9F400AC48EE /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		E96D018D1CF1DA6600AC48EE /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E97EB7331CDF13E5009113A6 /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+CoreDataProperties.swift"; path = "Model/Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E97DCBFE1D06696A00AC7834 /* AddSessionTicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddSessionTicketTableViewCell.swift; path = Explore/AddSessionTicketTableViewCell.swift; sourceTree = "<group>"; };
+		E97DCBFF1D06696A00AC7834 /* AddSessionTicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddSessionTicketViewController.swift; path = Explore/AddSessionTicketViewController.swift; sourceTree = "<group>"; };
 		E97EB7341CDF13E5009113A6 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Model/Session.swift; sourceTree = "<group>"; };
 		E97EB73D1CDF13E5009113A6 /* Payment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Payment+CoreDataProperties.swift"; path = "Model/Payment+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E97EB73E1CDF13E5009113A6 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Payment.swift; path = Model/Payment.swift; sourceTree = "<group>"; };
@@ -170,7 +174,6 @@
 		E97EB7441CDF13E5009113A6 /* Ticket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ticket.swift; path = Model/Ticket.swift; sourceTree = "<group>"; };
 		E97EB7451CDF13E5009113A6 /* Billing+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Billing+CoreDataProperties.swift"; path = "Model/Billing+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E97EB7461CDF13E5009113A6 /* Billing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Billing.swift; path = Model/Billing.swift; sourceTree = "<group>"; };
-		E97EB7471CDF13E5009113A6 /* Ticket_Record+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Ticket_Record+CoreDataProperties.swift"; path = "Model/Ticket_Record+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E97EB7481CDF13E5009113A6 /* Ticket_Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ticket_Record.swift; path = Model/Ticket_Record.swift; sourceTree = "<group>"; };
 		E97EB7491CDF13E5009113A6 /* User_Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User_Tag+CoreDataProperties.swift"; path = "Model/User_Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E97EB74A1CDF13E5009113A6 /* User_Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User_Tag.swift; path = Model/User_Tag.swift; sourceTree = "<group>"; };
@@ -192,9 +195,7 @@
 		E9E0A64A1CDD805700E187AD /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = Model/APIManager.swift; sourceTree = "<group>"; };
 		E9E0A64C1CDD80B500E187AD /* APIServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIServer.swift; sourceTree = "<group>"; };
 		E9E0A64F1CDD8C6200E187AD /* ModelHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelHandler.swift; sourceTree = "<group>"; };
-		E9E43DBF1D00E7CE00D73780 /* GeneralLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralLibrary.swift; sourceTree = "<group>"; };
 		E9E43DC11D00E83400D73780 /* SessionTicketsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTicketsTableViewCell.swift; sourceTree = "<group>"; };
-		E9F0729A1D031087006B4CE9 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Event+CoreDataProperties.swift"; path = "Model/Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E9F136B61CD30CAF008A3CB6 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E9F3E17C1CFE9B660034A533 /* SessionTicketsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionTicketsViewController.swift; path = Explore/SessionTicketsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -208,7 +209,6 @@
 				C9D9DC061CE8885900CF55FA /* JSQMessagesViewController.framework in Frameworks */,
 				C9D9DC071CE8885900CF55FA /* JSQSystemSoundPlayer.framework in Frameworks */,
 				C93A984D1CE3448D00418F53 /* CryptoSwift.framework in Frameworks */,
-				C955F1711CD8A1FD000BE39C /* Alamofire_Synchronous.framework in Frameworks */,
 				C9AC4D071CC45F0B00083F12 /* Localize_Swift.framework in Frameworks */,
 				C9AC4D051CC45EF900083F12 /* Alamofire.framework in Frameworks */,
 				C9AC4D031CC45C7700083F12 /* SwiftyJSON.framework in Frameworks */,
@@ -255,6 +255,7 @@
 				C94AFA591C980DE400EC88B6 /* TimeTableViewController.swift */,
 				C94AFA5B1C980E3B00EC88B6 /* TalksViewController.swift */,
 				E9D055C61CCF1CCA0045BA86 /* TimetableTableViewCell.swift */,
+				C946E93F1CFF0BD300FB1121 /* QAViewController.swift */,
 			);
 			name = Timetable;
 			sourceTree = "<group>";
@@ -294,21 +295,21 @@
 		C9FD07E91CB23BD400C44595 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E97EB7331CDF13E5009113A6 /* Session+CoreDataProperties.swift */,
-				E9F0729A1D031087006B4CE9 /* Event+CoreDataProperties.swift */,
+				E96991241D06344A001F0C22 /* Event+CoreDataProperties.swift */,
 				C93A980C1CE04AE900418F53 /* Event.swift */,
+				C90548481D02B4E90077495C /* Session+CoreDataProperties.swift */,
 				E97EB7341CDF13E5009113A6 /* Session.swift */,
 				E97EB73D1CDF13E5009113A6 /* Payment+CoreDataProperties.swift */,
 				E97EB73E1CDF13E5009113A6 /* Payment.swift */,
 				C973C7101CFC110500DF8992 /* Conversation+CoreDataProperties.swift */,
 				C9D9DC0D1CE8BDDC00CF55FA /* Conversation.swift */,
-				C901591A1CFC30FF00FDCDAD /* User+CoreDataProperties.swift */,
+				C9FD93181D05A92D0066391A /* User+CoreDataProperties.swift */,
 				C91E85DD1CE75E5D0069333B /* User.swift */,
 				E97EB7431CDF13E5009113A6 /* Ticket+CoreDataProperties.swift */,
 				E97EB7441CDF13E5009113A6 /* Ticket.swift */,
 				E97EB7451CDF13E5009113A6 /* Billing+CoreDataProperties.swift */,
 				E97EB7461CDF13E5009113A6 /* Billing.swift */,
-				E97EB7471CDF13E5009113A6 /* Ticket_Record+CoreDataProperties.swift */,
+				C91254AE1D00126A00C63EF8 /* Ticket_Record+CoreDataProperties.swift */,
 				E97EB7481CDF13E5009113A6 /* Ticket_Record.swift */,
 				E97EB7491CDF13E5009113A6 /* User_Tag+CoreDataProperties.swift */,
 				E97EB74A1CDF13E5009113A6 /* User_Tag.swift */,
@@ -367,7 +368,7 @@
 			children = (
 				E9E0A64E1CDD869A00E187AD /* API */,
 				E9E0A64F1CDD8C6200E187AD /* ModelHandler.swift */,
-				E9E43DBF1D00E7CE00D73780 /* GeneralLibrary.swift */,
+				C91254B41D01975100C63EF8 /* GeneralLibrary.swift */,
 				C9FD07E91CB23BD400C44595 /* Model */,
 				E93163661BC5E0B4007408C7 /* Main.storyboard */,
 				E93163601BC5E0B4007408C7 /* AppDelegate.swift */,
@@ -394,9 +395,9 @@
 				C94AFA501C980A0B00EC88B6 /* PaymentViewController.swift */,
 				E9F3E17C1CFE9B660034A533 /* SessionTicketsViewController.swift */,
 				E9E43DC11D00E83400D73780 /* SessionTicketsTableViewCell.swift */,
-				E96991201D0528E3001F0C22 /* AddSessionTicketViewController.swift */,
-				E96991221D052B6E001F0C22 /* AddSessionTicketTableViewCell.swift */,
 				E984AF251CFFD982006D4B5C /* SessionDetailViewController.swift */,
+				E97DCBFE1D06696A00AC7834 /* AddSessionTicketTableViewCell.swift */,
+				E97DCBFF1D06696A00AC7834 /* AddSessionTicketViewController.swift */,
 				C94AFA521C980A5400EC88B6 /* ReceiptViewController.swift */,
 				E98F35111CEC6862002B1CC1 /* Explore.storyboard */,
 			);
@@ -571,20 +572,17 @@
 				E9E0A6501CDD8C6200E187AD /* ModelHandler.swift in Sources */,
 				E97EB7621CDF13E5009113A6 /* Billing.swift in Sources */,
 				E90A0A621BCF7143005D611C /* Readme.md in Sources */,
-				E9E43DC01D00E7CE00D73780 /* GeneralLibrary.swift in Sources */,
-				E9F0729B1D031087006B4CE9 /* Event+CoreDataProperties.swift in Sources */,
 				E9D055C71CCF1CCA0045BA86 /* TimetableTableViewCell.swift in Sources */,
-				E96991211D0528E3001F0C22 /* AddSessionTicketViewController.swift in Sources */,
+				E97DCC001D06696A00AC7834 /* AddSessionTicketTableViewCell.swift in Sources */,
 				E99270271CE43545005F2567 /* EditProfileTableViewController.swift in Sources */,
 				C919F53B1CF774A9008268B8 /* Venue+CoreDataProperties.swift in Sources */,
+				C91254B51D01975100C63EF8 /* GeneralLibrary.swift in Sources */,
 				E97EB7501CDF13E5009113A6 /* Session.swift in Sources */,
 				C94AFA711C981FED00EC88B6 /* AdminTableViewController.swift in Sources */,
 				E9E0A64B1CDD805700E187AD /* APIManager.swift in Sources */,
 				E93163981BC62AB6007408C7 /* ExploreViewController.swift in Sources */,
 				C94AFA6E1C981F1A00EC88B6 /* AttendingViewController.swift in Sources */,
-				C901591B1CFC30FF00FDCDAD /* User+CoreDataProperties.swift in Sources */,
 				E9F136B71CD30CAF008A3CB6 /* RegisterViewController.swift in Sources */,
-				E97EB74F1CDF13E5009113A6 /* Session+CoreDataProperties.swift in Sources */,
 				E97EB7601CDF13E5009113A6 /* Ticket.swift in Sources */,
 				E9E43DC21D00E83400D73780 /* SessionTicketsTableViewCell.swift in Sources */,
 				C94AFA761C98221400EC88B6 /* HistoryTableViewController.swift in Sources */,
@@ -598,7 +596,7 @@
 				C94AFA4F1C9808AB00EC88B6 /* PersonalDetailsViewController.swift in Sources */,
 				C94AFA661C981CAD00EC88B6 /* MyTicketsTableViewController.swift in Sources */,
 				E97EB7591CDF13E5009113A6 /* Payment+CoreDataProperties.swift in Sources */,
-				E97EB7631CDF13E5009113A6 /* Ticket_Record+CoreDataProperties.swift in Sources */,
+				C91254AF1D00126A00C63EF8 /* Ticket_Record+CoreDataProperties.swift in Sources */,
 				E93163611BC5E0B4007408C7 /* AppDelegate.swift in Sources */,
 				E9F3E17D1CFE9B660034A533 /* SessionTicketsViewController.swift in Sources */,
 				C919F53C1CF774A9008268B8 /* Venue.swift in Sources */,
@@ -612,7 +610,6 @@
 				E97EB75A1CDF13E5009113A6 /* Payment.swift in Sources */,
 				C9D9DC0F1CE8BDDC00CF55FA /* Conversation.swift in Sources */,
 				C94AFA511C980A0B00EC88B6 /* PaymentViewController.swift in Sources */,
-				E96991231D052B6E001F0C22 /* AddSessionTicketTableViewCell.swift in Sources */,
 				E9D055C91CCF20510045BA86 /* PersonalDetailsTableViewCell.swift in Sources */,
 				C93A980E1CE04AE900418F53 /* Event.swift in Sources */,
 				E97EB7681CDF13E5009113A6 /* Event_Tag.swift in Sources */,
@@ -622,14 +619,19 @@
 				E97EB7661CDF13E5009113A6 /* User_Tag.swift in Sources */,
 				C94AFA531C980A5400EC88B6 /* ReceiptViewController.swift in Sources */,
 				E96D018C1CF1D9F400AC48EE /* Message.swift in Sources */,
+				C9FD93191D05A92D0066391A /* User+CoreDataProperties.swift in Sources */,
 				C94AFA741C98217C00EC88B6 /* AccountTableViewController.swift in Sources */,
+				C90548491D02B4E90077495C /* Session+CoreDataProperties.swift in Sources */,
 				E93163911BC5E294007408C7 /* viewEffect.swift in Sources */,
 				C94AFA581C980D7C00EC88B6 /* HomeViewController.swift in Sources */,
+				C946E9401CFF0BD300FB1121 /* QAViewController.swift in Sources */,
 				C94AFA4D1C98085B00EC88B6 /* TicketDetailsViewController.swift in Sources */,
 				C94AFA6C1C981E7700EC88B6 /* SecurityViewController.swift in Sources */,
 				C93A984F1CE36B4C00418F53 /* MessageTableViewCell.swift in Sources */,
 				E97EB7691CDF13E5009113A6 /* Event_Roles+CoreDataProperties.swift in Sources */,
+				E96991251D06344A001F0C22 /* Event+CoreDataProperties.swift in Sources */,
 				C9D9DC091CE88A0300CF55FA /* MessengerViewController.swift in Sources */,
+				E97DCC011D06696A00AC7834 /* AddSessionTicketViewController.swift in Sources */,
 				E9320A7D1D00DB3300C7149A /* APIManager-Account.swift in Sources */,
 				C94AFA601C9811BD00EC88B6 /* EventLocationViewController.swift in Sources */,
 				E90201C31C9CC2E200C7839A /* EventDetailTableViewController.swift in Sources */,

@@ -29,6 +29,8 @@ class AccountTableViewController: UITableViewController {
 	let availableLanguages = Localize.availableLanguages()
 	
 	let user = NSUserDefaults.standardUserDefaults()
+    
+    let eventureColour : UIColor = UIColor(red: 0.50, green: 0.87, blue: 0.92, alpha: 1)
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -54,8 +56,26 @@ class AccountTableViewController: UITableViewController {
 			APIManager().getUserInformation(email){ result in
 				self.setName()
 			}
-		}		
+		}
+        
+        if let myUser = ModelHandler().getUser(email)
+        {
+            let img = myUser.getImage()
+            self.avatar.image = img
+            makeImageCircle(self.avatar)
+
+        }
 	}
+    
+    func makeImageCircle(imgv:UIImageView)
+    {
+        imgv.layer.cornerRadius = imgv.frame.size.width/2
+        imgv.clipsToBounds = true
+        
+        imgv.layer.borderWidth = 3.0
+        imgv.layer.borderColor = eventureColour.CGColor
+        
+    }
 	
 	func setName(){
 		if let firstName = self.user.stringForKey("firstName"), lastName = self.user.stringForKey("lastName"){

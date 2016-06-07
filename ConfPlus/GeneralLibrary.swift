@@ -29,7 +29,17 @@ class GeneralLibrary{
 		
 		return dateFormatter.stringFromDate(date)
 	}
-	
+    
+    func getDateAsAusStyleString(date:NSDate) -> String
+    {
+        let aus = NSDateFormatter()
+        aus.timeZone = NSTimeZone(name: "GMT")
+        aus.dateFormat = "EEEE - dd/M/yy"
+        let dstring = aus.stringFromDate(date)
+        
+        return dstring
+    }
+    
 	func getDateFromString(date:String) -> NSDate{
 		let dateFormatter = NSDateFormatter()
 		dateFormatter.timeZone = NSTimeZone(name: "GMT")
@@ -67,4 +77,16 @@ class GeneralLibrary{
 		let notification = MPGNotification(title: title, subtitle: message, backgroundColor: UIColor.orangeColor(), iconImage: nil)
 		notification.show()
 	}
+    
+    func makeImageCircle(imgv:UIImageView)
+    {
+        let eventureColour : UIColor = UIColor(red: 0.50, green: 0.87, blue: 0.92, alpha: 1)
+        
+        imgv.layer.cornerRadius = imgv.frame.size.width/2
+        imgv.clipsToBounds = true
+        
+        imgv.layer.borderWidth = 3.0
+        imgv.layer.borderColor = eventureColour.CGColor
+        
+    }
 }

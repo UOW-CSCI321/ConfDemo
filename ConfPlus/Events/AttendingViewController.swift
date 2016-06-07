@@ -11,11 +11,31 @@ import UIKit
 
 class AttendingViewController: UIViewController {
     var event:Event!
+    var users = [User]()
+    
+    @IBOutlet weak var attendingTableView: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.attendingTableView.delegate = self
+        //self.attendingTableView.dataSource = self
 		
         getVenue()
 		populateNavigationBar()
+        
+        self.users =  ModelHandler().getUsersForEvent(self.event)!
+        self.attendingTableView.reloadData()
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        //api call to get users for a conversation
+        APIManager().getEventAttendeesFromAPI(self.event) { result in
+            self.users = ModelHandler().getUsersForEvent(self.event)!
+            //for each user in the array try to get their profile pic
+            self.attendingTableView.reloadData()
+        }
     }
     
     func getVenue()
@@ -31,6 +51,33 @@ class AttendingViewController: UIViewController {
     }
 
 }
+
+//MARK: Table Related
+extension AttendingViewController: UITableViewDelegate{
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return users.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("messageCell", forIndexPath: indexPath) as! MessageTableViewCell
+        let row = indexPath.row
+        
+//        cell.usersName.text = userConversations[row].name //conversation name should be the sender
+//        cell.messageDescription.text = userConversations[row].lastmsg_content //lastMessage?.content
+//        cell.messageDateLabel.text = userConversations[row].getConversationDateAsString()
+//        if userConversations[row].conversation_pic != nil{
+//            cell.profilePicture.image = UIImage(data: userConversations[row].conversation_pic!)
+//        }
+        
+        return cell
+    }
+}
+
 
 //MARK: Navigation Bar Related
 extension AttendingViewController{
