@@ -116,6 +116,8 @@
 "Venue & Location" = "Venue & Location";
 "Participants" = "Participants";
 
+"Security" = "Help & Security";
+
 //Warning Dialog
 "warnInternet" = "Internet Connection Issues";
 "warnEvents" = "No Events Available";

@@ -22,6 +22,7 @@ class SecurityViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		navigationItem.title = "Security".localized()
         print(event.security_num)
 		
 		viewEffect.round(helpView)

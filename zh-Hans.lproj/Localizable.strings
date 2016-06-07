@@ -116,6 +116,8 @@
 "Venue & Location" = "会场地点";
 "Participants" = "参与者";
 
+"Security" = "安全及帮助";
+
 //Warning Dialog
 "warnInternet" = "网络连接问题";
 "warnEvents" = "没有可用活动";

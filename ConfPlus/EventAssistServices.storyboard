@@ -19,22 +19,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6pu-4m-zY0">
-                                <rect key="frame" x="36" y="182" width="303" height="303"/>
+                                <rect key="frame" x="36" y="181.5" width="303" height="303"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpZ-K3-KeZ">
+                                        <rect key="frame" x="16" y="16" width="271" height="271"/>
+                                        <gestureRecognizers/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="54"/>
+                                        <state key="normal" title="Help"/>
+                                        <connections>
+                                            <action selector="helpPressed:" destination="HfZ-kp-Tc9" eventType="touchUpInside" id="ui7-Zj-qao"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="bpZ-K3-KeZ" firstAttribute="leading" secondItem="6pu-4m-zY0" secondAttribute="leading" constant="16" id="2L0-Iu-Q5T"/>
+                                    <constraint firstAttribute="trailing" secondItem="bpZ-K3-KeZ" secondAttribute="trailing" constant="16" id="Sdp-HO-SSn"/>
+                                    <constraint firstItem="bpZ-K3-KeZ" firstAttribute="top" secondItem="6pu-4m-zY0" secondAttribute="top" constant="16" id="eB0-qS-O78"/>
+                                    <constraint firstAttribute="bottom" secondItem="bpZ-K3-KeZ" secondAttribute="bottom" constant="16" id="fTW-Nk-rsb"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="360" id="u33-PJ-O3y"/>
                                     <constraint firstAttribute="width" secondItem="6pu-4m-zY0" secondAttribute="height" multiplier="1:1" id="uWs-Eo-8tV"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpZ-K3-KeZ">
-                                <rect key="frame" x="52" y="198" width="271" height="271"/>
-                                <gestureRecognizers/>
-                                <fontDescription key="fontDescription" type="system" pointSize="54"/>
-                                <state key="normal" title="Help"/>
-                                <connections>
-                                    <action selector="helpPressed:" destination="HfZ-kp-Tc9" eventType="touchUpInside" id="ui7-Zj-qao"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
