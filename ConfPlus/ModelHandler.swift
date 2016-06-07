@@ -181,7 +181,7 @@ class ModelHandler{
         return sessions
         
     }
-    
+    //right now < to_end = future
     //i did this for session instead of event
 //    func getSessionsForEventForUserByDate(event:Event, user:User, pastOrCurrent:String) -> [Session]
 //    {

@@ -70,11 +70,11 @@ class TimeTableViewController: UIViewController {
         APIManager().getSessionsAndUserSessionsFromAPI(event, user: user) { result in
   
             notification.hidden = true
-//            self.sessions = ModelHandler().getSessionsForEventForUser(event, user: user)
+            self.sessions = ModelHandler().getSessionsForEventForUser(event, user: user)
             //print("printing sessions")
             //print(self.sessions)
             
-//            self.timetableTableView.reloadData()
+            self.timetableTableView.reloadData()
             
             //let numdays = self.countNumDays()
             //print(numdays)
