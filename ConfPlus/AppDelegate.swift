@@ -20,11 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let user = NSUserDefaults.standardUserDefaults()
         if let onboard = user.stringForKey("hasOnboard") {
-//            if onboard == "false"{
-//                 self.window?.rootViewController = generateStandardOnboarding()
-//            }else {
-//                //run normal intro
-//            }
             handleOnboardCompletion()
         }else{
             self.window?.rootViewController = generateStandardOnboarding()
@@ -135,13 +130,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
             }
         
-//        let secondPage = OnboardingContentViewController(title: nil, body: "Explore events and conferences around you", image: UIImage(named: "explore"), buttonText: nil) { () -> Void in
-//            // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
-//        }
+        let secondPage = OnboardingContentViewController(title: nil, body: "Explore events and conferences around you", image: UIImage(named: "Explore"), buttonText: nil) { () -> Void in
+            // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
+        }
         
-        let secondPage = OnboardingContentViewController(title: "Page Title", body: "Page body goes here.", image: UIImage(named: "logo"), buttonText: "Text For Button", action: handleOnboardCompletion)
+        let thirdPage = OnboardingContentViewController(title: nil, body: "Purchase tickets", image: UIImage(named: "Ticketing"), buttonText: nil) { () -> Void in
+            // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
+        }
         
-            let onboardingVC = OnboardingViewController(backgroundImage: UIImage(named: "m1"), contents: [firstPage, secondPage])
+        let fourthPage = OnboardingContentViewController(title: nil, body: "View your events and thier sessions", image: UIImage(named: "My Events"), buttonText: nil) { () -> Void in
+            // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
+        }
+        
+        let fifthPage = OnboardingContentViewController(title: nil, body: "View attendes and invite your friends", image: UIImage(named: "My Events"), buttonText: nil) { () -> Void in
+            // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
+        }
+        
+        let lastPage = OnboardingContentViewController(title: nil, body: "Send messages to presenters and attendees", image: UIImage(named: "logo"), buttonText: "Lets go!", action: handleOnboardCompletion)
+        
+            let onboardingVC = OnboardingViewController(backgroundImage: UIImage(named: "m1"), contents: [firstPage, secondPage, thirdPage, fourthPage, fifthPage, lastPage])
             onboardingVC.allowSkipping = true
             return onboardingVC
     }
