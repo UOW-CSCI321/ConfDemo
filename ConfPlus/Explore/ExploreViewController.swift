@@ -40,7 +40,11 @@ class ExploreViewController: UIViewController {
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(true)
-		
+        
+        let user = NSUserDefaults.standardUserDefaults()
+        let hasOnboard = "true"
+        user.setObject(hasOnboard, forKey: "hasOnboard")
+        
 		setText()
 		getEventsFromAPI()
 	}
