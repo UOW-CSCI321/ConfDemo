@@ -126,7 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func generateStandardOnboarding() -> OnboardingViewController {
-            let firstPage = OnboardingContentViewController(title: "Eventure", body: "Explore life's Eventures", image: UIImage(named: "logo_blue"), buttonText: nil) { () -> Void in
+            let firstPage = OnboardingContentViewController(title: "Eventure", body: "Explore life's Eventures", image: UIImage(named: "app_icon_150"), buttonText: nil) { () -> Void in
                 // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
             }
         
