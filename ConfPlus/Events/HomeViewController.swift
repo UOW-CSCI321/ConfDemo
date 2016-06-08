@@ -54,7 +54,7 @@ class HomeViewController: UIViewController {
 	func populateEventOverview(){
 		eventName.text = event.name
 		eventDate.text = "\(event.getFromDateAsString()) - \(event.getToDateAsString())"
-		//eventLocation.text = "\(event.venue?.city), \(event.venue?.country)"
+		eventLocation.text = "\(event.venue?.city), \(event.venue?.country)"
 	}
     
   
@@ -84,7 +84,7 @@ extension HomeViewController: UITableViewDelegate {
 		func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 			let row = indexPath.row
 			
-			switch features[row] {
+			switch features[row].localized() {
 				case "Timetable".localized():
 					self.performSegueWithIdentifier("goToTimetable", sender: self)
 				case "Participants".localized():

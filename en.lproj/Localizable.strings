@@ -117,6 +117,13 @@
 "Participants" = "Participants";
 
 "Security" = "Help & Security";
+"Invite" = "Invite via";
+"Notification" = "Notification";
+"Presentation" = "Presentation";
+
+"Current" = "Current";
+"General" = "General";
+"Talk" = "Talk";
 
 //Warning Dialog
 "warnInternet" = "Internet Connection Issues";
@@ -146,7 +153,12 @@
 
 "warnSecurityMessage" = "Sorry the event manager has not provided a security number for this event";
 "warnComplete" = "To purchase tickets, press on Confirm Purchase";
-"warnUpdate" = "Updating";
+"Updating" = "Updating";
 "warnUpdateMessage" = "it might takes some time for updating.";
 
+"warnFeatures" = "Features not available yet.";
+"warnNoTicket" = "Ticket Not Found";
+"warnNoSupport" = "This feature is not supported on the device. Please try another device";
+"warnNoSupportMessage" = "Features Not Support";
 
+"warnPaymentMethod" = "User doesn't have any billing information";

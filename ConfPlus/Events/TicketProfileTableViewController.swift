@@ -15,6 +15,16 @@ class TicketProfileTableViewController: UITableViewController {
 	
 	@IBOutlet weak var qrImage: UIImageView!
 	
+	@IBOutlet weak var titleLabel: UILabel!
+	@IBOutlet weak var venueLabel: UILabel!
+	@IBOutlet weak var roomLabel: UILabel!
+	@IBOutlet weak var typeLabel: UILabel!
+	@IBOutlet weak var classLabel: UILabel!
+	@IBOutlet weak var seatLabel: UILabel!
+	@IBOutlet weak var nameLabel: UILabel!
+	@IBOutlet weak var emailLabel: UILabel!
+	
+	
     @IBOutlet weak var titleDetailsLabel: UILabel!
     @IBOutlet weak var venueDetailsLabel: UILabel!
 	@IBOutlet weak var roomDetailLabel: UILabel!
@@ -30,7 +40,7 @@ class TicketProfileTableViewController: UITableViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
+		setText()
 		if ticket != nil{
 			generateQR()
 			
@@ -57,17 +67,45 @@ class TicketProfileTableViewController: UITableViewController {
 		navigationController?.hidesBarsOnSwipe = true
 	}
 	
+	func setText(){
+		navigationItem.title = "Ticket details".localized()
+		
+		titleLabel.text = "Topic".localized()
+		venueLabel.text = "Venue & Location".localized()
+		roomLabel.text = "Room".localized()
+		typeLabel.text = "Type".localized()
+		classLabel.text = "Class".localized()
+		seatLabel.text = "Seat".localized()
+		nameLabel.text = "Name".localized()
+		emailLabel.text = "Email".localized()
+		
+	}
 	
 	func generateQR(){
-		let data = String(ticket?.record_id).dataUsingEncoding(NSISOLatin1StringEncoding, allowLossyConversion: false)
+		if let data = String(ticket!.record_id!).dataUsingEncoding(NSISOLatin1StringEncoding, allowLossyConversion: false) {
+			let filter = CIFilter(name: "CIQRCodeGenerator")
+			
+			filter!.setValue(data, forKey: "inputMessage")
+			filter!.setValue("Q", forKey: "inputCorrectionLevel")
+			
+			let transform = CGAffineTransformMakeScale(5, 5)
+			
+			let qrcodeImage = filter!.outputImage?.imageByApplyingTransform(transform)
+			
+			qrImage.image = UIImage(CIImage: qrcodeImage!)
+		} else {
+			qrImage.image = UIImage(named: "launch")
+		}
 		
-		let filter = CIFilter(name: "CIQRCodeGenerator")
 		
-		filter!.setValue(data, forKey: "inputMessage")
-		filter!.setValue("Q", forKey: "inputCorrectionLevel")
-		
-		let qrcodeImage = filter!.outputImage
-		
-		qrImage.image = UIImage(CIImage: qrcodeImage!)
+	}
+	
+	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		if section == 1 {
+			return "Ticket details".localized()
+		} else if section == 2 {
+			return "Details".localized()
+		}
+		return ""
 	}
 }

@@ -12,6 +12,7 @@ import MPGNotification
 
 class TimeTableViewController: UIViewController {
     
+	@IBOutlet weak var segmentControl: UISegmentedControl!
     var event:Event!
     let user = NSUserDefaults.standardUserDefaults()
     var myUser:User!
@@ -21,6 +22,7 @@ class TimeTableViewController: UIViewController {
     var prevSection:Int!
     
     @IBOutlet weak var timetableTableView: UITableView!
+    @IBOutlet weak var segment: UISegmentedControl!
 	@IBAction func backToTicketPurchaseView(sender: AnyObject) {
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
@@ -33,7 +35,7 @@ class TimeTableViewController: UIViewController {
         myUser = ModelHandler().getUser(email!)
         if myUser != nil
         {
-            sessions = ModelHandler().getSessionsForEvent(event)
+            sessions = ModelHandler().getSessionsForEventForUser(event, user: myUser)
             self.timetableTableView.reloadData()
             //self.tableView.reloadData()
             
@@ -46,18 +48,41 @@ class TimeTableViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+		setText()
+		
         getMySessionsFromAPI(event, user: myUser)
+    }
+	
+	func setText(){
+		navigationItem.title = "Timetable".localized()
+		
+		segmentControl.setTitle("Current".localized(), forSegmentAtIndex: 0)
+		segmentControl.setTitle("General".localized(), forSegmentAtIndex: 1)
+		
+	}
+	
+    @IBAction func segmentPressed(sender: AnyObject) {
+        if segment.selectedSegmentIndex == 0{
+            //mine
+            self.sessions = ModelHandler().getSessionsForEventForUser(event, user: myUser)
+            self.timetableTableView.reloadData()
+            
+        } else{
+            //general
+            sessions = ModelHandler().getSessionsForEvent(event)
+            self.timetableTableView.reloadData()
+        }
     }
     
     func getMySessionsFromAPI(event:Event, user:User) {
-        let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+        let notification = MPGNotification(title: "Updating".localized(), subtitle: "warnUpdateMessage".localized(), backgroundColor: UIColor.orangeColor(), iconImage: nil)
         notification.duration = 60
         notification.show()
 
         APIManager().getSessionsAndUserSessionsFromAPI(event, user: user) { result in
   
-            notification.hidden = true
-            self.sessions = ModelHandler().getSessionsForEvent(event)
+            notification.dismissWithAnimation(true)
+            self.sessions = ModelHandler().getSessionsForEventForUser(event, user: user)
             //print("printing sessions")
             //print(self.sessions)
             
@@ -326,6 +351,7 @@ class TimeTableViewController: UIViewController {
 		if segue.identifier == "TimetableToTalk"{
 			let vc = segue.destinationViewController as! TalksViewController
             vc.mySession = sender as! Session
+            vc.segment = self.segment
 		}
 	}
     

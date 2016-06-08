@@ -548,7 +548,7 @@
                         <outlet property="disclosureText" destination="HeK-3N-rQF" id="fTC-7e-jUB"/>
                         <outlet property="tableView" destination="do9-dP-lTd" id="Ye3-8f-ssL"/>
                         <segue destination="cbP-W2-wEl" kind="presentation" identifier="goToSessionsTicket" modalTransitionStyle="flipHorizontal" id="VIq-5l-wzj"/>
-                        <segue destination="pfh-1l-BSH" kind="show" identifier="goToSuccessPurchased" id="j2c-Y3-0m7"/>
+                        <segue destination="pfh-1l-BSH" kind="show" identifier="goToSuccessPurchased" id="qQl-AS-EaN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ms8-2h-BVc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1036,11 +1036,11 @@
                                 </items>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jw5-Sh-Wvf">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="sessionTicketCell" editingAccessoryType="disclosureIndicator" rowHeight="85" id="e43-cT-jzp" customClass="SessionTicketsTableViewCell" customModule="ConfPlus" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="85"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e43-cT-jzp" id="fMD-6B-Bxg">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="84.5"/>
@@ -1112,7 +1112,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="8i7-e9-QbJ" firstAttribute="leading" secondItem="cor-eW-t3h" secondAttribute="leadingMargin" constant="-20" id="9Yh-lb-csr"/>
-                            <constraint firstItem="Jw5-Sh-Wvf" firstAttribute="top" secondItem="n19-sQ-4Ik" secondAttribute="bottom" constant="-64" id="G0B-5r-HU2"/>
+                            <constraint firstItem="Jw5-Sh-Wvf" firstAttribute="top" secondItem="n19-sQ-4Ik" secondAttribute="bottom" id="G0B-5r-HU2"/>
                             <constraint firstItem="Jw5-Sh-Wvf" firstAttribute="leading" secondItem="cor-eW-t3h" secondAttribute="leadingMargin" constant="-20" id="J1l-53-FgX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8i7-e9-QbJ" secondAttribute="trailing" constant="-20" id="JeS-Pt-sOG"/>
                             <constraint firstItem="8i7-e9-QbJ" firstAttribute="top" secondItem="Jw5-Sh-Wvf" secondAttribute="bottom" id="uHX-1E-LIf"/>

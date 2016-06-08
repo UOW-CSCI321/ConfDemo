@@ -46,7 +46,7 @@ class NewBillingTableViewController: UITableViewController, UITextFieldDelegate 
 		HUD.show(.Progress)
 		if let email = user.stringForKey("email"){
 			APIManager().createBillingInfo(email, card: card, type: type, date: date){ result in
-				HUD.hide()
+				HUD.hide(animated: true)
 				self.navigationController?.popViewControllerAnimated(true)
 			}
 		}
@@ -63,7 +63,7 @@ class NewBillingTableViewController: UITableViewController, UITextFieldDelegate 
 	}
 	
 	@IBAction func editExpire(sender: AnyObject) {
-		let datePicker = ActionSheetDatePicker(title: "Expiry Date".localized(), datePickerMode: UIDatePickerMode.Date , selectedDate: NSDate(), doneBlock: {
+		let datePicker = ActionSheetDatePicker(title: "Expire Date".localized(), datePickerMode: UIDatePickerMode.Date , selectedDate: NSDate(), doneBlock: {
 			picker, value, index in
 			
 			print("value = \(value)")

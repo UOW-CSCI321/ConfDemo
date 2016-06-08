@@ -23,13 +23,14 @@ class MessagesTableViewController: UIViewController {
     var participants = [UIImage]() //[User]() //hold one user per conversation to display conversation icon
     var tempParticipants = [User]()
     var event:Event!
-    let companyLogo = UIImage(named: "loo")
+    let companyLogo = UIImage(named: "logo_blue")
     var usersForConversations = [[User]]()
     
     let user = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		navigationItem.title = "Messages".localized()
         let email = user.stringForKey("email")
 		populateNavigationBar()
         userConversations = ModelHandler().getConversation(email!)
@@ -45,7 +46,7 @@ class MessagesTableViewController: UIViewController {
         if isDispatchEmpty {
             let group: dispatch_group_t = dispatch_group_create()
             isDispatchEmpty = false
-            let notification = MPGNotification(title: "Updating", subtitle: "it might takes some time for updating.", backgroundColor: UIColor.orangeColor(), iconImage: nil)
+            let notification = MPGNotification(title: "Updating".localized(), subtitle: "warnUpdateMessage".localized(), backgroundColor: UIColor.orangeColor(), iconImage: nil)
             notification.duration = 60
             notification.show()
             

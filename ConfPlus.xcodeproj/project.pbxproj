@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7ABBEDC83FCAF9328A671323 /* Pods_ConfPlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29F9F87683BF1E1F1317CBE5 /* Pods_ConfPlus.framework */; };
+		C901F6831D07468A00C64E57 /* HCSStarRatingView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C901F6821D07468A00C64E57 /* HCSStarRatingView.framework */; };
 		C90548491D02B4E90077495C /* Session+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90548481D02B4E90077495C /* Session+CoreDataProperties.swift */; };
 		C91254AF1D00126A00C63EF8 /* Ticket_Record+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91254AE1D00126A00C63EF8 /* Ticket_Record+CoreDataProperties.swift */; };
 		C91254B51D01975100C63EF8 /* GeneralLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91254B41D01975100C63EF8 /* GeneralLibrary.swift */; };
@@ -35,6 +36,8 @@
 		C94AFA711C981FED00EC88B6 /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA701C981FED00EC88B6 /* AdminTableViewController.swift */; };
 		C94AFA741C98217C00EC88B6 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA731C98217C00EC88B6 /* AccountTableViewController.swift */; };
 		C94AFA761C98221400EC88B6 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */; };
+		C970775F1D06A61B00B25944 /* InviteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C970775E1D06A61B00B25944 /* InviteTableViewCell.swift */; };
+		C97077631D06A9C400B25944 /* InviteTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97077621D06A9C400B25944 /* InviteTable.swift */; };
 		C973C7111CFC110500DF8992 /* Conversation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C973C7101CFC110500DF8992 /* Conversation+CoreDataProperties.swift */; };
 		C999E8FE1CB1308D00E05C67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C999E8FD1CB1308D00E05C67 /* CoreData.framework */; };
 		C9AC4CE31CB7AA6300083F12 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4CE21CB7AA6300083F12 /* CoreLocation.framework */; };
@@ -103,6 +106,7 @@
 /* Begin PBXFileReference section */
 		0DAF2938A2525B6CBC886A11 /* Pods-ConfPlus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ConfPlus.release.xcconfig"; path = "Pods/Target Support Files/Pods-ConfPlus/Pods-ConfPlus.release.xcconfig"; sourceTree = "<group>"; };
 		29F9F87683BF1E1F1317CBE5 /* Pods_ConfPlus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ConfPlus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C901F6821D07468A00C64E57 /* HCSStarRatingView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HCSStarRatingView.framework; path = "Pods/../build/Debug-iphoneos/HCSStarRatingView/HCSStarRatingView.framework"; sourceTree = "<group>"; };
 		C90548481D02B4E90077495C /* Session+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Session+CoreDataProperties.swift"; path = "Model/Session+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C91254AE1D00126A00C63EF8 /* Ticket_Record+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Ticket_Record+CoreDataProperties.swift"; path = "Model/Ticket_Record+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C91254B41D01975100C63EF8 /* GeneralLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralLibrary.swift; sourceTree = "<group>"; };
@@ -131,6 +135,8 @@
 		C94AFA731C98217C00EC88B6 /* AccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountTableViewController.swift; path = Profile/AccountTableViewController.swift; sourceTree = "<group>"; };
 		C94AFA751C98221400EC88B6 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HistoryTableViewController.swift; path = Profile/HistoryTableViewController.swift; sourceTree = "<group>"; };
 		C955F1701CD8A1FD000BE39C /* Alamofire_Synchronous.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire_Synchronous.framework; path = "Pods/../build/Debug-iphoneos/Alamofire_Synchronous.framework"; sourceTree = "<group>"; };
+		C970775E1D06A61B00B25944 /* InviteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InviteTableViewCell.swift; path = Events/InviteTableViewCell.swift; sourceTree = "<group>"; };
+		C97077621D06A9C400B25944 /* InviteTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InviteTable.swift; path = Events/InviteTable.swift; sourceTree = "<group>"; };
 		C973C7101CFC110500DF8992 /* Conversation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Conversation+CoreDataProperties.swift"; path = "Model/Conversation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C999E8FD1CB1308D00E05C67 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		C9AC4CE21CB7AA6300083F12 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -205,6 +211,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C901F6831D07468A00C64E57 /* HCSStarRatingView.framework in Frameworks */,
 				E9C6C0EC1CFD513800981867 /* PKHUD.framework in Frameworks */,
 				C9D9DC061CE8885900CF55FA /* JSQMessagesViewController.framework in Frameworks */,
 				C9D9DC071CE8885900CF55FA /* JSQSystemSoundPlayer.framework in Frameworks */,
@@ -243,6 +250,8 @@
 				C9D9DC081CE88A0300CF55FA /* MessengerViewController.swift */,
 				C94AFA621C981C5C00EC88B6 /* Ticket */,
 				C94AFA6D1C981F1A00EC88B6 /* AttendingViewController.swift */,
+				C970775E1D06A61B00B25944 /* InviteTableViewCell.swift */,
+				C97077621D06A9C400B25944 /* InviteTable.swift */,
 				C94AFA6F1C981F8200EC88B6 /* Admin */,
 				E9AF006F1CDAE7BA004424A1 /* Security and Location */,
 			);
@@ -328,6 +337,7 @@
 		CA6657120F9514BBD729216B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C901F6821D07468A00C64E57 /* HCSStarRatingView.framework */,
 				E9C6C0EB1CFD513800981867 /* PKHUD.framework */,
 				C9D9DC041CE8885900CF55FA /* JSQMessagesViewController.framework */,
 				C9D9DC051CE8885900CF55FA /* JSQSystemSoundPlayer.framework */,
@@ -567,6 +577,7 @@
 				C94AFA5A1C980DE400EC88B6 /* TimeTableViewController.swift in Sources */,
 				E90201C91C9CC84A00C7839A /* EventsViewController.swift in Sources */,
 				C91E85E21CE75E5D0069333B /* User.swift in Sources */,
+				C970775F1D06A61B00B25944 /* InviteTableViewCell.swift in Sources */,
 				E97EB7651CDF13E5009113A6 /* User_Tag+CoreDataProperties.swift in Sources */,
 				C94AFA5E1C980ECE00EC88B6 /* MessagesTableViewController.swift in Sources */,
 				E9E0A6501CDD8C6200E187AD /* ModelHandler.swift in Sources */,
@@ -621,6 +632,7 @@
 				E96D018C1CF1D9F400AC48EE /* Message.swift in Sources */,
 				C9FD93191D05A92D0066391A /* User+CoreDataProperties.swift in Sources */,
 				C94AFA741C98217C00EC88B6 /* AccountTableViewController.swift in Sources */,
+				C97077631D06A9C400B25944 /* InviteTable.swift in Sources */,
 				C90548491D02B4E90077495C /* Session+CoreDataProperties.swift in Sources */,
 				E93163911BC5E294007408C7 /* viewEffect.swift in Sources */,
 				C94AFA581C980D7C00EC88B6 /* HomeViewController.swift in Sources */,
@@ -757,6 +769,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/CryptoSwift",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/PKHUD",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/HCSStarRatingView",
 				);
 				INFOPLIST_FILE = ConfPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -778,6 +791,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/CryptoSwift",
 					"$(PROJECT_DIR)/build/Debug-iphoneos/PKHUD",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/HCSStarRatingView",
 				);
 				INFOPLIST_FILE = ConfPlus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
