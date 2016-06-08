@@ -27,18 +27,20 @@ class HomeViewController: UIViewController {
 		
 		populateEventOverview()
 		populateNavigationBar()
+		
+		if let role = user.stringForKey("role"){
+			if role == "manager" {
+				features.append("Administrations")
+				tableView.reloadData()
+			}
+		}
     }
 	
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(true)
 		
 		setText()
-		if let role = user.stringForKey("role"){
-			if role == "Admin" {
-				features.append("Administrations".localized())
-				tableView.reloadData()
-			}
-		}
+		
 	}
 	
 	func setText(){
@@ -84,16 +86,16 @@ extension HomeViewController: UITableViewDelegate {
 		func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 			let row = indexPath.row
 			
-			switch features[row].localized() {
-				case "Timetable".localized():
+			switch features[row] {
+				case "Timetable":
 					self.performSegueWithIdentifier("goToTimetable", sender: self)
-				case "Participants".localized():
+				case "Participants":
 					self.performSegueWithIdentifier("goToParticipants", sender: self)
-				case "Tickets".localized():
+				case "Tickets":
 					self.performSegueWithIdentifier("goToTickets", sender: self)
-				case "Messages".localized():
+				case "Messages":
 					self.performSegueWithIdentifier("goToMessages", sender: self)
-				case "Administrations".localized():
+				case "Administrations":
 					self.performSegueWithIdentifier("goToAdministrations", sender: self)
 				default:
 					()
