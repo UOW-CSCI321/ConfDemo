@@ -40,6 +40,7 @@
 		C97077631D06A9C400B25944 /* InviteTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97077621D06A9C400B25944 /* InviteTable.swift */; };
 		C973C7111CFC110500DF8992 /* Conversation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C973C7101CFC110500DF8992 /* Conversation+CoreDataProperties.swift */; };
 		C999E8FE1CB1308D00E05C67 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C999E8FD1CB1308D00E05C67 /* CoreData.framework */; };
+		C9A81E691D079F910082DEF7 /* Onboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A81E681D079F910082DEF7 /* Onboard.framework */; };
 		C9AC4CE31CB7AA6300083F12 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4CE21CB7AA6300083F12 /* CoreLocation.framework */; };
 		C9AC4D031CC45C7700083F12 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4D021CC45C7700083F12 /* SwiftyJSON.framework */; };
 		C9AC4D051CC45EF900083F12 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AC4D041CC45EF900083F12 /* Alamofire.framework */; };
@@ -139,6 +140,7 @@
 		C97077621D06A9C400B25944 /* InviteTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InviteTable.swift; path = Events/InviteTable.swift; sourceTree = "<group>"; };
 		C973C7101CFC110500DF8992 /* Conversation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Conversation+CoreDataProperties.swift"; path = "Model/Conversation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C999E8FD1CB1308D00E05C67 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C9A81E681D079F910082DEF7 /* Onboard.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Onboard.framework; path = "../../chord/chord/ConfPlus-gyuqvgyrwksbchgwfawuspwfodhr/Build/Products/Debug-iphonesimulator/Onboard/Onboard.framework"; sourceTree = "<group>"; };
 		C9AC4CE21CB7AA6300083F12 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C9AC4D021CC45C7700083F12 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		C9AC4D041CC45EF900083F12 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9A81E691D079F910082DEF7 /* Onboard.framework in Frameworks */,
 				C901F6831D07468A00C64E57 /* HCSStarRatingView.framework in Frameworks */,
 				E9C6C0EC1CFD513800981867 /* PKHUD.framework in Frameworks */,
 				C9D9DC061CE8885900CF55FA /* JSQMessagesViewController.framework in Frameworks */,
@@ -337,6 +340,7 @@
 		CA6657120F9514BBD729216B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C9A81E681D079F910082DEF7 /* Onboard.framework */,
 				C901F6821D07468A00C64E57 /* HCSStarRatingView.framework */,
 				E9C6C0EB1CFD513800981867 /* PKHUD.framework */,
 				C9D9DC041CE8885900CF55FA /* JSQMessagesViewController.framework */,

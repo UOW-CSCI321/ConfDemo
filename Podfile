@@ -25,4 +25,7 @@ target 'ConfPlus' do
     
     #https://github.com/hsousa/HCSStarRatingView
     pod 'HCSStarRatingView', '~> 1.4.5'
+    
+    #https://github.com/mamaral/Onboard
+    pod 'Onboard', '~> 2.2.0'
 end

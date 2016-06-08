@@ -8,6 +8,7 @@ PODS:
   - JSQSystemSoundPlayer (2.0.1)
   - Localize-Swift (1.1)
   - MPGNotification (1.2.4)
+  - Onboard (2.2.0)
   - PKHUD (3.1.0)
   - SwiftyJSON (2.3.2)
 
@@ -19,6 +20,7 @@ DEPENDENCIES:
   - JSQMessagesViewController (~> 7.2.0)
   - Localize-Swift (~> 1.1)
   - MPGNotification (~> 1.2)
+  - Onboard (~> 2.2.0)
   - PKHUD
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
@@ -40,9 +42,10 @@ SPEC CHECKSUMS:
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   Localize-Swift: 72fab22c9c271a1041082fa3b53ca64e527ccf4a
   MPGNotification: f0e3924087afa9b3eccd5ce624e03965ae31ae61
+  Onboard: c46261255c0bcbe26ab2823782764c96fca7a33e
   PKHUD: 4167eccdb1b3a892fd80ce2b51cb6ba412a889ab
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: 3774f4ffd41d81a10e636e1045c4b09fbd16aa56
+PODFILE CHECKSUM: e218e8d49c39982c8d29e2f9ec5e50fcf8cc5692
 
 COCOAPODS: 1.0.0.rc.1

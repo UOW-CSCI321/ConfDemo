@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Onboard
 
 
 @UIApplicationMain
@@ -17,6 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let user = NSUserDefaults.standardUserDefaults()
+        let hasOnboard = "false"
+        user.setObject(hasOnboard, forKey: "hasOnboard")
+        
+        if let onboard = user.stringForKey("hasOnboard") {
+            if onboard == "false"{
+                 self.window?.rootViewController = generateStandardOnboarding()
+            }else {
+                //run normal intro
+            }
+        }
+       
         return true
     }
 
@@ -106,5 +120,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			}
 		}
 	}
+    
+    //MARK: - Onboarding
+    
+    func handleOnboardCompletion() {
+        
+    }
+    
+    func generateStandardOnboarding() -> OnboardingViewController {
+            let firstPage = OnboardingContentViewController(title: "Eventure", body: "Explore life's Eventures", image: UIImage(named: "logo_blue"), buttonText: nil) { () -> Void in
+                // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
+            }
+        
+        let secondPage = OnboardingContentViewController(title: nil, body: "Explore events and conferences around you", image: UIImage(named: "explore"), buttonText: nil) { () -> Void in
+            // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
+        }
+        
+//        let secondPage = OnboardingContentViewController(title: "Page Title", body: "Page body goes here.", image: UIImage(named: "logo"), buttonText: "Text For Button", action: handleOnboardCompletion)
+        
+            let onboardingVC = OnboardingViewController(backgroundImage: UIImage(named: "m1"), contents: [firstPage, secondPage])
+            onboardingVC.allowSkipping = true
+            return onboardingVC
+    }
 }
 

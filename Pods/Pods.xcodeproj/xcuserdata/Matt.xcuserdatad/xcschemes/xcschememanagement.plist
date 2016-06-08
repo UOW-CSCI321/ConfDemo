@@ -68,6 +68,11 @@
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
+		<key>Onboard.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>PKHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -132,6 +137,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>7A5F2D401D5FD8D126BC9B89A0A3E6E5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8AD4CB43D2C73876BA4890781F7AFC4A</key>
 		<dict>
 			<key>primary</key>
@@ -163,6 +173,16 @@
 			<true/>
 		</dict>
 		<key>CBDF7D83BD7E8162D91B111E097DA11B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D28A1D5313243B3CF3A6D6D307A60C3F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D7FF48F3092783E4E42B336F0DEF2D1A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

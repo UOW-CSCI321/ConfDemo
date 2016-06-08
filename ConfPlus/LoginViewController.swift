@@ -9,6 +9,7 @@
 import UIKit
 import Localize_Swift
 import CryptoSwift
+import Onboard
 
 class LoginViewController: UIViewController {
 
@@ -24,9 +25,21 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //SetupIntro()
 		navigationController?.navigationBarHidden = true
     }
 	
+//    func SetupIntro() {
+//        let firstPage = OnboardingContentViewController(title: "Page Title", body: "Page body goes here.", image: UIImage(named: "logo"), buttonText: "Text For Button") { () -> Void in
+//            // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
+//        }
+//        
+//        let onboardingVC = OnboardingViewController(backgroundImage: UIImage(named: "m2"), contents: [firstPage])
+//        onboardingVC.allowSkipping = true
+//        
+//    }
+    
+    
 	override func viewWillAppear(animated: Bool) {
 		
 		setText()
