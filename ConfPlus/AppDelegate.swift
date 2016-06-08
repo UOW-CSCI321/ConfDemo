@@ -130,23 +130,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
             }
         
-        let secondPage = OnboardingContentViewController(title: nil, body: "Explore events and conferences around you", image: UIImage(named: "Explore"), buttonText: nil) { () -> Void in
+        let secondPage = OnboardingContentViewController(title: nil, body: "Explore events and conferences around you", image: UIImage(named: "search_event_white"), buttonText: nil) { () -> Void in
             // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
         }
         
-        let thirdPage = OnboardingContentViewController(title: nil, body: "Purchase tickets", image: UIImage(named: "Ticketing"), buttonText: nil) { () -> Void in
+        let thirdPage = OnboardingContentViewController(title: nil, body: "Purchase tickets", image: UIImage(named: "ticket_white"), buttonText: nil) { () -> Void in
             // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
         }
         
-        let fourthPage = OnboardingContentViewController(title: nil, body: "View your events and thier sessions", image: UIImage(named: "My Events"), buttonText: nil) { () -> Void in
+        let fourthPage = OnboardingContentViewController(title: nil, body: "View your events and thier sessions", image: UIImage(named: "myevent_white"), buttonText: nil) { () -> Void in
             // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
         }
         
-        let fifthPage = OnboardingContentViewController(title: nil, body: "View attendes and invite your friends", image: UIImage(named: "My Events"), buttonText: nil) { () -> Void in
+        let fifthPage = OnboardingContentViewController(title: nil, body: "View attendes and invite your friends", image: UIImage(named: "attending_white"), buttonText: nil) { () -> Void in
             // do something here when users press the button, like ask for location services permissions, register for push notifications, connect to social media, or finish the onboarding process
         }
         
-        let lastPage = OnboardingContentViewController(title: nil, body: "Send messages to presenters and attendees", image: UIImage(named: "logo"), buttonText: "Lets go!", action: handleOnboardCompletion)
+        let lastPage = OnboardingContentViewController(title: nil, body: "Send messages to presenters and attendees", image: UIImage(named: "message_white"), buttonText: "Lets go!", action: handleOnboardCompletion)
         
             let onboardingVC = OnboardingViewController(backgroundImage: UIImage(named: "m1"), contents: [firstPage, secondPage, thirdPage, fourthPage, fifthPage, lastPage])
             onboardingVC.allowSkipping = true
