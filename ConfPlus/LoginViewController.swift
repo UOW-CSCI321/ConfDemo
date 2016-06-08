@@ -61,8 +61,12 @@ class LoginViewController: UIViewController {
 				//let email = self.server.hashUserPassword(email)
 				self.user.setObject(email, forKey: "email")
                 //if login successful get the user from database
-                //let myself = ModelHandler().getUser(email)
-                
+                //let myself = ModelHandler().getUser(email)'
+				
+				if email == "admin@cy.my"{
+					self.user.setObject("manager", forKey: "role")
+				}
+				
 				//self.dismissViewControllerAnimated(true, completion: nil)
                 APIManager().getUserInformation(email){ result in
                     if let myself = ModelHandler().getUser(email) {

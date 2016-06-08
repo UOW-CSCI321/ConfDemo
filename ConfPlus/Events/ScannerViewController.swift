@@ -99,8 +99,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
 		APIManager().scanQR(code){ result, data in
 			HUD.hide(animated: true)
 			if result {
-				print(data)
-				let message = "\(data[0]["ticket"][0]["title"].string!)\n\(data[0]["user"][0]["email"].string!)"
+				let message = "name: \(data["user"]["username"].string!) \ntitle: \(data["ticket"]["title"].string!)"
 				print(message)
 				HUD.flash(.Label(message), delay: 1.00) { _ in
 					self.captureSession.startRunning();

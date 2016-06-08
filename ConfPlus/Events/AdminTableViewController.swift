@@ -40,10 +40,8 @@ class AdminTableViewController: UITableViewController {
 		
 		
 		switch cell.textLabel!.text! {
-			case "Attendance":
+			case "Participants".localized():
 				performSegueWithIdentifier("goToQRScannerView", sender: self)
-			case "Back":
-				self.dismissViewControllerAnimated(true, completion: nil)
 		default:
 			HUD.flash(.Label("warnFeatures".localized()), delay: 1.0)
 		}

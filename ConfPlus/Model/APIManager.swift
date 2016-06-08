@@ -768,7 +768,7 @@ extension APIManager{
 					let json = JSON(value)
 					HUD.hide()
 					if json["success"] {
-						completion(result: true, data: json["data"][0])
+						completion(result: true, data: json["data"])
 					} else {
 						print(json["data"][0]["message"])
 						completion(result: false, data: nil)
